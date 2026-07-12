@@ -1,0 +1,14 @@
+# CODEOWNERS — who reviews what.
+# Owners are automatically requested for review on matching paths.
+# Docs: https://docs.github.com/en/repositories/managing-your-repositories-permissions-and-settings/customizing-your-repository/about-code-owners
+
+# Default owner for everything in the repo.
+*                           @DNLCodess
+
+# Architecture & decisions require owner sign-off.
+/docs/architecture/         @DNLCodess
+
+# Security-sensitive surfaces.
+/proxy.ts                   @DNLCodess
+/supabase/                  @DNLCodess
+/next.config.ts             @DNLCodess
