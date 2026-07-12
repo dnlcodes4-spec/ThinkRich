@@ -50,6 +50,8 @@ A task may move to **Done** (i.e. be merged to `main`) only when **all** of thes
 ### Documentation & tracking
 - [ ] Docs / ADR / [CHANGELOG](../../CHANGELOG.md) updated as needed.
 - [ ] PR uses a Conventional Commit title and links the task (and ADR, if any).
+- [ ] **Non-obvious lessons captured** in [learnings.md](learnings.md) (a surprising bug, a
+      gotcha, a decision worth remembering) — this is how the project compounds knowledge.
 
 ---
 

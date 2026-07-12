@@ -50,6 +50,9 @@ A UI change is **Done** only when all of these hold (in addition to the general
 - [ ] Uses **tokens** only — no hard-coded hex or arbitrary px.
 - [ ] Type, spacing, radius, elevation match the scales.
 - [ ] Matches the relevant [component](components.md) patterns; no unjustified one-offs.
+- [ ] **Doesn't look generic/AI-generated** ([authentic-design.md](authentic-design.md)):
+      grounded in the subject/brand, real content (no lorem/filler), no template clichés. Ask:
+      *could this screen drop unchanged into an unrelated app?* If yes, rework it.
 
 ### Responsive
 - [ ] Verified at **360px, 768px, 1280px** — no horizontal page scroll at any width.

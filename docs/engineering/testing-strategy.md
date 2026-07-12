@@ -53,6 +53,26 @@ Full browser journeys for the flows that would hurt most if broken:
 | RLS policies | Integration: allow + deny per role |
 | Server Actions | Integration: happy path + validation failure + auth failure |
 | Critical journeys | E2E: at least the flows listed above |
+| Notifications | see below |
+
+## Notifications & event-driven
+
+The [notification system](../architecture/notifications.md) is event-driven, which has its own
+failure modes (missed sends, duplicates, leaks, dead subscriptions). Test it at each layer:
+
+- **Unit:** trigger logic (does event X produce notification N?), **dedup/idempotency** (a retried
+  Server Action must not double-notify), audience/scope derivation, and notification **copy
+  rendering** (right message, right deep link).
+- **Integration:** the delivery pipeline end-to-end against the DB with a **mocked push service**
+  (never hit real push in tests) — creating in-app records, enqueuing push, and **dead-subscription
+  cleanup** on `410/404`. Critically, test **RLS**: a recipient can read only their own
+  notifications, and only the owner can read/write their `push_subscriptions` (allow **and** deny).
+- **E2E:** the **voting-reminder** journey (member receives N1 → taps → sees the right candidate)
+  and the **push permission prompt** (in-context, not on first load).
+- **Privacy assertion:** verify push payloads carry **no member PII** beyond name + link.
+
+Scheduled/broadcast notifications (N1/N2) are tested by invoking the job directly with seeded data
+— deterministic, no reliance on real time or a live scheduler.
 
 ## Tooling (to be finalized in setup)
 

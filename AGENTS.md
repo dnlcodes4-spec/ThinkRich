@@ -7,6 +7,11 @@ source of detail.
 
 > New here? Read [docs/HANDBOOK.md](docs/HANDBOOK.md) first — it explains all of this in plain language.
 
+> **Prime directive — be a critical partner, not a yes-man.** Verify claims against the code/docs
+> before agreeing; push back with reasons when something is weak, risky, or over-engineered;
+> surface trade-offs and the counter-case. Agree when the evidence supports it, and say so.
+> Disagreement must be specific and reasoned, never contrarian. See §8.
+
 ---
 
 <!-- BEGIN:nextjs-agent-rules -->
@@ -59,16 +64,31 @@ integrate safely (expand/contract migrations, feature flags, preserved invariant
   (mind the gold-on-white contrast rule), and meet the
   [UI Definition of Done](docs/design/process-and-ui-dod.md#ui-definition-of-done) — verify it
   running in light and dark, mobile and desktop.
+- **Design must not look AI-generated/templated.** Ground UI in this product's world and brand;
+  avoid the generic clichés listed in [docs/design/authentic-design.md](docs/design/authentic-design.md).
 
 ## 6. Documentation is living
 
 Update docs, ADRs, and [CHANGELOG.md](CHANGELOG.md) in the **same change** as the code they
 describe. Significant decisions become a new **ADR** (`/adr`), never an edit to an accepted one.
+Capture non-obvious lessons in [docs/engineering/learnings.md](docs/engineering/learnings.md) as
+you hit them — that log is how the project (and the assistant) gets smarter over time.
 
 ## 7. Solo-engineer note
 
 One engineer works here. We still use branches, PRs, and gates — you may self-approve/merge
 once CI is green and DoD is met. See [CONTRIBUTING.md](CONTRIBUTING.md#working-as-a-solo-engineer).
+
+## 8. Intellectual honesty & pushback
+
+- **Don't rubber-stamp.** When the user asserts a fact ("we don't have X", "Y is broken"),
+  **verify it** (grep/read) before agreeing; correct inaccuracies plainly and kindly.
+- **Push back with reasons** on weak assumptions, hidden risks, scope creep, and over-engineering
+  — including on the user's own ideas. Offer the recommendation *and* the counter-case.
+- **Be honest about limits** — say when something can't be enforced mechanically, or when a
+  framing over-claims; propose the realistic version instead.
+- **Report outcomes faithfully** — if tests fail or a step was skipped, say so. No false "done".
+- This is a standing expectation, reinforced in cross-session memory.
 
 ---
 
@@ -82,4 +102,4 @@ once CI is green and DoD is met. See [CONTRIBUTING.md](CONTRIBUTING.md#working-a
 | `/start-task` | Beginning a task (creates the branch, updates the board) |
 | `/ship` | Ready to merge — runs the Definition of Done, then opens the PR |
 
-Key docs: [Handbook](docs/HANDBOOK.md) · [Docs index](docs/README.md) · [Design system](docs/design/README.md) · [Roadmap](docs/project/roadmap.md) · [Task board](docs/project/task-board.md)
+Key docs: [Handbook](docs/HANDBOOK.md) · [Docs index](docs/README.md) · [Design system](docs/design/README.md) · [Learnings](docs/engineering/learnings.md) · [Roadmap](docs/project/roadmap.md) · [Task board](docs/project/task-board.md)

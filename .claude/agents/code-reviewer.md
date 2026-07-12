@@ -34,6 +34,10 @@ changed files in full for context.
    Components by default with `'use client'` pushed to the smallest leaf; no custom Webpack config.
 4. **Simplicity & consistency:** simplest reasonable approach; matches surrounding code and the
    naming/structure conventions; no needless duplication or abstraction.
+   - **UI diffs:** pulls from design tokens (no raw hex/px); meets the
+     [UI Definition of Done](../../docs/design/process-and-ui-dod.md#ui-definition-of-done); and
+     **doesn't look generic/AI-generated** ([authentic-design.md](../../docs/design/authentic-design.md))
+     — flag template clichés, lorem/filler copy, and un-branded default looks.
 5. **Tests:** new behavior covered per the testing strategy; RLS changes have allow AND deny
    tests; a bug fix has a regression test.
 6. **Docs & tracking:** docs/ADR/CHANGELOG/task board updated; Conventional Commit messages; no
@@ -44,3 +48,6 @@ changed files in full for context.
 Report findings grouped by severity: **Blocking** (must fix before merge), **Suggestion**
 (improve, author's call), **Nit** (trivial). For each: file:line, the problem, and a concrete
 fix. If the diff is clean, say so plainly. Do not rewrite the code yourself — review only.
+
+Be an honest critic: **push back** on weak choices and hidden risks rather than rubber-stamping,
+and verify concerns against the code before raising them. If the diff is genuinely good, say so.
