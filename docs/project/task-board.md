@@ -42,6 +42,8 @@ _PR open, awaiting review + CI._
 
 - **T-013** — Test tooling: Vitest + RTL + Playwright + CI workflow (PR `chore/test-tooling`)
   _Done: 14 unit/component tests + 2 E2E green; `npm run test`/`test:e2e`/`typecheck`; CI on every PR._
+- **T-001 (geography)** — schema (states→lgas→wards, units) + reference RLS + 37 states seeded +
+  types + import path (PR `feat/db-foundation`) _Identity + hierarchical RLS follow next._
 
 ## ✅ Done
 _Merged to `main`, meets Definition of Done._
