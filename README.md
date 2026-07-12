@@ -50,6 +50,9 @@ For PWA/push testing over HTTPS: `npm run dev -- --experimental-https`.
 | `npm run build` | Production build |
 | `npm run start` | Serve the production build |
 | `npm run lint` | ESLint |
+| `npm run typecheck` | TypeScript (`tsc --noEmit`) |
+| `npm run test` | Unit/component tests (Vitest) |
+| `npm run test:e2e` | End-to-end tests (Playwright) |
 
 ---
 

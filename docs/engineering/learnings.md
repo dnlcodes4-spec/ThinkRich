@@ -27,6 +27,21 @@ history, or an existing doc.
 
 ## Entries
 
+### 2026-07-12 — E2E ran against the wrong app (port 3000 collision)
+- **Context:** first Playwright run failed to find even the server-rendered heading.
+- **Lesson:** another project's dev server was on `localhost:3000`, and Playwright's
+  `reuseExistingServer` happily ran our tests against **that** app. Shared default ports bite when
+  multiple projects are open.
+- **Action:** pin E2E to a **dedicated port** (`npm run dev -- -p 3100`, `baseURL` :3100). Logged
+  as the rule in [testing-strategy.md](testing-strategy.md).
+
+### 2026-07-12 — No-flash theme script causes a hydration warning on <html>
+- **Context:** E2E webServer output showed a hydration attribute diff on `<html data-theme>`.
+- **Lesson:** the pre-paint inline script sets `data-theme` before React hydrates, so server HTML
+  (no attribute) and client DOM (attribute set) differ — React warns. Expected for this pattern.
+- **Action:** add **`suppressHydrationWarning`** to the `<html>` element only (what `next-themes`
+  does). The E2E surfaced a warning the SSR-DOM grep didn't — a point for driving the real app.
+
 ### 2026-07-12 — Verifying SSR HTML: count occurrences, and expect the RSC payload
 - **Context:** checking the prerendered page rendered both table + card presentations.
 - **Lesson:** two traps. (1) `grep -c` counts matching *lines*; minified SSR HTML is one line, so
