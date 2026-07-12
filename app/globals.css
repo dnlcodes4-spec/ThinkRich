@@ -1,26 +1,112 @@
 @import "tailwindcss";
 
+/*
+  Think-Winners Movement — design tokens.
+  Implements docs/design/brand-and-color.md. Components consume the SEMANTIC
+  tokens (bg-background, text-foreground, bg-primary, bg-accent, …) — never raw
+  hex. Brand scales (navy-*, gold-*) exist for the rare case a specific step is
+  needed; neutrals use Tailwind's built-in slate scale (identical values).
+*/
+
+/* `dark:` utilities follow the active data-theme (set on <html> before paint). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ---- Semantic tokens : LIGHT (default) ---- */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --surface: #ffffff;
+  --surface-muted: #f8fafc;
+  --border: #e2e8f0;
+  --foreground: #0f172a;
+  --muted: #64748b;
+
+  --primary: #0a2a4e;            /* navy-700 */
+  --primary-hover: #193759;      /* navy-600 */
+  --primary-foreground: #ffffff;
+
+  --accent: #c9a227;             /* gold-500 */
+  --accent-hover: #a98821;       /* gold-600 */
+  --accent-foreground: #071c33;  /* navy-900 — dark text ON gold */
+
+  --ring: #2c4867;               /* navy-500 */
+
+  --success: #15803d; --success-soft: #f0fdf4;
+  --warning: #c2410c; --warning-soft: #fff7ed;
+  --danger:  #b91c1c; --danger-soft:  #fef2f2;
+  --info:    #1d4ed8; --info-soft:    #eff6ff;
 }
 
+/* System dark for visitors who haven't chosen (and for the no-JS case). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --background: #051527; --surface: #071c33; --surface-muted: #082240;
+    --border: #193759; --foreground: #f1f5f9; --muted: #94a3b8;
+    --primary: #8999aa; --primary-hover: #b6bfca; --primary-foreground: #051527;
+    --accent: #e5d297; --accent-hover: #efe3be; --accent-foreground: #051527;
+    --ring: #8999aa;
+    --success: #4ade80; --success-soft: #052e16;
+    --warning: #fb923c; --warning-soft: #431407;
+    --danger:  #f87171; --danger-soft:  #450a0a;
+    --info:    #60a5fa; --info-soft:    #172554;
+  }
+}
+
+/* Explicit choice wins in both directions. */
+[data-theme="dark"] {
+  --background: #051527; --surface: #071c33; --surface-muted: #082240;
+  --border: #193759; --foreground: #f1f5f9; --muted: #94a3b8;
+  --primary: #8999aa; --primary-hover: #b6bfca; --primary-foreground: #051527;
+  --accent: #e5d297; --accent-hover: #efe3be; --accent-foreground: #051527;
+  --ring: #8999aa;
+  --success: #4ade80; --success-soft: #052e16;
+  --warning: #fb923c; --warning-soft: #431407;
+  --danger:  #f87171; --danger-soft:  #450a0a;
+  --info:    #60a5fa; --info-soft:    #172554;
+}
+
+/* ---- Brand scales (utilities: bg-navy-700, text-gold-500, …) ---- */
+@theme {
+  --color-navy-50: #f0f2f4;  --color-navy-100: #dde1e6; --color-navy-200: #b6bfca;
+  --color-navy-300: #8999aa; --color-navy-400: #546a83; --color-navy-500: #2c4867;
+  --color-navy-600: #193759; --color-navy-700: #0a2a4e; --color-navy-800: #082240;
+  --color-navy-900: #071c33; --color-navy-950: #051527;
+
+  --color-gold-50: #fcf9f2;  --color-gold-100: #f7f2e1; --color-gold-200: #efe3be;
+  --color-gold-300: #e5d297; --color-gold-400: #d9be68; --color-gold-500: #c9a227;
+  --color-gold-600: #a98821; --color-gold-700: #896e1b; --color-gold-800: #695414;
+  --color-gold-900: #4c3e0f; --color-gold-950: #382d0b;
+
+  --radius-card: 14px;
+}
+
+/* ---- Semantic tokens → Tailwind utilities (theme-reactive) ---- */
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-ring: var(--ring);
+
+  --color-success: var(--success); --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning); --color-warning-soft: var(--warning-soft);
+  --color-danger:  var(--danger);  --color-danger-soft:  var(--danger-soft);
+  --color-info:    var(--info);    --color-info-soft:    var(--info-soft);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
 }

@@ -9,6 +9,10 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- Design tokens implemented in code (T-011): brand navy/gold scales + semantic tokens as
+  Tailwind v4 utilities in `app/globals.css`, light/dark theming via `data-theme` with a
+  no-flash inline script and a `ThemeToggle`, real project metadata, and a token-verification
+  home page. Verified: lint + production build pass; both theme rule-sets compile.
 - Governance hardening: intellectual-honesty/pushback rule (AGENTS.md §8 + reviewer agent),
   authentic-design guidance to avoid generic/AI-generated UI (`docs/design/authentic-design.md`
   + UI DoD), a learnings log (`docs/engineering/learnings.md`) with a "capture learnings" DoD

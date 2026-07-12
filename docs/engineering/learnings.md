@@ -27,6 +27,22 @@ history, or an existing doc.
 
 ## Entries
 
+### 2026-07-12 — Tailwind can't see interpolated class names
+- **Context:** rendering brand-scale swatches with `` className={`bg-navy-${step}`} ``.
+- **Lesson:** Tailwind (v3 and v4) generates utilities by scanning source for **complete**
+  class strings. Interpolated/'dynamic' names like `bg-navy-${step}` are never emitted, so the
+  element renders unstyled — no error, just silently wrong.
+- **Action:** always write full class names (`bg-navy-700`), even if it's more verbose. For truly
+  dynamic colour, use a CSS variable / inline style instead.
+
+### 2026-07-12 — Auto-lint hook caught setState-in-effect (the guardrail earns its keep)
+- **Context:** the `ThemeToggle` read `document.dataset.theme` in `useEffect` + `setState`.
+- **Lesson:** React 19's `react-hooks/set-state-in-effect` flags this (cascading renders). The
+  right tool for reading external/DOM state is **`useSyncExternalStore`** — it also fixes SSR
+  hydration for theme (server snapshot vs client snapshot). The PostToolUse lint hook blocked the
+  commit-worthy mistake at write time — exactly its purpose.
+- **Action:** read external/DOM/browser state via `useSyncExternalStore`, not effect+setState.
+
 ### 2026-07-12 — Hook heredoc swallowed piped stdin
 - **Context:** building the `block-main-commit.sh` PreToolUse hook; a smoke test appeared to pass.
 - **Lesson:** `python3 - <<'PY'` makes the heredoc the program *via stdin*, so the piped hook
