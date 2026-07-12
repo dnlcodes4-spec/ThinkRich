@@ -9,6 +9,11 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- Governance hardening: intellectual-honesty/pushback rule (AGENTS.md §8 + reviewer agent),
+  authentic-design guidance to avoid generic/AI-generated UI (`docs/design/authentic-design.md`
+  + UI DoD), a learnings log (`docs/engineering/learnings.md`) with a "capture learnings" DoD
+  step, a consolidated notification system doc (`docs/architecture/notifications.md`), and
+  notification/event-driven testing added to the testing strategy.
 - Design system (`docs/design/`): design principles, brand & colour system (navy/gold tokens
   sampled from the logo and WCAG-AA contrast-verified, with light/dark and the gold-on-white
   rule), typography, layout/spacing/grid, responsive & dashboard rules (tables→cards on mobile),

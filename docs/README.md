@@ -15,6 +15,7 @@ How the system is built and why.
 - [overview.md](architecture/overview.md) — C4 diagrams (context → container → component)
 - [data-model.md](architecture/data-model.md) — entities, relationships, invariants, RLS summary
 - [security-model.md](architecture/security-model.md) — roles, authorization, threat model
+- [notifications.md](architecture/notifications.md) — notification system, catalog, channels, UX
 - [tech-stack.md](architecture/tech-stack.md) — technologies and Next 16 specifics
 - [decisions/](architecture/decisions/) — **Architecture Decision Records (ADRs)**
 
@@ -24,8 +25,9 @@ How we work.
 - [git-workflow.md](engineering/git-workflow.md) — trunk-based dev + Conventional Commits
 - [coding-standards.md](engineering/coding-standards.md) — conventions & Next 16 rules
 - [code-review.md](engineering/code-review.md) — review checklist & etiquette
-- [testing-strategy.md](engineering/testing-strategy.md) — the test pyramid & RLS tests
+- [testing-strategy.md](engineering/testing-strategy.md) — the test pyramid, RLS & notification tests
 - [definition-of-done.md](engineering/definition-of-done.md) — Definition of Ready & Done
+- [learnings.md](engineering/learnings.md) — running log of non-obvious lessons
 
 ### 🎨 Design — [`design/`](design/)
 How the product looks, feels, and behaves.
@@ -34,6 +36,7 @@ How the product looks, feels, and behaves.
 - [typography.md](design/typography.md) · [layout-and-spacing.md](design/layout-and-spacing.md)
 - [responsive-and-dashboards.md](design/responsive-and-dashboards.md) — **tables→cards**, per-device patterns
 - [components.md](design/components.md) — component anatomy & rules
+- [authentic-design.md](design/authentic-design.md) — **avoiding generic / AI-generated UI**
 - [accessibility.md](design/accessibility.md) — WCAG 2.1 AA baseline
 - [ux-by-user-type.md](design/ux-by-user-type.md) — UX per persona/device
 - [process-and-ui-dod.md](design/process-and-ui-dod.md) — design process + **UI Definition of Done**

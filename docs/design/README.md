@@ -17,6 +17,7 @@ same choices.
 | [layout-and-spacing.md](layout-and-spacing.md) | Spacing scale, radii, elevation, breakpoints, grid, containers |
 | [responsive-and-dashboards.md](responsive-and-dashboards.md) | Mobile-first rules, **tables→cards on mobile**, dashboard patterns per device |
 | [components.md](components.md) | Component anatomy & rules: buttons/CTAs, forms, cards, tables, nav, feedback |
+| [authentic-design.md](authentic-design.md) | **Avoiding generic / "AI-generated" UI** — specific anti-patterns |
 | [accessibility.md](accessibility.md) | WCAG 2.1 AA baseline, touch targets, focus, keyboard, motion |
 | [ux-by-user-type.md](ux-by-user-type.md) | UX patterns per persona: member, leader, admins, visitor |
 | [process-and-ui-dod.md](process-and-ui-dod.md) | How we design, tokens→Tailwind, and the **UI Definition of Done** |
