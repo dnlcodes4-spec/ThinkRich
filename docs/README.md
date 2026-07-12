@@ -27,6 +27,17 @@ How we work.
 - [testing-strategy.md](engineering/testing-strategy.md) — the test pyramid & RLS tests
 - [definition-of-done.md](engineering/definition-of-done.md) — Definition of Ready & Done
 
+### 🎨 Design — [`design/`](design/)
+How the product looks, feels, and behaves.
+- [README.md](design/README.md) — design principles + system index
+- [brand-and-color.md](design/brand-and-color.md) — palette, tokens, light/dark, **contrast rules**
+- [typography.md](design/typography.md) · [layout-and-spacing.md](design/layout-and-spacing.md)
+- [responsive-and-dashboards.md](design/responsive-and-dashboards.md) — **tables→cards**, per-device patterns
+- [components.md](design/components.md) — component anatomy & rules
+- [accessibility.md](design/accessibility.md) — WCAG 2.1 AA baseline
+- [ux-by-user-type.md](design/ux-by-user-type.md) — UX per persona/device
+- [process-and-ui-dod.md](design/process-and-ui-dod.md) — design process + **UI Definition of Done**
+
 ### 📋 Project — [`project/`](project/)
 What we're building and when.
 - [roadmap.md](project/roadmap.md) — phases, milestones, open questions

@@ -11,7 +11,10 @@ The delivery plan by phase. This is the strategic view; the tactical, day-to-day
 - ✅ Architecture docs (C4), ADRs, data model, security model
 - ✅ SDLC, git workflow, coding standards, code review, testing strategy, DoR/DoD
 - ✅ Root governance (README, CONTRIBUTING, SECURITY, CHANGELOG) + GitHub templates
+- ✅ Claude Code project configuration (rules, commands, reviewer agent, guardrail hooks)
+- ✅ Design system (brand tokens, responsive/dashboard rules, accessibility, UI DoD) — ADR-0006
 - ⏳ Repo bootstrap: dependencies, `.env`, Supabase project, `proxy.ts`, base layout
+- ⏳ Implement design tokens in code (T-011) + base UI primitives (T-012)
 
 ## Phase 1 — Members' App (PWA) 🚧 (current focus)
 

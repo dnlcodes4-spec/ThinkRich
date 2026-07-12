@@ -54,6 +54,11 @@ integrate safely (expand/contract migrations, feature flags, preserved invariant
   surrounding code. Add/adjust tests per [docs/engineering/testing-strategy.md](docs/engineering/testing-strategy.md).
 - Self-review against [docs/engineering/code-review.md](docs/engineering/code-review.md) before merge
   (use the `code-reviewer` subagent for a focused pass).
+- **Building UI?** Follow the [design system](docs/design/README.md): use **tokens** (never raw
+  hex/px), design **mobile-first** (tables become card lists on mobile), keep **WCAG AA**
+  (mind the gold-on-white contrast rule), and meet the
+  [UI Definition of Done](docs/design/process-and-ui-dod.md#ui-definition-of-done) — verify it
+  running in light and dark, mobile and desktop.
 
 ## 6. Documentation is living
 
@@ -77,4 +82,4 @@ once CI is green and DoD is met. See [CONTRIBUTING.md](CONTRIBUTING.md#working-a
 | `/start-task` | Beginning a task (creates the branch, updates the board) |
 | `/ship` | Ready to merge — runs the Definition of Done, then opens the PR |
 
-Key docs: [Handbook](docs/HANDBOOK.md) · [Docs index](docs/README.md) · [Roadmap](docs/project/roadmap.md) · [Task board](docs/project/task-board.md)
+Key docs: [Handbook](docs/HANDBOOK.md) · [Docs index](docs/README.md) · [Design system](docs/design/README.md) · [Roadmap](docs/project/roadmap.md) · [Task board](docs/project/task-board.md)

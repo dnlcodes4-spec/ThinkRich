@@ -9,6 +9,11 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- Design system (`docs/design/`): design principles, brand & colour system (navy/gold tokens
+  sampled from the logo and WCAG-AA contrast-verified, with light/dark and the gold-on-white
+  rule), typography, layout/spacing/grid, responsive & dashboard rules (tables→cards on mobile),
+  component guidelines, accessibility (WCAG 2.1 AA) standards, UX-by-user-type, and a design
+  process with a UI Definition of Done. Recorded in ADR-0006. Brand asset `public/logo.jpeg` tracked.
 - Engineering governance suite: architecture docs (C4), Architecture Decision Records,
   SDLC, Git workflow, coding standards, code review checklist, testing strategy,
   Definition of Ready/Done, roadmap, and in-repo task board.
