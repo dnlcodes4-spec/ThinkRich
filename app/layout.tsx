@@ -29,6 +29,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      // The pre-paint script sets `data-theme` before hydration; suppress the
+      // resulting attribute mismatch warning on <html> only.
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>

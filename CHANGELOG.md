@@ -9,6 +9,12 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- Test tooling (T-013): **Vitest** + React Testing Library (unit/component) and **Playwright**
+  (E2E on a dedicated port), with `test` / `test:watch` / `test:e2e` / `typecheck` scripts and a
+  **GitHub Actions CI** workflow (lint → typecheck → unit → build, plus an E2E job) on every PR.
+  First tests: `cn`, `Button`, `Input`, `StatusPill` (14 unit) + a home/theme-toggle E2E (2).
+- Fixed a hydration warning by adding `suppressHydrationWarning` to `<html>` (the no-flash theme
+  script sets `data-theme` before hydration) — surfaced by the new E2E.
 - Base UI primitives (T-012) in `components/ui/`: `Button` (6 variants, 3 sizes, loading/disabled),
   `Input` (label/hint/error + a11y wiring), `Card`, `StatusPill` and `RoleBadge` (icon+text, never
   colour alone), `RecordCard` and `DataTable` (the mobile-card / desktop-table building blocks) —

@@ -74,14 +74,20 @@ failure modes (missed sends, duplicates, leaks, dead subscriptions). Test it at 
 Scheduled/broadcast notifications (N1/N2) are tested by invoking the job directly with seeded data
 — deterministic, no reliance on real time or a live scheduler.
 
-## Tooling (to be finalized in setup)
+## Tooling (in place)
 
-- Unit/integration: a Vitest/Jest-style runner (decision recorded when tooling lands).
-- E2E: Playwright.
-- DB for integration: a disposable Supabase/Postgres instance.
+- **Unit / component:** **Vitest** + **React Testing Library** (jsdom). Config in
+  `vitest.config.ts`; matchers via `vitest.setup.ts`. Run with `npm run test` (watch: `npm run test:watch`).
+- **E2E:** **Playwright** (`playwright.config.ts`, specs in `e2e/`). Run with `npm run test:e2e`;
+  it starts the app itself on a **dedicated port (3100)** to avoid colliding with other local dev servers.
+- **Typecheck:** `npm run typecheck` (`tsc --noEmit`).
+- **CI:** `.github/workflows/ci.yml` runs lint → typecheck → unit → build, plus a Playwright job,
+  on every PR. This is the "CI green" gate referenced in the git workflow.
+- **DB for integration (later):** a disposable Supabase/Postgres instance — added with the
+  Supabase foundation (T-001/T-002), when RLS/Server-Action integration tests come online.
 
-Tooling choices that are significant get an ADR. Until then, the **strategy** above is the
-contract; the runner is an implementation detail.
+Significant tooling changes get an ADR. Test files: `*.test.ts(x)` (Vitest) and `e2e/*.spec.ts`
+(Playwright) — the two runners don't overlap.
 
 ## Manual verification
 
