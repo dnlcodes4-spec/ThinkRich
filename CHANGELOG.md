@@ -9,6 +9,11 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- Supabase bootstrap (T-002): `@supabase/ssr` + `supabase-js` + `zod` + `web-push`; zod-validated
+  public env (`lib/env.ts`); browser/server Supabase clients (`lib/supabase/*`, server awaits
+  `cookies()` per Next 16); **`proxy.ts`** (the Next 16 rename of middleware) that refreshes the
+  session and does optimistic auth routing; `/login` + protected `/app` stubs. Wired to the live
+  project via `.env.local`. Tests: 3 env-schema unit + 2 auth-routing E2E (unauth `/app`→`/login`).
 - Test tooling (T-013): **Vitest** + React Testing Library (unit/component) and **Playwright**
   (E2E on a dedicated port), with `test` / `test:watch` / `test:e2e` / `typecheck` scripts and a
   **GitHub Actions CI** workflow (lint → typecheck → unit → build, plus an E2E job) on every PR.
