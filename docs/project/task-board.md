@@ -23,8 +23,6 @@ _Not yet refined / not yet Ready._
 - **T-008** — Opt-out flow (freeze → retention → delete/reactivate)
 - **T-009** — PWA shell: manifest + service worker + install prompt
 - **T-010** — Web Push notifications + Leader KYM verification (see [notifications.md](../architecture/notifications.md))
-- **T-012** — Base UI primitives (Button, Input, Card, StatusPill, RecordCard/DataTable) per
-  [components.md](../design/components.md), meeting the UI Definition of Done
 
 ## 🟡 Ready
 _Refined, unblocked, ready to pull._
@@ -44,12 +42,14 @@ _(none)_
 ## 🟣 In Review
 _PR open, awaiting review + CI._
 
-- **T-011** — Design tokens in `app/globals.css` + Tailwind v4 `@theme` (PR `feat/design-tokens`)
-  _Done: semantic + brand utilities, light/dark via `data-theme` + no-flash script, verification page._
+- **T-012** — Base UI primitives: Button, Input, Card, StatusPill, RoleBadge, RecordCard, DataTable
+  (PR `feat/ui-primitives`) _Done: token-driven, accessible, all states; gallery + responsive
+  table↔cards demo. No automated tests yet — blocked on T-013._
 
 ## ✅ Done
 _Merged to `main`, meets Definition of Done._
 
+- **T-011** — Design tokens + light/dark theming (PR #5)
 - **T-000** — Engineering governance & documentation suite (PRs #2–#4)
 - **Design system** — brand tokens, responsive/dashboard rules, accessibility, UI DoD (ADR-0006, PR #3)
 - **Governance hardening** — pushback rule, authentic-design, learnings loop, notifications, testing (PR #4)

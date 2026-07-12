@@ -9,6 +9,11 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- Base UI primitives (T-012) in `components/ui/`: `Button` (6 variants, 3 sizes, loading/disabled),
+  `Input` (label/hint/error + a11y wiring), `Card`, `StatusPill` and `RoleBadge` (icon+text, never
+  colour alone), `RecordCard` and `DataTable` (the mobile-card / desktop-table building blocks) —
+  all token-driven and accessible; a `cn()` helper; a component gallery home page. No automated
+  tests yet (blocked on T-013).
 - Design tokens implemented in code (T-011): brand navy/gold scales + semantic tokens as
   Tailwind v4 utilities in `app/globals.css`, light/dark theming via `data-theme` with a
   no-flash inline script and a `ThemeToggle`, real project metadata, and a token-verification
