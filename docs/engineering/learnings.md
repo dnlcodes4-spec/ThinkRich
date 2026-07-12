@@ -27,6 +27,14 @@ history, or an existing doc.
 
 ## Entries
 
+### 2026-07-12 — Verifying SSR HTML: count occurrences, and expect the RSC payload
+- **Context:** checking the prerendered page rendered both table + card presentations.
+- **Lesson:** two traps. (1) `grep -c` counts matching *lines*; minified SSR HTML is one line, so
+  it returns 1 regardless of occurrences — use `grep -o … | wc -l`. (2) Next.js App Router embeds
+  an **RSC flight payload** (`self.__next_f.push(...)`) inline, so visible text appears roughly
+  **twice** in the HTML (once rendered, once serialized). Don't mistake that for double-rendering.
+- **Action:** count with `grep -o`, and expect ~2× text occurrences in App Router SSR output.
+
 ### 2026-07-12 — Tailwind can't see interpolated class names
 - **Context:** rendering brand-scale swatches with `` className={`bg-navy-${step}`} ``.
 - **Lesson:** Tailwind (v3 and v4) generates utilities by scanning source for **complete**
