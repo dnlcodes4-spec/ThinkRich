@@ -23,6 +23,11 @@ _Not yet refined / not yet Ready._
 - **T-008** — Opt-out flow (freeze → retention → delete/reactivate)
 - **T-009** — PWA shell: manifest + service worker + install prompt
 - **T-010** — Web Push notifications + Leader KYM verification
+- **T-011** — Implement design tokens in `app/globals.css` + Tailwind v4 `@theme` (brand palette,
+  neutrals, semantic colours, light/dark) per [brand-and-color.md](../design/brand-and-color.md)
+  _AC: tokens available as Tailwind utilities; light/dark verified; gold-on-white rule enforceable._
+- **T-012** — Base UI primitives (Button, Input, Card, StatusPill, RecordCard/DataTable) per
+  [components.md](../design/components.md), meeting the UI Definition of Done
 
 ## 🟡 Ready
 _Refined, unblocked, ready to pull._
