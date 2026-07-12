@@ -17,6 +17,10 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 - Client change-management process (`docs/project/change-management.md`) with a Change
   Request register and template for safely integrating client-requested changes.
 - Solo-engineer guidance in CONTRIBUTING.
+- Claude Code project configuration (`.claude/`): operating rules in AGENTS.md;
+  slash commands (`/cr`, `/adr`, `/task`, `/start-task`, `/ship`); a tuned
+  `code-reviewer` subagent; guardrail hooks (block commits on `main`, lint edited
+  files); and a safe-command permission allow-list.
 - Root project docs: README, CONTRIBUTING, SECURITY, and this CHANGELOG; `.env.example`.
 - GitHub templates: pull request template, issue templates, CODEOWNERS.
 
