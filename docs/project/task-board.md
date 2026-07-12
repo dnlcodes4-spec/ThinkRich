@@ -22,10 +22,7 @@ _Not yet refined / not yet Ready._
 - **T-007** — Member home: voting view + candidates
 - **T-008** — Opt-out flow (freeze → retention → delete/reactivate)
 - **T-009** — PWA shell: manifest + service worker + install prompt
-- **T-010** — Web Push notifications + Leader KYM verification
-- **T-011** — Implement design tokens in `app/globals.css` + Tailwind v4 `@theme` (brand palette,
-  neutrals, semantic colours, light/dark) per [brand-and-color.md](../design/brand-and-color.md)
-  _AC: tokens available as Tailwind utilities; light/dark verified; gold-on-white rule enforceable._
+- **T-010** — Web Push notifications + Leader KYM verification (see [notifications.md](../architecture/notifications.md))
 - **T-012** — Base UI primitives (Button, Input, Card, StatusPill, RecordCard/DataTable) per
   [components.md](../design/components.md), meeting the UI Definition of Done
 
@@ -36,21 +33,26 @@ _Refined, unblocked, ready to pull._
   _AC: tables + enums per data-model.md; RLS enabled with allow/deny tests; 36(+FCT?) states seeded._
 - **T-002** — Repo bootstrap: deps (`@supabase/*`, `zod`, `web-push`), `.env` wiring, Supabase clients, `proxy.ts`, base layout
   _AC: `npm run dev` boots; authed/unauthed routing via proxy.ts; env documented in `.env.example`._
+- **T-013** — Set up test tooling (Vitest + Playwright) so the [testing strategy](../engineering/testing-strategy.md)
+  is executable _(surfaced during T-011: the strategy names runners that aren't installed yet)._
 
 ## 🟠 In Progress
 _One person, one task at a time. Keep this column small._
 
-- **T-000** — Engineering governance & documentation suite _(this setup)_
+_(none)_
 
 ## 🟣 In Review
 _PR open, awaiting review + CI._
 
-_(none)_
+- **T-011** — Design tokens in `app/globals.css` + Tailwind v4 `@theme` (PR `feat/design-tokens`)
+  _Done: semantic + brand utilities, light/dark via `data-theme` + no-flash script, verification page._
 
 ## ✅ Done
 _Merged to `main`, meets Definition of Done._
 
-_(none yet — T-000 completes when this suite is committed)_
+- **T-000** — Engineering governance & documentation suite (PRs #2–#4)
+- **Design system** — brand tokens, responsive/dashboard rules, accessibility, UI DoD (ADR-0006, PR #3)
+- **Governance hardening** — pushback rule, authentic-design, learnings loop, notifications, testing (PR #4)
 
 ---
 
