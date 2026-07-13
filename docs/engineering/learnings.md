@@ -27,6 +27,15 @@ history, or an existing doc.
 
 ## Entries
 
+### 2026-07-12 — Next 16 allows only one dev server per project dir
+- **Context:** Playwright's webServer (`next dev -p 3100`) exited with code 1; run manually it
+  printed "Ready" then bailed with `⨯ Another next dev server is already running`.
+- **Lesson:** Next 16 enforces a single `next dev` per project directory. A **leftover** dev
+  server (from an earlier run) blocks new ones — including Playwright's webServer — even on a
+  different port. Different projects (different dirs) are fine.
+- **Action:** kill stray dev servers before E2E (`pkill -f "thinkrich/node_modules/.bin/next dev"`).
+  When driving the app in a shell, tear the server down afterwards.
+
 ### 2026-07-12 — E2E ran against the wrong app (port 3000 collision)
 - **Context:** first Playwright run failed to find even the server-rendered heading.
 - **Lesson:** another project's dev server was on `localhost:3000`, and Playwright's
