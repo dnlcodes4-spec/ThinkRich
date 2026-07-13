@@ -27,7 +27,7 @@ reviewable, impact-assessed, trackable unit of work.
 
 | CR | Title | Requested by | Date | Status | Tasks | ADR |
 |----|-------|--------------|------|--------|-------|-----|
-| _none yet_ | | | | | | |
+| [0001](0001-brand-org-structure-and-dual-landing.md) | Brand palette, org structure, dual landing pages | Client | 2026-07-13 | Assessed | TBD | supersedes ADR-0006? |
 
 <!--
 Example row once CRs exist:
