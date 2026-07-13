@@ -58,7 +58,9 @@ end-to-end test suite for critical journeys.
 | ~~Q2~~ | ✅ **Resolved:** membership number = `TWM-<STATE>-<LGA>-<seq>` (per-LGA, zero-padded) | Deliverable 4 | Client |
 | Q3 | Official membership-card design file | Deliverable 5 | Client |
 | Q4 | Push notifications in Phase 1 or deferred? | Deliverable 10 scope | Client |
-| ~~Q5~~ | ✅ **Resolved:** 36 states + FCT = **37** (seeded) | Geography seed | Client |
-| Q6 | Duplicate-registration key — **deferred**: soft-warn now, hard constraint later | Schema uniqueness, deliverable 4 | Client |
+| Q5 | 36 states — include FCT (→ 37) or not? | Geography seed | Client |
+| Q6 | Duplicate-registration key (name+phone? national ID?) | Schema uniqueness, deliverable 1/4 | Client |
+| ~~Q7~~ | ✅ **Resolved:** dual brand — ThinkRich navy+gold, Think-Winners green+gold (T-014) | Design system | Client |
+| ~~Q8~~ | ✅ **Resolved:** units stay geographic (2+ wards); National tier kept; `unit_manager`, voter=member | Identity/RLS migration | Client |
 
 Update this table as answers arrive; move unblocked items in the phase table above.
