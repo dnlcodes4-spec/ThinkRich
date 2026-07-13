@@ -1,6 +1,6 @@
 # CR-0001: Brand palette, org structure, and dual landing pages
 
-- **Status:** Assessed <!-- Captured | Assessed | Planned | In Progress | Shipped | Rejected | Deferred -->
+- **Status:** Planned <!-- Captured | Assessed | Planned | In Progress | Shipped | Rejected | Deferred -->
 - **Requested by:** Client (relayed via the engineer)
 - **Date requested:** 2026-07-13
 - **Channel:** message + two organogram infographics + a Think-Winners profile document
@@ -75,24 +75,31 @@ headcount-based operating structure the software must mirror (leaders → unit �
 ### Invariants at risk
 - None broken. The ≤10-per-leader cap is **confirmed** by the organogram ("1 Leader → 10 voters").
 
-## 4. Decision
+## 4. Decision — RESOLVED (client, 2026-07-13)
 
-**Proceed after clarification.** Two client answers gate the impactful work:
-1. **Brand:** green+gold everywhere, or navy (ThinkRich) + green (Think-Winners) split? → likely a
-   new **ADR superseding ADR-0006** + token rework.
-2. **Hierarchy:** confirm the Unit definition (50 leaders vs 2+ wards), whether a National tier
-   exists, and voter/member terminology → shapes the identity/RLS migration.
+- **Q7 Brand → TWO palettes.** ThinkRich Community keeps **navy + gold**; Think-Winners Movement
+  uses **green + gold** (the infographics). Action: a new **ADR extending/superseding ADR-0006**
+  for dual-brand theming (per-brand token set, e.g. a `data-brand` switch), and a green scale
+  sampled + contrast-verified from the infographics. Token-scoped — component structure unchanged.
+- **Q8a Unit → GEOGRAPHIC (2+ wards).** The `units`/`unit_wards` schema from T-001 is **correct**;
+  no change. "50 leaders" is an operational target, not the definition.
+- **Q8b National tier → KEPT.** Hierarchy stays National → State → L.G → Unit → Leader → Member;
+  Phase 1 rolls out **Ogun only**. Identity/RLS migration plan is unchanged.
+- **Terminology:** role `unit_coordinator` → **`unit_manager`** (client's word); "voter" = our
+  **member**. Fold into the identity migration (not yet built).
 
 Non-blocking captures (no decision needed): the Think-Winners landing **content** and the ThinkRich
-**6 arms** are recorded here for Phase-3 build.
+**6 arms** are recorded here for the Phase-3 landing pages.
 
-## 5. Plan (tasks — drafted, pending answers)
+## 5. Plan (tasks)
 
-- [ ] T-0xx — ADR + palette rework if brand changes (supersede ADR-0006; swap tokens; restyle).
-- [ ] T-0xx — Reconcile data-model hierarchy (units, roles, national tier) before identity/RLS migration.
-- [ ] T-0xx — Ogun geography seed (20 LGAs + wards) once the dataset/definition is settled.
-- [ ] T-0xx — ThinkRich Community landing page (umbrella + 6 arms).
-- [ ] T-0xx — Think-Winners Movement landing page (content in §1.3 above).
+- [ ] **T-014** — ADR (dual-brand, supersedes/extends ADR-0006) + add the **green+gold
+      Think-Winners** palette (sampled + AA-verified) with a per-brand token switch; keep navy for ThinkRich.
+- [ ] **T-015** — Ogun geography seed: 20 LGAs (+ wards) once the dataset arrives (Ogun-first).
+- [ ] **T-016** — ThinkRich Community landing page (umbrella + 6 arms).
+- [ ] **T-017** — Think-Winners Movement landing page (content in §1.3; green brand).
+- [x] Hierarchy — **no change** (units stay ward-based; National kept). Terminology
+      (`unit_manager`, member=voter) folds into the identity/RLS migration.
 
 ## 6. Rollback plan
 

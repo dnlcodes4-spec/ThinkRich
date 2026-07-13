@@ -60,7 +60,7 @@ end-to-end test suite for critical journeys.
 | Q4 | Push notifications in Phase 1 or deferred? | Deliverable 10 scope | Client |
 | Q5 | 36 states — include FCT (→ 37) or not? | Geography seed | Client |
 | Q6 | Duplicate-registration key (name+phone? national ID?) | Schema uniqueness, deliverable 1/4 | Client |
-| Q7 | 🔴 **Brand palette** — green+gold everywhere, or navy (ThinkRich) + green (Think-Winners)? Infographics are green; shipped design system is navy ([CR-0001](change-requests/0001-brand-org-structure-and-dual-landing.md)) | Design system / ADR-0006 rework | Client |
-| Q8 | 🔴 **Hierarchy** — Unit = 50 leaders (headcount) or 2+ wards (geographic)? Is there a National tier? "voter" vs "member"? ([CR-0001](change-requests/0001-brand-org-structure-and-dual-landing.md)) | Identity/RLS migration | Client |
+| ~~Q7~~ | ✅ **Resolved:** dual brand — ThinkRich navy+gold, Think-Winners green+gold (T-014) | Design system | Client |
+| ~~Q8~~ | ✅ **Resolved:** units stay geographic (2+ wards); National tier kept; `unit_manager`, voter=member | Identity/RLS migration | Client |
 
 Update this table as answers arrive; move unblocked items in the phase table above.
