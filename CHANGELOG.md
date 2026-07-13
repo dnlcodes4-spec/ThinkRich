@@ -9,6 +9,12 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- Dual-brand palette (T-014, from CR-0001): **ThinkRich Community = navy**, **Think-Winners
+  Movement = green**, switched via `data-brand` (only the primary hue + focus ring change; gold
+  accent, neutrals, surfaces, status shared). Added an AA-verified `green-*` scale (green-700
+  `#15602E` = 7.65:1 both ways), light/dark variants, a brands demo on the gallery, and an E2E
+  asserting the switch. Recorded in ADR-0007 (amends ADR-0006). Green is provisional pending the
+  official asset. Also re-applied Q5/Q6 roadmap resolutions lost in the parallel-merge churn.
 - Database foundation (T-001, geography): `states → lgas → wards` + `units`/`unit_wards` schema
   with reference-data RLS (world-readable, service-role writes); the **37** states (36 + FCT)
   seeded; generated types (`lib/database.types.ts`); and a documented LGA/ward **import path**

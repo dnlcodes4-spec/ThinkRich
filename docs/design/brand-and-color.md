@@ -52,6 +52,26 @@ movement about winning together, and for software that holds people's data and g
 | `gold-900` | `#4C3E0F` | deepest gold |
 | `gold-950` | `#382D0B` | — |
 
+### Green (Think-Winners brand primary) — anchor `700` = `#15602E`
+Two brands share this system (see [ADR-0007](../architecture/decisions/0007-dual-brand-palette.md)):
+**ThinkRich Community = navy**, **Think-Winners Movement = green**. Gold, neutrals, surfaces, and
+status are shared — **only the primary hue changes.** Green is AA-verified (green-700 = 7.65:1
+both ways). *Provisional pending the official green asset.*
+
+| Token | Hex | | Token | Hex |
+|-------|-----|-|-------|-----|
+| `green-50` | `#ECF2EE` | | `green-500` | `#317347` |
+| `green-100` | `#D7E4DB` | | `green-600` | `#216838` |
+| `green-200` | `#AFC9B8` | | **`green-700`** | **`#15602E`** |
+| `green-300` | `#85AC92` (dark-mode primary) | | `green-800` | `#125127` |
+| `green-400` | `#548B66` | | `green-900` / `950` | `#0E411F` / `#0B3419` |
+
+**Switching brand:** set `data-brand="think-winners"` on a surface's root (a landing page, the
+members' app). It redefines `--primary`/`--primary-hover`/`--primary-foreground`/`--ring` to green
+and composes with `data-theme` (light/dark). Unset or `data-brand="thinkrich"` = navy (default).
+Components never hard-code navy or green — they use `bg-primary`, `ring-ring`, etc., so they adopt
+whichever brand their surface declares.
+
 ### Neutrals (cool slate — complements navy)
 `50 #F8FAFC` · `100 #F1F5F9` · `200 #E2E8F0` · `300 #CBD5E1` · `400 #94A3B8` ·
 `500 #64748B` · `600 #475569` · `700 #334155` · `800 #1E293B` · `900 #0F172A` · `950 #020617`
