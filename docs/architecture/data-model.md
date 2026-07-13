@@ -40,7 +40,7 @@ erDiagram
 
 | Table | Key columns | Notes |
 |-------|-------------|-------|
-| `states` | `id`, `name`, `code`, `is_active` | 36 states + FCT (confirm). `is_active` true once a State Admin is assigned. |
+| `states` | `id`, `name`, `code`, `is_active` | **37**: 36 states + FCT (confirmed). `code` is a 2-letter id used in membership numbers. `is_active` true once a State Admin is assigned. Seeded in `supabase/migrations/0002_seed_states.sql`. |
 | `lgas` | `id`, `state_id`, `name` | Local Government Areas. |
 | `wards` | `id`, `lga_id`, `name` | Smallest geographic unit. |
 | `units` | `id`, `lga_id`, `name` | A **unit = 2+ wards**. |
@@ -59,10 +59,12 @@ erDiagram
 
 ### Invariants (enforced by DB constraints + Server Actions)
 
-1. `membership_number` is **unique** and **never updated** after insert.
+1. `membership_number` is **unique** and **never updated** after insert. **Format (confirmed):**
+   `TWM-<STATE>-<LGA>-<seq>` (e.g. `TWM-LA-IKJ-000123`) — sequence is per-LGA, zero-padded.
 2. A `leader` has **≤ 10** `active` members (`registered_by` count check).
-3. **No duplicate registration** — a uniqueness strategy on identifying fields
-   (final key **TBD** with client; candidate: normalized name + phone, or a national ID).
+3. **No duplicate registration** — final key **deferred by client**. Plan: enforce a **soft-warn**
+   duplicate check at registration now (T-004); add the hard DB unique constraint once the client
+   confirms the key (candidate: normalized name + phone).
 4. A member's `state_id`/`lga_id`/`ward_id` are consistent (ward ∈ lga ∈ state).
 5. Members cannot self-register: inserts into `members` come only from a leader's Server Action.
 

@@ -29,8 +29,6 @@ _Refined, unblocked, ready to pull._
 
 - **T-001** — Supabase schema + migrations + geography seed + RLS
   _AC: tables + enums per data-model.md; RLS enabled with allow/deny tests; 36(+FCT?) states seeded._
-- **T-002** — Repo bootstrap: deps (`@supabase/*`, `zod`, `web-push`), `.env` wiring, Supabase clients, `proxy.ts`, base layout
-  _AC: `npm run dev` boots; authed/unauthed routing via proxy.ts; env documented in `.env.example`._
 
 ## 🟠 In Progress
 _One person, one task at a time. Keep this column small._
@@ -42,10 +40,13 @@ _PR open, awaiting review + CI._
 
 - **T-013** — Test tooling: Vitest + RTL + Playwright + CI workflow (PR `chore/test-tooling`)
   _Done: 14 unit/component tests + 2 E2E green; `npm run test`/`test:e2e`/`typecheck`; CI on every PR._
+- **T-001 (geography)** — schema (states→lgas→wards, units) + reference RLS + 37 states seeded +
+  types + import path (PR `feat/db-foundation`) _Identity + hierarchical RLS follow next._
 
 ## ✅ Done
 _Merged to `main`, meets Definition of Done._
 
+- **T-013** — Test tooling: Vitest + RTL + Playwright + CI (PR #7)
 - **T-012** — Base UI primitives (PR #6)
 - **T-011** — Design tokens + light/dark theming (PR #5)
 - **T-000** — Engineering governance & documentation suite (PRs #2–#4)

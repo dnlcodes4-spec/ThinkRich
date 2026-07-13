@@ -55,7 +55,7 @@ end-to-end test suite for critical journeys.
 | # | Question | Blocks | Owner |
 |---|----------|--------|-------|
 | Q1 | Member login credential — membership number, phone, or email? | Auth, registration UX | Client |
-| Q2 | Membership number format (proposed `TWM-<STATE>-<LGA>-<seq>`) | Deliverable 4 | Client |
+| ~~Q2~~ | ✅ **Resolved:** membership number = `TWM-<STATE>-<LGA>-<seq>` (per-LGA, zero-padded) | Deliverable 4 | Client |
 | Q3 | Official membership-card design file | Deliverable 5 | Client |
 | Q4 | Push notifications in Phase 1 or deferred? | Deliverable 10 scope | Client |
 | Q5 | 36 states — include FCT (→ 37) or not? | Geography seed | Client |
