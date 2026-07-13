@@ -65,6 +65,37 @@ export default function Home() {
       </header>
 
       <div className="mx-auto flex max-w-5xl flex-col gap-12 px-6 py-12">
+        <Section title="Two brands — same system, different primary">
+          <p className="max-w-2xl text-sm text-muted">
+            ThinkRich Community is navy; Think-Winners Movement is green. Gold accent,
+            neutrals, and surfaces are shared — only the primary hue changes via{" "}
+            <span className="font-mono">data-brand</span>. (Green is provisional pending the
+            official asset.)
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div
+              data-brand="thinkrich"
+              className="flex flex-col gap-3 rounded-card border border-border bg-surface p-5"
+            >
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-muted">
+                ThinkRich · navy
+              </p>
+              <Button>Primary action</Button>
+              <Button variant="accent">Gold accent</Button>
+            </div>
+            <div
+              data-brand="think-winners"
+              className="flex flex-col gap-3 rounded-card border border-border bg-surface p-5"
+            >
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-muted">
+                Think-Winners · green
+              </p>
+              <Button>Primary action</Button>
+              <Button variant="accent">Gold accent</Button>
+            </div>
+          </div>
+        </Section>
+
         <Section title="Buttons">
           <div className="flex flex-wrap items-center gap-3">
             <Button>Save changes</Button>

@@ -38,14 +38,15 @@ _(none)_
 ## 🟣 In Review
 _PR open, awaiting review + CI._
 
-- **T-013** — Test tooling: Vitest + RTL + Playwright + CI workflow (PR `chore/test-tooling`)
-  _Done: 14 unit/component tests + 2 E2E green; `npm run test`/`test:e2e`/`typecheck`; CI on every PR._
-- **T-001 (geography)** — schema (states→lgas→wards, units) + reference RLS + 37 states seeded +
-  types + import path (PR `feat/db-foundation`) _Identity + hierarchical RLS follow next._
+- **T-014** — Dual-brand palette: green Think-Winners via `data-brand` (PR `feat/dual-brand-palette`)
+  _Done: AA-verified green scale, light/dark, brands demo + E2E; ADR-0007. Green provisional._
 
 ## ✅ Done
 _Merged to `main`, meets Definition of Done._
 
+- **T-002** — Supabase bootstrap: clients, env, proxy auth routing (PR #8)
+- **T-001 (geography)** — schema + reference RLS + 37 states + types + import path (PR #9)
+- **CR-0001** — client brand/org/landing capture + resolution (PR #10)
 - **T-013** — Test tooling: Vitest + RTL + Playwright + CI (PR #7)
 - **T-012** — Base UI primitives (PR #6)
 - **T-011** — Design tokens + light/dark theming (PR #5)

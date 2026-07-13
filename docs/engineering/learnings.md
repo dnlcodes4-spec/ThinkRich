@@ -27,6 +27,16 @@ history, or an existing doc.
 
 ## Entries
 
+### 2026-07-13 — Parallel branches silently reverted resolved doc lines
+- **Context:** running several PRs at once (#8/#9/#10), all editing `roadmap.md` open-questions.
+  After merging, **Q5/Q6 resolutions from #9 were gone** — reverted to the original text.
+- **Lesson:** a branch cut from `main` *before* a sibling merged carries the OLD version of shared
+  docs; merging it can quietly overwrite the sibling's edits to the same rows (no conflict if the
+  lines "look" independent). Shared, frequently-edited docs (roadmap, board, CHANGELOG) are the
+  usual victims. This is the concrete cost of the stacking I keep warning about.
+- **Action:** merge dependent work **in order** off fresh `main`; keep parallel branches' edits to
+  shared docs minimal; after a batch merge, spot-check the shared registers for silent reverts.
+
 ### 2026-07-12 — Next 16 allows only one dev server per project dir
 - **Context:** Playwright's webServer (`next dev -p 3100`) exited with code 1; run manually it
   printed "Ready" then bailed with `⨯ Another next dev server is already running`.

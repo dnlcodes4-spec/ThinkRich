@@ -76,7 +76,33 @@
   --color-gold-600: #a98821; --color-gold-700: #896e1b; --color-gold-800: #695414;
   --color-gold-900: #4c3e0f; --color-gold-950: #382d0b;
 
+  /* Think-Winners brand green (provisional — confirm vs the official green asset). */
+  --color-green-50: #ecf2ee;  --color-green-100: #d7e4db; --color-green-200: #afc9b8;
+  --color-green-300: #85ac92; --color-green-400: #548b66; --color-green-500: #317347;
+  --color-green-600: #216838; --color-green-700: #15602e; --color-green-800: #125127;
+  --color-green-900: #0e411f; --color-green-950: #0b3419;
+
   --radius-card: 14px;
+}
+
+/*
+  Dual brand (CR-0001 / ADR-0007). ThinkRich Community = navy (the default, in
+  :root above). Think-Winners Movement = green. Gold accent, neutrals, surfaces,
+  and status are SHARED — only the primary hue and focus ring change. Set
+  `data-brand="think-winners"` on a surface's root to switch it.
+*/
+[data-brand="think-winners"] {
+  --primary: #15602e;            /* green-700 */
+  --primary-hover: #216838;      /* green-600 */
+  --primary-foreground: #ffffff;
+  --ring: #317347;               /* green-500 */
+}
+[data-theme="dark"] [data-brand="think-winners"],
+[data-theme="dark"][data-brand="think-winners"] {
+  --primary: #85ac92;            /* green-300 */
+  --primary-hover: #afc9b8;      /* green-200 */
+  --primary-foreground: #0b3419; /* green-950 */
+  --ring: #85ac92;
 }
 
 /* ---- Semantic tokens → Tailwind utilities (theme-reactive) ---- */
