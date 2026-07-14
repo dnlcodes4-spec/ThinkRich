@@ -6,15 +6,13 @@ import Link from "next/link";
 import { Grain } from "./motifs";
 import { usePrefersReducedMotion } from "./use-reduced-motion";
 
-const DURATION = 6800;
+const DURATION = 5000;
 
 type Cta = { label: string; href: string; primary?: boolean; arrow?: boolean };
 type Slide = {
   key: string;
   image: string;
   alt: string;
-  pill: string;
-  pillHref?: string;
   lead: string;
   accent: string;
   body: string;
@@ -24,10 +22,8 @@ type Slide = {
 const slides: Slide[] = [
   {
     key: "community",
-    image: "/thinkrich/img/leaders.jpg",
-    alt: "Young Nigerian leaders",
-    pill: "Now live — the Think-Winners Movement",
-    pillHref: "/think-winners",
+    image: "/thinkrich/img/hero-leaders.jpg",
+    alt: "Three young Nigerian professionals standing together",
     lead: "Creating value",
     accent: "for mankind.",
     body: "A community of people who think right, connect right, and build together — leaders, entrepreneurs, savers, learners, and changemakers creating lasting value.",
@@ -38,9 +34,8 @@ const slides: Slide[] = [
   },
   {
     key: "twm",
-    image: "/think-winners/img/hero-crowd.jpg",
-    alt: "A Nigerian grassroots crowd",
-    pill: "Live now — the flagship arm",
+    image: "/thinkrich/img/hero-movement.jpg",
+    alt: "A large Nigerian grassroots crowd gathered at sunset",
     lead: "Thinking Together,",
     accent: "Winning Together.",
     body: "The Think-Winners Movement is mobilizing — an organized grassroots network of 20,000 leaders turning communities into votes. It is the one platform you can step into today.",
@@ -51,9 +46,8 @@ const slides: Slide[] = [
   },
   {
     key: "arms",
-    image: "/thinkrich/img/community.jpg",
-    alt: "Young Nigerian graduates",
-    pill: "One community · six arms",
+    image: "/thinkrich/img/hero-grassroots.jpg",
+    alt: "Community members planning together around a table",
     lead: "Six arms.",
     accent: "One purpose.",
     body: "Leadership, cooperative finance, humanitarian service, education, wealth-building, and civic mobilization — pick the arm that matches your purpose, or grow through several.",
@@ -67,11 +61,14 @@ const SEAM = "polygon(0 0, 58.5% 0, 47.5% 100%, 0 100%)";
 
 export function HeroSlider() {
   const [active, setActive] = useState(0);
-  const [hovered, setHovered] = useState(false);
+  // Advance runs continuously; only the explicit Pause/Play button holds it
+  // (satisfies WCAG 2.2.2). We deliberately do NOT pause on hover or focus: the
+  // hero is full-screen, so cursor-hover or a focused CTA would otherwise freeze
+  // it and read as a broken timer.
   const [playing, setPlaying] = useState(true);
   const reduce = usePrefersReducedMotion();
   const touchX = useRef<number | null>(null);
-  const effPaused = hovered || !playing;
+  const effPaused = !playing;
 
   const go = (n: number) => setActive((n + slides.length) % slides.length);
 
@@ -81,10 +78,6 @@ export function HeroSlider() {
       aria-roledescription="carousel"
       aria-label="ThinkRich Community"
       className="relative h-dvh min-h-[42rem] overflow-hidden bg-navy-950 text-navy-50"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onFocusCapture={() => setHovered(true)}
-      onBlurCapture={() => setHovered(false)}
       onTouchStart={(e) => {
         touchX.current = e.changedTouches[0].clientX;
       }}
@@ -160,22 +153,7 @@ export function HeroSlider() {
                   on ? "opacity-100" : "pointer-events-none absolute inset-0 translate-y-2 opacity-0"
                 }`}
               >
-                {s.pillHref ? (
-                  <Link
-                    href={s.pillHref}
-                    className="inline-flex items-center gap-2 rounded-full border border-gold-400/40 bg-gold-400/10 px-3.5 py-1.5 text-sm font-semibold text-gold-300 transition-colors hover:bg-gold-400/20"
-                  >
-                    <span aria-hidden="true" className="tw-ignite h-2 w-2 rounded-full bg-gold-400" />
-                    {s.pill}
-                    <span aria-hidden="true">→</span>
-                  </Link>
-                ) : (
-                  <span className="inline-flex items-center gap-2 rounded-full bg-gold-400/15 px-3.5 py-1.5 text-sm font-semibold text-gold-300">
-                    <span aria-hidden="true" className="tw-ignite h-1.5 w-1.5 rounded-full bg-gold-400" />
-                    {s.pill}
-                  </span>
-                )}
-                <h1 className="mt-6 font-display text-6xl font-black leading-[0.92] text-balance [text-shadow:0_2px_30px_rgba(0,0,0,0.45)] sm:text-7xl">
+                <h1 className="font-display text-6xl font-black leading-[0.92] text-balance [text-shadow:0_2px_30px_rgba(0,0,0,0.45)] sm:text-7xl">
                   {s.lead}
                   <span className="mt-1 block font-medium italic text-gold-400">{s.accent}</span>
                 </h1>
@@ -237,16 +215,22 @@ export function HeroSlider() {
                 className="group relative h-1.5 flex-1 overflow-hidden rounded-full bg-navy-50/25 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-400"
               >
                 <span
+                  // Remount the active fill each advance so its CSS animation
+                  // restarts from 0 (a reused node keeps the old timeline —
+                  // that's what made the bar appear to start mid-way).
+                  key={i === active ? `fill-${active}` : `fill-idle-${i}`}
                   className="block h-full w-0 rounded-full bg-gold-400"
                   style={
                     reduce
-                      ? { width: i === active ? "100%" : "0%" }
-                      : i === active
-                        ? {
-                            animation: `tw-progress ${DURATION}ms linear forwards`,
-                            animationPlayState: effPaused ? "paused" : "running",
-                          }
-                        : { width: "0%" }
+                      ? { width: i <= active ? "100%" : "0%" }
+                      : i < active
+                        ? { width: "100%" }
+                        : i === active
+                          ? {
+                              animation: `tw-progress ${DURATION}ms linear forwards`,
+                              animationPlayState: effPaused ? "paused" : "running",
+                            }
+                          : { width: "0%" }
                   }
                   onAnimationEnd={i === active ? () => go(active + 1) : undefined}
                 />

@@ -6,15 +6,23 @@ size over density**.
 
 ## Typeface
 
-- **UI / body:** a clean, highly legible sans-serif with good number legibility (membership
-  numbers matter). The scaffold ships **Geist Sans**; that is our default UI face.
-- **Numeric / tabular data:** use a **tabular-figures** variant (`font-variant-numeric:
-  tabular-nums`) in tables, stat tiles, and membership numbers so digits align.
-- **Optional display face:** headings may use a slightly heavier weight of the same family
-  rather than a second typeface — one family keeps load light for the PWA.
+Chosen deliberately (see [ADR-0009](../architecture/decisions/0009-type-system.md)); Geist was the
+scaffold default and has been replaced.
 
-Load fonts via `next/font` (already set up) for performance and no layout shift. No more than
-two font families total.
+- **UI / body:** **Hanken Grotesk** — a warm humanist grotesque with a large x-height and honest
+  numerals, picked for legibility on low-cost phones in sunlight. Loaded via `next/font/google`.
+- **Display (ThinkRich Community):** **Zodiak** — a distinctive contemporary serif (Fontshare,
+  self-hosted via `next/font/local`; licence in `app/fonts/zodiak/`); its italic carries the gold
+  display accents. Applied through the `--font-display-face` custom property.
+- **Display (Think-Winners):** **Fraunces** (serif), retained — grounded in the movement's
+  logotype. Each surface swaps `--font-display-face` for its subtree.
+- **Numeric / tabular data:** use a **tabular-figures** variant (`font-variant-numeric:
+  tabular-nums`) in tables, stat tiles, and membership numbers so digits align. Currently
+  JetBrains Mono; the intent is to fold numerals onto Hanken's `tabular-nums` and keep to **two
+  families** total for PWA weight.
+
+Load fonts via `next/font` (already set up) for performance and no layout shift. Aim for no more
+than two font families total.
 
 ## Type scale
 
