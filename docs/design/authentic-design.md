@@ -32,6 +32,10 @@ into one of these **by default** (rather than by a deliberate, justified choice)
 - ❌ **Everything centered** — centered hero, centered cards, centered text blocks, down the page.
 
 ### Typography & structure clichés
+- ❌ **Uppercase, letter-spaced "eyebrow" kicker labels above headings** (e.g. "OUR VISION",
+  "A GRASSROOTS ENGINE FOR YOUR CAMPAIGN"). A tracked-out caps mini-label over every headline/section
+  is a strong template/AI tell — fold the meaning into the headline or a real sentence, or drop it.
+  (Plain, sentence-case data labels *under* a number are fine.)
 - ❌ **Inter or Space Grotesk as the reflexive "safe" font** with no reason. (See [typography.md](typography.md).)
 - ❌ **Emoji as section markers / bullet icons** (🚀 features, ✨ benefits). Use real icons or none.
 - ❌ **Numbered markers `01 / 02 / 03`** on content that isn't actually a sequence. Numbering must
@@ -56,8 +60,9 @@ into one of these **by default** (rather than by a deliberate, justified choice)
    reach for a generic default. Tokens only ([brand-and-color.md](brand-and-color.md)).
 3. **Make type a deliberate choice**, not a reflex. A clear scale, intentional weight/tracking, and
    **tabular monospace for membership numbers / data** (a real, subject-driven decision).
-4. **Let structure encode meaning.** Eyebrows, dividers, and numbering should reflect something
-   true about the content, not decorate it.
+4. **Let structure encode meaning.** Dividers and numbering should reflect something true about
+   the content, not decorate it — and skip the reflexive uppercase eyebrow over every section
+   (see anti-patterns); earn the headline instead.
 5. **Real content always.** Design with actual member names, real membership-number formats, real
    copy — never lorem, never placeholder platitudes.
 6. **Spend boldness in one place.** One confident moment per view (a hero, a card, a stat), quiet

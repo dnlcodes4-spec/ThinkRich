@@ -1,0 +1,7833 @@
+{
+  "BADE": {
+    "code": "01",
+    "wards": {
+      "Dagona": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DAGONA PRI SHC"
+          },
+          {
+            "code": "002",
+            "name": "DAGONA VIEWING CENTRE C."
+          },
+          {
+            "code": "003",
+            "name": "MISSILLI / BULAMA GATE"
+          },
+          {
+            "code": "004",
+            "name": "MAINIYA BOREHOLE (MURZA BULAMA GATE)"
+          },
+          {
+            "code": "005",
+            "name": "GARIN MANDA,PRI.SCH MISSILLI"
+          },
+          {
+            "code": "006",
+            "name": "MAINIYA BULAMA GATE"
+          },
+          {
+            "code": "007",
+            "name": "BIZI PRI SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "GARIN MANDA"
+          }
+        ]
+      },
+      "Gwio-Kura": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GWIO - KURA PRI SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "GWIO PRIMARY SCHOOL (GWIO BULAMA'S GATE)"
+          },
+          {
+            "code": "003",
+            "name": "GWIO DINA ,PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "NGELBOWA PRI.SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "NGELJABE ,PRI. SCH I"
+          },
+          {
+            "code": "006",
+            "name": "CHIRAWA BULAMA GATE"
+          },
+          {
+            "code": "007",
+            "name": "MAINARI PRI.SCHOOL"
+          }
+        ]
+      },
+      "Katuzu": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KATUZU, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "KATUZU ,VIEW CENTRE"
+          },
+          {
+            "code": "003",
+            "name": "KATUZU P. SCHOOL (UNGUWAR M.SALE , K.M.SALE)"
+          },
+          {
+            "code": "004",
+            "name": "KATUZU A. S (UNGUWAR M.SALE , K.M.SALE II)"
+          },
+          {
+            "code": "005",
+            "name": "STATE AGRIC., STATE AGRIC. OFFICE I"
+          },
+          {
+            "code": "006",
+            "name": "STATE AGRIC., STATE AGRIC. OFFICE II"
+          }
+        ]
+      },
+      "Lawan Audu/Lawan Al - Wali": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "COLLEGE OF EDUCATION"
+          },
+          {
+            "code": "002",
+            "name": "RAMAT PRI.SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "GONI AJI"
+          },
+          {
+            "code": "004",
+            "name": "LAWAN AUDU BOREHOLE (LAWAN AUDU)"
+          },
+          {
+            "code": "005",
+            "name": "ASIBITIN AGANA I"
+          },
+          {
+            "code": "006",
+            "name": "ASIBITIN AGANA II"
+          },
+          {
+            "code": "007",
+            "name": "BESIDE HIGH COURT (FORMER NEPA)"
+          },
+          {
+            "code": "008",
+            "name": "GRAIN LAMIDO PRIMARY SCHOOL (GARIN LAMIDO)"
+          },
+          {
+            "code": "009",
+            "name": "HOSPITAL GATE"
+          },
+          {
+            "code": "010",
+            "name": "RAMAT PRI. SCHOOL (BENIN BAYERO)"
+          }
+        ]
+      },
+      "Lawan Fannami": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ARI KULOLA V/C (ARI KULOLA, ARI KULOLA GATE)"
+          },
+          {
+            "code": "002",
+            "name": "FILIN TANDA OPEN SPACE"
+          },
+          {
+            "code": "003",
+            "name": "BABUJE PRI SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "YA'U GARA KOFAR YA'U"
+          },
+          {
+            "code": "005",
+            "name": "TSANGAYA I OPEN SPACE"
+          },
+          {
+            "code": "006",
+            "name": "GDSS GASHUA (TSANGAYA II OPEN SPACE)"
+          },
+          {
+            "code": "007",
+            "name": "GDSS GASHU'A"
+          },
+          {
+            "code": "008",
+            "name": "GABUJE PRI. SCHOOL (HASSAN MAI UNG.)"
+          }
+        ]
+      },
+      "Lawan Musa": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EMIRS PALACE I"
+          },
+          {
+            "code": "002",
+            "name": "EMIRATE COUNCIL SEC (EMIRS PALACE II)"
+          },
+          {
+            "code": "003",
+            "name": "MASS LITERACY OFFICE (MA'AJI D/BAPPA)"
+          },
+          {
+            "code": "004",
+            "name": "UMAR SULIEMAN I"
+          },
+          {
+            "code": "005",
+            "name": "UMAR SULIEMAN II"
+          },
+          {
+            "code": "006",
+            "name": "DUGUM JAMBO I"
+          },
+          {
+            "code": "007",
+            "name": "DUGUM JAMBO II"
+          }
+        ]
+      },
+      "Sarkin Hausawa": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "TALBARI VIEWING CENTRE"
+          },
+          {
+            "code": "002",
+            "name": "TALBARI L.E.A."
+          },
+          {
+            "code": "003",
+            "name": "KALEGHA"
+          },
+          {
+            "code": "004",
+            "name": "ISLAMIYA PRI. SCHOOL (ALH. SIDI ALI)"
+          },
+          {
+            "code": "005",
+            "name": "ISLAMIYYA"
+          },
+          {
+            "code": "006",
+            "name": "ANES B."
+          }
+        ]
+      },
+      "Tagali/Sugum": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "SUGUM P. SCHOOL (SUGUM 1 B.GATE)"
+          },
+          {
+            "code": "002",
+            "name": "SUGUM II PRI SCH"
+          },
+          {
+            "code": "003",
+            "name": "GAPIWA"
+          },
+          {
+            "code": "004",
+            "name": "RABAYO"
+          },
+          {
+            "code": "005",
+            "name": "TAGAMA OPEN SPACE"
+          },
+          {
+            "code": "006",
+            "name": "TAGALI PRI SCH"
+          },
+          {
+            "code": "007",
+            "name": "MADAMUWA BULAMA GATE"
+          },
+          {
+            "code": "008",
+            "name": "GABARWA OPEN SPACE"
+          },
+          {
+            "code": "009",
+            "name": "TAK VIR - VIR"
+          }
+        ]
+      },
+      "Usur/Dawayo": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "USUR PRI.SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "AZBAK, PRI. SCH. I"
+          },
+          {
+            "code": "003",
+            "name": "AZBAK PRI. SCH. II (BULAMA GATE)"
+          },
+          {
+            "code": "004",
+            "name": "ALAGARNO"
+          },
+          {
+            "code": "005",
+            "name": "BIDA/TUMPAPI JUMAMI"
+          },
+          {
+            "code": "006",
+            "name": "PAGA"
+          },
+          {
+            "code": "007",
+            "name": "AZAM KURA B. GATE I"
+          },
+          {
+            "code": "008",
+            "name": "AZAM KURA P. S (AZAM KURA B. GATE II)"
+          },
+          {
+            "code": "009",
+            "name": "DAWAYO"
+          },
+          {
+            "code": "010",
+            "name": "JIGAWA"
+          }
+        ]
+      },
+      "Zangon Musa/Zango Umaru": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "SARKIN Z.UMARU (O.S)"
+          },
+          {
+            "code": "002",
+            "name": "ZANGO DISPENSARY (DOGO ADO)"
+          },
+          {
+            "code": "003",
+            "name": "AGRIC DEPT OFFICE (SARKIN ZANGO MUSA)"
+          },
+          {
+            "code": "004",
+            "name": "ZANGO VIEWING CENTRE"
+          },
+          {
+            "code": "005",
+            "name": "SHEHU MAI GURA"
+          },
+          {
+            "code": "006",
+            "name": "ZANGO ISLAMIYA (NAMAU NA INNA)"
+          },
+          {
+            "code": "007",
+            "name": "MAMMAN DABI"
+          },
+          {
+            "code": "008",
+            "name": "ZANGO ISLAMIYYA"
+          },
+          {
+            "code": "009",
+            "name": "MAI UNGWA ABBA SHEHU"
+          }
+        ]
+      }
+    }
+  },
+  "BURSARI": {
+    "code": "02",
+    "wards": {
+      "Bayamari": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ABURI PRI. SCH. (ABURI DANDALI MAI GARI)"
+          },
+          {
+            "code": "002",
+            "name": "AJIDAWARI PRI. SCH. (AJI DAWARI KOFAR MAI GARI)"
+          },
+          {
+            "code": "003",
+            "name": "BATAR, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "BAYAMARI, DISPENSARY"
+          },
+          {
+            "code": "005",
+            "name": "BAYAMARI, DANDALI LAWANTI"
+          },
+          {
+            "code": "006",
+            "name": "BAYAMARI, MOTOR PARK"
+          },
+          {
+            "code": "007",
+            "name": "DAMAYA PRI. SCH. (DAMAYA, DANDALI MAIGARI)"
+          },
+          {
+            "code": "008",
+            "name": "GAJERI, DANDALI MAIGARI"
+          },
+          {
+            "code": "009",
+            "name": "GALTIMARI, DANDALI MAIGARI"
+          }
+        ]
+      },
+      "Damnawa/Juluri": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DAMNAWA PRI. SCH. (DAMNAWA KOFAR MAI GARI)"
+          },
+          {
+            "code": "002",
+            "name": "GAMSAWA I. PRI. SCH. (GAMSAWA I. KOFAR MAI GARI)"
+          },
+          {
+            "code": "003",
+            "name": "GAMSAWA II. PRI SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "JULURI I. PRI SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "JULURI II. PRI SCHOOL"
+          }
+        ]
+      },
+      "Danani": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DANANI PRI. SCH. (DANANI, DANDALI KOFAR MAIGARI)"
+          },
+          {
+            "code": "002",
+            "name": "GARN FULATARI BOREHOLE (GARIN FULATARI DANDALI M/GARI)"
+          },
+          {
+            "code": "003",
+            "name": "LAWANTI PRI. SCH. (LAWANTI, DANDALI MAIGARI)"
+          },
+          {
+            "code": "004",
+            "name": "M. BULATARI BOREHOLE (M.BULATARI,DANDALI MAIGARI)"
+          },
+          {
+            "code": "005",
+            "name": "MAJI KAWARI PRI SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "MASTAPHARI DISPENSARY (MASTAFARI, DANDALI MAIGARI)"
+          },
+          {
+            "code": "007",
+            "name": "TURBAN GIDA, PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "UMMARARI MATTI, PRI. SCH."
+          },
+          {
+            "code": "009",
+            "name": "UMARARI MATTI PRI. SCH. (UMMARARI MATTI, DAN DALIN MAI GARI)"
+          }
+        ]
+      },
+      "Dapchi": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AJARI, COURT ROOM"
+          },
+          {
+            "code": "002",
+            "name": "AJARI, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "BADE GANA, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "BULANGU PRI. SCH. I (BULANGU, DANDALI KOFAR MAIGARI)"
+          },
+          {
+            "code": "005",
+            "name": "BULANGU PRI. SCH. II (BULANGU, DANDALI KOFAR MAKERI)"
+          },
+          {
+            "code": "006",
+            "name": "JABA KURA DISP. (JABA KURA,DANDALI KPOFAR MAIGARI)"
+          },
+          {
+            "code": "007",
+            "name": "NEW MOTOR PARK (MOTOR PARK, OLD MOTOR PARK)"
+          },
+          {
+            "code": "008",
+            "name": "I.G MATERNITY CLINIC (MOTOR PARK, KOFAR M. UBA)"
+          },
+          {
+            "code": "009",
+            "name": "NGELJABI PRI. SCH. (NGELJABI, DANDALI LAMIDO)"
+          },
+          {
+            "code": "010",
+            "name": "CENTRAL PRI. SCH. (SARKIN PAWA, KOFAR S. PAWA)"
+          },
+          {
+            "code": "011",
+            "name": "TELEKO LAMIDO, PRI. SCH."
+          },
+          {
+            "code": "012",
+            "name": "VIEWING CENTRE, VIEWING CENTRE"
+          }
+        ]
+      },
+      "Garun Dole / Garin Alkali": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DOGON MARKE BOREHOLE (DOGON MARKE, DANDALI KOFAR)"
+          },
+          {
+            "code": "002",
+            "name": "GARIN ALKALI PRI SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "GARUN DOLE, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "GIRIM, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "ILAILA ,PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "JAWA, PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "KOROMARI,PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "MASHAYA GAWO PRI. SCH. (MASHAYAR GAWO DANDALI)"
+          },
+          {
+            "code": "009",
+            "name": "RINU KUNU PRI. SCH. (RINV KONU KOFAR MAI GARI)"
+          },
+          {
+            "code": "010",
+            "name": "TARBUTU, PRI. SCH. I"
+          },
+          {
+            "code": "011",
+            "name": "TARBUTU, PRI. SCH. II"
+          }
+        ]
+      },
+      "Guba": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DAPSO, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "GILBASU, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "GUBA, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "G/GABAJU PRI. SCH. (G.KABAJU,DANDALI MAIGARI)"
+          },
+          {
+            "code": "005",
+            "name": "KANKARE, PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "MARARE, PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "MONGUNO DISPENSARY (MONGUNO, DANDALI MAIGARI)"
+          },
+          {
+            "code": "008",
+            "name": "SUNOWA PRI. SCHOOL (SUNOWA,DANDALI MAIGARI)"
+          }
+        ]
+      },
+      "Guji / Metalari": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AJIRI, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "AJIRI PRI. SCHOOL (AJIRI, GONI MUKTAR)"
+          },
+          {
+            "code": "003",
+            "name": "ALI GANARI BOREHOLE (ALI GANARI, DANDALI MAIGARI)"
+          },
+          {
+            "code": "004",
+            "name": "BURURU, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "DAJIMI PRIMARY SCHOOL I (DAJIMI, KOFAR MAIGARI)"
+          },
+          {
+            "code": "006",
+            "name": "DAJIMI PRIMARY SCHOOL II (KARASUWA, DANDALI MAIGARI)"
+          },
+          {
+            "code": "007",
+            "name": "KUCHIKUCHIRI PRI. SCH. (KUCHI-KUCHIRI, DANDALI MAIGARI)"
+          },
+          {
+            "code": "008",
+            "name": "LAWAN GIRANI PRI. SCH. (LAWANGIRARI, DANDALI MAIGARI)"
+          },
+          {
+            "code": "009",
+            "name": "MAKINTARI, PRI. SCH."
+          }
+        ]
+      },
+      "Kaliyari": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BAYA BADE, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "BURSARI BOREHOLE (BURSARI, DANDALI MAIGARI)"
+          },
+          {
+            "code": "003",
+            "name": "DIGA, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "GAMSAWA, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "KAGA DAMA, PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "KAKANDERI, PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "KALI YARI, PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "MAL WURIYA, PRI. SCH"
+          },
+          {
+            "code": "009",
+            "name": "TUNGA PRIMARY SCHOOL (TUNGA, DANDALI MAIGARI)"
+          },
+          {
+            "code": "010",
+            "name": "WARODI, PRI. SCH. I"
+          },
+          {
+            "code": "011",
+            "name": "WARODI, PRI. SCH. II"
+          }
+        ]
+      },
+      "Kurnawa": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ABBARI PRI SCHOOL I."
+          },
+          {
+            "code": "002",
+            "name": "ABBARI PRI SCHOOL II."
+          },
+          {
+            "code": "003",
+            "name": "BELLEMERI PRIMARY SCHOOL (BELEMARI, DANDALI MAIGARI)"
+          },
+          {
+            "code": "004",
+            "name": "GARIN BOKA BOREHOLE (GARIN BOKA, DANDALI MAIGARI)"
+          },
+          {
+            "code": "005",
+            "name": "JAFUNORI BOREHOLE (JAFUNORI, DANDALI MAIGARI)"
+          },
+          {
+            "code": "006",
+            "name": "KURNAWA, PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "NGARBUWA BOREHOLE (NGARBUWA, DANDALI MAIGARI)"
+          }
+        ]
+      },
+      "Masaba": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DADIGAR, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "DADIGAR PRI. SCHOOL (DADIGAR, HAUSARI II)"
+          },
+          {
+            "code": "003",
+            "name": "DASKUM, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "DUMBURI , PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "DUMBURI, DISPENSARY"
+          },
+          {
+            "code": "006",
+            "name": "GADINE, PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "GANGAWA, PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "GIRWAN PRI SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "MASABA, PRI. SCH."
+          },
+          {
+            "code": "010",
+            "name": "MASABA, DISPENSARY"
+          },
+          {
+            "code": "011",
+            "name": "MASABA PRIMARY SCHOOL II (MASABA, SARIKIN PAWA)"
+          }
+        ]
+      }
+    }
+  },
+  "DAMATURU": {
+    "code": "03",
+    "wards": {
+      "Bindigari/Fawari": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ALHAJIRI, ALHAJIRI OPEN SPACE"
+          },
+          {
+            "code": "002",
+            "name": "ALI MARAMI, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "GIRWAN PRI SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "GIRWAN PRI SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "FORESTRY/FORESTRY OFFICE"
+          },
+          {
+            "code": "006",
+            "name": "HAYAS CINEMA, HAYAS CINEMA II"
+          },
+          {
+            "code": "007",
+            "name": "HAYAS CINEMA, HAYAS CINEMA I"
+          },
+          {
+            "code": "008",
+            "name": "L.E.A OFFICE / L.E.A OFFICE"
+          },
+          {
+            "code": "009",
+            "name": "RUMFAN IDRISA, RUMFAN IDRIS"
+          },
+          {
+            "code": "010",
+            "name": "STATE MINISTRYOF WORKS"
+          }
+        ]
+      },
+      "Damakasu": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ALHAJI AMODORI /ALH. MODORI"
+          },
+          {
+            "code": "002",
+            "name": "DAMAKASU DISPENSARY /DAMAKASU DISPENSARY"
+          },
+          {
+            "code": "003",
+            "name": "DAMAKASU, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "FALARI B. FANDI,FANDI'S GATE"
+          },
+          {
+            "code": "005",
+            "name": "KIMERI/KIMERI"
+          }
+        ]
+      },
+      "Damaturu Central": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ABASHA, KOFAR BULAMA"
+          },
+          {
+            "code": "002",
+            "name": "USMAN KORIYEL GATE"
+          },
+          {
+            "code": "003",
+            "name": "ALHAJI MALE GATE"
+          },
+          {
+            "code": "004",
+            "name": "CENTRAL, PRI.SCH. CENTRAL PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "MAIRI,MAIRI DISPENSARY"
+          },
+          {
+            "code": "006",
+            "name": "MAIRI, AREA COURT OFFICE"
+          },
+          {
+            "code": "007",
+            "name": "MALLAM MATTARI, M.MATTARI"
+          },
+          {
+            "code": "008",
+            "name": "MANU TELA, MANUTELA"
+          },
+          {
+            "code": "009",
+            "name": "MANU TELA, BABBAN TSANGAYA"
+          },
+          {
+            "code": "010",
+            "name": "MOTOR PARK, MOTOR PARK (IN GATE)"
+          },
+          {
+            "code": "011",
+            "name": "GUJBA GONI MUKTAR PRI SCH"
+          },
+          {
+            "code": "012",
+            "name": "VILLAGE HEAD M. GONI"
+          },
+          {
+            "code": "013",
+            "name": "WATER BOARD GATE"
+          },
+          {
+            "code": "014",
+            "name": "R.E.B. GATE."
+          }
+        ]
+      },
+      "Gabir/Maduri": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GAMBIR , GAMBIR PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "KAFITILOWA,KAFITILOWA"
+          },
+          {
+            "code": "003",
+            "name": "MADURI, PRIMARY SCHOOL (MODURI, MODURI)"
+          },
+          {
+            "code": "004",
+            "name": "MUSTIRI,MUSTIRI"
+          },
+          {
+            "code": "005",
+            "name": "USMANTI,USMANTI"
+          }
+        ]
+      },
+      "Kalallawa/Gabai": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DUSUWA KANGOL,DUSUWA KANGOL"
+          },
+          {
+            "code": "002",
+            "name": "KAFILOWA, OPEN SPACE"
+          },
+          {
+            "code": "003",
+            "name": "KALALLAWA,KALALLAWA PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "KALALLAWA,KALALLAWA DISPENSARY"
+          },
+          {
+            "code": "005",
+            "name": "MANDINARI , MANDINARI BULAMA'S GATE"
+          },
+          {
+            "code": "006",
+            "name": "TUMBEL TUMBEL OPEN SPACE"
+          },
+          {
+            "code": "007",
+            "name": "MANGARI,MANGARI OPEN SPACE"
+          }
+        ]
+      },
+      "Kukareta/Warsala": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DABUGU,DABUGU OPEN SPACE"
+          },
+          {
+            "code": "002",
+            "name": "KUKARETA, DISPENSARY"
+          },
+          {
+            "code": "003",
+            "name": "KUKARETA,PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "LADAN MUSARI , LADAN MUSARI'S GATE"
+          },
+          {
+            "code": "005",
+            "name": "GONI USMAN GATE"
+          },
+          {
+            "code": "006",
+            "name": "TUMUR M. TUBO,TUMUR M.TUBO"
+          },
+          {
+            "code": "007",
+            "name": "WARSALA,WARSALA PRI. SCH."
+          }
+        ]
+      },
+      "Maisandari/Waziri Ibrahim Estate": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "FEDERAL POLYTECHNIC, FED-POLY DISPENSARY"
+          },
+          {
+            "code": "002",
+            "name": "FUGURI,FUGURI PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "BEN .KALIO HOUSING,KALIO BUS STOP"
+          },
+          {
+            "code": "004",
+            "name": "MAISANDARI , MAISANDARI PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "NGABOROWA PRI SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "WAZIRI IBRAHIM EST, AT ESTATE PRI. SCH."
+          }
+        ]
+      },
+      "Murfa Kalam": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DIKUMARI PRI SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "DUMBULWA OPEN SPACE"
+          },
+          {
+            "code": "003",
+            "name": "DUNGURUM D. OPEN SPACE"
+          },
+          {
+            "code": "004",
+            "name": "KASAISA K. OPEN SPACE"
+          },
+          {
+            "code": "005",
+            "name": "MURFA, MURFA KALAM PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "S. GARI MURFA TSANGAYA K.BULAMA"
+          }
+        ]
+      },
+      "Nayinawa": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BULAMA MODU, MODU'S GATE"
+          },
+          {
+            "code": "002",
+            "name": "B.S KOFAR BULAMA SHETIMARI"
+          },
+          {
+            "code": "003",
+            "name": "BULAMA TALBA,BULAMA TALBA GATE"
+          },
+          {
+            "code": "004",
+            "name": "IBRAHIM ABACHA HOUSING ESTATE, HOUSING EST. PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "NAYINAWA BORE HOLE OPEN SPACE"
+          },
+          {
+            "code": "006",
+            "name": "NAYI NAWA PRI. SCH, NAYI NAWA PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "NAYINAWA TSANGAYA OPEN SPACE"
+          },
+          {
+            "code": "008",
+            "name": "TSAMIYAN LILO,TSAMIYAN LILO"
+          },
+          {
+            "code": "009",
+            "name": "TUKUBAN AKAWU OPEN SPACE"
+          },
+          {
+            "code": "010",
+            "name": "VETERINARY CLINIC, VETERINARY"
+          }
+        ]
+      },
+      "Njiwaji/Gwange": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BULAMA KURMA, KURMA'S GATE"
+          },
+          {
+            "code": "002",
+            "name": "BULAMA KURMA, KULLOMA'S GATE"
+          },
+          {
+            "code": "003",
+            "name": "FIRE SERVICE OFFICE"
+          },
+          {
+            "code": "004",
+            "name": "MATERNITY CLINIC,CLINIC"
+          },
+          {
+            "code": "005",
+            "name": "MODU FADKEMA,MODU FADKEMA'S GATE"
+          },
+          {
+            "code": "006",
+            "name": "NJIWAJI PRI. SCH, PRI. SCH I"
+          },
+          {
+            "code": "007",
+            "name": "NJIWAJI PRI. SCH, PRI. SCH II"
+          },
+          {
+            "code": "008",
+            "name": "INJIWAJI LAYOUT,K/MASSALACI R."
+          },
+          {
+            "code": "009",
+            "name": "POMPOMARI BORE HOLE O.S"
+          }
+        ]
+      },
+      "Sasawa/Kabaru": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "FULO NGOMARI"
+          },
+          {
+            "code": "002",
+            "name": "GONI MASTAFARI,GONI MUSTAFA'S GATE"
+          },
+          {
+            "code": "003",
+            "name": "KABARU.KABARU, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "MUSAMIRI B. FANDI,FAND'S GATE"
+          },
+          {
+            "code": "005",
+            "name": "SASAWA, PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "SUNGUL BUDUWA OPEN SPACE"
+          },
+          {
+            "code": "007",
+            "name": "TUNGUSA GONI USMAN,GONI USMAN'S GATE"
+          },
+          {
+            "code": "008",
+            "name": "TUNGUSA OPEN SPACE"
+          },
+          {
+            "code": "009",
+            "name": "YETTIMARI OPEN SPACE"
+          },
+          {
+            "code": "010",
+            "name": "ZARAMIRI B. ABACHA,ABACHA'S GATE"
+          },
+          {
+            "code": "011",
+            "name": "ARI ASHEMIRI OPEN SPACE"
+          },
+          {
+            "code": "012",
+            "name": "DABUKURURI OPEN SPACE"
+          }
+        ]
+      }
+    }
+  },
+  "FIKA": {
+    "code": "04",
+    "wards": {
+      "Daya/Chana": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "CHANA, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "DAYA, PRI. SCH. I"
+          },
+          {
+            "code": "003",
+            "name": "DAYA, PRI. SCH. II"
+          },
+          {
+            "code": "004",
+            "name": "MALE, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "SIMINTI, PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "KUKAR GADU, PRI. SCH. I"
+          },
+          {
+            "code": "007",
+            "name": "KUKAR GADU, PRI. SCH. II"
+          },
+          {
+            "code": "008",
+            "name": "KUKAWA, PRI. SCH."
+          },
+          {
+            "code": "009",
+            "name": "YELWA, PRI. SCH."
+          }
+        ]
+      },
+      "Fika/Anze": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ANZE, PRI. SCH. I"
+          },
+          {
+            "code": "002",
+            "name": "ANZE, PRI. SCH. II"
+          },
+          {
+            "code": "003",
+            "name": "BOGARU,WORK DEPT."
+          },
+          {
+            "code": "004",
+            "name": "BOGWUNA TINJA, MAGISTRATE COURT"
+          },
+          {
+            "code": "005",
+            "name": "BOGWUNA TINJA, PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "BOGWUNA TINJA, NIG. PRISON SERVICE"
+          },
+          {
+            "code": "007",
+            "name": "MEBI S. YARA BAKIN RIJIYA O.S"
+          },
+          {
+            "code": "008",
+            "name": "SIRIFE, VIEWING CENTRE"
+          },
+          {
+            "code": "009",
+            "name": "SIRIFE GINDIN RUMFA OPEN SPACE"
+          }
+        ]
+      },
+      "Gadaka/Shembire": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BOZA GANGA, KOFAR MAIGARI"
+          },
+          {
+            "code": "002",
+            "name": "BULABULIN , PRI.SCH."
+          },
+          {
+            "code": "003",
+            "name": "DALA , KOFAR MAI GARI"
+          },
+          {
+            "code": "004",
+            "name": "GARIN GAMJI, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "GARIN GOGE, PRI. SCH. I"
+          },
+          {
+            "code": "006",
+            "name": "GARIN GOGE, PRI. SCH. II"
+          },
+          {
+            "code": "007",
+            "name": "JANGAM, KOFAR MAIUNGUWA"
+          },
+          {
+            "code": "008",
+            "name": "HAUSARI, KOFAR MAIUNGUWA"
+          },
+          {
+            "code": "009",
+            "name": "MAIDUWA, PRI. SCH."
+          },
+          {
+            "code": "010",
+            "name": "MADAKI, OLD BORE HOLE"
+          },
+          {
+            "code": "011",
+            "name": "SABON LAYI, KOFAR MAIUNGWA"
+          },
+          {
+            "code": "012",
+            "name": "UNGUWAR ADAMU D. OPEN SPACE"
+          },
+          {
+            "code": "013",
+            "name": "UNGUWAR BULUS, C.P SCH. I"
+          },
+          {
+            "code": "014",
+            "name": "UNGUWAR BULUS C, P SCH. II"
+          },
+          {
+            "code": "015",
+            "name": "UNGUWAR DALA K, KOFAR MAIUNGUWA"
+          },
+          {
+            "code": "016",
+            "name": "UNGUWAR MAMMAN DISA, BORE HOLE"
+          },
+          {
+            "code": "017",
+            "name": "UNGUWAR KATALA K/MAIUNG."
+          },
+          {
+            "code": "018",
+            "name": "UNGUWAR YARO GUZE, K / MAI UNG. I"
+          },
+          {
+            "code": "019",
+            "name": "UNGUWAR YARO GUZE, K / MAI UNG. II"
+          },
+          {
+            "code": "020",
+            "name": "ZAMBA,PRI. SCH. I"
+          },
+          {
+            "code": "021",
+            "name": "ZAMBA , PRI. SCH. II"
+          },
+          {
+            "code": "022",
+            "name": "TINJA BAZAM, PRI. SCH."
+          }
+        ]
+      },
+      "Gudi / Dozi / Godo Woli": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DADE YASUA, KOFAR MAIUNGUWA"
+          },
+          {
+            "code": "002",
+            "name": "DOFFO OFARA , PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "GAMARI, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "GAMARI , DISPENSARY"
+          },
+          {
+            "code": "005",
+            "name": "GARIN ALARAMMA PRI. SCH. (GARIN ALARAMMA, KOFAR MAIUNGUWA)"
+          },
+          {
+            "code": "006",
+            "name": "GODOWOLLI , PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "GODOWOLLI , PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "NAHUTA, PRI. SCH."
+          },
+          {
+            "code": "009",
+            "name": "LEWE , PRI. SCH."
+          },
+          {
+            "code": "010",
+            "name": "ZADAWA, PRI. SCH."
+          }
+        ]
+      },
+      "Janga / Boza / Fa. Sawa / T. Nanai": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BURNI , PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "DAMAZAI, PRI. SCH. I"
+          },
+          {
+            "code": "003",
+            "name": "DAMAZAI, PRI. SCH. II"
+          },
+          {
+            "code": "004",
+            "name": "DOGO ABARE, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "GASHAKA , PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "JANGA DOLE, PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "JANGA SIRI PRI SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "KOROMCHI, PRI. SCH."
+          },
+          {
+            "code": "009",
+            "name": "MADODO MADAKI, KOFAR MAIUNGUWA"
+          },
+          {
+            "code": "010",
+            "name": "ZAMANI, PRI. SCH."
+          }
+        ]
+      },
+      "Mubi / Fusami / Garin Wayo": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BANALE, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "GADANA, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "GARIN EJI, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "GARIN WAYO, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "MUBI FUSAMI,PRI. SCH I"
+          },
+          {
+            "code": "006",
+            "name": "MUBI FUSAMI, PRI. SCH II"
+          }
+        ]
+      },
+      "Ngalda/Dumbulwa": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DUMBULWA ,PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "GAGARU, PRI. SCH. I"
+          },
+          {
+            "code": "003",
+            "name": "GAGARU ,PRI. SCH. II"
+          },
+          {
+            "code": "004",
+            "name": "GARIN CHINDO, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "KEREM BELLO,PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "NGALDA, RI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "SABON LAYI, DISPENSARY"
+          },
+          {
+            "code": "008",
+            "name": "TADAN GARA, PRI. SCH."
+          },
+          {
+            "code": "009",
+            "name": "TUNDUN WADA, DISPENSARY I"
+          },
+          {
+            "code": "010",
+            "name": "TUNDUN WADA, DISPENSARY II"
+          }
+        ]
+      },
+      "Shoye/Garin Aba": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BALDE, BALDE PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "GARIN ABBA, PRI. SCH. I"
+          },
+          {
+            "code": "003",
+            "name": "GARIN ABBA, PRI. SCH. II"
+          },
+          {
+            "code": "004",
+            "name": "GARIN DAUYA, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "GASHINGE PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "LAMPO PRI. SCH. (LAMPO, KOFAR MAI UNGUWA)"
+          }
+        ]
+      },
+      "Turmi / Maluri": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DAN BURNI, DISPENSARY"
+          },
+          {
+            "code": "002",
+            "name": "GURJAJE, PRI. SCH"
+          },
+          {
+            "code": "003",
+            "name": "MANAWACHI, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "TURMI, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "UNGUWA TAMBARI, PRI. SCH"
+          }
+        ]
+      },
+      "Zangaya/Mazawaun": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ZANGAYA PRI.SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "MAZAWUN PRI SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "DOGON KUKA PRI SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "DUFFUWEL PRI.SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "DUFFUNEL ADOWA OPEN SPACE"
+          },
+          {
+            "code": "006",
+            "name": "DOGON KUKA GARI OPEN SPACE"
+          }
+        ]
+      }
+    }
+  },
+  "FUNE": {
+    "code": "05",
+    "wards": {
+      "Abakire / Ngenlshengele / Shamka": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ABAKIRE , PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "ABAKIRE , PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "BARE KURI KOFAR BULAMA"
+          },
+          {
+            "code": "004",
+            "name": "BELON KOFAR BULAMA"
+          },
+          {
+            "code": "005",
+            "name": "GARIN BAUSHE, PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "GARIN BAUSHE , PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "JAURO GAKO KOFAR BULAMA"
+          },
+          {
+            "code": "008",
+            "name": "LAMIDO GOMBE K/BULAMA"
+          },
+          {
+            "code": "009",
+            "name": "NGELMODORU , PRI. SCH."
+          },
+          {
+            "code": "010",
+            "name": "NGELSHE NGELE , PRI. SCH."
+          },
+          {
+            "code": "011",
+            "name": "NGELSHE NGELE , PRI. SCH."
+          },
+          {
+            "code": "012",
+            "name": "SHAMKA PRI. SCH. ((SHAMKA K. B)"
+          },
+          {
+            "code": "013",
+            "name": "SHILOWA KOFAR BULAMA"
+          },
+          {
+            "code": "014",
+            "name": "SUDDANDE, PRI. SCH."
+          },
+          {
+            "code": "015",
+            "name": "WALKERE , PRI. SCH."
+          },
+          {
+            "code": "016",
+            "name": "YASKAWAL KOFAR BULAMA"
+          }
+        ]
+      },
+      "Alagarno": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AGIRWA PRI SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "BULAMA A. WADA , PRI. SCH. (BULAMA A. WADA)"
+          },
+          {
+            "code": "003",
+            "name": "FULATAMARI KOFAR BULAMA"
+          },
+          {
+            "code": "004",
+            "name": "LAWANTI , PRI. SCH."
+          }
+        ]
+      },
+      "Borno Kiji/Ngarho/Bebbende": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ADORE KOFAR BULAMA"
+          },
+          {
+            "code": "002",
+            "name": "BEBBENDE, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "BINDIGI , PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "BORNO, KIJI PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "BORNO, KIJI PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "BUMMITAMMI KOFAR BULAMA"
+          },
+          {
+            "code": "007",
+            "name": "JAURO H.WAJE K/BULAMA"
+          },
+          {
+            "code": "008",
+            "name": "LAMIDO JULI KOFAR BULAMA"
+          },
+          {
+            "code": "009",
+            "name": "NGEL KOL KOFAR BULAMA"
+          },
+          {
+            "code": "010",
+            "name": "PALIDACHI KOFAR BULAMA"
+          }
+        ]
+      },
+      "Damagum Town": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ANGUWAR KUKA, KOFAR M.HUDU I"
+          },
+          {
+            "code": "002",
+            "name": "ANGUWAR KUKA, KOFAR M.HUDU II"
+          },
+          {
+            "code": "003",
+            "name": "ANGUWAR DUTSI, MARKET STALL STORE"
+          },
+          {
+            "code": "004",
+            "name": "BAKATI S. GARI ,CO-OPERATIVE STORE I"
+          },
+          {
+            "code": "005",
+            "name": "APEAL AREA COUNT T (BAKATI S. GARI)"
+          },
+          {
+            "code": "006",
+            "name": "BAKIN KASUWA, KOFAR S. ASKA I"
+          },
+          {
+            "code": "007",
+            "name": "BAKIN KASUWA, KOFAR S. ASKA II"
+          },
+          {
+            "code": "008",
+            "name": "DAMAGUM , CENTRAL PRI. SCH. I"
+          },
+          {
+            "code": "009",
+            "name": "DAMAGUM , CENTRAL PRI. SCH. II"
+          },
+          {
+            "code": "010",
+            "name": "SABON GARI, NOA'S OFFICE"
+          }
+        ]
+      },
+      "Daura/Bulanyiwa/Dubbul/Bauwa": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ALANGEFE KOFAR BULAMA"
+          },
+          {
+            "code": "002",
+            "name": "BAUWA 'I' KOFAR BULAMA"
+          },
+          {
+            "code": "003",
+            "name": "BAUWA 'II' KOFAR BULAMA"
+          },
+          {
+            "code": "004",
+            "name": "BULANYIWA, PRI. SCH. I"
+          },
+          {
+            "code": "005",
+            "name": "BULANYIWA, PRI. SCH. II"
+          },
+          {
+            "code": "006",
+            "name": "DAURA , PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "DAURA, BANK OF THE NORTH"
+          },
+          {
+            "code": "008",
+            "name": "DUBBOL, PRI. SCH. I"
+          },
+          {
+            "code": "009",
+            "name": "DUBBOL, PRI. SCH. II"
+          },
+          {
+            "code": "010",
+            "name": "SURU KOFAR BULAMA"
+          }
+        ]
+      },
+      "Dogon Kuka/Gishiwari/Gununu": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DOGON KUKA, MARKET STALL I"
+          },
+          {
+            "code": "002",
+            "name": "DOGON KUKA KOFAR BULAMA"
+          },
+          {
+            "code": "003",
+            "name": "DOGON KUKA PRI SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "DUMZA, BAKIN RIJIYA"
+          },
+          {
+            "code": "005",
+            "name": "GADAFOWA KOFAR BULAMA"
+          },
+          {
+            "code": "006",
+            "name": "GALTAI KOFAR BULAMA"
+          },
+          {
+            "code": "007",
+            "name": "GISHIWARI, PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "GUBANA, PRI. SCH."
+          },
+          {
+            "code": "009",
+            "name": "GUNUNU, PRI. SCH."
+          },
+          {
+            "code": "010",
+            "name": "NINGI, PRI. SCH."
+          },
+          {
+            "code": "011",
+            "name": "NGAM DARE KOFAR ULAMA"
+          },
+          {
+            "code": "012",
+            "name": "SABON GARIN IDI BARDE, PRI. SCH."
+          },
+          {
+            "code": "013",
+            "name": "WALKATU KOFAR BULAMA"
+          }
+        ]
+      },
+      "Fune/Ngelzarma/Milbiyar/Lawan Kalam": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ANUGUWAR KUKA, DISPENSARY"
+          },
+          {
+            "code": "002",
+            "name": "DOGON KUKA KOFAR BULAMA"
+          },
+          {
+            "code": "003",
+            "name": "DOGON KUKA PRI SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "BULAMA MUSTAPHA DISP.I (GADAFOWA KOFAR BULAMA)"
+          },
+          {
+            "code": "005",
+            "name": "GALTAI KOFAR BULAMA"
+          },
+          {
+            "code": "006",
+            "name": "FUNE PRI. SCHOL (NGAM DARE KOFAR ULAMA)"
+          },
+          {
+            "code": "007",
+            "name": "WALKATU KOFAR BULAMA"
+          },
+          {
+            "code": "008",
+            "name": "LAWAN KALAM K/BULAMA"
+          },
+          {
+            "code": "009",
+            "name": "LAWAN KALAM, BULAMA GATE"
+          },
+          {
+            "code": "010",
+            "name": "LILI, PRI. SCH. I"
+          },
+          {
+            "code": "011",
+            "name": "LILI , PRI. SCH. II"
+          },
+          {
+            "code": "012",
+            "name": "LILI PRI. SCH. III (LILI KOFAR SARKI)"
+          },
+          {
+            "code": "013",
+            "name": "MALLAM YA'U KOFAR BULAMA"
+          },
+          {
+            "code": "014",
+            "name": "MIL BIYAR, PRI. SCH."
+          },
+          {
+            "code": "015",
+            "name": "MIL-BIYAR S.GARIN BUKAR"
+          },
+          {
+            "code": "016",
+            "name": "SHERIRI KOFAR BULAMA"
+          }
+        ]
+      },
+      "Gaba Tasha/Aigada/Dumbulwa": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AIGADA MAI KASUWA, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "AIGADA MAI GISHIWA K/BULAMA"
+          },
+          {
+            "code": "003",
+            "name": "DUMBULWA, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "GABA TASHA, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "IBRAHIM GABA, G.S.S"
+          },
+          {
+            "code": "006",
+            "name": "JORINGEL ZOTO, ZOTO PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "JORINGEL ZOTO PRI. SCH. (JORINGEL ZOTO K. BULAMA)"
+          },
+          {
+            "code": "008",
+            "name": "NYAKIREN TSANYA KOFAR BULAMA"
+          },
+          {
+            "code": "009",
+            "name": "SALERAN GINDIN TSAMIYA K/MAI UNG"
+          }
+        ]
+      },
+      "Gudugurka/Marmar I": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DADISO PRI. SCH. (RIGIM KOFAR BULAMA)"
+          },
+          {
+            "code": "002",
+            "name": "DUFUNA , PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "DUFUNA ,HEALTH.CENTRE"
+          },
+          {
+            "code": "004",
+            "name": "G.WAKILI.BAKIN RIJIYA"
+          },
+          {
+            "code": "005",
+            "name": "GREMARI.BAKIN RIJIYA"
+          },
+          {
+            "code": "006",
+            "name": "GUDUGURKA , PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "GURUNGU PRIN SCH. (GURONGU B. RIJIYA)"
+          },
+          {
+            "code": "008",
+            "name": "RIGIM KOFAR BULAMA"
+          },
+          {
+            "code": "009",
+            "name": "MARIMARI. PRI. SCH."
+          },
+          {
+            "code": "010",
+            "name": "RIGIM KOFAR BULAMA"
+          }
+        ]
+      },
+      "Jajere/Banellewa/Babbare": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ANGUWAR NGORIDI, DISPENSARY"
+          },
+          {
+            "code": "002",
+            "name": "BABBARE J. BUBA, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "BANALAWA, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "BANGITARE KOFAR BULAMA"
+          },
+          {
+            "code": "005",
+            "name": "DAWAYA, PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "DOIKWAL KOFAR BULAMA"
+          },
+          {
+            "code": "007",
+            "name": "DUGEL KOFAR BULAMA"
+          },
+          {
+            "code": "008",
+            "name": "GAYEJE KOFAR BULAMA"
+          },
+          {
+            "code": "009",
+            "name": "KATOTIYEL KOFAR BULAMA"
+          },
+          {
+            "code": "010",
+            "name": "KURFAWA AYUBA KOFAR BULAMA"
+          },
+          {
+            "code": "011",
+            "name": "LAWANTI, PRI. SCH"
+          },
+          {
+            "code": "012",
+            "name": "LAWANTI , PRI. SCH"
+          },
+          {
+            "code": "013",
+            "name": "NKOLJALAJE KOFAR BULAMA"
+          },
+          {
+            "code": "014",
+            "name": "SHIDOL KOFAR BULAMA"
+          },
+          {
+            "code": "015",
+            "name": "SHOBBUNGA, BULAMA GATE"
+          },
+          {
+            "code": "016",
+            "name": "TSAGAYAR TUDU, VETRINARY CLINIC"
+          }
+        ]
+      },
+      "Kayeri": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ANG MODU HEALTH CENTRE"
+          },
+          {
+            "code": "002",
+            "name": "AMAR CHIYA, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "DAYA, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "DOGON KUKA \"B\", PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "JAURO KULIYA KOFAR BULAMA"
+          },
+          {
+            "code": "006",
+            "name": "KAYERI, PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "KASARA KUMA, PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "KASARA KUMA, PRI. SCH."
+          },
+          {
+            "code": "009",
+            "name": "SHAMI KATUWA, PRI. SCH."
+          },
+          {
+            "code": "010",
+            "name": "TAIYU, PRI. SCH"
+          },
+          {
+            "code": "011",
+            "name": "JAURO KUKA KOFAR BULAMA"
+          },
+          {
+            "code": "012",
+            "name": "WATIWANI KOFAR BULAMA"
+          },
+          {
+            "code": "013",
+            "name": "TELLO BANGAJE PRI SCHOOL"
+          }
+        ]
+      },
+      "Kollere/Kafaje": {
+        "code": "12",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AIGADA B. BAZAM KOFAR BULAMA"
+          },
+          {
+            "code": "002",
+            "name": "AIGADA J. ABDUL KOFAR BULAMA"
+          },
+          {
+            "code": "003",
+            "name": "BALARABE ,PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "D/G/GKILA, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "DUMOWAL KOFAR BULAMA"
+          },
+          {
+            "code": "006",
+            "name": "GARIN KYARI, PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "GARIN TUJE, PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "GADAMA MALLAM K/BULAMA"
+          },
+          {
+            "code": "009",
+            "name": "KOLERE, PRI. SCH."
+          },
+          {
+            "code": "010",
+            "name": "KOLERE, CLINIC"
+          },
+          {
+            "code": "011",
+            "name": "KAFAJE , PRI. SCH."
+          },
+          {
+            "code": "012",
+            "name": "NOSA KOFAR BULAMA"
+          }
+        ]
+      },
+      "Mashio": {
+        "code": "13",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BAGANA KOFAR BULAMA"
+          },
+          {
+            "code": "002",
+            "name": "BAYA BANZA KOFAR BULAMA"
+          },
+          {
+            "code": "003",
+            "name": "BAMSHANGA, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "BAMSHANGA, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "BULAMA MADORE PRIMARY SCH. (BULAMA MADORI"
+          },
+          {
+            "code": "006",
+            "name": "BULAMA MADORE (PRI. SCH. (K/BULAMA)"
+          },
+          {
+            "code": "007",
+            "name": "BULAKAWA KOFAR BULAMA"
+          },
+          {
+            "code": "008",
+            "name": "DODIWA KOFAR BULAMA"
+          },
+          {
+            "code": "009",
+            "name": "DUSUWA KOFAR BULAMA"
+          },
+          {
+            "code": "010",
+            "name": "GASKIRA L.SHEHU K/BULAMA"
+          },
+          {
+            "code": "011",
+            "name": "DUMBULWA, PRI. SCH."
+          },
+          {
+            "code": "012",
+            "name": "JAURO BODORI K/BULAMA"
+          },
+          {
+            "code": "013",
+            "name": "JAURO BIRAU KOFAR BULAMA"
+          },
+          {
+            "code": "014",
+            "name": "JANGAM GARU KOFAR BULAMA"
+          },
+          {
+            "code": "015",
+            "name": "KASHANGA KOFAR BULAMA"
+          },
+          {
+            "code": "016",
+            "name": "KAZALMA KOFAR BULAMA"
+          },
+          {
+            "code": "017",
+            "name": "KARE MAI GAGARE KOFAR BULAMA"
+          },
+          {
+            "code": "018",
+            "name": "KORIYEL KOFAR BULAMA"
+          },
+          {
+            "code": "019",
+            "name": "KOIBULA, PRI. SCH."
+          },
+          {
+            "code": "020",
+            "name": "KWARAWAN PRI SCHOOL"
+          },
+          {
+            "code": "021",
+            "name": "NGELKOREJI KOFAR BULAMA"
+          },
+          {
+            "code": "022",
+            "name": "MURBA M. ALI, PRI. SCH."
+          },
+          {
+            "code": "023",
+            "name": "NGELKOREJI, BAKIN RIJIYA"
+          },
+          {
+            "code": "024",
+            "name": "NGELWANDE KOFRA BULAMA"
+          },
+          {
+            "code": "025",
+            "name": "SUTANDE KOFAR BULAMA"
+          },
+          {
+            "code": "026",
+            "name": "SAUDA KOFAR BULAMA"
+          }
+        ]
+      }
+    }
+  },
+  "GEIDAM": {
+    "code": "06",
+    "wards": {
+      "Asheikri": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ALHAJI MAIGARI ,VIEWING CENTRE"
+          },
+          {
+            "code": "002",
+            "name": "FANNAMIRI.NGADALA, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "NGALDA PRIMARY SCHOOL (FANNAMIRI, FANNAMIRI GATE)"
+          },
+          {
+            "code": "004",
+            "name": "FULATARI PRIMARY SCHOOL (FULATARI, BULAMA GATE)"
+          },
+          {
+            "code": "005",
+            "name": "GONIRI , PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "LAWAN BAKURARI, WATER BOARD"
+          },
+          {
+            "code": "007",
+            "name": "MUSTAPHA WANZAMA, C.PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "SUNOMARI, SUNOMARI"
+          },
+          {
+            "code": "009",
+            "name": "USMAN KOLORIMA, MAIUNGUWA'S GATE"
+          }
+        ]
+      },
+      "Balle/Gallaba/Meleri": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BALLE PRI. SCH. (BALLE LAWANTI, LAWANT'S GATE)"
+          },
+          {
+            "code": "002",
+            "name": "BALLE, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "GALLABA, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "KELLURI PRI. SCH. (KELLURI BULAMA, BULAMA'S GATE)"
+          },
+          {
+            "code": "005",
+            "name": "KELLURI, PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "BUKARTI PRI. SCH. (LAWAN BUKARTI, BULAMA'S GATE)"
+          },
+          {
+            "code": "007",
+            "name": "MATAKUSKUM PRI. (MATAKUSKUM, BULAMA'S GATE)"
+          },
+          {
+            "code": "008",
+            "name": "MOBORTI PRI. SCH. (MOBORTI, BULAMA GATE)"
+          },
+          {
+            "code": "009",
+            "name": "SHAME MAIRI PRI. (SHAME MAIRI, BULAMA'S GATE)"
+          }
+        ]
+      },
+      "Damakarwa/Kusur": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AJI WANGO, BULAMA'S GATE"
+          },
+          {
+            "code": "002",
+            "name": "ALI KARIMIRI, BULAMA'S GATE"
+          },
+          {
+            "code": "003",
+            "name": "ALI KARI MIRI TSANGAYA B/GATE"
+          },
+          {
+            "code": "004",
+            "name": "DAMAKARWA LAWANTI, VIEWING CENTRE"
+          },
+          {
+            "code": "005",
+            "name": "GOBOK, BULAMA'S GATE"
+          },
+          {
+            "code": "006",
+            "name": "KINDIRAM, BULAMA'S GATE"
+          },
+          {
+            "code": "007",
+            "name": "KUSUR LAWANTI.KUSUR, PRI. SCH"
+          },
+          {
+            "code": "008",
+            "name": "NGORO, KAYAIYA BULAMA GATE"
+          },
+          {
+            "code": "009",
+            "name": "ZAIRAM NGOLKOYAM, BULAMA'S GATE"
+          },
+          {
+            "code": "010",
+            "name": "ZUGUBI, BULAMA'S GATE."
+          }
+        ]
+      },
+      "Dejina/Fukurti": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ALI GAJIRIBULAMA'S GATE"
+          },
+          {
+            "code": "002",
+            "name": "BONE GARAL, BULAMA GATE"
+          },
+          {
+            "code": "003",
+            "name": "FUKURTI KASUWA, BULAMA'S GATE"
+          },
+          {
+            "code": "004",
+            "name": "FUKURTI LAWAN, LAWAN'S GATE"
+          },
+          {
+            "code": "005",
+            "name": "KARAU KURA, BULAMA'S GATE"
+          },
+          {
+            "code": "006",
+            "name": "MAINARI, BULAMA'S GATE"
+          },
+          {
+            "code": "007",
+            "name": "MALLAM MATARI, BULAMA GATE"
+          },
+          {
+            "code": "008",
+            "name": "MASADA VILLAGE, BULAMA'S GATE"
+          }
+        ]
+      },
+      "Futchimiram": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BUNDIRAM, BULAMA GATE"
+          },
+          {
+            "code": "002",
+            "name": "VIEWING CENTRE I (FUTCHIMIRAM, LAWAN'S GATE)"
+          },
+          {
+            "code": "003",
+            "name": "FUTCHIMIRAM, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "GARIMARI, BULAMA'S GATE"
+          },
+          {
+            "code": "005",
+            "name": "GONI MODU GONI, BULAMA'S GATE"
+          },
+          {
+            "code": "006",
+            "name": "JILLI, BULAMA'S GATE"
+          },
+          {
+            "code": "007",
+            "name": "KASACCIYA, BULAMA GATE"
+          },
+          {
+            "code": "008",
+            "name": "NGILEWA, BULAMA'S GATE"
+          },
+          {
+            "code": "009",
+            "name": "NGULMI KAWUYINDI B/GATE"
+          },
+          {
+            "code": "010",
+            "name": "NGULMI MAMMANTI , BULAMA'S GATE"
+          }
+        ]
+      },
+      "Gumsa": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ALHAJIRI, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "DUNARI BUJIRI"
+          },
+          {
+            "code": "003",
+            "name": "GASAURI , BULAMA'S GATE"
+          },
+          {
+            "code": "004",
+            "name": "GUMSA BAKIN KASUWA, BAKIN KASUWA I"
+          },
+          {
+            "code": "005",
+            "name": "GUMSA BAKIN KASUWA, BAKIN KASUWA II"
+          },
+          {
+            "code": "006",
+            "name": "GUMSA PRI SCHOOL 'I'"
+          },
+          {
+            "code": "007",
+            "name": "GUMSA PRI SCHOOL ''II''"
+          },
+          {
+            "code": "008",
+            "name": "GUMZUGUYI, BULAMA'S GATE"
+          },
+          {
+            "code": "009",
+            "name": "MADI KADAWA, BULAMA'S GATE"
+          },
+          {
+            "code": "010",
+            "name": "TALUM, BULAMA'S GATE"
+          }
+        ]
+      },
+      "Hausari": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ALHAJI MALUMTA, BULAMA'S GATE I"
+          },
+          {
+            "code": "002",
+            "name": "ALHAJI MALUMTA, BULAMA'S GATE II"
+          },
+          {
+            "code": "003",
+            "name": "BUKAR SUNOMA, BULAMA'S GATE"
+          },
+          {
+            "code": "004",
+            "name": "DAUDA INUSA,MAIUNG. GATE"
+          },
+          {
+            "code": "005",
+            "name": "VIEWING CENTRE II (GONI DALATU,BULAMA'S GATE I)"
+          },
+          {
+            "code": "006",
+            "name": "VIEWING CENTRE III (GONI DALATU, BULAMA'S GATE II)"
+          },
+          {
+            "code": "007",
+            "name": "MAI ANUGUWA BUBA, MAI UNG. GATE"
+          },
+          {
+            "code": "008",
+            "name": "MODU TELA MODU TELA GATE"
+          },
+          {
+            "code": "009",
+            "name": "MODU TELA, / G.S.S GEIDAM / G.S.S. GEIDAM"
+          },
+          {
+            "code": "010",
+            "name": "MODU TELA, / UPPER AREA COURT - UPPER AREA COURT"
+          },
+          {
+            "code": "011",
+            "name": "MOHAMMED BABIN / BULAMA'S GATE"
+          },
+          {
+            "code": "012",
+            "name": "MOHAMMED BABIN/ KAFELA PRI. SCH. / KAFELA PRI. SCH. I"
+          },
+          {
+            "code": "013",
+            "name": "MOHAMMED BABIN/ KAFELA PRI. SCH. / KAFELA PRI. SCH. II"
+          },
+          {
+            "code": "014",
+            "name": "S.G.T ADAMU, SGT ADAMU'S GATE"
+          },
+          {
+            "code": "015",
+            "name": "HIGH COURT (TOBACCO STORE, TOBACCO STORE)"
+          },
+          {
+            "code": "016",
+            "name": "TOBACCO STORE, HIGH COURT"
+          },
+          {
+            "code": "017",
+            "name": "ZARAMIRI, ZARAMIRI'S GATE"
+          }
+        ]
+      },
+      "Kawuri": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ALHAJI ABBA, ALHAJI ABBA'S GATE"
+          },
+          {
+            "code": "002",
+            "name": "ALHAJI JINJIRI. ALHAJI JINJIRI'S GATE"
+          },
+          {
+            "code": "003",
+            "name": "BOSOMI, ALHAJI UMARU'S GATE"
+          },
+          {
+            "code": "004",
+            "name": "KARAU KAWU, MAI UNG GATE"
+          },
+          {
+            "code": "005",
+            "name": "KAWURI, PRI. SCH"
+          },
+          {
+            "code": "006",
+            "name": "KUWA YINDI PRI. SCH. (M. B GATE)"
+          },
+          {
+            "code": "007",
+            "name": "MAIGARI, KOLORI PRI. SCH"
+          },
+          {
+            "code": "008",
+            "name": "KOLORI PRI. SCH. (MAIGARI, MAIGARI'S GATE)"
+          },
+          {
+            "code": "009",
+            "name": "MUSTAPHA KULAMI, MAIUNGUWA'S GATE"
+          },
+          {
+            "code": "010",
+            "name": "MUSTAPHA KULAMI, MUSTAPHA KALAMI'S GATE"
+          },
+          {
+            "code": "011",
+            "name": "HAUSARI PRI. SCH. (UMARU DOGO MAI UNGUWAN GATE)"
+          },
+          {
+            "code": "012",
+            "name": "WOLOMI, LAWANI'S GATE"
+          }
+        ]
+      },
+      "Ma'Anna/Dagambi": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DAGAMBI PRI. SCH. (DAGAMBI, BULAMA GATE)"
+          },
+          {
+            "code": "002",
+            "name": "DAPCHI DAMBARAM, BULAMA'S GATE"
+          },
+          {
+            "code": "003",
+            "name": "ISORI, BULAMA GATE"
+          },
+          {
+            "code": "004",
+            "name": "KAYAIYA, BULAMA'S GATE"
+          },
+          {
+            "code": "005",
+            "name": "VIEWING CENTRE (KIRIWA DAPSO, BULAMA'S GATE)"
+          },
+          {
+            "code": "006",
+            "name": "KUWA BARE, BULAMA'S GATE"
+          },
+          {
+            "code": "007",
+            "name": "MA'ANNA, PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "MAIRI KUWA, BULAMA'S GATE"
+          },
+          {
+            "code": "009",
+            "name": "MAKINTARI PRI. SCH. (MAKINTARI, BULAMA'S GATE)"
+          },
+          {
+            "code": "010",
+            "name": "NGAYAWA, BULAMA'S GATE"
+          }
+        ]
+      },
+      "Shame Kura / Dilawa": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DILAWA, DISPENSARY"
+          },
+          {
+            "code": "002",
+            "name": "JORORO PRI. SCH. (JORORO, LAWAN'S GATE)"
+          },
+          {
+            "code": "003",
+            "name": "KALGERI PRI. SCH. (KALGIRI, BULAMA'S GATE)"
+          },
+          {
+            "code": "004",
+            "name": "MALA WANGO PRI. SCH. (MALA WANGO, BULAMA 'S GATE)"
+          },
+          {
+            "code": "005",
+            "name": "MALUMMA KAWUWA, BULAMA'S GATE"
+          },
+          {
+            "code": "006",
+            "name": "MAWUWA UMARTI, BULAMA'S GATE"
+          },
+          {
+            "code": "007",
+            "name": "RAGA.NGULURI, BULAMA'S GATE"
+          },
+          {
+            "code": "008",
+            "name": "SHAME KURA, BULAMA'S GATE"
+          },
+          {
+            "code": "009",
+            "name": "WAKIL AJIBE, BULAMA'S GATE"
+          }
+        ]
+      },
+      "Zurgu Ngilewa / Borko": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AWASAI, BULAMA'S GATE"
+          },
+          {
+            "code": "002",
+            "name": "BORKO, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "CHUNGUL, BULAMA'S GATE"
+          },
+          {
+            "code": "004",
+            "name": "GIZA, BULAMA'S GATE"
+          },
+          {
+            "code": "005",
+            "name": "KINDILA DISPENSARY (KINDILLA, BULAMA'S GATE)"
+          },
+          {
+            "code": "006",
+            "name": "KAWURI BULAMA GATE"
+          },
+          {
+            "code": "007",
+            "name": "NGILEWA, BULAMA'S GATE"
+          },
+          {
+            "code": "008",
+            "name": "RANNA SHERIFF, BULAMA'S GATE"
+          }
+        ]
+      }
+    }
+  },
+  "GUJBA": {
+    "code": "07",
+    "wards": {
+      "Bunigari/Lawanti": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AZARE/MAGZA, GANJI MAKERA"
+          },
+          {
+            "code": "002",
+            "name": "GASHUA/BURAMSIRA, GASHUA PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "BULAMA YAGA, BUNIGARI MARKET"
+          },
+          {
+            "code": "004",
+            "name": "BULTURI YARMARI, LEWA GATE"
+          },
+          {
+            "code": "005",
+            "name": "BUNI GARI, BUNI.GARI PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "BUNI LAWANTI, SARKIN TASHA I"
+          },
+          {
+            "code": "007",
+            "name": "BUNI LAWANTI, SARKIN TASHA II"
+          },
+          {
+            "code": "008",
+            "name": "BUNI LAWANTI, AJAMARI"
+          }
+        ]
+      },
+      "Buniyadi North / Buniyadi South": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMADU KAPINTA ARDO SALE GATE"
+          },
+          {
+            "code": "002",
+            "name": "AMADU KAPINTA YARO GATE"
+          },
+          {
+            "code": "003",
+            "name": "SHUWARI PRI SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "BULAMA AUWAMI, GONI HARUNA I"
+          },
+          {
+            "code": "005",
+            "name": "BULAMA AUWAMI, GONI HARUNAII"
+          },
+          {
+            "code": "006",
+            "name": "BULAMA AUWAMI, ILIAYASU USMAN"
+          },
+          {
+            "code": "007",
+            "name": "BULAMA NGOMA, MAKINTA ALI"
+          },
+          {
+            "code": "008",
+            "name": "BULAMA NGOMA, CENTRALPRI. SCH."
+          },
+          {
+            "code": "009",
+            "name": "GONIMATTARI, FGC (GONI MATTARI,.JALON'S GATE)"
+          },
+          {
+            "code": "010",
+            "name": "ISA TALALA, UMARU M. ENGINE"
+          },
+          {
+            "code": "011",
+            "name": "JAURO BUBA, BOARD OF INTERNAL REV. (JAURO BUBA, BUBA ALI)"
+          },
+          {
+            "code": "012",
+            "name": "JIRI/SUMSUMMA, BULAMA SAYE'S GATE"
+          },
+          {
+            "code": "013",
+            "name": "MUH'D ALEWA DR,ABDU GATE"
+          },
+          {
+            "code": "014",
+            "name": "MUH'D ALEWA ISLAMIYA PRI SCH"
+          },
+          {
+            "code": "015",
+            "name": "MUSTAPHA NGAMBU GABBA MAI ROGO GATE"
+          },
+          {
+            "code": "016",
+            "name": "RAILWAY, TERMINAL (RAILWAY GONI HABU SAMAILA MUH;D GATE)"
+          },
+          {
+            "code": "017",
+            "name": "RAILWAY MUH'D KOFAR G/GAGARE"
+          },
+          {
+            "code": "018",
+            "name": "WAKIL UMAR/JAURO VIEWING CENTRE 'I'"
+          },
+          {
+            "code": "019",
+            "name": "WAKIL UMAR/JAURO VIEWING CENTRE 'II'"
+          },
+          {
+            "code": "020",
+            "name": "WAKIL UMAR/JAURO DISPENSARY"
+          }
+        ]
+      },
+      "Dadingel": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DAINGEL PRI SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "MARMA, MARMA PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "MUWURA MADU KIME"
+          }
+        ]
+      },
+      "Goniri": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GONI JALORI, ALH. M. BURA"
+          },
+          {
+            "code": "002",
+            "name": "GONIRI, CENTRAL PRI. SCH. I"
+          },
+          {
+            "code": "003",
+            "name": "GONIRI , CENTRAL PRI. SCH. II"
+          },
+          {
+            "code": "004",
+            "name": "GONIRI FULATARI ALH BUKAR GATE"
+          },
+          {
+            "code": "005",
+            "name": "GONIRI MARURI , ALH. LAWAN"
+          },
+          {
+            "code": "006",
+            "name": "GONI MARURI , ALH. UMARU MARUS"
+          },
+          {
+            "code": "007",
+            "name": "KIMERI, BOARDING PRI. SCHOOL (KIMERI, KIMERI)"
+          },
+          {
+            "code": "008",
+            "name": "MAI LIWURAMARI, PRI. HELTH CARE CENTRE (MALLAM LIWULAMARI, KACHALA FUGU)"
+          }
+        ]
+      },
+      "Gotala/Gotumba": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BOBIRI BOBURI OPEN SPACE"
+          },
+          {
+            "code": "002",
+            "name": "DISHI BULAMA ALI, BULAMA ALI"
+          },
+          {
+            "code": "003",
+            "name": "GONI, NGOMARI"
+          },
+          {
+            "code": "004",
+            "name": "GOTALA SHETIMA SIDIN , GOTALA MARKET"
+          },
+          {
+            "code": "005",
+            "name": "GOTUMBA, GOTUMBA PRI. SCH. I"
+          },
+          {
+            "code": "006",
+            "name": "GOTUMBA, GOTUMBA PRI. SCH. II"
+          },
+          {
+            "code": "007",
+            "name": "KWAR MARI, KWAR MARI"
+          },
+          {
+            "code": "008",
+            "name": "KUNDULI YARI, KUNDULI YARI"
+          },
+          {
+            "code": "009",
+            "name": "KYARI KAURI, KYARI KAURI"
+          },
+          {
+            "code": "010",
+            "name": "SHETTIMA MAWARI OPEN SPACE"
+          },
+          {
+            "code": "011",
+            "name": "SUGUMI JIDDARI SOGUMI"
+          },
+          {
+            "code": "012",
+            "name": "WUYABCHI SANDA WUYABCHI OPEN SPACE"
+          }
+        ]
+      },
+      "Gujba": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMBIYA TASHA, PRI. SCH"
+          },
+          {
+            "code": "002",
+            "name": "BUNGAI BULAMA ALI, BULAMA ALI"
+          },
+          {
+            "code": "003",
+            "name": "GARIN ITACE, GARIN ITACE"
+          },
+          {
+            "code": "004",
+            "name": "GUJBA CENTRAL PRI SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "GUJBA AREA COURT"
+          },
+          {
+            "code": "006",
+            "name": "(NOMADIC PRI. SCH. (HORERIYIWA JAMTARI HOREYIWA ROAD O.S)"
+          },
+          {
+            "code": "007",
+            "name": "K.B/KUKUWA TASHA , KUKUWA PRI. SCH I"
+          },
+          {
+            "code": "008",
+            "name": "K.B/KUKUWA TASHA , KUKUWA PRI. SCH II"
+          },
+          {
+            "code": "009",
+            "name": "KASATCHIA, KASATCHIA"
+          },
+          {
+            "code": "010",
+            "name": "KATARKO, PRIMARY SCH. (KATARKO, KATARKO BULAMA)"
+          },
+          {
+            "code": "011",
+            "name": "KOJELLERE OPEN SPACE"
+          },
+          {
+            "code": "012",
+            "name": "KOJELLERE BAKIN NGELJUL GATE"
+          },
+          {
+            "code": "013",
+            "name": "KUKUWA WAKALTU ALI GATE"
+          },
+          {
+            "code": "014",
+            "name": "LIDGINR TASHA, LIDRIL TASHA"
+          },
+          {
+            "code": "015",
+            "name": "MANJIM KURA/MANJIGAN.MANJIM"
+          },
+          {
+            "code": "016",
+            "name": "NGOMMA/NGAZAR NGAMMA GATE"
+          },
+          {
+            "code": "017",
+            "name": "NGEL BIYAWAL,NGEL BIYAWAL"
+          },
+          {
+            "code": "018",
+            "name": "SHERIFRI, SHERIFRI"
+          },
+          {
+            "code": "019",
+            "name": "TURO, TURO"
+          },
+          {
+            "code": "020",
+            "name": "WULE WULE OPEN SPACE"
+          }
+        ]
+      },
+      "Mallam Dunari": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMBIYA KURA OPEN SPACE"
+          },
+          {
+            "code": "002",
+            "name": "BULTURAM KURA, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "BURNIWA, BURNIWA"
+          },
+          {
+            "code": "004",
+            "name": "GURMA/KOLKOLA.GURMA"
+          },
+          {
+            "code": "005",
+            "name": "KADAURI, KADAURI PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "MALLAMDUNARIBAKINKOYEL, DISPENSARY (MALAM DUNARI BAKIN KOYEL TELA BUMIS GATE)"
+          },
+          {
+            "code": "007",
+            "name": "M.DUNARI NGUBUTORI M. DUNARI PRI SCH"
+          },
+          {
+            "code": "008",
+            "name": "SURDI KUMAI OPEN SPACE"
+          }
+        ]
+      },
+      "Mutai": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BANDILLA ARDO, NGIDIDOJI YELWA"
+          },
+          {
+            "code": "002",
+            "name": "BUKKEL ALH. BAKURA, BUBA GATE"
+          },
+          {
+            "code": "003",
+            "name": "DADDAWAYEL, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "DENDERIA/LABBA.DENDERIA"
+          },
+          {
+            "code": "005",
+            "name": "GARIN GABAS, GARIN GABAS"
+          },
+          {
+            "code": "006",
+            "name": "JAMMRE/KIKIWA, BAMME'S GATE"
+          },
+          {
+            "code": "007",
+            "name": "MUTAI, MUTAI PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "NASSARAWA, SARKIN PAWA"
+          }
+        ]
+      },
+      "Ngurbuwa": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BULAMA FANTAMI/JURKAURI OPEN SPACE"
+          },
+          {
+            "code": "002",
+            "name": "BULTURAM GANA/L.DALA KEZLUM OPEN SPACE"
+          },
+          {
+            "code": "003",
+            "name": "KUSULUWARAM OPEN SPACE"
+          },
+          {
+            "code": "004",
+            "name": "MARAM KURA M. GANA"
+          },
+          {
+            "code": "005",
+            "name": "MUKTUM KURA / GANA - MUKTUM KURA"
+          },
+          {
+            "code": "006",
+            "name": "NGURABAWA LAWANTI, PRI. SCH. I"
+          },
+          {
+            "code": "007",
+            "name": "NGURABAWA LAWANTI, PRI. SCH. II"
+          },
+          {
+            "code": "008",
+            "name": "NGURMAI BUKAMA'JI A. BUKAR AJIBE( O.S)"
+          }
+        ]
+      },
+      "Wagir": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AZARE/MAGZA GAJI MAKERA OPEN SPACE"
+          },
+          {
+            "code": "002",
+            "name": "JAMTARI/NGEL KALAJI.M. GARBA'S GATE"
+          },
+          {
+            "code": "003",
+            "name": "NYAKERE/JAURO.LIMAN ADAMU"
+          },
+          {
+            "code": "004",
+            "name": "WAGIR/NGEL AUWA.WAGIR PRI. SCH."
+          }
+        ]
+      }
+    }
+  },
+  "GULANI": {
+    "code": "08",
+    "wards": {
+      "Bara": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ALHAJI WADI, ALH. WADI GATE"
+          },
+          {
+            "code": "002",
+            "name": "BARA.BARA, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "BARA B. KAFULA, DISPENSARY"
+          },
+          {
+            "code": "004",
+            "name": "BARA B. KAFULA, MARKET"
+          },
+          {
+            "code": "005",
+            "name": "BIRNIN GADAM, BIRNIN GADAM"
+          },
+          {
+            "code": "006",
+            "name": "BORNO YESU, MAI KYARI GATE"
+          },
+          {
+            "code": "007",
+            "name": "USMAN/BADO.ARDO GOJI GATE"
+          },
+          {
+            "code": "008",
+            "name": "DUCHI M. MIDALA DUCHI PRI SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "SANDI / TSANGAYA SANDI GANJI GATE"
+          }
+        ]
+      },
+      "Borno Kiji/Tetteba": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ALAGARNO MUH'D MAI HULLA GATE"
+          },
+          {
+            "code": "002",
+            "name": "BORNO KIJI, ADAMU KARERE GATE"
+          },
+          {
+            "code": "003",
+            "name": "GARIN ABOYI, YELWA ABUNA GATE"
+          },
+          {
+            "code": "004",
+            "name": "GARIN AYADA OPEN SPACE"
+          },
+          {
+            "code": "005",
+            "name": "MARWA GAJA OPEN SPACE"
+          },
+          {
+            "code": "006",
+            "name": "MAI KANO IBRAHIM DAHIRU GATE"
+          },
+          {
+            "code": "007",
+            "name": "MAIKANO IBRAHIM GARIN MAI KANO (O.S)"
+          },
+          {
+            "code": "008",
+            "name": "TETTEBA, PRI. SCH."
+          },
+          {
+            "code": "009",
+            "name": "TETTEBA, MARKET PLACE"
+          },
+          {
+            "code": "010",
+            "name": "TETTEBA GARIN NJILDE OPEN SPACE"
+          },
+          {
+            "code": "011",
+            "name": "TETTEBA MUDI TELA BUKAR GATE"
+          },
+          {
+            "code": "012",
+            "name": "T.S/YM/MUSA. ALH. JUJU GATE"
+          },
+          {
+            "code": "013",
+            "name": "YANGO, YAKUBU GATE"
+          }
+        ]
+      },
+      "Bularafa": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BULARAFA LAWANTI , PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "BULARAFA, OLD MARKET"
+          },
+          {
+            "code": "003",
+            "name": "BULARAFA SEC. SCH. I (BULARAFA, ALH. SHUAIBU GATE)"
+          },
+          {
+            "code": "004",
+            "name": "BULARAFA, SECONDARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "CHILARI BANDILA, BANDILA GATE"
+          },
+          {
+            "code": "006",
+            "name": "KUKUWA, PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "SHISHIWAJI, PRI. SCH."
+          }
+        ]
+      },
+      "Bumsa": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BUMSA, BUMSA MARKET I"
+          },
+          {
+            "code": "002",
+            "name": "BUMSA, BUMSA MARKET II"
+          },
+          {
+            "code": "003",
+            "name": "BUMSA, SANI'S GATE"
+          },
+          {
+            "code": "004",
+            "name": "BUMSA, AUDU K. GATE"
+          },
+          {
+            "code": "005",
+            "name": "DAN KANCHI, DAN K. GATE"
+          },
+          {
+            "code": "006",
+            "name": "GAR GARI, PRI. SCH. I"
+          },
+          {
+            "code": "007",
+            "name": "GAR GARI, PRI. SCH. II"
+          },
+          {
+            "code": "008",
+            "name": "NGURUM .M.SAMBO, PRI. SCH. I"
+          },
+          {
+            "code": "009",
+            "name": "NGURUM .M.SAMBO, PRI. SCH. II"
+          },
+          {
+            "code": "010",
+            "name": "TELA BAIDU BUMSA, TELA B. GATE"
+          }
+        ]
+      },
+      "Dokshi": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DOSHI, PRI. SCH. / DOKSHI PRIMARY SCHOOL I"
+          },
+          {
+            "code": "002",
+            "name": "DOSHI, PRI. SCH. / DOKSHI PRIMARY SCHOOL II"
+          },
+          {
+            "code": "003",
+            "name": "DOKSHI MARKET"
+          },
+          {
+            "code": "004",
+            "name": "GARIN JAURO, JAURO ADAMU"
+          },
+          {
+            "code": "005",
+            "name": "MANN M. YAKUDI OPEN SPACE"
+          },
+          {
+            "code": "006",
+            "name": "ZANGO KALJIWA ZANGO MARKET"
+          },
+          {
+            "code": "007",
+            "name": "ZANGO KALJIWA M, IDI GATE"
+          }
+        ]
+      },
+      "Gabai": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BURSARI MAI UNG. GATE"
+          },
+          {
+            "code": "002",
+            "name": "CHANDAM MAINARI , PRI. SCH. I"
+          },
+          {
+            "code": "003",
+            "name": "CHANDAM MAINARI, PRI. SCH. II"
+          },
+          {
+            "code": "004",
+            "name": "GABAI MAINYIWA, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "KOJOLI BABBA DOKI , MUSA'S GATE"
+          },
+          {
+            "code": "006",
+            "name": "NAINALA KOLOFA WAMI GATE"
+          },
+          {
+            "code": "007",
+            "name": "NGUZOA, MANUWA MUSA GATE"
+          },
+          {
+            "code": "008",
+            "name": "SALLARE, AUDU G. GATE"
+          }
+        ]
+      },
+      "Gagure": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BADIGO/BADIGORO PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "DANTORO, DANTARO GATE"
+          },
+          {
+            "code": "003",
+            "name": "FISHIGO,FISHINGO TOWN"
+          },
+          {
+            "code": "004",
+            "name": "GAGURE, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "GARIN YAYA A. BAUCHI/IBRAHIM GATE"
+          },
+          {
+            "code": "006",
+            "name": "KOTUM B. SHUAIBU, SALE BODUKU GATE"
+          },
+          {
+            "code": "007",
+            "name": "YELWA GARBA ALARAMA I. GATE"
+          }
+        ]
+      },
+      "Garin Tuwo": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GARIN TUWO B. YAU, DAN KAKA GATE"
+          },
+          {
+            "code": "002",
+            "name": "GARIN TUWO B YA'U, M.HARUNA DAGORE"
+          },
+          {
+            "code": "003",
+            "name": "GARIN TUWO MALAYA, PRI. SCH. I"
+          },
+          {
+            "code": "004",
+            "name": "GARIN TUWO MALAYA, PRI. SCH. II"
+          },
+          {
+            "code": "005",
+            "name": "GARIN SARIKIN NOMA, .M. MOH'D GATE"
+          },
+          {
+            "code": "006",
+            "name": "JANNA M. UMARU, M. UMARU GATE"
+          },
+          {
+            "code": "007",
+            "name": "JAURO ADAMU, SARKIN NOMA GATE"
+          }
+        ]
+      },
+      "Gulani": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GULANI LAWANTI, VIEWING CENTRE I"
+          },
+          {
+            "code": "002",
+            "name": "GULANI LAWANTI, VIEWING CENTRE II"
+          },
+          {
+            "code": "003",
+            "name": "GULANI LAWANTI, OPPOSITE.VIEWING CENTRE"
+          },
+          {
+            "code": "004",
+            "name": "GULANI LAWANTI, ALH. KOLO GATE"
+          },
+          {
+            "code": "005",
+            "name": "GUALNI PRI. SCH. (GULANI (GULANI LAWANTI, GULANI LAWANTI)"
+          },
+          {
+            "code": "006",
+            "name": "GULANI LAWANTI, TSANGAYA"
+          }
+        ]
+      },
+      "Kushimaga": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AWALA FANTAMI, ALH. IBRAHIM GATE"
+          },
+          {
+            "code": "002",
+            "name": "GARIN M. GARBA , M.GARBA GATE"
+          },
+          {
+            "code": "003",
+            "name": "KUSHI MAGA MUSA GARBA GATE"
+          },
+          {
+            "code": "004",
+            "name": "KUPTO GANA, KUPTO GANA GATE"
+          },
+          {
+            "code": "005",
+            "name": "NGELZARMA, IBRAHIM TELA GATE"
+          }
+        ]
+      },
+      "Njibulwa": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BAKKI YAYUM,YAYUM B.B GATE"
+          },
+          {
+            "code": "002",
+            "name": "GALTIMARI,TELA ABDULKARIM GATE"
+          },
+          {
+            "code": "003",
+            "name": "GARIN ABDULLAHI OPEN SPACE"
+          },
+          {
+            "code": "004",
+            "name": "GWAYA DUNGU, MARKET GATE"
+          },
+          {
+            "code": "005",
+            "name": "MABANI M.B.KYARI, ALH SABO GATE"
+          },
+          {
+            "code": "006",
+            "name": "YARYEN M. GOJE, GOJE MARKET"
+          },
+          {
+            "code": "007",
+            "name": "NJIBULWA B, HASSAN.MARKET PLACE I"
+          },
+          {
+            "code": "008",
+            "name": "NJIBULWA B, HASSAN.MARKET PLACE II"
+          },
+          {
+            "code": "009",
+            "name": "NJIBULWA B, HASSAN PRI. SCH."
+          },
+          {
+            "code": "010",
+            "name": "YELLE IBRAHIIM Y.SALE OPEN SPACE"
+          },
+          {
+            "code": "011",
+            "name": "ZAMFARARI G. TELA HALWALIS GATE."
+          },
+          {
+            "code": "012",
+            "name": "ZAMFARARI BAGARDO, TELA HANNALI GATE"
+          }
+        ]
+      },
+      "Ruhu": {
+        "code": "12",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "CHOKA AMMANI, MUSA GATE"
+          },
+          {
+            "code": "002",
+            "name": "CHOKA DALHA, MAI JIRGI GATE"
+          },
+          {
+            "code": "003",
+            "name": "G.J TAMBAI CHOKA, CHOKA MARKET"
+          },
+          {
+            "code": "004",
+            "name": "RUHU, MAI UNG. GATE"
+          },
+          {
+            "code": "005",
+            "name": "RUHU , GARIN J.M PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "RUHU J. HALILU, TINAU GATE"
+          },
+          {
+            "code": "007",
+            "name": "RUHU J. HALILU, M.SAIDU GATE"
+          },
+          {
+            "code": "008",
+            "name": "RUHU KAKAT ALH., MAKERI GATE"
+          }
+        ]
+      }
+    }
+  },
+  "JAKUSKO": {
+    "code": "09",
+    "wards": {
+      "Buduwa / Saminaka": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BUDUWA PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "BUDUWA BORE HOLE , KOFAR LAWAN"
+          },
+          {
+            "code": "003",
+            "name": "DAGARAWA / G. BABAWURO DAGARAWA"
+          },
+          {
+            "code": "004",
+            "name": "FANE , RRIJIYA FANE"
+          },
+          {
+            "code": "005",
+            "name": "GURBANA K., PRI. SCH. (GURBANA K. BULAMA)"
+          },
+          {
+            "code": "006",
+            "name": "LAMINDO HARO , LAMIDO HARO"
+          },
+          {
+            "code": "007",
+            "name": "SAMINAKA, PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Dumbari": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ARIRI/ARIRI GUNKAI ARIRI PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "BAKIN RIJIYA/BIGARWA,LAMIDO BULAMA GATE"
+          },
+          {
+            "code": "003",
+            "name": "DADANDE, BAKIN RIJIYA"
+          },
+          {
+            "code": "004",
+            "name": "DUMBARI PRI. SCH. (DUMBARI BAKIN KASUWA)"
+          },
+          {
+            "code": "005",
+            "name": "GARIN BADUKU PRI. SCHOOL (GARIN BADUKU K. BULAMA)"
+          },
+          {
+            "code": "006",
+            "name": "GARIN BIYE, KOFAR BULAMA"
+          },
+          {
+            "code": "007",
+            "name": "GARIN ILU, GARIN ILU"
+          },
+          {
+            "code": "008",
+            "name": "G. MAGAJI G. ALHAJI KOFAR BULAMA"
+          },
+          {
+            "code": "009",
+            "name": "GASI/L.HARUNDE/G.JAURO GASI K. PRI. SCHOOL (GASHARUNDE K. BULAMA)"
+          },
+          {
+            "code": "010",
+            "name": "GUJARMA TUDUNIYA OPEN SPACE"
+          },
+          {
+            "code": "011",
+            "name": "GUMALAWA, GUMALAWA"
+          },
+          {
+            "code": "012",
+            "name": "KATANGANA, PRIMARY SCHOOL (KANTAGANA K. BULAMA)"
+          },
+          {
+            "code": "013",
+            "name": "KATANGANA, PRI. SCH."
+          },
+          {
+            "code": "014",
+            "name": "LAMIDO GARI, K. BULAMA"
+          },
+          {
+            "code": "015",
+            "name": "NDAKWAREL/GARIN GOJE PRI. SCH. (NDAKWAREL G. GOJE K.B)"
+          }
+        ]
+      },
+      "Gidgid / Bayam": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BAYAM, KOFAR LAWAN"
+          },
+          {
+            "code": "002",
+            "name": "BAYAM, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "DORO, KOFAR BULAMA"
+          },
+          {
+            "code": "004",
+            "name": "DODORI A., UMAR DODORI"
+          },
+          {
+            "code": "005",
+            "name": "GAMARI, PRI. SCH. (GAMARI K. BULAMA)"
+          },
+          {
+            "code": "006",
+            "name": "GAMBOJE ADAMU, RIJIYA ADAMU"
+          },
+          {
+            "code": "007",
+            "name": "GIRGIR BORE HOLE OPEN SPACE"
+          },
+          {
+            "code": "008",
+            "name": "GIRGIR V. CENTER (GIRGIR KOFAR LAWAN)"
+          },
+          {
+            "code": "009",
+            "name": "KORSO/GARIN BIRI.GARIN BIRI"
+          },
+          {
+            "code": "010",
+            "name": "LAFIYARI, PRI. SCH."
+          },
+          {
+            "code": "011",
+            "name": "LAMIDO MAIGARI KOLEWA/RIJIYA LAMIDO"
+          },
+          {
+            "code": "012",
+            "name": "MALAM DOGO KOFAR BULAMA"
+          },
+          {
+            "code": "013",
+            "name": "NGAJAJE, KOFAR BULAMA"
+          },
+          {
+            "code": "014",
+            "name": "LAMIDO MANU, KOFAR LAMIDO"
+          },
+          {
+            "code": "015",
+            "name": "YAURU, PRIMARY SCHOOL (YAURU KOFAR BULAMA)"
+          }
+        ]
+      },
+      "Gorgoram": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ADIYA, PRIMARY SCHOOL (ADIYA KOFAR BULAMA)"
+          },
+          {
+            "code": "002",
+            "name": "DAMASA, PRIMARY SCHOOL (DAMASA K. BULAMA)"
+          },
+          {
+            "code": "003",
+            "name": "GORGORAM , DISTRICT OFFICE"
+          },
+          {
+            "code": "004",
+            "name": "GWAYO, PRIMARY SCHOOL (GWAYO K. BULAMA)"
+          },
+          {
+            "code": "005",
+            "name": "GWAYA PRI SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "GUZUMBANA/KAJUMA, PRIMARY SCHOOL (GUZUMBANA K. BULAMA)"
+          },
+          {
+            "code": "007",
+            "name": "KURKUSHE, PRIMARY SCHOOL (KURKUSHE K. BULAMA)"
+          },
+          {
+            "code": "008",
+            "name": "KURKUSHE DISPENSARY"
+          },
+          {
+            "code": "009",
+            "name": "TASGA KOFAR LAWAN"
+          }
+        ]
+      },
+      "Jaba": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "JABA/GURE. HARUNDE JABA PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "JABA/GURE H. PRIMARY SCHOOL (JABA/GURE/H. K. BULAMA)"
+          },
+          {
+            "code": "003",
+            "name": "GARIN MAJI/ DAN TAKUNNE GARIN MAJI"
+          },
+          {
+            "code": "004",
+            "name": "GARIN M. JAJI/GUMUS KOFRA BULAMA"
+          },
+          {
+            "code": "005",
+            "name": "NGELSOME NGELSOME OPEN SPACE"
+          }
+        ]
+      },
+      "Jakusko": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DAKIDO, PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "JAKUSKO HEALTH CENTRE, HEALTH CENTRE"
+          },
+          {
+            "code": "003",
+            "name": "JAKUSKO HEALTH CENTRE, BORE HOLE"
+          },
+          {
+            "code": "004",
+            "name": "JAKUSKO, DISPENSARY"
+          },
+          {
+            "code": "005",
+            "name": "JAKUSKO, MAI UNG, DAN ATTA PRIMARY SCHOOL (UNGUWAN DAN ATTA)"
+          },
+          {
+            "code": "006",
+            "name": "JAKUSKO VIEWING CENTRE"
+          },
+          {
+            "code": "007",
+            "name": "MAI UNGUWA DANATA OPEN SPACE"
+          }
+        ]
+      },
+      "Jawur/Katamma": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AGANA, PRIMARY SCHOOL (AGANA K. LAWAN)"
+          },
+          {
+            "code": "002",
+            "name": "AGANA, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "ARFANE, PRI. SCHOOL (ARFANE K. BULAMA)"
+          },
+          {
+            "code": "004",
+            "name": "GAFALA/BULTURI. GAFALA PRI. SCH. (GAFALA/ BULTURI K. BULAMA)"
+          },
+          {
+            "code": "005",
+            "name": "GARIN MALAM / JALI'A, PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "GASAMU, BAKIN KASUWA"
+          },
+          {
+            "code": "007",
+            "name": "GUYIK, PRI. SCH. (GUYUK K. BULAMA)"
+          },
+          {
+            "code": "008",
+            "name": "JAWUR MALAIKA PRI SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "KAGAMU BAKIN KASUWA OPEN SPACE"
+          },
+          {
+            "code": "010",
+            "name": "LAMARBAGO PRI. SCH. (LAMARBAGO K. BULAMA)"
+          },
+          {
+            "code": "011",
+            "name": "GALADIMA MAI ZANGO KOFAR BULAMA"
+          },
+          {
+            "code": "012",
+            "name": "MAIZANGO/G.GALADIMA.MAIZANGO"
+          },
+          {
+            "code": "013",
+            "name": "NGINUFUMARI/KAJUWA NGINUFUMARI K.BULAMA"
+          },
+          {
+            "code": "014",
+            "name": "TAJUWA, PRI. SCH."
+          },
+          {
+            "code": "015",
+            "name": "TARJA, PRI. SCH. (TARJA K. BULAMA)"
+          }
+        ]
+      },
+      "Lafiya Loi-Loi": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GADA/AZADU PRI SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "GARIN GWANNA PRI. SCH. (GARIN GWANNA K. BULAMA)"
+          },
+          {
+            "code": "003",
+            "name": "GAMAJAN, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "GAMAJAN, BAKIN KASUWA"
+          },
+          {
+            "code": "005",
+            "name": "GARIN GANO/KUNJIM.GARI GANO"
+          },
+          {
+            "code": "006",
+            "name": "GAUYA, PRI. SCH. (GAUYA BAKIN RIJIYA)"
+          },
+          {
+            "code": "007",
+            "name": "JAMMEL KUBAU BAKIN RIJIYA"
+          },
+          {
+            "code": "008",
+            "name": "LAFIYA, BAKIN KASUWA"
+          },
+          {
+            "code": "009",
+            "name": "LAMIDO BARDE/L.HODI.BAKIN RIJIYA"
+          },
+          {
+            "code": "010",
+            "name": "LAMIDO KWALLE, BAKIN RIJIYA"
+          },
+          {
+            "code": "011",
+            "name": "MARCHA ARI, PRI. SCH. (MARCHA ARI K. BULAMA)"
+          },
+          {
+            "code": "012",
+            "name": "NGULGIYE, KOFAR LAMIDO"
+          }
+        ]
+      },
+      "Muguram": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DAGAYAK , DAGAYAK"
+          },
+          {
+            "code": "002",
+            "name": "GARIN TSALHA / MAMARE GARIN TSALHA"
+          },
+          {
+            "code": "003",
+            "name": "MUGURAM , PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "MUGURAM PRI. SCH. (MUGURAM K. MAIGARI)"
+          },
+          {
+            "code": "005",
+            "name": "MUGURAM WEST, BAKIN KASUWA"
+          },
+          {
+            "code": "006",
+            "name": "NASARI, NASARI"
+          }
+        ]
+      },
+      "Zabudum / Dachia": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMSHI PRI SCH. (AMSHI K. MAIGARI)"
+          },
+          {
+            "code": "002",
+            "name": "BUKARTI MARKET STORE"
+          },
+          {
+            "code": "003",
+            "name": "BUKARTI M. S. VIEWING CENTRE"
+          },
+          {
+            "code": "004",
+            "name": "GAWO LAWNABE KOFAR MAI GARI"
+          },
+          {
+            "code": "005",
+            "name": "DACHIA / DISPENSARY II"
+          },
+          {
+            "code": "006",
+            "name": "DAGILWA / KOFAR BULAMA"
+          },
+          {
+            "code": "007",
+            "name": "KARAGE / PRI. SCH. (KARAGE K. LAWAN)"
+          },
+          {
+            "code": "008",
+            "name": "KARAGE PRI SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "KUNU / PRI. SCH. (KUNU K. BULAMA)"
+          },
+          {
+            "code": "010",
+            "name": "KAZIR PRI. SCH. (KAZIR K. BULAMA)"
+          },
+          {
+            "code": "011",
+            "name": "YIN / PRIMARY SCHOOL"
+          },
+          {
+            "code": "012",
+            "name": "ZABUDUM / PRI. SCH (ZABUDUM K. LAWAN)"
+          }
+        ]
+      }
+    }
+  },
+  "KARASUWA": {
+    "code": "10",
+    "wards": {
+      "Bukarti": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BIRIDI, BIRIDI"
+          },
+          {
+            "code": "002",
+            "name": "BUKARTI, BUKARTI MARKET"
+          },
+          {
+            "code": "003",
+            "name": "BUKARTI, BUKARTI VIEWING CENTRE"
+          },
+          {
+            "code": "004",
+            "name": "GAWO LAWNABE, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "HUTUTU.HUTUTU , KOFAR MAIGARI"
+          },
+          {
+            "code": "006",
+            "name": "KARAU KAWU, KARAU KAWU"
+          },
+          {
+            "code": "007",
+            "name": "MAINA ARIDI, MAINA ARIDI"
+          },
+          {
+            "code": "008",
+            "name": "MALAM KUNU, PRI. SCH."
+          },
+          {
+            "code": "009",
+            "name": "TATUKORI, KOFAR MAIGARI"
+          },
+          {
+            "code": "010",
+            "name": "ZORO, KOFAR MAIGARI"
+          }
+        ]
+      },
+      "Fajiganari": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ASKINARI, ASKINARI KOFAR MAI GARI"
+          },
+          {
+            "code": "002",
+            "name": "DAGIRARI, KOFAR MAIGARI"
+          },
+          {
+            "code": "003",
+            "name": "FAJIGANARI PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "GARIN AMADU, KOFAR MAIGARI"
+          },
+          {
+            "code": "005",
+            "name": "GARIN GEDA, KOFAR MAIGARI"
+          },
+          {
+            "code": "006",
+            "name": "KILBUWA, KOFAR MAIGARI"
+          },
+          {
+            "code": "007",
+            "name": "MUNEMARI, KOFAR MAIGARI"
+          },
+          {
+            "code": "008",
+            "name": "TUTUKORI, MAIGARI ISA"
+          }
+        ]
+      },
+      "Garin Gawo": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ALHAJIRI, KOFAR MAIGARI"
+          },
+          {
+            "code": "002",
+            "name": "BUDDUM, KOFAR MAIGARI"
+          },
+          {
+            "code": "003",
+            "name": "CHULUMBUTA, KOFAR MAIGARI"
+          },
+          {
+            "code": "004",
+            "name": "GARIN GAWO, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "NGIBULWA, KOFAR MAIGARI"
+          },
+          {
+            "code": "006",
+            "name": "TASHAN KALGO, KOFAR MAIGARI"
+          }
+        ]
+      },
+      "Gasma": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GADAN DINYA, KOFAR MAIGARI"
+          },
+          {
+            "code": "002",
+            "name": "GARIN AMADU, KOFAR MAIGARI"
+          },
+          {
+            "code": "003",
+            "name": "GARIN HASSAN, KOFAR MAIGARI"
+          },
+          {
+            "code": "004",
+            "name": "GARIN MAINAU KOFAR MAI GARI"
+          },
+          {
+            "code": "005",
+            "name": "GASMA LAWANTI, KOFAR LAWAN"
+          },
+          {
+            "code": "006",
+            "name": "GASMA UNG.MUSA, KOFAR MAIUNG. MUSA"
+          },
+          {
+            "code": "007",
+            "name": "TABAWA, PRI SCH."
+          },
+          {
+            "code": "008",
+            "name": "TARCHARI, KOFAR MAIGARI"
+          },
+          {
+            "code": "009",
+            "name": "ZANGO, ZANGO KANWA OPEN SPACE"
+          }
+        ]
+      },
+      "Jaji Maji": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ANUGUWAR MARAMI, KOFAR MAI UNG."
+          },
+          {
+            "code": "002",
+            "name": "BULA KACHALLAM, DANDALI"
+          },
+          {
+            "code": "003",
+            "name": "CHAKAMA, KOFAR MAIUNGUWA"
+          },
+          {
+            "code": "004",
+            "name": "GARIN JIRMA, KOFAR MAIGARI"
+          },
+          {
+            "code": "005",
+            "name": "JAJI MAJI BULAMARI - KOFAR MAI ANGUWA"
+          },
+          {
+            "code": "006",
+            "name": "JAJI MAJI - PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "JAJERI, KOFAR MAIUNGUWA"
+          },
+          {
+            "code": "008",
+            "name": "MALLAIKA, KOFAR MAIUNGUWA"
+          },
+          {
+            "code": "009",
+            "name": "MAI LAURI, KOFAR MAIUNGUWA"
+          },
+          {
+            "code": "010",
+            "name": "NGILEDU, KOFAR MAIUNGUWA"
+          },
+          {
+            "code": "011",
+            "name": "NGIBUTUWA, KOFAR MAIUNGUWA"
+          },
+          {
+            "code": "012",
+            "name": "SHAFURA, ABASHA KOFAR UNGUWA"
+          },
+          {
+            "code": "013",
+            "name": "TSANGAYA, KOFAR MAI UNG."
+          }
+        ]
+      },
+      "Karasuwa Galu": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "CHUMBUSKO, KOFAR MAIGARI"
+          },
+          {
+            "code": "002",
+            "name": "DOGON DAJI, KOFAR MAIGARI"
+          },
+          {
+            "code": "003",
+            "name": "GARIN ATTA, KOFAR MAIGARI"
+          },
+          {
+            "code": "004",
+            "name": "GARIN MELLA KOFAR MAI GARI"
+          },
+          {
+            "code": "005",
+            "name": "GARIN GONI YAHAYA KOFAR MAI GARI"
+          },
+          {
+            "code": "006",
+            "name": "KARASUWA GALU, KOFAR KAWAN"
+          },
+          {
+            "code": "007",
+            "name": "KARASUWA GALU, PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "RUMFAR KARA, KOFA MAIGARI"
+          }
+        ]
+      },
+      "Karasuwa Garu Guna": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GARIN UMAR ABARIDI KOFAR MAI GARI"
+          },
+          {
+            "code": "002",
+            "name": "ALITI LAMIDO AUDU OPEN SPACE"
+          },
+          {
+            "code": "003",
+            "name": "BIRIDI, KOFAR MAIGARI"
+          },
+          {
+            "code": "004",
+            "name": "BOROGEL GARIN MAMMO K/MAI GARI"
+          },
+          {
+            "code": "005",
+            "name": "DALARI, KOFAR MAIGARI"
+          },
+          {
+            "code": "006",
+            "name": "FULATARI ABUJA, ABUJA KOFAR MAIGARI"
+          },
+          {
+            "code": "007",
+            "name": "FULATARI HARDO KABO, KOFAR MAI HARDO KABO"
+          },
+          {
+            "code": "008",
+            "name": "FULATARI G. MAMMADU, KOFAR MAMMADU"
+          },
+          {
+            "code": "009",
+            "name": "GARIN JARMA, LAWANTI"
+          },
+          {
+            "code": "010",
+            "name": "GARUN GUNA, KOFAR MAIGARI"
+          },
+          {
+            "code": "011",
+            "name": "GARIN ALH HASSAN KOFAR MAI GARI"
+          },
+          {
+            "code": "012",
+            "name": "HARDO D.O. KINNARIRAM OPEN SPACE"
+          },
+          {
+            "code": "013",
+            "name": "KARASUWA MAI KASUWA, PRI. SCH."
+          },
+          {
+            "code": "014",
+            "name": "KAFETOWA, BAKIN INJI."
+          },
+          {
+            "code": "015",
+            "name": "KAFETOWA, KOFAR MAIGARI"
+          },
+          {
+            "code": "016",
+            "name": "LAMIDO NGAINE"
+          },
+          {
+            "code": "017",
+            "name": "MADU GABARI, KOFAR MAIGARI"
+          },
+          {
+            "code": "018",
+            "name": "MAGARARI BUKKU KOFAR MAI GARI"
+          },
+          {
+            "code": "019",
+            "name": "MAMI RAM, KOFAR MAIGARI"
+          },
+          {
+            "code": "020",
+            "name": "MEMEJI SIMELDI OPEN SPACE"
+          },
+          {
+            "code": "021",
+            "name": "NGERERE, BAKIN KASUWA"
+          },
+          {
+            "code": "022",
+            "name": "TEKURI MASTAFARI OPEN SPACE"
+          }
+        ]
+      },
+      "Wachakal": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "WACHAKAL DALA, KOFAR MAIGARI"
+          },
+          {
+            "code": "002",
+            "name": "WACHAKAL DALA, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "WACHAKAL DALA, DISPENSARY"
+          }
+        ]
+      },
+      "Waro": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KARAU KAWU, KOFAR MAIGARI"
+          },
+          {
+            "code": "002",
+            "name": "LAMIDO HASSAN KOFAR MAI GARI"
+          },
+          {
+            "code": "003",
+            "name": "MAINARI KAFI KOFAR MAI GARI"
+          },
+          {
+            "code": "004",
+            "name": "WARO NGAMFATUWA KOFAR LAWAN"
+          },
+          {
+            "code": "005",
+            "name": "ZAUNARI, KOFAR MAIGARI"
+          }
+        ]
+      },
+      "Yajiri": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BALEWA DISPENSARY (BALLEWA, KOFAR MAIGARI)"
+          },
+          {
+            "code": "002",
+            "name": "BULA NGIBIYA, KOFAR MAIGARI"
+          },
+          {
+            "code": "003",
+            "name": "BULARAFI, KOFAR MAIGARI"
+          },
+          {
+            "code": "004",
+            "name": "DAMAMINI, KOFAR MAIGARI"
+          },
+          {
+            "code": "005",
+            "name": "GREMADI, KOFAR MAIGARI"
+          },
+          {
+            "code": "006",
+            "name": "ISARI KOFAR MAI GARI"
+          },
+          {
+            "code": "007",
+            "name": "JAJERI, PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "NOJARI, KOFAR MAIGARI"
+          }
+        ]
+      }
+    }
+  },
+  "MACHINA": {
+    "code": "11",
+    "wards": {
+      "Bogo": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BULLITI KOFAR MAI GARI"
+          },
+          {
+            "code": "002",
+            "name": "BOGO, PRI. SCH. II"
+          },
+          {
+            "code": "003",
+            "name": "BOGO KASUWA BOLE HORE"
+          },
+          {
+            "code": "004",
+            "name": "GARANDA GANA, BAKIN INJI"
+          },
+          {
+            "code": "005",
+            "name": "KARMASHE, BAKIN INGI"
+          },
+          {
+            "code": "006",
+            "name": "KUNSHINI, BAKIN INGI"
+          },
+          {
+            "code": "007",
+            "name": "FERNI GANA, BAKIN INGI"
+          }
+        ]
+      },
+      "Damai": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BULLITI, BULLITI"
+          },
+          {
+            "code": "002",
+            "name": "DAMAI, BAKIN KASUWA"
+          },
+          {
+            "code": "003",
+            "name": "DAMAI, PRI. SCH. (DAMAI BAKIN INJI)"
+          },
+          {
+            "code": "004",
+            "name": "MALAM ABARI.KURA, KOFAR UNGUWA"
+          },
+          {
+            "code": "005",
+            "name": "MAIJALAINI, KOFAR MAIJALALAINI"
+          },
+          {
+            "code": "006",
+            "name": "NA'ANTURU, KOFAR MAIGARI"
+          },
+          {
+            "code": "007",
+            "name": "RANNU KUKA, KOFAR MAIGARI"
+          }
+        ]
+      },
+      "Dole": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BURDU, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "BURDUMARAM , PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "DOLE MACHINA, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "DOLE MACHINA, BAKIN TASHI"
+          },
+          {
+            "code": "005",
+            "name": "KAGUMSUWA,PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "KASATCHI, RIJIYA I"
+          },
+          {
+            "code": "007",
+            "name": "KORTONI, RIJIYA II"
+          }
+        ]
+      },
+      "Falimaram": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ABARI ADAMBE"
+          },
+          {
+            "code": "002",
+            "name": "FALIMARAM, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "GARIN HARU PRI. SCH. (GARIN HARU K. MAIGARI)"
+          },
+          {
+            "code": "004",
+            "name": "KALGIDI, PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "KANDIRA, KOFAR BULAMA"
+          },
+          {
+            "code": "006",
+            "name": "MAI SIRDI - KOFAR BULAMA"
+          },
+          {
+            "code": "007",
+            "name": "SHEHURI, SHEHURI KURA OPEN SPACE"
+          }
+        ]
+      },
+      "Kom-Komma": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GARIN MALLAM NUHU, K/MAI GARI"
+          },
+          {
+            "code": "002",
+            "name": "GARIN MALLAM NUHU, KOFAR MAIUNGUWA"
+          },
+          {
+            "code": "003",
+            "name": "GOJOGORO, BAKIN RIJIYA"
+          },
+          {
+            "code": "004",
+            "name": "KOMKOMMA, KOFAR BULAMA"
+          },
+          {
+            "code": "005",
+            "name": "TAUNA / KOFAR MAI GARI"
+          },
+          {
+            "code": "006",
+            "name": "KUSOTOKO, KOFAR MAIGARI"
+          }
+        ]
+      },
+      "Kuka-Yasku": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "SHEHURI, SHEHURI KURA OPEN SPACE"
+          },
+          {
+            "code": "002",
+            "name": "GARIN ISA PRI. SCH. (GARIN ISA K. MAIGARI)"
+          },
+          {
+            "code": "003",
+            "name": "KUKA YASKU, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "KUKA YASKU, PRI. SCH. (KUKA YASKU KASUWA)"
+          },
+          {
+            "code": "005",
+            "name": "MAMMADA GARIN KAMBAR OPEN SPACE"
+          },
+          {
+            "code": "006",
+            "name": "MAJERI,MAJERI OPEN SPACE"
+          }
+        ]
+      },
+      "Lamisu": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GARANDA, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "GOGI BARMADI / JAJERI, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "KABARU,KABARU PRI SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "KABUDUWA, KOFAR MAIGARI"
+          },
+          {
+            "code": "005",
+            "name": "LAMISU, PRI. SCH. I"
+          },
+          {
+            "code": "006",
+            "name": "LAMISU, PRI. SCH. II"
+          }
+        ]
+      },
+      "Machina-Kwari": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "MACHINA KORI PRI SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "MACHINA KASUWA, BAKIN KASUWA"
+          },
+          {
+            "code": "003",
+            "name": "MACHINA KOFAR INJI, KOFAR INJI"
+          },
+          {
+            "code": "004",
+            "name": "MACHINA KASUWA, BAKIN KASUWA"
+          },
+          {
+            "code": "005",
+            "name": "MACHINA VIEWING CENTRE"
+          },
+          {
+            "code": "006",
+            "name": "MAFIDU KOFAR MAI GARI"
+          },
+          {
+            "code": "007",
+            "name": "MACHINA CENTRAL, PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "MACHINA TASHA, KOFAR TASHA"
+          }
+        ]
+      },
+      "Maskandare": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GHANA DUMJIYA, PRI. SCH. I"
+          },
+          {
+            "code": "002",
+            "name": "GHANA DUMJIYA, PRI. SCH. II"
+          },
+          {
+            "code": "003",
+            "name": "KANGARWA, BORE HORE"
+          },
+          {
+            "code": "004",
+            "name": "MASKANDARE, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "YALAUWA PRI SCHOOL"
+          }
+        ]
+      },
+      "Taganama": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "MALLAM GAMBO, KOFAR BULAMA"
+          },
+          {
+            "code": "002",
+            "name": "INJIBULWA KOFAR MAI GARI"
+          },
+          {
+            "code": "003",
+            "name": "TAGANAMA, TAGANAMA BORE HOLE"
+          },
+          {
+            "code": "004",
+            "name": "TAGANAMA, BAKIN TSHA"
+          },
+          {
+            "code": "005",
+            "name": "WURIWAJI BULAMA GATE 'I'"
+          },
+          {
+            "code": "006",
+            "name": "WURIWAJI BULAMA GATE 'II'"
+          }
+        ]
+      }
+    }
+  },
+  "NANGERE": {
+    "code": "12",
+    "wards": {
+      "Chilariye": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "CHILLARIYE, KOFAR MAI. ANG"
+          },
+          {
+            "code": "002",
+            "name": "CHILLARIYE, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "GARIN JADO, KOFAR MAIGARI"
+          },
+          {
+            "code": "004",
+            "name": "GARIN TOZO, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "GARIN KADUWA, KOFAR MAIGARI"
+          }
+        ]
+      },
+      "Dadiso / Chukuriwa": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AJIM, KOFAR MAIGARI"
+          },
+          {
+            "code": "002",
+            "name": "CHUKURIWA UNG BULAMA , KOFAR MAIGARI"
+          },
+          {
+            "code": "003",
+            "name": "CHUKURIWA UNG AUDU, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "CHUKURIWA TSANGAYA OPEN SPACE"
+          },
+          {
+            "code": "005",
+            "name": "CHUKURIWA, PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "DADISO I, KOFAR MAIGARI"
+          },
+          {
+            "code": "007",
+            "name": "DADISO II, KOFAR MAIGARI"
+          },
+          {
+            "code": "008",
+            "name": "G/ZANNA GOJE, PRI. SCH."
+          },
+          {
+            "code": "009",
+            "name": "GARIN ZANNA, KOFAR MAIGARI"
+          },
+          {
+            "code": "010",
+            "name": "GARIN KOLO, KOFAR MAIGARI"
+          },
+          {
+            "code": "011",
+            "name": "TARAJIM/G.D DISPENSARY"
+          },
+          {
+            "code": "012",
+            "name": "TARAJIM, KOFAR MAIGARI"
+          }
+        ]
+      },
+      "Dawasa/G.Baba": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BABBAN TSANGAYA I , BABBAN TSANGAYA"
+          },
+          {
+            "code": "002",
+            "name": "BABBAN TSANGAYA II , BABBAN TSANGAYA"
+          },
+          {
+            "code": "003",
+            "name": "DAWASA, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "DAWASA UNG. MOH'D, KOFAR MAIGARI'D"
+          },
+          {
+            "code": "005",
+            "name": "DEGUNDE, KOFAR MAIGARI"
+          },
+          {
+            "code": "006",
+            "name": "GARIN BABAH I, KOFAR MAIGARI"
+          },
+          {
+            "code": "007",
+            "name": "GARIN BABAH II, KOFAR MAIGARI"
+          },
+          {
+            "code": "008",
+            "name": "GARIN BABAH, KOFAR MAIGARI"
+          },
+          {
+            "code": "009",
+            "name": "KADAMA YAYU I, . KADAMA"
+          },
+          {
+            "code": "010",
+            "name": "KADAMA YAYU II, . KOFAR MAIGARI"
+          },
+          {
+            "code": "011",
+            "name": "KADAMA YAYU III,. KOFAR MAIGARI"
+          },
+          {
+            "code": "012",
+            "name": "KAMBIYA K., MAI UNG."
+          },
+          {
+            "code": "013",
+            "name": "KAMBIYA/WATINANI, KOFAR MAI UNGUWA"
+          },
+          {
+            "code": "014",
+            "name": "LANJIDO/G.ZANGO, KOFAR MAIGARI"
+          },
+          {
+            "code": "015",
+            "name": "UNGUWAR HARUNA, KOFAR MAIGARI"
+          },
+          {
+            "code": "016",
+            "name": "UNG. GAMBO, KOFAR MAIGARI"
+          },
+          {
+            "code": "017",
+            "name": "KUKURI UNGUWAN CHIROMA OPEN SPACE"
+          }
+        ]
+      },
+      "Dazigau": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "CHATTA/DAMBAM I , KOFAR MAIGARI"
+          },
+          {
+            "code": "002",
+            "name": "CHATTA/DAMBAM II, KOFAR MAIGARI"
+          },
+          {
+            "code": "003",
+            "name": "DAZIGAU I, PRI. SCH"
+          },
+          {
+            "code": "004",
+            "name": "DAZIGAU II, CLINIC"
+          },
+          {
+            "code": "005",
+            "name": "GARIN M. AUDU, KOFAR MAIGARI"
+          },
+          {
+            "code": "006",
+            "name": "GABARUN, KOFAR MAIGARI"
+          },
+          {
+            "code": "007",
+            "name": "KUKAR AWU I/II, KOFAR MAIGARI"
+          },
+          {
+            "code": "008",
+            "name": "LELEWARI, KOFAR MAIGARI"
+          },
+          {
+            "code": "009",
+            "name": "SABON LAYI I / II G.TOZO/S.LAYI"
+          },
+          {
+            "code": "010",
+            "name": "YARU, KOFAR MAIGARI"
+          }
+        ]
+      },
+      "Degubi": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "CHALLINO I, KOFAR MAIGARI"
+          },
+          {
+            "code": "002",
+            "name": "CHALLINO II, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "DEGUBI I, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "DEGUBI II, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "DEGUBI III, DISPENSARY"
+          },
+          {
+            "code": "006",
+            "name": "GABUR, KOFAR MAIGARI"
+          }
+        ]
+      },
+      "Kukuri/Chiromari": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ALHAJENI I, KOFAR MAIGARI"
+          },
+          {
+            "code": "002",
+            "name": "ALHAJERI II, KOFAR MAIGARI"
+          },
+          {
+            "code": "003",
+            "name": "BULTURI, KOFAR MAIGARI"
+          },
+          {
+            "code": "004",
+            "name": "CHIROMARI I, VET. CLINIC"
+          },
+          {
+            "code": "005",
+            "name": "CHIROMARI II, PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "GARIN KADAI I, KOFAR MAIGARI"
+          },
+          {
+            "code": "007",
+            "name": "GARIN KADAI II, KOFAR MAIGARI"
+          },
+          {
+            "code": "008",
+            "name": "GARIN ALHAJI, KOFAR MAIGARI"
+          },
+          {
+            "code": "009",
+            "name": "GWALA SABUWA, KOFAR MAIGARI"
+          },
+          {
+            "code": "010",
+            "name": "GARIN KARIYA, KOFAR MAIGARI"
+          },
+          {
+            "code": "011",
+            "name": "GARIN MUSA, KOFAR MAIGARI"
+          },
+          {
+            "code": "012",
+            "name": "HANA KASHI, KOFAR MAIGARI"
+          },
+          {
+            "code": "013",
+            "name": "KARAN KASUWA, KOFAR MAIGARI"
+          },
+          {
+            "code": "014",
+            "name": "KWALLIBORO, KOFAR MAIGARI"
+          },
+          {
+            "code": "015",
+            "name": "KUKURI UNG. CHIROMA, CLINIC"
+          },
+          {
+            "code": "016",
+            "name": "KUKURI UNG. CHIROMA, PRI. SCH. I"
+          },
+          {
+            "code": "017",
+            "name": "KUKURI UNG. CHIROMA, PRI. SCH. II"
+          },
+          {
+            "code": "018",
+            "name": "UNG. MAJI DADI, KOFAR MAIGARI"
+          },
+          {
+            "code": "019",
+            "name": "YEMEI / BETI, KOFAR MAIGARI"
+          }
+        ]
+      },
+      "Langawa / Darin": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DARIN SHIRA, KOFAR MAIGARI I"
+          },
+          {
+            "code": "002",
+            "name": "DARIN SHIRA, KOFAR MAIGARI II"
+          },
+          {
+            "code": "003",
+            "name": "DORAWA, KOFAR MAIGARI"
+          },
+          {
+            "code": "004",
+            "name": "DAGARE I,PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "DAGARE II, KOFAR MAIGARI"
+          },
+          {
+            "code": "006",
+            "name": "DORAWA / LANGAWA, KOFAR MAIGARI"
+          },
+          {
+            "code": "007",
+            "name": "FADAWA, PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "LANGAWA, KOFAR MAIGARI"
+          }
+        ]
+      },
+      "Nangere": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GARIN JATA, PRI. SCH. I"
+          },
+          {
+            "code": "002",
+            "name": "GARIN JATA, PRI. SCH. II"
+          },
+          {
+            "code": "003",
+            "name": "GAMARUN YERIMA,KOFAR MAIGARI"
+          },
+          {
+            "code": "004",
+            "name": "GAMARUN LAMIDO HASSAN, KOFAR MAIGARI"
+          },
+          {
+            "code": "005",
+            "name": "GARIN KUKU, KOFAR MAIGARI"
+          },
+          {
+            "code": "006",
+            "name": "GARIN DAURA, KOFAR MAIGARI"
+          },
+          {
+            "code": "007",
+            "name": "NANGERE. UNGUWAR SARKI, KUDU PRI. SCH. I"
+          },
+          {
+            "code": "008",
+            "name": "NANGERE. UNGUWAR SARKI KUDU, PRI. SCH. II"
+          },
+          {
+            "code": "009",
+            "name": "NANGERE BAKIN KASUWA, BAKIN KASUWA"
+          },
+          {
+            "code": "010",
+            "name": "NANGERE FULANI, KOFAR MAIGARI"
+          },
+          {
+            "code": "011",
+            "name": "SABON GARI, KOFAR MAIUNGUWA"
+          },
+          {
+            "code": "012",
+            "name": "SABON GARI, COURT"
+          },
+          {
+            "code": "013",
+            "name": "SABON GARI, BAKIN KASUWA"
+          },
+          {
+            "code": "014",
+            "name": "UNG. MAL GARBA, KOFAR MAI UNG."
+          },
+          {
+            "code": "015",
+            "name": "UNG. DAN DISA, KOFAR MAI UNG."
+          }
+        ]
+      },
+      "Pakarau Kare-Kare/ Pakarau Fulani": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ALHAJI ADAMU, KOFAR MAIGARI"
+          },
+          {
+            "code": "002",
+            "name": "BIRIRI I, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "KATSIRA PRI. SCH. (BORNO KICHI,. PRI. SCH.)"
+          },
+          {
+            "code": "004",
+            "name": "BIRIRI II, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "BORNO KICHI, KOFAR MAIGARI"
+          },
+          {
+            "code": "006",
+            "name": "BARWAWA, KOFAR MAIGARI"
+          },
+          {
+            "code": "007",
+            "name": "DUDDAYE , WAWA I / KOFAR MAIGARI"
+          },
+          {
+            "code": "008",
+            "name": "DUDDAYE , WAWA II KOFAR MAIGARI"
+          },
+          {
+            "code": "009",
+            "name": "DUDDAYE I, KOFAR MAIGARI"
+          },
+          {
+            "code": "010",
+            "name": "DUDDAYE II, KOFAR MAIGARI"
+          },
+          {
+            "code": "011",
+            "name": "DALLARI , KOFAR MAIGARI"
+          },
+          {
+            "code": "012",
+            "name": "GARIN MAMMAN TAR, KOFAR MAIGARI"
+          },
+          {
+            "code": "013",
+            "name": "GARIN GABAKAN , HARDO TONARI"
+          },
+          {
+            "code": "014",
+            "name": "GARIN SULE BABBA, KOFAR MAIGARI"
+          },
+          {
+            "code": "015",
+            "name": "GARIN MAKERA / OPEN SPACE"
+          },
+          {
+            "code": "016",
+            "name": "GARIN CHIROMA / PRI. SCH."
+          },
+          {
+            "code": "017",
+            "name": "KAGADAMA KUJAM / KOFAR MAI GARI"
+          },
+          {
+            "code": "018",
+            "name": "NGABAL / KOFAR MA GARI"
+          },
+          {
+            "code": "019",
+            "name": "PAKARAU TSOHO / KOFAR MAI GARI"
+          },
+          {
+            "code": "020",
+            "name": "SHAMBAWAL / G. FULANI / KOFAR MAI GARI"
+          }
+        ]
+      },
+      "Tikau": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BURAMAN, KOFAR MAIGARI"
+          },
+          {
+            "code": "002",
+            "name": "DAGAZIRWA I, KOFAR MAIGARI"
+          },
+          {
+            "code": "003",
+            "name": "DAGAZIRWA II , KOFAR MAIGARI"
+          },
+          {
+            "code": "004",
+            "name": "GARA GANYA I, K. K, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "GARA GANYA II, F., PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "JAKADE I,FULANI, KOFAR MAIGARI"
+          },
+          {
+            "code": "007",
+            "name": "JAKADE II ,K.K, KOFAR MAIGARI"
+          },
+          {
+            "code": "008",
+            "name": "KAEL, KOFAR MAIGARI I"
+          },
+          {
+            "code": "009",
+            "name": "KAEL, KOFAR MAIGARI II"
+          },
+          {
+            "code": "010",
+            "name": "SHEBUWA, PRI. SCH. I"
+          },
+          {
+            "code": "011",
+            "name": "SHEBUWA, PRI. SCH. II"
+          },
+          {
+            "code": "012",
+            "name": "TIKAU, PRI. SCH."
+          },
+          {
+            "code": "013",
+            "name": "TIKAU, KOFAR MAIGARI."
+          },
+          {
+            "code": "014",
+            "name": "TUDUN WADA, KOFAR MAIGARI"
+          },
+          {
+            "code": "015",
+            "name": "TIKAU/DAGARE/FULANI, KOFAR MAIGARI"
+          },
+          {
+            "code": "016",
+            "name": "ZAGA MET, KOFAR MAIGARI"
+          }
+        ]
+      },
+      "Watinani": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BARAN IYA, KOFAR MAIGARI"
+          },
+          {
+            "code": "002",
+            "name": "DADIN FULANI, KOFAR MAIGARI"
+          },
+          {
+            "code": "003",
+            "name": "DEBA.DEBA, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "GARIN GAMBO I / KOFAR MAIGARI"
+          },
+          {
+            "code": "005",
+            "name": "GARIN BAYE/DUGUM KOFAR MAI GARI"
+          },
+          {
+            "code": "006",
+            "name": "GAWA KUBBAI, KOFAR MAIGARI"
+          },
+          {
+            "code": "007",
+            "name": "KANUM, KOFAR MAIGARI"
+          },
+          {
+            "code": "008",
+            "name": "NZADA/GABAR KOFAR MAIGARI"
+          },
+          {
+            "code": "009",
+            "name": "WATNANI I., PRI. SCH."
+          },
+          {
+            "code": "010",
+            "name": "WATNANI II., PRI. SCH."
+          }
+        ]
+      }
+    }
+  },
+  "NGURU": {
+    "code": "13",
+    "wards": {
+      "Bulabulin": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ALH DOMO, KOFAR DOMO"
+          },
+          {
+            "code": "002",
+            "name": "YA'U MAI ATACE OPEN SPACE"
+          },
+          {
+            "code": "003",
+            "name": "ALI GAJI MAI PHOTO OPEN SPACE"
+          },
+          {
+            "code": "004",
+            "name": "GIDAN DAWAKI, VIEWING CENTRE"
+          },
+          {
+            "code": "005",
+            "name": "GORIBA KOFAR B.B.K"
+          },
+          {
+            "code": "006",
+            "name": "KOFAR BUKAR MAKANIKE, KOFAR BUKAR MAI MAKANIKE"
+          },
+          {
+            "code": "007",
+            "name": "KOFAR LAWAN GIRGIRI, KOFAR LAWAN GIRGIRI"
+          },
+          {
+            "code": "008",
+            "name": "NAJUME KOFAR NAJUME"
+          },
+          {
+            "code": "009",
+            "name": "KOFAR WAGANI, KOFAR WAGANI"
+          },
+          {
+            "code": "010",
+            "name": "KOFAR ZUBAIRU FARIN MASSALACI"
+          },
+          {
+            "code": "011",
+            "name": "YANCHIYAWA OPEN SPACE"
+          }
+        ]
+      },
+      "Bulanguwa": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BULANGAWA PRI SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "BULANGUWA, DISPENSARY"
+          },
+          {
+            "code": "003",
+            "name": "BILALLAM HAUSAWA KOFAR AKILU"
+          },
+          {
+            "code": "004",
+            "name": "BIZIZI/GOLLIKE.K.UMARU"
+          },
+          {
+            "code": "005",
+            "name": "GAMU/GOLGOLE.K. BULAMA"
+          },
+          {
+            "code": "006",
+            "name": "MALLAM BABA TOLA.K., MALLAM TATA"
+          },
+          {
+            "code": "007",
+            "name": "RIGAR LAMIDO BAIDAI.K., MALLAM TATA."
+          },
+          {
+            "code": "008",
+            "name": "WADAI BADEMA K. DUGUMA"
+          }
+        ]
+      },
+      "Dabule": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BAGAMARI, KOFAR MAIGARI"
+          },
+          {
+            "code": "002",
+            "name": "DABULE, KOFAR HABU"
+          },
+          {
+            "code": "003",
+            "name": "MALAWARI KOFAR BULAMA"
+          },
+          {
+            "code": "004",
+            "name": "MOJOGOLAM LAWANTI KOFAR LAWANTI"
+          },
+          {
+            "code": "005",
+            "name": "ZAJI RUWA, KOFAR MAIGARI"
+          }
+        ]
+      },
+      "Dumsai/Dogon-Kuka": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DUSMAI, PRI. SCH I"
+          },
+          {
+            "code": "002",
+            "name": "BOMBORI KOFAR MA'AJI"
+          },
+          {
+            "code": "003",
+            "name": "DABAR ALH GIWA GARBI G.R.A"
+          },
+          {
+            "code": "004",
+            "name": "KACALLARI RPIAMRY SCHOOL (KACHALLARI/BISARI)"
+          },
+          {
+            "code": "005",
+            "name": "YAMDUGU, YAMDUGO KOFAR BULAMA"
+          }
+        ]
+      },
+      "Garbi/Bambori": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BOMBORI, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "BOMBORI K. MAJI, KOFAR KACHALLA"
+          },
+          {
+            "code": "003",
+            "name": "DABAR ALHAJI GIWA, KOFAR ALHAJI USMAN"
+          },
+          {
+            "code": "004",
+            "name": "KUBLE KACHALLARI, KOFAR KACHALLA"
+          },
+          {
+            "code": "005",
+            "name": "NGARBI, VIEWING CENTRE"
+          },
+          {
+            "code": "006",
+            "name": "RAIL WAYS, RAIL WAY PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Hausari": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ABBA ASTIN, KOFAR ABBA ASTIN I"
+          },
+          {
+            "code": "002",
+            "name": "ABBA ASTIN - KOFAR ABBA ASTIN II"
+          },
+          {
+            "code": "003",
+            "name": "ABBA ASTIN \"II\" KOFAR GANI WARAI"
+          },
+          {
+            "code": "004",
+            "name": "ALI KEMI OPEN SPACE"
+          },
+          {
+            "code": "005",
+            "name": "DOGON BENE OPEN SPACE"
+          },
+          {
+            "code": "006",
+            "name": "GALADIMA CINEMA - GALADIMA CINEMA II"
+          },
+          {
+            "code": "007",
+            "name": "HAUSARI, PRI SCH. I"
+          },
+          {
+            "code": "008",
+            "name": "HAUSARI, PRI SCH. II"
+          },
+          {
+            "code": "009",
+            "name": "KOFAR DAN SOKOTO,KOFAR DAN SOKOTO"
+          },
+          {
+            "code": "010",
+            "name": "KOFAR LAWAN DOGO, KOFAR LAWAN DOGO"
+          },
+          {
+            "code": "011",
+            "name": "MAI UNGUWA MAINTA, KOFAR MAI ANUGUWA"
+          },
+          {
+            "code": "012",
+            "name": "SARKIN PAWA BAKO, KOFAR SARKIN PAWA BAKO"
+          },
+          {
+            "code": "013",
+            "name": "SARKIN YARA BAWA, KOFAR S. YARA BAWA"
+          },
+          {
+            "code": "014",
+            "name": "SHIWARI, PRI. SCH."
+          }
+        ]
+      },
+      "Kanuri": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BAGENA JAJUWA OPEN SPACE"
+          },
+          {
+            "code": "002",
+            "name": "CENTRAL PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "CENTRAL, PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "GONI YUSUF KOFAR GONI"
+          },
+          {
+            "code": "005",
+            "name": "KADAWA, PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "KOFAR HAJJA HADIZA, KOFAR HAJJA HADIZA KUJI"
+          },
+          {
+            "code": "007",
+            "name": "KOFAR MAI UMAR, KOFAR MAI UMAR"
+          },
+          {
+            "code": "008",
+            "name": "KUKA DA TSAMIYA"
+          }
+        ]
+      },
+      "Maja-Kura": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BIRNIN GURU OPEN SPACE"
+          },
+          {
+            "code": "002",
+            "name": "BOSSO, KOFAR M. MOHAMMED"
+          },
+          {
+            "code": "003",
+            "name": "BOSSO, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "GARENE, KOFAR M.GAJI"
+          },
+          {
+            "code": "005",
+            "name": "GARIN M. IBRAHIM, KOFAR M. IBRAHIM"
+          },
+          {
+            "code": "006",
+            "name": "HADARI, PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "KAKORI KOFAR MALAM KALLE"
+          },
+          {
+            "code": "008",
+            "name": "MAJA KURA PRI SCHOOL"
+          }
+        ]
+      },
+      "Mirba-Kabir/Mirba Sagir": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AFUNORI, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "DAGARARI KOFAR HASSAN MAHAUCI"
+          },
+          {
+            "code": "003",
+            "name": "DAGARARI, KOFAR HASSAN AMAUCHI"
+          },
+          {
+            "code": "004",
+            "name": "DUMAR MANGA, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "KURNAWA BARDE, KOFAR BARDE"
+          },
+          {
+            "code": "006",
+            "name": "KARAMBARE, KOFAR BABUKAR"
+          },
+          {
+            "code": "007",
+            "name": "ZOMANA KOFAR MAI GARI"
+          },
+          {
+            "code": "008",
+            "name": "MALAM BABA KOFAR MALAM BABA"
+          },
+          {
+            "code": "009",
+            "name": "MALAM BABU KOFAR MAGAJI"
+          },
+          {
+            "code": "010",
+            "name": "MAI DASHI K. BARDE, KOFAR BARDE"
+          },
+          {
+            "code": "011",
+            "name": "MIRBA KABIR, KOFAR WAKIL"
+          }
+        ]
+      },
+      "Nglaiwa": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ALGAZARU, KOFAR AL-GAZARU"
+          },
+          {
+            "code": "002",
+            "name": "DURIYAR KUKA OPEN SPACE"
+          },
+          {
+            "code": "003",
+            "name": "KOFAR LAWAN NGOMA, NGLAIWA PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "KOFAR LIMAN JUMA'A, KOFAR LIMAN JUMA'A"
+          },
+          {
+            "code": "005",
+            "name": "KOFAR KHALIFA, KOFAR KHALIFA"
+          },
+          {
+            "code": "006",
+            "name": "AHMADU KOFAR MAI UNGUWA AHMADU"
+          },
+          {
+            "code": "007",
+            "name": "ANGUWA BUDA KOFAR MAI ANGUWA BADU"
+          },
+          {
+            "code": "008",
+            "name": "MAI UNG. BUDU , KOFAR MAI UNG. BUDA"
+          },
+          {
+            "code": "009",
+            "name": "MODO MAI GINI KOFAR MODO MAI GINI"
+          },
+          {
+            "code": "010",
+            "name": "MAI UNG. KARAM, KOFAR MAI UNG. KARAM"
+          },
+          {
+            "code": "011",
+            "name": "SABON GARIN KANURI, SABON GARIN KANURI PRIMARY SCHOOL"
+          },
+          {
+            "code": "012",
+            "name": "SANI BORNO, KOFAR SANI BORNO"
+          }
+        ]
+      }
+    }
+  },
+  "POTISKUM": {
+    "code": "14",
+    "wards": {
+      "Bare-Bare/Bauya/Lalai Dumbulwa": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BULAMA B. DALHU KOFAR BULAMA"
+          },
+          {
+            "code": "002",
+            "name": "BUNDURI OPEN SPACE"
+          },
+          {
+            "code": "003",
+            "name": "CHADI, CHADI PRI. SCH"
+          },
+          {
+            "code": "004",
+            "name": "DUMBULWA, KOFAR BULAMA"
+          },
+          {
+            "code": "005",
+            "name": "F.G.G.C, SCH. GATE"
+          },
+          {
+            "code": "006",
+            "name": "GARIN MAINA, KOFAR BULAMA"
+          },
+          {
+            "code": "007",
+            "name": "JIGAWA OPEN SPACE"
+          },
+          {
+            "code": "008",
+            "name": "KANTIN WAJE OPEN SPACE"
+          },
+          {
+            "code": "009",
+            "name": "KILA KWATA OPEN SPACE"
+          },
+          {
+            "code": "010",
+            "name": "LAILAI, LAILAI PRI. SCH."
+          },
+          {
+            "code": "011",
+            "name": "LAMBA SULE, KOFAR LAMBA"
+          },
+          {
+            "code": "012",
+            "name": "MAI BAUYA KOFAR BULAMA"
+          },
+          {
+            "code": "013",
+            "name": "MAKABARTA KOFAR MAI UNGUWA"
+          },
+          {
+            "code": "014",
+            "name": "M.IYAM, KOFAR M. IYAM"
+          },
+          {
+            "code": "015",
+            "name": "MASAKA OPEN SPACE"
+          },
+          {
+            "code": "016",
+            "name": "MAZAGAM, MAZAGAM PRI. SCH."
+          },
+          {
+            "code": "017",
+            "name": "NAHUTA, NAHUTA PRI. SCH."
+          },
+          {
+            "code": "018",
+            "name": "PRISON, NIGERIA PRISON"
+          },
+          {
+            "code": "019",
+            "name": "REST HOUSE, RECEPTION"
+          },
+          {
+            "code": "020",
+            "name": "SARKIN DILALAI, S.DILALAI"
+          },
+          {
+            "code": "021",
+            "name": "TSANGAYA OPEN SPACE"
+          },
+          {
+            "code": "022",
+            "name": "UNGUWAR AREWA, UNG. AREWA"
+          },
+          {
+            "code": "023",
+            "name": "UNGUWAR MAKAFI - UNG. MAKAFI I"
+          },
+          {
+            "code": "024",
+            "name": "UNGUWAR MAKAFI - UNG. MAKAFI II"
+          },
+          {
+            "code": "025",
+            "name": "YUSUF KAFINTA OPEN SPACE"
+          }
+        ]
+      },
+      "Bolewa 'A'": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "YALAMOI / AMADI, KOFAR AMADI"
+          },
+          {
+            "code": "002",
+            "name": "CHIROMA KAFINTA, KOFAR CHIROMA"
+          },
+          {
+            "code": "003",
+            "name": "GINDIN RIMI, GINDIN RIMI"
+          },
+          {
+            "code": "004",
+            "name": "GUMSA KURE OPEN SPACE"
+          },
+          {
+            "code": "005",
+            "name": "KARA, PRI. SCH. I"
+          },
+          {
+            "code": "006",
+            "name": "KARA, PRI. SCH. II"
+          },
+          {
+            "code": "007",
+            "name": "KOFAR SARKI, PERMANENT STAND"
+          },
+          {
+            "code": "008",
+            "name": "LAMBA BABAFI, KOFAR LAMBA"
+          },
+          {
+            "code": "009",
+            "name": "AREA COURT II (MASALLACIN JUMMA'A)"
+          },
+          {
+            "code": "010",
+            "name": "M. MOH'D BOMOI LINE, MOH'D BOMOI"
+          },
+          {
+            "code": "011",
+            "name": "NEPA TRANSFORMER"
+          },
+          {
+            "code": "012",
+            "name": "SABON GARI, PRI. SCH."
+          },
+          {
+            "code": "013",
+            "name": "TELA BABURO, KOFAR TELA"
+          },
+          {
+            "code": "014",
+            "name": "UNGUWAR LEBURA, UNG.LEBURA"
+          },
+          {
+            "code": "015",
+            "name": "UNGUWAR ALKALI, KOFAR ALIKALI I"
+          },
+          {
+            "code": "016",
+            "name": "UNGUWAR ALKALI, KOFAR ALIKALI II"
+          }
+        ]
+      },
+      "Bolewa 'B'": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BAYI MOI OPEN SPACE"
+          },
+          {
+            "code": "002",
+            "name": "BULAMA ARI, KOFAR BULAMA"
+          },
+          {
+            "code": "003",
+            "name": "DAHIRU LANZAI, KOFAR DAHIRU LANZAI"
+          },
+          {
+            "code": "004",
+            "name": "DOGO ZARE OPEN SPACE"
+          },
+          {
+            "code": "005",
+            "name": "JANKWANO OPEN SPACE"
+          },
+          {
+            "code": "006",
+            "name": "KASUWAN N.P.N, KASUWAN N.P.N"
+          },
+          {
+            "code": "007",
+            "name": "KOFAR ISA JAJERE, KOFAR ISA JAJERE"
+          },
+          {
+            "code": "008",
+            "name": "KWATA, KWATA PRI. SCH. I"
+          },
+          {
+            "code": "009",
+            "name": "KWATA, KWATA PRI. SCH. II"
+          },
+          {
+            "code": "010",
+            "name": "LOW COST, GIDIN GAWO"
+          },
+          {
+            "code": "011",
+            "name": "SABON LAYI, PRI. SCH. I"
+          },
+          {
+            "code": "012",
+            "name": "SABON LAYI, PRI. SCH. II"
+          },
+          {
+            "code": "013",
+            "name": "TASHAR LAMBA SABO, KOFAR LAMBA"
+          },
+          {
+            "code": "014",
+            "name": "TASHAR MAI. KAJI, KOFAR MAI KAJI"
+          },
+          {
+            "code": "015",
+            "name": "T.JUNCTION, T.JUNCTION I"
+          },
+          {
+            "code": "016",
+            "name": "T.JUNCTION, T.JUNCTION II"
+          },
+          {
+            "code": "017",
+            "name": "TELA BAMADO, KOFAR BAMADO"
+          },
+          {
+            "code": "018",
+            "name": "ZANGO ALHAZAI, ZANGO"
+          }
+        ]
+      },
+      "Danchuwa/Bula": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DANCHUWA PRI. SCH. I (BUBARAM BATABA, KOFAR BULAMA I)"
+          },
+          {
+            "code": "002",
+            "name": "DANCHUWA PRI. SCH. II (BUBARAM BATABA, KOFAR BULAMA II)"
+          },
+          {
+            "code": "003",
+            "name": "BUBARAM GAKOKU, PRI. SCH. I"
+          },
+          {
+            "code": "004",
+            "name": "BUBARAM GAKOKU, PRI. SCH. II"
+          },
+          {
+            "code": "005",
+            "name": "DANCHUWA, DISPENSARY"
+          },
+          {
+            "code": "006",
+            "name": "DANCHUWA PRI. SCH. III (DANCHUWA.K. LAMBA, KOFAR LAMBA)"
+          },
+          {
+            "code": "007",
+            "name": "DUKUNDE PRIMARY SCHOOL (DUKUNDE, KOFAR BULAMA)"
+          },
+          {
+            "code": "008",
+            "name": "GARIN ABBA.A., PRI. SCH."
+          },
+          {
+            "code": "009",
+            "name": "GARIN ABBA, DISPENSARY"
+          },
+          {
+            "code": "010",
+            "name": "GARIN BAH, KOFAR BULAMA I"
+          },
+          {
+            "code": "011",
+            "name": "GARIN BAH, KOFAR BULAMA II"
+          },
+          {
+            "code": "012",
+            "name": "GARIN MAKWAI, PRI. SCH."
+          },
+          {
+            "code": "013",
+            "name": "GARIN MAKWAI PRI. SCH. (GARIN MAKWAI S. NOMA, KOFAR MAIGARI)"
+          },
+          {
+            "code": "014",
+            "name": "GAMAWA, PRI. SCH."
+          },
+          {
+            "code": "015",
+            "name": "GARIN CHICHI, KOFAR BULAMA"
+          },
+          {
+            "code": "016",
+            "name": "JUMMA'A, PRI. SCH."
+          },
+          {
+            "code": "017",
+            "name": "JUMMA’A, PRIMARY SCHOOL (JUMMA'A., KOFAR BULAMA I)"
+          },
+          {
+            "code": "018",
+            "name": "JUMMA’A, PRIMARY SCHOOL (JUMMA'A., KOFAR BULAMA II)"
+          },
+          {
+            "code": "019",
+            "name": "TELA YAHAYA, KOFAR TELA YAHAYA"
+          },
+          {
+            "code": "020",
+            "name": "UNGUWAR GALADIMA, KOFAR GALADIMA"
+          },
+          {
+            "code": "021",
+            "name": "UNGUWAR WAKILI, KOFAR WAKILI"
+          },
+          {
+            "code": "022",
+            "name": "UNGUWAR YERIMA, KOFAR YARIMA"
+          },
+          {
+            "code": "023",
+            "name": "YABEL, KOFAR BULAMA"
+          }
+        ]
+      },
+      "Dogo Nini": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AREWA DA KASUWA, KOFAR HASSAN"
+          },
+          {
+            "code": "002",
+            "name": "ARI KIME .A., PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "ARI KEMI A.A. KOFAR DOGO MAI KEMI"
+          },
+          {
+            "code": "004",
+            "name": "ARI KIME A.A., KOFAR ABARE"
+          },
+          {
+            "code": "005",
+            "name": "AREWA DA KASUWA 'B', AREWA DA KASUWA"
+          },
+          {
+            "code": "006",
+            "name": "DABO STADIUM, STADIUM GATE I"
+          },
+          {
+            "code": "007",
+            "name": "DABO STADIUM, STADIUM GATE II"
+          },
+          {
+            "code": "008",
+            "name": "DABO STADIUM, MATERNITY CLINIC"
+          },
+          {
+            "code": "009",
+            "name": "DAUDA 'A', KOFAR DAUDA"
+          },
+          {
+            "code": "010",
+            "name": "DAUDA 'B', KOFAR DAUDA"
+          },
+          {
+            "code": "011",
+            "name": "DOGO MISSION, KOFAR DOGO MISSION"
+          },
+          {
+            "code": "012",
+            "name": "DOROWA, DOROWA TSAMIYA"
+          },
+          {
+            "code": "013",
+            "name": "F.C.E TECHNICAL"
+          },
+          {
+            "code": "014",
+            "name": "GABAR DA KASUWA, GABAR DA KASUWA"
+          },
+          {
+            "code": "015",
+            "name": "YA'U TUDUN WADA, KOFAR YA'U"
+          },
+          {
+            "code": "016",
+            "name": "YINDISKI \"A\" KOFAR LAMBA"
+          },
+          {
+            "code": "017",
+            "name": "YINDISKI \"B\" KOFAR LAMBA"
+          }
+        ]
+      },
+      "Dogo Tebo": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BALARABE, KOFAR BALARABE I"
+          },
+          {
+            "code": "002",
+            "name": "BALARABE, KOFAR BALARABE II"
+          },
+          {
+            "code": "003",
+            "name": "DAMBOA, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "HAMMAWA, KOFAR HAMMAWA"
+          },
+          {
+            "code": "005",
+            "name": "LAMBA DOGO, KOFAR LAMBA"
+          },
+          {
+            "code": "006",
+            "name": "MAKERA KASUWA OPEN SPACE"
+          },
+          {
+            "code": "007",
+            "name": "MAI UNG MANU I.KOFAR ISA DAYA"
+          },
+          {
+            "code": "008",
+            "name": "MAI UNG MANU \"II\" KOFAR MAI UNGUWA"
+          },
+          {
+            "code": "009",
+            "name": "M.INUWA, KOFAR M.INUWA"
+          },
+          {
+            "code": "010",
+            "name": "M.SHAIBU, KOFAR SHAIBU"
+          },
+          {
+            "code": "011",
+            "name": "SHERIF AJI, KOFAR SHERIF AJI"
+          }
+        ]
+      },
+      "Hausawa": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ABBAS SHEHU, KOFAR ABBAS SHEHU"
+          },
+          {
+            "code": "002",
+            "name": "DAN BERA, KOFAR DAN BERA"
+          },
+          {
+            "code": "003",
+            "name": "DOROWA, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "HOSPITAL, HOSPITAL GATE"
+          },
+          {
+            "code": "005",
+            "name": "IDI BABA, KOFAR IDIN BABA"
+          },
+          {
+            "code": "006",
+            "name": "IDI SALEH, KOFAR SALEH"
+          },
+          {
+            "code": "007",
+            "name": "MAKERA, MAKERA CINEMA"
+          },
+          {
+            "code": "008",
+            "name": "MADAGALI KOFAR LAMBA MADAGALI"
+          },
+          {
+            "code": "009",
+            "name": "SHEIK SAIDU, KOFAR SHEIK SAIDU"
+          },
+          {
+            "code": "010",
+            "name": "TSOHUWAR KASUWA, TSOHUWAR KASUWA"
+          },
+          {
+            "code": "011",
+            "name": "WALABIYA KOFAR LAMBA WALABIYA"
+          },
+          {
+            "code": "012",
+            "name": "WANZAM, KOFAR WANZAM"
+          }
+        ]
+      },
+      "Mamudo": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ADAYA, PRIMARY SCHOOL (ADAYA K / KOFAR BULAMA)"
+          },
+          {
+            "code": "002",
+            "name": "GARIN BINGEL, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "GARIN MAJE, PRI. SCH. I"
+          },
+          {
+            "code": "004",
+            "name": "GARIN MAJE, PRI. SCH. II"
+          },
+          {
+            "code": "005",
+            "name": "GUMBAK KUDU, KOFAR BULAMA"
+          },
+          {
+            "code": "006",
+            "name": "MAMUDO DISPENSARY, DISPENSARY"
+          },
+          {
+            "code": "007",
+            "name": "MAMUDO, PRI. SCH. I"
+          },
+          {
+            "code": "008",
+            "name": "MAMUDO, PRI. SCH. II"
+          },
+          {
+            "code": "009",
+            "name": "MAMUDO, PRI. SCH. III"
+          },
+          {
+            "code": "010",
+            "name": "ZAGAM, KOFAR BULAMA"
+          }
+        ]
+      },
+      "Ngojin/Alaraba": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ALARABA I PRIMARY SCHOOL (ALARABA I, KOFAR LAMBA)"
+          },
+          {
+            "code": "002",
+            "name": "ALARABA II, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "ARJALI, KOFAR BULAMA"
+          },
+          {
+            "code": "004",
+            "name": "BADEJO, PRIMARY SCHOOL (BADEJO, KOFAR BULAMA)"
+          },
+          {
+            "code": "005",
+            "name": "DAKASKU I, DISPENSARY"
+          },
+          {
+            "code": "006",
+            "name": "DAKASKU II, PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "FARAFARA, PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "GANDA - FURA, KOFAR BULAMA"
+          },
+          {
+            "code": "009",
+            "name": "KAKA BIJIK, KOFAR BULAMA"
+          },
+          {
+            "code": "010",
+            "name": "LAMFADE, PRIMARY SCHOOL (LAMFADE, KOFAR BULAMA)"
+          },
+          {
+            "code": "011",
+            "name": "LOKOYA, KOFAR BULAMA"
+          },
+          {
+            "code": "012",
+            "name": "MAI JARMA, PRI. SCH."
+          },
+          {
+            "code": "013",
+            "name": "NGOJIN, PRI. SCH"
+          },
+          {
+            "code": "014",
+            "name": "TEDUWA, KOFAR BULAMA"
+          }
+        ]
+      },
+      "Yerimaram/Garin Daye/Badejo/Nahuta": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ARMY BARRACK, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "BADEJO, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "GARIN DAYE, PRIMARY SCHOOL (GARIN GAYE, KOFAR BULAMA)"
+          },
+          {
+            "code": "004",
+            "name": "MAI ADIKO DISPENSARY (GISHUWA DABUWA, KOFAR BULAMA)"
+          },
+          {
+            "code": "005",
+            "name": "G.G.S.S POTISKUM"
+          },
+          {
+            "code": "006",
+            "name": "NASARAWA, KOFAR BULAMA"
+          },
+          {
+            "code": "007",
+            "name": "SOCOL, KOFAR KORI"
+          },
+          {
+            "code": "008",
+            "name": "TEXACO, KOFAR BULAMA"
+          },
+          {
+            "code": "009",
+            "name": "TIKE I,TIKEN SHANU"
+          },
+          {
+            "code": "010",
+            "name": "TIKE \"A\" KOFAR MAI UNGUWA"
+          },
+          {
+            "code": "011",
+            "name": "YERIMARAM KOFAR BULAMA"
+          }
+        ]
+      }
+    }
+  },
+  "TARMUWA": {
+    "code": "15",
+    "wards": {
+      "Babangida": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ANDRASHI OPEN SPACE"
+          },
+          {
+            "code": "002",
+            "name": "BABBANGIDA I, BABBANGIDA PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "BABBANGIDA II, BABBANGIDA PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "BABBANGIDA, DISPENSARY"
+          },
+          {
+            "code": "005",
+            "name": "BABBANGIDA F.S.P, F.S.P. OFFICE I"
+          },
+          {
+            "code": "006",
+            "name": "BABBANGIDA F.S.P, F.S.P. OFFICE II"
+          },
+          {
+            "code": "007",
+            "name": "BABBANGIDA VIEWING CENTRE, VIEWING CENTRE I"
+          },
+          {
+            "code": "008",
+            "name": "BABBANGIDA VIEWING CENTRE, VIEWING CENTRE II"
+          },
+          {
+            "code": "009",
+            "name": "DAMEWA OPEN SPACE"
+          },
+          {
+            "code": "010",
+            "name": "NAMEGILAM OPEN SPACE"
+          }
+        ]
+      },
+      "Barkami / Bulturi": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BARKAMI PRI. SCH. (BARKAMI, BARKAMI KOFAR LAWAN)"
+          },
+          {
+            "code": "002",
+            "name": "GODURAM PRI. SCH. (GODURAM I ., GODURAM LAWANTI)"
+          },
+          {
+            "code": "003",
+            "name": "GODURAM II ., GODURAM DISPENSARY"
+          },
+          {
+            "code": "004",
+            "name": "SHUWARI LAWANTI OPEN SPACE"
+          },
+          {
+            "code": "005",
+            "name": "ZARAMIRI LAWANTI OPEN SPACE"
+          }
+        ]
+      },
+      "Biriri/Churokusko": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BIRIRI PRI. SCH. I (BIRIRI KOFAR WAZIRI \"I\")"
+          },
+          {
+            "code": "002",
+            "name": "BIRIRI, PRI. SCH. II"
+          },
+          {
+            "code": "003",
+            "name": "CHUROKUSKO I, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "CHUROKUSKO II, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "GARAJI, GARAJI KOFAR BULUMA"
+          },
+          {
+            "code": "006",
+            "name": "TASHAN FULAI, TASHAN FULANI"
+          }
+        ]
+      },
+      "Jumbam": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "JUMBAM I, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "JUMBAM VIEWING CENTRE (JUMBAM SARKIN PAWA)"
+          },
+          {
+            "code": "003",
+            "name": "JUMBAM MATERNITY"
+          },
+          {
+            "code": "004",
+            "name": "KOROSORI, KOROSORI OPEN SPACE"
+          },
+          {
+            "code": "005",
+            "name": "MATTARI, PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "MELERI, KASUWA"
+          }
+        ]
+      },
+      "Koka/Sungul": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOKA PRI. SCH. (KOKA, KOKA OPEN SPACE)"
+          },
+          {
+            "code": "002",
+            "name": "MALUM MUSARI OPEN SPACE"
+          },
+          {
+            "code": "003",
+            "name": "MALUM MUSARI OPEN SPACE SUNGUL PRI. SCH. (SUNGUL OPEN SPACE)"
+          },
+          {
+            "code": "004",
+            "name": "YAGA OPEN SPACE"
+          }
+        ]
+      },
+      "Koriyel": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GARGA, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "KAILO OPEN SPACE"
+          },
+          {
+            "code": "003",
+            "name": "KORIYEL I., PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "KORIYEL II., PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "NGABOBI OPEN SPACE"
+          },
+          {
+            "code": "006",
+            "name": "YANGEBERI OPEN SPACE"
+          }
+        ]
+      },
+      "Lantaiwa": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KARIYARI PRI SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "LANTEWA PRI SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "SIMINTIYA OPEN SPACE"
+          }
+        ]
+      },
+      "Mafa": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOLORI OPEN SPACE"
+          },
+          {
+            "code": "002",
+            "name": "KORI KOMAWA OPEN SPACE"
+          },
+          {
+            "code": "003",
+            "name": "MAFA I., PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "MAFA II., PRI. SCH."
+          }
+        ]
+      },
+      "Mandadawa": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DANDALI, ASKWARI OPEN SPACE"
+          },
+          {
+            "code": "002",
+            "name": "KOLIGOTEL, OPEN SPACE"
+          },
+          {
+            "code": "003",
+            "name": "KOROMARI V/CENTRE (KOROMARI BULIN, OPEN SPACE)"
+          },
+          {
+            "code": "004",
+            "name": "MADA'ADA PRI SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "MADA'ADA PRI SCHOOL \"II\""
+          }
+        ]
+      },
+      "Shekau": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KIJI NGUDUWA OPEN SPACE"
+          },
+          {
+            "code": "002",
+            "name": "SHEKAU I, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "SHEKAU PRI SCHOOL"
+          }
+        ]
+      }
+    }
+  },
+  "YUNUSARI": {
+    "code": "16",
+    "wards": {
+      "Bultuwa/Mar/Yaro": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BULTUWA PRI. SCH. (BULTUWA DANDALI)"
+          },
+          {
+            "code": "002",
+            "name": "GARIN GADA, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "GREMARI MARTE, DANDALI"
+          },
+          {
+            "code": "004",
+            "name": "LURAM,. DANDALI"
+          },
+          {
+            "code": "005",
+            "name": "MASHIO, DANDALI"
+          },
+          {
+            "code": "006",
+            "name": "YARO LAWANTI, PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "ZAYE, DANDALI"
+          }
+        ]
+      },
+      "Daratoshia": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ABBA KIMERI, DANDALI"
+          },
+          {
+            "code": "002",
+            "name": "DAGALAM, DANDALI"
+          },
+          {
+            "code": "003",
+            "name": "DARA PRI SCH. (DARA, DANDALI)"
+          },
+          {
+            "code": "004",
+            "name": "GADAURI, DANDALI"
+          },
+          {
+            "code": "005",
+            "name": "GONI AHMADU, DANDALI"
+          },
+          {
+            "code": "006",
+            "name": "KILBU KIME PRI. SCH. (KILBU KIME, DANDALI)"
+          },
+          {
+            "code": "007",
+            "name": "TOSHIA, PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "WANGANGA, DANDALI"
+          },
+          {
+            "code": "009",
+            "name": "TOSHIA, DANDALI"
+          }
+        ]
+      },
+      "Degaltura/Ngamzai": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BIRNIN CHIROMA, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "BIRNIN KOLORI, DANDALI"
+          },
+          {
+            "code": "003",
+            "name": "BUHARI, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "BULA BULIN, PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "DEGELTURA LAWANTI, PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "GREMARI, DANDALI"
+          },
+          {
+            "code": "007",
+            "name": "KADAURI, DANDALI"
+          },
+          {
+            "code": "008",
+            "name": "LAMBURE, DANDALI"
+          },
+          {
+            "code": "009",
+            "name": "MALA ABDURI, DANDALI"
+          },
+          {
+            "code": "010",
+            "name": "NGAMZAI LAWANTI, PRI. SCH."
+          }
+        ]
+      },
+      "Dekwa": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BULANGUNWARI, PRI SCH. (BULANGUNWARI, DANDALI)"
+          },
+          {
+            "code": "002",
+            "name": "DEKWA, PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "GULURI MALANTI, DANDALI"
+          },
+          {
+            "code": "004",
+            "name": "KAFETOWA, DANDALI"
+          },
+          {
+            "code": "005",
+            "name": "MAINARI, DANDALI"
+          },
+          {
+            "code": "006",
+            "name": "MAR - GAWA PRI SCHOOL"
+          }
+        ]
+      },
+      "Dilala/Kalgi": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ALAFAKSA, DANDALI"
+          },
+          {
+            "code": "002",
+            "name": "BUKAR MIDI, DANDALI"
+          },
+          {
+            "code": "003",
+            "name": "DILALA LAWANTI PRI SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "FULAMERI, DANDALI"
+          },
+          {
+            "code": "005",
+            "name": "JAJIRI, DANDALI"
+          },
+          {
+            "code": "006",
+            "name": "KALGI LAWANTI, PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "KANTU KOLOWA, DANDALI"
+          },
+          {
+            "code": "008",
+            "name": "YAWULE, DANDALI"
+          }
+        ]
+      },
+      "Mairari": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AWAKIMERI, DANDALI"
+          },
+          {
+            "code": "002",
+            "name": "BIDAR, DANDALI"
+          },
+          {
+            "code": "003",
+            "name": "BULAMA BUKAR, KOFAR BULAMA"
+          },
+          {
+            "code": "004",
+            "name": "BULAMA HAYATU, PRI. SCH. I"
+          },
+          {
+            "code": "005",
+            "name": "BULAMA HAYATU, PRI. SCH. II"
+          },
+          {
+            "code": "006",
+            "name": "BULAMA BUKAR, VIEWING CENTRE"
+          },
+          {
+            "code": "007",
+            "name": "FAYA KAFIYA, DANDALI"
+          },
+          {
+            "code": "008",
+            "name": "GAJIRI, PRI. SCH."
+          },
+          {
+            "code": "009",
+            "name": "GONIRI, PRI. SCH."
+          },
+          {
+            "code": "010",
+            "name": "GURSULU , P[RI. SCH."
+          },
+          {
+            "code": "011",
+            "name": "MAIRARI, PRI. SCH."
+          },
+          {
+            "code": "012",
+            "name": "MANDAMARI, PRI. SCH."
+          },
+          {
+            "code": "013",
+            "name": "NGURTUWA, DANDALI"
+          },
+          {
+            "code": "014",
+            "name": "MAIRARI, DISPENSARY"
+          }
+        ]
+      },
+      "Mozogun/Kujari": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ALHAJIRI MALARI, DANDALI"
+          },
+          {
+            "code": "002",
+            "name": "DAMA, PRI SCH. (DAMA, DANDALI)"
+          },
+          {
+            "code": "003",
+            "name": "GADAURI, DANDALI"
+          },
+          {
+            "code": "004",
+            "name": "KUJARI, DISPENSARY"
+          },
+          {
+            "code": "005",
+            "name": "KUJARI, DANDALI"
+          },
+          {
+            "code": "006",
+            "name": "MALLA ASANDI, DANDALI"
+          },
+          {
+            "code": "007",
+            "name": "MOZOGUN, PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "UFARI, DANDALI"
+          }
+        ]
+      },
+      "Ngirabo": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ABUBAKAR MAIUNG, DANDALI I"
+          },
+          {
+            "code": "002",
+            "name": "ABUBAKAR MAIUNG, DANDALI II"
+          },
+          {
+            "code": "003",
+            "name": "BULA MELAH, DANDALI"
+          },
+          {
+            "code": "004",
+            "name": "BULA MALAM GANA , DANDALI"
+          },
+          {
+            "code": "005",
+            "name": "DALARI , DANDALI"
+          },
+          {
+            "code": "006",
+            "name": "GARIN GAWO, DANDALI"
+          },
+          {
+            "code": "007",
+            "name": "GREMARI NGIRABO, DANDALI"
+          },
+          {
+            "code": "008",
+            "name": "JAGAR ADIMI, DANDALI"
+          },
+          {
+            "code": "009",
+            "name": "MANI KILBU, DANDALI"
+          },
+          {
+            "code": "010",
+            "name": "SARKIN PAWA, DANDALI I"
+          },
+          {
+            "code": "011",
+            "name": "SARKIN PAWA DANDALI II"
+          },
+          {
+            "code": "012",
+            "name": "SHETTIMA MODURI, DANDALI I"
+          },
+          {
+            "code": "013",
+            "name": "SHETTIMA MODURI, DANDALI II"
+          },
+          {
+            "code": "014",
+            "name": "YERIMARAM, DANDALI"
+          },
+          {
+            "code": "015",
+            "name": "ZIGINDIMI, PRI. SCH."
+          },
+          {
+            "code": "016",
+            "name": "GREMARI NGIRAGO, DANDALI"
+          }
+        ]
+      },
+      "Wadi/Kafiya": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BUKARTI, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "CHUKUWA KURA, DANDALI"
+          },
+          {
+            "code": "003",
+            "name": "GABTOMERI, DANDALI"
+          },
+          {
+            "code": "004",
+            "name": "GAMACHIRI, DANDALI"
+          },
+          {
+            "code": "005",
+            "name": "GONI MELERI, DANDALI"
+          },
+          {
+            "code": "006",
+            "name": "GONI CHAMMAMI OPENSPACE"
+          },
+          {
+            "code": "007",
+            "name": "GREMARI WADI, PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "KAFIYA PRI SCH. (KAFIYA, DANDALI)"
+          },
+          {
+            "code": "009",
+            "name": "KIRIZUL, DANDALI"
+          },
+          {
+            "code": "010",
+            "name": "KUSULUWARAM, DANDALI"
+          },
+          {
+            "code": "011",
+            "name": "MANAWAJI, PRI. SCH."
+          },
+          {
+            "code": "012",
+            "name": "MANAWAJI, DISPENSARY"
+          }
+        ]
+      },
+      "Zajibiri / Dumbal": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AWAKIMERI, DANDALI"
+          },
+          {
+            "code": "002",
+            "name": "BULANGUWARAM, DANDALI"
+          },
+          {
+            "code": "003",
+            "name": "DUMBOL LAWANTI, DANDALI I"
+          },
+          {
+            "code": "004",
+            "name": "DUMBOL LAWANTI, DANDALI II"
+          },
+          {
+            "code": "005",
+            "name": "GARAU PRI SCH. (GARAU, DANDALI)"
+          },
+          {
+            "code": "006",
+            "name": "MUSA KALLABE, DANDALI"
+          },
+          {
+            "code": "007",
+            "name": "ZAI LAWANTI, DANDALI"
+          },
+          {
+            "code": "008",
+            "name": "ZAJI BIRIRI LAWANTI, DANDALI"
+          },
+          {
+            "code": "009",
+            "name": "ZAJI BIRIRI LADU, PRI. SCH."
+          }
+        ]
+      }
+    }
+  },
+  "YUSUFARI": {
+    "code": "17",
+    "wards": {
+      "Alanjirori": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BULA TURA, PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "BULATURA DISPENSORY (BULA TURA, BULAMA GATE)"
+          },
+          {
+            "code": "003",
+            "name": "KACHALLARI, PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "KELUMERI PRIMARY SCHOOL (KELUMERI OPEN SPACE)"
+          },
+          {
+            "code": "005",
+            "name": "LEFERI DANDAL OPEN SPACE (LEFERI OPEN SPACE)"
+          },
+          {
+            "code": "006",
+            "name": "NGALBIYA, DEFUNT PRI. SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "NJEREWA DANDAL OPEN SPACE (NJEREREWA OPEN SPACE)"
+          },
+          {
+            "code": "008",
+            "name": "SHERIFUDI PRIMARY SCHOOL (SHERIFUDI, SHERIFUDI)"
+          },
+          {
+            "code": "009",
+            "name": "SINIRI DANDAL OPEN SPACE (SINIRI, BULAMA GATE)"
+          },
+          {
+            "code": "010",
+            "name": "SUNOMARI BOREHOLE OPEN SPACE (SUNOMARI OPEN SPACE)"
+          },
+          {
+            "code": "011",
+            "name": "ZAIFADARI DANDAL OPEN SPACE (ZAIFADARI, BULAMA'S GATE)"
+          }
+        ]
+      },
+      "Gumshi": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GARIN KALLA DANDAL OPEN SPACE (GARIN KALLAH OPEN SPACE)"
+          },
+          {
+            "code": "002",
+            "name": "GUMSHI DISPENSARY (GUMSHI OPEN SPACE)"
+          },
+          {
+            "code": "003",
+            "name": "KEREWA MAYA DANDAL OPEN SPACE (KEREWA MAYA OPEN SPACE)"
+          },
+          {
+            "code": "004",
+            "name": "KORE MARAM PRIMARY SCH. (KORE MARAM OPEN SPACE)"
+          },
+          {
+            "code": "005",
+            "name": "MAI DASHI PRIMARY SCHOOL (MAI DASHI OPEN SPACE)"
+          },
+          {
+            "code": "006",
+            "name": "NGELJABE BOREHOLE OPEN SPACE (NGEIJABE OPEN SPACE)"
+          },
+          {
+            "code": "007",
+            "name": "TSENGUMERI OPEN SPACE"
+          }
+        ]
+      },
+      "Guya": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AWANARI DANDAL OPEN SPACE (AWANARI OPEN SPACE)"
+          },
+          {
+            "code": "002",
+            "name": "BULA DUWUBE PRI. SCHOOL (BULA DAUBE, BULAMA'S GATE)"
+          },
+          {
+            "code": "003",
+            "name": "GUYA DISPENSARY"
+          },
+          {
+            "code": "004",
+            "name": "GUYA , GUYA KASUWA"
+          },
+          {
+            "code": "005",
+            "name": "GUYAMARI PRIMARY SCH. (GUYA MARI , WAKIL GATE)"
+          },
+          {
+            "code": "006",
+            "name": "GUYAMARI DISPENSARY (GUYA MARI , DEFUNT PRI. SCH.)"
+          },
+          {
+            "code": "007",
+            "name": "KALUWA PRIMARY SCH. (KALUWA OPEN SPACE)"
+          },
+          {
+            "code": "008",
+            "name": "MAIBOGORI NEW DISPENSARY (MAIBOGORI)"
+          },
+          {
+            "code": "009",
+            "name": "NGANAWA NEW DISPENSARY (NGANAWA OPEN SPACE)"
+          },
+          {
+            "code": "010",
+            "name": "ZUMUGU DISPENSARY (ZUMUGU OPEN SPACE)"
+          }
+        ]
+      },
+      "Jebuwa": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ABATSEREMI NEW DISPENSARY (ABATSEREMI, BULAMA'S GATE)"
+          },
+          {
+            "code": "002",
+            "name": "ABATSEREMI PRIMARY SCH. (ABATSEREMI, WAKIL GATE)"
+          },
+          {
+            "code": "003",
+            "name": "ALAREKCHI NEW DISPENSARY (ALARAKCHI, BULAMA'S GATE)"
+          },
+          {
+            "code": "004",
+            "name": "BAMUSU NEW DISPENSARY (BAMUSU OPEN SPACE)"
+          },
+          {
+            "code": "005",
+            "name": "FANTAMERI PRIMARY SCH. (FANTAMERI OPEN SPACE)"
+          },
+          {
+            "code": "006",
+            "name": "GABCHAIRI DANDAL OPEN SPACE (GABACHARI OPEN SPACE)"
+          },
+          {
+            "code": "007",
+            "name": "KAIGAMARI PRIMARY SCHOOL (KAIGAMARI, BULAMA'S GATE)"
+          },
+          {
+            "code": "008",
+            "name": "LIGALIDI PRIMARY SCHOOL (LIGALIDI OPEN SPACE)"
+          },
+          {
+            "code": "009",
+            "name": "JEBUWA, PRI. SCH. I"
+          },
+          {
+            "code": "010",
+            "name": "JEBUWA, PRI. SCH. II"
+          }
+        ]
+      },
+      "Kajimaram/Sumbar": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ABBA TURA PRIMARY SCHOOL (ABATURA OPEN SPACE)"
+          },
+          {
+            "code": "002",
+            "name": "BUZIZI PRIMARY SCHOOL (BUZIZI OPEN SPACE)"
+          },
+          {
+            "code": "003",
+            "name": "GREMARI DISPENSARY (GREMARI OPEN SPACE)"
+          },
+          {
+            "code": "004",
+            "name": "KADAIRI DANDAL OPEN SPACE (KADAIRI OPEN SPACE)"
+          },
+          {
+            "code": "005",
+            "name": "KAJIMARAM DISPENSARY (KAJIMARAM OPEN SPACE)"
+          },
+          {
+            "code": "006",
+            "name": "SUMBOR PRIMARY SCHOOL (SUMBAR OPEN SPACE)"
+          }
+        ]
+      },
+      "Kaska/Tulotulowa": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "(BUDDUM OPEN SPACE)BUDDUM PRI. ACH."
+          },
+          {
+            "code": "002",
+            "name": "KASKA OPEN SPACE (KASKA DISP.)"
+          },
+          {
+            "code": "003",
+            "name": "LAWAN GANARI, LAWAN GANARI OPEN SPACE"
+          },
+          {
+            "code": "004",
+            "name": "LAWAN GANARI BULAZALO O. S."
+          },
+          {
+            "code": "005",
+            "name": "MODIBBO PRI. SCH. (MODIBBO OPEN SPACE)"
+          },
+          {
+            "code": "006",
+            "name": "TULO TULO V. CENTRE (TULO,TULO OPEN SPACE \"I\")"
+          },
+          {
+            "code": "007",
+            "name": "TULOTULO PRI. SCH. (TULO,TULO OPEN SPACE \"II\")"
+          }
+        ]
+      },
+      "Kumagannam": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BONEGARAL P.S. (BONEGARAL OPEN SPACE)"
+          },
+          {
+            "code": "002",
+            "name": "BONEGARAL P.S. (DUNARI OPEN SPACE)"
+          },
+          {
+            "code": "003",
+            "name": "GAGORE P.S. (GAKORE, BULAMA'S GATE)"
+          },
+          {
+            "code": "004",
+            "name": "GARIN IDI OPEN SPACE (BULAMAS GATE)"
+          },
+          {
+            "code": "005",
+            "name": "KUMAGANNAM I, G.S.S"
+          },
+          {
+            "code": "006",
+            "name": "KUMAGANNAM II, BEHIND G.S.S"
+          },
+          {
+            "code": "007",
+            "name": "MAINEWA DISP. (MAINEWA OPEN SPACE)"
+          },
+          {
+            "code": "008",
+            "name": "MASSASSARA DISP. (MASSASARA \"I\" OPEN SPACE)"
+          },
+          {
+            "code": "009",
+            "name": "MASSASSARA PRI. SCH. (MASSASARA \"II\" OPEN SPACE)"
+          }
+        ]
+      },
+      "Mai-Malari": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BUKKU P. S. (BUKKU KURA OPEN SPACE)"
+          },
+          {
+            "code": "002",
+            "name": "BULAZAJI P.S. (BULA ZAJI OPEN SPACE)"
+          },
+          {
+            "code": "003",
+            "name": "DUSSARE B. G. (DUSSARE OPEN SPACE)"
+          },
+          {
+            "code": "004",
+            "name": "KIRIGINI P. S. (KIRIGINI OPEN SPACE)"
+          },
+          {
+            "code": "005",
+            "name": "LAWANTI PRI SCH. (LAWANTI OPEN SPACE)"
+          },
+          {
+            "code": "006",
+            "name": "MAIMALARI, PRI. SCH. I"
+          },
+          {
+            "code": "007",
+            "name": "MAIMALARI, PRI. SCH. II"
+          }
+        ]
+      },
+      "Mayori": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ABBATURA P.S. (ABA TURA MAYORI OPEN SPACE)"
+          },
+          {
+            "code": "002",
+            "name": "GARIN AHMADU DISP. (GARIN A. AMADU OPEN SPACE)"
+          },
+          {
+            "code": "003",
+            "name": "GARIN JIBIR P. S. (GARIN JIBIR OPEN SPACE)"
+          },
+          {
+            "code": "004",
+            "name": "GARIN TSANGAI P.S. (GARIN TSANGAI OPEN SPACE)"
+          },
+          {
+            "code": "005",
+            "name": "MAYORI, HEALTH CLINIC"
+          },
+          {
+            "code": "006",
+            "name": "MAYORI, PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "MAYORI/LAWANTI V. (MAYORI LAWANTI OPEN SPACE)"
+          },
+          {
+            "code": "008",
+            "name": "SUMBAR/ MAYORIP.S. (SUMBAR MAYORI OPEN SPACE)"
+          },
+          {
+            "code": "009",
+            "name": "ISAKARI/D. O.SPACE (ISAKARI BULIN, KOFAR ISAKA)"
+          },
+          {
+            "code": "010",
+            "name": "ZIGINOMI OPEN SPACE ((ZIGINDIMI DISP.)"
+          }
+        ]
+      },
+      "Yusufari": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ADULT. EDU. OFFICE, ADULT. EDU OFFICE"
+          },
+          {
+            "code": "002",
+            "name": "LAWANTI PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "AREA COURT OFFICE , BEHIND THE COURT"
+          },
+          {
+            "code": "004",
+            "name": "AREA COURT, AREA COURT"
+          },
+          {
+            "code": "005",
+            "name": "BULAMA MODU, BULAMA GATE (BULAMA MADU)"
+          },
+          {
+            "code": "006",
+            "name": "CHINGIDE, BULAMA GATE (CHINGIDE B. O. SPACE)"
+          },
+          {
+            "code": "007",
+            "name": "CHINGIWA, BULAMA GATE (CHINGEWA B. O. SPACE)"
+          },
+          {
+            "code": "008",
+            "name": "KIRIRAM, BULAMA GATE (KIRIRAM DISP.)"
+          },
+          {
+            "code": "009",
+            "name": "KUKA TATAWA, BULAMA GATE"
+          },
+          {
+            "code": "010",
+            "name": "UNG. ZANGOMANGA. VETERINARY CLINIC (ANG. ZANGOMA)"
+          },
+          {
+            "code": "011",
+            "name": "YUSUFARI, PRI. SCH."
+          },
+          {
+            "code": "012",
+            "name": "YUSUFARI, BEHIND PRI. SCH."
+          }
+        ]
+      }
+    }
+  }
+}

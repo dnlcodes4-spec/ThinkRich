@@ -129,10 +129,162 @@
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /* Display serif — only set on surfaces that load it (e.g. the marketing
+     wrapper); elsewhere `font-display` falls back to the sans stack. */
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Smooth in-page anchor navigation (marketing nav), motion-safe. */
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/*
+  Scroll-reveal (marketing). The <Reveal> client component adds `reveal-armed`
+  (only when JS runs and motion is allowed), then `reveal-in` on scroll. Without
+  JS or under reduced-motion, content is simply visible.
+*/
+.reveal-armed {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal-armed.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-armed {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Hero concept animations (Think-Winners). Pure CSS, no JS state.
+   All disabled under prefers-reduced-motion (fall back to static).
+   ───────────────────────────────────────────────────────────── */
+
+/* Concept C — vertical word rotator (Thinking / Working / Moving / Winning). */
+.tw-word-rotator {
+  display: inline-block;
+  height: 1.2em;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.tw-word-track {
+  display: flex;
+  flex-direction: column;
+  animation: tw-word-spin 11s infinite;
+}
+.tw-word-track > span {
+  height: 1.2em;
+  line-height: 1.2em;
+}
+@keyframes tw-word-spin {
+  0%, 18% { transform: translateY(0); }
+  25%, 43% { transform: translateY(-1.2em); }
+  50%, 68% { transform: translateY(-2.4em); }
+  75%, 93% { transform: translateY(-3.6em); }
+  100% { transform: translateY(-4.8em); } /* 5th word == 1st, seamless reset */
+}
+
+/* Concept B — unity motif: twinkling nodes + a breathing core. */
+.tw-node {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tw-twinkle 3.2s ease-in-out infinite;
+}
+.tw-core {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tw-breathe 4s ease-in-out infinite;
+}
+.tw-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tw-ring-pulse 4s ease-out infinite;
+}
+@keyframes tw-twinkle {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+@keyframes tw-breathe {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.12); opacity: 1; }
+}
+@keyframes tw-ring-pulse {
+  0% { transform: scale(0.6); opacity: 0.7; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-word-track { animation: none; }
+  .tw-node, .tw-core, .tw-ring { animation: none; }
+  .tw-ring { opacity: 0.25; }
+}
+
+/* Concept F — kinetic: headline words rise in sequence + an infinite marquee ribbon. */
+.tw-rise {
+  opacity: 0;
+  transform: translateY(0.5em);
+  animation: tw-rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes tw-rise-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.tw-marquee {
+  display: inline-flex;
+  flex-shrink: 0;
+  min-width: 100%;
+  white-space: nowrap;
+  animation: tw-marquee-scroll 26s linear infinite;
+}
+@keyframes tw-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+/* Concept D — map: soft glow behind ignited community points. */
+.tw-ignite {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tw-twinkle 2.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-rise { opacity: 1; transform: none; animation: none; }
+  .tw-marquee { animation: none; }
+  .tw-ignite { animation: none; }
+}
+
+/* Cinematic slow zoom for full-bleed hero photography. */
+.tw-kenburns {
+  transform-origin: center;
+  animation: tw-kenburns 24s ease-in-out infinite alternate;
+}
+@keyframes tw-kenburns {
+  from { transform: scale(1.03); }
+  to { transform: scale(1.12); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tw-kenburns { animation: none; transform: scale(1.04); }
 }
