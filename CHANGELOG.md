@@ -8,6 +8,20 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 
 ## [Unreleased]
 
+### Changed
+- **Type system** (ADR-0009): replaced the scaffold's Geist with **Hanken Grotesk** (body) +
+  **Zodiak** (ThinkRich display, self-hosted Fontshare serif) + Fraunces retained for
+  Think-Winners; per-surface display face via `--font-display-face`. Removes the "AI-default"
+  Geist tell. JetBrains Mono still carries numerals pending consolidation onto Hanken tabular-nums.
+- **ThinkRich landing polish:** wired client-generated hero photography (optimised), removed the
+  per-slide eyebrow labels, set the slider cadence to 5s, and fixed `#join`'s self-referential CTA.
+
+### Fixed
+- Hero slider: auto-advance no longer freezes on hover/focus of the full-screen hero (explicit
+  Pause/Play only); each segment's progress restarts from 0; completed segments stay filled.
+- Gated the internal `/think-winners/organization` page — 404s in production unless
+  `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
+
 ### Added
 - Dual-brand palette (T-014, from CR-0001): **ThinkRich Community = navy**, **Think-Winners
   Movement = green**, switched via `data-brand` (only the primary hue + focus ring change; gold

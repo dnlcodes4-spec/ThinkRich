@@ -11,8 +11,10 @@ import { ArmsExplorer } from "@/components/marketing/arms-explorer";
 // LIVE platform. Content: docs/project/content/thinkrich-community-arms.md. Navy + gold; no
 // eyebrow kickers; arm logos are branded PLACEHOLDERS until the client supplies the real ones.
 
-// TODO(thinkrich-contact): wire "Get involved" to the real join/contact flow when provided.
-const GET_INVOLVED = "#join";
+// "Get involved" routes to the arms explorer ("there is an arm for your purpose").
+// TODO(T-021): point at a real community join/contact flow once the client confirms
+// the destination (self-serve signup isn't the model — members are leader-registered).
+const GET_INVOLVED = "#arms";
 
 const focusAreas = [
   "Personal Development",

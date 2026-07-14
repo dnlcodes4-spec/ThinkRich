@@ -1,23 +1,32 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Fraunces } from "next/font/google";
+import { Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-// Display serif — the site root is ThinkRich Community; the marketing surfaces use it.
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+// Body — Hanken Grotesk: warm, humanist, highly legible. Replaces Geist (the
+// create-next-app default that reads as a templated/AI build).
+const sans = Hanken_Grotesk({
+  variable: "--font-hanken",
   subsets: ["latin"],
   style: ["normal", "italic"],
-  weight: ["400", "500", "600", "700", "900"],
+});
+
+// Display — Zodiak (Fontshare, self-hosted): a distinctive contemporary serif
+// for headlines; the ThinkRich Community voice. Variable weight + true italic
+// (carries the gold display accents). Less ubiquitous than a Google serif =
+// more one-of-a-kind. Licence: app/fonts/zodiak/LICENSE.txt.
+const display = localFont({
+  variable: "--font-zodiak",
+  display: "swap",
+  src: [
+    { path: "./fonts/zodiak/Zodiak-Variable.woff2", weight: "100 900", style: "normal" },
+    { path: "./fonts/zodiak/Zodiak-VariableItalic.woff2", weight: "100 900", style: "italic" },
+  ],
+});
+
+const mono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -41,7 +50,7 @@ export default function RootLayout({
       // The pre-paint script sets `data-theme` before hydration; suppress the
       // resulting attribute mismatch warning on <html> only.
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${sans.variable} ${display.variable} ${mono.variable} h-full antialiased`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />

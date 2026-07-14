@@ -16,14 +16,19 @@ export const metadata: Metadata = {
     "A grassroots mobilization engine for campaigns: an organized, data-driven network of trained community leaders reaching engaged voters across Nigeria through education, engagement, and lawful participation. Partner with us.",
 };
 
-// The whole Think-Winners surface renders in the green brand + display serif.
+// The Think-Winners surface keeps its display serif (grounded in the movement's
+// logo) — it overrides the site-default display face (Zodiak) for its subtree.
 export default function ThinkWinnersLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div data-brand="think-winners" className={display.variable}>
+    <div
+      data-brand="think-winners"
+      className={display.variable}
+      style={{ "--font-display-face": "var(--font-fraunces)" } as React.CSSProperties}
+    >
       {children}
     </div>
   );

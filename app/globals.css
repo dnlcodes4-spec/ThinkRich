@@ -116,11 +116,12 @@
   --color-danger:  var(--danger);  --color-danger-soft:  var(--danger-soft);
   --color-info:    var(--info);    --color-info-soft:    var(--info-soft);
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  /* Display serif — only set on surfaces that load it (e.g. the marketing
-     wrapper); elsewhere `font-display` falls back to the sans stack. */
-  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-hanken);
+  --font-mono: var(--font-jetbrains-mono);
+  /* `font-display` uses `--font-display-face` when a surface sets it (Think-Winners
+     overrides it to its serif for its subtree); otherwise it falls back to the
+     ThinkRich default, Zodiak. Georgia/serif is the last-resort system fallback. */
+  --font-display: var(--font-display-face, var(--font-zodiak)), Georgia, "Times New Roman", serif;
 }
 
 body {

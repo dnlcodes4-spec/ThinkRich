@@ -1,9 +1,21 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Organizational structure — Think-Winners (internal)",
   robots: { index: false, follow: false },
 };
+
+// T-022 gate: this internal page maps the leadership chain and must not be
+// publicly reachable on a real deploy. It stays open in development; in
+// production it 404s unless explicitly opted in via ENABLE_INTERNAL_PAGES=1.
+// (noindex above is defence-in-depth, not the gate.)
+function internalPagesEnabled() {
+  return (
+    process.env.NODE_ENV !== "production" ||
+    process.env.ENABLE_INTERNAL_PAGES === "1"
+  );
+}
 
 // Internal verification page (CR-0003). NOT linked from the public site and must be
 // auth-gated (or removed) before any real deploy — it maps the leadership chain.
@@ -79,6 +91,8 @@ function Fan({ label }: { label: string }) {
 }
 
 export default function OrganizationPage() {
+  if (!internalPagesEnabled()) notFound();
+
   return (
     <main className="bg-navy-50 text-navy-950">
       <div className="mx-auto max-w-3xl px-6 py-16 lg:py-20">
