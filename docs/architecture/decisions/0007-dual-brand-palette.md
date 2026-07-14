@@ -1,6 +1,6 @@
 # ADR-0007: Dual-brand palette — ThinkRich (navy) and Think-Winners (green)
 
-- **Status:** Accepted
+- **Status:** Superseded by [ADR-0008](0008-single-navy-brand.md) — the "Think-Winners = green" call was a miscommunication (CR-0005); both brands are navy + gold.
 - **Date:** 2026-07-13
 - **Deciders:** DNLCodess (client-directed via [CR-0001](../../project/change-requests/0001-brand-org-structure-and-dual-landing.md))
 - **Amends:** [ADR-0006](0006-design-system-and-brand.md) (token system + navy brand remain valid; this adds a second brand)
