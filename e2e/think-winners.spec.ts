@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("think-winners landing renders and uses the green brand", async ({ page }) => {
+test("think-winners landing renders in the navy brand", async ({ page }) => {
   await page.goto("/think-winners");
 
   await expect(
@@ -14,7 +14,7 @@ test("think-winners landing renders and uses the green brand", async ({ page }) 
     page.getByRole("link", { name: /partner with us/i }).first(),
   ).toBeVisible();
 
-  // The whole surface renders in the Think-Winners (green) brand.
+  // The whole surface renders under the navy brand (data-brand marker present).
   await expect(page.locator('[data-brand="think-winners"]')).toBeVisible();
 });
 

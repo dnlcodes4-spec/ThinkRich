@@ -73,7 +73,7 @@ export function Hero() {
     >
       <div aria-hidden="true" className="absolute inset-0">
         <Image
-          src="/think-winners/img/hero-crowd.jpg"
+          src="/think-winners/img/hero-v1.png"
           alt=""
           fill
           priority
@@ -113,7 +113,8 @@ export function Hero() {
         aria-hidden="true"
         className="absolute inset-x-0 top-0 h-32"
         style={{
-          background: "linear-gradient(to bottom, rgba(5,21,39,0.5), transparent)",
+          background:
+            "linear-gradient(to bottom, rgba(5,21,39,0.5), transparent)",
         }}
       />
       <FilmGrain />
@@ -150,7 +151,12 @@ const CITIES = [
 
 export function NigeriaMap({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 1024 1024" fill="none" aria-hidden="true" className={className}>
+    <svg
+      viewBox="0 0 1024 1024"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
       <g transform={NIGERIA_TRANSFORM}>
         <path
           d={NIGERIA_PATH}
