@@ -1,0 +1,8062 @@
+{
+  "ABAKALIKI": {
+    "code": "01",
+    "wards": {
+      "Abakpa": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ADAZI-ENU HALL I"
+          },
+          {
+            "code": "002",
+            "name": "ADAZI-ENU HALL II"
+          },
+          {
+            "code": "003",
+            "name": "CO-OPERATIVE SQUARE I"
+          },
+          {
+            "code": "004",
+            "name": "CO-OPERATIVE SQUARE II"
+          },
+          {
+            "code": "005",
+            "name": "NIBO/NSUKKA STR JUNCTION I"
+          },
+          {
+            "code": "006",
+            "name": "NIBO/NSUKKA STR JUNCTION II"
+          },
+          {
+            "code": "007",
+            "name": "VANCO HOTEL SPACE I"
+          },
+          {
+            "code": "008",
+            "name": "VANCO HOTEL SPACE II"
+          },
+          {
+            "code": "009",
+            "name": "ONUEBONYI PRIMARY SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "GIRLS' HIGH SCHOOL AZUIYIOKWU"
+          }
+        ]
+      },
+      "Amachi (Ndebo)": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OGUCHIE PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "AGALEGU PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "UBURU PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "NDIUDARA/ NDIOFUTU VILL. SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "IZILOKWO MKT SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "NDIUGBALA VILL. SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "NDINGWUTA PRI. SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "NDIOCHIOBUOKU PRI. SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "EGWUDINEGU PRI. SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "NDIEBO OSHIEKU PLAY GROUND"
+          }
+        ]
+      },
+      "Amachi (Ndegu)": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "IJAGA PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "OHABELE PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "OKARIA MKT SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "ONYIKWA VILL. SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "OBEAGU IBOM VILLAGE SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "AKPE PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "OFIAOKU PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "ONYIRIGBO PRIMARY SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "ETE VILLAGE SQUARE"
+          },
+          {
+            "code": "010",
+            "name": "AKPANYA VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Amagu / Enyigba": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EBIA UNUHU PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "NDIURUKWU PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "NWOFIA ODO PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "AZUAKPARATA EBIA PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "MBAMOKO EBIA MKT SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "ORIUZOR/OMEGE PRIMARY SHOOL"
+          },
+          {
+            "code": "007",
+            "name": "NDUNKWEGU PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "EDUKWU OBULECHI AMAGU"
+          },
+          {
+            "code": "009",
+            "name": "EKETUBE ENYIGBA VILLAGE SQUARE I"
+          },
+          {
+            "code": "010",
+            "name": "EKETUBE ENYIGBA VILLAGE SQUARE II"
+          },
+          {
+            "code": "011",
+            "name": "C.P.S. ISHIAGU ENYIGBA I"
+          },
+          {
+            "code": "012",
+            "name": "C.P.S. ISHIAGU ENYIGBA II"
+          },
+          {
+            "code": "013",
+            "name": "ALIBARUHU VILAGE SQUARE ENYIGBA"
+          },
+          {
+            "code": "014",
+            "name": "NDIAGU NWE DEDEAGU C.P.S"
+          },
+          {
+            "code": "015",
+            "name": "OFEREKPE VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Amagu Unuhu": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OKPUITUMO PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "CUSTOMARY COURT NKWEGU"
+          },
+          {
+            "code": "003",
+            "name": "NKWEGU PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "EZZA INYIMAGU PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "C.P.S AMAGU ONICHA"
+          },
+          {
+            "code": "006",
+            "name": "NDUNWAMINI VILLAGE SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "AMACHI UNUHU VILLAGE SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "IGBEAGU UNUHU VILLAGE SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "OBEAGU AMAGU ONICHA"
+          },
+          {
+            "code": "010",
+            "name": "EDUKWU AMAGU ONICHA"
+          },
+          {
+            "code": "011",
+            "name": "EDUKWU AKPURATA NDUEZE INYIMEGU OPEN SPACE (ACHI VILLAGE SQUARE)"
+          }
+        ]
+      },
+      "Azumini/Azugwu": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "IGWEORIE OPEN SPACE I"
+          },
+          {
+            "code": "002",
+            "name": "IGWEORIE OPEN SPACE II"
+          },
+          {
+            "code": "003",
+            "name": "IGWEORIE OPEN SPACE III"
+          },
+          {
+            "code": "004",
+            "name": "EBSU GUEST HOUSE I"
+          },
+          {
+            "code": "005",
+            "name": "EBSU GUEST HOUSE II"
+          },
+          {
+            "code": "006",
+            "name": "AZUGWU/ABACHA JUNCTION"
+          },
+          {
+            "code": "007",
+            "name": "ALL SAINTS PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "HILL TOP/WATER WORKS"
+          },
+          {
+            "code": "009",
+            "name": "ELIAS ODILI/ACHI JUNCTION"
+          }
+        ]
+      },
+      "Azuiyiokwu Layout": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ST.THERESA'S PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "EZIKWO PRIMARY SCHOOL I"
+          },
+          {
+            "code": "003",
+            "name": "EZIKWO PRIMARY SCHOOL II"
+          },
+          {
+            "code": "004",
+            "name": "ARONDIZIUGU HALL"
+          },
+          {
+            "code": "005",
+            "name": "ADMIN COMM COLLEGE I"
+          },
+          {
+            "code": "006",
+            "name": "ADMIN COMM COLLEGE II"
+          },
+          {
+            "code": "007",
+            "name": "URBAN CENTER PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "CINEMAHALL"
+          },
+          {
+            "code": "009",
+            "name": "AROCHUKWU LANE/OGOJA RD."
+          },
+          {
+            "code": "010",
+            "name": "EBSU TEACHING HOSPITAL"
+          }
+        ]
+      },
+      "Azuiyi Udene": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UDOKA HALL I"
+          },
+          {
+            "code": "002",
+            "name": "UDOKA HALL II"
+          },
+          {
+            "code": "003",
+            "name": "NWANNEDINAMBA HALL"
+          },
+          {
+            "code": "004",
+            "name": "SYNO GUEST HOUSE"
+          },
+          {
+            "code": "005",
+            "name": "4B ONWUEGBUNA OPEN SPACE"
+          },
+          {
+            "code": "006",
+            "name": "6 IBEME STR. OPEN SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "IYIUDENE MARKET OFFICE I"
+          },
+          {
+            "code": "008",
+            "name": "IYIUDENE MARKET OFFICE II"
+          },
+          {
+            "code": "009",
+            "name": "IYIUDENE SQUARE I"
+          },
+          {
+            "code": "010",
+            "name": "IYIUDENE SQUARE II"
+          },
+          {
+            "code": "011",
+            "name": "NKWOGU STR. OPEN SPACE"
+          },
+          {
+            "code": "012",
+            "name": "EBSU NURSERY SCHOOL"
+          },
+          {
+            "code": "013",
+            "name": "JIMMY OKONKWO PARK"
+          },
+          {
+            "code": "014",
+            "name": "EJIDIKE/AGULU CHUKWU JUNCTIOIN"
+          }
+        ]
+      },
+      "Edda": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "IBULA PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "OKPODUMA VILLAGE SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "ONUAKPARATA MKT SQURE"
+          },
+          {
+            "code": "004",
+            "name": "UKWUMANGO IZICHA"
+          },
+          {
+            "code": "005",
+            "name": "EFUNEFUNE PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "ODAGERIDA PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "NDIEKPE OFUTU SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "INYARINYA PRIMARY SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "OKARIA ECHI PRIMARY SCHOOL I"
+          },
+          {
+            "code": "010",
+            "name": "OHATEKWE PLAY GROUND"
+          },
+          {
+            "code": "011",
+            "name": "OBOVU PLAY GROUND"
+          },
+          {
+            "code": "012",
+            "name": "OKARIA EDDA"
+          },
+          {
+            "code": "013",
+            "name": "OKARIA ECHI PRIMARY SCHOOL II"
+          }
+        ]
+      },
+      "Izzi Unuhu": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EDUKWU INYIMAGU HALL"
+          },
+          {
+            "code": "002",
+            "name": "EDUKWU ODABARA"
+          },
+          {
+            "code": "003",
+            "name": "NKALIKI ECHERA PRIMARY SCHOOL I"
+          },
+          {
+            "code": "004",
+            "name": "NKALIKI ECHERA PRIMARY SCHOOL II"
+          },
+          {
+            "code": "005",
+            "name": "EDUKWU OKPOKWU"
+          },
+          {
+            "code": "006",
+            "name": "EDUKWU OKPUNKALIKI"
+          },
+          {
+            "code": "007",
+            "name": "EDUKWU IBINA ALIKE"
+          },
+          {
+            "code": "008",
+            "name": "EDUKWU NWOKORO OPEN SPACE (EDUKWU NWOGE)"
+          },
+          {
+            "code": "009",
+            "name": "EDUKWU OGBUEWU OPEN SPACE (AZUMA VILLAGE SQUARE)"
+          },
+          {
+            "code": "010",
+            "name": "NDIOFUTU PLAY GROUND"
+          },
+          {
+            "code": "011",
+            "name": "ONUEBONYI PLAY GROUND"
+          },
+          {
+            "code": "012",
+            "name": "OGWUDENYI PLAY GROUND"
+          },
+          {
+            "code": "013",
+            "name": "NWAZUNKU ACHI JUNCTION"
+          },
+          {
+            "code": "014",
+            "name": "IZUNDU OPEN SAPCE"
+          },
+          {
+            "code": "015",
+            "name": "ONUIYIOKWU/INYIMAGU JUNCTION"
+          },
+          {
+            "code": "016",
+            "name": "AZUIYIOKWU PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Ndiagu": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OWERRI HALL I"
+          },
+          {
+            "code": "002",
+            "name": "OWERRI HALL II"
+          },
+          {
+            "code": "003",
+            "name": "OWERRI HALL III"
+          },
+          {
+            "code": "004",
+            "name": "EBOTRANS OPEN SPACE"
+          },
+          {
+            "code": "005",
+            "name": "UMULERI OPEN SPACE"
+          },
+          {
+            "code": "006",
+            "name": "ANYAIWO OPEN SPACE"
+          },
+          {
+            "code": "007",
+            "name": "NKANU OPEN SPACE"
+          },
+          {
+            "code": "008",
+            "name": "UMULERI JUNCTION OPEN SPACE"
+          },
+          {
+            "code": "009",
+            "name": "ST. THERESA'S JUNCTION OPEN SPACE I"
+          },
+          {
+            "code": "010",
+            "name": "ST. THERESA'S JUNCTION OPEN SPACE II"
+          },
+          {
+            "code": "011",
+            "name": "WATER WORKS OPEN SPACE I"
+          },
+          {
+            "code": "012",
+            "name": "WATER WORKS OPEN SPACE II"
+          },
+          {
+            "code": "013",
+            "name": "OBODOUKWU OPEN SPACE"
+          },
+          {
+            "code": "014",
+            "name": "OBI/OBIRI OPEN SPACE"
+          },
+          {
+            "code": "015",
+            "name": "ORAERI HALL I"
+          },
+          {
+            "code": "016",
+            "name": "ORAERI HALL II"
+          }
+        ]
+      },
+      "Okpoitumo Ndebor": {
+        "code": "12",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NDIGWE PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "HIGH HILL PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "IGIDIAGU PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "NKEMDIRIM/NDIOKENYI"
+          },
+          {
+            "code": "005",
+            "name": "NDIOKENYI VILLAGE SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "NDEBOR OKPOITUMO MKT"
+          },
+          {
+            "code": "007",
+            "name": "NDIMBAM PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "OBEAGU OKPUITUMO"
+          },
+          {
+            "code": "009",
+            "name": "SHED EKORI"
+          }
+        ]
+      },
+      "Okpoitumo Ndiegu": {
+        "code": "13",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NWALAGBA MKT SQUARE"
+          },
+          {
+            "code": "002",
+            "name": "EGWUDINAGU NDIEBOR"
+          },
+          {
+            "code": "003",
+            "name": "UWALAKANDE NDIAGU SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "OHATEKWE NDIAGU"
+          },
+          {
+            "code": "005",
+            "name": "OKWUNYIRIONU PRIMARY SCHOOL I"
+          },
+          {
+            "code": "006",
+            "name": "OKWUNYIRIONU PRIMARY SCHOOL II"
+          },
+          {
+            "code": "007",
+            "name": "OVUOBA PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Timber Shed": {
+        "code": "14",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AKPARATA PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "TIMBER SHED SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "OKPOSHI STR NURSERY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "NKALIKI/ NZEKWE"
+          },
+          {
+            "code": "005",
+            "name": "EBSU PRESCO CAMPUS"
+          },
+          {
+            "code": "006",
+            "name": "MURTALA MOHAMMED"
+          },
+          {
+            "code": "007",
+            "name": "NWIGBOAGU SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "AFOEZUNA STR SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "ALIKE SQUARE"
+          },
+          {
+            "code": "010",
+            "name": "EZINIFITE PLAY GROUND"
+          }
+        ]
+      }
+    }
+  },
+  "AFIKPO NORTH": {
+    "code": "02",
+    "wards": {
+      "Amata-Akpoha": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMACHI PLAY GROUND I"
+          },
+          {
+            "code": "002",
+            "name": "AMACHI PLAY GROUND II"
+          },
+          {
+            "code": "003",
+            "name": "EZIMBA PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "EVUKO VILLAGE SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "EVUKO SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "EZIMBA SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "AMATA ELU PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "AMAOZARA VILLAGE SQUARE I"
+          },
+          {
+            "code": "009",
+            "name": "AMAOZARA VILLAGE SQUARE II"
+          },
+          {
+            "code": "010",
+            "name": "AMAGU PLAY GROUND I"
+          },
+          {
+            "code": "011",
+            "name": "AMAGU PLAY GROUND II"
+          }
+        ]
+      },
+      "Amogu Akpoha": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EZI URO PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "EZI EBIAKPU PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "AMAOGU PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "EZI ENI VILLAGE SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "EZI ETEE UGO PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "EVOAKPU/OKEVO SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "EZI UDU UCHE V. SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "EZI OBOTI VILLAGE SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "EZI OKO VILLAGE SQUARE I"
+          },
+          {
+            "code": "010",
+            "name": "EZI OKO VILLAGE SQUARE II"
+          },
+          {
+            "code": "011",
+            "name": "EZI ALU AGBO PLAY GROUND"
+          },
+          {
+            "code": "012",
+            "name": "AMOGU PLAY GROUND II"
+          }
+        ]
+      },
+      "Ezeke Amasiri": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMAEKUMA PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "EZEKE PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "ORIE MARKET SQAURE"
+          },
+          {
+            "code": "004",
+            "name": "OGO UBI PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "AMA OKPU VILLAGE SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "AMACHI NDUKWE VILLAGE SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "AMAOZARA NDUKWE SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "AMUJI NDUKWE VILLAGE SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "OGO AMAOGWUGWU"
+          },
+          {
+            "code": "010",
+            "name": "AMURO"
+          },
+          {
+            "code": "011",
+            "name": "AMEBO NDUKWE VILLAGE SQUARE"
+          },
+          {
+            "code": "012",
+            "name": "AKANTO PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Poperi Amasiri": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "IHUOGO VILLAGE SQUARE"
+          },
+          {
+            "code": "002",
+            "name": "EZI OTU VILLAGE SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "OHAUKWU VILLAGE SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "UHERE VILLAGE SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "OBENNE HALL"
+          },
+          {
+            "code": "006",
+            "name": "EZI EGWU OKEHIE"
+          },
+          {
+            "code": "007",
+            "name": "OGWU UHIE VILLAGE SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "AMASIRI MOTOR PARK"
+          },
+          {
+            "code": "009",
+            "name": "IHIE AGBO VILLAGE SQUARE I"
+          },
+          {
+            "code": "010",
+            "name": "IHIE AGBO VILLAGE SQUARE II"
+          },
+          {
+            "code": "011",
+            "name": "IHIE VILLAGE SQUARE"
+          },
+          {
+            "code": "012",
+            "name": "CENTRAL SCH. OZARA"
+          },
+          {
+            "code": "013",
+            "name": "IHIE FIELD II"
+          }
+        ]
+      },
+      "Itim Afikpo": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "MGBOM VILLAGE SQUARE I"
+          },
+          {
+            "code": "002",
+            "name": "MGBOM VILLAGE SQUARE II"
+          },
+          {
+            "code": "003",
+            "name": "MGBOM PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "ECHARA MGBOM VILLAGE SQUARE II"
+          },
+          {
+            "code": "005",
+            "name": "AMURO TOWN HALL"
+          },
+          {
+            "code": "006",
+            "name": "AMURO MGBOM VILLAGE SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "AMURO VILLAGE SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "ENOHIA NKALU SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "ITIM UKWU PRIMARY SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "KPOGHIRIKPO PLAY GROUND"
+          },
+          {
+            "code": "011",
+            "name": "ENOHIA ITIM PLAY GROUND"
+          },
+          {
+            "code": "012",
+            "name": "AMENU AMURO VILLAGE SQUARE"
+          },
+          {
+            "code": "013",
+            "name": "AMEKE MGBOM VILLAGE SQUARE"
+          },
+          {
+            "code": "014",
+            "name": "MGBOM VILLAGE SQUARE IV"
+          }
+        ]
+      },
+      "Ibii/Oziza Afikpo": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EZI AKPUEKE VILLAGE SQUARE"
+          },
+          {
+            "code": "002",
+            "name": "AGBOGOHOUSE CIVIC CENTER"
+          },
+          {
+            "code": "003",
+            "name": "EZI UDUMA VILLAGE SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "EZI UGWUTE PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "AMATA/AMOGE TOWN HALL"
+          },
+          {
+            "code": "006",
+            "name": "AMIKA/AMOGE CPS"
+          },
+          {
+            "code": "007",
+            "name": "AMAINYIME TOWN HALL"
+          },
+          {
+            "code": "008",
+            "name": "IBII PRIM ARY SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "AMORIE VILLAGE SQUARE"
+          },
+          {
+            "code": "010",
+            "name": "AGBA CENTRAL SCHOOL"
+          },
+          {
+            "code": "011",
+            "name": "AMAOZARA PRIMARY SCHOOL"
+          },
+          {
+            "code": "012",
+            "name": "AMAINYIME TOWN HALL"
+          }
+        ]
+      },
+      "Nkpoghoro Afikpo": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NNAENYIM VILLAGE SQUARE I"
+          },
+          {
+            "code": "002",
+            "name": "NNAENYIM VILLAGE SQUARE II"
+          },
+          {
+            "code": "003",
+            "name": "NNAENYIM VILLAGE SQUARE III"
+          },
+          {
+            "code": "004",
+            "name": "NDIBE PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "EZI INYA VILLAGE SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "NDIBE PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "AMANKWU/AMAEKWU SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "AMANKWU/AMAEKWU PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "AMANKWO/AMABOLOBO PRIMARY SCHOOL I"
+          },
+          {
+            "code": "010",
+            "name": "AMANKWO/AMABOLOBO PRIMARY SCHOOL II"
+          },
+          {
+            "code": "011",
+            "name": "AMANKWO/AMABOLOBO PRIMARY SCHOOL III"
+          },
+          {
+            "code": "012",
+            "name": "AMUZU SQUARE"
+          },
+          {
+            "code": "013",
+            "name": "AMUZU VILLAGE SQUARE"
+          },
+          {
+            "code": "014",
+            "name": "AMANKWO/AMAEKWU SQUARE"
+          }
+        ]
+      },
+      "Ohaisu Afikpo 'A'": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UKPA/AMACHI PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "UKPA PLAY GROUND I"
+          },
+          {
+            "code": "003",
+            "name": "UKPA PLAY GROUND II"
+          },
+          {
+            "code": "004",
+            "name": "EGBEBERI/AMACHRAAGBO"
+          },
+          {
+            "code": "005",
+            "name": "AMACHARA PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "NGODO/AMACHI PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "AMACHI VILLAGE SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "AMACHI SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "NGODO/AMACHI PRIMARY SCHOOL II"
+          }
+        ]
+      },
+      "Ohaisu Afikpo 'B'": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMANGBALA SQUARE"
+          },
+          {
+            "code": "002",
+            "name": "AMANGBALA PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "AMANGBALA VILLAGE SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "EGBEBURU PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "EKE AMANGBALA SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "AMANGBALA EVUMA SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "EBE BURU SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "NEW SITE"
+          },
+          {
+            "code": "009",
+            "name": "AMANGBALA VILLAGE SQUARE II"
+          }
+        ]
+      },
+      "Ugwuegu Afikpo": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AGBORIDE/AMAIZU PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "EZI UKWU PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "AMAIZU LIBRARY"
+          },
+          {
+            "code": "004",
+            "name": "AMAIZU VILLAGE SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "AMAHA PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "UBAM/AMEBOR PLAY GROUND I"
+          },
+          {
+            "code": "007",
+            "name": "UBAM/AMEBOR PLAY GROUND II"
+          },
+          {
+            "code": "008",
+            "name": "UGA/UGELU TOWN PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "EZI UZUEKWE PLAY GROUND I"
+          },
+          {
+            "code": "010",
+            "name": "EKUMA PLAY GROUND"
+          },
+          {
+            "code": "011",
+            "name": "W.T.C PRIMARY SCHOOL"
+          },
+          {
+            "code": "012",
+            "name": "EZI UZUEKWE PLAY GROUND II"
+          },
+          {
+            "code": "013",
+            "name": "AMANCHO PLAY GROUND"
+          }
+        ]
+      },
+      "Uwana Afikpo I": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EZI OTI INYA"
+          },
+          {
+            "code": "002",
+            "name": "AIFPUA CENTER CAFÉ"
+          },
+          {
+            "code": "003",
+            "name": "EZI UKWU AMAGU I"
+          },
+          {
+            "code": "004",
+            "name": "EZI UKWU AMAGU II"
+          },
+          {
+            "code": "005",
+            "name": "EZI UKWU AMAGU NDEMIYI"
+          },
+          {
+            "code": "006",
+            "name": "NKAGBOGO VILLAGE SQUARE I"
+          },
+          {
+            "code": "007",
+            "name": "NKAGBOGO VILLAGE SQUARE II"
+          },
+          {
+            "code": "008",
+            "name": "UNWANA COMP. SEC. SCHOOL"
+          }
+        ]
+      },
+      "Uwana Afikpo II": {
+        "code": "12",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EZI AKAA"
+          },
+          {
+            "code": "002",
+            "name": "NDI OWARA VILLAGE SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "EFE AMAEKWU I"
+          },
+          {
+            "code": "004",
+            "name": "EFE AMAEKWU II"
+          }
+        ]
+      }
+    }
+  },
+  "AFIKPO SOUTH": {
+    "code": "03",
+    "wards": {
+      "Amaeke Ekoli": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NKAOGBOGO VILLAGE HALL"
+          },
+          {
+            "code": "002",
+            "name": "AMANKWU VILLAGE HALL"
+          },
+          {
+            "code": "003",
+            "name": "NDINNACHI VILLAGE HALL"
+          },
+          {
+            "code": "004",
+            "name": "NDI ENWORO TOWN HALL"
+          },
+          {
+            "code": "005",
+            "name": "AMAEKE VILLAGE HALL"
+          },
+          {
+            "code": "006",
+            "name": "AMAEKE VILLAGE SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "EGBEBU CENTRAL SCHOOL I"
+          },
+          {
+            "code": "008",
+            "name": "EGBEBU CENTRAL SCHOOL II"
+          }
+        ]
+      },
+      "Amaigbo": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EKEJE TOWN HALL"
+          },
+          {
+            "code": "002",
+            "name": "AMAIGBO TOWN HALL"
+          },
+          {
+            "code": "003",
+            "name": "AMAIGBO PRIMARY SCHOOL I"
+          },
+          {
+            "code": "004",
+            "name": "AMAIGBO PRIMARY SCHOOL II"
+          },
+          {
+            "code": "005",
+            "name": "ORIENTA PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "AMANCHO VILLAGE HALL"
+          },
+          {
+            "code": "007",
+            "name": "NDI-OFIBA VILLAGE SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "AMAIGBO VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Amangwu": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMUKWA/AMEBO TOWN HALL"
+          },
+          {
+            "code": "002",
+            "name": "NDI OKORO TOWN HALL I"
+          },
+          {
+            "code": "003",
+            "name": "NDI OKORO TOWN HALL II"
+          },
+          {
+            "code": "004",
+            "name": "OKPOMA VILLAGE HALL"
+          },
+          {
+            "code": "005",
+            "name": "AMAIYINTA VILLAGE HALL I"
+          },
+          {
+            "code": "006",
+            "name": "AMAIYINTA VILLAGE SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "AMAIYINTA VILLAGE HALL II"
+          },
+          {
+            "code": "008",
+            "name": "NDIEBO VILLAGE HALL I"
+          },
+          {
+            "code": "009",
+            "name": "NDIEBO VILLAGE HALL II"
+          },
+          {
+            "code": "010",
+            "name": "ODUGHOHU TOWN HALL"
+          },
+          {
+            "code": "011",
+            "name": "ASAGA PRIMARY SCHOOL"
+          },
+          {
+            "code": "012",
+            "name": "ASAGA VILLAGE HALL"
+          }
+        ]
+      },
+      "Amiri Ekoli": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UGWU ELU VILLAGE HALL"
+          },
+          {
+            "code": "002",
+            "name": "UGWU ELU VILLAGE SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "AMANTA VILLAGE HALL"
+          },
+          {
+            "code": "004",
+            "name": "AMAOGBU VILLAGE HALL"
+          },
+          {
+            "code": "005",
+            "name": "AMAOGBU VILLAGE SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "AMAOGBU TOWN HALL"
+          },
+          {
+            "code": "007",
+            "name": "NDI IBOM VILLAGE HALL I"
+          },
+          {
+            "code": "008",
+            "name": "NDI IBOM VILLAGE HALL II"
+          },
+          {
+            "code": "009",
+            "name": "NDI IBOM VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Amoso": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EZI EDDA COMMUNITY HALL I"
+          },
+          {
+            "code": "002",
+            "name": "EZI EDDA COMMUNITY HALL II"
+          },
+          {
+            "code": "003",
+            "name": "AMAGBO TOWN HALL"
+          },
+          {
+            "code": "004",
+            "name": "ECHARA VILLAGE HALL"
+          },
+          {
+            "code": "005",
+            "name": "EJIKEWU PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "NDI OYIM COMMUNITY HALL I"
+          },
+          {
+            "code": "007",
+            "name": "NDI OYIM COMMUNITY HALL II"
+          },
+          {
+            "code": "008",
+            "name": "NDI CHIMA VILLAGE HALL"
+          }
+        ]
+      },
+      "Ebunwana": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OKENKWU VILLAGE HALL I"
+          },
+          {
+            "code": "002",
+            "name": "OKENKWU VILLAGE HALL II"
+          },
+          {
+            "code": "003",
+            "name": "OKENKWU VILLAGE HALL III"
+          },
+          {
+            "code": "004",
+            "name": "OKENKWU VILLAGE SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "AMORJI VILLAGE HALL I"
+          },
+          {
+            "code": "006",
+            "name": "AMORJI VILLAGE HALL II"
+          },
+          {
+            "code": "007",
+            "name": "AMAEKE VILLAGE SQUARE I"
+          },
+          {
+            "code": "008",
+            "name": "AMAEKE VILLAGE SQUARE II"
+          },
+          {
+            "code": "009",
+            "name": "AMAEKE VILLAGE HALL I"
+          },
+          {
+            "code": "010",
+            "name": "AMAEKE VILLAGE HALL II"
+          },
+          {
+            "code": "011",
+            "name": "AMAEMU VILLAGE SQUARE"
+          },
+          {
+            "code": "012",
+            "name": "IGBARA VILLAGE HALL"
+          },
+          {
+            "code": "013",
+            "name": "UKWUACHI MKT. SQUARE"
+          }
+        ]
+      },
+      "Ndioke Ekoli": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EMEKWE PRIMARY SCHOOL I"
+          },
+          {
+            "code": "002",
+            "name": "EMEKWE PRIMARY SCHOOL II"
+          },
+          {
+            "code": "003",
+            "name": "ISI AMA ISE PRIMARY SCHOOL I"
+          },
+          {
+            "code": "004",
+            "name": "ISI AMA ISE PRIMARY SCHOOL II"
+          },
+          {
+            "code": "005",
+            "name": "EKULA PRIMARY SCHOOL I"
+          },
+          {
+            "code": "006",
+            "name": "EKULA PRIMARY SCHOOL II"
+          },
+          {
+            "code": "007",
+            "name": "UBURU HALL"
+          }
+        ]
+      },
+      "Nguzu": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "IFUOGO VILLAGE HALL"
+          },
+          {
+            "code": "002",
+            "name": "EZECHI PRIMARY SCHOOL I"
+          },
+          {
+            "code": "003",
+            "name": "EZECHI PRIMARY SCHOOL II"
+          },
+          {
+            "code": "004",
+            "name": "AMORJI VILLAGE HALL"
+          },
+          {
+            "code": "005",
+            "name": "LIBRARY HALL"
+          },
+          {
+            "code": "006",
+            "name": "ELUGWU TOWN HALL"
+          },
+          {
+            "code": "007",
+            "name": "AMANKWO VILLAGE HALL"
+          },
+          {
+            "code": "008",
+            "name": "AMAIYI PRIMARY SCHOOL I"
+          },
+          {
+            "code": "009",
+            "name": "AMAIYI PRIMARY SCHOOL II"
+          },
+          {
+            "code": "010",
+            "name": "NGUZU PRIMARY SCHOOL I"
+          },
+          {
+            "code": "011",
+            "name": "NGUZU PRIMARY SCHOOL II"
+          },
+          {
+            "code": "012",
+            "name": "NGUZU PRIMARY SCHOOL III"
+          }
+        ]
+      },
+      "Ogbu (Amato)": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AKPUGHURU TOWN HALL"
+          },
+          {
+            "code": "002",
+            "name": "IGWE MEMORIAL PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "UMUNNABUIKE PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "ITIM SEC. SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "ITIM PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "ITIM VILLAGE HALL"
+          }
+        ]
+      },
+      "Oso": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMAECHI PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "NDIUCHE COMMUNITY HALL"
+          },
+          {
+            "code": "003",
+            "name": "AMAOSONTA VILLAGE HALL"
+          },
+          {
+            "code": "004",
+            "name": "NDIOKPO VILLAGE HALL"
+          },
+          {
+            "code": "005",
+            "name": "NDIOBASI VILLAGE HALL I"
+          },
+          {
+            "code": "006",
+            "name": "NDIOBASI VILLAGE HALL II"
+          },
+          {
+            "code": "007",
+            "name": "IGBORO PRIMARY SCHOOL I"
+          },
+          {
+            "code": "008",
+            "name": "IGBORO PRIMARY SCHOOL II"
+          },
+          {
+            "code": "009",
+            "name": "IGBORO PRIMARY SCHOOL III"
+          },
+          {
+            "code": "010",
+            "name": "OKPOROJO VILLAGE SQUARE"
+          },
+          {
+            "code": "011",
+            "name": "NDI OKPO TOWN HALL"
+          },
+          {
+            "code": "012",
+            "name": "NDI UGBO VILLAGE SQUARE"
+          },
+          {
+            "code": "013",
+            "name": "OKPOROJO PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Owutu": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "CENTRAL SCHOOL OWUTU I"
+          },
+          {
+            "code": "002",
+            "name": "CENTRAL SCHOOL OWUTU II"
+          },
+          {
+            "code": "003",
+            "name": "AKANU TOWN HALL"
+          },
+          {
+            "code": "004",
+            "name": "AMUKABI TOWN HALL"
+          },
+          {
+            "code": "005",
+            "name": "NDI EWA VILLAGE HALL"
+          },
+          {
+            "code": "006",
+            "name": "AMAEKE VILLAGE HALL"
+          },
+          {
+            "code": "007",
+            "name": "UMUNNATO PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "AMAEKPU TOWN HALL"
+          },
+          {
+            "code": "009",
+            "name": "OWUTU MOTOR PARK I"
+          },
+          {
+            "code": "010",
+            "name": "OWUTU MOTOR PARK II"
+          },
+          {
+            "code": "011",
+            "name": "UDEAZI VILLAGE HALL"
+          },
+          {
+            "code": "012",
+            "name": "UFU ESENI TOWN HALL"
+          },
+          {
+            "code": "013",
+            "name": "AMAEBO VILLAGE HALL"
+          },
+          {
+            "code": "014",
+            "name": "AMAEBO PLAY GROUND"
+          },
+          {
+            "code": "015",
+            "name": "UFUESENI VILLAGE HALL"
+          }
+        ]
+      }
+    }
+  },
+  "EBONYI": {
+    "code": "04",
+    "wards": {
+      "Abakpa": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "HOSSANA HILL"
+          },
+          {
+            "code": "002",
+            "name": "HOSSANA PARK"
+          },
+          {
+            "code": "003",
+            "name": "OLD PARK"
+          },
+          {
+            "code": "004",
+            "name": "HAUSA QUARTERS"
+          },
+          {
+            "code": "005",
+            "name": "HAUSA QUARTERS OPP. OGOJA ROAD"
+          },
+          {
+            "code": "006",
+            "name": "ABACHA ROUND ABOUT"
+          },
+          {
+            "code": "007",
+            "name": "AWKA/AROCHUKWU"
+          },
+          {
+            "code": "008",
+            "name": "TRACAS OFFICE"
+          },
+          {
+            "code": "009",
+            "name": "OPPOSITE EBO TRANS"
+          }
+        ]
+      },
+      "Abofia": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OBEAGU ABOFIA HALL"
+          },
+          {
+            "code": "002",
+            "name": "NDIABO ABOFIA VILLAGE SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "AGHAMELU VILLAGE SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "OKWUANYIONU PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "OGBOJI ABOFIA AGE GRADE HALL"
+          },
+          {
+            "code": "006",
+            "name": "EDUKWU ABOFIA AGE GRADE HALL"
+          },
+          {
+            "code": "007",
+            "name": "OROKE ONUOHA PLAY GROUND"
+          }
+        ]
+      },
+      "Agalegu": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OBOBO PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "EDEJA PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "MILE 4 PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "UGBODO PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "ABARIGWE PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "EZZA OPHU PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "OHATEKWE PLAY GROUND"
+          }
+        ]
+      },
+      "Echiaba": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NNODO BOYS SECONDARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "UGWU ECHARA PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "EBEBE PLAY GROUND I"
+          },
+          {
+            "code": "004",
+            "name": "AGE GRADE HALL"
+          },
+          {
+            "code": "005",
+            "name": "OBEAGU NTEZI ABA VILL. HALL I"
+          },
+          {
+            "code": "006",
+            "name": "EBEBE PLAY GROUND II"
+          },
+          {
+            "code": "007",
+            "name": "UNDER UBI TREE AT OMEGE JUNCTON (EBEBE PLAY GROUND III)"
+          },
+          {
+            "code": "008",
+            "name": "MILE 50 (OPP. BISHOP HOUSE)"
+          },
+          {
+            "code": "009",
+            "name": "PRESCO SECONDARY SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "MGBO ABA ACHARA P/GROUND"
+          },
+          {
+            "code": "011",
+            "name": "BORE HOLE AMIKE ABA"
+          },
+          {
+            "code": "012",
+            "name": "OBEAGU NTEZI ABA VILL. HALL II"
+          }
+        ]
+      },
+      "Egwudinagu": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EGWUDINAGU HALL"
+          },
+          {
+            "code": "002",
+            "name": "ONYIRIGBO PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "NDI CHI VILLAGE HALL"
+          },
+          {
+            "code": "004",
+            "name": "ULOANWU PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "AFFENYIM PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "AFFENYIM VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Enyibichiri I": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OGUZORONWEYA PRIMARY SCHOOL I"
+          },
+          {
+            "code": "002",
+            "name": "OGUZORONWEYA PRIMARY SCHOOL II"
+          },
+          {
+            "code": "003",
+            "name": "OJIEGBE PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "ITEM PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "ETE NKOROMA PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "NDIOFIA ECHARA PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "UKPACHACHA PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "MBAMINI PRIMARY SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "UMUIGWE PRIMARY SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "NDIOFIA C.C.D PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Enyibichiri II": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ENYIBICHIRI PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "OBIZO PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "NDUKABI PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "OKWOREKA PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "OTERUFIE PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "OKARIA PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "OJIANYA PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "OGBAGA PRIMARY SCHOOL I"
+          },
+          {
+            "code": "009",
+            "name": "NWIBOKO ONYIKWA PRIMARY SCHOOL (OGBAGA PRIMARY SCHOOL II)"
+          },
+          {
+            "code": "010",
+            "name": "OBEGU EZZA PLAY GROUND"
+          },
+          {
+            "code": "011",
+            "name": "OKWOREKA PLAY GROUND II"
+          }
+        ]
+      },
+      "Kpirikpiri": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "STATION URBAN PRIMARY SCHOOL I"
+          },
+          {
+            "code": "002",
+            "name": "STATION URBAN PRIMARY SCHOOL II"
+          },
+          {
+            "code": "003",
+            "name": "STADIUM COVER"
+          },
+          {
+            "code": "004",
+            "name": "ENUGWU UKWU HALL I"
+          },
+          {
+            "code": "005",
+            "name": "IGWEJA PLAY GROUND (ENUGWU UKWU HALL II)"
+          },
+          {
+            "code": "006",
+            "name": "GOVT. TRADE CENTRE I"
+          },
+          {
+            "code": "007",
+            "name": "ST. PATRICK'S PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "GOVT. TRADE CENTRE II"
+          },
+          {
+            "code": "009",
+            "name": "OBODO PARK"
+          },
+          {
+            "code": "010",
+            "name": "UKWUAKPU MARKET SQUARE I"
+          },
+          {
+            "code": "011",
+            "name": "EDUKWU PLAY GROUND (UKWUAKPU MARKET SQUARE II)"
+          }
+        ]
+      },
+      "Mbeke": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "MBEKE PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "OHAGELEDO PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "OHAGELEDO VILLAGE SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "NWODEBE PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "EKEBELIGWE PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "EKEBELIGWE VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Ndiagu": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OGBALA PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "EDUKWU PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "EDUKWU NDIOGODO"
+          },
+          {
+            "code": "004",
+            "name": "IGA PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "OZANTA PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "OZANTA MARKET SQUARE"
+          }
+        ]
+      },
+      "Ndiebor": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NDIEBOR PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "UGBONA PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "ODOMOKE PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "ALIBARUHU VILLAGE HALL"
+          },
+          {
+            "code": "005",
+            "name": "EDEDAGU PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "EDUKWU MGBO PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "NDIOHIA VILLAGE SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "UDOKA MARKET STALL"
+          },
+          {
+            "code": "009",
+            "name": "EBSUC,ISHIEKE"
+          }
+        ]
+      },
+      "Onuenyim": {
+        "code": "12",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OKWORIKE PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "IGWELEDOHA PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "NDIOFIA MARKET SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "ONUENYIM PLAY GROUND"
+          }
+        ]
+      },
+      "Urban New Layout": {
+        "code": "13",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NEW LAYOUT PRIMARY SCHOOL I"
+          },
+          {
+            "code": "002",
+            "name": "NEW LAYOUT PRIMARY SCHOOL II"
+          },
+          {
+            "code": "003",
+            "name": "NEW LAYOUT PRIMARY SCHOOL III"
+          },
+          {
+            "code": "004",
+            "name": "NEW LAYOUT PRIMARY SCHOOL IV"
+          },
+          {
+            "code": "005",
+            "name": "NUT PREMISES"
+          },
+          {
+            "code": "006",
+            "name": "VET. CENTRE"
+          },
+          {
+            "code": "007",
+            "name": "GUNNING ROAD/WATER WORKS"
+          },
+          {
+            "code": "008",
+            "name": "OKPAUGWU PRIMARY SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "CHILD WELFARE"
+          }
+        ]
+      }
+    }
+  },
+  "EZZA NORTH": {
+    "code": "05",
+    "wards": {
+      "Amuda / Amawula": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "CENTRAL SCHOOL AMUDA"
+          },
+          {
+            "code": "002",
+            "name": "C.P.S. NDIABORA"
+          },
+          {
+            "code": "003",
+            "name": "NWANKWO AMUDA"
+          },
+          {
+            "code": "004",
+            "name": "EBUKU AMUDA"
+          },
+          {
+            "code": "005",
+            "name": "NDIAGU UKORO TOWN HALL"
+          },
+          {
+            "code": "006",
+            "name": "NDIAGU NWAKPARATA"
+          },
+          {
+            "code": "007",
+            "name": "COMM. SCHOOL AMAWULA"
+          },
+          {
+            "code": "008",
+            "name": "NWANKWO ACHI/CENTRAL SCHOOL AMAWULA"
+          },
+          {
+            "code": "009",
+            "name": "AMAWULA TOWN HALL I"
+          },
+          {
+            "code": "010",
+            "name": "AMAWULA TOWN HALL II"
+          },
+          {
+            "code": "011",
+            "name": "AMAWULA VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Ekka": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EKKA VILLAGE HALL"
+          },
+          {
+            "code": "002",
+            "name": "IGBUDU EKKA"
+          },
+          {
+            "code": "003",
+            "name": "OSUSARA"
+          },
+          {
+            "code": "004",
+            "name": "COMM. SCHOOL EKKA"
+          },
+          {
+            "code": "005",
+            "name": "ENYIBICHIRI HALL EKKA"
+          },
+          {
+            "code": "006",
+            "name": "NGAMGBO OKWORIKE"
+          },
+          {
+            "code": "007",
+            "name": "NWAFOR ISHIENYI"
+          },
+          {
+            "code": "008",
+            "name": "NGAMGBO-MGBO EKKA"
+          },
+          {
+            "code": "009",
+            "name": "INTEGRATION PRIMARY SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "NGAMGBO AGASHI"
+          },
+          {
+            "code": "011",
+            "name": "UMUOBI EKKA HALL"
+          }
+        ]
+      },
+      "Inyere": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UMUEKEE INYERE HALL"
+          },
+          {
+            "code": "002",
+            "name": "ONUNWORIE ELOM"
+          },
+          {
+            "code": "003",
+            "name": "NGAMGBO OJI-EGBE"
+          },
+          {
+            "code": "004",
+            "name": "NGAMGBO ENYIBICHIRI"
+          },
+          {
+            "code": "005",
+            "name": "NGAMGBO NWAKPAKA"
+          }
+        ]
+      },
+      "Ndiaguazu - Umuoghara": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NGAMGBO-IGWELEDEOHA"
+          },
+          {
+            "code": "002",
+            "name": "AZU ISUMA"
+          },
+          {
+            "code": "003",
+            "name": "NGAMGBO AZUOSE"
+          },
+          {
+            "code": "004",
+            "name": "ONUZO NWOKEREKWU"
+          },
+          {
+            "code": "005",
+            "name": "C.P.S OGHARUGO"
+          },
+          {
+            "code": "006",
+            "name": "ONUEBONYI NWANKWO"
+          },
+          {
+            "code": "007",
+            "name": "UPE OGUDALI"
+          },
+          {
+            "code": "008",
+            "name": "NGAMGBO ENYIRINWA"
+          },
+          {
+            "code": "009",
+            "name": "NGAMGBO OHINYA"
+          }
+        ]
+      },
+      "Nkomoro": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OHAIKE"
+          },
+          {
+            "code": "002",
+            "name": "COMM. SCHOOL ONUAFOR"
+          },
+          {
+            "code": "003",
+            "name": "OMEGE OHAIKE"
+          },
+          {
+            "code": "004",
+            "name": "CPS UDENYI NKOMORO"
+          },
+          {
+            "code": "005",
+            "name": "CENTRAL SCHOOL UDENYI"
+          },
+          {
+            "code": "006",
+            "name": "NGAMGBO NKOMORO"
+          },
+          {
+            "code": "007",
+            "name": "OMEGE NGAMGBO NOKO"
+          },
+          {
+            "code": "008",
+            "name": "IGWELEDEOHA"
+          },
+          {
+            "code": "009",
+            "name": "NGAMGBO IGWELEDEOHA"
+          },
+          {
+            "code": "010",
+            "name": "AMENYI"
+          },
+          {
+            "code": "011",
+            "name": "NGAMGBO IGBOKE"
+          },
+          {
+            "code": "012",
+            "name": "COMM. SCHOOL UDENYI"
+          },
+          {
+            "code": "013",
+            "name": "NGAMGBO OHAIKE NKOMORO"
+          }
+        ]
+      },
+      "Ogboji": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "CENTRAL PRIMARY SCHOOL AMAGU I"
+          },
+          {
+            "code": "002",
+            "name": "CENTRAL PRIMARY SCHOOL AMAGU II"
+          },
+          {
+            "code": "003",
+            "name": "UNIVERSAL PRIMARY EDUCATION OGBOJI I"
+          },
+          {
+            "code": "004",
+            "name": "UNIVERSAL PRIMARY EDUCATION OGBOJI II"
+          },
+          {
+            "code": "005",
+            "name": "NWORIE ACHIAGU"
+          },
+          {
+            "code": "006",
+            "name": "NWORIE ACHIAGU OGBOJI"
+          },
+          {
+            "code": "007",
+            "name": "OBUAGU OGBOJI I"
+          },
+          {
+            "code": "008",
+            "name": "OBUAGU OGBOJI II"
+          },
+          {
+            "code": "009",
+            "name": "OBUAGU OGBOJI III"
+          },
+          {
+            "code": "010",
+            "name": "COMM. SCHOOL OGBOJI NDIAGU I"
+          },
+          {
+            "code": "011",
+            "name": "COMM. SCHOOL OGBOJI NDIAGU II"
+          },
+          {
+            "code": "012",
+            "name": "C.S. OGBOJI III"
+          },
+          {
+            "code": "013",
+            "name": "ACHIAGU OGBOJI"
+          }
+        ]
+      },
+      "Okposi Umuoghara": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EKWETEKWE"
+          },
+          {
+            "code": "002",
+            "name": "C.P.S ENYIM"
+          },
+          {
+            "code": "003",
+            "name": "C.P.S UGALABA I"
+          },
+          {
+            "code": "004",
+            "name": "C.P.S UGALABA II"
+          },
+          {
+            "code": "005",
+            "name": "EKUJI ENYIM"
+          },
+          {
+            "code": "006",
+            "name": "C.S OKPOSI I"
+          },
+          {
+            "code": "007",
+            "name": "C.S OKPOSI II"
+          },
+          {
+            "code": "008",
+            "name": "ONUNWORIE NDIABO"
+          },
+          {
+            "code": "009",
+            "name": "ENYIBICHIRI"
+          },
+          {
+            "code": "010",
+            "name": "NGAMGBO UGBALOKE"
+          },
+          {
+            "code": "011",
+            "name": "UHUBA OGBAGA"
+          },
+          {
+            "code": "012",
+            "name": "NGAMGBO EZE"
+          },
+          {
+            "code": "013",
+            "name": "COMM. PRI.SCH. OKPOSI"
+          }
+        ]
+      },
+      "Omege Umuezeokoha": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ORIE NDUHU"
+          },
+          {
+            "code": "002",
+            "name": "NGAMGBO UGWUEKWO"
+          },
+          {
+            "code": "003",
+            "name": "UGBONA ONU ORIE"
+          },
+          {
+            "code": "004",
+            "name": "NGAMGBO IGWE OKALERU"
+          },
+          {
+            "code": "005",
+            "name": "COM. PRI.SCH.CAMPUS OMEGE I"
+          },
+          {
+            "code": "006",
+            "name": "NGAMGBO ONUEGBE"
+          },
+          {
+            "code": "007",
+            "name": "COM. PRI.SCH.CAMPUS OMEGE II"
+          },
+          {
+            "code": "008",
+            "name": "OKPUENYI ONU"
+          },
+          {
+            "code": "009",
+            "name": "COMM. SEC. SCH. UMUEZEOKOHA I"
+          },
+          {
+            "code": "010",
+            "name": "COMM. SEC. SCH. UMUEZEOKOHA II"
+          },
+          {
+            "code": "011",
+            "name": "NGAMGBO UGBONA OHAGOLODE"
+          },
+          {
+            "code": "012",
+            "name": "NGAMGBO ONUZO EGBE"
+          },
+          {
+            "code": "013",
+            "name": "ONU NWORIE EBIAJI"
+          },
+          {
+            "code": "014",
+            "name": "NGAMGBO OMEGE"
+          },
+          {
+            "code": "015",
+            "name": "NGAMGBO ODEDEAGU"
+          },
+          {
+            "code": "016",
+            "name": "NGAMGBO OKWEFURU IKE"
+          }
+        ]
+      },
+      "Oriuzor": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OHAGELODE UMUIGBOKE"
+          },
+          {
+            "code": "002",
+            "name": "C.P.S UMUIGBOKE"
+          },
+          {
+            "code": "003",
+            "name": "NGAMGBO IGWEKEORU"
+          },
+          {
+            "code": "004",
+            "name": "UMUNOKO AGBOM"
+          },
+          {
+            "code": "005",
+            "name": "CENTRAL SCHOOL ORIUZOR"
+          },
+          {
+            "code": "006",
+            "name": "NGAMGBO IGWE"
+          },
+          {
+            "code": "007",
+            "name": "C.P.S. UMOKE"
+          },
+          {
+            "code": "008",
+            "name": "ONUNWANKWO AGBA"
+          },
+          {
+            "code": "009",
+            "name": "NWEKE EKPURU"
+          },
+          {
+            "code": "010",
+            "name": "ODELIGBO VILLAGE HALL"
+          },
+          {
+            "code": "011",
+            "name": "NGAMGBO ODELIGBO"
+          },
+          {
+            "code": "012",
+            "name": "AMOGBU UMUEZIALI"
+          },
+          {
+            "code": "013",
+            "name": "COMM. SCHOOL ORIUZOR"
+          },
+          {
+            "code": "014",
+            "name": "NGAMGBO OWA"
+          },
+          {
+            "code": "015",
+            "name": "NGAMGBO EDEGE"
+          }
+        ]
+      },
+      "Oshiegbe Umuezeokoha": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "C.P.S OSHIEGBE I"
+          },
+          {
+            "code": "002",
+            "name": "C.P.S OSHIEGBE II"
+          },
+          {
+            "code": "003",
+            "name": "C.P.S OSHIEGBE III"
+          },
+          {
+            "code": "004",
+            "name": "C.P.S AZUITUMO I"
+          },
+          {
+            "code": "005",
+            "name": "C.P.S AZUITUMO II"
+          },
+          {
+            "code": "006",
+            "name": "C.P.S AZUITUMO III"
+          },
+          {
+            "code": "007",
+            "name": "AZUITUMO TOWN HALL"
+          },
+          {
+            "code": "008",
+            "name": "ETEGIDIGWE I"
+          },
+          {
+            "code": "009",
+            "name": "ETEGIDIGWE II"
+          },
+          {
+            "code": "010",
+            "name": "ANACHI TOWN HALL"
+          },
+          {
+            "code": "011",
+            "name": "ANACHI PLAY GROUND"
+          },
+          {
+            "code": "012",
+            "name": "ENYIARIGWE"
+          },
+          {
+            "code": "013",
+            "name": "UKWOMA"
+          },
+          {
+            "code": "014",
+            "name": "NGAMGBO UKWOMA"
+          }
+        ]
+      },
+      "Umuezeoka": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AZITUMO EKWETEKWE"
+          },
+          {
+            "code": "002",
+            "name": "NGAMGBO OMEGE"
+          },
+          {
+            "code": "003",
+            "name": "C.P.S NDIAGU EKWETEKWE"
+          },
+          {
+            "code": "004",
+            "name": "NGAMGBO AKWA OMEGE"
+          },
+          {
+            "code": "005",
+            "name": "CENTRAL SCHOOL UMUEZOKA"
+          },
+          {
+            "code": "006",
+            "name": "NGAMGBO ENYAGRIGWE"
+          },
+          {
+            "code": "007",
+            "name": "NDIAGU OGBUINYIAGU"
+          },
+          {
+            "code": "008",
+            "name": "ST.AIDAN'S SECONDARY SCHOOL UMUEZEOKA"
+          },
+          {
+            "code": "009",
+            "name": "UDENYI COMM. SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "ALUBELEKE TOWN HALL"
+          },
+          {
+            "code": "011",
+            "name": "OKOROKO TOWN HALL"
+          },
+          {
+            "code": "012",
+            "name": "NGAMGBO ENARINA"
+          },
+          {
+            "code": "013",
+            "name": "NGAMGBO EKWU"
+          }
+        ]
+      }
+    }
+  },
+  "EZZA SOUTH": {
+    "code": "06",
+    "wards": {
+      "Amaezekwe": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ABAJI VILLAGE SQUARE"
+          },
+          {
+            "code": "002",
+            "name": "AGBAKORO VILLAGE SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "NDUFU VILLAGE SQUARE I"
+          },
+          {
+            "code": "004",
+            "name": "NDUFU VILLAGE SQUARE II"
+          },
+          {
+            "code": "005",
+            "name": "COMM. PRI. SCHOOL AMAEZEKWE"
+          },
+          {
+            "code": "006",
+            "name": "NGAMGBO NDIAGUZU VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Amagu/Nsokkara": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "CENTRAL SCHOOL NSOKKARA I"
+          },
+          {
+            "code": "002",
+            "name": "NWANKWO EDEGBE VILLAGE SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "NGAMGBO OMEGE"
+          },
+          {
+            "code": "004",
+            "name": "CENTRAL SCHOOL NSOKKARA II"
+          },
+          {
+            "code": "005",
+            "name": "COMM. SCHOOL NSOKKARA"
+          },
+          {
+            "code": "006",
+            "name": "NGAMGBO EKWETEKWE VILLAGE SQUARE I"
+          },
+          {
+            "code": "007",
+            "name": "NGAMGBO EKWETEKWE VILLAGE SQUARE II"
+          },
+          {
+            "code": "008",
+            "name": "NGAMGBO NDUFU VILLAGE SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "CENTRAL SCHOOL AMAGU (COMM. SCHOOL AMAGU VILLAGE SQUARE)"
+          },
+          {
+            "code": "010",
+            "name": "AZUNWACHI VILLAGE SQUARE"
+          },
+          {
+            "code": "011",
+            "name": "EKWUREKWU VILLAGE SQUARE"
+          },
+          {
+            "code": "012",
+            "name": "NDIAGU AGALAGU"
+          },
+          {
+            "code": "013",
+            "name": "NGAMGBO AMAOKPU VILLAGE SQUARE I"
+          },
+          {
+            "code": "014",
+            "name": "NGAMGBO AMAOKPU VILLAGE SQUARE II"
+          }
+        ]
+      },
+      "Amana": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NGAMGBO ODANARA VILLAGE SQUARE"
+          },
+          {
+            "code": "002",
+            "name": "NWAGODO MARKET SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "CENTRAL SCHOOL NDIAGU AMANA I"
+          },
+          {
+            "code": "004",
+            "name": "CENTRAL SCHOOL NDIAGU AMANA II"
+          },
+          {
+            "code": "005",
+            "name": "NGAMGBO UTARA VILLAGE SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "EGUAZUHU PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "NGAMGBO ONUZONWOGWU"
+          },
+          {
+            "code": "008",
+            "name": "COMM. CENTRAL SCHOOL AMANA"
+          },
+          {
+            "code": "009",
+            "name": "NWORIE NDIAGUAZU MARKET SQUARE"
+          },
+          {
+            "code": "010",
+            "name": "EZEKUNA PLAY GROUND"
+          }
+        ]
+      },
+      "Ameka": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NGAMGBO ENYIM I"
+          },
+          {
+            "code": "002",
+            "name": "NGAMGBO ENYIM II"
+          },
+          {
+            "code": "003",
+            "name": "NGAMGBO ENYIM III"
+          },
+          {
+            "code": "004",
+            "name": "COMM. PRIMARY SCHOOL AMAJIM I"
+          },
+          {
+            "code": "005",
+            "name": "COMM. PRIMARY SCHOOL AMAJIM II"
+          },
+          {
+            "code": "006",
+            "name": "NGAMGBO UKORO"
+          },
+          {
+            "code": "007",
+            "name": "NGAMGBO IHOTOR"
+          },
+          {
+            "code": "008",
+            "name": "NGAMGBO OMEGE I"
+          },
+          {
+            "code": "009",
+            "name": "NGAMGBO OMEGE II"
+          },
+          {
+            "code": "010",
+            "name": "COMM. PRIMARY SCHOOL NDIAGU AZU"
+          },
+          {
+            "code": "011",
+            "name": "AMAOGWE VILLAGE SQUARE I"
+          },
+          {
+            "code": "012",
+            "name": "AMAOGWE VILLAGE SQUARE II"
+          },
+          {
+            "code": "013",
+            "name": "NGAMGBO UKORO IHOTOR"
+          },
+          {
+            "code": "014",
+            "name": "NDUFU VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Amudo/Okoffia": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ORIEGBE MARKET SQUARE I"
+          },
+          {
+            "code": "002",
+            "name": "ORIEGBE MARKET SQUARE II"
+          },
+          {
+            "code": "003",
+            "name": "ORIEGBE MARKET SQUARE III"
+          },
+          {
+            "code": "004",
+            "name": "COMM. PRY. SCHOOL AMUDO"
+          },
+          {
+            "code": "005",
+            "name": "NGAMGBO NWELE VILLAGE SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "OBOMA OKOFFIA VILLAGE SQUARE I"
+          },
+          {
+            "code": "007",
+            "name": "OBOMA OKOFFIA VILLAGE SQUARE II"
+          },
+          {
+            "code": "008",
+            "name": "UGWEFERE OKOFFIA VILL SQUARE I"
+          },
+          {
+            "code": "009",
+            "name": "UGWEFERE OKOFFIA VILL SQUARE II"
+          },
+          {
+            "code": "010",
+            "name": "C.S NDIAGU OKOFFIA VILLAGE SQUARE"
+          },
+          {
+            "code": "011",
+            "name": "OKALERU VILLAGE SQUARE"
+          },
+          {
+            "code": "012",
+            "name": "EVURUIGU VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Amuzu": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "COMM. SECONDARY SCHOOL AMUZU I"
+          },
+          {
+            "code": "002",
+            "name": "COMM. SECONDARY SCHOOL AMUZU II"
+          },
+          {
+            "code": "003",
+            "name": "COMM. SECONDARY SCHOOL AMUZU III"
+          },
+          {
+            "code": "004",
+            "name": "OGEWEKWE VILLAGE SQUARE HALL I"
+          },
+          {
+            "code": "005",
+            "name": "OGEWEKWE VILLAGE SQUARE HALL II"
+          },
+          {
+            "code": "006",
+            "name": "ORINTE PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "OHOFIA PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "NTEZI AMUZU PLAY GROUND I"
+          },
+          {
+            "code": "009",
+            "name": "NTEZI AMUZU PLAY GROUND II"
+          },
+          {
+            "code": "010",
+            "name": "INYIMA VILLAGE SQUARE"
+          },
+          {
+            "code": "011",
+            "name": "OMEGE PLAY GROUND"
+          }
+        ]
+      },
+      "Echara": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NGAMGBO AMEBO VILLAGE SQUARE I"
+          },
+          {
+            "code": "002",
+            "name": "NGAMGBO AMEBO VILLAGE SQUARE II"
+          },
+          {
+            "code": "003",
+            "name": "NGAMGBO AMEBO VILLAGE SQUARE III"
+          },
+          {
+            "code": "004",
+            "name": "CENTRAL SCHOOL ECHARA"
+          },
+          {
+            "code": "005",
+            "name": "AZUEBONYI ECHARA VILLAGE SQUARE I"
+          },
+          {
+            "code": "006",
+            "name": "AZUEBONYI ECHARA VILLAGE SQUARE II"
+          },
+          {
+            "code": "007",
+            "name": "EKEREIGWE VILLAGE SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "AMEBIA VILLAGE SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "NGAMGBO AKATAKA VILLAGE SQUARE I"
+          },
+          {
+            "code": "010",
+            "name": "NGAMGBO AKATAKA VILLAGE SQUARE II"
+          },
+          {
+            "code": "011",
+            "name": "NGAMGBO ABAM VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Ezzama": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "COMM. SCHOOL AMETA I"
+          },
+          {
+            "code": "002",
+            "name": "COMM. SCHOOL AMETA II"
+          },
+          {
+            "code": "003",
+            "name": "NGAMGBO KPAKPAJI"
+          },
+          {
+            "code": "004",
+            "name": "ONUNWAFOR VILLAGE SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "CENTRAL SCHOOL ONUNWAFOR"
+          },
+          {
+            "code": "006",
+            "name": "NGAMGBO EKELEBI"
+          },
+          {
+            "code": "007",
+            "name": "OHINYA VILLAGE SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "ONUNWANKWO PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "NGAMGBO ISHIEKE SQUARE"
+          },
+          {
+            "code": "010",
+            "name": "OROKE ONUOHA VILLAGE SQUARE"
+          },
+          {
+            "code": "011",
+            "name": "OPALEKE VILLAGE SQUARE"
+          },
+          {
+            "code": "012",
+            "name": "IMEABALI VILLAGE SQUARE I"
+          },
+          {
+            "code": "013",
+            "name": "IMEABALI VILLAGE SQUARE II"
+          }
+        ]
+      },
+      "Ikwuator/Idembia": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AZUEBONYI VILLAGE SQUARE I"
+          },
+          {
+            "code": "002",
+            "name": "AZUEBONYI VILLAGE SQUARE II"
+          },
+          {
+            "code": "003",
+            "name": "NWANKWO UGWUOGO I"
+          },
+          {
+            "code": "004",
+            "name": "NWANKWO UGWUOGO II"
+          },
+          {
+            "code": "005",
+            "name": "UGWUGO AZUEBONYI"
+          },
+          {
+            "code": "006",
+            "name": "ORIE MARKET SQUARE I"
+          },
+          {
+            "code": "007",
+            "name": "ORIE MARKET SQUARE II"
+          },
+          {
+            "code": "008",
+            "name": "NGAMGBO OHAGE I"
+          },
+          {
+            "code": "009",
+            "name": "NGAMGBO OHAGE II"
+          },
+          {
+            "code": "010",
+            "name": "ONUNWAFOR VILLAGE SQUARE"
+          },
+          {
+            "code": "011",
+            "name": "NGAMGBO INYIMA EGU I"
+          },
+          {
+            "code": "012",
+            "name": "NGAMGBO INYIMA EGU II"
+          },
+          {
+            "code": "013",
+            "name": "OCHUHU AGBA VIILAGE SQUARE I"
+          },
+          {
+            "code": "014",
+            "name": "OCHUHU AGBA VIILAGE SQUARE II"
+          },
+          {
+            "code": "015",
+            "name": "ONUNWANKWO EZEKUNA"
+          }
+        ]
+      },
+      "Onueke Urban": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ONUEKE/AFIKPO ROAD"
+          },
+          {
+            "code": "002",
+            "name": "ONUEKE MARKET SQUARE I"
+          },
+          {
+            "code": "003",
+            "name": "EGUDIEGWU / AKAFI VILLAGE SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "ONUEKE MARKET SQUARE II"
+          },
+          {
+            "code": "005",
+            "name": "NDI ACHI PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "IKWO ROAD JUNCTION"
+          },
+          {
+            "code": "007",
+            "name": "OFEREKPE VILLAGE SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "ONUEKE VILLAGE SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "ONUEKE MOTOR PARK I"
+          },
+          {
+            "code": "010",
+            "name": "ONUEKE MOTOR PARK II"
+          },
+          {
+            "code": "011",
+            "name": "CENTRAL SCHOOL ONUEKE I"
+          },
+          {
+            "code": "012",
+            "name": "CENTRAL SCHOOL ONUEKE II"
+          }
+        ]
+      },
+      "Umunwagu / Idembia": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "C.P.S UMUNWAGU"
+          },
+          {
+            "code": "002",
+            "name": "ONUNWANKWOR VILLLAGE SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "OROKOME VILLAGE SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "EZIGA VILLAGE SQUARE I"
+          },
+          {
+            "code": "005",
+            "name": "EZIGA VILLAGE SQUARE II"
+          },
+          {
+            "code": "006",
+            "name": "AMEBIA VILLAGE SQUARE I"
+          },
+          {
+            "code": "007",
+            "name": "AMEBIA VILLAGE SQUARE II"
+          },
+          {
+            "code": "008",
+            "name": "AZUEBONYI VILLAGE SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "NGAMGBO AKPIKO VILLAGE SQUARE"
+          },
+          {
+            "code": "010",
+            "name": "NGAMGBO AKPUGO SQUARE"
+          },
+          {
+            "code": "011",
+            "name": "OMEGE AKPUGO SQUARE"
+          },
+          {
+            "code": "012",
+            "name": "CENTRAL SCHOOL IDEMBIA"
+          }
+        ]
+      }
+    }
+  },
+  "IKWO": {
+    "code": "07",
+    "wards": {
+      "Ama Inyima": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EDUKWU ENYIM PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "OGIDIGA PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "COMM. PRIMARY SCHOOL OKPUITUMO"
+          },
+          {
+            "code": "004",
+            "name": "IMEDIAGU ANNUMOCHA"
+          },
+          {
+            "code": "005",
+            "name": "ODELIGBO HALL"
+          },
+          {
+            "code": "006",
+            "name": "IDAH PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "EDUKWU EDEUGBALA PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "AGUINYIMA PLAY GROUND"
+          }
+        ]
+      },
+      "Echialike": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NDIOVA ENYIM PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "C.P.S ECHIALIKE"
+          },
+          {
+            "code": "003",
+            "name": "OFUTU ENYI PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "EDUKWUEDE PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "IKPURUKPU PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "UGBODO VILLAGE SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "OKPASHI PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "ALIUKWUNTA PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "NDIODUMA PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "OMEGE ECHIALIKE"
+          },
+          {
+            "code": "011",
+            "name": "NDIAKPARATA PLAY GROUND"
+          },
+          {
+            "code": "012",
+            "name": "NDIOVA VILLAGE SQUARE"
+          },
+          {
+            "code": "013",
+            "name": "NDIOVA ECHIALIKE VILLAGE SQUARE"
+          },
+          {
+            "code": "014",
+            "name": "NWUGOTA MARKET SQUARE"
+          },
+          {
+            "code": "015",
+            "name": "NDINWESA NDIAGU ECHIALIKE"
+          },
+          {
+            "code": "016",
+            "name": "EDENNYEKA PLAY GROUND"
+          }
+        ]
+      },
+      "Eka Awoke": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ECHARA UKWU PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "C.S ONUAFIUKWA"
+          },
+          {
+            "code": "003",
+            "name": "AFIUKWA MARKET SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "NDUFU UMOTA PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "AGUINYIMA PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Ekpanwudele": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EDUKWU AMAKPO TOWN HALL"
+          },
+          {
+            "code": "002",
+            "name": "AKAHUFU C.P.S EKPANWUDELE"
+          },
+          {
+            "code": "003",
+            "name": "GIRILS HIGH SCHOOL IKWO"
+          },
+          {
+            "code": "004",
+            "name": "NDIODUMA PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "NDIECHI PLAY GROUND EKPANWUDELE"
+          },
+          {
+            "code": "006",
+            "name": "EBIEM PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "AKATAKA PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "IMABALI PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "MBADA PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "IFELEMENU PLAY GROUND"
+          }
+        ]
+      },
+      "Ekpelu": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NKWUDA MARKET SQUARE"
+          },
+          {
+            "code": "002",
+            "name": "C.P.S. EKPELU PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "AMAINYIMA EKPELU PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "INYIMAGU AMAEKA MKT SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "AMACHARA PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "AMANGWURU TOWN HALL"
+          }
+        ]
+      },
+      "Enyibichiri": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "C.S NDIAGUAZIU"
+          },
+          {
+            "code": "002",
+            "name": "EDUKWU OHATEKWE PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "UKWU MANGO OBEGU OHATEKWE"
+          },
+          {
+            "code": "004",
+            "name": "MGBABO PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "NDUBIA PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "EDUKWU OBOVU NDIAGUAZU PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "EBUSIKE PLAY GROUND I"
+          },
+          {
+            "code": "008",
+            "name": "EBUSIKE PLAY GROUND II"
+          },
+          {
+            "code": "009",
+            "name": "NDIECHI PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "EDUKWU AKPURU NKOLE"
+          },
+          {
+            "code": "011",
+            "name": "C.S ENYIBICHIRI"
+          },
+          {
+            "code": "012",
+            "name": "C.S ODARIKO"
+          },
+          {
+            "code": "013",
+            "name": "NKELEKE PLAY GROUND"
+          },
+          {
+            "code": "014",
+            "name": "OJON MARKET SQUARE"
+          },
+          {
+            "code": "015",
+            "name": "NDIAKPARATA NDINWESA"
+          },
+          {
+            "code": "016",
+            "name": "NDINWESA PLAY GROUND"
+          },
+          {
+            "code": "017",
+            "name": "NDIJI AKPU PLAY GROUND"
+          }
+        ]
+      },
+      "Etam": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EDUKWU AGBALAGU"
+          },
+          {
+            "code": "002",
+            "name": "ALO NWEKOYO STATION I"
+          },
+          {
+            "code": "003",
+            "name": "ALO NWEKOYO STATION II"
+          },
+          {
+            "code": "004",
+            "name": "NGAMGBO OKPATA"
+          },
+          {
+            "code": "005",
+            "name": "ROYAL PRIMARY SCHOOL IVU AKPA"
+          }
+        ]
+      },
+      "Igbudu I": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMUDA PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "AGUBIA MOTOR PARK"
+          },
+          {
+            "code": "003",
+            "name": "EDUKWU UDUKU TOWN HALL"
+          },
+          {
+            "code": "004",
+            "name": "COMM. SCHOOL NDUFU IGBUDU ISHIEKE"
+          },
+          {
+            "code": "005",
+            "name": "IMOGO PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "NDIOFFIA TOWN HALL"
+          }
+        ]
+      },
+      "Igbudu II": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OME MARKET SQUARE"
+          },
+          {
+            "code": "002",
+            "name": "OKONGWO TOWN HALL"
+          },
+          {
+            "code": "003",
+            "name": "IZO TOWN HALL"
+          },
+          {
+            "code": "004",
+            "name": "OGAGBO TOWN HALL"
+          },
+          {
+            "code": "005",
+            "name": "ODE KPUTARA PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "NDI EBONYI PLAY GROUND"
+          }
+        ]
+      },
+      "Inyimagu I": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "C.P.S IGBOJI"
+          },
+          {
+            "code": "002",
+            "name": "C.P.S EKPA IBIAM"
+          },
+          {
+            "code": "003",
+            "name": "OBEGU / INYIMAGU PLAY GORUND"
+          },
+          {
+            "code": "004",
+            "name": "EFFIMGBABO VILLAGE SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "EKPA IBIAM C.P.S"
+          }
+        ]
+      },
+      "Inyimagu II": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "C.P.S AKAHUFU INYIMAGU"
+          },
+          {
+            "code": "002",
+            "name": "AKAHUFU MARKET SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "C.P.S ODOMOWO"
+          },
+          {
+            "code": "004",
+            "name": "ODOMOWO PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "OFEREKPE PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "NDIAGU PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "OFEREKPE C.P.S"
+          },
+          {
+            "code": "008",
+            "name": "UGWUEKE PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "OCHOKWU PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "OFENAKPA PLAY GROUND"
+          },
+          {
+            "code": "011",
+            "name": "C.S.P OFENAKPA"
+          },
+          {
+            "code": "012",
+            "name": "AGBENYIM C.P.S"
+          },
+          {
+            "code": "013",
+            "name": "EDUKWU OKOSHDO"
+          }
+        ]
+      },
+      "Ndiagu Amagu I": {
+        "code": "12",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NDIECHI AMAGU PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "C.P.S NDIAGU AMAGU"
+          },
+          {
+            "code": "003",
+            "name": "ELUKWU OGELE"
+          },
+          {
+            "code": "004",
+            "name": "AGBAKORO NDIAGU PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "OBEGU OMEGE"
+          },
+          {
+            "code": "006",
+            "name": "OHAUKWU OMEGE"
+          },
+          {
+            "code": "007",
+            "name": "OKWERIKE PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "EDUKWU NDIEKETE"
+          },
+          {
+            "code": "009",
+            "name": "NDIEKETE PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "ORONGA AMAGU"
+          },
+          {
+            "code": "011",
+            "name": "OMEGE ORONGA"
+          },
+          {
+            "code": "012",
+            "name": "ONYIKWA AMAGU PLAY GROUND"
+          },
+          {
+            "code": "013",
+            "name": "NSOBO PLAY GROUND"
+          }
+        ]
+      },
+      "Ndiagu Amagu II": {
+        "code": "13",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ENYIBICHIRI AMAGU PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "ITEM AMAGU PLAY GROUND I"
+          },
+          {
+            "code": "003",
+            "name": "ITEM AMAGU PLAY GROUND II"
+          },
+          {
+            "code": "004",
+            "name": "NWGAMGBO MARKET SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "OCHIENYIM PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "AKAHUFU AMAGU PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "OBUSHILE PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "ITEM / OBEGU C.P.S"
+          }
+        ]
+      },
+      "Ndiagu Echara I": {
+        "code": "14",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OMEGE SENIOR PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "OFUTU OMEGE"
+          },
+          {
+            "code": "003",
+            "name": "UKWUACHI NZASHI"
+          },
+          {
+            "code": "004",
+            "name": "OGBENU NZASHI"
+          },
+          {
+            "code": "005",
+            "name": "OLUA PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "JUNIOR PRIMARY OMEGE"
+          },
+          {
+            "code": "007",
+            "name": "ODARIKO NZASHI"
+          },
+          {
+            "code": "008",
+            "name": "AKPAKWURU NZASHI PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "NDIAGU NZASHI PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "AKAHUFU OMEGE"
+          }
+        ]
+      },
+      "Ndiagu Echara II": {
+        "code": "15",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NDIOGODOSHI GROUND FARM"
+          },
+          {
+            "code": "002",
+            "name": "ONYIRIGBO PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "MBUKOBE NDIODUMA 0KP0T0KUM"
+          },
+          {
+            "code": "004",
+            "name": "UGBO PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "COMMUNITY PRIMARY SCHOOL UGBODO"
+          },
+          {
+            "code": "006",
+            "name": "C.S NDIAGU ECHARA"
+          },
+          {
+            "code": "007",
+            "name": "NWODE MARKET SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "C.P.S NDIAGU OKPERA"
+          },
+          {
+            "code": "009",
+            "name": "AKAHUFU OKPERA PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "OBEAGU AZUOFE PLAY GROUND"
+          },
+          {
+            "code": "011",
+            "name": "OKPERA PLAY GROUND"
+          }
+        ]
+      },
+      "Ndufu Amagu": {
+        "code": "16",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AGALAGU PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "NDIOFOKE PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "OBEGU NDIOFOKE"
+          },
+          {
+            "code": "004",
+            "name": "ODELIGBO PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "AGBABOR C.P.S AKUNAKUMA"
+          },
+          {
+            "code": "006",
+            "name": "AKUNAKUNA PLAY GROUND"
+          }
+        ]
+      },
+      "Ndufu Amagu I": {
+        "code": "17",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NDIAGU IGKWELEDOHA"
+          },
+          {
+            "code": "002",
+            "name": "EDUKWU OPHUNU"
+          },
+          {
+            "code": "003",
+            "name": "IGWELEDOHA PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "COOPERATIVE HALL ABINA I"
+          },
+          {
+            "code": "005",
+            "name": "COOPERATIVE HALL ABINA II"
+          },
+          {
+            "code": "006",
+            "name": "COOPERATIVE HALL OHATEKWE"
+          }
+        ]
+      },
+      "Ndufu Alike": {
+        "code": "18",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UMUNNATO C.S NWAKPU"
+          },
+          {
+            "code": "002",
+            "name": "NWAKPU MARKET SQUARE I"
+          },
+          {
+            "code": "003",
+            "name": "NWAKPU MARKET SQUARE II"
+          },
+          {
+            "code": "004",
+            "name": "ENYIM AGALEGU PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "IZZAMGBO AGALEGU PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "ONYIKWA C.S.P"
+          },
+          {
+            "code": "007",
+            "name": "NGAMGBO OZABE PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "UGWUAFOR VILLAGE PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "ENYIM CHUKWU VILLAGE PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "UGWUINYIMA AGALEGU C.S.P I"
+          },
+          {
+            "code": "011",
+            "name": "UGWUINYIMA AGALEGU C.S.P II"
+          }
+        ]
+      },
+      "Ndufu Echara": {
+        "code": "19",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "C.S.P NDUFU ECHARA"
+          },
+          {
+            "code": "002",
+            "name": "AMEGU ECHARA PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "NWODE MARKET SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "ELEKE PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "OKPOTEGU PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "NDIECHI ACHARA MARKET SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "OBEAGU AMEGU ECHARA PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "NWAFIA OKPERA"
+          },
+          {
+            "code": "009",
+            "name": "UGBO NZASHI PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "OBEAGU NZASHI PLAY GROUND"
+          },
+          {
+            "code": "011",
+            "name": "AMUDA NZASHI ECHARA"
+          },
+          {
+            "code": "012",
+            "name": "C.P.S ONUEBONY NZASHI"
+          },
+          {
+            "code": "013",
+            "name": "OBEAGU ELEKE NZASHI"
+          },
+          {
+            "code": "014",
+            "name": "NWAFIA AKPE MARKET SQUARE"
+          },
+          {
+            "code": "015",
+            "name": "OBEGE NDUFU ECHARA PLAY GROUND"
+          }
+        ]
+      },
+      "Noye Alike": {
+        "code": "20",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "C.P.S NOYO"
+          },
+          {
+            "code": "002",
+            "name": "NDIOGBU PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "NDIOFFIA PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "C.S NDIAGU NOYO"
+          },
+          {
+            "code": "005",
+            "name": "EBIAJI PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "OMEGE PLAY GROUND"
+          }
+        ]
+      }
+    }
+  },
+  "ISHIELU": {
+    "code": "08",
+    "wards": {
+      "Agba": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ODOAKWU OMEGE MARKET SQUARE"
+          },
+          {
+            "code": "002",
+            "name": "NDIAGUAZU AGBA PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "EKE AGBAELU MARKET SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "NGAMGBO ODE VILLAGE HALL"
+          },
+          {
+            "code": "005",
+            "name": "EKE OMEGE PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "AMAGU AGBA C/SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "NGAMGBO EZEMKPURAKWU PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "AGBAELU - ULO PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "EKEOMEGE AKWURAKWU PRIMARY SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "NKWO AKWURAKWU MARKET SQUARE"
+          }
+        ]
+      },
+      "Amaezu": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NDI AGU AZU ORA HALL"
+          },
+          {
+            "code": "002",
+            "name": "AMAEZU JUNCTION HALL"
+          },
+          {
+            "code": "003",
+            "name": "AMAEZU PRIMARY SCHOOL IYIEKE"
+          },
+          {
+            "code": "004",
+            "name": "OKPUALI / UMUONYI HALL"
+          }
+        ]
+      },
+      "Azuinyaba \"A\"": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ANYIM PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "AGUEGEDE TOWN HALL I"
+          },
+          {
+            "code": "003",
+            "name": "OGBOGUM PRIMARY SCHOOL II"
+          },
+          {
+            "code": "004",
+            "name": "AZUOFIA PRIMARY SCHOOL II"
+          },
+          {
+            "code": "005",
+            "name": "ONUOJI PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Azuinyaba \"B\"": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OGBOGUM PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "NGAMGBO OJA"
+          },
+          {
+            "code": "003",
+            "name": "ONUNWANKWO MARKET"
+          },
+          {
+            "code": "004",
+            "name": "NWA EBOMOHA MARKET"
+          },
+          {
+            "code": "005",
+            "name": "AZUOFIA PRIMARY SCHOOL I"
+          }
+        ]
+      },
+      "Ezillo I": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMEBENYI PLAY GROUND I"
+          },
+          {
+            "code": "002",
+            "name": "AMEBENYI PLAY GROUND II"
+          },
+          {
+            "code": "003",
+            "name": "AMUHU PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "OBODO IGBUDEZE"
+          },
+          {
+            "code": "005",
+            "name": "C.P.S EZZA EZILLO PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "UGBONIA PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "ONUNWAFOR EZZA MARKET STALL"
+          },
+          {
+            "code": "008",
+            "name": "EGUFO AMUHU PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "AMUHU AGUOSE VILLAGE SQUARE"
+          },
+          {
+            "code": "010",
+            "name": "EKE ALI OJI VILLAGE SQUARE"
+          },
+          {
+            "code": "011",
+            "name": "AMAOFIA PLAY GROUND"
+          },
+          {
+            "code": "012",
+            "name": "AMUKPA PLAY GROUND"
+          }
+        ]
+      },
+      "Ezillo II": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UMUEZEKOHA T/HALL"
+          },
+          {
+            "code": "002",
+            "name": "AMALEZE PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "OBUCHIRI PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "IDUMA PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "UMUAKPU PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "UMUOGIRI PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "UMUEZOKE PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "UBOJIMA VILLAGE SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "ONUEKO COMM. SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "NDIAGU UGWU PLAY GROUND"
+          },
+          {
+            "code": "011",
+            "name": "AMANKA PLAY GROUND"
+          }
+        ]
+      },
+      "Ezzagu I (Ogboji)": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NGAMGBO UHUOLA PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "NWEKE OHUHU MARKET"
+          },
+          {
+            "code": "003",
+            "name": "ENYIBICHIRI MARKET SQUARE I"
+          },
+          {
+            "code": "004",
+            "name": "ENYIBICHIRI MARKET SQUARE II"
+          },
+          {
+            "code": "005",
+            "name": "NWEKE OHUHU MARKET SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "NOME ONWE PLAY GROUND HALL"
+          },
+          {
+            "code": "007",
+            "name": "AGUOTU PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "NGAMGBO OLA PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "AGUHO PRIMARY SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "ONUNWANKWO OHINYA MARKET SQUARE"
+          },
+          {
+            "code": "011",
+            "name": "ONUNWANKWO EKECHI PLAY GROUND"
+          },
+          {
+            "code": "012",
+            "name": "ONUNWANKWO EGUCHAKURU MARKET SQUARE"
+          }
+        ]
+      },
+      "Ezzagu II (Nkomoro)": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NGAMGBO OKA VILLAGE SQUARE"
+          },
+          {
+            "code": "002",
+            "name": "UKWUACHI PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "NWANKWO ACHI PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "EZZA OBEAGU C/SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "ONUNWAFOR MARKET STALL"
+          },
+          {
+            "code": "006",
+            "name": "NGAMGBO AGU OBODO VILLAGE SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "NGAMGBO NWIGIRI"
+          },
+          {
+            "code": "008",
+            "name": "OJIEGBE II PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "ONU NWAEKE MARKET SQUARE"
+          },
+          {
+            "code": "010",
+            "name": "ONU NWAEKE PRIMARY SCHOOL"
+          },
+          {
+            "code": "011",
+            "name": "ONUNGAMGBO EZEALI P/GROUND"
+          },
+          {
+            "code": "012",
+            "name": "ONU ZORAMIA RACHITA PLAY GROUND"
+          },
+          {
+            "code": "013",
+            "name": "NGAMGBO ISHENYI VILLAGE SQUARE"
+          },
+          {
+            "code": "014",
+            "name": "UGBO ANYIM PRIMARY SCHOOL"
+          },
+          {
+            "code": "015",
+            "name": "NGAMGBO OGELE VILLAGE SQUARE"
+          },
+          {
+            "code": "016",
+            "name": "ONU EBONYI PLAY GROUND"
+          },
+          {
+            "code": "017",
+            "name": "AGUHUO PRIMARY SCHOOL"
+          },
+          {
+            "code": "018",
+            "name": "NGAMGBO AGU OGUJI"
+          },
+          {
+            "code": "019",
+            "name": "AGUOGUJI PRIMARY SCHOOL"
+          },
+          {
+            "code": "020",
+            "name": "AGBA UGAMA C / SCHOOL"
+          },
+          {
+            "code": "021",
+            "name": "ONUNWAFOR AKAHUHU PLAY GROUND"
+          },
+          {
+            "code": "022",
+            "name": "ONUZO EZAKA EGBU VILLAGE HALL"
+          },
+          {
+            "code": "023",
+            "name": "NGAMGBO NWITE OBAJI"
+          },
+          {
+            "code": "024",
+            "name": "NGAMGBO NWITE VILLAGE HALL"
+          },
+          {
+            "code": "025",
+            "name": "AGU NWENYI PLAY GROUND"
+          },
+          {
+            "code": "026",
+            "name": "ONUNGANGBO IGWE PLAY GROUND"
+          }
+        ]
+      },
+      "Iyonu": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AGUWENKAYA PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "IYONU COMM. SCHOOL I"
+          },
+          {
+            "code": "003",
+            "name": "IYONU COMM. SCHOOL II"
+          },
+          {
+            "code": "004",
+            "name": "OGBAGU EZZA COMM, SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "OBODO UMUNYITA COMM. SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "OBEAGU IYONU"
+          }
+        ]
+      },
+      "Nkalagu": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMAGU ISHIAGU VILLAGE HALL"
+          },
+          {
+            "code": "002",
+            "name": "NDIAGU ISHIAGU PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "NDIULO IMEOHA VILLAGE SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "AMANVU PRIMARY SCHOOL I"
+          },
+          {
+            "code": "005",
+            "name": "AMANVU PRIMARY SCHOOL II"
+          },
+          {
+            "code": "006",
+            "name": "AKIYI ATO TOWN HALL"
+          },
+          {
+            "code": "007",
+            "name": "NZASHIOGU VILLAGE SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "AMANVU OBODO AJA"
+          },
+          {
+            "code": "009",
+            "name": "NDIULO UWULE"
+          },
+          {
+            "code": "010",
+            "name": "OBODO NDIAGU AGABARA"
+          },
+          {
+            "code": "011",
+            "name": "COMM. SECONDARY SCHOOL NKALAGU JUNCTION"
+          }
+        ]
+      },
+      "Nkalaha": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NIGERCEM NURSERY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "UMUELE PLAY GROUND HALL"
+          },
+          {
+            "code": "003",
+            "name": "AMAEZE AGBA GOVERNMENT SCHOOL I"
+          },
+          {
+            "code": "004",
+            "name": "AMAEZE AGBA GOVERNMENT SCHOOL II"
+          },
+          {
+            "code": "005",
+            "name": "UMUAGU NKALAHA PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "AMOKWE OHUALA PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "OBOBO CHI NKALAHA PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "AMAEKE OKWE PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "UMULESHA VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Ntezi": {
+        "code": "12",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NTEZI CENTRAL SCHOOL I"
+          },
+          {
+            "code": "002",
+            "name": "NTEZI CENTRAL SCHOOL II"
+          },
+          {
+            "code": "003",
+            "name": "BILEDEBA C/PRIMARY SCHOOL PREMISES"
+          },
+          {
+            "code": "004",
+            "name": "NTEZI ORRI COMM. SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "UKWAKWU AMATA VILLAGE SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "ODA BUS STOP"
+          },
+          {
+            "code": "007",
+            "name": "EZZA EZEKUNA VILLAGE SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "ORRI CAMPUS PRIMARY SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "NTEZI COMM. SECONDARY SCHOOL"
+          }
+        ]
+      },
+      "Obeagu": {
+        "code": "13",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OHUALI PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "EKEOBEAGU PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "OKPUALA OBEAGU PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "OGBEJE PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "JIOKE OBEAGU"
+          },
+          {
+            "code": "006",
+            "name": "EZZA OBEAGU COMM. SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "EGEDEGE OBAGU PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "AMOGBA OBEAGU PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "AKPOCHI MARKET SQUARE"
+          },
+          {
+            "code": "010",
+            "name": "IHUZAM PLAY GROUND"
+          }
+        ]
+      },
+      "Ohofia": {
+        "code": "14",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OKWUANYIONU PRIMARY SCHOOL I"
+          },
+          {
+            "code": "002",
+            "name": "OKWUANYIONU PRIMARY SCHOOL II"
+          },
+          {
+            "code": "003",
+            "name": "OHOFIA COMM. PRIMARY SCHOOL I"
+          },
+          {
+            "code": "004",
+            "name": "OHOFIA COMM. PRIMARY SCHOOL II"
+          },
+          {
+            "code": "005",
+            "name": "ORIE AGUEDENE MARKET SQUARE I"
+          },
+          {
+            "code": "006",
+            "name": "ORIE AGUEDENE MARKET SQUARE II"
+          },
+          {
+            "code": "007",
+            "name": "AGUEFI STATE PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "METHODIST SQUARE GROUND"
+          },
+          {
+            "code": "009",
+            "name": "IGWEBUIKE PRIMARY SCHOOL I"
+          },
+          {
+            "code": "010",
+            "name": "IGWEBUIKE PRIMARY SCHOOL II"
+          }
+        ]
+      },
+      "Okpoto": {
+        "code": "15",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NKWO MARKET STALL I"
+          },
+          {
+            "code": "002",
+            "name": "NKWO MARKET STALL II"
+          },
+          {
+            "code": "003",
+            "name": "COMM. SCHOOL ABOYI I"
+          },
+          {
+            "code": "004",
+            "name": "COMM. SCHOOL ABOYI II"
+          },
+          {
+            "code": "005",
+            "name": "UKWUACHI COMM. PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "AFOR MARKET SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "CENTRAL SCHOOL OKPOTO"
+          },
+          {
+            "code": "008",
+            "name": "COMM. SCHOOL OKPOTO"
+          },
+          {
+            "code": "009",
+            "name": "NKWO IGBEGBE MARKET SQUARE"
+          },
+          {
+            "code": "010",
+            "name": "UTAM PLAY GROUND"
+          }
+        ]
+      },
+      "Umuhuali": {
+        "code": "16",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AZUZURU PRIMARY SCHOOL CAMPUS II"
+          },
+          {
+            "code": "002",
+            "name": "AZUOGBAGU PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "EZZA UMUHUALI PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "ONUNWAKWO PLAY GROUND I"
+          },
+          {
+            "code": "005",
+            "name": "ONUNWAKWO PLAY GROUND II"
+          },
+          {
+            "code": "006",
+            "name": "AMETA PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "AZUEGU PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "EKE MARKET STALL"
+          },
+          {
+            "code": "009",
+            "name": "AMOKWE PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "NIGERCEM PARENTS"
+          },
+          {
+            "code": "011",
+            "name": "APOSTOLIC SCHOOL"
+          },
+          {
+            "code": "012",
+            "name": "OVER RAIL"
+          },
+          {
+            "code": "013",
+            "name": "COMM. SCHOOL UMUHUALI"
+          },
+          {
+            "code": "014",
+            "name": "NIGERCEM NURSERY"
+          },
+          {
+            "code": "015",
+            "name": "AMAGU PLAY GROUND"
+          }
+        ]
+      }
+    }
+  },
+  "IVO": {
+    "code": "09",
+    "wards": {
+      "Akaeze Ishiagu": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EGBE UMUHUEBE PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "OGBOJI PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "AMAEZE PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "AKPU OBEAGU PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "AMOBALA PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "AMUTA PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "OBODO PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "AMUROR PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "EZIAFOR PRIMARY SCHOOL I"
+          },
+          {
+            "code": "010",
+            "name": "EZIAFOR PRIMARY SCHOOL II"
+          }
+        ]
+      },
+      "Akaeze Ukwu": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "C.P.S AKAEZE UKWU"
+          },
+          {
+            "code": "002",
+            "name": "UMUAJALI PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "AMIYI PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "AMAEKE PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "ORIE UKWU MARKET SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "AMAOGBU PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "AVIA NWACHI MARKET SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "MGBEDE C.P.S"
+          },
+          {
+            "code": "009",
+            "name": "AGBAESU PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "ONUNKPU-UKO PLAY GROUND"
+          }
+        ]
+      },
+      "Amagu": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AKANU PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "AMACHI PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "AKPUNEKE PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "AMANTA PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "AMUZU PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "ISHIAGU COURT PREMISES"
+          },
+          {
+            "code": "007",
+            "name": "AKPARATA IHIE PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "NDIEZE IHIE PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "NDIOKWOR IHIE PLAY GROUND I"
+          },
+          {
+            "code": "010",
+            "name": "NDIOKWOR IHIE PLAY GROUND II"
+          }
+        ]
+      },
+      "Amonye": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMAONYE PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "AKPARATA PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "AMAONYE PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "EGBE AMAONYE PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "AJALI PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "UBEAGU PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "GIRILS SECONDARY SCHOOL IHIETUTU"
+          },
+          {
+            "code": "008",
+            "name": "OVIE ELUGWU PLAY GROUND I"
+          },
+          {
+            "code": "009",
+            "name": "OVIE ELUGWU PLAY GROUND II"
+          }
+        ]
+      },
+      "Ihenta Ogidi": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "C.C.S AKAEZE I"
+          },
+          {
+            "code": "002",
+            "name": "C.C.S AKAEZE II"
+          },
+          {
+            "code": "003",
+            "name": "WELL PLAY GROUND I"
+          },
+          {
+            "code": "004",
+            "name": "WELL PLAY GROUND II"
+          },
+          {
+            "code": "005",
+            "name": "AKAEZE COURT I"
+          },
+          {
+            "code": "006",
+            "name": "AKAEZE COURT II"
+          },
+          {
+            "code": "007",
+            "name": "OGIDI MARKET SQUARE I"
+          },
+          {
+            "code": "008",
+            "name": "OGIDI MARKET SQUARE II"
+          }
+        ]
+      },
+      "Iyioji Akaeze": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UBEDE PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "AMAEVI PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "C.S.P IYIOJI"
+          },
+          {
+            "code": "004",
+            "name": "AMUMAKPA PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "UMULU MARKET SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "NDI PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "AMAUDARA PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "UMUEGU PLAY GROUND I"
+          },
+          {
+            "code": "009",
+            "name": "UMUEGU PLAY GROUND II"
+          }
+        ]
+      },
+      "Ndiokoro Ukwu": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NDIOKORO UKWU PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "NDIOBASI PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "NDIUGBUGBO PRIMARY SCHOOL I"
+          },
+          {
+            "code": "004",
+            "name": "NDIUGBUGBO PRIMARY SCHOOL II"
+          },
+          {
+            "code": "005",
+            "name": "NDIUGBUGBO PRIMARY SCHOOL III"
+          },
+          {
+            "code": "006",
+            "name": "AFIKPO ROAD PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "EZZA EKEMBE PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "EGUNKPUME PLAY GROUND"
+          }
+        ]
+      },
+      "Ngwogwo": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "PRIMARY SCHOOL NGWOGWO"
+          },
+          {
+            "code": "002",
+            "name": "ONUNKPU OKONKWOR PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "OKWOR PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "AMOKWE HALL"
+          },
+          {
+            "code": "005",
+            "name": "AVIA ERU PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "IHIEKE IHUOGWU PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "AMABA PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "OBULA PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "AMABACHI PLAY GROUND"
+          }
+        ]
+      },
+      "Obinagu": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMANTA PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "OVUNTA PLAY GROUND I"
+          },
+          {
+            "code": "003",
+            "name": "OVUNTA PLAY GROUND II"
+          },
+          {
+            "code": "004",
+            "name": "IHUALI PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "AYARAGU MARKET SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "IYIOKWU PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "MILE II MARKET SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "AGBA UKWU PLAY GROUND"
+          }
+        ]
+      },
+      "Okue": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OKWUAZU OKUE PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "OKUE HALL"
+          },
+          {
+            "code": "003",
+            "name": "OBAGU OKUE PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "ACHI AMACHI PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "AMURUO PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "ABADA PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "NDI OKWO MARKET SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "P.W.D OKOFIA"
+          },
+          {
+            "code": "009",
+            "name": "NZEREM PLAY GROUND"
+          }
+        ]
+      },
+      "Umobo": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UMOBO PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "NDIACHI PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "NKWOBO MARKET SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "NDIAJALI PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "ELUEGU PLAY GROUND I"
+          },
+          {
+            "code": "006",
+            "name": "ELUEGU PLAY GROUND II"
+          }
+        ]
+      }
+    }
+  },
+  "IZZI": {
+    "code": "10",
+    "wards": {
+      "Agbaja Mgbo": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "COMM. SCHOOL EKENGBO"
+          },
+          {
+            "code": "002",
+            "name": "OBEGUNGBO VILLAGE SQUARE (HEALTH CENTRE)"
+          },
+          {
+            "code": "003",
+            "name": "COMMUNITY SCHOOL, MKPUMA"
+          },
+          {
+            "code": "004",
+            "name": "OKALERU PRIMARY SCHOOL I"
+          },
+          {
+            "code": "005",
+            "name": "OKALERU PRIMARY SCHOOL II"
+          },
+          {
+            "code": "006",
+            "name": "OBEGU OKALERU SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "OKWERIKE CENTRAL SQUARE I"
+          },
+          {
+            "code": "008",
+            "name": "OKWERIKE CENTRAL SQUARE II"
+          },
+          {
+            "code": "009",
+            "name": "AGUBATA VILLAGE HALL"
+          },
+          {
+            "code": "010",
+            "name": "NDINWEZE VILLAGE SQUARE"
+          },
+          {
+            "code": "011",
+            "name": "NDIESHA PRIMARY SCHOOL"
+          },
+          {
+            "code": "012",
+            "name": "NDIACHI VILLAGE HALL"
+          },
+          {
+            "code": "013",
+            "name": "EKERIGWE VILLAGE HALL"
+          },
+          {
+            "code": "014",
+            "name": "NDIOGA VILLAGE HALL"
+          },
+          {
+            "code": "015",
+            "name": "NDIOGA EDUKWU NWAFIA"
+          },
+          {
+            "code": "016",
+            "name": "IGWEKENYIM HALL"
+          },
+          {
+            "code": "017",
+            "name": "ISOHUMIRI PRIMARY SCHOOL"
+          },
+          {
+            "code": "018",
+            "name": "NWOFE CENTRAL SCHOOL I"
+          },
+          {
+            "code": "019",
+            "name": "NWOFE CENTRAL SCHOOL II"
+          },
+          {
+            "code": "020",
+            "name": "NDIEBOR OKALERU VILLAGE HALL"
+          },
+          {
+            "code": "021",
+            "name": "OBEGU MKPUMAKPATAKPA VILLAGE HALL"
+          }
+        ]
+      },
+      "Agbaja Anyanwuigwe": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "COMMUNITY HEALTH CENTRE"
+          },
+          {
+            "code": "002",
+            "name": "EDUKWU OKEMINI"
+          },
+          {
+            "code": "003",
+            "name": "EDUKWU OFEREKPE"
+          },
+          {
+            "code": "004",
+            "name": "AMACHARA CENTRAL SCHOOL I"
+          },
+          {
+            "code": "005",
+            "name": "AMACHARA CENTRAL SCHOOL (C.S II)"
+          },
+          {
+            "code": "006",
+            "name": "EDUKWUACHI VILLAGE HALL I"
+          },
+          {
+            "code": "007",
+            "name": "EDUKWUACHI VILLAGE HALL II"
+          },
+          {
+            "code": "008",
+            "name": "NDIOCHIMBA VILLAGE HALL"
+          },
+          {
+            "code": "009",
+            "name": "ADUM VILLAGE HALL"
+          },
+          {
+            "code": "010",
+            "name": "NDIORUTA VILLAGE SQUARE I"
+          },
+          {
+            "code": "011",
+            "name": "NDIORUTA VILLAGE SQUARE II"
+          },
+          {
+            "code": "012",
+            "name": "EKWEBURU VILLAGE HALL"
+          },
+          {
+            "code": "013",
+            "name": "NDUBULOFIA VILLAGE HALL"
+          },
+          {
+            "code": "014",
+            "name": "EKWE VILLAGE HALL"
+          },
+          {
+            "code": "015",
+            "name": "EDUKWIACHI TOWN HALL"
+          }
+        ]
+      },
+      "Agbaja Offia Onwe": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "C.P.S ONUENYIM"
+          },
+          {
+            "code": "002",
+            "name": "OFFIA ONWE CENTRAL SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "ISHIAJIM COMM. PRY. SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "AKPARATA IBINA C.S.I"
+          },
+          {
+            "code": "005",
+            "name": "AKPARATA IBINA II (NEW VIILAGE SQUARE)"
+          },
+          {
+            "code": "006",
+            "name": "IZENYI VILLAGE HALL"
+          },
+          {
+            "code": "007",
+            "name": "NDIENYIAKA VILLAGE HALL"
+          },
+          {
+            "code": "008",
+            "name": "NDIAWALA VILLAGE SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "ONUENYIM CENTRAL SCHOOL I"
+          },
+          {
+            "code": "010",
+            "name": "ONUENYIM CENTRAL SCHOOL II (OBEGU OGBOJI)"
+          },
+          {
+            "code": "011",
+            "name": "ENYADULOGU VILLAGE SQUARE"
+          },
+          {
+            "code": "012",
+            "name": "SUDAN UNITED MISSION HOSPITAL"
+          }
+        ]
+      },
+      "Ezza Inyimagu Igbuhu": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EZZAGU PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "IKENYI PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "IGBUHU OTUMA PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "NDIOROGBO VILLAGE SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "AGHARAOZAR VILLAGE HALL"
+          },
+          {
+            "code": "006",
+            "name": "OMEGE VILLAGE HALL"
+          },
+          {
+            "code": "007",
+            "name": "OKWOREKA VILLAGE HALL"
+          },
+          {
+            "code": "008",
+            "name": "OTSUKPURU VILLAGE HALL"
+          },
+          {
+            "code": "009",
+            "name": "NDIACHI VILLAGE I"
+          },
+          {
+            "code": "010",
+            "name": "NDIACHI VILLAGE II"
+          },
+          {
+            "code": "011",
+            "name": "NKPUMA VILLAGE HALL"
+          },
+          {
+            "code": "012",
+            "name": "ENYIGWE CENTRAL SCHOOL"
+          },
+          {
+            "code": "013",
+            "name": "EZZA OPFU I"
+          },
+          {
+            "code": "014",
+            "name": "EZZA OPFU II"
+          },
+          {
+            "code": "015",
+            "name": "NWANU MARKET SQUARE"
+          },
+          {
+            "code": "016",
+            "name": "NGBEDE VILLAGE SQUARE"
+          },
+          {
+            "code": "017",
+            "name": "OBEAGU IKENYI VILLAGE HALL"
+          },
+          {
+            "code": "018",
+            "name": "AZUDA VILLAGE HALL"
+          },
+          {
+            "code": "019",
+            "name": "NDIOKE VILLAGE HALL"
+          }
+        ]
+      },
+      "Ezza Inyimagu - Igweledoha": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "IGWELEDOHA VILLAGE HALL"
+          },
+          {
+            "code": "002",
+            "name": "NDIAMADI COMMUNITY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "NDINWANGBA COMMUNITY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "OBEGU NDINWANGBA"
+          },
+          {
+            "code": "005",
+            "name": "NDUNWIJE VILLAGE HALL"
+          },
+          {
+            "code": "006",
+            "name": "NDIOKEDA VILLAGE HALL"
+          },
+          {
+            "code": "007",
+            "name": "EFUNAGU VILLAGE HALL I"
+          },
+          {
+            "code": "008",
+            "name": "EFUNAGU VILLAGE HALL II"
+          }
+        ]
+      },
+      "Ezza Inyimagu - Iziogo": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OBEGU NDIOGBAGA"
+          },
+          {
+            "code": "002",
+            "name": "IZIOGO CENTRAL SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "OFFIANKA VILLAGE HALL"
+          },
+          {
+            "code": "004",
+            "name": "NDIOGBAGA OBASI CENTRAL SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "UGBOENYIMOZAR VILLAGE HALL"
+          },
+          {
+            "code": "006",
+            "name": "NDUBIA PRY. SCHL."
+          },
+          {
+            "code": "007",
+            "name": "NDINWOVU VILLAGE HALL"
+          },
+          {
+            "code": "008",
+            "name": "NDIOBOKOTE VILLAGE HALL"
+          }
+        ]
+      },
+      "Ezza Inyimagu Ndiagu": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EGUEFI VILLAGE HALL"
+          },
+          {
+            "code": "002",
+            "name": "ENWUAGBA VILLAGE HALL"
+          },
+          {
+            "code": "003",
+            "name": "NDIATAM OFEREKPE VILLAGE HALL"
+          },
+          {
+            "code": "004",
+            "name": "OCHOBUOZAR VILLAGE HALL"
+          },
+          {
+            "code": "005",
+            "name": "OYEGE CENTRAL SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "OGBAGHARU VILLAGE HALL"
+          },
+          {
+            "code": "007",
+            "name": "OYEGE COMMUNITY SCHOOL I"
+          },
+          {
+            "code": "008",
+            "name": "OYEGE COMMUNITY SCHOOL II"
+          },
+          {
+            "code": "009",
+            "name": "OVUDUECHI MARKET SQUARE"
+          },
+          {
+            "code": "010",
+            "name": "NDIEZOKE PRIMARY SCHOOL"
+          },
+          {
+            "code": "011",
+            "name": "NDINWASHIMOKO VILLAGE SQUARE"
+          },
+          {
+            "code": "012",
+            "name": "NDIEPETE VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Igbeagu Nduogbu": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMUZU IGBEAGU VILLAGE HALL I"
+          },
+          {
+            "code": "002",
+            "name": "AMUZU IGBEAGU VILLAGE HALL II"
+          },
+          {
+            "code": "003",
+            "name": "NDUKABI IGBEAGU I.C.S."
+          },
+          {
+            "code": "004",
+            "name": "NDIOGBU MARKET SQ. IGBEAGU"
+          },
+          {
+            "code": "005",
+            "name": "OFFIANKWU VILLAGE HALL"
+          },
+          {
+            "code": "006",
+            "name": "ODODOKPA VILLAGE SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "NDINKWUDA PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "NDINKWUDA MARKET SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "IGWELEDOHA PRIMARY SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "MBAMINI VILLAGE HALL"
+          },
+          {
+            "code": "011",
+            "name": "NDIDOKO PRIMARY SCH."
+          },
+          {
+            "code": "012",
+            "name": "NDIGWE PRIMARY SCHOOL"
+          },
+          {
+            "code": "013",
+            "name": "NDIDOKO COMMUNITY PRIMARY SCHOOL"
+          },
+          {
+            "code": "014",
+            "name": "SPECIAL SCIENCE SCH. IGBEAGU"
+          }
+        ]
+      },
+      "Igbeagu Ndi Ettah": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NDIOFUTU VILLAGE SQUARE"
+          },
+          {
+            "code": "002",
+            "name": "NDIECHI ONUEBONYI PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "NCHOKO VILLAGE SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "OGUZORONWEYA PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "JUNCTION PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "NDIETTA VILLAGE"
+          },
+          {
+            "code": "007",
+            "name": "NDIALOBO VILLAGE HALL"
+          },
+          {
+            "code": "008",
+            "name": "ALIBARUHU VILLAGE HALL"
+          },
+          {
+            "code": "009",
+            "name": "OFEREKPE PRIMARY SCHOOL I"
+          },
+          {
+            "code": "010",
+            "name": "OFEREKPE PRIMARY SCHOOL II"
+          },
+          {
+            "code": "011",
+            "name": "OKWATA PRIMARY SCHOOL"
+          },
+          {
+            "code": "012",
+            "name": "OCHAFU PRIMARY SCHOOL"
+          },
+          {
+            "code": "013",
+            "name": "NDIEZOKE PRIMARY SCHOOL I"
+          },
+          {
+            "code": "014",
+            "name": "NDIEZOKE PRIMARY SCHOOL II"
+          },
+          {
+            "code": "015",
+            "name": "ACHACHA PRIMARY SCHOOL I"
+          },
+          {
+            "code": "016",
+            "name": "ACHACHA PRIMARY SCHOOL II"
+          },
+          {
+            "code": "017",
+            "name": "NDIECHI NDIAGU PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Igbeagu III": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ECHINDU PRI. SCH. I"
+          },
+          {
+            "code": "002",
+            "name": "ODARIKO COMMUNITY SCHOOL I"
+          },
+          {
+            "code": "003",
+            "name": "ODARIKO COMMUNITY SCHOOL II"
+          },
+          {
+            "code": "004",
+            "name": "NDUBIA VILLAGE SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "NDIAKPURATA NDIEGU VILLAGE HALL"
+          },
+          {
+            "code": "006",
+            "name": "NWAKPU MARKET HALL"
+          },
+          {
+            "code": "007",
+            "name": "OGBODO NDIEGU MARKET HALL"
+          },
+          {
+            "code": "008",
+            "name": "NDIAKPURATA NDIEBOR"
+          },
+          {
+            "code": "009",
+            "name": "OJIEGBE PRIMARY SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "OGBODO NDIEBOR CAMP"
+          },
+          {
+            "code": "011",
+            "name": "NDIEKUMA VILLAGE SQUARE"
+          },
+          {
+            "code": "012",
+            "name": "ECHINDU PRIMARY SCHOOL II"
+          }
+        ]
+      },
+      "Mgbalaukwu Inyimagu I": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "INYIMAGU CENTRAL SCHOOL IBOKO I"
+          },
+          {
+            "code": "002",
+            "name": "INYIMAGU CENTRAL SCHOOL IBOKO II"
+          },
+          {
+            "code": "003",
+            "name": "AGBENYIM NDIABOR"
+          },
+          {
+            "code": "004",
+            "name": "OBEGU ONWEONWIYA MARKET SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "OSEBI VILLAGE SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "INYIRIGBADA VILLAGE SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "ONWEONWIYA VILLAGE SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "AMODA PRIMARY SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "AWAFIA OPEFIA VILLAGE HALL"
+          },
+          {
+            "code": "010",
+            "name": "NDIEDEGBE PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Mgbalaukwu Inyimagu II": {
+        "code": "12",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EDENYIEKA VILLAGE HALL"
+          },
+          {
+            "code": "002",
+            "name": "OKPODUMA C.S. I"
+          },
+          {
+            "code": "003",
+            "name": "OKPODUMA C.S. II"
+          },
+          {
+            "code": "004",
+            "name": "OMINYI PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "NDIWIKWE VILLAGE HALL"
+          },
+          {
+            "code": "006",
+            "name": "NDINGELE CENTRAL SCHOOL SCHOOL I"
+          },
+          {
+            "code": "007",
+            "name": "NDINGELE CENTRAL SCHOOL SCHOOL II"
+          },
+          {
+            "code": "008",
+            "name": "NDIOGODO VILLAGE HALL"
+          },
+          {
+            "code": "009",
+            "name": "NDIEWUOGO VILLAGE HALL"
+          },
+          {
+            "code": "010",
+            "name": "NKUMORO VILLAGE HALL I"
+          },
+          {
+            "code": "011",
+            "name": "NKUMORO VILLAGE HALL II"
+          },
+          {
+            "code": "012",
+            "name": "EZEAKATAKA VILLAGE HALL"
+          }
+        ]
+      },
+      "Ndieze Inyimagu Mgbabeluzor": {
+        "code": "13",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "MGBABELUZOR VILLAGE HALL"
+          },
+          {
+            "code": "002",
+            "name": "MKPUMA AKWAOKUKU I"
+          },
+          {
+            "code": "003",
+            "name": "MKPUMA AKWAOKUKU II"
+          },
+          {
+            "code": "004",
+            "name": "OTAM IZEKWE VILLAGE HALL"
+          },
+          {
+            "code": "005",
+            "name": "IZENYI COMMUNITY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "OTAM COMMUNITY SCHOOL I"
+          },
+          {
+            "code": "007",
+            "name": "OTAM COMMUNITY SCHOOL II"
+          },
+          {
+            "code": "008",
+            "name": "IZALEME COMMUNITY SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "AMACHARA INDIAKAM VILLAGE HALL"
+          },
+          {
+            "code": "010",
+            "name": "OPHUNE VILLAGE HALL"
+          },
+          {
+            "code": "011",
+            "name": "OLUA MARKET SQUARE"
+          }
+        ]
+      },
+      "Ndieze Inyimagu II Ndiabor Ishiagu": {
+        "code": "14",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ENYIBICHIRI VILLAGE HALL"
+          },
+          {
+            "code": "002",
+            "name": "MGBABOR VILLAGE HALL"
+          },
+          {
+            "code": "003",
+            "name": "NDIEZE HEALTH CENTRE"
+          },
+          {
+            "code": "004",
+            "name": "AMAGU ENYIM C.S"
+          },
+          {
+            "code": "005",
+            "name": "WAKA CENTRAL SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "NDIOZIO MARKET SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "UTSENYIM CENTRAL SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "NKUMORO CENTRAL SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "EKEBELIGWE VILLAGE HALL"
+          },
+          {
+            "code": "010",
+            "name": "IZICHA PRIMARY SCHOOL"
+          },
+          {
+            "code": "011",
+            "name": "COURT HALL IBOKO I"
+          },
+          {
+            "code": "012",
+            "name": "COURT HALL IBOKO II"
+          },
+          {
+            "code": "013",
+            "name": "MBAM OMEANU"
+          },
+          {
+            "code": "014",
+            "name": "NDIABOR ISHIAGU C/S I"
+          },
+          {
+            "code": "015",
+            "name": "NDIABOR ISHIAGU C/S II"
+          },
+          {
+            "code": "016",
+            "name": "OHAGELODE VILLAGE HALL"
+          },
+          {
+            "code": "017",
+            "name": "NDIOGBU MARKET SQUARE"
+          },
+          {
+            "code": "018",
+            "name": "OFFIA OKUM VILLAGE SQUARE"
+          },
+          {
+            "code": "019",
+            "name": "OFFIA OKUM PRIMARY SCHOOL"
+          },
+          {
+            "code": "020",
+            "name": "OHA GELODE PRIMARY SCHOOL"
+          }
+        ]
+      }
+    }
+  },
+  "OHAOZARA": {
+    "code": "11",
+    "wards": {
+      "Amaechi Okposi": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ISI-UZOR PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "AFOR-AMENU MARKET SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "ONU EZUKU NWAKPU AGWU"
+          },
+          {
+            "code": "004",
+            "name": "AKPARATA MARKET SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "AMECHI PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "UMUOKA PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "ONU AKPARATA PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "COMMUNITY PRIMARY SCHOOL UMUNUKA"
+          },
+          {
+            "code": "009",
+            "name": "ONU AFOR MARKET SQUARE"
+          }
+        ]
+      },
+      "Ene- Na - Ezeraku": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EZUKU EBEM PLAY GROUND I"
+          },
+          {
+            "code": "002",
+            "name": "EZUKU EBEM PLAY GROUND II"
+          },
+          {
+            "code": "003",
+            "name": "NWAENIENI PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "NGAMGBO NWANOKE PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "AMENE TOWN HALL"
+          },
+          {
+            "code": "006",
+            "name": "NWEKE OGAMGBO"
+          }
+        ]
+      },
+      "Mgbom Okposi": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "MGBOM CENTRAL SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "IKWUANO PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "OKPOSI COURT PREMISES"
+          },
+          {
+            "code": "004",
+            "name": "OBIOHA PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "EKE MARKET SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "AKPAMAKA PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "ENUOGURUGWU PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "AVIA EVUTA SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "OGWE AMAEGU"
+          },
+          {
+            "code": "010",
+            "name": "ACHIOMA PLAY GROUND"
+          },
+          {
+            "code": "011",
+            "name": "OBIAGU EZUKU OKORIE"
+          },
+          {
+            "code": "012",
+            "name": "ONU OGWU MEBIOWA VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Obiozara": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UBURU CENTRAL SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "OLD MARKET SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "NEW MARKET SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "ISHIEKE VILLAGE SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "UPE SCHOOL AMATA"
+          },
+          {
+            "code": "006",
+            "name": "UBURU CUSTOMARY COURT"
+          },
+          {
+            "code": "007",
+            "name": "OBIOZARA CITY COMMERCIAL SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "UMUOBASI HALL I"
+          },
+          {
+            "code": "009",
+            "name": "UMUOBASI HALL II"
+          },
+          {
+            "code": "010",
+            "name": "IVUOGWU VILLAGE SQUARE"
+          },
+          {
+            "code": "011",
+            "name": "AJA AMAEZE MARKET SQAURE"
+          }
+        ]
+      },
+      "Okposi Achara": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UMUAKUMA PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "ACHARA PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "AKPAMAKA PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "EZUKU AGBI PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "AFIA NWEGBU SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "COURT AREA MARKET SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "OJIGWE MARKET SQUARE I"
+          },
+          {
+            "code": "008",
+            "name": "OJIGWE MARKET SQUARE II"
+          }
+        ]
+      },
+      "Okposi Okwu": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EZUKU AGU TOWN HALL I"
+          },
+          {
+            "code": "002",
+            "name": "EZUKU AGU TOWN HALL II"
+          },
+          {
+            "code": "003",
+            "name": "IZUOGU PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "AMAJI PLAY GROUIND"
+          },
+          {
+            "code": "005",
+            "name": "OBODO-OMA PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "AGABENYIM PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "CENTRAL SCHOOL OKPOSI OKWU I"
+          },
+          {
+            "code": "008",
+            "name": "CENTRAL SCHOOL OKPOSI OKWU II"
+          },
+          {
+            "code": "009",
+            "name": "AKPANU PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "OVU OFFIA PLAY GROUND"
+          },
+          {
+            "code": "011",
+            "name": "UGONI TOWN HALL"
+          },
+          {
+            "code": "012",
+            "name": "AMOJA TOWN HALL"
+          },
+          {
+            "code": "013",
+            "name": "ENECHI AKUMA MEMO. PRI. SCH."
+          }
+        ]
+      },
+      "Ugbogologo Ugwulangwu": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AJA MGBOM TOWN HALL I"
+          },
+          {
+            "code": "002",
+            "name": "AJA MGBOM TOWN HALL II"
+          },
+          {
+            "code": "003",
+            "name": "EZUKU UDE NWARISI"
+          },
+          {
+            "code": "004",
+            "name": "EZUKU AKPAMBA"
+          },
+          {
+            "code": "005",
+            "name": "UFUOVOKE TOWN HALL"
+          },
+          {
+            "code": "006",
+            "name": "EZUKU NWOGUJI"
+          },
+          {
+            "code": "007",
+            "name": "AMENU TOWN HALL"
+          },
+          {
+            "code": "008",
+            "name": "EZUKU EZEOKE"
+          },
+          {
+            "code": "009",
+            "name": "EZUKU OKOROJI"
+          },
+          {
+            "code": "010",
+            "name": "EZUKU NWONICHA"
+          }
+        ]
+      },
+      "Uhuotaru Ugwulangwu": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UKWU EGBU"
+          },
+          {
+            "code": "002",
+            "name": "COMMUNITY PROGRESSIVE SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "CENTRAL SCHOOL UGWULANGWU"
+          },
+          {
+            "code": "004",
+            "name": "OBIOHA PRIMARY SCHOOL UGWULANGWU"
+          },
+          {
+            "code": "005",
+            "name": "ENYIMMANU PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "OGAMGBO IGWE"
+          },
+          {
+            "code": "007",
+            "name": "AFIA NWEZIZO"
+          },
+          {
+            "code": "008",
+            "name": "OKEFIE PLAY GROUND"
+          }
+        ]
+      },
+      "Umuchima": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ENUAGU PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "UMUCHIMA COMM. PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "IHENU COMM. PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "EKWESU PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "IVUNGWU SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "AFIA NWACHI SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "OGBU AJA SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "MGBOM SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "ENUABOR MARKET SQUARE"
+          },
+          {
+            "code": "010",
+            "name": "EZUKU OFOR OVOR PLAY GROUND"
+          }
+        ]
+      },
+      "Umunaga": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UMUNAGA PRIMARY SCHOOL I"
+          },
+          {
+            "code": "002",
+            "name": "UMUNAGA PRIMARY SCHOOL II"
+          },
+          {
+            "code": "003",
+            "name": "EKE MARKET SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "AMAGANA SQUARE I"
+          },
+          {
+            "code": "005",
+            "name": "AMAGANA SQUARE II"
+          },
+          {
+            "code": "006",
+            "name": "AJA UROBO SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "AKPU AGWU VILLAGE SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "EZUKU OKORO VILLAGE SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "EZUKU ALFRED VILLAGE SQUARE"
+          },
+          {
+            "code": "010",
+            "name": "ENUOKWE PLAY GROUND"
+          },
+          {
+            "code": "011",
+            "name": "AKAWO ENUAGU VILLAGE SQUARE"
+          },
+          {
+            "code": "012",
+            "name": "AWANAKA SQUARE"
+          },
+          {
+            "code": "013",
+            "name": "ONUOFUKWURU MARKET SQUARE"
+          },
+          {
+            "code": "014",
+            "name": "ONU - ESU - AGU UROBO FARM SETTLEMENT"
+          }
+        ]
+      },
+      "Umuobuna": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UMUOBUNA PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "ISIOGU PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "AMAECHI SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "MKPUMA UDENE SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "UMUNGWUOKE SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "KARAKABA PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "ENUIBE PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "AGU OGWU FARM SETT"
+          },
+          {
+            "code": "009",
+            "name": "EZUKU EKPA MBA"
+          },
+          {
+            "code": "010",
+            "name": "P.J.H PREMISES"
+          }
+        ]
+      }
+    }
+  },
+  "OHAUKWU": {
+    "code": "12",
+    "wards": {
+      "Effium I": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMAINYIMA PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "COMM. CENTRAL SCHOOL EFFIUMI"
+          },
+          {
+            "code": "003",
+            "name": "CENTRAL SCHOOL AKPARATA"
+          },
+          {
+            "code": "004",
+            "name": "AKPARATA PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "OKPORO FOREST SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "OHAGE VILLAGE SQUARE EFFIUM"
+          }
+        ]
+      },
+      "Effium II": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NGANGBO UKORO PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "OKPOBASI PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "UMUEZEOKAOHA STATE SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "COMM.CENTRAL SCHOOL EFFIUM"
+          },
+          {
+            "code": "005",
+            "name": "IBENDA PRIMARY SCHOOL EFFIUM"
+          },
+          {
+            "code": "006",
+            "name": "NWEKE NDIAGU UMUEZEOKAOHA"
+          },
+          {
+            "code": "007",
+            "name": "EFFIUM SUB-OFFICE HALL I"
+          },
+          {
+            "code": "008",
+            "name": "EFFIUM SUB-OFFICE HALL II"
+          },
+          {
+            "code": "009",
+            "name": "AZUEDENE PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "AMUDA COMM. PRIMARY SCHOOL"
+          },
+          {
+            "code": "011",
+            "name": "NGANGBO OHAGOLODE PLAY GROUND (BOOTH I)"
+          },
+          {
+            "code": "012",
+            "name": "NGANGBO OHAGOLODE PLAY GROUND (BOOTH II)"
+          }
+        ]
+      },
+      "Ezzamgbo": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NWAFIA UFIEOBOTO MKT. SQUARE"
+          },
+          {
+            "code": "002",
+            "name": "NDIAGU PLAY GROUND EZZANGBO"
+          },
+          {
+            "code": "003",
+            "name": "CENTRAL SCHOOL EZZANGBO"
+          },
+          {
+            "code": "004",
+            "name": "UMUEBE PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "OKPUFU PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "NSULAKPA PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "PRACTISING PRI. SCHOOL EZZANGBO"
+          },
+          {
+            "code": "008",
+            "name": "NKWO MARKET SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "NKPOR UVURU PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "UMUEZE PLAY GROUND"
+          },
+          {
+            "code": "011",
+            "name": "UNITY PRI. SCHOOL AMAOVU"
+          }
+        ]
+      },
+      "Ishi Ngbo I": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EJIRIKE PRI. SCHOOL EKWASI"
+          },
+          {
+            "code": "002",
+            "name": "NDIAGUENI PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "NDIAGUIDAKA PRI. SCH."
+          }
+        ]
+      },
+      "Ishi Ngbo II": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NDULO UKWUAGBA PLAY GROUND BOOTH I"
+          },
+          {
+            "code": "002",
+            "name": "NDULO UKWUAGBA PLAY GROUND BOOTH II"
+          },
+          {
+            "code": "003",
+            "name": "NDULO UKWUAGBA PLAY GROUND BOOTH III"
+          },
+          {
+            "code": "004",
+            "name": "NDIAGU AKPURATA PRI. SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "OHABUIKE PRI. SCH. HALL I"
+          },
+          {
+            "code": "006",
+            "name": "OHABUIKE PRI. SCH. HALL II"
+          },
+          {
+            "code": "007",
+            "name": "AGUACHI STATE PRI. SCH. HALL I"
+          },
+          {
+            "code": "008",
+            "name": "AGUACHI STATE PRI. SCH. HALL II"
+          },
+          {
+            "code": "009",
+            "name": "NDIAGUEZE PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "EJILEWE PLAY GROUND"
+          }
+        ]
+      },
+      "Ngbo": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OBODO NDIEDE PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "NDULO UMUEZEAKA PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "OTUOKPEYE PRI. SCH. AMOFFIA"
+          },
+          {
+            "code": "004",
+            "name": "CENTRAL SCHOOL OBODOEJE HALL I"
+          },
+          {
+            "code": "005",
+            "name": "CENTRAL SCHOOL OBODOEJE HALL II"
+          },
+          {
+            "code": "006",
+            "name": "HILL TOP PRI. SCH. ABARIGWE"
+          },
+          {
+            "code": "007",
+            "name": "UMUNNAKWE PRI. SCH. ABARIGWE"
+          },
+          {
+            "code": "008",
+            "name": "PRI. SCH. AKPAGU AMOFFIA HALL I"
+          },
+          {
+            "code": "009",
+            "name": "PRI. SCH. AKPAGU AMOFFIA HALL I I"
+          },
+          {
+            "code": "010",
+            "name": "PRI. SCH. NDIAGU UTOBO"
+          }
+        ]
+      },
+      "Okposhi I": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "CENTRAL SCHOOL NGBO HALL I"
+          },
+          {
+            "code": "002",
+            "name": "CENTRAL SCHOOL NGBO HALL II"
+          },
+          {
+            "code": "003",
+            "name": "NDIAGUIGUBE PRI. SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "ODEATANG CENTRAL SCHOOL I"
+          },
+          {
+            "code": "005",
+            "name": "ODEATANG CENTRAL SCHOOL II"
+          },
+          {
+            "code": "006",
+            "name": "ENYIBCHIRI PLAY GROUND BOOTH I"
+          },
+          {
+            "code": "007",
+            "name": "ENYIBCHIRI PLAY GROUND BOOTH II"
+          },
+          {
+            "code": "008",
+            "name": "OBODO AJIM PLAY GROUND"
+          }
+        ]
+      },
+      "Okposhi II": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMAFFIA COMM. SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "COMM. PRIMARY SCHOOL IGWELEDEOHA HALL I"
+          },
+          {
+            "code": "003",
+            "name": "COMM. PRIMARY SCHOOL IGWELEDEOHA HALL II"
+          },
+          {
+            "code": "004",
+            "name": "COMM. PRIMARY SCHOOL NDIAGU NGBO"
+          },
+          {
+            "code": "005",
+            "name": "NDIAGUOGE PLAY GROUND BOOTH I"
+          },
+          {
+            "code": "006",
+            "name": "NDIAGUOGE PLAY GROUND BOOTH II"
+          },
+          {
+            "code": "007",
+            "name": "COMM. PRIMARY SCHOOL INYIMAGU HALL I"
+          },
+          {
+            "code": "008",
+            "name": "COMM. PRIMARY SCHOOL INYIMAGU HALL II"
+          },
+          {
+            "code": "009",
+            "name": "NDULO AMAFFIA PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "EFUTUEKWE PLAY GROUND"
+          }
+        ]
+      },
+      "Umuagara / Amechi": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMECHI COMM. SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "OBODOAKARA PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "OBODONDIAGUESHI PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "NWORIE NDIAGU MARKET SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "UMUORU PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "AMAECHI NDIAGUESHI PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "AMECHI COMMUNITY SCHOOL (ROYAL COMPREHENSIVE COLLEGE)"
+          },
+          {
+            "code": "008",
+            "name": "UMUAGARA COMM. PRIMARY SCHOOL EZZANGBO"
+          },
+          {
+            "code": "009",
+            "name": "OBODO NDIAGUINYI PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "AMANTA COMM. PRIMARY SCHOOL"
+          },
+          {
+            "code": "011",
+            "name": "OSHIEWOLO PRIMARY SCHOOL"
+          },
+          {
+            "code": "012",
+            "name": "EGUECHARA PLAY GROUND"
+          }
+        ]
+      },
+      "Umu Ogudu Oshia": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UKPESHI PRIMARY SCHOOL NDULO"
+          },
+          {
+            "code": "002",
+            "name": "CENTRAL SCHOOL NDIAGU UDU"
+          },
+          {
+            "code": "003",
+            "name": "CENTRAL SCHOOL OKOROGBATA HALL I"
+          },
+          {
+            "code": "004",
+            "name": "CENTRAL SCHOOL OKOROGBATA HALL II"
+          },
+          {
+            "code": "005",
+            "name": "COMM. PRIMARY SCHOOL EGWEGWE HALL I"
+          },
+          {
+            "code": "006",
+            "name": "COMM. PRIMARY SCHOOL EGWEGWE HALL II"
+          },
+          {
+            "code": "007",
+            "name": "OSHIA NGBO CENTRAL SCHOOL HALL I"
+          },
+          {
+            "code": "008",
+            "name": "OSHIA NGBO CENTRAL SCHOOL HALL II"
+          },
+          {
+            "code": "009",
+            "name": "OGUM NGBO COMM. PRIMARY SCHOOL HALL I"
+          },
+          {
+            "code": "010",
+            "name": "OGUM NGBO COMM. PRIMARY SCHOOL HALL II"
+          },
+          {
+            "code": "011",
+            "name": "ABARIGWE PRI. SCHOOL"
+          },
+          {
+            "code": "012",
+            "name": "OGENE PLAY GROUND"
+          },
+          {
+            "code": "013",
+            "name": "OBODO UMUINYI PLAY GROUND"
+          },
+          {
+            "code": "014",
+            "name": "OGWUDUANNO PLAY GROUND"
+          }
+        ]
+      },
+      "Umu Ogudu Akpu I": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NWAFIA OBODO OGBAENI BOOTH I"
+          },
+          {
+            "code": "002",
+            "name": "NWAFIA OBODO OGBAENI BOOTH I I"
+          },
+          {
+            "code": "003",
+            "name": "NWAFIA OBODO OGBAENI BOOTH III"
+          },
+          {
+            "code": "004",
+            "name": "CENTRAL SCHOOL UMUOGUDUAKPU HALL I"
+          },
+          {
+            "code": "005",
+            "name": "CENTRAL SCHOOL UMUOGUDUAKPU HALL II"
+          },
+          {
+            "code": "006",
+            "name": "NDIAGUONA PLAY GROUND BOOTH I"
+          },
+          {
+            "code": "007",
+            "name": "NDIAGUONA PLAY GROUND BOOTH II"
+          },
+          {
+            "code": "008",
+            "name": "NWAOBODOUGBA PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "AGUEBELE UMUIMAMA PLAY GROUND BOOTH I"
+          },
+          {
+            "code": "010",
+            "name": "AGUEBELE UMUIMAMA PLAY GROUND BOOTH II"
+          },
+          {
+            "code": "011",
+            "name": "OSHIAGUAMA PLAY GROUND"
+          },
+          {
+            "code": "012",
+            "name": "NDULO UMUOGUDUAKPU PLAY GROUND"
+          }
+        ]
+      },
+      "Umu Ogudu Akpu II": {
+        "code": "12",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "IJINIKE HIGH SCHOOL UMUOGUDUAKPU HALL I"
+          },
+          {
+            "code": "002",
+            "name": "IJINIKE HIGH SCHOOL UMUOGUDUAKPU HALL II"
+          },
+          {
+            "code": "003",
+            "name": "NWINIYI MARKET SQUARE BOOTH I"
+          },
+          {
+            "code": "004",
+            "name": "NWINIYI MARKET SQUARE BOOTH II"
+          },
+          {
+            "code": "005",
+            "name": "STATE SCHOOL ORIAJA HALL I"
+          },
+          {
+            "code": "006",
+            "name": "STATE SCHOOL ORIAJA HALL II"
+          },
+          {
+            "code": "007",
+            "name": "NWAFIA NDIAGU ORIE MKT. SQ. I"
+          },
+          {
+            "code": "008",
+            "name": "NWAFIA NDIAGU ORIE MKT. SQ. II"
+          },
+          {
+            "code": "009",
+            "name": "COMM. SCHOOL UMUOGUDU HALL I"
+          },
+          {
+            "code": "010",
+            "name": "COMM. SCHOOL UMUOGUDU HALL II"
+          }
+        ]
+      },
+      "Wigbeke I": {
+        "code": "13",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "INYAFOR VILLAGE SQUARE BOOTH I"
+          },
+          {
+            "code": "002",
+            "name": "INYAFOR VILLAGE SQUARE BOOTH II"
+          },
+          {
+            "code": "003",
+            "name": "EKPITOM VILLAGE SQUARE BOOTH I"
+          },
+          {
+            "code": "004",
+            "name": "EKPITOM VILLAGE SQUARE BOOTH II"
+          }
+        ]
+      },
+      "Wigbeke II": {
+        "code": "14",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UMUEZOKAOHA CENTRAL SCHOOL EFFIUM HALL I"
+          },
+          {
+            "code": "002",
+            "name": "UMUEZOKAOHA CENTRAL SCHOOL EFFIUM HALL II"
+          },
+          {
+            "code": "003",
+            "name": "INIKIRI MARKET SQUARE BOOTH I"
+          },
+          {
+            "code": "004",
+            "name": "INIKIRI MARKET SQUARE BOOTH II"
+          },
+          {
+            "code": "005",
+            "name": "UGOEZE PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "AMEKA / AMAJIM PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "ONUEBEJA PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "UMUEZE PRIMARY SCHOOL HALL I"
+          },
+          {
+            "code": "009",
+            "name": "UMUEZE PRIMARY SCHOOL HALL II"
+          },
+          {
+            "code": "010",
+            "name": "IGWEBUIKE PRIMARY SCHOOL"
+          },
+          {
+            "code": "011",
+            "name": "ONUERORO MARKET SQUARE"
+          }
+        ]
+      },
+      "Wigbeke III": {
+        "code": "15",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UFFIACHA VILLAGE SQUARE BOOTH I"
+          },
+          {
+            "code": "002",
+            "name": "UFFIACHA VILLAGE SQUARE BOOTH II"
+          },
+          {
+            "code": "003",
+            "name": "OGBAGERE VILLAGE SQUARE BOOTH I"
+          },
+          {
+            "code": "004",
+            "name": "OGBAGERE VILLAGE SQUARE BOOTH II"
+          }
+        ]
+      }
+    }
+  },
+  "ONICHA": {
+    "code": "13",
+    "wards": {
+      "Abaomege": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ISHIEKE PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "UGBONNA PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "EBUALIKE PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "ANUMOCHA PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "CENTRAL SCHOOL ABAOMEGE"
+          },
+          {
+            "code": "006",
+            "name": "OSUSARA PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "NDUFU PLAY GROUND I"
+          },
+          {
+            "code": "008",
+            "name": "NDUFU PLAY GROUND II"
+          },
+          {
+            "code": "009",
+            "name": "OKARIA PLAY GROUND"
+          }
+        ]
+      },
+      "Agbabor-Isu": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AGBABOR C.P.S"
+          },
+          {
+            "code": "002",
+            "name": "NGWU UMUIGBO PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "EZIUKWU CHUKWU PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "OBUNOR PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "IHU-ANI PLAY GROUND"
+          },
+          {
+            "code": "006",
+            "name": "NWEKE AGU PLAY GROUND"
+          },
+          {
+            "code": "007",
+            "name": "UFUOBA PLAY GROUND UFUOBA"
+          },
+          {
+            "code": "008",
+            "name": "UKWUOJI AMEKE PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "NWACHI PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "UMUNNA PLAY GROUND"
+          },
+          {
+            "code": "011",
+            "name": "ACHI UZAM MARKET SQUARE"
+          },
+          {
+            "code": "012",
+            "name": "ORIE UHU OGE"
+          },
+          {
+            "code": "013",
+            "name": "ONU-UNOR ECHE PLAY GROUND"
+          },
+          {
+            "code": "014",
+            "name": "NWANKWOR OMEGE PLAY GROUND"
+          },
+          {
+            "code": "015",
+            "name": "NWEKE OKE PLAY GROUND"
+          },
+          {
+            "code": "016",
+            "name": "AGUEKE PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Amanator-Isu": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EKENU VILLAGE SQUARE"
+          },
+          {
+            "code": "002",
+            "name": "IHUEZEUKWU PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "NWORIE ODI MARKET SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "UKWU-UBE PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "UMU OKPARA PLAY GROUND I"
+          },
+          {
+            "code": "006",
+            "name": "UMU OKPARA PLAY GROUND II"
+          },
+          {
+            "code": "007",
+            "name": "ISIATA HALL"
+          },
+          {
+            "code": "008",
+            "name": "PRIMARY SCHOOL MGBOM"
+          },
+          {
+            "code": "009",
+            "name": "ISUACHARA PRIMARY SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "AFIA NWEZOR"
+          },
+          {
+            "code": "011",
+            "name": "UKWU NWANGWU"
+          },
+          {
+            "code": "012",
+            "name": "EZUKWU NHIRINE PLAY GROUND"
+          },
+          {
+            "code": "013",
+            "name": "AKPU OBASI PLAY GROUND"
+          },
+          {
+            "code": "014",
+            "name": "AFOR MARKET SQUARE"
+          },
+          {
+            "code": "015",
+            "name": "UMUOYIDA PLAY GROUND"
+          },
+          {
+            "code": "016",
+            "name": "UMUCHIMA VILLAGE HALL"
+          },
+          {
+            "code": "017",
+            "name": "EZIUKWU OGBU ANI PLAY GROUND I"
+          },
+          {
+            "code": "018",
+            "name": "EZIUKWU OGBU ANI PLAY GROUND II"
+          },
+          {
+            "code": "019",
+            "name": "OFIA OKPU MARKET SQUARE"
+          }
+        ]
+      },
+      "Ebia Oshiri": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UKWU UBE SQUARE I"
+          },
+          {
+            "code": "002",
+            "name": "UKWU UBE SQUARE II"
+          },
+          {
+            "code": "003",
+            "name": "AKPURU NDUVU VILLAGE SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "HEALTH CENTRE I"
+          },
+          {
+            "code": "005",
+            "name": "OKOKWU VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Enuagu-Onicha": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UGWUENU PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "UBE EWA UGWU PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "UFUEZE UGWU TOWN HALL"
+          },
+          {
+            "code": "004",
+            "name": "AMAUTU TOWN HALL"
+          },
+          {
+            "code": "005",
+            "name": "ONUEZIUKWU ANOKE OGBU"
+          },
+          {
+            "code": "006",
+            "name": "ANIKE TOWN HALL"
+          },
+          {
+            "code": "007",
+            "name": "ANIKE PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "OTIKA TOWN HALL I"
+          },
+          {
+            "code": "009",
+            "name": "OTIKA TOWN HALL II"
+          },
+          {
+            "code": "010",
+            "name": "ENUAGU PRIMARY SCHOOL"
+          },
+          {
+            "code": "011",
+            "name": "ISIAMA TOWN HALL"
+          },
+          {
+            "code": "012",
+            "name": "AMANKWO TOWN HALL"
+          },
+          {
+            "code": "013",
+            "name": "OGBOEDERE TOWN HALL"
+          },
+          {
+            "code": "014",
+            "name": "EZEKPOROKE TOWN HALL"
+          },
+          {
+            "code": "015",
+            "name": "ORIE ASUMKPA TOWN HALL"
+          },
+          {
+            "code": "016",
+            "name": "OGBUNNA PLAY GROUND"
+          },
+          {
+            "code": "017",
+            "name": "UGWU ODIDA BORE HOLE SQUARE"
+          },
+          {
+            "code": "018",
+            "name": "UGWU ODIDA UKWU PRIMARY SCHOOL"
+          },
+          {
+            "code": "019",
+            "name": "ISIAMA PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Isinkwo-Ukawu": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NGAMGBO INYIMA"
+          },
+          {
+            "code": "002",
+            "name": "AMOFIA PLAY GROUND"
+          },
+          {
+            "code": "003",
+            "name": "ONUZOR NWONUMA"
+          },
+          {
+            "code": "004",
+            "name": "NGAMGBO ANYARIGWE`"
+          },
+          {
+            "code": "005",
+            "name": "NWORIE ONUZOR EZE I"
+          },
+          {
+            "code": "006",
+            "name": "NWORIE ONUZOR EZE II"
+          },
+          {
+            "code": "007",
+            "name": "ONUNWANKWO UGO"
+          },
+          {
+            "code": "008",
+            "name": "ONUNWORIE OHOFIA"
+          },
+          {
+            "code": "009",
+            "name": "NGAMGBO AKAHUFU"
+          },
+          {
+            "code": "010",
+            "name": "NGAMGBO EGUGWU"
+          },
+          {
+            "code": "011",
+            "name": "ONUNWEKE MARKET SQUARE"
+          }
+        ]
+      },
+      "Isi-Onicha": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AKANU PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "EZIGA PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "OGUDU ONU PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "EZEBE PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "OLD NWORIE UMUBO MARKET SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "AMANATOR C.P SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "ONUEZIUKWU NJOKU-NAMA PLAY GROUND"
+          }
+        ]
+      },
+      "Obeagu-Isu": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UMUARISI PLAY GROUND"
+          },
+          {
+            "code": "002",
+            "name": "AFOR AGU MARKET SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "UMUEKWENZE PLAY GROUND"
+          },
+          {
+            "code": "004",
+            "name": "UMUANAGU PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "NKWOR OKORO MARKET SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "OJIEGBE PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "AGUEKE OBEAGU PLAY GROUND"
+          }
+        ]
+      },
+      "Oguduokwo Oshiri": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "CENTRAL SCHOOL OSHIRI"
+          },
+          {
+            "code": "002",
+            "name": "UFUEZEOKWU SQUARE I"
+          },
+          {
+            "code": "003",
+            "name": "UFUEZEOKWU SQUARE II"
+          },
+          {
+            "code": "004",
+            "name": "OGUDU OKWO VILLAGE SQUARE I"
+          },
+          {
+            "code": "005",
+            "name": "OGUDU OKWO VILLAGE SQUARE II"
+          },
+          {
+            "code": "006",
+            "name": "NWAFOR MARKET SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "OBEAGU / AMOFFIA HALL I"
+          },
+          {
+            "code": "008",
+            "name": "OBEAGU / AMOFFIA HALL II"
+          }
+        ]
+      },
+      "Okuzu-Ukawu": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NGAMGBO UKAWU P/GROUND"
+          },
+          {
+            "code": "002",
+            "name": "NWANKWO MARKET SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "NDIAGU VILLAGE SQUARE I"
+          },
+          {
+            "code": "004",
+            "name": "NDIAGU VILLAGE SQUARE II"
+          },
+          {
+            "code": "005",
+            "name": "NGAMBGO NDIAGU PLAYGROUND"
+          },
+          {
+            "code": "006",
+            "name": "NWORIE MARKET SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "OKUZU VILLAGE SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "ISHIEKE PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "EBIAJI PLAY GROUND"
+          },
+          {
+            "code": "010",
+            "name": "AZU OBOSI VILLAGE SQUARE"
+          },
+          {
+            "code": "011",
+            "name": "OKUZU UKAWU C/S AMANKPUMA"
+          }
+        ]
+      },
+      "Ugwu-Oshiri": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EZECHI TOWN HALL"
+          },
+          {
+            "code": "002",
+            "name": "UGWU COMM. PRIMARY SCHOOL I"
+          },
+          {
+            "code": "003",
+            "name": "UGWU COMM. PRIMARY SCHOOL II"
+          },
+          {
+            "code": "004",
+            "name": "NWUBE VILLAGE SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "ACHI ELOM SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "MBOJI UZOR SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "AMANKALU PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "ISHINKWO PLAY GROUND"
+          },
+          {
+            "code": "009",
+            "name": "UGWU COMM. PRIMARY SCHOOL III"
+          }
+        ]
+      },
+      "Umudomi-Onicha": {
+        "code": "12",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMAKPORO PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "NWEKE OJIONU MARKET SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "AFOR UMUDOMI MARKET SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "OFIERE PLAY GROUND"
+          },
+          {
+            "code": "005",
+            "name": "NGWU AMANGWU"
+          },
+          {
+            "code": "006",
+            "name": "NGWU OFUOGENE"
+          },
+          {
+            "code": "007",
+            "name": "OJA PLAY GROUND"
+          },
+          {
+            "code": "008",
+            "name": "NGWU AMAOKWE"
+          },
+          {
+            "code": "009",
+            "name": "OKEANI PLAY GROUND"
+          }
+        ]
+      }
+    }
+  }
+}

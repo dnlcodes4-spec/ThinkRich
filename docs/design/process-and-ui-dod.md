@@ -74,6 +74,8 @@ A UI change is **Done** only when all of these hold (in addition to the general
 - [ ] **Looked at it running** (the `run`/`verify` skills), light and dark, mobile and desktop —
       not just "it compiles."
 - [ ] `npm run lint` clean; screenshots attached to the PR for visual changes.
+- [ ] **User visual sign-off obtained** — UI is shown (screenshots desktop + mobile) and the user
+      has explicitly approved **before** committing/merging. UI is never auto-committed.
 
 ## Keeping the system alive
 - Update these docs in the **same PR** as the design change they describe.

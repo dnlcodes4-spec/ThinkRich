@@ -66,6 +66,12 @@ integrate safely (expand/contract migrations, feature flags, preserved invariant
   running in light and dark, mobile and desktop.
 - **Design must not look AI-generated/templated.** Ground UI in this product's world and brand;
   avoid the generic clichés listed in [docs/design/authentic-design.md](docs/design/authentic-design.md).
+  For any non-trivial UI, run the [design method](docs/design/design-method.md): **brief before
+  pixels → diverge into real options → converge with reasons → ground in the subject → hunt the
+  tells → show & sign off.** Proactively — don't wait to be told to "step back" or "go higher."
+- **Never auto-commit UI. Get the user's visual sign-off first.** For any UI work, build it, run
+  the gates, then **show it (screenshots desktop + mobile / the running app) and wait for explicit
+  approval** before committing or moving on. Non-UI work (schema, tests, docs, config) doesn't need this.
 
 ## 6. Documentation is living
 

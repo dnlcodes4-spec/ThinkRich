@@ -1,0 +1,6782 @@
+{
+  "AKWANGA": {
+    "code": "01",
+    "wards": {
+      "Anchobaba": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "RIJA SARKI"
+          },
+          {
+            "code": "002",
+            "name": "GBUWHEN"
+          },
+          {
+            "code": "003",
+            "name": "ANCHO SARKI"
+          },
+          {
+            "code": "004",
+            "name": "NGARE"
+          },
+          {
+            "code": "005",
+            "name": "U/ZARIA I"
+          },
+          {
+            "code": "006",
+            "name": "U/ZARIA II"
+          },
+          {
+            "code": "007",
+            "name": "MANVEH"
+          },
+          {
+            "code": "008",
+            "name": "IKPON ST., BY HOUSE NO. 20"
+          }
+        ]
+      },
+      "Agyaga": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NINGA PRIMARY SCHOOL (NINGA I)"
+          },
+          {
+            "code": "002",
+            "name": "NINGA II"
+          },
+          {
+            "code": "003",
+            "name": "ASHE"
+          },
+          {
+            "code": "004",
+            "name": "AGYAGA PRIMARY SCHOOL (AGYAGA)"
+          },
+          {
+            "code": "005",
+            "name": "TAPIR"
+          },
+          {
+            "code": "006",
+            "name": "UNGUWAR PAH"
+          }
+        ]
+      },
+      "Gwanje.Gwanje": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GWANJE"
+          },
+          {
+            "code": "002",
+            "name": "GBUJE"
+          },
+          {
+            "code": "003",
+            "name": "GWADI"
+          },
+          {
+            "code": "004",
+            "name": "ARICHA"
+          }
+        ]
+      },
+      "Ancho Nighaan": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ANCHO / NINGHAAN ."
+          },
+          {
+            "code": "002",
+            "name": "ARUM GIDA"
+          },
+          {
+            "code": "003",
+            "name": "NIDAN"
+          },
+          {
+            "code": "004",
+            "name": "NUMAN KUCHU"
+          }
+        ]
+      },
+      "Andaha": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ANDAHA NORTH"
+          },
+          {
+            "code": "002",
+            "name": "ANDAHA SOUTH"
+          },
+          {
+            "code": "003",
+            "name": "ANDAHA SOUTH"
+          },
+          {
+            "code": "004",
+            "name": "ANDAHA MARKET SQUARE (ANDAHA KOFAR HAKIMI)"
+          },
+          {
+            "code": "005",
+            "name": "KATANZA"
+          },
+          {
+            "code": "006",
+            "name": "ANDAHA DAJI"
+          }
+        ]
+      },
+      "Nunku": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NUNKU"
+          },
+          {
+            "code": "002",
+            "name": "NUNKU"
+          },
+          {
+            "code": "003",
+            "name": "U/MAKAMA"
+          },
+          {
+            "code": "004",
+            "name": "UNGWAR DOROWA PRI. SCHOOL. (UNGWAR DOROWA)"
+          },
+          {
+            "code": "005",
+            "name": "ANDU"
+          }
+        ]
+      },
+      "Gudi": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "MOTOR PARK"
+          },
+          {
+            "code": "002",
+            "name": "MOTOR PARK"
+          },
+          {
+            "code": "003",
+            "name": "C.M.S GUDI"
+          },
+          {
+            "code": "004",
+            "name": "U/DARIYA"
+          }
+        ]
+      },
+      "Moroa": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "C.M.S MOROA"
+          },
+          {
+            "code": "002",
+            "name": "C.M.S MOROA"
+          },
+          {
+            "code": "003",
+            "name": "B/KOGI"
+          },
+          {
+            "code": "004",
+            "name": "U/YARA"
+          },
+          {
+            "code": "005",
+            "name": "ANJIDA SARKI"
+          },
+          {
+            "code": "006",
+            "name": "ANJIDA SARKI"
+          },
+          {
+            "code": "007",
+            "name": "KWANDAR"
+          }
+        ]
+      },
+      "Akwanga West": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "U/SALIHU"
+          },
+          {
+            "code": "002",
+            "name": "U/GALADIMA"
+          },
+          {
+            "code": "003",
+            "name": "COE AKWANGA"
+          },
+          {
+            "code": "004",
+            "name": "COE AKWANGA"
+          },
+          {
+            "code": "005",
+            "name": "POLICE STATION"
+          },
+          {
+            "code": "006",
+            "name": "POLICE STATION"
+          },
+          {
+            "code": "007",
+            "name": "AKWANGA NORTH PRI.SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "KOFAR HAKIMI"
+          },
+          {
+            "code": "009",
+            "name": "AKWANGA SOUTH"
+          }
+        ]
+      },
+      "Akwanga East": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AKWANGA CENTRAL"
+          },
+          {
+            "code": "002",
+            "name": "AKWANGA CENTRAL"
+          },
+          {
+            "code": "003",
+            "name": "AKWANGA CENTRAL"
+          },
+          {
+            "code": "004",
+            "name": "K/TAGWAYE"
+          },
+          {
+            "code": "005",
+            "name": "BUKU"
+          },
+          {
+            "code": "006",
+            "name": "GBUNCHU"
+          },
+          {
+            "code": "007",
+            "name": "MHSS"
+          },
+          {
+            "code": "008",
+            "name": "CO-OPERATIVE"
+          },
+          {
+            "code": "009",
+            "name": "KAMBRE"
+          },
+          {
+            "code": "010",
+            "name": "MOTOR PARK"
+          },
+          {
+            "code": "011",
+            "name": "MOTOR PARK"
+          },
+          {
+            "code": "012",
+            "name": "U/ALAGO"
+          }
+        ]
+      },
+      "Ningo / Bohar": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "NINGO"
+          },
+          {
+            "code": "002",
+            "name": "TABU"
+          },
+          {
+            "code": "003",
+            "name": "NGAMBRE"
+          },
+          {
+            "code": "004",
+            "name": "NGACHE"
+          },
+          {
+            "code": "005",
+            "name": "BOHAR SARKI"
+          }
+        ]
+      }
+    }
+  },
+  "AWE": {
+    "code": "02",
+    "wards": {
+      "Tunga": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "TUNGA PRI.SCHOOL I - PB"
+          },
+          {
+            "code": "002",
+            "name": "TUNGA PRI.SCHOOL II- PB"
+          },
+          {
+            "code": "003",
+            "name": "TSOHON TUNGA - PB"
+          },
+          {
+            "code": "004",
+            "name": "AGUDU - PB"
+          },
+          {
+            "code": "005",
+            "name": "TUNGA TV CENTRE - PB"
+          },
+          {
+            "code": "006",
+            "name": "KOSONO - PB"
+          },
+          {
+            "code": "007",
+            "name": "GIDAN GWAM - OB"
+          },
+          {
+            "code": "008",
+            "name": "TUNGA MARKET SQUARE (KOFAR SARKIN TUNGA)"
+          }
+        ]
+      },
+      "Makwangiji": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BAURE PRI.SCHOOL I- PB"
+          },
+          {
+            "code": "002",
+            "name": "BAURE PRI.SCHOOL II - PB"
+          },
+          {
+            "code": "003",
+            "name": "VIEWING CENTRE PB"
+          },
+          {
+            "code": "004",
+            "name": "KOSOUR - OB"
+          },
+          {
+            "code": "005",
+            "name": "KEKURA PRI.SCHOOL I - PB"
+          },
+          {
+            "code": "006",
+            "name": "KEKURA PRI.SCHOOL II- PB"
+          },
+          {
+            "code": "007",
+            "name": "KUNDU - OB"
+          },
+          {
+            "code": "008",
+            "name": "GINDIN - KADE - OB"
+          },
+          {
+            "code": "009",
+            "name": "UNGWAN ROGO - OB"
+          },
+          {
+            "code": "010",
+            "name": "OLD SECRETARIAT (KOFAR-PADA/BUNU)"
+          }
+        ]
+      },
+      "Madaki": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOFAR HABU I - OB"
+          },
+          {
+            "code": "002",
+            "name": "KOFAR HABU II - OB"
+          },
+          {
+            "code": "003",
+            "name": "KOFAR GAYAM STATISTIC - PB"
+          },
+          {
+            "code": "004",
+            "name": "KOFAR GAYAM - OB"
+          },
+          {
+            "code": "005",
+            "name": "AWE SOUTH PRI.SCHOOL - PB"
+          },
+          {
+            "code": "006",
+            "name": "KOFAR SARKI WURJI - OB"
+          },
+          {
+            "code": "007",
+            "name": "KAFIN MOYI - OB"
+          },
+          {
+            "code": "008",
+            "name": "JANGAR GARI I"
+          },
+          {
+            "code": "009",
+            "name": "JANGAR GARI II"
+          },
+          {
+            "code": "010",
+            "name": "AKWATE - OB"
+          },
+          {
+            "code": "011",
+            "name": "MAGAJI TV CENTRE - PB"
+          },
+          {
+            "code": "012",
+            "name": "GIDAN WURJI PRI.SCHOOL- PB"
+          }
+        ]
+      },
+      "Galadima": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMPANA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "002",
+            "name": "KOFAR GALADIMA A - OB"
+          },
+          {
+            "code": "003",
+            "name": "KOFAR GALADIMA B - PB"
+          },
+          {
+            "code": "004",
+            "name": "MAHANGA/NOMADIC - OB"
+          },
+          {
+            "code": "005",
+            "name": "MAIN - MARKET A - OB"
+          },
+          {
+            "code": "006",
+            "name": "MAIN-MARKET B (OB)"
+          }
+        ]
+      },
+      "Jangaru": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "JANGARU PRI.SCHOOL - PB"
+          },
+          {
+            "code": "002",
+            "name": "CHIATA - OB"
+          },
+          {
+            "code": "003",
+            "name": "KA'AMBE - OB"
+          },
+          {
+            "code": "004",
+            "name": "GINDIRAWA - OB"
+          }
+        ]
+      },
+      "Kanje/Abuni": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ABUNI PRI.SCHOOL (PB)"
+          },
+          {
+            "code": "002",
+            "name": "UNG.KWALLA (OB)"
+          },
+          {
+            "code": "003",
+            "name": "KANJE PRI.SCHOOL - PB"
+          },
+          {
+            "code": "004",
+            "name": "UNG.JUKUN - OB"
+          },
+          {
+            "code": "005",
+            "name": "ANUKU PRI.SCHOOL I - PB"
+          },
+          {
+            "code": "006",
+            "name": "IHUMAN PRI. SCH. I - PB"
+          },
+          {
+            "code": "007",
+            "name": "IHUMAN PRI.SCHOOL II - PB"
+          }
+        ]
+      },
+      "Ribi": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "RIBI TV CENTRE - PB"
+          },
+          {
+            "code": "002",
+            "name": "RIBI PRI.SCHOOL - PB"
+          },
+          {
+            "code": "003",
+            "name": "KOFAR SARKI - OB"
+          },
+          {
+            "code": "004",
+            "name": "ZANWA - OB"
+          },
+          {
+            "code": "005",
+            "name": "MANKPE"
+          },
+          {
+            "code": "006",
+            "name": "SHANKODI - OB"
+          },
+          {
+            "code": "007",
+            "name": "UNGWAN KWALLA - OB"
+          },
+          {
+            "code": "008",
+            "name": "IBI ALAGO - OB"
+          },
+          {
+            "code": "009",
+            "name": "JANGWA DISPENSARY - PB"
+          },
+          {
+            "code": "010",
+            "name": "JANGWA PRI.SCHOOL - PB"
+          }
+        ]
+      },
+      "Azara": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GIDAN-WAMBAI PRI.SCHOOL - PB"
+          },
+          {
+            "code": "002",
+            "name": "MAAJI AZARA - OB"
+          },
+          {
+            "code": "003",
+            "name": "RIMIN SABO - OB"
+          },
+          {
+            "code": "004",
+            "name": "RUGWAGU - OB"
+          },
+          {
+            "code": "005",
+            "name": "UBANDOMA - OB"
+          },
+          {
+            "code": "006",
+            "name": "UNG.- GALADIMA AZARA - OB"
+          },
+          {
+            "code": "007",
+            "name": "KOFAR MAGAJI - OB"
+          },
+          {
+            "code": "008",
+            "name": "UNG. SARKIN YAKI I"
+          },
+          {
+            "code": "009",
+            "name": "UNG.SARKIN- YAKI II - OB"
+          },
+          {
+            "code": "010",
+            "name": "JIMI AZARA - OB"
+          },
+          {
+            "code": "011",
+            "name": "UNG. GOBIRAWA - OB"
+          },
+          {
+            "code": "012",
+            "name": "KOFAR SARKIN KURUM"
+          },
+          {
+            "code": "013",
+            "name": "TAFIDA - OB"
+          },
+          {
+            "code": "014",
+            "name": "GIDAN SOJA - OB"
+          },
+          {
+            "code": "015",
+            "name": "GIDAN UPAVER - OB"
+          }
+        ]
+      },
+      "Wuse": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "WUSE DISP/MOYI 'A' - PB"
+          },
+          {
+            "code": "002",
+            "name": "WUSE DISP/MOYI 'B' - PB"
+          },
+          {
+            "code": "003",
+            "name": "TSOHON WUSE -OB"
+          },
+          {
+            "code": "004",
+            "name": "GIDAN UNANDE - OB"
+          },
+          {
+            "code": "005",
+            "name": "KUMAR - PB"
+          },
+          {
+            "code": "006",
+            "name": "GIDAN-LUKA - OB"
+          },
+          {
+            "code": "007",
+            "name": "RIJIYAN GIWA - PB"
+          },
+          {
+            "code": "008",
+            "name": "SAMINAKA - OB"
+          },
+          {
+            "code": "009",
+            "name": "DOROWAN-WUSE"
+          },
+          {
+            "code": "010",
+            "name": "WUSE TV CENTRE - PB"
+          },
+          {
+            "code": "011",
+            "name": "UNGWAN AUDU - OB"
+          },
+          {
+            "code": "012",
+            "name": "UNGWAN UBANGARI - OB"
+          }
+        ]
+      },
+      "Akiri": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AKIRI PRI.SCHOOL/ANG. GISHIRI I - PB"
+          },
+          {
+            "code": "002",
+            "name": "AKIRI PRI.SCHOOL/ANG. GISHIRI II - PB"
+          },
+          {
+            "code": "003",
+            "name": "KOFAR SARKI/KUKA - OB"
+          },
+          {
+            "code": "004",
+            "name": "TAFIDA SILLA - OB"
+          },
+          {
+            "code": "005",
+            "name": "NYENSUWE - OB"
+          },
+          {
+            "code": "006",
+            "name": "UNG. TORBUTU - OB"
+          },
+          {
+            "code": "007",
+            "name": "RUGAR -HARDO - OB"
+          },
+          {
+            "code": "008",
+            "name": "GIDAN GWAM - OB"
+          },
+          {
+            "code": "009",
+            "name": "USUWA JIGAWA - OB"
+          },
+          {
+            "code": "010",
+            "name": "APIRI AKIRI - OB"
+          }
+        ]
+      }
+    }
+  },
+  "DOMA": {
+    "code": "03",
+    "wards": {
+      "Alagye": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ANNA TOWN O.P"
+          },
+          {
+            "code": "002",
+            "name": "M.S GIDA O.P"
+          },
+          {
+            "code": "003",
+            "name": "K/M ANZA/DAMBA/K/M/D O.P"
+          },
+          {
+            "code": "004",
+            "name": "MUDU PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "RUTTU O.P"
+          },
+          {
+            "code": "006",
+            "name": "KOFAR WAKILI 0.P"
+          },
+          {
+            "code": "007",
+            "name": "PRI.SCHOOL ALAGYE O.P"
+          },
+          {
+            "code": "008",
+            "name": "PRIMARY SCHOOL ALAGYE (K.W.MADA (OP))"
+          },
+          {
+            "code": "009",
+            "name": "RUWAN BAKA O.P"
+          },
+          {
+            "code": "010",
+            "name": "AKARAMA O.P"
+          },
+          {
+            "code": "011",
+            "name": "PANKSHIN DOMA O.P"
+          },
+          {
+            "code": "012",
+            "name": "LAMBA"
+          }
+        ]
+      },
+      "Rukubi": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "K/PADA AGYEMA O.P"
+          },
+          {
+            "code": "002",
+            "name": "AGYEMA PRI.SCHOOL P.B"
+          },
+          {
+            "code": "003",
+            "name": "OZIMAZA AGYEMA O.P"
+          },
+          {
+            "code": "004",
+            "name": "OTIYA O.P"
+          },
+          {
+            "code": "005",
+            "name": "OLUWA KOYIMA O.P"
+          },
+          {
+            "code": "006",
+            "name": "RUKUBI PRI.SCHOOL PB"
+          },
+          {
+            "code": "007",
+            "name": "UNG. KUMBURU 0.P"
+          },
+          {
+            "code": "008",
+            "name": "ANDORI PRI.SCHOOL P.B"
+          },
+          {
+            "code": "009",
+            "name": "UNG SARKIN BASSA O.P"
+          },
+          {
+            "code": "010",
+            "name": "UNG SARKIN BASSA O.P"
+          },
+          {
+            "code": "011",
+            "name": "ABUJA OGO O.P"
+          },
+          {
+            "code": "012",
+            "name": "UNG OWUSE IJIWO O.P"
+          }
+        ]
+      },
+      "Agbashi": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "PRI.SCHOOL IDADU P.B"
+          },
+          {
+            "code": "002",
+            "name": "ATANDARA O.P"
+          },
+          {
+            "code": "003",
+            "name": "PRI.SCHOOL AGBASHI P.B"
+          },
+          {
+            "code": "004",
+            "name": "G.S.S AGBASHI PB"
+          },
+          {
+            "code": "005",
+            "name": "OLEGABOGYE O.P"
+          },
+          {
+            "code": "006",
+            "name": "PRI.SCHOOL IPONU PB"
+          },
+          {
+            "code": "007",
+            "name": "G.S.S OKPATA (KOFAR SARKIN OKPATTA O.P)"
+          },
+          {
+            "code": "008",
+            "name": "GIDAN JIRRAH OP"
+          },
+          {
+            "code": "009",
+            "name": "KOFAR ADAMU/ADAGONYE"
+          },
+          {
+            "code": "010",
+            "name": "KADUNA BASSA OP"
+          },
+          {
+            "code": "011",
+            "name": "PRI.SCHOOLZEVER PB"
+          },
+          {
+            "code": "012",
+            "name": "ATEGERE OP"
+          },
+          {
+            "code": "013",
+            "name": "PRIMARY SCHOOL OKPATA (UNG.BASSA OKPATA)"
+          },
+          {
+            "code": "014",
+            "name": "OLD POLICE STATION (KOFAR SARKIN OSE OGIRI)"
+          }
+        ]
+      },
+      "Doka": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "IZAH (OHINA MADA) OP"
+          },
+          {
+            "code": "002",
+            "name": "PRIMARY SCHOOL EDIYA (KOFAR SARKIN EDIYA (OP))"
+          },
+          {
+            "code": "003",
+            "name": "PRI. SCHOOL GIDAN RAI PB"
+          },
+          {
+            "code": "004",
+            "name": "PRIMARY SCHOOL GIDAN RAI (K/SARKIN GIDAN RAI (OP))"
+          },
+          {
+            "code": "005",
+            "name": "PRI.SCHOOL IGBABO / MAI DIMBA PB"
+          },
+          {
+            "code": "006",
+            "name": "AJIMAKA OP"
+          },
+          {
+            "code": "007",
+            "name": "PRI.SCHOOL IGBABO PB"
+          },
+          {
+            "code": "008",
+            "name": "TUNGA MANJA OP"
+          },
+          {
+            "code": "009",
+            "name": "GBAIGO OP"
+          },
+          {
+            "code": "010",
+            "name": "PRI.SCHOOL DOKA PB"
+          },
+          {
+            "code": "011",
+            "name": "PRI.SCHOOL ANKOMA PB"
+          },
+          {
+            "code": "012",
+            "name": "GIDAN DOOGA OP"
+          }
+        ]
+      },
+      "Akpanaja": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "K/S AKPANAJA OP"
+          },
+          {
+            "code": "002",
+            "name": "DAN GALADIMA OP"
+          },
+          {
+            "code": "003",
+            "name": "LSB AKPANAJA PB"
+          },
+          {
+            "code": "004",
+            "name": "APRINGBO OP"
+          },
+          {
+            "code": "005",
+            "name": "OCHEPE OP"
+          },
+          {
+            "code": "006",
+            "name": "OBENDO OP"
+          },
+          {
+            "code": "007",
+            "name": "OLEGOKPA OP"
+          },
+          {
+            "code": "008",
+            "name": "GIDAN BASSA AZAYA OP"
+          }
+        ]
+      },
+      "Madaki": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOFAR LIMAN OP"
+          },
+          {
+            "code": "002",
+            "name": "KOFAR ALARAMA OP"
+          },
+          {
+            "code": "003",
+            "name": "GOVERNMENT COLLEGE (ALI ONYEGYUN (OP))"
+          },
+          {
+            "code": "004",
+            "name": "KOFAR MADAKI OP"
+          },
+          {
+            "code": "005",
+            "name": "KOFAR S.MAKERA OP"
+          },
+          {
+            "code": "006",
+            "name": "AKUMBE OP"
+          },
+          {
+            "code": "007",
+            "name": "MAKUNGIJI OP"
+          },
+          {
+            "code": "008",
+            "name": "KOFAR M.FARI I OP"
+          },
+          {
+            "code": "009",
+            "name": "KOFAR M.FARI II OP"
+          },
+          {
+            "code": "010",
+            "name": "GIDAN DOGO OP"
+          },
+          {
+            "code": "011",
+            "name": "AHUTA OP"
+          },
+          {
+            "code": "012",
+            "name": "AKYALAGU OP"
+          },
+          {
+            "code": "013",
+            "name": "KOFAR YAKUBU MABO"
+          }
+        ]
+      },
+      "Ungwan Sarki Dawaki": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOFAR AGINA OP"
+          },
+          {
+            "code": "002",
+            "name": "ANDOMA PRI.SCHOOL PB"
+          },
+          {
+            "code": "003",
+            "name": "KOFAR OSHATA OGANDE OP"
+          },
+          {
+            "code": "004",
+            "name": "UNG.LIMAN OP"
+          },
+          {
+            "code": "005",
+            "name": "KOFAR OLOBU OP"
+          },
+          {
+            "code": "006",
+            "name": "KOFAR BARDE OP"
+          },
+          {
+            "code": "007",
+            "name": "KOFAR GALADIMA OP"
+          },
+          {
+            "code": "008",
+            "name": "OTUGEWO OP"
+          },
+          {
+            "code": "009",
+            "name": "PRI.SCHOOL IWASHI PB"
+          },
+          {
+            "code": "010",
+            "name": "K/SARKIN ALAGYE OP"
+          },
+          {
+            "code": "011",
+            "name": "ODOROGYA OP"
+          },
+          {
+            "code": "012",
+            "name": "K/MAGAJIN GARI OP"
+          },
+          {
+            "code": "013",
+            "name": "K/OSIKPA OP"
+          },
+          {
+            "code": "014",
+            "name": "K/JOHN OGAH OP"
+          },
+          {
+            "code": "015",
+            "name": "K/OSABO AGABI OP"
+          }
+        ]
+      },
+      "Madauchi": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "K/MADAUCHI OP"
+          },
+          {
+            "code": "002",
+            "name": "K/LIMAN BAKASHI OP"
+          },
+          {
+            "code": "003",
+            "name": "K/MASSALACHI OP"
+          },
+          {
+            "code": "004",
+            "name": "K/MALLAM YARO OP"
+          },
+          {
+            "code": "005",
+            "name": "K/PAKACHIN DOMA"
+          },
+          {
+            "code": "006",
+            "name": "KAURAN SARKI OP"
+          },
+          {
+            "code": "007",
+            "name": "K/MALLAM ABOKI OP"
+          },
+          {
+            "code": "008",
+            "name": "K/LIMAN GARI OP"
+          },
+          {
+            "code": "009",
+            "name": "K/BABAJI OP"
+          },
+          {
+            "code": "010",
+            "name": "K/ADARA OLOKPA OP"
+          },
+          {
+            "code": "011",
+            "name": "K/ALH.ADAMU UNG. NUPAWA OP"
+          },
+          {
+            "code": "012",
+            "name": "K/OSOGBE OP"
+          },
+          {
+            "code": "013",
+            "name": "KOFAR ALHAJI RILWANU OP"
+          }
+        ]
+      },
+      "Ungwan Dan Galadima": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOFAR ALHAJI J.LIMAN OP"
+          },
+          {
+            "code": "002",
+            "name": "KOFAR ALHAJI H. OGU OP"
+          },
+          {
+            "code": "003",
+            "name": "KOFAR ALHAJI SANI OGAH OP"
+          },
+          {
+            "code": "004",
+            "name": "KOFAR ALHAJI WAZIRI"
+          },
+          {
+            "code": "005",
+            "name": "KOFAR A.OKUDU OP"
+          },
+          {
+            "code": "006",
+            "name": "KOFAR A.ABARI BUNU OP"
+          },
+          {
+            "code": "007",
+            "name": "KOFAR SANKE"
+          },
+          {
+            "code": "008",
+            "name": "GIDAN AYA OP"
+          },
+          {
+            "code": "009",
+            "name": "REST HOUSE PB"
+          },
+          {
+            "code": "010",
+            "name": "R.C.M PRI.SCHOOL I"
+          },
+          {
+            "code": "011",
+            "name": "R.C.M PRI.SCHOOL II"
+          },
+          {
+            "code": "012",
+            "name": "KOFAR OKUBA OP"
+          },
+          {
+            "code": "013",
+            "name": "OGANDE WURI (KOFAN)"
+          },
+          {
+            "code": "014",
+            "name": "KOFAR ADEKA SARKI NOMA OP"
+          },
+          {
+            "code": "015",
+            "name": "KOFAR BABAN KEKE OP"
+          }
+        ]
+      },
+      "Sabon Gari": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "K/GIDAN MISSION OP"
+          },
+          {
+            "code": "002",
+            "name": "K/OZAYASHI OP"
+          },
+          {
+            "code": "003",
+            "name": "KOFAR ALI OKWEPE OP"
+          },
+          {
+            "code": "004",
+            "name": "K/SAIDU MAI DOYA OP"
+          },
+          {
+            "code": "005",
+            "name": "K/DAN AZUMI OP"
+          },
+          {
+            "code": "006",
+            "name": "OTUGOKPO OP"
+          },
+          {
+            "code": "007",
+            "name": "K/IBRAHIM AKUKI OP"
+          },
+          {
+            "code": "008",
+            "name": "K/ALH.MALLAM OP"
+          },
+          {
+            "code": "009",
+            "name": "ALWAZAN MADA OP"
+          },
+          {
+            "code": "010",
+            "name": "K/BABAN KAKA OP"
+          },
+          {
+            "code": "011",
+            "name": "K/WAKILIN MADA OP"
+          },
+          {
+            "code": "012",
+            "name": "KOFAR ALHASSAN TATA OP"
+          }
+        ]
+      }
+    }
+  },
+  "KARU": {
+    "code": "04",
+    "wards": {
+      "Aso / Kodape": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KODAPE PRI.SCHOOL - PB"
+          },
+          {
+            "code": "002",
+            "name": "TUDUN WADA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "003",
+            "name": "KUDU LUVU - OP"
+          },
+          {
+            "code": "004",
+            "name": "KOYA - OP"
+          },
+          {
+            "code": "005",
+            "name": "JEN KOKORO - OP"
+          },
+          {
+            "code": "006",
+            "name": "EBBA - OP"
+          },
+          {
+            "code": "007",
+            "name": "ASO - OP"
+          }
+        ]
+      },
+      "Agada/Bagaji": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BAGAJI PRI.SCHOOL - PB"
+          },
+          {
+            "code": "002",
+            "name": "GIDAN BALA - OP"
+          },
+          {
+            "code": "003",
+            "name": "GIDAN DOGARA - OP"
+          },
+          {
+            "code": "004",
+            "name": "GIDAN GWANDARA - OP"
+          },
+          {
+            "code": "005",
+            "name": "GATAKU - PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "ANGWAN ZAKARA PRI.SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "ANGWAN SHAMAKI - OP"
+          },
+          {
+            "code": "008",
+            "name": "GORA PRI.SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "GUNDUMA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "010",
+            "name": "MADUBI - OP"
+          },
+          {
+            "code": "011",
+            "name": "ANG.TARA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "012",
+            "name": "ARMY BARRACKS O- OP"
+          },
+          {
+            "code": "013",
+            "name": "ANG. SA'AKA/ ZABIRU - OP"
+          },
+          {
+            "code": "014",
+            "name": "DOROWA - OP"
+          }
+        ]
+      },
+      "Karshi I": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KWADAKI MARKET SQUARE (KWADAKI)"
+          },
+          {
+            "code": "002",
+            "name": "KARSHI LGEA PRI.SCH. (KARSHI PADA)"
+          },
+          {
+            "code": "003",
+            "name": "PIYANKO BOLE - OP"
+          },
+          {
+            "code": "004",
+            "name": "KARSHI OROZO - OP"
+          },
+          {
+            "code": "005",
+            "name": "SHANANA PRI. SCH. (GIDAN SHANANA)"
+          }
+        ]
+      },
+      "Karshi II": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOWA YARDA"
+          },
+          {
+            "code": "002",
+            "name": "RAFIN KWARA -OP"
+          },
+          {
+            "code": "003",
+            "name": "JIJIPE"
+          },
+          {
+            "code": "004",
+            "name": "KURAPE PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "BAKIN KOGI"
+          },
+          {
+            "code": "006",
+            "name": "TAKALAFIYA PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "TAKALAFIYA I"
+          },
+          {
+            "code": "008",
+            "name": "ARA SABO"
+          },
+          {
+            "code": "009",
+            "name": "KWATARMA"
+          }
+        ]
+      },
+      "Kafin Shanu/Betti": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GWAYA PRI. SCHOOL - PB"
+          },
+          {
+            "code": "002",
+            "name": "KAWO MAKARANTA - PB"
+          },
+          {
+            "code": "003",
+            "name": "TAKALAFIYA ZAZZAU - OP"
+          },
+          {
+            "code": "004",
+            "name": "TAKALAFIYA FULANI"
+          },
+          {
+            "code": "005",
+            "name": "GWAGWA - 0P"
+          },
+          {
+            "code": "006",
+            "name": "ANG. GWANDARA"
+          },
+          {
+            "code": "007",
+            "name": "ANG. CHEDIYA"
+          },
+          {
+            "code": "008",
+            "name": "ANG. TONI"
+          },
+          {
+            "code": "009",
+            "name": "TSAKANI"
+          },
+          {
+            "code": "010",
+            "name": "DOROWA - OP"
+          },
+          {
+            "code": "011",
+            "name": "BETTI / RUGAN JABA - OP"
+          },
+          {
+            "code": "012",
+            "name": "ANG MALLAM - OP"
+          },
+          {
+            "code": "013",
+            "name": "NIKE PRIMARY SCHOOL - 0P"
+          }
+        ]
+      },
+      "Tattara/Kondoro": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "TATTARA PRI.SCHOOL I - PB"
+          },
+          {
+            "code": "002",
+            "name": "TATTARA PRI.SCHOOL II - PB"
+          },
+          {
+            "code": "003",
+            "name": "ANG. AYABA PRIMARY SCHOOL - OP"
+          },
+          {
+            "code": "004",
+            "name": "KUDA PRIMARY SCHOOL- OP"
+          },
+          {
+            "code": "005",
+            "name": "KONDORO YESKWA PRIMARY SCHOOL- OP"
+          },
+          {
+            "code": "006",
+            "name": "ABUI - OP"
+          },
+          {
+            "code": "007",
+            "name": "ANKUTA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "008",
+            "name": "AKWAP - OP"
+          },
+          {
+            "code": "009",
+            "name": "ASHOT - OP"
+          },
+          {
+            "code": "010",
+            "name": "KUDA - OP"
+          },
+          {
+            "code": "011",
+            "name": "KONDORO YESKWA - OP"
+          },
+          {
+            "code": "012",
+            "name": "KONDORO HAUSAWA"
+          },
+          {
+            "code": "013",
+            "name": "CAMP - OP"
+          }
+        ]
+      },
+      "Gitata": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GITATA PRI.SCHOOL (PB)"
+          },
+          {
+            "code": "002",
+            "name": "SABON KASUWA GITATA (OP)"
+          },
+          {
+            "code": "003",
+            "name": "ZANGO PRI.SCHOOL PB"
+          },
+          {
+            "code": "004",
+            "name": "RAFIN MPAH PRI.SCHOOL (PB)"
+          },
+          {
+            "code": "005",
+            "name": "TUDUN UKU PRI.SCHOOL (PB)"
+          },
+          {
+            "code": "006",
+            "name": "CHIMPA AJEYE PRIMARY SCHOOL (OP)"
+          },
+          {
+            "code": "007",
+            "name": "DAURO PRI.SCHOOL (PB)"
+          },
+          {
+            "code": "008",
+            "name": "TAKALAFIYA (OP)"
+          },
+          {
+            "code": "009",
+            "name": "PAPERI PRI.SCHOOL (PB)"
+          },
+          {
+            "code": "010",
+            "name": "BUZI PRI.SCHOOL (PB)"
+          }
+        ]
+      },
+      "Gurku/Kabusu": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GURKU GWANDARA I - OP"
+          },
+          {
+            "code": "002",
+            "name": "GURKU GWANDARA II - OP"
+          },
+          {
+            "code": "003",
+            "name": "GURKU GWANDARA III - OP"
+          },
+          {
+            "code": "004",
+            "name": "GURKU GWARI PRI.SCHOOL - PB"
+          },
+          {
+            "code": "005",
+            "name": "CHAKUWA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "006",
+            "name": "KABUSU PRI.SCHOOL - PB"
+          },
+          {
+            "code": "007",
+            "name": "KPANDA - OP"
+          },
+          {
+            "code": "008",
+            "name": "MAKURDI -OP"
+          },
+          {
+            "code": "009",
+            "name": "BAGOJE - OP"
+          },
+          {
+            "code": "010",
+            "name": "KUGWARU PRI.SCHOOL - PB"
+          },
+          {
+            "code": "011",
+            "name": "KATANYI PRI.SCHOOL - PB"
+          },
+          {
+            "code": "012",
+            "name": "GBARANDA PRI.SCHOOL - PB"
+          }
+        ]
+      },
+      "Uke": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UKE MAGISTRATE COURT (UKE TAFADA)"
+          },
+          {
+            "code": "002",
+            "name": "ANG. TOFA PRI. SCH. (ANG. TOFA)"
+          },
+          {
+            "code": "003",
+            "name": "GOVT. DAY SEC. SCH. (ANG. TARKO I)"
+          },
+          {
+            "code": "004",
+            "name": "KAMPANI PRI. SCH. (ANG. TARKO II)"
+          },
+          {
+            "code": "005",
+            "name": "SAKA PLAY GROUND (SAKA CHIKIN GARI)"
+          },
+          {
+            "code": "006",
+            "name": "DAMAKASHA PRI. SCH (DAMAKASHA)"
+          },
+          {
+            "code": "007",
+            "name": "GIDAN GIMBA - OP"
+          },
+          {
+            "code": "008",
+            "name": "UKE GARAGE (GIDAN GUMA)"
+          },
+          {
+            "code": "009",
+            "name": "ROGONA PRI. SCH. (GIDAN SARKIN ROGUWA)"
+          },
+          {
+            "code": "010",
+            "name": "ANG. WAJE PHC (SAKA ANG WAJE)"
+          }
+        ]
+      },
+      "Panda / Kare": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ANGWAN PA ICHE - OP"
+          },
+          {
+            "code": "002",
+            "name": "KUBANG - OP"
+          },
+          {
+            "code": "003",
+            "name": "CHANDAP"
+          },
+          {
+            "code": "004",
+            "name": "AGO - OP"
+          },
+          {
+            "code": "005",
+            "name": "KUKAN - OP"
+          },
+          {
+            "code": "006",
+            "name": "SHINKAFA - PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "KARE PRIMARY SCHOOL - OP"
+          },
+          {
+            "code": "008",
+            "name": "GWALLAJI - OP"
+          },
+          {
+            "code": "009",
+            "name": "ANG.PA.KORO"
+          },
+          {
+            "code": "010",
+            "name": "PANDA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "011",
+            "name": "ANKOMA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "012",
+            "name": "KUBE PRIMARY SCHOOL - OP"
+          },
+          {
+            "code": "013",
+            "name": "KOSO - OP"
+          },
+          {
+            "code": "014",
+            "name": "KUKURI - OP"
+          },
+          {
+            "code": "015",
+            "name": "JABAN PANDA - OP"
+          }
+        ]
+      },
+      "Karu": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KARU CENTRAL PRI.SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "KARU POLICE STATION JUNCTION - OP"
+          },
+          {
+            "code": "003",
+            "name": "DAGBADNA - OP"
+          },
+          {
+            "code": "004",
+            "name": "KARU MODERN E- LIBRARY (KARU PADA)"
+          },
+          {
+            "code": "005",
+            "name": "NYANYAN GBAGYI PRI.SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "BAKIN ADO PRI.SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "MARARABA GARAGE I"
+          },
+          {
+            "code": "008",
+            "name": "MARARABA GARAGE II"
+          },
+          {
+            "code": "009",
+            "name": "NAGISS PREMISES (MARARABA SHARP CONER)"
+          },
+          {
+            "code": "010",
+            "name": "MARARABA WHITE HOUSE - OP"
+          },
+          {
+            "code": "011",
+            "name": "MASAKA PRI.SCHOOL"
+          },
+          {
+            "code": "012",
+            "name": "NSCBUDP PREMISES (MARARABA GARAGE)"
+          },
+          {
+            "code": "013",
+            "name": "NYANYA GWANDARA PRIMARY SCHOOL"
+          }
+        ]
+      }
+    }
+  },
+  "KEANA": {
+    "code": "05",
+    "wards": {
+      "Iwagu": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ISLAMIYA PRIM. SCHOOL KEANA (KOFAN WONDO)"
+          },
+          {
+            "code": "002",
+            "name": "GIDAN AKOWODO"
+          },
+          {
+            "code": "003",
+            "name": "DISPENSARY IWAGU"
+          },
+          {
+            "code": "004",
+            "name": "KOFAN GALADIMA"
+          },
+          {
+            "code": "005",
+            "name": "ISLAMIYA PRI. SCH (KOFAN GALADIMAS)"
+          },
+          {
+            "code": "006",
+            "name": "KOFAN OLADIYA"
+          },
+          {
+            "code": "007",
+            "name": "LGEA PRIMARY SCHOOL KUDUKU - OP"
+          },
+          {
+            "code": "008",
+            "name": "KOFAN SARKI ONARIKPE (A) - OP"
+          },
+          {
+            "code": "009",
+            "name": "KOFAN SARKI ONARIKPE (B) - OP"
+          },
+          {
+            "code": "010",
+            "name": "KOFAN IBRAHIM ORJI ONARIKPE - OP"
+          },
+          {
+            "code": "011",
+            "name": "KOFAN UGBANJI BASA DOMA - OP"
+          }
+        ]
+      },
+      "Amiri": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LGEA PRIMARY SCHOOL KEANA SOUTH - PB"
+          },
+          {
+            "code": "002",
+            "name": "KOFAN SARKI SABO - OP"
+          },
+          {
+            "code": "003",
+            "name": "KOFAN IBRAHIM ARIGU - OP"
+          },
+          {
+            "code": "004",
+            "name": "KOFAN OTOSHI - OP"
+          },
+          {
+            "code": "005",
+            "name": "KOFAN ISHISHI - OP"
+          },
+          {
+            "code": "006",
+            "name": "KOFAN OLAKUDU - OP"
+          },
+          {
+            "code": "007",
+            "name": "KOFAN CHIATA VILLAGE - OP"
+          }
+        ]
+      },
+      "Obene": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LGEA PRIMARY SCHOOL OBENE (A) - PB I"
+          },
+          {
+            "code": "002",
+            "name": "LGEA PRIMARY SCHOOL OBENE (B) - PB I"
+          },
+          {
+            "code": "003",
+            "name": "KOFAN WONDO - OP"
+          },
+          {
+            "code": "004",
+            "name": "KOFAN DEMKA - OP"
+          },
+          {
+            "code": "005",
+            "name": "KOFAN OSHAFU - OP"
+          },
+          {
+            "code": "006",
+            "name": "KOFAN OMOKPA - OP"
+          },
+          {
+            "code": "007",
+            "name": "GIDAN GBAMMA"
+          },
+          {
+            "code": "008",
+            "name": "LGEA PRIMARY SCHOOL ULUJI"
+          }
+        ]
+      },
+      "Oki": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "CENTRAL PRI.SCHOOL (A) - PB"
+          },
+          {
+            "code": "002",
+            "name": "KOFAN ZAKI SOLOMON TACIYA VILLAGE PRIMARY SCH. - OP"
+          },
+          {
+            "code": "003",
+            "name": "KOFAN ISONO - OP I"
+          },
+          {
+            "code": "004",
+            "name": "KOFAN ABDULLAHI AGADE"
+          },
+          {
+            "code": "005",
+            "name": "KOFAN OSEKU"
+          },
+          {
+            "code": "006",
+            "name": "CENTRAL PRIMARY SCHOOL (B)"
+          },
+          {
+            "code": "007",
+            "name": "KOFAN AYIZEKA"
+          },
+          {
+            "code": "008",
+            "name": "KOFAN MALLA MAGAJI"
+          }
+        ]
+      },
+      "Kadarko": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LGEA PRIMARY SCHOOL GIDAN SULE"
+          },
+          {
+            "code": "002",
+            "name": "KOFAN BATHALOMI NGAJI SULE"
+          },
+          {
+            "code": "003",
+            "name": "KOFAN ACTOR PHOTOS"
+          },
+          {
+            "code": "004",
+            "name": "LGEA PRIMARY SCHOOL KADARKO NORTH"
+          },
+          {
+            "code": "005",
+            "name": "POLICE STATION KADARKO- PB"
+          },
+          {
+            "code": "006",
+            "name": "KOFAN OSAGEDE"
+          },
+          {
+            "code": "007",
+            "name": "R.C.M PRIMARY SCHOOL KADARKO - PB"
+          },
+          {
+            "code": "008",
+            "name": "LGEA PRIM. SCHOOL SARKIN NOMA (KOFAR MUSA AMAH)"
+          },
+          {
+            "code": "009",
+            "name": "LGEA PRIMARY SCHOOL, SARKI NOMA"
+          },
+          {
+            "code": "010",
+            "name": "OLD DISPENSARY KADARKO"
+          },
+          {
+            "code": "011",
+            "name": "KOFAR ANOM"
+          }
+        ]
+      },
+      "Kwara": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOFAN ABOSHI AKUKI KWARA"
+          },
+          {
+            "code": "002",
+            "name": "KOFAN ABUBAKAR AKUKI, KWARA"
+          },
+          {
+            "code": "003",
+            "name": "CENTRAL PRIMARY SCHOOL KWARA"
+          },
+          {
+            "code": "004",
+            "name": "KOFAN SHERIA RENIS"
+          },
+          {
+            "code": "005",
+            "name": "LGEA PRIMARY SCHOOL ANSA"
+          },
+          {
+            "code": "006",
+            "name": "KOFAN ABAGYO AKUKI"
+          },
+          {
+            "code": "007",
+            "name": "KOFAN HATU TUDUN HABU"
+          }
+        ]
+      },
+      "Aloshi": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LGEA PRIMARY SCHOOL, ALOSHI"
+          },
+          {
+            "code": "002",
+            "name": "GOVERNMENT SECONDARY SCHOOL, ALOSHI"
+          },
+          {
+            "code": "003",
+            "name": "KOFAN SARKI ALOSHI"
+          },
+          {
+            "code": "004",
+            "name": "KOFAN ZARIYA"
+          },
+          {
+            "code": "005",
+            "name": "LGEA PRIMARY SCHOOL PANJOGO"
+          },
+          {
+            "code": "006",
+            "name": "LGEA PRIMARY SCHOOL PANJOGO"
+          }
+        ]
+      },
+      "Agaza": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOFAN SARKI AGAZA"
+          },
+          {
+            "code": "002",
+            "name": "KOFAN IKIWA"
+          },
+          {
+            "code": "003",
+            "name": "CENTRAL PRIMARY SCHOOL (A)"
+          },
+          {
+            "code": "004",
+            "name": "CENTRAL PRIMARY SCHOOL (B)"
+          },
+          {
+            "code": "005",
+            "name": "LGEA PRIMARY SCHOOL ISHOHO"
+          },
+          {
+            "code": "006",
+            "name": "LGEA PRIMARY SCHOOL OWENA"
+          }
+        ]
+      },
+      "Madaki": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ARI"
+          },
+          {
+            "code": "002",
+            "name": "KOFAN MADAKI"
+          },
+          {
+            "code": "003",
+            "name": "KOFAN YUNUSA"
+          },
+          {
+            "code": "004",
+            "name": "KOFAN WAKASO"
+          },
+          {
+            "code": "005",
+            "name": "KOFAN OZEGYA"
+          },
+          {
+            "code": "006",
+            "name": "CENTRAL PRIMARY SCHOOL GIZA (A)"
+          },
+          {
+            "code": "007",
+            "name": "CENTRAL PRIMARY SCHOOL GIZA (B)"
+          },
+          {
+            "code": "008",
+            "name": "LGEA PRIMARY SCHOOL, KALACHI"
+          },
+          {
+            "code": "009",
+            "name": "LGEA PRIMARY SCHOOL, AJO"
+          }
+        ]
+      },
+      "Giza Galadima": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOFAN SARKI UMARU"
+          },
+          {
+            "code": "002",
+            "name": "KOFAN ISEKE"
+          },
+          {
+            "code": "003",
+            "name": "KOFAN MADAKI AGBO"
+          },
+          {
+            "code": "004",
+            "name": "KOFAN SARKI ORUME"
+          },
+          {
+            "code": "005",
+            "name": "KOFAN MAMMAN"
+          },
+          {
+            "code": "006",
+            "name": "LGEA PRIMARY SCHOOL GIZA WEST (A)"
+          },
+          {
+            "code": "007",
+            "name": "LGEA PRIMARY SCHOOL GIZA WEST (B)"
+          },
+          {
+            "code": "008",
+            "name": "LGEA PRIMARY SCHOOL, KPALEV"
+          }
+        ]
+      }
+    }
+  },
+  "KEFFI": {
+    "code": "06",
+    "wards": {
+      "Angwan Iya I": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOFAR MALLAM SADAU - OP"
+          },
+          {
+            "code": "002",
+            "name": "KOFAR HAUSA PRI. SCH.- PB"
+          },
+          {
+            "code": "003",
+            "name": "KOFAR HAUSA PRI. SCH. (OPP TOTAL FILLING STATION) - PB"
+          },
+          {
+            "code": "004",
+            "name": "ANGWAN KAURA PRI. SCH.- PB"
+          },
+          {
+            "code": "005",
+            "name": "GINDIN DUTSE - OP"
+          },
+          {
+            "code": "006",
+            "name": "ANG FADAMA - OP"
+          }
+        ]
+      },
+      "Angwan Iya II": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KAROFI - OP"
+          },
+          {
+            "code": "002",
+            "name": "YELWAN BARAU - OP"
+          },
+          {
+            "code": "003",
+            "name": "KONGO - OP"
+          },
+          {
+            "code": "004",
+            "name": "GANGAREN KAROFI - OP"
+          },
+          {
+            "code": "005",
+            "name": "YELWAN BELLO - OP"
+          },
+          {
+            "code": "006",
+            "name": "YELWAN TOFA - OP"
+          }
+        ]
+      },
+      "Tudun Kofa T.V": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "PADA - OP"
+          },
+          {
+            "code": "002",
+            "name": "PRISON SERVICE"
+          },
+          {
+            "code": "003",
+            "name": "KADARKO - OP"
+          },
+          {
+            "code": "004",
+            "name": "TUDUN KOFA - OP"
+          },
+          {
+            "code": "005",
+            "name": "L.G.C GUEST HOUSE - OP"
+          },
+          {
+            "code": "006",
+            "name": "ANG. NUPAWA - OP"
+          },
+          {
+            "code": "007",
+            "name": "KOFAR SALLAU MODIBBO - OP"
+          }
+        ]
+      },
+      "Gangare Tudu": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GANGAREN TUDU - OP"
+          },
+          {
+            "code": "002",
+            "name": "ANG.TIV - OP"
+          },
+          {
+            "code": "003",
+            "name": "GANGAREN MASAKA - OP"
+          },
+          {
+            "code": "004",
+            "name": "KOFAR ALH. AHMADU SABON GARI"
+          },
+          {
+            "code": "005",
+            "name": "ANG. WAJE - OP"
+          },
+          {
+            "code": "006",
+            "name": "TUDUN WADA - OP"
+          }
+        ]
+      },
+      "Keffi Town East / Kofar Goriya": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOFAR GORIYA - OP"
+          },
+          {
+            "code": "002",
+            "name": "KOFAR KOKONA - OP"
+          },
+          {
+            "code": "003",
+            "name": "G.T.C. GATE - OP"
+          },
+          {
+            "code": "004",
+            "name": "ST.PETERS - PB"
+          },
+          {
+            "code": "005",
+            "name": "HOSPITAL GATE - OP"
+          },
+          {
+            "code": "006",
+            "name": "BAPTIST PRI.SCHOOL - PB"
+          },
+          {
+            "code": "007",
+            "name": "SABON LAYI TA GABAS - OP"
+          },
+          {
+            "code": "008",
+            "name": "ANG. NEPA - OP"
+          }
+        ]
+      },
+      "Yara": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "YARA - OP"
+          },
+          {
+            "code": "002",
+            "name": "YARA - ZANA - OP"
+          },
+          {
+            "code": "003",
+            "name": "GANGAREN YARA - OP"
+          },
+          {
+            "code": "004",
+            "name": "SABON LAYI TA YAMMA - OP"
+          },
+          {
+            "code": "005",
+            "name": "TSOHON TASHA - OP"
+          },
+          {
+            "code": "006",
+            "name": "AHMADU MAIKWATO - PB"
+          },
+          {
+            "code": "007",
+            "name": "BAKIN KASUWA - OP"
+          }
+        ]
+      },
+      "Ang. Rimi": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ECWA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "002",
+            "name": "ECWA PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "KOFAR G/LIMAN - OP"
+          },
+          {
+            "code": "004",
+            "name": "MAKERA - OP"
+          },
+          {
+            "code": "005",
+            "name": "ANG.RIMI - OP"
+          },
+          {
+            "code": "006",
+            "name": "ANG.M'ADA - OP"
+          },
+          {
+            "code": "007",
+            "name": "POLICE STATION - PB"
+          },
+          {
+            "code": "008",
+            "name": "KOFAR MASA"
+          },
+          {
+            "code": "009",
+            "name": "G.R.A (G.C) - PB"
+          },
+          {
+            "code": "010",
+            "name": "GRA (A.I) - PB"
+          },
+          {
+            "code": "011",
+            "name": "KOFAR NA MALAMA - PB"
+          }
+        ]
+      },
+      "Sabon Gari": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "SABON GARI PRI. SCHOOL - PB I"
+          },
+          {
+            "code": "002",
+            "name": "SABON GARI PRI.SCHOOL - PB II"
+          },
+          {
+            "code": "003",
+            "name": "YARKADE PRI.SCHOOL - PB"
+          },
+          {
+            "code": "004",
+            "name": "GAUTA - OP"
+          },
+          {
+            "code": "005",
+            "name": "SAURA - OP"
+          }
+        ]
+      },
+      "Jigwada": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "JIGWADA - OP"
+          },
+          {
+            "code": "002",
+            "name": "ANG. JABA"
+          },
+          {
+            "code": "003",
+            "name": "SABON GIDA - OP"
+          },
+          {
+            "code": "004",
+            "name": "B.C.G - OP"
+          },
+          {
+            "code": "005",
+            "name": "KAIBO MADA PRI.SCHOOL"
+          }
+        ]
+      },
+      "Liman Abaji": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOFAR ALKALI MOUKTAR - OP"
+          },
+          {
+            "code": "002",
+            "name": "KOFAR M/LADAN - OP"
+          },
+          {
+            "code": "003",
+            "name": "TSOHON KASUWA TA GABAS - OP"
+          },
+          {
+            "code": "004",
+            "name": "YANKARI - OP"
+          },
+          {
+            "code": "005",
+            "name": "KOFAR HAUSA TA GABAS - OP"
+          },
+          {
+            "code": "006",
+            "name": "GANGAREN ABOKI - OP"
+          },
+          {
+            "code": "007",
+            "name": "GANGAREN ABOKI"
+          }
+        ]
+      }
+    }
+  },
+  "KOKONA": {
+    "code": "07",
+    "wards": {
+      "Agwada": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AGABA"
+          },
+          {
+            "code": "002",
+            "name": "AGBOYA"
+          },
+          {
+            "code": "003",
+            "name": "AGAIDE"
+          },
+          {
+            "code": "004",
+            "name": "ENDO/ENDO MADAKI"
+          },
+          {
+            "code": "005",
+            "name": "AGBODE"
+          },
+          {
+            "code": "006",
+            "name": "AGBAGYA"
+          },
+          {
+            "code": "007",
+            "name": "IGWO SARKI"
+          },
+          {
+            "code": "008",
+            "name": "IGWO MADAKI"
+          },
+          {
+            "code": "009",
+            "name": "AGAZA"
+          },
+          {
+            "code": "010",
+            "name": "JENTAR"
+          },
+          {
+            "code": "011",
+            "name": "ANG/ARUME"
+          }
+        ]
+      },
+      "Koya / Kana": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KANA"
+          },
+          {
+            "code": "002",
+            "name": "SHATA"
+          },
+          {
+            "code": "003",
+            "name": "ESSA/BISA"
+          },
+          {
+            "code": "004",
+            "name": "ASAYI"
+          },
+          {
+            "code": "005",
+            "name": "OKEPA"
+          },
+          {
+            "code": "006",
+            "name": "APAWU / KWARA"
+          },
+          {
+            "code": "007",
+            "name": "AGBOWA"
+          },
+          {
+            "code": "008",
+            "name": "ONUGBA"
+          },
+          {
+            "code": "009",
+            "name": "OZOKU/EGBE"
+          },
+          {
+            "code": "010",
+            "name": "KOLU IDETE"
+          },
+          {
+            "code": "011",
+            "name": "ORIKI"
+          },
+          {
+            "code": "012",
+            "name": "OGBOLO"
+          },
+          {
+            "code": "013",
+            "name": "ERIGO"
+          }
+        ]
+      },
+      "Bassa": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BASSA PRI.SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "BASSA HAUSAWA"
+          },
+          {
+            "code": "003",
+            "name": "BASSA MISSION"
+          },
+          {
+            "code": "004",
+            "name": "ANG / JALLA/"
+          },
+          {
+            "code": "005",
+            "name": "ANG / WAJE /"
+          },
+          {
+            "code": "006",
+            "name": "UKE BASSA"
+          },
+          {
+            "code": "007",
+            "name": "JIGAWA"
+          }
+        ]
+      },
+      "Kokona": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOKONA PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "ANGUWA DOKA"
+          },
+          {
+            "code": "003",
+            "name": "SABON GIDA"
+          },
+          {
+            "code": "004",
+            "name": "PAM / SANGO BARAU"
+          },
+          {
+            "code": "005",
+            "name": "ANGUWA PAH"
+          },
+          {
+            "code": "006",
+            "name": "BOKOKO"
+          },
+          {
+            "code": "007",
+            "name": "KARU MADA"
+          },
+          {
+            "code": "008",
+            "name": "UNG. MALAM MAGAJI"
+          }
+        ]
+      },
+      "Kofar Gwari": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOFAR GWARI CLINIC (KOFAR GWARI)"
+          },
+          {
+            "code": "002",
+            "name": "K/GWARI PRI.SCH./"
+          },
+          {
+            "code": "003",
+            "name": "SHABU"
+          },
+          {
+            "code": "004",
+            "name": "JAMAA GAYAN"
+          },
+          {
+            "code": "005",
+            "name": "ANG.TSIRA"
+          },
+          {
+            "code": "006",
+            "name": "DOKAR DAJI"
+          },
+          {
+            "code": "007",
+            "name": "BAKIN AYINI I"
+          },
+          {
+            "code": "008",
+            "name": "BAKIN AYINI II"
+          }
+        ]
+      },
+      "Ninkoro": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AJUYE"
+          },
+          {
+            "code": "002",
+            "name": "MAI KURADA LAMINGA"
+          },
+          {
+            "code": "003",
+            "name": "MOROA I"
+          },
+          {
+            "code": "004",
+            "name": "MOROA II"
+          },
+          {
+            "code": "005",
+            "name": "MOROA III"
+          },
+          {
+            "code": "006",
+            "name": "NINKORO"
+          },
+          {
+            "code": "007",
+            "name": "AMBASI"
+          },
+          {
+            "code": "008",
+            "name": "KODON GWANDARA"
+          },
+          {
+            "code": "009",
+            "name": "GIDAN ALLAN"
+          },
+          {
+            "code": "010",
+            "name": "ANG/SARKI"
+          },
+          {
+            "code": "011",
+            "name": "SAURA KIRYA"
+          }
+        ]
+      },
+      "Hadari": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "HADARI"
+          },
+          {
+            "code": "002",
+            "name": "MAHUTA"
+          },
+          {
+            "code": "003",
+            "name": "ANG.MAISAURI"
+          },
+          {
+            "code": "004",
+            "name": "ANG.JARMAI"
+          },
+          {
+            "code": "005",
+            "name": "MANTE"
+          },
+          {
+            "code": "006",
+            "name": "MARKE"
+          },
+          {
+            "code": "007",
+            "name": "SABON GIDA"
+          },
+          {
+            "code": "008",
+            "name": "MAYO"
+          },
+          {
+            "code": "009",
+            "name": "KURAME I"
+          },
+          {
+            "code": "010",
+            "name": "KURAME II"
+          },
+          {
+            "code": "011",
+            "name": "YELWA MAITABA"
+          },
+          {
+            "code": "012",
+            "name": "KUDAMI"
+          }
+        ]
+      },
+      "Dari": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DARI PRI.SCHOOL I"
+          },
+          {
+            "code": "002",
+            "name": "DARI PRI.SCHOOL II"
+          },
+          {
+            "code": "003",
+            "name": "AMAHA"
+          },
+          {
+            "code": "004",
+            "name": "ARUSU I"
+          },
+          {
+            "code": "005",
+            "name": "ARUSU II"
+          },
+          {
+            "code": "006",
+            "name": "GURKU"
+          },
+          {
+            "code": "007",
+            "name": "GURKU ASOSO"
+          },
+          {
+            "code": "008",
+            "name": "ANGORO"
+          },
+          {
+            "code": "009",
+            "name": "MANDARA"
+          }
+        ]
+      },
+      "Amba": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMBA PRI.SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "AMBA/KYABISI"
+          },
+          {
+            "code": "003",
+            "name": "OKPAKE I"
+          },
+          {
+            "code": "004",
+            "name": "KANDERE"
+          },
+          {
+            "code": "005",
+            "name": "SABON RUWA"
+          },
+          {
+            "code": "006",
+            "name": "ANG/KUKA I"
+          },
+          {
+            "code": "007",
+            "name": "ANG/KUKA II"
+          }
+        ]
+      },
+      "Garaku": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GARAKU PRIMARY SCHOOL I"
+          },
+          {
+            "code": "002",
+            "name": "GARAKU PRIMARY SCHOOL II"
+          },
+          {
+            "code": "003",
+            "name": "AGABA"
+          },
+          {
+            "code": "004",
+            "name": "OTUTU PRI. SCH. GARAKU (KOFAR MAGAJI ALADE)"
+          },
+          {
+            "code": "005",
+            "name": "FEGYEN ANGWA"
+          },
+          {
+            "code": "006",
+            "name": "ANG/GIMBA"
+          },
+          {
+            "code": "007",
+            "name": "TATTARA"
+          },
+          {
+            "code": "008",
+            "name": "ANG./HABU"
+          },
+          {
+            "code": "009",
+            "name": "ANG./TAKWA"
+          },
+          {
+            "code": "010",
+            "name": "KURMIN SHINKAFA"
+          },
+          {
+            "code": "011",
+            "name": "KUBERE PRIMARY SCH.(KUBERE OPEN SPACE"
+          },
+          {
+            "code": "012",
+            "name": "ANG.BARAU"
+          },
+          {
+            "code": "013",
+            "name": "ANG/MAINA - SARA"
+          },
+          {
+            "code": "014",
+            "name": "KAMA MADAKI PRI SCH (KAMA MADAKI OPEN SPACE)"
+          }
+        ]
+      },
+      "Yelwa": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "YELWA"
+          },
+          {
+            "code": "002",
+            "name": "SABON PEGI"
+          },
+          {
+            "code": "003",
+            "name": "SAKWATO"
+          },
+          {
+            "code": "004",
+            "name": "AKWARE"
+          },
+          {
+            "code": "005",
+            "name": "AFO RAMU"
+          },
+          {
+            "code": "006",
+            "name": "RUWAN DOMA"
+          },
+          {
+            "code": "007",
+            "name": "TASHINE"
+          }
+        ]
+      }
+    }
+  },
+  "LAFIA": {
+    "code": "08",
+    "wards": {
+      "Adogi": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ADOGI PRI.SCHOOL - PB"
+          },
+          {
+            "code": "002",
+            "name": "K/ASHARA - OP"
+          },
+          {
+            "code": "003",
+            "name": "DISPENSARY - PB"
+          },
+          {
+            "code": "004",
+            "name": "UNG.MUSA - OP"
+          },
+          {
+            "code": "005",
+            "name": "UNG.AMADI - OP"
+          },
+          {
+            "code": "006",
+            "name": "AGYARAGU KORO - OP"
+          },
+          {
+            "code": "007",
+            "name": "KIRAYI - OP"
+          },
+          {
+            "code": "008",
+            "name": "AKURA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "009",
+            "name": "AKURA READING ROOM"
+          },
+          {
+            "code": "010",
+            "name": "DUNGU PRI.SCHOOL - PB"
+          },
+          {
+            "code": "011",
+            "name": "UNG.KWARRA - OP"
+          },
+          {
+            "code": "012",
+            "name": "K/TSAKUWA - OP"
+          },
+          {
+            "code": "013",
+            "name": "ADOGI PRI.SCHOOL - PB"
+          },
+          {
+            "code": "014",
+            "name": "L.E.A PRIMARY SCHOOL, AGORI (ABU)"
+          }
+        ]
+      },
+      "Agyaragun Tofa": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BUKAR TAMBARI"
+          },
+          {
+            "code": "002",
+            "name": "BUKAR MAGAYAKI"
+          },
+          {
+            "code": "003",
+            "name": "UNG. DANJUMA"
+          },
+          {
+            "code": "004",
+            "name": "UNG. UBANDOMA"
+          },
+          {
+            "code": "005",
+            "name": "UNG. UBANDOMA"
+          },
+          {
+            "code": "006",
+            "name": "UNG. ALH. YAKUBU I"
+          },
+          {
+            "code": "007",
+            "name": "UNG. ALH. YAKUBU II"
+          },
+          {
+            "code": "008",
+            "name": "UNG. ALH. YAKUBU - OP"
+          },
+          {
+            "code": "009",
+            "name": "UNG.ALH.YAHAYA"
+          },
+          {
+            "code": "010",
+            "name": "BUKAN BUZU"
+          },
+          {
+            "code": "011",
+            "name": "BUKAN BURGA"
+          },
+          {
+            "code": "012",
+            "name": "BUKAN ALLU - OP"
+          },
+          {
+            "code": "013",
+            "name": "BUKAN ASHARA - OP"
+          },
+          {
+            "code": "014",
+            "name": "TUDUN WADA - OP"
+          },
+          {
+            "code": "015",
+            "name": "KAYARDA KOFAR SARKI- OP"
+          },
+          {
+            "code": "016",
+            "name": "UNG. ALH. SAIDU"
+          },
+          {
+            "code": "017",
+            "name": "MADAGWA WATTA"
+          },
+          {
+            "code": "018",
+            "name": "SABON KAYARDA"
+          },
+          {
+            "code": "019",
+            "name": "KOFAR SARKI I"
+          },
+          {
+            "code": "020",
+            "name": "KOFAR SARKI II"
+          },
+          {
+            "code": "021",
+            "name": "MARARABA KAYARDA - OP"
+          },
+          {
+            "code": "022",
+            "name": "TUDUN OKPU - OP"
+          },
+          {
+            "code": "023",
+            "name": "KAYARDA (VIEWING CENTRE)"
+          },
+          {
+            "code": "024",
+            "name": "TUDUN ABOSHON - OP"
+          }
+        ]
+      },
+      "Bakin Rijiya/Akurba/Sarkin Pada": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AKURBA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "002",
+            "name": "UNG MAGAJI - OP"
+          },
+          {
+            "code": "003",
+            "name": "UNG RERE PRI.SCHOOL - PB"
+          },
+          {
+            "code": "004",
+            "name": "K/SARKI B/RIJIYA - OP"
+          },
+          {
+            "code": "005",
+            "name": "K/MAL/B/RIJIYA - OP"
+          },
+          {
+            "code": "006",
+            "name": "KAS/DOYA/B/RIJIYA - OP"
+          },
+          {
+            "code": "007",
+            "name": "L.E.A PRIMARY SCHOOL, ALAKYO (ALAKYO)"
+          },
+          {
+            "code": "008",
+            "name": "ARUGBA - OP"
+          },
+          {
+            "code": "009",
+            "name": "L.E.A PRIMARY SCHOOL, ASONYE (UNG.RERE ASONYE)"
+          },
+          {
+            "code": "010",
+            "name": "BUKAN SIDI PRI.SCHOOL - PB I"
+          },
+          {
+            "code": "011",
+            "name": "BUKAN SIDI PRI.SCHOOL - PB II"
+          },
+          {
+            "code": "012",
+            "name": "KURIKYO - OP"
+          },
+          {
+            "code": "013",
+            "name": "GOVT.COLLEGE LAFIA - PB"
+          },
+          {
+            "code": "014",
+            "name": "AKASSA - OP"
+          },
+          {
+            "code": "015",
+            "name": "L.E.A PRIMARY SCHOOL, FEFERUWA (FEFERUWA)"
+          },
+          {
+            "code": "016",
+            "name": "L.E.A PRI. SCHOOL, ASHAKPA (ASHAKPA)"
+          },
+          {
+            "code": "017",
+            "name": "BUKAN SIDI PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Arikya": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ARIKYA PRI.SCHOOL - PB I"
+          },
+          {
+            "code": "002",
+            "name": "ARIKYA DISPENSARY - PB II"
+          },
+          {
+            "code": "003",
+            "name": "ARIKYA DISPENSARY - PB III"
+          },
+          {
+            "code": "004",
+            "name": "KUNGRA TOFA - OP"
+          },
+          {
+            "code": "005",
+            "name": "WUJI - OP"
+          },
+          {
+            "code": "006",
+            "name": "FADAMA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "007",
+            "name": "FADAMA K/SARKI - OP"
+          },
+          {
+            "code": "008",
+            "name": "AGBULAGUN ALH.YAKUBU - OP"
+          },
+          {
+            "code": "009",
+            "name": "KADAURA UNG.DOGO - OP"
+          },
+          {
+            "code": "010",
+            "name": "KAMPANI - OP"
+          },
+          {
+            "code": "011",
+            "name": "KUNGRA WAYO - OP"
+          },
+          {
+            "code": "012",
+            "name": "ARUGBADU PRI.SCHOOL - OP"
+          },
+          {
+            "code": "013",
+            "name": "ARUGBADU UNG.SARKI - OP"
+          },
+          {
+            "code": "014",
+            "name": "AGYABAWA - OP"
+          },
+          {
+            "code": "015",
+            "name": "FEFERUWA - OP"
+          },
+          {
+            "code": "016",
+            "name": "SHUKKU - OP"
+          },
+          {
+            "code": "017",
+            "name": "L.E.A PRIMARY SCHOOL, GALLO (GALLO)"
+          },
+          {
+            "code": "018",
+            "name": "L.E.A PRIMARY SCHOOL, MANKWAR (MANKWAR)"
+          },
+          {
+            "code": "019",
+            "name": "L.E.A PRIMARY SCHOOL, JIBEL (JIBEL)"
+          }
+        ]
+      },
+      "Assakio": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "READING ROOM - PB I"
+          },
+          {
+            "code": "002",
+            "name": "READING ROOM - PB II"
+          },
+          {
+            "code": "003",
+            "name": "KOFAR MADAKI - OP"
+          },
+          {
+            "code": "004",
+            "name": "KOFAR SARKI - OP"
+          },
+          {
+            "code": "005",
+            "name": "SUM PRI.SCHOOL - ASSAKIO PB"
+          },
+          {
+            "code": "006",
+            "name": "KOFAR AKIKA - OP"
+          },
+          {
+            "code": "007",
+            "name": "ASHIGOGO PRI.SCHOOL - PB"
+          },
+          {
+            "code": "008",
+            "name": "DISPENSARY - PB"
+          },
+          {
+            "code": "009",
+            "name": "DISPENSARY"
+          },
+          {
+            "code": "010",
+            "name": "GIDAN GAMBO - OP"
+          },
+          {
+            "code": "011",
+            "name": "TUNGA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "012",
+            "name": "TUNGA GIDAN ABASHIYA - OP"
+          },
+          {
+            "code": "013",
+            "name": "GIDAN AKAAVE - OP"
+          },
+          {
+            "code": "014",
+            "name": "S/GIDA/KOFAR SARKI - OP"
+          },
+          {
+            "code": "015",
+            "name": "SABON GIDA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "016",
+            "name": "GIDAN NYITSE - OP"
+          },
+          {
+            "code": "017",
+            "name": "GIDAN CHIA - OP"
+          },
+          {
+            "code": "018",
+            "name": "AKUNI PRI.SCHOOL - PB"
+          },
+          {
+            "code": "019",
+            "name": "ASSAKIO GARAGE"
+          }
+        ]
+      },
+      "Ashigie": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ASHIGE PRI.SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "ASHIGE KOFAR SARKI - OP"
+          },
+          {
+            "code": "003",
+            "name": "ASHANGWA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "004",
+            "name": "INGILA - OP"
+          },
+          {
+            "code": "005",
+            "name": "ALAWAGANA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "006",
+            "name": "GIDAN BUBA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "007",
+            "name": "GIDAN BUBA K / YAHUZA"
+          },
+          {
+            "code": "008",
+            "name": "KIBA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "009",
+            "name": "L.E.A PRIMARY SCHOOL, ZAGYO (UNG.KORO ASHIGE)"
+          },
+          {
+            "code": "010",
+            "name": "AKUNZA ASHIGE - OP"
+          },
+          {
+            "code": "011",
+            "name": "UGAH PRI.SCSHOOL - PB"
+          },
+          {
+            "code": "012",
+            "name": "UGAH K/SARKI - OP"
+          },
+          {
+            "code": "013",
+            "name": "UGAH WEST - OP"
+          },
+          {
+            "code": "014",
+            "name": "L.E.A PRIMARY SCHOOL, UNG.MADAKI (UGAH UNG. MADAKI"
+          },
+          {
+            "code": "015",
+            "name": "L.E.A PRIMARY SCHOOL, UNG.MISSION (UNG.MISSION)"
+          },
+          {
+            "code": "016",
+            "name": "TUNGAN DAUDU - OP"
+          },
+          {
+            "code": "017",
+            "name": "TUNGAN DAUDU PRI.SCHOOL - PB"
+          },
+          {
+            "code": "018",
+            "name": "F/BAUNA SOUTH K/SARKI - OP"
+          },
+          {
+            "code": "019",
+            "name": "F/BAUNA SOUTH PRI.SCHOOL"
+          },
+          {
+            "code": "020",
+            "name": "GIDAN ADAMU AGYO - OP"
+          },
+          {
+            "code": "021",
+            "name": "GWAYAKA PRI.SCH. - PB"
+          },
+          {
+            "code": "022",
+            "name": "UNG.GARBA GWAYAKA - OP"
+          },
+          {
+            "code": "023",
+            "name": "ALINGANI PRI.SCHOOL - PB"
+          },
+          {
+            "code": "024",
+            "name": "KIGUNA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "025",
+            "name": "UNG.DOMARK KIGUNA - OP"
+          }
+        ]
+      },
+      "Chiroma": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOFAR FADA - OP"
+          },
+          {
+            "code": "002",
+            "name": "KOFAR SANDA - OP"
+          },
+          {
+            "code": "003",
+            "name": "KOFAR GABAS - OP"
+          },
+          {
+            "code": "004",
+            "name": "UNG.DOKA 4 - OP"
+          },
+          {
+            "code": "005",
+            "name": "UNG.DOKA 5 - OP"
+          },
+          {
+            "code": "006",
+            "name": "UNG.DOKA 6 - OP"
+          },
+          {
+            "code": "007",
+            "name": "UNG.DILLALE - OP"
+          },
+          {
+            "code": "008",
+            "name": "GINDIN LEMU - OP"
+          },
+          {
+            "code": "009",
+            "name": "WADATA - OP"
+          },
+          {
+            "code": "010",
+            "name": "KOFAR ALH. YAU - OP"
+          },
+          {
+            "code": "011",
+            "name": "UNG. WAJEN LALLE - OP"
+          },
+          {
+            "code": "012",
+            "name": "KOFAR NGOZI - OP"
+          },
+          {
+            "code": "013",
+            "name": "KOFAR UBANDOMA - OP"
+          },
+          {
+            "code": "014",
+            "name": "KOFAR SHUAYAU - OP"
+          },
+          {
+            "code": "015",
+            "name": "KOFAR YAKUBU IKEDI - OP"
+          },
+          {
+            "code": "016",
+            "name": "KOFAR LIMAN JABA - OP"
+          },
+          {
+            "code": "017",
+            "name": "KOFAR BABAN KAKA - OP"
+          },
+          {
+            "code": "018",
+            "name": "KOFAR IDI GWAMNATI - OP"
+          },
+          {
+            "code": "019",
+            "name": "K / SARKI ORGANIZER - OP"
+          },
+          {
+            "code": "020",
+            "name": "K / MAIGARI MAIKIFI - OP"
+          },
+          {
+            "code": "021",
+            "name": "UNG TIV - OP"
+          },
+          {
+            "code": "022",
+            "name": "K/DANBURAM C - OP"
+          },
+          {
+            "code": "023",
+            "name": "K/DANBURAM D - OP"
+          },
+          {
+            "code": "024",
+            "name": "TUDUN KAWARI - OP"
+          },
+          {
+            "code": "025",
+            "name": "L.E.A PRIMARY SCHOOL, MAIJIKIN PAPER (KOFAR SARKIN AZARA)"
+          },
+          {
+            "code": "026",
+            "name": "K/ISA UGAH - OP"
+          },
+          {
+            "code": "027",
+            "name": "MAKABARTA - OP"
+          },
+          {
+            "code": "028",
+            "name": "PLATEAU LAB - OP"
+          },
+          {
+            "code": "029",
+            "name": "LOW COST - OP"
+          },
+          {
+            "code": "030",
+            "name": "PROJECT - OP"
+          },
+          {
+            "code": "031",
+            "name": "MAMAN YARO - OP"
+          },
+          {
+            "code": "032",
+            "name": "UNG.MANGU - OP"
+          },
+          {
+            "code": "033",
+            "name": "BUKAN HABU - OP"
+          },
+          {
+            "code": "034",
+            "name": "KOFAR M/ZAILANI - OP"
+          },
+          {
+            "code": "035",
+            "name": "K/JOHN KYARI - OP"
+          },
+          {
+            "code": "036",
+            "name": "NASARAWA HOUSING ESTATE - OP"
+          },
+          {
+            "code": "037",
+            "name": "MILLIONAIRE'S QUARTERS"
+          }
+        ]
+      },
+      "Gayam": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOFAN GAYAM - OP"
+          },
+          {
+            "code": "002",
+            "name": "KOFAN TAFIDA - OP"
+          },
+          {
+            "code": "003",
+            "name": "KOFAN ALH.BELLO - OP"
+          },
+          {
+            "code": "004",
+            "name": "K/WAMBAI - OP"
+          },
+          {
+            "code": "005",
+            "name": "K/S PADA - OP"
+          },
+          {
+            "code": "006",
+            "name": "ANG.WAJEN RABO - OP"
+          },
+          {
+            "code": "007",
+            "name": "ANG.SARDAUNA - OP"
+          },
+          {
+            "code": "008",
+            "name": "ANG.SARDAUNA - LAMINO - OP"
+          },
+          {
+            "code": "009",
+            "name": "ANG. MAILAFIYA - OP"
+          },
+          {
+            "code": "010",
+            "name": "ANG. YAHAYA SABO - OP"
+          },
+          {
+            "code": "011",
+            "name": "ANG. MAGAJIN MALLAM I OP"
+          },
+          {
+            "code": "012",
+            "name": "ANG. MAGAJIN MALLAM II - OP"
+          },
+          {
+            "code": "013",
+            "name": "KOFAR D. BUKAR - OP"
+          },
+          {
+            "code": "014",
+            "name": "K/GWANKI - OP"
+          },
+          {
+            "code": "015",
+            "name": "ST.WILLIAMS - PB"
+          },
+          {
+            "code": "016",
+            "name": "G.S.S LAFIA PB"
+          },
+          {
+            "code": "017",
+            "name": "TUDUN GWANDARA I - OP"
+          },
+          {
+            "code": "018",
+            "name": "TUDUN GWANDARA II - OP"
+          },
+          {
+            "code": "019",
+            "name": "LAFIA NORTH - BP"
+          },
+          {
+            "code": "020",
+            "name": "G.S.S MAINA - PB"
+          },
+          {
+            "code": "021",
+            "name": "U.A.C. ROAD - OP"
+          },
+          {
+            "code": "022",
+            "name": "HEALTH OFFICE - PB"
+          },
+          {
+            "code": "023",
+            "name": "K/ALBERT - OP"
+          },
+          {
+            "code": "024",
+            "name": "K/SARKIN PAWA - OP"
+          },
+          {
+            "code": "025",
+            "name": "RIMI UKU - OP"
+          },
+          {
+            "code": "026",
+            "name": "UNG. YANSANDA - OP"
+          },
+          {
+            "code": "027",
+            "name": "K/KUYAN BANA - OP"
+          }
+        ]
+      },
+      "Keffin/Wambai": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BAD WEST - OP"
+          },
+          {
+            "code": "002",
+            "name": "BAD EAST - OP"
+          },
+          {
+            "code": "003",
+            "name": "BAD POLICE STATION - PB"
+          },
+          {
+            "code": "004",
+            "name": "ARIDI USMAN"
+          },
+          {
+            "code": "005",
+            "name": "ARIDI KUJE - OP"
+          },
+          {
+            "code": "006",
+            "name": "PRI.SCHOOL K/WAMBAI - PB"
+          },
+          {
+            "code": "007",
+            "name": "PRI.SCHOOL K/WAMBAI - PB"
+          },
+          {
+            "code": "008",
+            "name": "K/WAMBAI POLICE STATION - PB"
+          },
+          {
+            "code": "009",
+            "name": "AMBANA - OP"
+          },
+          {
+            "code": "010",
+            "name": "AWONGE MAKARANTA"
+          },
+          {
+            "code": "011",
+            "name": "AWONGE ABOSHON - OP"
+          },
+          {
+            "code": "012",
+            "name": "AWONGE AWUNZA - OP"
+          },
+          {
+            "code": "013",
+            "name": "RUMAYO - OP"
+          },
+          {
+            "code": "014",
+            "name": "TAKPA - OP"
+          },
+          {
+            "code": "015",
+            "name": "KORON KUJE - OP"
+          },
+          {
+            "code": "016",
+            "name": "AKUYA S.U.M - OP"
+          },
+          {
+            "code": "017",
+            "name": "RAFIN KUDI - OP"
+          }
+        ]
+      },
+      "Makama": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "K/KAURA - OP"
+          },
+          {
+            "code": "002",
+            "name": "UNG. GALADIMA - OP"
+          },
+          {
+            "code": "003",
+            "name": "BIRAWA - OP"
+          },
+          {
+            "code": "004",
+            "name": "KILEMA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "005",
+            "name": "BAKIN GONGORO - OP"
+          },
+          {
+            "code": "006",
+            "name": "INJIN SHINKAFA - OP"
+          },
+          {
+            "code": "007",
+            "name": "TUDUN MANGORO - OP"
+          },
+          {
+            "code": "008",
+            "name": "UNG.KAROFI - OP"
+          },
+          {
+            "code": "009",
+            "name": "TUDUN AMBA - OP"
+          },
+          {
+            "code": "010",
+            "name": "L.E.A PRIMARY SCHOOL, UNG. GALADIMA (WORKERS VILLAGE)"
+          }
+        ]
+      },
+      "Shabu/Kwandere": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "SHABU KOFAR SARKI - OP"
+          },
+          {
+            "code": "002",
+            "name": "SHABU KOFAR SARKI - OP"
+          },
+          {
+            "code": "003",
+            "name": "SHABU TA GABAS - OP"
+          },
+          {
+            "code": "004",
+            "name": "COLLEGE OF AGRIC."
+          },
+          {
+            "code": "005",
+            "name": "COLLEGE OF AGRIC - PB"
+          },
+          {
+            "code": "006",
+            "name": "SHABU ANG ARUGBA"
+          },
+          {
+            "code": "007",
+            "name": "AZUBA - OP"
+          },
+          {
+            "code": "008",
+            "name": "ANDASIME - OP"
+          },
+          {
+            "code": "009",
+            "name": "RAFIN GANYE - OP"
+          },
+          {
+            "code": "010",
+            "name": "DOKA - OP"
+          },
+          {
+            "code": "011",
+            "name": "DANKA SARKI - OP"
+          },
+          {
+            "code": "012",
+            "name": "UNG.ABUBAKAR - OP"
+          },
+          {
+            "code": "013",
+            "name": "KWANDERE CENTRE - OP"
+          },
+          {
+            "code": "014",
+            "name": "KWANDERE KOFAR SARKI"
+          },
+          {
+            "code": "015",
+            "name": "L.E.A PRI.SCHOOL - PB I"
+          },
+          {
+            "code": "016",
+            "name": "L.E.A PRI.SCHOOL - PB II"
+          },
+          {
+            "code": "017",
+            "name": "KWANDERE UNG YELWA - OP"
+          },
+          {
+            "code": "018",
+            "name": "KWANDERE UNG GALADIMA - OP"
+          },
+          {
+            "code": "019",
+            "name": "RANDA - OP"
+          },
+          {
+            "code": "020",
+            "name": "ARIDI AJIGE - OP"
+          },
+          {
+            "code": "021",
+            "name": "ARIDI HAYIN DOGO"
+          },
+          {
+            "code": "022",
+            "name": "AWUMA T.V CENTRE - PB"
+          },
+          {
+            "code": "023",
+            "name": "PRI.SCHOOL AWUMA - PB"
+          },
+          {
+            "code": "024",
+            "name": "AWUMA K/SARKI - OP"
+          }
+        ]
+      },
+      "Wakwa": {
+        "code": "12",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "W/B/KAKANI - OP"
+          },
+          {
+            "code": "002",
+            "name": "W/B/KAKANI - OP"
+          },
+          {
+            "code": "003",
+            "name": "L.E.A PRIMARY SCHOOL, WAKWA ALHAJI (WAKWA ALHAJI)"
+          },
+          {
+            "code": "004",
+            "name": "GIMARE - OP"
+          },
+          {
+            "code": "005",
+            "name": "GIMARE - KWASHINI - OP"
+          },
+          {
+            "code": "006",
+            "name": "GANDU SARKI - OP"
+          },
+          {
+            "code": "007",
+            "name": "AKUNZA PRI.SCHOOL - PB"
+          },
+          {
+            "code": "008",
+            "name": "AKUNZA UBANGARI - OP"
+          },
+          {
+            "code": "009",
+            "name": "KANTSAKUWA - OP"
+          },
+          {
+            "code": "010",
+            "name": "AGUDU PRI.SCHOOL - PB"
+          },
+          {
+            "code": "011",
+            "name": "AKUNZA JARME - OP"
+          },
+          {
+            "code": "012",
+            "name": "B/KWATO - OP I"
+          },
+          {
+            "code": "013",
+            "name": "B/KWATO - OP II"
+          }
+        ]
+      },
+      "Zanwa": {
+        "code": "13",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ANG.ZUGU - OP"
+          },
+          {
+            "code": "002",
+            "name": "NASARAWA ZANWA - OP"
+          },
+          {
+            "code": "003",
+            "name": "K/MAKAMA - OP"
+          },
+          {
+            "code": "004",
+            "name": "KOFAR BABA MALA - OP"
+          },
+          {
+            "code": "005",
+            "name": "KAURA MOYI - OP"
+          },
+          {
+            "code": "006",
+            "name": "K/ZANWA - OP"
+          },
+          {
+            "code": "007",
+            "name": "K/MALL/ISHAKA - OP"
+          },
+          {
+            "code": "008",
+            "name": "K/S MAKERA - OP"
+          },
+          {
+            "code": "009",
+            "name": "K/MAKAMA - OP"
+          },
+          {
+            "code": "010",
+            "name": "DISPENSARY UNG. TONI (KOFAR LIMAN)"
+          }
+        ]
+      }
+    }
+  },
+  "NASARAWA": {
+    "code": "09",
+    "wards": {
+      "Udenin Gida": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KUVO - PB"
+          },
+          {
+            "code": "002",
+            "name": "OKPAMU/ARI - OP"
+          },
+          {
+            "code": "003",
+            "name": "AMBU - OP"
+          },
+          {
+            "code": "004",
+            "name": "UBBE - OP"
+          },
+          {
+            "code": "005",
+            "name": "ITTAH I - OP"
+          },
+          {
+            "code": "006",
+            "name": "ITTAH II - OP"
+          },
+          {
+            "code": "007",
+            "name": "UKESHI - OP"
+          },
+          {
+            "code": "008",
+            "name": "UDEGEN KASA - OP"
+          },
+          {
+            "code": "009",
+            "name": "USHA KADUN - PB"
+          }
+        ]
+      },
+      "Akum": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AKUM - PB"
+          },
+          {
+            "code": "002",
+            "name": "0G0B0 - PB"
+          },
+          {
+            "code": "003",
+            "name": "KURMIN MAJIGI - PB"
+          },
+          {
+            "code": "004",
+            "name": "AGAM - PB"
+          },
+          {
+            "code": "005",
+            "name": "AZABUTU - PB"
+          },
+          {
+            "code": "006",
+            "name": "AMAKU - OP"
+          },
+          {
+            "code": "007",
+            "name": "YELWAN BAWA - OP"
+          },
+          {
+            "code": "008",
+            "name": "AFURA I - OP"
+          },
+          {
+            "code": "009",
+            "name": "AFURA II - OP"
+          },
+          {
+            "code": "010",
+            "name": "OSENI/ODURGBO - OP"
+          },
+          {
+            "code": "011",
+            "name": "OLONYA - OP"
+          }
+        ]
+      },
+      "Udenin": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UNGWAR HAUSAWA - OP"
+          },
+          {
+            "code": "002",
+            "name": "OKPANU"
+          },
+          {
+            "code": "003",
+            "name": "AMBU- OP"
+          },
+          {
+            "code": "004",
+            "name": "IMINYI - OP"
+          },
+          {
+            "code": "005",
+            "name": "AGATU - OP"
+          },
+          {
+            "code": "006",
+            "name": "AGBADU/AKPATA"
+          },
+          {
+            "code": "007",
+            "name": "KWANDARA - OP"
+          },
+          {
+            "code": "008",
+            "name": "OGENI"
+          },
+          {
+            "code": "009",
+            "name": "OLEGOGWALE"
+          },
+          {
+            "code": "010",
+            "name": "KABAWA/ADIKWU"
+          }
+        ]
+      },
+      "Loko": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LOKO I - OP"
+          },
+          {
+            "code": "002",
+            "name": "LOKO II - OP"
+          },
+          {
+            "code": "003",
+            "name": "IGGAH - PB"
+          },
+          {
+            "code": "004",
+            "name": "OSHUGU - PB"
+          },
+          {
+            "code": "005",
+            "name": "AYELE - PB"
+          },
+          {
+            "code": "006",
+            "name": "USHATA - PB"
+          },
+          {
+            "code": "007",
+            "name": "UNG.SARKIN YAKI - OP"
+          },
+          {
+            "code": "008",
+            "name": "UNG.WAZIRI I - OP"
+          },
+          {
+            "code": "009",
+            "name": "UNG.HABU - OP"
+          },
+          {
+            "code": "010",
+            "name": "UNG.WAZIRI II - OP"
+          },
+          {
+            "code": "011",
+            "name": "IGGAH KWATA - OP"
+          },
+          {
+            "code": "012",
+            "name": "OGUPA"
+          }
+        ]
+      },
+      "Tunga/Bakono": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "TUNGA UNG.SARKI - OP"
+          },
+          {
+            "code": "002",
+            "name": "BAKONO"
+          },
+          {
+            "code": "003",
+            "name": "AJAGA"
+          },
+          {
+            "code": "004",
+            "name": "OGUBA I"
+          },
+          {
+            "code": "005",
+            "name": "OGUBA II"
+          },
+          {
+            "code": "006",
+            "name": "AJIGWARA"
+          }
+        ]
+      },
+      "Guto/Aisa": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GUTO - PB"
+          },
+          {
+            "code": "002",
+            "name": "KPANDARA OPEN PLACE"
+          },
+          {
+            "code": "003",
+            "name": "OGUM - OP"
+          },
+          {
+            "code": "004",
+            "name": "ILLIAH - PB"
+          },
+          {
+            "code": "005",
+            "name": "ANJEWA"
+          },
+          {
+            "code": "006",
+            "name": "AZA I OP"
+          },
+          {
+            "code": "007",
+            "name": "AZA II OP"
+          }
+        ]
+      },
+      "Nasarawa North": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UNG MAGAJI GARI I"
+          },
+          {
+            "code": "002",
+            "name": "UNG MAGAJI GARI II"
+          },
+          {
+            "code": "003",
+            "name": "UNG MICHAEL"
+          },
+          {
+            "code": "004",
+            "name": "TAMMAH"
+          },
+          {
+            "code": "005",
+            "name": "LOW COST"
+          },
+          {
+            "code": "006",
+            "name": "UNG DUTSE PUBLIC BUILDING"
+          },
+          {
+            "code": "007",
+            "name": "FED LOW COST"
+          }
+        ]
+      },
+      "Nasarawa East": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UNG. MADAKI I PB"
+          },
+          {
+            "code": "002",
+            "name": "UNG. MADAKI II PB"
+          },
+          {
+            "code": "003",
+            "name": "UNG. MAIREKE - OP"
+          },
+          {
+            "code": "004",
+            "name": "UNG.MALLAM PB"
+          },
+          {
+            "code": "005",
+            "name": "UNG.PAKACI - OP"
+          },
+          {
+            "code": "006",
+            "name": "UNG.PAKACI - OP"
+          }
+        ]
+      },
+      "Nasarawa Central": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UNG.DALHATU - OP"
+          },
+          {
+            "code": "002",
+            "name": "UNG. MALLAM HASSAN - OP"
+          },
+          {
+            "code": "003",
+            "name": "UNG.GIRKU - OP"
+          },
+          {
+            "code": "004",
+            "name": "UNG.GANGAREN BAGE I - OP"
+          },
+          {
+            "code": "005",
+            "name": "UNG.GANGAREN BAGE II - OP"
+          }
+        ]
+      },
+      "Nasarawa Main Town": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UNG. SARKIN PADA - OP"
+          },
+          {
+            "code": "002",
+            "name": "UNG. SARKIN PADA - OP"
+          },
+          {
+            "code": "003",
+            "name": "UNG. WADA - OP"
+          },
+          {
+            "code": "004",
+            "name": "SABON GARI - OP"
+          },
+          {
+            "code": "005",
+            "name": "G.S.S NASARAWA - OP"
+          }
+        ]
+      },
+      "Ara I": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UNG.MAKAMA I - OP"
+          },
+          {
+            "code": "002",
+            "name": "UNG.MAKAMA II - OP"
+          },
+          {
+            "code": "003",
+            "name": "UNG. MADAKI"
+          },
+          {
+            "code": "004",
+            "name": "OSHIKPE - OP"
+          },
+          {
+            "code": "005",
+            "name": "AGO - PB"
+          },
+          {
+            "code": "006",
+            "name": "BIRAGO - OP"
+          }
+        ]
+      },
+      "Ara II": {
+        "code": "12",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "TULLUWA - OP"
+          },
+          {
+            "code": "002",
+            "name": "KURUDU - PB"
+          },
+          {
+            "code": "003",
+            "name": "DOGON DUTSE - OP"
+          },
+          {
+            "code": "004",
+            "name": "DANSA - OP"
+          },
+          {
+            "code": "005",
+            "name": "GUDIGE SABO"
+          },
+          {
+            "code": "006",
+            "name": "PESSELI"
+          }
+        ]
+      },
+      "Laminga": {
+        "code": "13",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LAMINGE I"
+          },
+          {
+            "code": "002",
+            "name": "LAMINGE II - OP"
+          },
+          {
+            "code": "003",
+            "name": "ZANKUN BELLO - OP"
+          },
+          {
+            "code": "004",
+            "name": "MARMARA"
+          },
+          {
+            "code": "005",
+            "name": "SHAMAGE - PB"
+          },
+          {
+            "code": "006",
+            "name": "GUNKI - OP"
+          },
+          {
+            "code": "007",
+            "name": "NAHUCHE/ARABA - OP"
+          },
+          {
+            "code": "008",
+            "name": "KAWO/KAWO - OP"
+          },
+          {
+            "code": "009",
+            "name": "LAMINGA III - OP"
+          }
+        ]
+      },
+      "Kanah/Ondo/Apawu": {
+        "code": "14",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ONDA/GBARGADA - PB"
+          },
+          {
+            "code": "002",
+            "name": "AGAZO - OP"
+          },
+          {
+            "code": "003",
+            "name": "OGANA/ADAGBA"
+          },
+          {
+            "code": "004",
+            "name": "KOBA"
+          },
+          {
+            "code": "005",
+            "name": "ONDA/KADU"
+          },
+          {
+            "code": "006",
+            "name": "ABAGU/IKPE"
+          },
+          {
+            "code": "007",
+            "name": "ORIGO/NUMABA"
+          },
+          {
+            "code": "008",
+            "name": "AGBOLO S. EYA - OP"
+          },
+          {
+            "code": "009",
+            "name": "EKA KASUWA - OP"
+          },
+          {
+            "code": "010",
+            "name": "ANDU WAYO"
+          },
+          {
+            "code": "011",
+            "name": "ORIKI - OP"
+          },
+          {
+            "code": "012",
+            "name": "OBENI-EKA - OP"
+          },
+          {
+            "code": "013",
+            "name": "OMBI OGAPA - PB"
+          },
+          {
+            "code": "014",
+            "name": "AGBOGANA - OP"
+          },
+          {
+            "code": "015",
+            "name": "INGIRI EKA - OP"
+          },
+          {
+            "code": "016",
+            "name": "AGBO/AGBOGANA"
+          },
+          {
+            "code": "017",
+            "name": "ENDO - OP"
+          },
+          {
+            "code": "018",
+            "name": "AKPAKU - OP"
+          },
+          {
+            "code": "019",
+            "name": "KAMA OTO - PB"
+          },
+          {
+            "code": "020",
+            "name": "OGAPA - OP"
+          }
+        ]
+      },
+      "Odu": {
+        "code": "15",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UDEGYE MBEKI"
+          },
+          {
+            "code": "002",
+            "name": "UDEGE"
+          },
+          {
+            "code": "003",
+            "name": "ODU CENTRE"
+          },
+          {
+            "code": "004",
+            "name": "KWANDA - OP"
+          },
+          {
+            "code": "005",
+            "name": "MARARABA - OP"
+          },
+          {
+            "code": "006",
+            "name": "S/LAYI - OP"
+          },
+          {
+            "code": "007",
+            "name": "AGBAMUDU - OP"
+          },
+          {
+            "code": "008",
+            "name": "USARI"
+          },
+          {
+            "code": "009",
+            "name": "AGBOSHIWO - OP"
+          },
+          {
+            "code": "010",
+            "name": "EYENU OMALA I - PB"
+          },
+          {
+            "code": "011",
+            "name": "EYENU OMALA II PB"
+          },
+          {
+            "code": "012",
+            "name": "KAIRI - OP"
+          },
+          {
+            "code": "013",
+            "name": "OGUNDO - OP"
+          },
+          {
+            "code": "014",
+            "name": "S/GIDA AGBAGO - OP"
+          }
+        ]
+      }
+    }
+  },
+  "NASSARAWA EGON": {
+    "code": "10",
+    "wards": {
+      "Nasarawa Eggon": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ISLAMIYA PRI. SCH. (UNG. MAKAMA)"
+          },
+          {
+            "code": "002",
+            "name": "OPEN SPACE (UNG. YUSUF OGA)"
+          },
+          {
+            "code": "003",
+            "name": "AREA COURT (UNG. GALADIMA)"
+          },
+          {
+            "code": "004",
+            "name": "WATER BOARD TANK (UNG. JARMAI)"
+          },
+          {
+            "code": "005",
+            "name": "OPEN SPACE (UNG. AHMADU AJAGA)"
+          },
+          {
+            "code": "006",
+            "name": "R.C.M PRIM. SCH. (UNG. DANMADAMI)"
+          },
+          {
+            "code": "007",
+            "name": "LOCAL GOVERNMENT QUARTERS (UNG. ANYANKON)"
+          },
+          {
+            "code": "008",
+            "name": "LGEA PRI. SCH. (UNG. LODO)"
+          },
+          {
+            "code": "009",
+            "name": "OPEN SPACE (UNG. MOYI)"
+          },
+          {
+            "code": "010",
+            "name": "OPEN SPACE (UNG. YAKUBU ADDA)"
+          },
+          {
+            "code": "011",
+            "name": "RCM PRIM. SCH. (UNG. GALADIMA)"
+          },
+          {
+            "code": "012",
+            "name": "PUBLIC BUILDING (GOVERNMENT COLLEGE)"
+          },
+          {
+            "code": "013",
+            "name": "RCM PRIM. SCH. (UNG. GALADIMA)"
+          },
+          {
+            "code": "014",
+            "name": "RCM PRIM. SCH. (KOFAR ZAKARI)"
+          },
+          {
+            "code": "015",
+            "name": "OPEN SPACE (UNG. MAKAMA)"
+          }
+        ]
+      },
+      "Ubbe": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LGEA PRIM. SCH. (ONGE ODEN OGBA)"
+          },
+          {
+            "code": "002",
+            "name": "LGEA PRIM. SCH. (KUCHUKU)"
+          },
+          {
+            "code": "003",
+            "name": "LGEA PRIM. SCH. (OTSU MAKU)"
+          },
+          {
+            "code": "004",
+            "name": "UBBE PRI.SCHOOL - PB"
+          },
+          {
+            "code": "005",
+            "name": "LGEA PRIM. SCHOOL (GAJI MISSION)"
+          }
+        ]
+      },
+      "Igga/Burumburum": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LGEA PRIM. SCH. (EKAN CHURCH ANGBA)"
+          },
+          {
+            "code": "002",
+            "name": "LGEA PRIM. SCH. (IGGA AKU)"
+          },
+          {
+            "code": "003",
+            "name": "PRI.SCHOOL BURUMBURUM - PB"
+          },
+          {
+            "code": "004",
+            "name": "LGEA PRIM. SCH. (IGGA SARKI)"
+          },
+          {
+            "code": "005",
+            "name": "LGEA PRIM. SCH. (IGGA SARKI"
+          },
+          {
+            "code": "006",
+            "name": "LGEA PRIM. SCH. (UNG. ENGOM)"
+          },
+          {
+            "code": "007",
+            "name": "LGEA PRIM. SCH. (UNG. SARKI)"
+          },
+          {
+            "code": "008",
+            "name": "LGEA PRIM. SCH. (EKAN CHURCH BURUMBURUM)"
+          },
+          {
+            "code": "009",
+            "name": "LGEA PRIM. SCH. (IGGA)"
+          }
+        ]
+      },
+      "Umme": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LGEA PRIM. SCH. (BAKIN KOGI)"
+          },
+          {
+            "code": "002",
+            "name": "AREA COURT (EBBE GAMA)"
+          },
+          {
+            "code": "003",
+            "name": "LGEA PRIM. SCH. (LCC BAKYANO)"
+          },
+          {
+            "code": "004",
+            "name": "LGEA PRIM. SCH. (KOFAR FADA ARUGBADU)"
+          },
+          {
+            "code": "005",
+            "name": "LGEA PRIM. SCH. ARUGBADU)"
+          },
+          {
+            "code": "006",
+            "name": "BAKYANO ADAMU LEWA"
+          },
+          {
+            "code": "007",
+            "name": "LGEA PRIM. SCH. (BAKYANO KASSA)"
+          },
+          {
+            "code": "008",
+            "name": "GSS ARUGBADU (UNG. GALADIMA)"
+          },
+          {
+            "code": "009",
+            "name": "LGEA PRIM. SCH. (LEKYATI)"
+          },
+          {
+            "code": "010",
+            "name": "LGEA PRIM. SCH. (UNG. KATIRI)"
+          },
+          {
+            "code": "011",
+            "name": "LGEA PRIM. SCH. (ERRE ZOMO)"
+          },
+          {
+            "code": "012",
+            "name": "LGEA PRIM. SCH. (AKPU MAGAJI)"
+          },
+          {
+            "code": "013",
+            "name": "GSS (UNG. GALADIMA ARUGBADU)"
+          }
+        ]
+      },
+      "Mada Station": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LGEA PRIM. SCH. (ANGBASHURU)"
+          },
+          {
+            "code": "002",
+            "name": "LGEA PRIM. SCH. (ANGBASHUN ODEN)"
+          },
+          {
+            "code": "003",
+            "name": "RAILWAY OFFICE (UNG. IBO)"
+          },
+          {
+            "code": "004",
+            "name": "MARKET SQUARE (UNG. GARBA SULE)"
+          },
+          {
+            "code": "005",
+            "name": "LGEA PRIM. SCH. (UNG. MISSION)"
+          },
+          {
+            "code": "006",
+            "name": "LGEA PRIM. SCH. (UNG. MISSION)"
+          },
+          {
+            "code": "007",
+            "name": "RAILWAY OFFICE (UNG. RAILWAY)"
+          },
+          {
+            "code": "008",
+            "name": "LGEA PRIM. SCH. (UNG. DANGANA)"
+          },
+          {
+            "code": "009",
+            "name": "LGEA PRIM. SCH. (LADI ENDE)"
+          },
+          {
+            "code": "010",
+            "name": "LGEA PRIM. SCH. (UNG. ELLE)"
+          },
+          {
+            "code": "011",
+            "name": "LGEA PRIM. SCH. (UNG. ALADE)"
+          }
+        ]
+      },
+      "Lizzin Keffi/Ezzen": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LGEA PRIM. SCH. (UNG. SARKI LIZZIN KEFFI)"
+          },
+          {
+            "code": "002",
+            "name": "LGEA PRIM. SCH. (ESHIAGBI)"
+          },
+          {
+            "code": "003",
+            "name": "LGEA PRIM. SCH. (ONGEZI LIZZIN KEFFI)"
+          },
+          {
+            "code": "004",
+            "name": "LGEA PRIM. SCH. (LIZZIN KEFFI TUDU)"
+          },
+          {
+            "code": "005",
+            "name": "ASSAN PRI.SCHOOL - PB"
+          },
+          {
+            "code": "006",
+            "name": "LGEA PRIM. SCH. (ANJIA KOLO)"
+          },
+          {
+            "code": "007",
+            "name": "LGEA PRIM. SCH. (LAMIS EZZEN)"
+          },
+          {
+            "code": "008",
+            "name": "LGEA PRIM. SCH. (EZZEN KWARI EHA)"
+          },
+          {
+            "code": "009",
+            "name": "LGEA PRIM. SCH. (EZZEN KWARI)"
+          }
+        ]
+      },
+      "Lambaga/Arikpa": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LGEA PRIM. SCH. (LAMBAGA)"
+          },
+          {
+            "code": "002",
+            "name": "LGEA PRIM. SCH. (LAMBAGA TUDU)"
+          },
+          {
+            "code": "003",
+            "name": "L.G.E.A ARIKPA - PB"
+          },
+          {
+            "code": "004",
+            "name": "LGEA PRIM. SCH. (UNG. ABIMIKU KUDI)"
+          },
+          {
+            "code": "005",
+            "name": "LGEA PRI. SCH. (RANDA ARIPKA)"
+          }
+        ]
+      },
+      "Kagbu Wana": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AREA COURT (SARKI WANA)"
+          },
+          {
+            "code": "002",
+            "name": "L.S.B BURI - PB"
+          },
+          {
+            "code": "003",
+            "name": "LGEA PRIM. SCH. (UNG. AKWASHIKI)"
+          },
+          {
+            "code": "004",
+            "name": "GSS SARKI EKPON (SARKI EKPON)"
+          },
+          {
+            "code": "005",
+            "name": "GSS EKPON"
+          },
+          {
+            "code": "006",
+            "name": "LGEA WOLON - PB"
+          },
+          {
+            "code": "007",
+            "name": "LGEA PRIM. SCH. (WATA)"
+          },
+          {
+            "code": "008",
+            "name": "LGEA PRIM. SCH. (EKPON TUDU)"
+          },
+          {
+            "code": "009",
+            "name": "LGEA PRIM. SCH. (UNG. ABIMIKU ANJUGU)"
+          },
+          {
+            "code": "010",
+            "name": "LGEA PRIM. SCH. (UNG. ABIMIKU ANJUGU)"
+          },
+          {
+            "code": "011",
+            "name": "LGEA PRIM. SCH. (NEKO TUDU)"
+          }
+        ]
+      },
+      "Ikka Wangibi": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LGEA PRIM SCH. (WASHO)"
+          },
+          {
+            "code": "002",
+            "name": "LGEA PRIM. SCH. (LANGALANGA)"
+          },
+          {
+            "code": "003",
+            "name": "IKKAH DISPENSARY - PB"
+          },
+          {
+            "code": "004",
+            "name": "LGEA PRIM SCH. (WASHO)"
+          },
+          {
+            "code": "005",
+            "name": "LGEA PRIM. SCH. (UNG. KIGBU KUJE)"
+          },
+          {
+            "code": "006",
+            "name": "LGEA PRIM. SCH. (WULGA)"
+          },
+          {
+            "code": "007",
+            "name": "LGEA PRIM. SCH. (AKUN UMBUGUTSO)"
+          },
+          {
+            "code": "008",
+            "name": "LGEA PRIM SCH. (UNG. MATU)"
+          },
+          {
+            "code": "009",
+            "name": "LGEA PRIM SCH. (AWUZA)"
+          }
+        ]
+      },
+      "Ende": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LGEA PRIM. SCH. (ZAURE ADIGIZI)"
+          },
+          {
+            "code": "002",
+            "name": "POLICE STATION (HAKIMI)"
+          },
+          {
+            "code": "003",
+            "name": "G.S.S WOWEN"
+          },
+          {
+            "code": "004",
+            "name": "LGEA PRIM. SCH. (ABOSHON BISA)"
+          },
+          {
+            "code": "005",
+            "name": "LGEA PRIM. SCH. (AKU YANGO)"
+          }
+        ]
+      },
+      "Wakama": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LGEA PRIM. SCH. (WAKAMA LASHE)"
+          },
+          {
+            "code": "002",
+            "name": "LGEA PRIM. SCH. (WAKAMA TUDU)"
+          },
+          {
+            "code": "003",
+            "name": "GSS AWAYI"
+          },
+          {
+            "code": "004",
+            "name": "G.T.C. OLA - PB"
+          },
+          {
+            "code": "005",
+            "name": "MARKET SQUARE (WAKAMA CENTRAL)"
+          },
+          {
+            "code": "006",
+            "name": "WAKAMA CLINIC - PB"
+          },
+          {
+            "code": "007",
+            "name": "LGEA PRIM. SCH. (AWOGENSHEN)"
+          },
+          {
+            "code": "008",
+            "name": "LGEA PRIM. SCH. (UNG. TSAKU ATSOKO)"
+          },
+          {
+            "code": "009",
+            "name": "LGEA PRIM. SCH. (AZIKILI)"
+          }
+        ]
+      },
+      "Aloce/Ginda": {
+        "code": "12",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LGEA PRIM. SCH. (SATI GINDA WAJI)"
+          },
+          {
+            "code": "002",
+            "name": "LGEA PRIM. SCH. (GINDA GIDA)"
+          },
+          {
+            "code": "003",
+            "name": "S.U.M ALUSHI - PB"
+          },
+          {
+            "code": "004",
+            "name": "ALUSHI DISPENSARY - PB"
+          },
+          {
+            "code": "005",
+            "name": "LGEA PRIM. SCH. (ALUSHI ERRO)"
+          },
+          {
+            "code": "006",
+            "name": "LGEA PRIM. SCH. (ANGBAKU)"
+          }
+        ]
+      },
+      "Alogani": {
+        "code": "13",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LGEA PRIM. SCH. (GAKO)"
+          },
+          {
+            "code": "002",
+            "name": "LGEA PRIM. SCH. (ALOGANI TUDU)"
+          },
+          {
+            "code": "003",
+            "name": "LGEA PRIM. SCH. (WOGAN)"
+          },
+          {
+            "code": "004",
+            "name": "LGEA PRIM. SCH. (GIDAN WAYA)"
+          },
+          {
+            "code": "005",
+            "name": "LGEA PRIM. SCH. (ALOGANI SOUTH)"
+          },
+          {
+            "code": "006",
+            "name": "LGEA PRIM. SCH. (EHALA YAKA)"
+          },
+          {
+            "code": "007",
+            "name": "EHALA YAKA - I PRI.SCHOOL - PB"
+          },
+          {
+            "code": "008",
+            "name": "LGEA PRIM. SCH. (ZAURE ALLU AMMA)"
+          },
+          {
+            "code": "009",
+            "name": "LGEA PRIM. SCH. (ALOGANI NORTH)"
+          },
+          {
+            "code": "010",
+            "name": "LGEA PRIM. SCH. (GALLE TUDU)"
+          },
+          {
+            "code": "011",
+            "name": "LGEA PRIM SCH. (ONHWONAKO)"
+          },
+          {
+            "code": "012",
+            "name": "LGEA PRIM SCH. (ALOGANI CENTRAL)"
+          }
+        ]
+      },
+      "Agunji": {
+        "code": "14",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LGEA PRIM. SCH. (AGUNJI)"
+          },
+          {
+            "code": "002",
+            "name": "LGEA PRIM. SCH. (AGUNJI TUDU)"
+          },
+          {
+            "code": "003",
+            "name": "OGBAGI PRI.SCHOOL - PB"
+          },
+          {
+            "code": "004",
+            "name": "LGEA PRIM. SCH. OGBAGI TUDU)"
+          },
+          {
+            "code": "005",
+            "name": "LGEA PRIM. SCH. (ANGBAKO)"
+          },
+          {
+            "code": "006",
+            "name": "LGEA PRIM. SCH. (AGUNJI ALAGA)"
+          }
+        ]
+      }
+    }
+  },
+  "OBI": {
+    "code": "11",
+    "wards": {
+      "Agwatashi": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UNG.MOYI BUBA"
+          },
+          {
+            "code": "002",
+            "name": "GIDAN KWALLA / PUBLIC SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "UNG.MISSION / PUBLIC SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "GIDAN FULANI / PUBLIC SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "LGEA PRI. SCHOOL GIDAN AGON (GIDAN AGON)"
+          },
+          {
+            "code": "006",
+            "name": "HEALTH CENTER"
+          },
+          {
+            "code": "007",
+            "name": "KOFAR OSUZA/PUBLIC SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "UNG.GALADIMA/PUBLIC SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "UGBOGBHUR PRIMARY SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "UNG.MOYI KARAMI/PUBLIC SQUARE"
+          },
+          {
+            "code": "011",
+            "name": "AKAHA/PRI.SCHOOL"
+          },
+          {
+            "code": "012",
+            "name": "USULLA/PRI.SCHOOL"
+          },
+          {
+            "code": "013",
+            "name": "UNG.MAKUNGIJI/PUBLIC SQUARE"
+          },
+          {
+            "code": "014",
+            "name": "TUDUN NAIRA / PUBLIC SQUARE"
+          }
+        ]
+      },
+      "Deddere/Riri": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOFAR MADAKI RIRI/PUBLIC SQUARE"
+          },
+          {
+            "code": "002",
+            "name": "RIRI.PRI.SCHOOL/PRI.SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "ANGBA RIRI/PUBLIC SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "KOFAR SARKI RIRI/PUBLIC SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "KOFAR SARKI ANKANI/PUBLIC SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "UNG.SARKIN NOMA/PUBLIC SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "UNGWAN SARKI AEWU/PUBLIC SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "UNG.SARKIN MADA/PUBLIC SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "LGEA PRI. SCHOOL UNG. MAMMAN (UNG.MAMMAN)"
+          },
+          {
+            "code": "010",
+            "name": "LGEA PRI. SCHOOL UNG. SULE (UNG. SULE)"
+          },
+          {
+            "code": "011",
+            "name": "KOFAR BUNU I/PUBLIC SQUARE"
+          },
+          {
+            "code": "012",
+            "name": "KOFAR BUNU II/PUBLIC SQUARE"
+          },
+          {
+            "code": "013",
+            "name": "KOFAR SIDI I/PUBLIC SQUARE"
+          },
+          {
+            "code": "014",
+            "name": "KOFAR SIDI II/PUBLIC SQUARE"
+          },
+          {
+            "code": "015",
+            "name": "KOFAR MAGAJI/PUBLIC SQUARE"
+          },
+          {
+            "code": "016",
+            "name": "KOFAR SULE/PUBLIC SQUARE"
+          },
+          {
+            "code": "017",
+            "name": "RCM DEDDERE/PRI.SCHOOL"
+          },
+          {
+            "code": "018",
+            "name": "UNG.KASUWA/PUBLIC SQUARE"
+          },
+          {
+            "code": "019",
+            "name": "KOFAR SARKI/PUBLIC SQUARE"
+          },
+          {
+            "code": "020",
+            "name": "KOFAR AMAWA/PUBLIC SQUARE"
+          },
+          {
+            "code": "021",
+            "name": "PUBLIC BUILDING"
+          },
+          {
+            "code": "022",
+            "name": "UNGWAN TSAKUWA I"
+          },
+          {
+            "code": "023",
+            "name": "UNG.UBANGARI/PUBLIC SQUARE"
+          },
+          {
+            "code": "024",
+            "name": "KOFAR NAMEIGH/PRI.SCHOOL"
+          },
+          {
+            "code": "025",
+            "name": "UNG. TSAKUWA II"
+          }
+        ]
+      },
+      "Obi": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KOFAR MOYI MAGAJI PUBLIC SQUARE"
+          },
+          {
+            "code": "002",
+            "name": "KOFAR ADEKA PUBLIC SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "AGWABO PUBLIC SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "KOFAR MUSA PUBLIC SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "KOFAR NAIBI PUBLIC SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "KOFAR LIMAN PUBLIC SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "UNGWAN KASA I"
+          },
+          {
+            "code": "008",
+            "name": "UNGWAN KASA II"
+          },
+          {
+            "code": "009",
+            "name": "MARARABA ATABULA PUBLIC SQUARE"
+          },
+          {
+            "code": "010",
+            "name": "KOFAR IDOWU PUBLIC SQUARE"
+          },
+          {
+            "code": "011",
+            "name": "KOFAR MAKUNGIJI PUBLIC SQUARE"
+          },
+          {
+            "code": "012",
+            "name": "DISPENSARY"
+          },
+          {
+            "code": "013",
+            "name": "KOFAR OSHI PUBLIC SQUARE"
+          },
+          {
+            "code": "014",
+            "name": "KOFAR SARKI OPEN SPACE"
+          },
+          {
+            "code": "015",
+            "name": "PASTOR'S COLLEGE"
+          },
+          {
+            "code": "016",
+            "name": "KOFAR ADEKA OPEN SPACE"
+          },
+          {
+            "code": "017",
+            "name": "KOFAR ONYAPA OPEN SPACE"
+          },
+          {
+            "code": "018",
+            "name": "KOFAR ALI ARIKA OPEN SPACE"
+          },
+          {
+            "code": "019",
+            "name": "KOFAR IBRAHIM OKPOSHI OPEN SPACE"
+          }
+        ]
+      },
+      "Tudun Adabu": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ADABU/PUBLIC SQUARE"
+          },
+          {
+            "code": "002",
+            "name": "IKPOSOGYE/PRI.SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "AGBEDE PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "G.S.S TUDUN ADABU (KOFAR SARKIN TUDU ADABU"
+          },
+          {
+            "code": "005",
+            "name": "T/ADABU PRI.SCHOOL/PRI.SCH."
+          },
+          {
+            "code": "006",
+            "name": "MBATSAV / PRI.SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "KWAGSHIRI / PRI.SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "AKPEKA/PRI.SCHOOL"
+          }
+        ]
+      },
+      "Duduguru": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ASHUPE/PRI.SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "LGEA PRI. SCHOOL (UNG.TSAKUWA I)"
+          },
+          {
+            "code": "003",
+            "name": "UNG. TSAKUWA II PUBLIC SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "AKUNZA/PRI.SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "LGEA PRI. SCHOOL (UMME ANGWAN SARKI)"
+          },
+          {
+            "code": "006",
+            "name": "ATABULA / PRI.SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "DUDUGURU PRI.SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "AKABA / PUBLIC SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "UNG.TSAMIYA / PUBLIC SQUARE"
+          },
+          {
+            "code": "010",
+            "name": "AGWADE AMAKU / PUBLIC SQUARE"
+          },
+          {
+            "code": "011",
+            "name": "UNG.BOROKONO / PUBLIC SQUARE"
+          },
+          {
+            "code": "012",
+            "name": "AGYARAGU EAST PRIMARY SCHOOL"
+          },
+          {
+            "code": "013",
+            "name": "AGWADE PRIMARY SCHOOL"
+          },
+          {
+            "code": "014",
+            "name": "GANGA / PRI.SCHOOL"
+          },
+          {
+            "code": "015",
+            "name": "KOFAR SARKI DUDUGURU / PUBLIC SQUARE"
+          },
+          {
+            "code": "016",
+            "name": "AGWADE KOFAR SARKI / PUBLIC SQUARE"
+          }
+        ]
+      },
+      "Gwadenye": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "MURYA / PRI.SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "AKALEKU SIDI / PUBLIC SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "UNG.MAKUNGIJI / PUBLIC SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "GWADENYE BABA / PUBLIC SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "ATUKWASA / PRI.SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "KOFAR EMMANUEL/PUBLIC SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "IDEVI/PRI.SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "AKANGA/PRI.SCHOOL"
+          }
+        ]
+      },
+      "Kyakale": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ICHECHENE I/PRI.SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "ICHECHENE II /PRI.SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "KYAKALE I PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "KYAKALE II PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "BABA/PUBLIC SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "AKALEKU ABU/PUBLIC SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "AKALEKU SOJA/PRI.SCHOOL"
+          }
+        ]
+      },
+      "Gidan Ausa I": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "K/SARKI G/AUSA/PUBLIC SQUARE"
+          },
+          {
+            "code": "002",
+            "name": "UNG.BARDE/PUBLIC SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "AGYARAGU AGURA/PUBLIC SPACE"
+          },
+          {
+            "code": "004",
+            "name": "NENE/PUBLIC SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "DEBE/PUBLIC SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "GIDIN KADAURA/PUBLIC SPACE"
+          },
+          {
+            "code": "007",
+            "name": "ANDREW TIV/PUBLIC SPACE"
+          },
+          {
+            "code": "008",
+            "name": "K/SARKI AGYARAGU/PUBLIC SPACE"
+          },
+          {
+            "code": "009",
+            "name": "GIDAN AUSA AUDU/PUBLIC SPACE"
+          },
+          {
+            "code": "010",
+            "name": "CMS AGYARAGU/PRI.SCHOOL"
+          }
+        ]
+      },
+      "Gidan Ausa II": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ABIOGA I / PRI.SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "ABIOGA II /PRI.SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "MADAGWA MIGILI / PRI.SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "AJAULA/PRI.SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "KPANGWA / PRI.SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "ZHERUGWA I PRI. SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "ZHERUGBA II PRI. SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "DAZHOGA / PRI.SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "SABON KWARRA / PRI.SCHOOL"
+          }
+        ]
+      },
+      "Adudu": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AYERO/PRI.SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "TSWAM/PRI.SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "UNG.GALADIMA/PUBLIC SPACE"
+          },
+          {
+            "code": "004",
+            "name": "GIDAN YAV/PUBLIC SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "KOFAR ZANGO/PUBLIC SPACE"
+          },
+          {
+            "code": "006",
+            "name": "KOFAR SARKI I PUBLIC SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "KOFAR SARKI II PUBLIC SPACE"
+          },
+          {
+            "code": "008",
+            "name": "WUNDU/PRI.SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "KOFAR WAZIRI I/PUBLIC SPACE"
+          },
+          {
+            "code": "010",
+            "name": "KOFAR WAZIRI II/PUBLIC SPACE"
+          },
+          {
+            "code": "011",
+            "name": "APURUGH/PRI.SCHOOL"
+          },
+          {
+            "code": "012",
+            "name": "LGEA PRI. SCHOOL ADUDU (UNG. MADA)"
+          },
+          {
+            "code": "013",
+            "name": "ADUDU PRI.SCHOOL/PRI.SCHOOL"
+          },
+          {
+            "code": "014",
+            "name": "KOFAR TELLA/OPEN SPACE"
+          },
+          {
+            "code": "015",
+            "name": "IMON/PRI.SCHOOL"
+          },
+          {
+            "code": "016",
+            "name": "KERTYO/PRI.SSCHOOL"
+          }
+        ]
+      }
+    }
+  },
+  "TOTO": {
+    "code": "12",
+    "wards": {
+      "Gwargwada": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GWARGWADA"
+          },
+          {
+            "code": "002",
+            "name": "GWAMBE I"
+          },
+          {
+            "code": "003",
+            "name": "GWAMBE II"
+          },
+          {
+            "code": "004",
+            "name": "L.E.A PRIMARY SCHOOL,MAJAGA (MAGAJA)"
+          },
+          {
+            "code": "005",
+            "name": "RUBOCHI"
+          },
+          {
+            "code": "006",
+            "name": "GWARGWADA II"
+          }
+        ]
+      },
+      "Gadagwa": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DIKKO"
+          },
+          {
+            "code": "002",
+            "name": "ARABA"
+          },
+          {
+            "code": "003",
+            "name": "PESIN"
+          },
+          {
+            "code": "004",
+            "name": "WARAKATA"
+          },
+          {
+            "code": "005",
+            "name": "HUNI"
+          },
+          {
+            "code": "006",
+            "name": "GADABUKE (A)"
+          },
+          {
+            "code": "007",
+            "name": "KPEMBO"
+          },
+          {
+            "code": "008",
+            "name": "GAD.PRI.SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "GAD.GBAGYI"
+          },
+          {
+            "code": "010",
+            "name": "GADABUKE (B)"
+          }
+        ]
+      },
+      "Bugakarmo": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "MADEKI"
+          },
+          {
+            "code": "002",
+            "name": "L.E.A. PRIMARY SCHOOL, TUDU UKU (TUDU UKU (A))"
+          },
+          {
+            "code": "003",
+            "name": "BUGA/KARMO"
+          },
+          {
+            "code": "004",
+            "name": "L.E.A PRIMARY SCHOOL, KUNKE (KUNKE)"
+          },
+          {
+            "code": "005",
+            "name": "L.E.A PRIMARY SCHOOL, LOKO GOMA (LOKO GOMA)"
+          },
+          {
+            "code": "006",
+            "name": "KARMO RUMODU (A)"
+          },
+          {
+            "code": "007",
+            "name": "KARMO KWAKI"
+          },
+          {
+            "code": "008",
+            "name": "L.E.A PRIMARY SCHOOL, NAKUSE(NAKUSE)"
+          },
+          {
+            "code": "009",
+            "name": "DAJIE"
+          },
+          {
+            "code": "010",
+            "name": "KARMO GANGI"
+          },
+          {
+            "code": "011",
+            "name": "GOVERNMENT SECONDARY SCHOOL, KARMO (KARMO ROMUDU (B))"
+          }
+        ]
+      },
+      "Umaisha": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UBO KPOKITI"
+          },
+          {
+            "code": "002",
+            "name": "DIMBEKU GUSU"
+          },
+          {
+            "code": "003",
+            "name": "SHICE"
+          },
+          {
+            "code": "004",
+            "name": "KUDIRI"
+          },
+          {
+            "code": "005",
+            "name": "ANG.GALADIMA (A)"
+          },
+          {
+            "code": "006",
+            "name": "ANG.GALADIMA (B)"
+          },
+          {
+            "code": "007",
+            "name": "KAKANA"
+          },
+          {
+            "code": "008",
+            "name": "OGAZA A"
+          },
+          {
+            "code": "009",
+            "name": "YELWA"
+          },
+          {
+            "code": "010",
+            "name": "OSOKO A"
+          },
+          {
+            "code": "011",
+            "name": "YELWA BASA"
+          },
+          {
+            "code": "012",
+            "name": "ZAINAKU"
+          },
+          {
+            "code": "013",
+            "name": "SOGENE"
+          },
+          {
+            "code": "014",
+            "name": "OSOKO UAC"
+          },
+          {
+            "code": "015",
+            "name": "KUDIRI"
+          },
+          {
+            "code": "016",
+            "name": "ANG. GALADIMA C"
+          },
+          {
+            "code": "017",
+            "name": "KPADABU"
+          },
+          {
+            "code": "018",
+            "name": "OSOKO B"
+          },
+          {
+            "code": "019",
+            "name": "GAURA ODULLA"
+          },
+          {
+            "code": "020",
+            "name": "OGAZA B"
+          }
+        ]
+      },
+      "Dausu": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UTTU"
+          },
+          {
+            "code": "002",
+            "name": "AHULLA"
+          },
+          {
+            "code": "003",
+            "name": "GBEMIDA"
+          },
+          {
+            "code": "004",
+            "name": "DAUSU"
+          },
+          {
+            "code": "005",
+            "name": "YIMOWA"
+          },
+          {
+            "code": "006",
+            "name": "UDUA"
+          },
+          {
+            "code": "007",
+            "name": "IGWA - PATI"
+          },
+          {
+            "code": "008",
+            "name": "GBERI"
+          },
+          {
+            "code": "009",
+            "name": "KAMGBO"
+          }
+        ]
+      },
+      "Kanyehu": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KANYEHU"
+          },
+          {
+            "code": "002",
+            "name": "KARBANA"
+          },
+          {
+            "code": "003",
+            "name": "FOFURU"
+          },
+          {
+            "code": "004",
+            "name": "ZWORE"
+          }
+        ]
+      },
+      "Ugya": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UGYA MADAKI (A)"
+          },
+          {
+            "code": "002",
+            "name": "UGYA MADAKI (B)"
+          },
+          {
+            "code": "003",
+            "name": "RUDU"
+          },
+          {
+            "code": "004",
+            "name": "BAKETE"
+          },
+          {
+            "code": "005",
+            "name": "DUBEKU"
+          },
+          {
+            "code": "006",
+            "name": "KOVOFU"
+          },
+          {
+            "code": "007",
+            "name": "LUMA LUMA"
+          },
+          {
+            "code": "008",
+            "name": "DARE"
+          },
+          {
+            "code": "009",
+            "name": "PANDA AHULLA"
+          },
+          {
+            "code": "010",
+            "name": "KOLO"
+          },
+          {
+            "code": "011",
+            "name": "AYIWAWA"
+          }
+        ]
+      },
+      "Toto": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AHERE KWATTO"
+          },
+          {
+            "code": "002",
+            "name": "OHIZI"
+          },
+          {
+            "code": "003",
+            "name": "AGANKI SARKI (A)"
+          },
+          {
+            "code": "004",
+            "name": "HAUSAWA LIMAN 'A'"
+          },
+          {
+            "code": "005",
+            "name": "RAFIN KUNAMA"
+          },
+          {
+            "code": "006",
+            "name": "HAUSAWA KAMBARI"
+          },
+          {
+            "code": "007",
+            "name": "GBAWODI"
+          },
+          {
+            "code": "008",
+            "name": "CENTRAL PILOT SCHOOL, TOTO (KPEGU)"
+          },
+          {
+            "code": "009",
+            "name": "UKYA ZAKUTU"
+          },
+          {
+            "code": "010",
+            "name": "UKYA YEWUYE"
+          },
+          {
+            "code": "011",
+            "name": "ACHIDO"
+          },
+          {
+            "code": "012",
+            "name": "KOFA (A)"
+          },
+          {
+            "code": "013",
+            "name": "L.E.A PRIMARY SCHOOL, TOTO NORTH (KOFA (B))"
+          },
+          {
+            "code": "014",
+            "name": "HAUSAWA LIMAN (B)"
+          },
+          {
+            "code": "015",
+            "name": "ADADU"
+          },
+          {
+            "code": "016",
+            "name": "DIMBEKU"
+          },
+          {
+            "code": "017",
+            "name": "AGANKI SARKI"
+          }
+        ]
+      },
+      "Shafan Abakpa": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KURU"
+          },
+          {
+            "code": "002",
+            "name": "YELWA"
+          },
+          {
+            "code": "003",
+            "name": "CHEREKU"
+          },
+          {
+            "code": "004",
+            "name": "TAWANA KURU"
+          },
+          {
+            "code": "005",
+            "name": "SHAFAN ABAKPA"
+          },
+          {
+            "code": "006",
+            "name": "DARE"
+          },
+          {
+            "code": "007",
+            "name": "RAKPAMI"
+          },
+          {
+            "code": "008",
+            "name": "NUGBA"
+          },
+          {
+            "code": "009",
+            "name": "SHAFAN ABAKPA PRIMARY SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "GBARI"
+          },
+          {
+            "code": "011",
+            "name": "MARKET SQUARE"
+          },
+          {
+            "code": "012",
+            "name": "L.E.A PRIMARY SCHOOL, DAJIE (DAJIE)"
+          }
+        ]
+      },
+      "Shafan Kwato": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ANG.SARKI"
+          },
+          {
+            "code": "002",
+            "name": "NYEJI"
+          },
+          {
+            "code": "003",
+            "name": "GATE"
+          },
+          {
+            "code": "004",
+            "name": "SARDAUNA"
+          },
+          {
+            "code": "005",
+            "name": "MUNYA"
+          },
+          {
+            "code": "006",
+            "name": "SHISHIGENESHI"
+          },
+          {
+            "code": "007",
+            "name": "ANG.LIMAN"
+          }
+        ]
+      },
+      "Shege": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "IGGI"
+          },
+          {
+            "code": "002",
+            "name": "OGBERE"
+          },
+          {
+            "code": "003",
+            "name": "KAITA"
+          },
+          {
+            "code": "004",
+            "name": "KOKOTO"
+          },
+          {
+            "code": "005",
+            "name": "SHEGE"
+          },
+          {
+            "code": "006",
+            "name": "SHAKARUKU"
+          },
+          {
+            "code": "007",
+            "name": "KAKULO"
+          },
+          {
+            "code": "008",
+            "name": "TONDO"
+          },
+          {
+            "code": "009",
+            "name": "IHAMKPE (A)"
+          },
+          {
+            "code": "010",
+            "name": "IHAMKPE (B)"
+          },
+          {
+            "code": "011",
+            "name": "ANGURA"
+          }
+        ]
+      },
+      "Katakpa": {
+        "code": "12",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KATAKPA"
+          },
+          {
+            "code": "002",
+            "name": "SERE"
+          },
+          {
+            "code": "003",
+            "name": "RISAGU"
+          },
+          {
+            "code": "004",
+            "name": "SHIZHE"
+          },
+          {
+            "code": "005",
+            "name": "EMUE"
+          }
+        ]
+      }
+    }
+  },
+  "WAMBA": {
+    "code": "13",
+    "wards": {
+      "Arum": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ARUM TUMARA PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "ARUM TUMARA"
+          },
+          {
+            "code": "003",
+            "name": "ARUM KADO - PRI.SCHOOL, KADO"
+          },
+          {
+            "code": "004",
+            "name": "ARUM CHUGBU - PRIMARY SCHOOL, ARUM CHUGBU"
+          },
+          {
+            "code": "005",
+            "name": "ARUM SARKI - PRI.SCHOOL, ARUM SARKI"
+          }
+        ]
+      },
+      "Mangar": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "CHESSU - PRI.SCHOOL, CHESSU"
+          },
+          {
+            "code": "002",
+            "name": "TURKWAN KANJA - OPEN SQUARE TURKWAN KANJA"
+          },
+          {
+            "code": "003",
+            "name": "TURKWAN MISSION - OPEN SQUARE TURKWAN KANJA"
+          },
+          {
+            "code": "004",
+            "name": "YASHI - PRI.SCHOOL, YASHI"
+          },
+          {
+            "code": "005",
+            "name": "MANGAR - PRI.SCHOOL, MANGAR I"
+          },
+          {
+            "code": "006",
+            "name": "MANGAR - PRI.SCHOOL, MANGAR II"
+          },
+          {
+            "code": "007",
+            "name": "MASSENGE - PRI.SCHOOL, MANGAR"
+          }
+        ]
+      },
+      "Gitta": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "SISINBAKI - PRI.SCHOOL, SISINBAKI"
+          },
+          {
+            "code": "002",
+            "name": "SISINBAKI - MARKET SQUARE SISINBARKI"
+          },
+          {
+            "code": "003",
+            "name": "KURAGA - PRI.SCHOOL , KURAGA"
+          },
+          {
+            "code": "004",
+            "name": "GONGON JUNCTION - PRI.SCHOOL, GONGON JUCNTION"
+          },
+          {
+            "code": "005",
+            "name": "UNG. RIMI PRY SCHOOL"
+          }
+        ]
+      },
+      "Nakere": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GBUDE - OPEN SQUARE, GBUDE"
+          },
+          {
+            "code": "002",
+            "name": "NAKERE - PRI.SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "NAKERE - OPEN SQUARE NAKERE"
+          },
+          {
+            "code": "004",
+            "name": "GBUDE PRIM. SCHOOL (GBUDE OPEN SQUARE)"
+          },
+          {
+            "code": "005",
+            "name": "RAGGA"
+          }
+        ]
+      },
+      "Konvah": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KONVAH - KONVAH PRI.SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "UGURE - PRI.SCHOOL UGURE"
+          },
+          {
+            "code": "003",
+            "name": "LAGO PRIM SCHOOL (LAGO - LAGO I)"
+          },
+          {
+            "code": "004",
+            "name": "LAGO-LAGO II"
+          }
+        ]
+      },
+      "Wayo": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "WAYO - PRI.SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "LANGI PRIM SCH. LANGI (LANGI - OPEN SPACE (LANGI)"
+          },
+          {
+            "code": "003",
+            "name": "WAYO - PRI.SCHOOL WAYO"
+          },
+          {
+            "code": "004",
+            "name": "SPINE- PRI.SCHOOL WAYO"
+          },
+          {
+            "code": "005",
+            "name": "UGYE - PRIMARY SCHOOL UGYE"
+          },
+          {
+            "code": "006",
+            "name": "KURIZE - OPEN SPACE, KURIZE"
+          }
+        ]
+      },
+      "Wamba West": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "CMS PRI.SCHOOL (A)"
+          },
+          {
+            "code": "002",
+            "name": "CMS PRIMARY SCHOOL (B)"
+          },
+          {
+            "code": "003",
+            "name": "OLD CENTRAL OFFICE- OLD CENTRAL OFFICE"
+          },
+          {
+            "code": "004",
+            "name": "UNGWAN ZANUWA - OPEN SPACE - UNG.ZANUWA"
+          },
+          {
+            "code": "005",
+            "name": "BYE-PASS - OPEN SPACE, BYE-PASS"
+          },
+          {
+            "code": "006",
+            "name": "GWAGI - OPEN SPACE, GWAGI"
+          },
+          {
+            "code": "007",
+            "name": "WAMBA KURMI - PRI.SCHOOL, WAMBA KURMI"
+          },
+          {
+            "code": "008",
+            "name": "UNGO - OPEN SPACE, UNGO"
+          }
+        ]
+      },
+      "Wamba East": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UNG.SABO - OPEN SQUARE"
+          },
+          {
+            "code": "002",
+            "name": "UNG.SABO - OPEN SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "GBOMBU - OPEN SPACE"
+          },
+          {
+            "code": "004",
+            "name": "KOFAR FADA I"
+          },
+          {
+            "code": "005",
+            "name": "KOFAR FADA II"
+          },
+          {
+            "code": "006",
+            "name": "NEW BANK - BEHIND U.B.A"
+          },
+          {
+            "code": "007",
+            "name": "NEW BANK"
+          },
+          {
+            "code": "008",
+            "name": "G.S.S WAMBA"
+          },
+          {
+            "code": "009",
+            "name": "LGEA PRI. SCHOOL WAJA (WAJA)"
+          }
+        ]
+      },
+      "Kwara": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KWARRA - PRI.SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "MAMA - PRI.SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "MARHAI - PRI.SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "MARHAI PRIM. SCHOOL (MARHAI OPEN SPACE)"
+          },
+          {
+            "code": "005",
+            "name": "MUGGU - PRI.SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "UKOLLO - PRI.SCHOOL"
+          }
+        ]
+      },
+      "Jimiya": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AMBAKA - PRI.SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "JIMIYA - PRI.SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "ZALLI - PRI.SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "KAM/KIRE - PRI.SCHOOL, KAM"
+          }
+        ]
+      }
+    }
+  }
+}

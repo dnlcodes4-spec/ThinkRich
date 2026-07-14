@@ -27,7 +27,11 @@ reviewable, impact-assessed, trackable unit of work.
 
 | CR | Title | Requested by | Date | Status | Tasks | ADR |
 |----|-------|--------------|------|--------|-------|-----|
-| [0001](0001-brand-org-structure-and-dual-landing.md) | Brand palette, org structure, dual landing pages | Client | 2026-07-13 | Assessed | TBD | supersedes ADR-0006? |
+| [0001](0001-brand-org-structure-and-dual-landing.md) | Brand palette, org structure, dual landing pages | Client | 2026-07-13 | Assessed | T-014, T-016, T-017 | ADR-0006/0007 |
+| [0002](0002-polling-units-registration-and-live-count.md) | Polling units, member registration fields, live counts, ThinkRich content | Client | 2026-07-13 | Assessed | T-016, T-018, T-019, T-020, T-001b | — (refines ADR-0005) |
+| [0003](0003-ward-tier-and-leadership-model.md) | Ward leadership tier + six-level leadership model | Client | 2026-07-14 | Assessed | T-001b | — |
+| [0004](0004-candidate-first-public-landing.md) | Candidate-first public landing (audience pivot) | Client | 2026-07-14 | In Progress | T-017, T-021, T-022 | — |
+| [0003](0003-ward-tier-and-leadership-model.md) | Ward leadership tier & the six-level leadership model | Client | 2026-07-13 | Assessed | T-021, T-001b, T-017 | — (extends ADR-0005) |
 
 <!--
 Example row once CRs exist:

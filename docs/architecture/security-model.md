@@ -10,16 +10,20 @@ model. The reporting process lives in [SECURITY.md](../../SECURITY.md).
 
 | Role | Scope | Core powers |
 |------|-------|-------------|
-| **National Admin** | All 36 states | Activate states, create/manage State Admins, upload Presidential candidate, full visibility |
+| **National Admin** | All 37 (36 states + FCT) | Activate states, create/manage State Admins, upload Presidential candidate, full visibility |
 | **State Admin** | One assigned state | Oversee members & activities, approve/reject change requests, upload state candidates |
-| **L.G Admin** | One Local Government | Oversee members across wards/units in the L.G |
-| **Unit Coordinator** | One unit (2+ wards) | Oversee members in the wards forming the unit |
+| **L.G Admin** | One Local Government | Oversee the wards (and everything below) in the L.G |
+| **Ward Admin** | One ward | Oversee the polling units (and the leaders/members below) in the ward |
+| **Unit Coordinator** | One polling unit | Coordinate the grassroots leaders in the polling unit |
 | **Leader** | Their ≤10 registered members | Register members, edit their info, download their cards, KYM |
-| **Member / Voter** | Self | View own profile & candidate, request changes/opt-out |
+| **Member** | Self | View own profile & candidate, request changes/opt-out |
 | **Visitor** | Public site | Read & enquire only |
 
+> **Every role except Member is a leader** (CR-0003) — the table above is one chain of leadership,
+> narrowing scope at each step from the National Admin (#1) down to a single Leader with ten members.
+
 Authority strictly narrows as you go down the hierarchy. Scope is stored on `profiles`
-(`state_id` / `lga_id` / `unit_id`) and enforced in the database.
+(`state_id` / `lga_id` / `ward_id` / `polling_unit_id`) and enforced in the database.
 
 ---
 

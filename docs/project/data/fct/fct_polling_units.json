@@ -1,0 +1,2590 @@
+{
+  "ABAJI": {
+    "code": "01",
+    "wards": {
+      "Abaji Central": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UNG. MAIKANO/OPEN SPACE IN FRONT OF KOFAR MAI UNGUWA (UNG. MAIKANO/KOFAR MAI UNGUWA)"
+          },
+          {
+            "code": "002",
+            "name": "UNG. MANKO/OPEN SPACE IN FRONT OF KOFAR UNGUWAR MANKO (UNG. MANKO/KOFAR UNGUWAR MANKO)"
+          },
+          {
+            "code": "003",
+            "name": "UNG. LIMAN/OPEN SPACE IN FRONT OF KOFAR UNGUWAR LIMAN (UNG. LIMAN/KOFAR UNGUWAR LIMAN)"
+          }
+        ]
+      },
+      "Abaji North East": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ISAH M. GANI/OPEN SPACE IN FRONT OF ISAH M. GANI (ISAH M. GANI/OLD ONA PALACE)"
+          },
+          {
+            "code": "002",
+            "name": "UNG. NUPAWA/MATERNITY CENTRE"
+          },
+          {
+            "code": "003",
+            "name": "UNG. ANYURA/ UNDER WATER BOARD OVERHEAD TANK (UNG. ANYURA / GIDAN ANYURA)"
+          },
+          {
+            "code": "004",
+            "name": "UNG. HUSSAINI WANZAMI"
+          },
+          {
+            "code": "005",
+            "name": "UNG. MALLAM MANSUR/OPEN SPACE IN FRONT OF MALLAM MANSUR'S HOUSE (UNG. MALLAM MANSUR"
+          },
+          {
+            "code": "006",
+            "name": "ABAJI NE / CENTRAL PRY. SCHOOL"
+          }
+        ]
+      },
+      "Abaji South East": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OLD ONAS PALACE/ OPEN SPACE IN FRONT OF OLD ONAS PALACE (OLD ONAS PALACE / OLD ONAS PALACE)"
+          },
+          {
+            "code": "002",
+            "name": "UNG NDAMAZARI / GIDAN NDAMAZARI/OPEN SPACE INFRONT OF GIDAN SAMARI"
+          },
+          {
+            "code": "003",
+            "name": "A.U SULEMAN / UNG.A.U. SULEMAN"
+          },
+          {
+            "code": "004",
+            "name": "UNG. S.SAMARI/UNG. S. SAMARI"
+          }
+        ]
+      },
+      "Agyana/Pandagi": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AGYANA / AGYANA PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "PANDAGI / PANDAGI PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "NANDA / NANDA PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "KUNGUNI / KUNGUNI PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Rimba Ebagi": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "EBAGI / EBAGI PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "RIMBA / RIMBA PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "NAHARATI SABO/NAHARATI PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "NAHARATI TSOHO/NHARATI TSOHO PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "TUPA/TUPA PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "RIMBA GWARI/RIMBA GWARI VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Nuku": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UNG. AKWAI ALLAH/OPEN SPACE IN FRONT OF GIDAN AKWAI ALLAH (UNG. AKWAI ALLAH/GIDAN AKWAI ALLAH)"
+          },
+          {
+            "code": "002",
+            "name": "NUKU/NUKU PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "ABAJI EAST/ABAJI EAST PRIMARY SCHOOL I"
+          },
+          {
+            "code": "004",
+            "name": "MANDEREGI/MANDEREGI PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "KEKESHI/ KEKESHI VILLAGE"
+          },
+          {
+            "code": "006",
+            "name": "NUKU / NUKU PRY. SCHOOL"
+          }
+        ]
+      },
+      "Alu Mamagi": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "MAMAGI/MAMAGI PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "ALU/ALU PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "MAMAGI/MAMAGI/ PRIMARY SCHOOL/MAWOGI"
+          },
+          {
+            "code": "004",
+            "name": "PACIWA/PACIWA/ PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Yaba": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "YABA TOWN/YABA PRIMARY SCHOOL I"
+          },
+          {
+            "code": "002",
+            "name": "MAJELU/MAJELU VILLAGE SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "LAFIYAN YABA/LAFIYAN YABA PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "KPACE/KPACE PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "MADANI/MADANI PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "KULORO/KULURO PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "ADAGBA/ ADAGBA PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "DURUMI/DURUMI PRIMARY VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Gurdi": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GURDI/GURDI PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "TEKPESHE PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "KUTAKARA/KUTAKARA PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "GULIDA/GULIDA PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "PAIKON BASSA /PAIKON PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "KWAKWA/KWAKWA PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "BARABARI/BARABARI PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "CHAKUMI/CHAKUMI VILLAGE SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "KWAKWATA VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Gawu": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GAWU TOWN/GAWU PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "YELWAN GAWU/YELWAN GAWU PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "JAMIGBE/JAMIGBE/JAMIGBE PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "MAWOGI/MAWOGI PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "SABONGURARA/GURARA PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "TUNGAN USMAN/TUNGAN USMAN PRIMARY SCHOOL"
+          }
+        ]
+      }
+    }
+  },
+  "BWARI": {
+    "code": "02",
+    "wards": {
+      "Bwari Central": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BWARI I / CENTRAL PRY. SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "BWARI II / CENTRAL PRY. SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "BWARI SARKI / NEAR CHIEF PALACE"
+          },
+          {
+            "code": "004",
+            "name": "BWARI IV / KOGO / NEAR FSP MILLING"
+          },
+          {
+            "code": "005",
+            "name": "BARAN GONI / PRY. SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "ZUMA / ZUMA VILLAGE SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "GABA / PRY. SCHOOL"
+          }
+        ]
+      },
+      "Kuduru": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BWARI / TUDUN WADA/JAMB SECRETARIAT I"
+          },
+          {
+            "code": "002",
+            "name": "BWARI / TUDUN WADA/JAMB SECRETARIAT II"
+          },
+          {
+            "code": "003",
+            "name": "BWARI STAFF QTRS / SECURITY POST FGGC."
+          },
+          {
+            "code": "004",
+            "name": "KUCHIKO C.D.S. / OLD GSS BWARI"
+          },
+          {
+            "code": "005",
+            "name": "SABON GARI / RUGAN FULANI NOMADIC PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "ZANGO / BWARI ZANGO"
+          },
+          {
+            "code": "007",
+            "name": "KUDURU / SECURITY POST NEW GSS BWARI"
+          }
+        ]
+      },
+      "Igu": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "IGU / IGU PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "TOKULO / TOKULO PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "KAIMA / KAIMA PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "PANUNUKE/PANUNUKE PRIMARY SCHOOL (PANUNUKE/ PANUNUKE VILLAGE SQUARE)"
+          },
+          {
+            "code": "005",
+            "name": "IGU KORO/OPEN SPACE, OPPOSITE IGU KORO CHIEF'S PALACE (IGU KORO/IN FRONT OF CHIEF'S PALACE)"
+          }
+        ]
+      },
+      "Shere": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "SHARE KORO / SHARE KORO PRI. SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "SHARE GWARI / SHARE GWARI PRI. SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "GALUWYI I/ GALUWYI PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "GALUWY I I/ GALUWYI VILLAGE SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "SUNPE / SUNPE VILLAGE"
+          },
+          {
+            "code": "006",
+            "name": "DURUMI / DURUMI VILLAGE SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "PIKO / PIKO VILLLAGE SQUARE"
+          },
+          {
+            "code": "008",
+            "name": "GUDUPE / GUDUPE VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Kawu": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KAWU/KAWU PRIMARY SCH."
+          },
+          {
+            "code": "002",
+            "name": "KURUMIN DAUDU/KURUMIN DAUDU VILLAGE SQUARE"
+          },
+          {
+            "code": "003",
+            "name": "KAUDASHI / KAUDASHI SQUARE"
+          },
+          {
+            "code": "004",
+            "name": "PADAN GWARI VILLAGE SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "TUNGA BIJIMI/TUNGA BIMIJI VILLAGE SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "ADAKA GBAGYI/ OPEN SPACE, OPPOSITE ADAKA GBAGYI CHIEF'S PALACE(ADAKA GBAGYI CHIEF'S PALACE)"
+          },
+          {
+            "code": "007",
+            "name": "DOKUMA/DOKUMA PRIMARY SCH."
+          },
+          {
+            "code": "008",
+            "name": "KUTE/KUTE PRIMARY SCH."
+          },
+          {
+            "code": "009",
+            "name": "KARAKO/KARAKO VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Ushafa": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "USHAFA I & II/USHAFA PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "LOWER USMAN DAM/SECURITY POST OPP. ASCON"
+          },
+          {
+            "code": "003",
+            "name": "JIGO/JIGO PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "PEYI/KWABAN/PEYI VILLAGE CENTRE"
+          }
+        ]
+      },
+      "Dutse Alhaji": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DUTSE ALHAJI I & II/ DUTSE PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "DUTSE ALHAJI III/ DUTSE VILLAGE/DUTSE VILLAGE"
+          },
+          {
+            "code": "003",
+            "name": "SAGWARI/SAGWARI PRI. SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "DAWAKI/DAWAKI VILLAGE"
+          },
+          {
+            "code": "005",
+            "name": "GIDAN BAWA/GIDAN BAWA VILLAGE SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "MPAPE I/MPAPE PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "MPAPE I/MPAPE PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "KATAMPE/KATAMPE VILLAGE SQUARE"
+          },
+          {
+            "code": "009",
+            "name": "SHISHIPE/SHISHIPE VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Byazhin": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "BYAZHIN /BYAZHIN PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "ZHIKO/ZHIKO VILLAGE"
+          },
+          {
+            "code": "003",
+            "name": "IJA BISA/IJA BISA VILLAGE"
+          },
+          {
+            "code": "004",
+            "name": "KUCHIBUYI/KUCHIBUYI VILLAGE"
+          },
+          {
+            "code": "005",
+            "name": "PASPA / PASPA VILLAGE"
+          },
+          {
+            "code": "006",
+            "name": "CHIKAKORE / CHIKAKORE VILLAGE"
+          },
+          {
+            "code": "007",
+            "name": "KUGABOKU/KUGABOKU VILLLAGE"
+          }
+        ]
+      },
+      "Kubwa": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KUBWA VILLAGE/ OPEN SPACE, OPPOSITE CHIEF'S PALACE (KUBWA VILLAGE/ KOFAR SARKI)"
+          },
+          {
+            "code": "002",
+            "name": "BAZANGO/ OPEN SPACE, OPPOSITE CHIEF'S PALACE BAZANGO (BAZANGO/ KOFAR SARKI)"
+          },
+          {
+            "code": "003",
+            "name": "KUKWABA I/ KUKWABA MARKET"
+          },
+          {
+            "code": "004",
+            "name": "KUKWABA II/SECURITY POST NYSC CAMP"
+          },
+          {
+            "code": "005",
+            "name": "KUKWABA III/BEHIND SAQUE PHARMACY"
+          },
+          {
+            "code": "006",
+            "name": "MAITAMA I & II/KUBWA PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "MAITAMA IV/ OPEN SPACE, NEAR CHIEF'S PALACE (MAITAMA IV/KOFAR SARKI MAITAMA SABO)"
+          },
+          {
+            "code": "008",
+            "name": "MAITAMA V/ OPEN SPACE, NEAR CHIEF'S PALACE (MAITAMA V/KOFAR SARKI MAITAMA TSOHO)"
+          },
+          {
+            "code": "009",
+            "name": "DAIDAI/DAIDAI PRIMARY SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "DAIDAI SABO/SABON DAIDAI VILLAGE"
+          },
+          {
+            "code": "011",
+            "name": "DAKWA/DAKWA VILLAGE SQUARE"
+          }
+        ]
+      },
+      "Usuma": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "PHASE II SITE II/ROAD JUNCTION IN FRONT BLK 124"
+          },
+          {
+            "code": "002",
+            "name": "PHASE II SITE II/( B/K 79) AT THE BACK OF B/K 79"
+          },
+          {
+            "code": "003",
+            "name": "PHASE I SITE1 (PW I & II)/PW PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "PHASE I SITEI (PW III)/OPP.LIVING WATER PHARMACY"
+          },
+          {
+            "code": "005",
+            "name": "PHASE I SITE I (PWIV)/RD JUNCTION NATIONAL MATHMATICAL CENTRE STAFF QTR"
+          },
+          {
+            "code": "006",
+            "name": "FHA 3RD AVENUE I/MODEL PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "FHA 3RD AVENUE II & III/SECURITY POST FHA CLINIC"
+          },
+          {
+            "code": "008",
+            "name": "BERGER CAMP I & II/ BERGER CAMP SECURITY POST7 I"
+          },
+          {
+            "code": "009",
+            "name": "PHASE III/RD JUNCTION OPP. MODEL SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "PHASE I SITE I/ROAD JUNCTION CORNER SHOPS"
+          },
+          {
+            "code": "011",
+            "name": "PHASE I SITE I/ROAD JUNCTION ONE-TWO MARKET"
+          },
+          {
+            "code": "012",
+            "name": "PHASE IV/PHASE IV JUNCTION"
+          },
+          {
+            "code": "013",
+            "name": "OWNER OCCUPIER/KUBWA IV PRIMARY SCHOOL (OWNER OCCUPIER/SECURITY GATE)"
+          }
+        ]
+      }
+    }
+  },
+  "GWAGWALADA": {
+    "code": "03",
+    "wards": {
+      "Gwagwalada Centre": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DAGIRI I/ OPEN SPACE, WAZOBIA MOTOR PARK (DAGIRI I /INFRONT OF VILLAGE HEAD'S HOUSE)"
+          },
+          {
+            "code": "002",
+            "name": "DAGIRI II /DAGIRI PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "DAGIRI III/ OPEN SPACE, DAGIRI TRANSFORMER (DAGIRI III/ IN FRONT OF VENUS HOUSE)"
+          },
+          {
+            "code": "004",
+            "name": "SABON-GARI I/DEMONSTRATION PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "SABON-GARI II/DEMONSTRATION PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "SABON-GARI III/DEMONSTRATION PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "UNG. BASA I/ TOWNSHIP POLICE POST (UNG. BASA I/OLD MARKET SQUARE)"
+          },
+          {
+            "code": "008",
+            "name": "UNG. BASA II/ JSS, DEMO. SCH. (UNG. BASA II/ INFRONT OF TANKO'S HOUSE)"
+          },
+          {
+            "code": "009",
+            "name": "UNG. DODO/ DODO PRIMARY SCHOOL (UNG. DODO/INFRONT OF WARD'S HEADS HOUSE)"
+          },
+          {
+            "code": "010",
+            "name": "UNG. DODO/UNG. DODO PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Kutunku": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KUTUNKU I/ PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "KUTUNKU II/ WOMEN CENTRE"
+          },
+          {
+            "code": "003",
+            "name": "UNG. FULANI I/ HEALTH CLINIC"
+          },
+          {
+            "code": "004",
+            "name": "UNG. FULANI II/ TOWN HALL"
+          },
+          {
+            "code": "005",
+            "name": "UNG. JESHI I I//UNG. FULANI HEALTH CENTRE (UNG. JESHI I I//DAKI JESHI HOUSE)"
+          },
+          {
+            "code": "006",
+            "name": "UNG. JESHI I/UNG. FULANI TOWN HALL (UNG. JESHI I INFRONT OF CHIEF'S HOUSE)"
+          },
+          {
+            "code": "007",
+            "name": "UNG. GADE/ TOWNSHIP POLICE POST (UNG. GADE/KOFAR GIDAN SARKI)"
+          }
+        ]
+      },
+      "Staff Quarters": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "PHASE I/GADO NASKO PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "PHASE I/ B & C GADO NASKO PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "PHASE II/OP. UNIVERSITY GATE"
+          },
+          {
+            "code": "004",
+            "name": "PHASE II A/OP. UNIVERSITY GATE"
+          },
+          {
+            "code": "005",
+            "name": "PHASE III PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "PHASE III A / BEHIND UNIVERSITY OF ABUJA"
+          },
+          {
+            "code": "007",
+            "name": "PHASE III B / PHASE III PRI. SCH."
+          },
+          {
+            "code": "008",
+            "name": "KONTAGORA NEW HOUSING ESTATE PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Ibwa": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "IBWA SARKI/PRI. SCH. IBWA"
+          },
+          {
+            "code": "002",
+            "name": "RAFIN ZURFI/RAFIN ZURFI PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "DUKWA/DUKWA PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "GURFATA/GURUFATA PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "IKA I / II PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "KWAMUKU PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Dobi": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UNG. SARKI DOBI / PRI. SCH. DOBI"
+          },
+          {
+            "code": "002",
+            "name": "UNG. SARKI DOBI B & C / PRI. SCH. DOBI"
+          },
+          {
+            "code": "003",
+            "name": "KAIDA SABO/KAIDA SABO PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "PEBEYI/PEBEYI PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "WUMI/WUMI PRI. SCH."
+          },
+          {
+            "code": "006",
+            "name": "TUNGAN SARKI TSUANI/TSAUNI PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "KWALITA/KWALITA PRY. SCH."
+          },
+          {
+            "code": "008",
+            "name": "PAGADA/PAGADA PRI. SCH."
+          },
+          {
+            "code": "009",
+            "name": "KPADORO/ KPADORO UBE PRIMARY SCHOOL (KPADORO / KOFAR SARKI)"
+          },
+          {
+            "code": "010",
+            "name": "KAIDA TSOHO / PRI. SCH."
+          }
+        ]
+      },
+      "Paiko": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "PAIKO KORE SARKI / PAIKO PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "IZOM FULANI/BAGADA PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "PASSO/PASSO PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "KACE/KACE PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "KAIDA TSOHO/ (KOFAR SARKI)"
+          }
+        ]
+      },
+      "Tungan Maje": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "TUNGAN MAJE/TUNGAN MAJE PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "YELWAN ZUBA/YELWA ZUBA PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "ANAGADA/ANAGADA PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "SHANAGU/SHANAGU PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "SHISHIDA/KOFAR GIDAN SARKI"
+          },
+          {
+            "code": "006",
+            "name": "CHEZEKO/CHEZEKO PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "UNG. SAMU/HEALTH CLINIC"
+          }
+        ]
+      },
+      "Zuba": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UNG. SARKI /PRI SCH."
+          },
+          {
+            "code": "002",
+            "name": "SABON GARI/ZUBA CLINIC"
+          },
+          {
+            "code": "003",
+            "name": "UNG. KASA/ UNG. SARKI PRIMARY SCHOOL (UNG. KASA/ IN FRONT OF MADAKI)"
+          },
+          {
+            "code": "004",
+            "name": "SABON KASUWA/NURTW OFFICE"
+          }
+        ]
+      },
+      "Ikwa": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "IKWA/IKWA PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "TUNGAN LADAN/PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "SHAGA/BASSAN ZUBA /SHAGA PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "CHITUMU/OPEN SPACE IN FRONT OF GIDAN SARKI (CHITUMU/KOFAR GIDAN SARKI)"
+          }
+        ]
+      },
+      "Gwako": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GWAKO TOWN/PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "MALAUNI/KPAKURU/KPAKURU PRI.SCH."
+          },
+          {
+            "code": "003",
+            "name": "UNIV. QTRS/TUKUNYA/SECURITY GATE"
+          },
+          {
+            "code": "004",
+            "name": "GIRI/GIRI PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "KPASELE/UBE PRIMARY SCHOOL (KPASELE/KOFAR GIDAN SARKI)"
+          }
+        ]
+      }
+    }
+  },
+  "KUJE": {
+    "code": "04",
+    "wards": {
+      "Kuje": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KUJE CENTRAL/CENTRAL PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "KUJE CENTRAL/CENTRAL PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "KAYARDA/KAYARDA PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "KAYARDA/KAYARDA PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "SAUKA/ KOFAR SARKI"
+          },
+          {
+            "code": "006",
+            "name": "LOW-COST/MASS AGENCY"
+          },
+          {
+            "code": "007",
+            "name": "GODOJI,GODOJI/PRIMARY SCH."
+          },
+          {
+            "code": "008",
+            "name": "TUKPEKI,TUKPEKI/ PRI. SCH."
+          }
+        ]
+      },
+      "Chibiri": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "CHIBIRI/CHIBIRI PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "KIYI/KIYI/PRIMARY SCH."
+          },
+          {
+            "code": "003",
+            "name": "SHETIGO/SHETIGO PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "PASSALI/PASSALI PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "CHUKUKU/CHUKUKU PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "LANTO/LANTO PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Gaube": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GAUBE/PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "PAGGI/PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "DIBE PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "KUSAKI / PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "YANGA PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "GIDIGWAI /PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "GIDAN BAWA/ PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "DAFARA PRIMARY SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "GAWU KURMI/ PRIMARY SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "KAHODA HANNU/ PRIMARY SCHOOL"
+          },
+          {
+            "code": "011",
+            "name": "GWAUPE/ PRIMARY SCHOOL"
+          },
+          {
+            "code": "012",
+            "name": "GUDE / OPEN SPACE IN FRONT OF CHIEF'S HOUSE (GUDE / KOFAR SARKI)"
+          }
+        ]
+      },
+      "Kwaku": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "SABO/PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "KWAKU/PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "GADORO/PRI. SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "CHIDA/PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "BUGADO/PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Kabi": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KABI KASSA/PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "KABI MANGORO/PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "AGWAI/PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "GUMAYI/ PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "DUDA / PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "TUDE/ PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "ACHIMBI / PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Rubochi": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "RUBOCHI/ PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "RUBOCHI/ AREA COUNCIL TV VIEWING CENTRE (RUBOCHI/KOFAN SARKI(OLD SARKI HOUSE)"
+          },
+          {
+            "code": "003",
+            "name": "RUBOCHI/ OPE"
+          },
+          {
+            "code": "004",
+            "name": "RUBOCHI/UNG. GADE"
+          },
+          {
+            "code": "005",
+            "name": "ATTAKO / PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "KULO / PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "UKYA / PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "TIKA / PRIMARY SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "UBO GBAGYI / PRIMARY SCHOOL"
+          },
+          {
+            "code": "010",
+            "name": "TOTO GABIYA / PRIMARY SCHOOL"
+          },
+          {
+            "code": "011",
+            "name": "AHINZA / PRIMARY SCHOOL"
+          },
+          {
+            "code": "012",
+            "name": "ZOKUTU / OPEN SPACE, IN FRONT OF CHIEF'S HOUSE(ZOKUTU / KOFAR SARKI)"
+          }
+        ]
+      },
+      "Gwargwada": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GWARGADA PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "GWARGADA /GANGIYEI"
+          },
+          {
+            "code": "003",
+            "name": "GOMBE / PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "TUSHA / PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "GWAGWADA KPANA / PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "PESU/ OPEN SPACE, VILLAGE SQUARE (PESU KOFAR GIDAN MADAKI)"
+          }
+        ]
+      },
+      "Gudun Karya": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GUDUN KARYA / PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "HUNI / PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "DARKA / PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "AFFA/PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "ADEGBA TASHARA/PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "BUGA/PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "ZAGABUTU/PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "GUDUN KAR YAGADE/ OPEN SPACE, IN FRONT OF CHIEF'S PALACE (GUDUN KAR YAGADE/ KOFAR SARKI)"
+          }
+        ]
+      },
+      "Kujekwa": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KUJEKWA/PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "ODU / PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "BIDA / PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "GIDAN BAWA/ OPEN SPACE, MARKET SQUARE (GIDAN BAWA/ KOFAR SARKI)"
+          },
+          {
+            "code": "005",
+            "name": "SABE/ OPEN SPACE, IN FRONT OF CHIEF'S PALACE (SABE/ KOFAR GIDAN MADAKI)"
+          }
+        ]
+      },
+      "Yenche": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "YENCHE/PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "GBAMFA / PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "GBEDE / PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "DNAGO / PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "YABA/OPEN SPACE, VILLAGE SQUARE (YABA/ KOFAR SARKI)"
+          }
+        ]
+      }
+    }
+  },
+  "KWALI": {
+    "code": "05",
+    "wards": {
+      "Kwali Ward": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KWALI I / HEALTH CENTRE"
+          },
+          {
+            "code": "002",
+            "name": "KWALI II / CENTRAL PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "KWALI YAMMAH/ TOWN HALL, KWALI (KWALI YAMMAH/VILLAGE CENTRE)"
+          },
+          {
+            "code": "004",
+            "name": "BONUGO / PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "UNG. HAKIMI/ PILOT CENTRAL PRI. SCHOOL (UNG. HAKIMI/NEAR PEOPLES BANK)"
+          },
+          {
+            "code": "006",
+            "name": "KWALI NORMARDIC RUGAN FULANI"
+          }
+        ]
+      },
+      "Yangoji": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "YANGOJI / PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "SUKUKU / PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "KUROKO / PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "IJA PADA / PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "IJA / DABUTA / PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "IJA TAMPE/PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "DAKA TAMPE/PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Pai": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "PAI / PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "DABI/ LEA PRI. SCHOOL, DABI (DABI / VILLAGE SQUARE,NEAR PUB. TOILET)"
+          },
+          {
+            "code": "003",
+            "name": "BAKO / PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "LELELI / PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "CECEYI / PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Kilankwa": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KILANKWA I / PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "KILANKWA II / PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "PETTI / PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "SHEDA GALADIMA / PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "SHEDA SARKI I / PRIMARY SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "SHEDA SARKI II / PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Dafa": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "DAFA DADA / PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "PADA MAGAJI/ LEA PRI. SCHOOL, PADA MAGAJI (PADA MAGAJI / GIDAN SARKI)"
+          },
+          {
+            "code": "003",
+            "name": "GUGWA/LEA PRI. SCHOOL, GUGWA (GUGWA/KOFAR SARKI)"
+          },
+          {
+            "code": "004",
+            "name": "GULI / PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Kundu": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KUNDU/ LEA PRI. SCHOOL, KUNDU (KUNDU/KOFAR SARKI)"
+          },
+          {
+            "code": "002",
+            "name": "GOMANI / PRI SCH"
+          },
+          {
+            "code": "003",
+            "name": "TUNGA SARKI / PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "DAMAKUSA/ LEA PRI. SCHOOL, DAMAKUSA (DAMAKUSA/VILLAGE CENTRE)"
+          }
+        ]
+      },
+      "Ashara": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "ASHARA / PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "PUKAFA/ LEA PRI. SCHOOL, PUKAFA (PUKAFA/GIDAN SARKI)"
+          },
+          {
+            "code": "003",
+            "name": "FALKARA/ LEA PRI. SCHOOL, FALKARA (FALKARA/KOFAR SARKI)"
+          },
+          {
+            "code": "004",
+            "name": "FOGBE / PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "MAIKWARI/ LEA PRIMARY SCHOOL, MAIKWARI (MAIKWARI / KOFAR SARKI)"
+          },
+          {
+            "code": "006",
+            "name": "RIWAZA/ LEA PRI. SCHOOL, RIWAZA (RIWAZA/VILLAGE SQUARE)"
+          },
+          {
+            "code": "007",
+            "name": "KONAN MADA/ LEA PRI. SCHOOL, KONAN (KONAN MADA/KOFAR SARKI)"
+          },
+          {
+            "code": "008",
+            "name": "TEKPESHE/ LEA PRI. SCHOOL, TEKPESHE (TEKPESHE/KOFAR SARKI)"
+          }
+        ]
+      },
+      "Gumbo": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GUMBO / PRIMARY SCHOL"
+          },
+          {
+            "code": "002",
+            "name": "KWAITA HAUSA / PRIMARY SCHOL"
+          },
+          {
+            "code": "003",
+            "name": "PIRI / PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "ANINI VILLAGE SQUARE"
+          },
+          {
+            "code": "005",
+            "name": "KAMADI SABO/PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Wako": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "WAKO/PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "DANGARA/PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "BUKPE/PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "CHIDA/LEA PRI. SCHOOL, CHIDA (CHIDA/KOFAR SARKI)"
+          },
+          {
+            "code": "005",
+            "name": "DANGARA KUDU/GOVT. SEC. SCH."
+          },
+          {
+            "code": "006",
+            "name": "YEWUTI/PRIMARY SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "UBO SHARU/PRIMARY SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "DAPA/ LEA PRIMARY SCHOOL, DAPA (DAPA/KOFAR SARKI)"
+          },
+          {
+            "code": "009",
+            "name": "WAKO II / PRIMARY SCHOOL"
+          }
+        ]
+      },
+      "Yebu": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "YEBU/PRIMARY SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "KWAITA SABO/ PRIMARY SCHOOL"
+          },
+          {
+            "code": "003",
+            "name": "KWAITA TSOHO/ LEA PRI. SCHOOL, KWAITA TSOHO (KWAITA TSOHO/KOFAR SARKI)"
+          },
+          {
+            "code": "004",
+            "name": "LEDA/PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "KIGBE/ LEA PRIMARY SCHOOL, KIGBE (KIGBE/KOFAR SARKI)"
+          },
+          {
+            "code": "006",
+            "name": "FARAKUTI/ LEA PRI. SCHOOL, FARAKUTI (FARAKUTI/KOFAR SARKI)"
+          },
+          {
+            "code": "007",
+            "name": "YANBABU/ LEA PRIMARY SCHOOL, YANBABU (YANBABU/KOFAR SARKI)"
+          }
+        ]
+      }
+    }
+  },
+  "ABUJA MUNICIPAL": {
+    "code": "06",
+    "wards": {
+      "City Centre": {
+        "code": "01",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AREA I, SECT. I/AREA I PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "AREA I, SECT. I/AREA I PRI. SCH."
+          },
+          {
+            "code": "003",
+            "name": "AREA I, SECT. I/AREA I PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "AREA II, SECT. II/F.G. GUEST HOUSE"
+          },
+          {
+            "code": "005",
+            "name": "AREA II, SECT.I I/PARK & GARDEN"
+          },
+          {
+            "code": "006",
+            "name": "AREA 2, SECT.I I/NAT. LIBRARY,MOKWA STREET"
+          },
+          {
+            "code": "007",
+            "name": "AREA 2, SECT.I I/NAT. LIBRARY,MOKWA STREET"
+          },
+          {
+            "code": "008",
+            "name": "AREA 2, SECT.I I/NAT. LIBRARY,MOKWA STREET"
+          },
+          {
+            "code": "009",
+            "name": "AREA 2, SECT.I I/ENV. PROTECTION BOARD"
+          },
+          {
+            "code": "010",
+            "name": "AREA 2, SECT.I I/AMUSEMENT PARK OPP. AREA II"
+          },
+          {
+            "code": "011",
+            "name": "AREA 2, SECT.I I/AMUSEMENT PARK OPP. AREA II"
+          },
+          {
+            "code": "012",
+            "name": "AREA 3/ SHOPPING CENTRE, NYSC DHSQ"
+          },
+          {
+            "code": "013",
+            "name": "AREA 3/ SHOPPING CENTRE, NYSC DHSQ"
+          },
+          {
+            "code": "014",
+            "name": "AREA 7/ B/W BLOCL I, 8 II NAVY CLOSE"
+          },
+          {
+            "code": "015",
+            "name": "AREA 8/OPP/ BLOCK FLAT 1 MOHD. BUHARI WAY"
+          },
+          {
+            "code": "016",
+            "name": "AREA 8/OPP/ BLOCK FLAT 1 MOHD. BUHARI WAY"
+          },
+          {
+            "code": "017",
+            "name": "AREA 8/OPP/ BLOCK FLAT 1 MOHD. BUHARI WAY"
+          },
+          {
+            "code": "018",
+            "name": "AREA 10/POST OFFICE"
+          },
+          {
+            "code": "019",
+            "name": "AREA 10/COUNCIL FOR ARTS / CULTURE"
+          },
+          {
+            "code": "020",
+            "name": "AREA 11/INFRONT OF BLOCK 4 YELWA CLOSE"
+          },
+          {
+            "code": "021",
+            "name": "PRESIDENTIAL VILLA/ POLICE AFFAIRS COMMISSION"
+          },
+          {
+            "code": "022",
+            "name": "PRESIDENTIAL VILLA/ POLICE AFFAIRS COMMISSION"
+          },
+          {
+            "code": "023",
+            "name": "O.V.A./O.V.A. CAMP I"
+          },
+          {
+            "code": "024",
+            "name": "O.V.A./O.V.A. CAMP II"
+          },
+          {
+            "code": "025",
+            "name": "SANI ABACHA BARRACKS"
+          },
+          {
+            "code": "026",
+            "name": "ASO HILL BERGER/ BERGER CAMP"
+          }
+        ]
+      },
+      "Garki": {
+        "code": "02",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GARKI VILLAGE/GARKI DISPENSARY"
+          },
+          {
+            "code": "002",
+            "name": "GARKI VILLAGE/NEAR DA'A SOCIAL CLUB"
+          },
+          {
+            "code": "003",
+            "name": "GARKI VILLAGE II/FORMER PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "GARKI VILLAGE II/NEW PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "GARKI VILLAGE /NEW PRI. SCH. II"
+          },
+          {
+            "code": "006",
+            "name": "SECURITY POST / GARKI MODEL MKT. SECURITY POST"
+          },
+          {
+            "code": "007",
+            "name": "C.B.N. QRTS/CBN QRTS NEAR FORMER PRI.SCH."
+          },
+          {
+            "code": "008",
+            "name": "CBN QRTS/CBN QRTS NEAR POLICE H/QRTS"
+          },
+          {
+            "code": "009",
+            "name": "GARKI III/RD JUNC. RACHEAL EYE CLINIC"
+          },
+          {
+            "code": "010",
+            "name": "ASOKORO I /TOTAL FILLING STATION"
+          },
+          {
+            "code": "011",
+            "name": "ASOKORO II /NEW CAPITAL PRI. SCH."
+          },
+          {
+            "code": "012",
+            "name": "ASOKORO III /NEAR ECOWAS SECRETARIAT"
+          },
+          {
+            "code": "013",
+            "name": "ASOKORO III /NEAR ECOWAS SECRETARIAT"
+          },
+          {
+            "code": "014",
+            "name": "KURUNDUMA/KURUNDUMA VILLAGE"
+          },
+          {
+            "code": "015",
+            "name": "GUZAPE/UNG. FULANI/GUZAPE VILLAGE"
+          },
+          {
+            "code": "016",
+            "name": "KABIN MADAKI VILLAGE"
+          },
+          {
+            "code": "017",
+            "name": "APO LEGIES QRTS./LEGISLATURE'S QTRS"
+          },
+          {
+            "code": "018",
+            "name": "APO LEGIES QRTS/SEC. POST TO MECH. VILLLAGE"
+          },
+          {
+            "code": "019",
+            "name": "AKPAJENYA/AKPAJENYA VILLAGE"
+          },
+          {
+            "code": "020",
+            "name": "APO VILLAGE/NEAR DANKOGI FILLING STATION"
+          },
+          {
+            "code": "021",
+            "name": "DURUMI I/ DURUMI PRI. SCH."
+          },
+          {
+            "code": "022",
+            "name": "DURUMI II/ DURUMI PRI. SCH."
+          },
+          {
+            "code": "023",
+            "name": "DUTSE BABA/DUTSE BABA PRI. SCHOOL"
+          }
+        ]
+      },
+      "Kabusa": {
+        "code": "03",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KABUSA/KABUSA PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "SHARITE/SHARETI VILLAGE CENTRE"
+          },
+          {
+            "code": "003",
+            "name": "KETTI/KETTI PRI. II SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "WURU/WURU PRY.SCH"
+          },
+          {
+            "code": "005",
+            "name": "BURUN/BURUN PRI. SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "TAKUNSHARA/TAKUNSHARA PRI. SCHOOL"
+          },
+          {
+            "code": "007",
+            "name": "PYAKASA/PYAKASA PRI. SCHOOL"
+          },
+          {
+            "code": "008",
+            "name": "LUGBE I / UNG. SARKI (GIDAN MAGORO)"
+          },
+          {
+            "code": "009",
+            "name": "LUGBE II / LUGBE PRI. SCH."
+          },
+          {
+            "code": "010",
+            "name": "NEW LUGBE II/ MARKET SQUARE"
+          },
+          {
+            "code": "011",
+            "name": "ZHIDU-LUGBE/ ZHIDU VILLAGE CENTRE"
+          },
+          {
+            "code": "012",
+            "name": "ALEYTA/ALEYTA PRI. SCHOOL"
+          },
+          {
+            "code": "013",
+            "name": "GALADIMA/GALADIMA PRI. SCHOOL"
+          },
+          {
+            "code": "014",
+            "name": "LUGBE F.H.A. GATE"
+          }
+        ]
+      },
+      "Wuse": {
+        "code": "04",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "WUSE ZONE I / NEAR HABIB BANK"
+          },
+          {
+            "code": "002",
+            "name": "WUZE ZONE I / NAT. ASS PROV. OFFFICE"
+          },
+          {
+            "code": "003",
+            "name": "WUZE ZONE I / NAT. ASS PROV. OFFFICE"
+          },
+          {
+            "code": "004",
+            "name": "WUZE ZONE II / WUSE I PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "WUZE ZONE II / WUSE I PRI. SCH. II"
+          },
+          {
+            "code": "006",
+            "name": "WUZE ZONE II / WUSE I PRI. SCH. II"
+          },
+          {
+            "code": "007",
+            "name": "WUZE ZONE II / SECURITY POST TWO"
+          },
+          {
+            "code": "008",
+            "name": "WUZE ZONE III / G.S.S. WUSE"
+          },
+          {
+            "code": "009",
+            "name": "WUSE ZONE III/G.S.S WUSE"
+          },
+          {
+            "code": "010",
+            "name": "WUSE ZONE III / WUSE II PRI. SCH."
+          },
+          {
+            "code": "011",
+            "name": "WUSE ZONE IV / G.S. S. TUDUN WADA"
+          },
+          {
+            "code": "012",
+            "name": "WUSE ZONE IV / IBRAHIM SANI ABACHA / ESTATE GATE"
+          },
+          {
+            "code": "013",
+            "name": "WUSE ZONE IV / MODEL PRI. SCHOOL"
+          },
+          {
+            "code": "014",
+            "name": "WUSE ZONE 6 / WUSE III PRI. SCHOOL"
+          },
+          {
+            "code": "015",
+            "name": "WUSE ZONE 6 / YAUNDE ST. OPP. ROAD SAFETY BK."
+          },
+          {
+            "code": "016",
+            "name": "WUSE ZONE 6 / DEV. CONTROL OFFICE"
+          },
+          {
+            "code": "017",
+            "name": "WUSE ZONE 7/ SECURITY POST EDUCATION BANK"
+          },
+          {
+            "code": "018",
+            "name": "WUSE 2(A.P PLAZA) OAU QRTS NEAR A.P PLAZA"
+          },
+          {
+            "code": "019",
+            "name": "WUSE 2 (A.P PLAZA) O.A.U QTRS NEAR A.P PLAZA"
+          },
+          {
+            "code": "020",
+            "name": "WUSE 2 (BANNEX PLAZA) RD. JUNCTION BANNEX PLAZA"
+          },
+          {
+            "code": "021",
+            "name": "WUSE 2 (BRITISH EMB./OAU QRTS OPP. BRITISH EMB.)"
+          },
+          {
+            "code": "022",
+            "name": "MINISTER'S HILL I / NIGER EMB. MISSIPI RD."
+          },
+          {
+            "code": "023",
+            "name": "MINISTER'S HILL II / FOLADE OKE INT'L SCH."
+          },
+          {
+            "code": "024",
+            "name": "F.H.A. I MAITAMA / RD. JUNCTION ABUJA GUEST INN"
+          },
+          {
+            "code": "025",
+            "name": "F.H.A. I MAITAMA / RD. JUNCTION ZECO SPEC. HOSPITAL"
+          },
+          {
+            "code": "026",
+            "name": "MAITAMA I/MODEL PRI. SCH."
+          },
+          {
+            "code": "027",
+            "name": "MAITAMA 2 / MODEL SECONDARY SCH. MAITAMA"
+          },
+          {
+            "code": "028",
+            "name": "MAITAMA 3/RD. JUNCTION GANA / USMAN NICON HILTON"
+          },
+          {
+            "code": "029",
+            "name": "MAITAMA /ASO DRIVE I ROUND ABOUT"
+          },
+          {
+            "code": "030",
+            "name": "WUSE II FCDA QRTS,OPP MINIS QRTS"
+          },
+          {
+            "code": "031",
+            "name": "F.C.D.A. QRTS/PTF QRTS/SECURITY GATE"
+          },
+          {
+            "code": "032",
+            "name": "AIRWAVE HOTEL FSP GATE"
+          },
+          {
+            "code": "033",
+            "name": "ROCK VIEW HOTEL JUNCTION / NATIONAL HEALTH INSURANCE SCHEME OFFICE"
+          },
+          {
+            "code": "034",
+            "name": "NIG. 99 SECT/NICON INSURANCE STAFF QTRS"
+          },
+          {
+            "code": "035",
+            "name": "WUSE II MERCY SPECIALIST HOSPITAL JUNCTION"
+          }
+        ]
+      },
+      "Gwarinpa": {
+        "code": "05",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "LIFE CAMP/GATE I MINISTER'S GATE"
+          },
+          {
+            "code": "002",
+            "name": "LIFE CAMP II/MARKET GATE LIFE CAMP"
+          },
+          {
+            "code": "003",
+            "name": "LIFE CAMP II/MARKET GATE LIFE CAMP"
+          },
+          {
+            "code": "004",
+            "name": "LIFE CAMP III/GSS. LIFE CAMP"
+          },
+          {
+            "code": "005",
+            "name": "GWARINPA VILLAGE/GWARINPA PRI. SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "KADO ESTATE/KADO ESTATE I"
+          },
+          {
+            "code": "007",
+            "name": "KADO ESTATE II/KADO HOUSING ESTATE"
+          },
+          {
+            "code": "008",
+            "name": "JAYI VILLAGE/ JAYI VILLLAGE CENTRE"
+          },
+          {
+            "code": "009",
+            "name": "JAYI FULANI / JAYI FULANI EXPRESS VILLLAGE CENTRE"
+          },
+          {
+            "code": "010",
+            "name": "MABUSHI/MABUSHI PRI. SCHOOL"
+          },
+          {
+            "code": "011",
+            "name": "MABUSHI/MABUSHI PRI. SCHOOL"
+          },
+          {
+            "code": "012",
+            "name": "UTAKO/UTAKO VILLAGE CENTRE"
+          },
+          {
+            "code": "013",
+            "name": "GALADIMA/GALADIMA VILLLAGE CENTRE"
+          },
+          {
+            "code": "014",
+            "name": "JABI SARKI/JABI PRI. SCHOOL"
+          },
+          {
+            "code": "015",
+            "name": "JABI MAJE/JABI PRI. SCHOOL"
+          },
+          {
+            "code": "016",
+            "name": "KADO VILLAGE I/KADO OPP. LIFE CAMP"
+          },
+          {
+            "code": "017",
+            "name": "KADO VILLAGE II/KADO RAYA UNG."
+          },
+          {
+            "code": "018",
+            "name": "KARON-MAJIGI/KARON-MAJIGI PRI. SCHOOL"
+          },
+          {
+            "code": "019",
+            "name": "KADO-KAUCHI/ KADO-KAUCHI VILLAGE CENTRE"
+          },
+          {
+            "code": "020",
+            "name": "KUCHIGORO/KUCHIGORO PRI. SCH."
+          },
+          {
+            "code": "021",
+            "name": "PIWOYI / PIWOYI PRI. SCH."
+          },
+          {
+            "code": "022",
+            "name": "FINANCE QTR'S/ MIN. OF FINANCE QTRS GATE"
+          },
+          {
+            "code": "023",
+            "name": "GWARINPA/GWARINPA ESTATE I"
+          },
+          {
+            "code": "024",
+            "name": "GWARINPA/GWARINPA ESTATE II"
+          }
+        ]
+      },
+      "Jiwa": {
+        "code": "06",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "JIWA TSOHO / OPEN SPACE, IN FRONT OF GIDAN SARKI (JIWA TSOHO / KOFAR GIDAN SARKI)"
+          },
+          {
+            "code": "002",
+            "name": "JIWA I/ JIWA TV VIEWING CENTRE"
+          },
+          {
+            "code": "003",
+            "name": "JIWA II/ JIWA PRI. SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "JIWA III/ G.S.S. JIWA"
+          },
+          {
+            "code": "005",
+            "name": "BASSAN JIWA III/BASSAN JIWA VILLAGE SQUARE"
+          },
+          {
+            "code": "006",
+            "name": "TUNGA MADAKI/ TUNGA MADAKI PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "WUKARA/WUKARA VILLAGE CENTRE"
+          },
+          {
+            "code": "008",
+            "name": "WUKARA DALLATU VILLAGE WUKARA"
+          },
+          {
+            "code": "009",
+            "name": "HULUMI/HULUMI VILLAGE CENTRE"
+          },
+          {
+            "code": "010",
+            "name": "IDU /IDU VILLAGE PRIMARY SCHOOL"
+          },
+          {
+            "code": "011",
+            "name": "IDU II /IDU VILLAGE PRIMARY SCHOOL"
+          },
+          {
+            "code": "012",
+            "name": "IDU III/ OPEN SPACE, NEAR MASALACHIN JUMMA'A (IDU III / GIDIN MANGORO MASALACHIN JUMM'A)"
+          },
+          {
+            "code": "013",
+            "name": "IDU IV/ OPEN SPACE, NEAR MASALACHIN JUMMA'A (IDU IV / GIDIN MANGORO MASALACHIN JUMM'A)"
+          },
+          {
+            "code": "014",
+            "name": "KARMO SABO I/ KARMO PRI. SCHOOL"
+          },
+          {
+            "code": "015",
+            "name": "KARMO SABOII/ KARMO PRI. SCHOOL"
+          },
+          {
+            "code": "016",
+            "name": "KARMO SABO III/ OPP. KARMO MARKET"
+          },
+          {
+            "code": "017",
+            "name": "KARMO SABO IV/ BEHIND KARMO MARKET"
+          },
+          {
+            "code": "018",
+            "name": "KARMO SABO V/ KARMO UNGWAR KORO"
+          },
+          {
+            "code": "019",
+            "name": "KARMO SABO VI/ KARMO UNGWAR GWARI"
+          },
+          {
+            "code": "020",
+            "name": "KARMO TSOHO / KARMO TSOHO"
+          }
+        ]
+      },
+      "Gui": {
+        "code": "07",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GUI PADA/GUI VILLAGE"
+          },
+          {
+            "code": "002",
+            "name": "TOGE/TOGE VILLAGE"
+          },
+          {
+            "code": "003",
+            "name": "SAUKA/SAUKA VILLAGE"
+          },
+          {
+            "code": "004",
+            "name": "GBESSA/GBESSA PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "GOSA/GOSA PRI. SCHOOL"
+          },
+          {
+            "code": "006",
+            "name": "IDDO SARKI/IDDO SARKI PRI. SCH."
+          },
+          {
+            "code": "007",
+            "name": "IDDO MAZHI /IDDO MAZHI"
+          },
+          {
+            "code": "008",
+            "name": "NUWAREGE/NUWAREGE"
+          },
+          {
+            "code": "009",
+            "name": "AIRPORT/G.S.S. AIRPORT"
+          },
+          {
+            "code": "010",
+            "name": "T/WAKILI TUNGAN WAKILI VILLAGE"
+          }
+        ]
+      },
+      "Karshi": {
+        "code": "08",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "KARSHI I/ CENTRAL PRI. SCH."
+          },
+          {
+            "code": "002",
+            "name": "KARSHI II/ MARKET SQUARE KARSHI"
+          },
+          {
+            "code": "003",
+            "name": "KARSHI III/ DISPENSORY OPP. CHIEF PALACE"
+          },
+          {
+            "code": "004",
+            "name": "KARSHI IV/ OPEN SPACE, IN FRONT OF GIDAN LIMAN (KARSHI IV/KOFAR GIDAN LIMAN)"
+          },
+          {
+            "code": "005",
+            "name": "KARSHI V KUTARE/KARESHI DEV. AREA SECT."
+          },
+          {
+            "code": "006",
+            "name": "KARSHI TUNGA / VILLAGE CENTRE"
+          },
+          {
+            "code": "007",
+            "name": "LEKKA/LEKKA VILLAGE CENTRE"
+          },
+          {
+            "code": "008",
+            "name": "KUSAKI/KUSAKI VILLAGE CENTRE"
+          },
+          {
+            "code": "009",
+            "name": "KAFANTY/KAFANTY VILLLAGE CENTRE"
+          }
+        ]
+      },
+      "Orozo": {
+        "code": "09",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "OROZO/OROZO PRI. SCHOOL"
+          },
+          {
+            "code": "002",
+            "name": "UNG. SARKI/UNG. SARKI VILLAGE CENTRE"
+          },
+          {
+            "code": "003",
+            "name": "GUGUGGU/GUGUGUG PRI. SCH."
+          },
+          {
+            "code": "004",
+            "name": "KURUDU/KURUDU PRI. SCH."
+          },
+          {
+            "code": "005",
+            "name": "CHORI BISA/CHORI BISA VILLAGE CENTRE"
+          },
+          {
+            "code": "006",
+            "name": "AZHATA/ OPEN SPACE, NEAR E.C.W.A. CHURCH (AZHATA/AZHATA NEAR E.C.W.A. CHURCH)"
+          },
+          {
+            "code": "007",
+            "name": "KPEGYI/ OPEN SPACE, NEAR E.C.W.A. CHURCH (KPEGYI/KPEGYI NEAR E.C.W.A. CHURCH)"
+          },
+          {
+            "code": "008",
+            "name": "GIDAN MANGORO/GIDAN MANGORO VILLAGE CENTRE"
+          }
+        ]
+      },
+      "Karu": {
+        "code": "10",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "UNG. PASHE I /CENTRAL PRIMARY SCH."
+          },
+          {
+            "code": "002",
+            "name": "UNG. PASHE I / B. T. S. KARU"
+          },
+          {
+            "code": "003",
+            "name": "UNG. PASHE / AGRICULTURAL EXT. OFFICE"
+          },
+          {
+            "code": "004",
+            "name": "UNG. GINAR / HEALTH CENTRE"
+          },
+          {
+            "code": "005",
+            "name": "UNG. HAUSAWA I / KARU VILLAGE JUNCTION"
+          },
+          {
+            "code": "006",
+            "name": "UNG. HAUSAWA II / OLD MARKET SQUARE"
+          },
+          {
+            "code": "007",
+            "name": "UNG. HAUSAWA III / AFTER SALASI RD. JUNCTION"
+          },
+          {
+            "code": "008",
+            "name": "KARU SITE I/ MIN. OF IDUS QRTS"
+          },
+          {
+            "code": "009",
+            "name": "KARU SITE II/ OLD NEPA OFFICE JUNCTION"
+          },
+          {
+            "code": "010",
+            "name": "KARU SITE IIB / NEAR AREA COURT"
+          },
+          {
+            "code": "011",
+            "name": "KARU SITE II (F. H. A.) ( CUSTOMS QUARTERS)"
+          },
+          {
+            "code": "012",
+            "name": "KARU SITE IV /CBN QRTS JUNCTION KARSHI JUNCTION I"
+          },
+          {
+            "code": "013",
+            "name": "KARU SITE IV /CBN QRTS JUNCTION KARSHI JUNCTION II"
+          },
+          {
+            "code": "014",
+            "name": "JIKOYI/JIKOYI PRI. SCH."
+          },
+          {
+            "code": "015",
+            "name": "JIKOYI II/JIKOYI TOKKA VILLAGE"
+          },
+          {
+            "code": "016",
+            "name": "JIKOYI/UNG. GADE"
+          },
+          {
+            "code": "017",
+            "name": "JIKOYI/JIKWOYI PHASE III"
+          }
+        ]
+      },
+      "Nyanya": {
+        "code": "11",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "AREA A1/OPEN SPACE, INFRONT OF PLOT 8 & 9 AREA A (AREA A1/INFRONT OF PLOT 8 & 9 AREA A)"
+          },
+          {
+            "code": "002",
+            "name": "AREA AII/MKT.SQR.OPP PLOT 4"
+          },
+          {
+            "code": "003",
+            "name": "AREA AIII/ OPEN SPACE, INFRONT OF PLOT 30 (AREA AIII/INFRONT OF PLOT 30)"
+          },
+          {
+            "code": "004",
+            "name": "AREA AIV/ OPEN SPACE, AT THE BACK OF PLOT 33 (AREA AIV/AT THE BACK OF PLOT 33)"
+          },
+          {
+            "code": "005",
+            "name": "AREA B/OPP. HEALTH CENTRE"
+          },
+          {
+            "code": "006",
+            "name": "AREA CI/ OPEN SPACE, AT THE BACK OF PLOT 134 (AREA CI/AT THE BACK OF PLOT 134)"
+          },
+          {
+            "code": "007",
+            "name": "AREA CII/ OPEN SPACE, AT THE BACK OF PLOT 125 (AREA CII/AT THE BACK OF PLOT 125)"
+          },
+          {
+            "code": "008",
+            "name": "AREA DI/CENTRAL PRI. SCHOOL"
+          },
+          {
+            "code": "009",
+            "name": "AREA D II/CENTRAL PRI. SCHOOL II"
+          },
+          {
+            "code": "010",
+            "name": "AREA EI/ OPEN SPACE, AT THE BACK OF PLOT 109 (AREA EI/ AT THE BACK OF PLOT 109)"
+          },
+          {
+            "code": "011",
+            "name": "AREA EII/UNG. BAWA PRI. SCH."
+          },
+          {
+            "code": "012",
+            "name": "AREA II/ROAD JUNCTION MAMI MKT."
+          },
+          {
+            "code": "013",
+            "name": "AREA II / ROAD JUNCTION MAMI MARKET II"
+          },
+          {
+            "code": "014",
+            "name": "ARAE FI/ (V.I.O) F.C.D.A. OFFICE"
+          },
+          {
+            "code": "015",
+            "name": "UNG.BAWA/UNG. BAWA PRI. SCHOOL"
+          },
+          {
+            "code": "016",
+            "name": "UNG. BAWA /UNG. BAWANYANYA VILLAGE"
+          },
+          {
+            "code": "017",
+            "name": "UNG.BAWA/UNG. BAWANYANYA VILLAGE II"
+          },
+          {
+            "code": "018",
+            "name": "NYANYA VILLAGE/ OPEN SPACE, IN FRONT OF CHIEF'S PALACE (NYAYA VILLAGE/KOFAR SARKI)"
+          },
+          {
+            "code": "019",
+            "name": "NYAYA VILLAGE II/UNG. HAUSAWA"
+          },
+          {
+            "code": "020",
+            "name": "F.H.A./F.H.A. ALONG NYAYA 2 KARU RD."
+          },
+          {
+            "code": "021",
+            "name": "GBAGARAPE/GBAGARAPE VILLAGE CENTRE"
+          }
+        ]
+      },
+      "Gwagwa": {
+        "code": "12",
+        "polling_units": [
+          {
+            "code": "001",
+            "name": "GWAGWA/PRIMARY SCHOOL GALADIMA"
+          },
+          {
+            "code": "002",
+            "name": "GWAGWA II/CIVIC CENTRE"
+          },
+          {
+            "code": "003",
+            "name": "GWAGWA III/PRIMARY SCHOOL"
+          },
+          {
+            "code": "004",
+            "name": "GWAGWA IV/PRIMARY SCHOOL"
+          },
+          {
+            "code": "005",
+            "name": "GWAGWA V / OPP.GWAGWA MARKET"
+          },
+          {
+            "code": "006",
+            "name": "TASHA/TASHA VILLAGE"
+          },
+          {
+            "code": "007",
+            "name": "KARSANA/KARSANA VILLAGE"
+          },
+          {
+            "code": "008",
+            "name": "KABA/KABA VILLAGE"
+          },
+          {
+            "code": "009",
+            "name": "KIGINI/KIGINI VILLAGE"
+          },
+          {
+            "code": "010",
+            "name": "SABURI/SABURI VILLLAGE"
+          },
+          {
+            "code": "011",
+            "name": "FILLING DABO/FILLING DABO VILLLAGE"
+          },
+          {
+            "code": "012",
+            "name": "ZAUDA VILLAGE I"
+          },
+          {
+            "code": "013",
+            "name": "ZAUDA VILLAGE II"
+          },
+          {
+            "code": "014",
+            "name": "BAGUSA/BAGUSA VILLAGE"
+          },
+          {
+            "code": "015",
+            "name": "UNG. MAIYAKI IBRAHIM AFTER BRIGADE"
+          },
+          {
+            "code": "016",
+            "name": "LIBERTY AREA/ OPEN SPACE BY LIBERTY HOTEL (LIBERTY AREA BY LIBERTY HOTEL)"
+          },
+          {
+            "code": "017",
+            "name": "GWAGWA 6 / ALONG GWAGWA JIWA RD."
+          },
+          {
+            "code": "018",
+            "name": "GWAGWA 7 / GWAGWA BEFORE BRIGDE"
+          }
+        ]
+      }
+    }
+  }
+}
