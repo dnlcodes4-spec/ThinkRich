@@ -38,4 +38,5 @@ Small, local, easily-reversed choices do **not** need an ADR.
 | [0004](0004-pwa-for-members-app.md) | Deliver the members' app as a PWA | Accepted |
 | [0005](0005-rls-as-authorization-boundary.md) | Use Postgres RLS as the authorization boundary | Accepted |
 | [0006](0006-design-system-and-brand.md) | Adopt a token-based design system with the Think-Winners brand palette | Accepted |
-| [0007](0007-dual-brand-palette.md) | Dual-brand palette — ThinkRich (navy) + Think-Winners (green) | Accepted |
+| [0007](0007-dual-brand-palette.md) | Dual-brand palette — ThinkRich (navy) + Think-Winners (green) | Superseded (0008) |
+| [0008](0008-single-navy-brand.md) | Single navy + gold brand — Think-Winners reverts from green | Accepted |

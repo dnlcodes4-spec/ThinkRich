@@ -37,26 +37,26 @@ function ReachAndCta() {
           <div className="font-mono text-3xl font-bold tabular-nums text-gold-400 sm:text-4xl">
             <Counter to={20000} />
           </div>
-          <div className="mt-0.5 text-sm text-green-50/65">trained leaders</div>
+          <div className="mt-0.5 text-sm text-navy-50/65">trained leaders</div>
         </div>
-        <div className="h-10 w-px bg-green-50/20" />
+        <div className="h-10 w-px bg-navy-50/20" />
         <div>
           <div className="font-mono text-3xl font-bold tabular-nums text-gold-400 sm:text-4xl">
             <Counter to={200000} />
           </div>
-          <div className="mt-0.5 text-sm text-green-50/65">engaged voters</div>
+          <div className="mt-0.5 text-sm text-navy-50/65">engaged voters</div>
         </div>
       </div>
       <div className="flex flex-wrap gap-3">
         <a
           href="#partnership"
-          className="inline-flex min-h-12 items-center justify-center rounded-md bg-gold-500 px-7 text-sm font-bold text-green-950 transition-colors hover:bg-gold-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400"
+          className="inline-flex min-h-12 items-center justify-center rounded-md bg-gold-500 px-7 text-sm font-bold text-navy-950 transition-colors hover:bg-gold-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400"
         >
           Partner with us
         </a>
         <a
           href="#offer"
-          className="inline-flex min-h-12 items-center justify-center rounded-md border border-green-50/35 px-6 text-sm font-semibold text-green-50 transition-colors hover:border-gold-400 hover:text-gold-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400"
+          className="inline-flex min-h-12 items-center justify-center rounded-md border border-navy-50/35 px-6 text-sm font-semibold text-navy-50 transition-colors hover:border-gold-400 hover:text-gold-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400"
         >
           What we offer
         </a>
@@ -69,11 +69,11 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[96vh] flex-col justify-end overflow-hidden bg-green-950 text-green-50"
+      className="relative flex min-h-dvh flex-col justify-end overflow-hidden bg-navy-950 text-navy-50"
     >
       <div aria-hidden="true" className="absolute inset-0">
         <Image
-          src="/think-winners/img/hero-crowd.jpg"
+          src="/think-winners/img/hero-v1.png"
           alt=""
           fill
           priority
@@ -81,13 +81,13 @@ export function Hero() {
           className="tw-kenburns object-cover object-center"
         />
       </div>
-      {/* Grade to green at the base, keep the middle open */}
+      {/* Grade at the base for headline legibility; top stays clear so the image reads */}
       <div
         aria-hidden="true"
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to top, rgb(6,22,13) 5%, rgba(6,22,13,0.6) 32%, rgba(6,22,13,0.12) 60%, rgba(6,22,13,0.55) 100%)",
+            "linear-gradient(to top, rgb(5,21,39) 3%, rgba(5,21,39,0.6) 28%, rgba(5,21,39,0.1) 55%, transparent 72%)",
         }}
       />
       {/* Vignette */}
@@ -96,7 +96,7 @@ export function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(125% 90% at 50% 42%, transparent 45%, rgba(0,0,0,0.55) 100%)",
+            "radial-gradient(125% 90% at 50% 42%, transparent 45%, rgba(0,0,0,0.5) 100%)",
         }}
       />
       {/* Shaft of gold light */}
@@ -108,10 +108,16 @@ export function Hero() {
             "radial-gradient(42% 52% at 84% 14%, rgba(201,162,39,0.22), transparent 60%)",
         }}
       />
+      {/* Soft top scrim so the floating nav stays legible without a solid bar */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-32"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(5,21,39,0.5), transparent)",
+        }}
+      />
       <FilmGrain />
-      {/* Letterbox bars */}
-      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-6 bg-green-950 sm:h-9" />
-      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-6 bg-green-950 sm:h-9" />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 sm:px-8 sm:pb-28">
         <h1 className="max-w-4xl font-display text-5xl font-black leading-[0.9] text-balance [text-shadow:0_2px_40px_rgba(0,0,0,0.55)] sm:text-8xl">
@@ -120,7 +126,7 @@ export function Hero() {
             Winning Together
           </span>
         </h1>
-        <p className="mt-6 max-w-xl text-lg text-green-50/85">
+        <p className="mt-6 max-w-xl text-lg text-navy-50/85">
           An organized grassroots network that turns communities into votes —
           leader by leader, ward by ward.
         </p>
@@ -145,11 +151,16 @@ const CITIES = [
 
 export function NigeriaMap({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 1024 1024" fill="none" aria-hidden="true" className={className}>
+    <svg
+      viewBox="0 0 1024 1024"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
       <g transform={NIGERIA_TRANSFORM}>
         <path
           d={NIGERIA_PATH}
-          fill="rgba(21,96,46,0.55)"
+          fill="rgba(10,42,78,0.55)"
           stroke="rgba(217,190,104,0.55)"
           strokeWidth="9"
           strokeLinejoin="round"

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,9 +12,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Display serif — the site root is ThinkRich Community; the marketing surfaces use it.
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700", "900"],
+});
+
 export const metadata: Metadata = {
-  title: "Think-Winners Movement",
-  description: "Membership platform for the Think-Winners Movement.",
+  title: "ThinkRich Community — Creating Value for Mankind",
+  description:
+    "A value-driven community building leaders who connect the right people to verifiable opportunities. Six arms — one purpose: creating value for mankind.",
 };
 
 // Runs before paint to set the theme, avoiding a flash of the wrong colours.
@@ -32,7 +41,7 @@ export default function RootLayout({
       // The pre-paint script sets `data-theme` before hydration; suppress the
       // resulting attribute mismatch warning on <html> only.
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />

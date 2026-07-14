@@ -1,20 +1,15 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
-import Image from "next/image";
 import { Grain } from "./motifs";
+import { ThinkRichWordmark } from "./arm-mark";
 
-const leftLinks = [
-  { href: "#offer", label: "What we offer" },
-  { href: "#reach", label: "Reach" },
+const links = [
+  { href: "#community", label: "The Community" },
+  { href: "#arms", label: "The Arms" },
+  { href: "#philosophy", label: "Philosophy" },
 ];
-const rightLinks = [
-  { href: "#how", label: "How we work" },
-  { href: "#partnership", label: "Partnership" },
-];
-const allLinks = [...leftLinks, ...rightLinks];
 
-// Solid once the hero has scrolled past; transparent while over the full-screen hero.
 function useScrolled() {
   return useSyncExternalStore(
     (cb) => {
@@ -27,14 +22,13 @@ function useScrolled() {
 }
 
 const linkCls =
-  "text-sm font-medium text-navy-50 transition-colors hover:text-gold-400 [text-shadow:0_1px_10px_rgba(0,0,0,0.55)]";
+  "text-sm font-medium text-navy-50/90 transition-colors hover:text-gold-400 [text-shadow:0_1px_10px_rgba(0,0,0,0.5)]";
 
-export function ThinkWinnersNav() {
+export function ThinkRichNav() {
   const [open, setOpen] = useState(false);
   const scrolled = useScrolled();
   const solid = scrolled || open;
 
-  // Lock background scroll while the full-screen menu is open.
   useEffect(() => {
     if (!open) return;
     const prev = document.body.style.overflow;
@@ -54,49 +48,31 @@ export function ThinkWinnersNav() {
         }`}
       >
         <div
-          className={`mx-auto grid max-w-6xl grid-cols-[auto_auto] items-center gap-4 px-6 transition-all duration-300 md:grid-cols-[1fr_auto_1fr] ${
-            solid ? "py-2.5" : "py-4"
+          className={`mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 transition-all duration-300 ${
+            solid ? "py-3" : "py-5"
           }`}
         >
-          {/* Left links (desktop) */}
-          <nav className="hidden items-center gap-7 md:flex">
-            {leftLinks.map((l) => (
+          <a href="#top" className="flex items-center gap-2.5 text-navy-50" aria-label="ThinkRich Community — top">
+            <span aria-hidden="true" className="grid h-8 w-8 place-items-center rounded-lg border border-gold-400/30 bg-navy-900 font-display text-sm font-black text-gold-400">
+              TR
+            </span>
+            <ThinkRichWordmark className="text-navy-50 [text-shadow:0_1px_10px_rgba(0,0,0,0.5)]" />
+          </a>
+
+          <nav className="hidden items-center gap-8 md:flex">
+            {links.map((l) => (
               <a key={l.href} href={l.href} className={linkCls}>
                 {l.label}
               </a>
             ))}
           </nav>
 
-          {/* Centered logo */}
-          <a
-            href="#top"
-            aria-label="Think-Winners — top"
-            className="justify-self-start md:justify-self-center"
-          >
-            <Image
-              src="/think-winners/logo-mark-light.png"
-              alt="Think-Winners"
-              width={911}
-              height={582}
-              priority
-              className="h-10 w-auto drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:h-11"
-            />
-          </a>
-
-          {/* Right links + CTA (desktop) / menu toggle (mobile) */}
-          <div className="flex items-center justify-end gap-7">
-            <nav className="hidden items-center gap-7 md:flex">
-              {rightLinks.map((l) => (
-                <a key={l.href} href={l.href} className={linkCls}>
-                  {l.label}
-                </a>
-              ))}
-            </nav>
+          <div className="flex items-center gap-2">
             <a
-              href="#partnership"
-              className="hidden rounded-md bg-gold-500 px-4 py-2 text-sm font-bold text-navy-950 transition-colors hover:bg-gold-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400 lg:inline-flex"
+              href="#join"
+              className="hidden rounded-md bg-gold-500 px-4 py-2 text-sm font-bold text-navy-950 transition-colors hover:bg-gold-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400 sm:inline-flex"
             >
-              Partner with us
+              Get involved
             </a>
             <button
               type="button"
@@ -113,7 +89,6 @@ export function ThinkWinnersNav() {
         </div>
       </header>
 
-      {/* Full-screen cinematic mobile menu (sibling of header so `fixed` fills the viewport) */}
       {open && (
         <div className="fixed inset-0 z-40 flex flex-col overflow-hidden bg-navy-950 text-navy-50 md:hidden">
           <div
@@ -125,10 +100,9 @@ export function ThinkWinnersNav() {
             }}
           />
           <Grain opacity={0.08} />
-
           <div className="relative flex flex-1 flex-col px-6 pb-10 pt-28">
             <nav className="flex flex-col">
-              {allLinks.map((l, i) => (
+              {links.map((l, i) => (
                 <a
                   key={l.href}
                   href={l.href}
@@ -139,30 +113,26 @@ export function ThinkWinnersNav() {
                   <span className="font-display text-3xl font-semibold text-navy-50 transition-colors group-hover:text-gold-400">
                     {l.label}
                   </span>
-                  <span
-                    aria-hidden="true"
-                    className="text-xl text-gold-500/70 transition-transform group-hover:translate-x-1"
-                  >
+                  <span aria-hidden="true" className="text-xl text-gold-500/70 transition-transform group-hover:translate-x-1">
                     →
                   </span>
                 </a>
               ))}
             </nav>
-
             <div className="mt-auto">
               <a
-                href="#partnership"
+                href="#join"
                 onClick={() => setOpen(false)}
                 className="tw-rise flex min-h-14 items-center justify-center rounded-md bg-gold-500 text-base font-bold text-navy-950 transition-colors hover:bg-gold-400"
-                style={{ animationDelay: `${80 + allLinks.length * 70}ms` }}
+                style={{ animationDelay: `${80 + links.length * 70}ms` }}
               >
-                Partner with us
+                Get involved
               </a>
               <p
                 className="tw-rise mt-6 font-display text-lg italic text-navy-50/55"
-                style={{ animationDelay: `${140 + allLinks.length * 70}ms` }}
+                style={{ animationDelay: `${140 + links.length * 70}ms` }}
               >
-                Thinking Together, Winning Together
+                Creating Value for Mankind.
               </p>
             </div>
           </div>

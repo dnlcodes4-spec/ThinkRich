@@ -57,7 +57,7 @@ export function ConnectionGraphic({ className = "" }: { className?: string }) {
         />
       ))}
       {COMMUNITY.map((n) => (
-        <circle key={`c-${n.x}-${n.y}`} cx={n.x} cy={n.y} r="4.5" fill="#15602E" />
+        <circle key={`c-${n.x}-${n.y}`} cx={n.x} cy={n.y} r="4.5" fill="#0a2a4e" />
       ))}
       <circle cx={target.x} cy={target.y} r="22" fill="#C9A227" opacity="0.16" />
       <circle

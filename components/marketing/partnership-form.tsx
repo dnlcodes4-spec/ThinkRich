@@ -9,7 +9,7 @@ import {
 const initial: PartnershipState = { status: "idle" };
 
 const inputCls =
-  "mt-1.5 w-full rounded-md border border-green-200 bg-white px-3.5 py-2.5 text-green-950 placeholder:text-green-900/35 focus:border-gold-500 focus:outline-2 focus:outline-offset-1 focus:outline-gold-400";
+  "mt-1.5 w-full rounded-md border border-navy-200 bg-white px-3.5 py-2.5 text-navy-950 placeholder:text-navy-900/35 focus:border-gold-500 focus:outline-2 focus:outline-offset-1 focus:outline-gold-400";
 
 function Field({
   label,
@@ -32,7 +32,7 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={name} className="text-sm font-semibold text-green-800">
+      <label htmlFor={name} className="text-sm font-semibold text-navy-800">
         {label}
         {required && <span className="text-gold-600"> *</span>}
       </label>
@@ -70,19 +70,19 @@ export function PartnershipForm() {
 
   if (state.status === "success") {
     return (
-      <div className="rounded-2xl border border-green-200 bg-white p-8 text-center sm:p-10">
+      <div className="rounded-2xl border border-navy-200 bg-white p-8 text-center sm:p-10">
         <div
           aria-hidden="true"
-          className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-green-700 text-white"
+          className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-navy-700 text-white"
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
             <path d="M20 6 9 17l-5-5" />
           </svg>
         </div>
-        <p className="mt-5 font-display text-2xl font-semibold text-green-950">
+        <p className="mt-5 font-display text-2xl font-semibold text-navy-950">
           Request received.
         </p>
-        <p className="mx-auto mt-2 max-w-sm text-green-800">{state.message}</p>
+        <p className="mx-auto mt-2 max-w-sm text-navy-800">{state.message}</p>
       </div>
     );
   }
@@ -91,7 +91,7 @@ export function PartnershipForm() {
     <form
       action={formAction}
       noValidate
-      className="rounded-2xl border border-green-200 bg-white p-6 sm:p-8"
+      className="rounded-2xl border border-navy-200 bg-white p-6 sm:p-8"
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Your name" name="name" required autoComplete="name" placeholder="Full name" error={fe.name} />
@@ -113,7 +113,7 @@ export function PartnershipForm() {
       <button
         type="submit"
         disabled={pending}
-        className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-md bg-gold-500 px-7 text-sm font-bold text-green-950 transition-colors hover:bg-gold-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400 disabled:opacity-60 sm:w-auto"
+        className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-md bg-gold-500 px-7 text-sm font-bold text-navy-950 transition-colors hover:bg-gold-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400 disabled:opacity-60 sm:w-auto"
       >
         {pending ? "Sending…" : "Request a partnership"}
       </button>

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Fraunces } from "next/font/google";
-import { ThinkWinnersNav } from "@/components/marketing/nav";
 
 // Display serif — echoes the italic-serif tagline in the movement's own logo,
 // so it's brand-grounded, not decorative. Scoped to the marketing surface.
@@ -25,7 +24,6 @@ export default function ThinkWinnersLayout({
 }) {
   return (
     <div data-brand="think-winners" className={display.variable}>
-      <ThinkWinnersNav />
       {children}
     </div>
   );

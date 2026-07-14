@@ -61,7 +61,7 @@ end-to-end test suite for critical journeys.
 | ~~Q5~~ | ✅ **Resolved:** 36 states + FCT = **37** (seeded) | Geography seed | Client |
 | ~~Q6~~ | ✅ **Resolved (CR-0002):** duplicate-registration key = **NIN** (unique constraint) | Schema uniqueness | Client |
 | ~~Q9~~ | ✅ **Resolved (CR-0002):** "Unit" = **Polling Unit**; hierarchy State→LGA→Ward→Polling Unit | Geography schema, roles | Client |
-| ~~Q7~~ | ✅ **Resolved:** dual brand — ThinkRich navy+gold, Think-Winners green+gold (T-014) | Design system | Client |
+| ~~Q7~~ | ✅ **Resolved (CR-0005/ADR-0008):** single brand — both ThinkRich and Think-Winners are **navy + gold** (earlier "green" was a miscommunication) | Design system | Client |
 | ~~Q8~~ | ✅ **Resolved:** units stay geographic (2+ wards); National tier kept; `unit_manager`, voter=member | Identity/RLS migration | Client |
 
 Update this table as answers arrive; move unblocked items in the phase table above.

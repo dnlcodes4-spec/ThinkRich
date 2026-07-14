@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/marketing/reveal";
 import { Counter } from "@/components/marketing/counter";
+import { ThinkWinnersNav } from "@/components/marketing/nav";
 import { Hero, NigeriaMap } from "@/components/marketing/hero";
 import { Grain, ConnectionGraphic } from "@/components/marketing/motifs";
 import { PartnershipForm } from "@/components/marketing/partnership-form";
@@ -108,7 +109,8 @@ function Rule({ light = false }: { light?: boolean }) {
 
 export default function ThinkWinnersLanding() {
   return (
-    <main className="bg-white text-green-950">
+    <main className="bg-white text-navy-950">
+      <ThinkWinnersNav />
       <Hero />
 
       {/* ───────────── Who we are — the connection ───────────── */}
@@ -120,7 +122,7 @@ export default function ThinkWinnersLanding() {
               <h2 className="font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
                 We connect the right people to the right candidates.
               </h2>
-              <p className="mt-6 max-w-lg text-lg leading-relaxed text-green-800">
+              <p className="mt-6 max-w-lg text-lg leading-relaxed text-navy-800">
                 Think-Winners builds an organized network of leaders — reaching
                 communities across Nigeria through education, engagement, and
                 lawful grassroots mobilization, while promoting peaceful
@@ -135,11 +137,11 @@ export default function ThinkWinnersLanding() {
           <div className="mt-20 grid gap-10 sm:grid-cols-3">
             {pillars.map(({ title, body, Icon }, i) => (
               <Reveal key={title} delay={i * 90} className="border-t-2 border-gold-500 pt-6">
-                <Icon className="h-8 w-8 text-green-700" />
-                <h3 className="mt-4 font-display text-2xl font-semibold text-green-950">
+                <Icon className="h-8 w-8 text-navy-700" />
+                <h3 className="mt-4 font-display text-2xl font-semibold text-navy-950">
                   {title}
                 </h3>
-                <p className="mt-2 text-green-800">{body}</p>
+                <p className="mt-2 text-navy-800">{body}</p>
               </Reveal>
             ))}
           </div>
@@ -149,14 +151,14 @@ export default function ThinkWinnersLanding() {
       {/* ───────────── Reach (the proof) ───────────── */}
       <section
         id="reach"
-        className="relative scroll-mt-20 overflow-hidden bg-green-950 text-green-50"
+        className="relative scroll-mt-20 overflow-hidden bg-navy-950 text-navy-50"
       >
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 opacity-70"
           style={{
             background:
-              "radial-gradient(45% 55% at 85% 30%, rgba(201,162,39,0.14), transparent 60%), radial-gradient(60% 60% at 0% 100%, rgba(21,96,46,0.7), transparent 60%)",
+              "radial-gradient(45% 55% at 85% 30%, rgba(201,162,39,0.14), transparent 60%), radial-gradient(60% 60% at 0% 100%, rgba(10,42,78,0.7), transparent 60%)",
           }}
         />
         <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 lg:grid-cols-[1fr_0.85fr] lg:py-28">
@@ -165,23 +167,23 @@ export default function ThinkWinnersLanding() {
             <h2 className="font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
               An organized network across every community.
             </h2>
-            <p className="mt-5 max-w-lg text-lg text-green-50/85">
+            <p className="mt-5 max-w-lg text-lg text-navy-50/85">
               A structure this precise disseminates your campaign&rsquo;s message
               and voter education rapidly — reaching every corner of the ground
               game, community by community.
             </p>
-            <div className="mt-10 flex gap-10 divide-x divide-green-50/15">
+            <div className="mt-10 flex gap-10 divide-x divide-navy-50/15">
               <div className="pr-10">
                 <div className="font-mono text-4xl font-bold tabular-nums text-gold-400 sm:text-5xl">
                   <Counter to={20000} />
                 </div>
-                <div className="mt-1 text-sm text-green-50/65">trained leaders</div>
+                <div className="mt-1 text-sm text-navy-50/65">trained leaders</div>
               </div>
               <div className="pl-10">
                 <div className="font-mono text-4xl font-bold tabular-nums text-gold-400 sm:text-5xl">
                   <Counter to={200000} />
                 </div>
-                <div className="mt-1 text-sm text-green-50/65">engaged voters</div>
+                <div className="mt-1 text-sm text-navy-50/65">engaged voters</div>
               </div>
             </div>
           </Reveal>
@@ -192,7 +194,7 @@ export default function ThinkWinnersLanding() {
       </section>
 
       {/* ───────────── What we bring (editorial index) ───────────── */}
-      <section id="offer" className="scroll-mt-20 bg-green-50">
+      <section id="offer" className="scroll-mt-20 bg-navy-50">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:py-28">
           <div className="grid gap-12 lg:grid-cols-[0.85fr_1.35fr]">
             <div className="lg:sticky lg:top-24 lg:self-start">
@@ -200,7 +202,7 @@ export default function ThinkWinnersLanding() {
               <h2 className="font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
                 What we bring to your campaign.
               </h2>
-              <p className="mt-5 max-w-sm text-lg text-green-800">
+              <p className="mt-5 max-w-sm text-lg text-navy-800">
                 A full grassroots operation — the people, the training, and the
                 discipline to move votes.
               </p>
@@ -211,15 +213,15 @@ export default function ThinkWinnersLanding() {
                   as="li"
                   key={label}
                   delay={i * 40}
-                  className="flex items-center gap-4 border-b border-green-200 py-5"
+                  className="flex items-center gap-4 border-b border-navy-200 py-5"
                 >
                   <span
                     aria-hidden="true"
-                    className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-white text-green-700 ring-1 ring-green-200"
+                    className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-white text-navy-700 ring-1 ring-navy-200"
                   >
                     <Icon className="h-5 w-5" />
                   </span>
-                  <span className="font-display text-lg font-medium text-green-900">
+                  <span className="font-display text-lg font-medium text-navy-900">
                     {label}
                   </span>
                 </Reveal>
@@ -232,7 +234,7 @@ export default function ThinkWinnersLanding() {
       {/* ───────────── Benefits (dark cinematic band) ───────────── */}
       <section
         id="benefits"
-        className="relative scroll-mt-20 overflow-hidden bg-green-950 text-green-50"
+        className="relative scroll-mt-20 overflow-hidden bg-navy-950 text-navy-50"
       >
         <Grain opacity={0.1} />
         <div
@@ -252,7 +254,7 @@ export default function ThinkWinnersLanding() {
             {benefits.map(({ label, Icon }, i) => (
               <Reveal key={label} delay={i * 60}>
                 <Icon className="h-8 w-8 text-gold-400" />
-                <p className="mt-4 font-display text-xl font-medium leading-snug text-green-50">
+                <p className="mt-4 font-display text-xl font-medium leading-snug text-navy-50">
                   {label}
                 </p>
               </Reveal>
@@ -262,7 +264,7 @@ export default function ThinkWinnersLanding() {
       </section>
 
       {/* ───────────── How we work (expressive timeline) ───────────── */}
-      <section id="how" className="scroll-mt-20 bg-green-50">
+      <section id="how" className="scroll-mt-20 bg-navy-50">
         <div className="mx-auto max-w-4xl px-6 py-20 lg:py-28">
           <Rule />
           <h2 className="font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
@@ -275,21 +277,21 @@ export default function ThinkWinnersLanding() {
                 <Reveal as="li" key={title} delay={i * 60}>
                   <div className="grid grid-cols-[auto_1fr] gap-x-6 sm:gap-x-8">
                     <div className="flex flex-col items-center">
-                      <span className="font-display text-4xl font-black leading-none tabular-nums text-green-700/25 sm:text-5xl">
+                      <span className="font-display text-4xl font-black leading-none tabular-nums text-navy-700/25 sm:text-5xl">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       {!isLast && (
                         <span
                           aria-hidden="true"
-                          className="my-2 w-0.5 flex-1 rounded bg-linear-to-b from-gold-400 to-green-200"
+                          className="my-2 w-0.5 flex-1 rounded bg-linear-to-b from-gold-400 to-navy-200"
                         />
                       )}
                     </div>
                     <div className={isLast ? "pb-0 pt-1" : "pb-12 pt-1"}>
-                      <h3 className="font-display text-2xl font-semibold tracking-tight text-green-950">
+                      <h3 className="font-display text-2xl font-semibold tracking-tight text-navy-950">
                         {title}
                       </h3>
-                      <p className="mt-1.5 text-lg text-green-800">{body}</p>
+                      <p className="mt-1.5 text-lg text-navy-800">{body}</p>
                     </div>
                   </div>
                 </Reveal>
@@ -302,16 +304,16 @@ export default function ThinkWinnersLanding() {
       {/* ───────────── Principled & lawful (dark, map watermark) ───────────── */}
       <section
         id="principles"
-        className="relative scroll-mt-20 overflow-hidden bg-green-950 text-green-50"
+        className="relative scroll-mt-20 overflow-hidden bg-navy-950 text-navy-50"
       >
-        <NigeriaMap className="pointer-events-none absolute -right-24 top-1/2 hidden w-[640px] -translate-y-1/2 opacity-[0.06] lg:block" />
+        <NigeriaMap className="pointer-events-none absolute -right-24 top-1/2 hidden w-160 -translate-y-1/2 opacity-[0.06] lg:block" />
         <Grain opacity={0.09} />
         <div className="relative mx-auto max-w-5xl px-6 py-20 lg:py-28">
           <Rule light />
           <h2 className="font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
             Principled, peaceful, and lawful.
           </h2>
-          <p className="mt-8 max-w-3xl font-display text-2xl font-medium italic leading-snug text-balance text-green-50/90 sm:text-3xl">
+          <p className="mt-8 max-w-3xl font-display text-2xl font-medium italic leading-snug text-balance text-navy-50/90 sm:text-3xl">
             &ldquo;We operate peacefully, lawfully, and responsibly — promoting
             civic participation, respect for democratic institutions, and
             issue-based engagement with communities across Nigeria.&rdquo;
@@ -325,7 +327,7 @@ export default function ThinkWinnersLanding() {
                 className={`font-display text-2xl leading-tight tracking-tight sm:text-3xl ${
                   i % 2
                     ? "font-medium italic text-gold-400"
-                    : "font-semibold text-green-50"
+                    : "font-semibold text-navy-50"
                 }`}
               >
                 {v}
@@ -348,15 +350,15 @@ export default function ThinkWinnersLanding() {
         <div className="mx-auto max-w-5xl px-6 py-20 lg:py-28">
           <Reveal>
             <Rule />
-            <p className="font-display text-3xl font-medium leading-[1.1] text-balance text-green-950 sm:text-4xl lg:text-5xl">
+            <p className="font-display text-3xl font-medium leading-[1.1] text-balance text-navy-950 sm:text-4xl lg:text-5xl">
               Our vision: to become the{" "}
               <span className="font-semibold">
                 largest grassroots leadership and voter-mobilization movement
               </span>{" "}
-              in <span className="italic text-green-700">Nigeria.</span>
+              in <span className="italic text-navy-700">Nigeria.</span>
             </p>
           </Reveal>
-          <ol className="mt-16 divide-y divide-green-200 border-y border-green-200">
+          <ol className="mt-16 divide-y divide-navy-200 border-y border-navy-200">
             {mission.map((m, i) => {
               const [verb, ...rest] = m.replace(/\.$/, "").split(" ");
               return (
@@ -367,8 +369,8 @@ export default function ThinkWinnersLanding() {
                   className="flex items-baseline gap-5 py-5"
                 >
                   <span aria-hidden="true" className="mt-2 h-px w-6 shrink-0 bg-gold-500" />
-                  <p className="font-display text-xl leading-snug text-green-900 sm:text-2xl">
-                    <span className="font-semibold italic text-green-700">{verb}</span>{" "}
+                  <p className="font-display text-xl leading-snug text-navy-900 sm:text-2xl">
+                    <span className="font-semibold italic text-navy-700">{verb}</span>{" "}
                     {rest.join(" ")}.
                   </p>
                 </Reveal>
@@ -381,7 +383,7 @@ export default function ThinkWinnersLanding() {
       {/* ───────────── Partnership (dark band + form) ───────────── */}
       <section
         id="partnership"
-        className="relative scroll-mt-20 overflow-hidden bg-green-950 text-green-50"
+        className="relative scroll-mt-20 overflow-hidden bg-navy-950 text-navy-50"
       >
         <Grain opacity={0.1} />
         <div
@@ -399,7 +401,7 @@ export default function ThinkWinnersLanding() {
               <h2 className="font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
                 Partner with Think-Winners.
               </h2>
-              <p className="mt-5 max-w-md text-lg text-green-50/85">
+              <p className="mt-5 max-w-md text-lg text-navy-50/85">
                 We invite your campaign to partner with us in building a
                 structured grassroots engagement system — expanding outreach,
                 strengthening coordination, and growing long-term leadership
@@ -413,10 +415,10 @@ export default function ThinkWinnersLanding() {
                   "Promotes peaceful democratic participation",
                   "Builds long-term leadership capacity",
                 ].map((p) => (
-                  <li key={p} className="flex items-center gap-3 text-green-50/90">
+                  <li key={p} className="flex items-center gap-3 text-navy-50/90">
                     <span
                       aria-hidden="true"
-                      className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-gold-500 text-[11px] font-bold text-green-950"
+                      className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-gold-500 text-[11px] font-bold text-navy-950"
                     >
                       ✓
                     </span>
@@ -431,27 +433,27 @@ export default function ThinkWinnersLanding() {
       </section>
 
       {/* ───────────── Footer ───────────── */}
-      <footer className="bg-green-950 text-green-50">
+      <footer className="bg-navy-950 text-navy-50">
         <div className="mx-auto max-w-6xl px-6 py-14">
-          <div className="grid grid-cols-2 gap-8 border-b border-green-50/10 pb-10 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-8 border-b border-navy-50/10 pb-10 sm:grid-cols-4">
             {footerPillars.map(([word, sub]) => (
               <div key={word}>
                 <div className="text-lg font-bold tracking-tight text-gold-400">
                   {word}
                 </div>
-                <div className="mt-1 text-sm text-green-50/60">{sub}</div>
+                <div className="mt-1 text-sm text-navy-50/60">{sub}</div>
               </div>
             ))}
           </div>
 
-          <p className="mt-10 max-w-2xl text-sm leading-relaxed text-green-50/70">
+          <p className="mt-10 max-w-2xl text-sm leading-relaxed text-navy-50/70">
             Think-Winners is powered by real community members, registered and
             led by leaders on the ground — the network behind every number on
             this page. Community members join through a leader, not a public form.
           </p>
 
-          <div className="mt-8 flex flex-col gap-2 text-sm text-green-50/60 sm:flex-row sm:items-center sm:justify-between">
-            <p className="font-semibold text-green-50">
+          <div className="mt-8 flex flex-col gap-2 text-sm text-navy-50/60 sm:flex-row sm:items-center sm:justify-between">
+            <p className="font-semibold text-navy-50">
               Think-Winners Movement — Thinking Together, Winning Together
             </p>
             <p>A project of the ThinkRich Community.</p>

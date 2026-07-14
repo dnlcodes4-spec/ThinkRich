@@ -52,11 +52,11 @@ movement about winning together, and for software that holds people's data and g
 | `gold-900` | `#4C3E0F` | deepest gold |
 | `gold-950` | `#382D0B` | — |
 
-### Green (Think-Winners brand primary) — anchor `700` = `#15602E`
-Two brands share this system (see [ADR-0007](../architecture/decisions/0007-dual-brand-palette.md)):
-**ThinkRich Community = navy**, **Think-Winners Movement = green**. Gold, neutrals, surfaces, and
-status are shared — **only the primary hue changes.** Green is AA-verified (green-700 = 7.65:1
-both ways). *Provisional pending the official green asset.*
+### Green scale — retained but currently unused
+Per [ADR-0008](../architecture/decisions/0008-single-navy-brand.md) (superseding ADR-0007), both
+**ThinkRich Community and Think-Winners Movement use navy + gold** — the earlier "Think-Winners =
+green" was a miscommunication (CR-0005). The green scale below is **retained but unused**, kept only
+for a possible future arm; it is AA-verified (green-700 = 7.65:1 both ways).
 
 | Token | Hex | | Token | Hex |
 |-------|-----|-|-------|-----|

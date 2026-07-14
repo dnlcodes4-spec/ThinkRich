@@ -86,24 +86,13 @@
 }
 
 /*
-  Dual brand (CR-0001 / ADR-0007). ThinkRich Community = navy (the default, in
-  :root above). Think-Winners Movement = green. Gold accent, neutrals, surfaces,
-  and status are SHARED — only the primary hue and focus ring change. Set
-  `data-brand="think-winners"` on a surface's root to switch it.
+  Brand palette. Both ThinkRich Community and Think-Winners Movement use
+  navy + gold (the logo). The earlier green Think-Winners palette was a
+  miscommunication and has been reverted (CR-0005, superseding CR-0001 Q7 /
+  T-014): Think-Winners inherits the default navy `:root` above, so no
+  per-brand override is needed. The `green-*` scale is retained below for any
+  future arm that may want it.
 */
-[data-brand="think-winners"] {
-  --primary: #15602e;            /* green-700 */
-  --primary-hover: #216838;      /* green-600 */
-  --primary-foreground: #ffffff;
-  --ring: #317347;               /* green-500 */
-}
-[data-theme="dark"] [data-brand="think-winners"],
-[data-theme="dark"][data-brand="think-winners"] {
-  --primary: #85ac92;            /* green-300 */
-  --primary-hover: #afc9b8;      /* green-200 */
-  --primary-foreground: #0b3419; /* green-950 */
-  --ring: #85ac92;
-}
 
 /* ---- Semantic tokens → Tailwind utilities (theme-reactive) ---- */
 @theme inline {
@@ -287,4 +276,24 @@ html {
 }
 @media (prefers-reduced-motion: reduce) {
   .tw-kenburns { animation: none; transform: scale(1.04); }
+}
+
+/* ── Arms connector: each branch line draws as its arm scrolls into view. ──
+   Paths use pathLength="1" so one rule draws any length. Reveal adds .reveal-in. */
+.tw-connector {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.reveal-in .tw-connector {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tw-connector { stroke-dashoffset: 0; }
+}
+
+/* Hero slider: the active segment fills over the auto-advance interval. */
+@keyframes tw-progress {
+  from { width: 0%; }
+  to { width: 100%; }
 }
