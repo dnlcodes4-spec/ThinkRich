@@ -140,14 +140,14 @@ export const NetworkGraphic = (p: IconProps) => (
       <circle cx="180" cy="150" r="6" />
     </g>
     <circle cx="46" cy="100" r="12" className="fill-gold-500" />
-    <circle cx="46" cy="100" r="4" className="fill-green-950" />
+    <circle cx="46" cy="100" r="4" className="fill-navy-950" />
   </svg>
 );
 
 // Ascending mark — the logo's rising-arrow spirit; used as the brand glyph.
 export const BrandMark = (p: IconProps) => (
   <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" {...p}>
-    <rect x="1" y="1" width="30" height="30" rx="9" className="fill-green-700" />
+    <rect x="1" y="1" width="30" height="30" rx="9" className="fill-navy-700" />
     <path
       d="M7 21.5 13.5 15l3.5 3.5L25 10"
       stroke="currentColor"
