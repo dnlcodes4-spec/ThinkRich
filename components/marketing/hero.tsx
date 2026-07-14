@@ -69,7 +69,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[96vh] flex-col justify-end overflow-hidden bg-green-950 text-green-50"
+      className="relative flex min-h-dvh flex-col justify-end overflow-hidden bg-green-950 text-green-50"
     >
       <div aria-hidden="true" className="absolute inset-0">
         <Image

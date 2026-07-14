@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/marketing/reveal";
 import { Counter } from "@/components/marketing/counter";
+import { ThinkWinnersNav } from "@/components/marketing/nav";
 import { Hero, NigeriaMap } from "@/components/marketing/hero";
 import { Grain, ConnectionGraphic } from "@/components/marketing/motifs";
 import { PartnershipForm } from "@/components/marketing/partnership-form";
@@ -109,6 +110,7 @@ function Rule({ light = false }: { light?: boolean }) {
 export default function ThinkWinnersLanding() {
   return (
     <main className="bg-white text-green-950">
+      <ThinkWinnersNav />
       <Hero />
 
       {/* ───────────── Who we are — the connection ───────────── */}
@@ -304,7 +306,7 @@ export default function ThinkWinnersLanding() {
         id="principles"
         className="relative scroll-mt-20 overflow-hidden bg-green-950 text-green-50"
       >
-        <NigeriaMap className="pointer-events-none absolute -right-24 top-1/2 hidden w-[640px] -translate-y-1/2 opacity-[0.06] lg:block" />
+        <NigeriaMap className="pointer-events-none absolute -right-24 top-1/2 hidden w-160 -translate-y-1/2 opacity-[0.06] lg:block" />
         <Grain opacity={0.09} />
         <div className="relative mx-auto max-w-5xl px-6 py-20 lg:py-28">
           <Rule light />

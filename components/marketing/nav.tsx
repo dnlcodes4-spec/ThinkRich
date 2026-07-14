@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { BrandMark } from "./icons";
 
 const links = [
@@ -10,15 +10,35 @@ const links = [
   { href: "#partnership", label: "Partnership" },
 ];
 
+// Solid once the hero has scrolled past; transparent while over the full-screen hero.
+function useScrolled() {
+  return useSyncExternalStore(
+    (cb) => {
+      window.addEventListener("scroll", cb, { passive: true });
+      return () => window.removeEventListener("scroll", cb);
+    },
+    () => window.scrollY > 24,
+    () => false,
+  );
+}
+
 export function ThinkWinnersNav() {
   const [open, setOpen] = useState(false);
+  const scrolled = useScrolled();
+  const solid = scrolled || open;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-green-50/10 bg-green-950/85 text-green-50 backdrop-blur-md">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 text-green-50 transition-colors duration-300 ${
+        solid
+          ? "border-b border-green-50/10 bg-green-950/85 backdrop-blur-md"
+          : "border-b border-transparent bg-transparent"
+      }`}
+    >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
         <a
           href="#top"
-          className="flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight text-white"
+          className="flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight text-white [text-shadow:0_1px_12px_rgba(0,0,0,0.4)]"
         >
           <BrandMark className="h-8 w-8 text-gold-400" />
           Think-Winners
@@ -29,7 +49,7 @@ export function ThinkWinnersNav() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-green-50/80 transition-colors hover:text-gold-400"
+              className="text-sm font-medium text-green-50/85 transition-colors hover:text-gold-400 [text-shadow:0_1px_12px_rgba(0,0,0,0.4)]"
             >
               {l.label}
             </a>
@@ -58,7 +78,7 @@ export function ThinkWinnersNav() {
       </div>
 
       {open && (
-        <nav className="border-t border-green-50/10 px-6 py-4 md:hidden">
+        <nav className="border-t border-green-50/10 bg-green-950/95 px-6 py-4 backdrop-blur-md md:hidden">
           <ul className="flex flex-col gap-1">
             {links.map((l) => (
               <li key={l.href}>
