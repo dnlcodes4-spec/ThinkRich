@@ -3,14 +3,10 @@ import { ThinkWinnersNav } from "@/components/marketing/nav";
 import { Hero, NigeriaMap } from "@/components/marketing/hero";
 import { Grain } from "@/components/marketing/motifs";
 import { PartnershipForm } from "@/components/marketing/partnership-form";
+import { ProcessStepper } from "@/components/marketing/process-stepper";
 import {
   IconNetwork,
   IconMegaphone,
-  IconCommunity,
-  IconHub,
-  IconGrowth,
-  IconFeedback,
-  IconEducation,
   IconShield,
   IconSignal,
 } from "@/components/marketing/icons";
@@ -18,36 +14,43 @@ import {
 // Candidate-first landing: a pitch to a campaign (content from CR-0001/0002/0003).
 // Only 20,000 / 200,000 appear as figures; the internal leadership chain is not shown;
 // no eyebrow kickers; every section is an authored treatment (see docs/design/design-method.md).
-// Restructured for mobile (2026-07): fewer, denser sections — reach's stats live in the hero,
+// Restructured for mobile (2026-07): fewer, denser sections. Reach's stats live in the hero,
 // benefits fold into "what we bring", and the manifesto merges vision + principles.
 
 const pillars = [
   {
     title: "Organized",
-    body: "A disciplined structure of trained leaders — not a crowd. Every voter is reached through a named, accountable leader.",
+    body: "A disciplined structure of trained leaders, not a crowd. Every voter is reached through a named, accountable leader.",
     Icon: IconNetwork,
   },
   {
     title: "Data-driven",
-    body: "Coverage tracked community by community, so outreach and voter education land where they count.",
+    body: "Coverage tracked community by community, so outreach lands where it counts.",
     Icon: IconSignal,
   },
   {
     title: "Peaceful & lawful",
-    body: "Issue-based engagement conducted strictly within the law — protecting your candidacy's reputation.",
+    body: "Issue-based engagement, strictly within the law. It protects your candidacy's reputation.",
     Icon: IconShield,
   },
 ];
 
 const offer = [
-  { label: "Grassroots leadership network", Icon: IconNetwork },
-  { label: "Structured voter outreach", Icon: IconMegaphone },
-  { label: "Community engagement", Icon: IconCommunity },
-  { label: "Volunteer coordination", Icon: IconHub },
-  { label: "Leadership development", Icon: IconGrowth },
-  { label: "Feedback from local communities", Icon: IconFeedback },
-  { label: "Peaceful voter education", Icon: IconEducation },
-  { label: "Lawful election-day mobilization", Icon: IconShield },
+  {
+    theme: "Build the network",
+    Icon: IconNetwork,
+    items: ["Grassroots leadership network", "Leadership development", "Volunteer coordination"],
+  },
+  {
+    theme: "Reach & educate",
+    Icon: IconMegaphone,
+    items: ["Structured voter outreach", "Community engagement", "Peaceful voter education"],
+  },
+  {
+    theme: "Listen & deliver",
+    Icon: IconShield,
+    items: ["Feedback from local communities", "Lawful election-day mobilization"],
+  },
 ];
 
 const benefits = [
@@ -60,12 +63,12 @@ const benefits = [
 ];
 
 const phases = [
-  ["Leadership recruitment", "Identify and enlist committed community leaders."],
-  ["Leadership training", "Equip leaders with the skills to mobilize responsibly."],
-  ["Community engagement", "Open honest, issue-based conversations at the grassroots."],
-  ["Grassroots mobilization", "Activate the network across every ward and community."],
-  ["Election preparedness", "Ready every leader and voter for lawful participation."],
-  ["Post-election engagement", "Sustain relationships and grow leadership capacity."],
+  { title: "Recruit leaders", body: "We identify and enlist committed community leaders, one ward at a time." },
+  { title: "Train them", body: "Every leader is equipped with the skills to mobilize responsibly and lawfully." },
+  { title: "Engage the grassroots", body: "Honest, issue-based conversations open across the community." },
+  { title: "Mobilize the network", body: "The trained network activates across every ward and community at once." },
+  { title: "Prepare for election day", body: "Every leader and voter is ready for lawful, peaceful participation." },
+  { title: "Sustain after the vote", body: "Relationships continue and leadership capacity keeps growing." },
 ];
 
 const mission = [
@@ -121,10 +124,9 @@ export default function ThinkWinnersLanding() {
           <Reveal>
             <Rule />
             <h2 className={H2}>We connect the right people to the right candidates.</h2>
-            <p className="mt-5 max-w-lg text-lg leading-relaxed text-navy-800">
-              Think-Winners builds an organized network of trained leaders — reaching communities
-              across Nigeria through education, engagement, and lawful grassroots mobilization,
-              community by community.
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-navy-800">
+              An organized network of trained leaders, reaching every community in Nigeria.
+              Education, engagement, and lawful mobilization. Ward by ward.
             </p>
           </Reveal>
           <Reveal delay={120} className="hidden lg:block">
@@ -163,29 +165,34 @@ export default function ThinkWinnersLanding() {
           <Rule light />
           <h2 className={H2}>What we bring to your campaign.</h2>
           <p className="mt-4 max-w-md text-lg text-navy-50/85">
-            A full grassroots operation — the people, the training, and the discipline to move votes.
+            The people, the training, the discipline to move votes.
           </p>
 
-          <ul className="mt-10 grid gap-x-10 sm:mt-12 sm:grid-cols-2">
-            {offer.map(({ label, Icon }, i) => (
+          <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-3 sm:gap-5">
+            {offer.map(({ theme, Icon, items }, i) => (
               <Reveal
-                as="li"
-                key={label}
-                delay={i * 40}
-                className="flex items-center gap-3.5 border-b border-navy-50/12 py-3.5 sm:py-4"
+                key={theme}
+                delay={i * 90}
+                className="rounded-2xl border border-navy-50/10 bg-navy-50/5 p-6"
               >
                 <span
                   aria-hidden="true"
-                  className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-navy-50/5 text-gold-400 ring-1 ring-navy-50/12"
+                  className="grid h-11 w-11 place-items-center rounded-xl bg-gold-400/10 text-gold-400 ring-1 ring-gold-400/25"
                 >
-                  <Icon className="h-4.5 w-4.5" />
+                  <Icon className="h-5 w-5" />
                 </span>
-                <span className="font-display text-base font-medium text-navy-50 sm:text-lg">
-                  {label}
-                </span>
+                <p className="mt-4 font-display text-xl font-semibold text-navy-50">{theme}</p>
+                <ul className="mt-3 flex flex-col gap-2">
+                  {items.map((it) => (
+                    <li key={it} className="flex items-start gap-2.5 text-navy-50/80">
+                      <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold-400" />
+                      {it}
+                    </li>
+                  ))}
+                </ul>
               </Reveal>
             ))}
-          </ul>
+          </div>
 
           <div className="mt-10 sm:mt-14">
             <p className="font-display text-base font-semibold text-gold-400">
@@ -205,38 +212,14 @@ export default function ThinkWinnersLanding() {
         </div>
       </section>
 
-      {/* ───────────── How we work (compact timeline) ───────────── */}
-      <section id="how" className={`scroll-mt-20 bg-navy-50 ${SECTION} mx-auto max-w-4xl`}>
+      {/* ───────────── How we work (interactive process stepper) ───────────── */}
+      <section id="how" className={`scroll-mt-20 bg-navy-50 ${SECTION} mx-auto max-w-5xl`}>
         <Rule />
-        <h2 className={H2}>How we work — recruitment to results.</h2>
-        <ol className="mt-10 sm:mt-14">
-          {phases.map(([title, body], i) => {
-            const isLast = i === phases.length - 1;
-            return (
-              <Reveal as="li" key={title} delay={i * 60}>
-                <div className="grid grid-cols-[auto_1fr] gap-x-4 sm:gap-x-8">
-                  <div className="flex flex-col items-center">
-                    <span className="font-display text-3xl font-black leading-none tabular-nums text-navy-700/25 sm:text-5xl">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    {!isLast && (
-                      <span
-                        aria-hidden="true"
-                        className="my-1.5 w-0.5 flex-1 rounded bg-linear-to-b from-gold-400 to-navy-200"
-                      />
-                    )}
-                  </div>
-                  <div className={isLast ? "pb-0 pt-0.5" : "pb-7 pt-0.5 sm:pb-12"}>
-                    <h3 className="font-display text-xl font-semibold tracking-tight text-navy-950 sm:text-2xl">
-                      {title}
-                    </h3>
-                    <p className="mt-1 text-navy-800 sm:text-lg">{body}</p>
-                  </div>
-                </div>
-              </Reveal>
-            );
-          })}
-        </ol>
+        <h2 className={H2}>From recruitment to results.</h2>
+        <p className="mt-4 max-w-md text-lg text-navy-800">Six steps. One disciplined path to victory.</p>
+        <div className="mt-10 sm:mt-14">
+          <ProcessStepper phases={phases} />
+        </div>
       </section>
 
       {/* ───────────── What we stand for (vision + mission + values + lawful) ───────────── */}
@@ -268,7 +251,7 @@ export default function ThinkWinnersLanding() {
         </ol>
 
         <p className="mt-10 max-w-3xl font-display text-xl font-medium italic leading-snug text-balance text-navy-800 sm:mt-14 sm:text-2xl">
-          &ldquo;We operate peacefully, lawfully, and responsibly — promoting civic participation,
+          &ldquo;We operate peacefully, lawfully, and responsibly. We promote civic participation,
           respect for democratic institutions, and issue-based engagement with communities across
           Nigeria.&rdquo;
         </p>
@@ -304,9 +287,8 @@ export default function ThinkWinnersLanding() {
               <Rule light />
               <h2 className={H2}>Partner with Think-Winners.</h2>
               <p className="mt-5 max-w-md text-lg text-navy-50/85">
-                We invite your campaign to build a structured grassroots engagement system with us —
-                expanding outreach, strengthening coordination, and growing long-term leadership
-                capacity.
+                Build a structured grassroots engagement system with us. Expand outreach, strengthen
+                coordination, grow long-term leadership capacity.
               </p>
               <ul className="mt-7 grid gap-2.5">
                 {[
@@ -347,13 +329,13 @@ export default function ThinkWinnersLanding() {
 
           <p className="mt-8 max-w-2xl text-sm leading-relaxed text-navy-50/70 sm:mt-10">
             Think-Winners is powered by real community members, registered and led by leaders on the
-            ground — the network behind every number on this page. Community members join through a
-            leader, not a public form.
+            ground. They are the network behind every number here. Members join through a leader, not
+            a public form.
           </p>
 
           <div className="mt-8 flex flex-col gap-2 text-sm text-navy-50/60 sm:flex-row sm:items-center sm:justify-between">
             <p className="font-semibold text-navy-50">
-              Think-Winners Movement — Thinking Together, Winning Together
+              Think-Winners Movement · Thinking Together, Winning Together
             </p>
             <p>A project of the ThinkRich Community.</p>
           </div>

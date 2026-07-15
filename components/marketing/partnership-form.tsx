@@ -100,7 +100,7 @@ export function PartnershipForm() {
         <Field label="Phone" name="phone" type="tel" autoComplete="tel" placeholder="Optional" error={fe.phone} />
       </div>
       <div className="mt-5">
-        <Field label="Your role" name="role" placeholder="Optional — e.g. Campaign Director" error={fe.role} />
+        <Field label="Your role" name="role" placeholder="Optional, e.g. Campaign Director" error={fe.role} />
       </div>
       <div className="mt-5">
         <Field label="How can we help your campaign?" name="message" textarea required placeholder="Tell us about your campaign and where you need grassroots support." error={fe.message} />

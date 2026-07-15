@@ -3,9 +3,9 @@ import { Counter } from "./counter";
 import { NIGERIA_PATH, NIGERIA_TRANSFORM } from "./nigeria-map-path";
 
 /*
-  The Think-Winners landing hero — candidate-first, cinematic "film still".
+  The Think-Winners landing hero: candidate-first, cinematic "film still".
   No eyebrow kicker (see docs/design/authentic-design.md): the message lives in the
-  headline + one real sentence, with reach as the proof and "Partner with us" as the action.
+  headline plus one real sentence, with reach as the proof and "Partner with us" as the action.
 */
 
 function FilmGrain() {
@@ -126,9 +126,8 @@ export function Hero() {
             Winning Together
           </span>
         </h1>
-        <p className="mt-6 max-w-xl text-lg text-navy-50/85">
-          An organized grassroots network that turns communities into votes —
-          leader by leader, ward by ward.
+        <p className="mt-6 max-w-lg text-lg text-navy-50/85">
+          The grassroots network that turns communities into votes. Leader by leader, ward by ward.
         </p>
         <ReachAndCta />
       </div>
@@ -136,7 +135,7 @@ export function Hero() {
   );
 }
 
-/* Reach graphic — Nigeria with community points igniting across the country. */
+/* Reach graphic: Nigeria with community points igniting across the country. */
 const CITIES = [
   { x: 250, y: 700, d: 0 },
   { x: 330, y: 660, d: 0.5 },

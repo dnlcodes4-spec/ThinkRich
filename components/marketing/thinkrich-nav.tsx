@@ -53,7 +53,7 @@ export function ThinkRichNav() {
             solid ? "py-3" : "py-5"
           }`}
         >
-          <a href="#top" className="flex items-center gap-2.5 text-navy-50" aria-label="ThinkRich Community — top">
+          <a href="#top" className="flex items-center gap-2.5 text-navy-50" aria-label="ThinkRich Community, back to top">
             <span aria-hidden="true" className="grid h-8 w-8 place-items-center rounded-lg border border-gold-400/30 bg-navy-900 font-display text-sm font-black text-gold-400">
               TR
             </span>
