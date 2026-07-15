@@ -148,32 +148,32 @@ export function ArmsExplorer({ arms }: { arms: Arm[] }) {
                 onClick={() => select(i)}
                 className={`group relative flex items-center gap-3.5 rounded-2xl p-3.5 text-left transition-all ${
                   on
-                    ? "bg-white shadow-sm ring-1 ring-navy-100"
+                    ? "bg-white shadow-sm ring-1 ring-ink-100"
                     : "hover:bg-white/70 focus-visible:bg-white/70"
-                } focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400`}
+                } focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400`}
               >
                 {on && (
                   <span
                     aria-hidden="true"
-                    className="absolute left-0 top-1/2 h-8 w-1 -translate-y-1/2 rounded-r-full bg-gold-500"
+                    className="absolute left-0 top-1/2 h-8 w-1 -translate-y-1/2 rounded-r-full bg-green-500"
                   />
                 )}
                 <ArmMark abbr={a.abbr} className="w-11 shrink-0" />
                 <span className="min-w-0 flex-1">
-                  <span className="block font-display text-lg font-semibold leading-tight text-navy-950">
+                  <span className="block font-display text-lg font-semibold leading-tight text-ink-950">
                     {a.name}
                   </span>
-                  <span className="mt-0.5 block truncate text-sm text-navy-500">{a.focus}</span>
+                  <span className="mt-0.5 block truncate text-sm text-ink-500">{a.focus}</span>
                 </span>
                 {a.live ? (
-                  <span className="flex shrink-0 items-center gap-1.5 text-xs font-semibold text-gold-700">
-                    <span aria-hidden="true" className="tw-ignite h-2 w-2 rounded-full bg-gold-500" />
+                  <span className="flex shrink-0 items-center gap-1.5 text-xs font-semibold text-green-700">
+                    <span aria-hidden="true" className="tw-ignite h-2 w-2 rounded-full bg-green-500" />
                     Live
                   </span>
                 ) : (
                   <span
                     aria-hidden="true"
-                    className={`shrink-0 text-navy-300 transition-transform ${on ? "translate-x-0.5 text-gold-500" : ""}`}
+                    className={`shrink-0 text-ink-300 transition-transform ${on ? "translate-x-0.5 text-green-500" : ""}`}
                   >
                     →
                   </span>
@@ -193,7 +193,7 @@ export function ArmsExplorer({ arms }: { arms: Arm[] }) {
         {arms.map((a, i) => {
           const on = i === open;
           return (
-            <div key={a.key} className="overflow-hidden rounded-2xl border border-navy-100 bg-white">
+            <div key={a.key} className="overflow-hidden rounded-2xl border border-ink-100 bg-white">
               <button
                 onClick={() => {
                   interacted.current = true;
@@ -204,29 +204,29 @@ export function ArmsExplorer({ arms }: { arms: Arm[] }) {
               >
                 <ArmMark abbr={a.abbr} className="w-12 shrink-0" />
                 <span className="min-w-0 flex-1">
-                  <span className="block font-display text-lg font-semibold leading-tight text-navy-950">
+                  <span className="block font-display text-lg font-semibold leading-tight text-ink-950">
                     {a.name}
                   </span>
-                  <span className="mt-0.5 block font-display text-base italic text-navy-700">
+                  <span className="mt-0.5 block font-display text-base italic text-ink-700">
                     {a.motto}
                   </span>
                 </span>
                 {a.live ? (
-                  <span className="flex shrink-0 items-center gap-1.5 text-xs font-semibold text-gold-700">
-                    <span aria-hidden="true" className="h-2 w-2 rounded-full bg-gold-500" />
+                  <span className="flex shrink-0 items-center gap-1.5 text-xs font-semibold text-green-700">
+                    <span aria-hidden="true" className="h-2 w-2 rounded-full bg-green-500" />
                     Live
                   </span>
                 ) : (
                   <span
                     aria-hidden="true"
-                    className={`shrink-0 text-navy-400 transition-transform ${on ? "rotate-180" : ""}`}
+                    className={`shrink-0 text-ink-400 transition-transform ${on ? "rotate-180" : ""}`}
                   >
                     ⌄
                   </span>
                 )}
               </button>
               {on && (
-                <div className="tw-rise border-t border-navy-100 p-5">
+                <div className="tw-rise border-t border-ink-100 p-5">
                   <ArmBody arm={a} />
                 </div>
               )}
@@ -241,34 +241,34 @@ export function ArmsExplorer({ arms }: { arms: Arm[] }) {
 function ArmDetail({ arm }: { arm: Arm }) {
   const Icon = ICONS[arm.key];
   return (
-    <div className="tw-rise overflow-hidden rounded-3xl border border-navy-100 bg-white shadow-sm">
+    <div className="tw-rise overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-sm">
       {/* Accent header */}
-      <div className="relative overflow-hidden bg-navy-950 px-8 py-9 text-navy-50 sm:px-10">
+      <div className="relative overflow-hidden bg-ink-950 px-8 py-9 text-ink-50 sm:px-10">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 opacity-80"
           style={{
             background:
-              "radial-gradient(60% 90% at 88% 10%, rgba(201,162,39,0.2), transparent 60%), radial-gradient(50% 80% at 0% 100%, rgba(10,42,78,0.9), transparent 60%)",
+              "radial-gradient(60% 90% at 88% 10%, rgba(0,151,82,0.2), transparent 60%), radial-gradient(50% 80% at 0% 100%, rgba(30,30,33,0.9), transparent 60%)",
           }}
         />
         {Icon && (
-          <Icon className="pointer-events-none absolute -right-6 -top-8 h-44 w-44 text-gold-400/10" />
+          <Icon className="pointer-events-none absolute -right-6 -top-8 h-44 w-44 text-green-400/10" />
         )}
         <div className="relative flex items-center gap-4">
-          <ArmMark abbr={arm.abbr} className="w-14 shrink-0 ring-1 ring-gold-400/30" />
+          <ArmMark abbr={arm.abbr} className="w-14 shrink-0 ring-1 ring-green-400/30" />
           <div className="min-w-0 flex-1">
-            <p className="font-display text-lg font-semibold text-navy-50">{arm.name}</p>
-            <p className="text-sm text-navy-50/60">{arm.focus}</p>
+            <p className="font-display text-lg font-semibold text-ink-50">{arm.name}</p>
+            <p className="text-sm text-ink-50/60">{arm.focus}</p>
           </div>
           {arm.live && (
-            <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-gold-400/15 px-3 py-1 text-xs font-semibold text-gold-300">
-              <span aria-hidden="true" className="tw-ignite h-1.5 w-1.5 rounded-full bg-gold-400" />
+            <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-green-400/15 px-3 py-1 text-xs font-semibold text-green-300">
+              <span aria-hidden="true" className="tw-ignite h-1.5 w-1.5 rounded-full bg-green-400" />
               Live now
             </span>
           )}
         </div>
-        <p className="relative mt-6 font-display text-4xl font-medium italic leading-[1.05] text-gold-400 sm:text-5xl">
+        <p className="relative mt-6 font-display text-4xl font-medium italic leading-[1.05] text-green-400 sm:text-5xl">
           {arm.motto}
         </p>
       </div>
@@ -283,16 +283,16 @@ function ArmDetail({ arm }: { arm: Arm }) {
 function ArmBody({ arm }: { arm: Arm }) {
   return (
     <>
-      <p className="text-lg leading-relaxed text-navy-800">{arm.blurb}</p>
+      <p className="text-lg leading-relaxed text-ink-800">{arm.blurb}</p>
 
       <div className="mt-8 grid gap-8 sm:grid-cols-2">
         <div>
-          <p className="font-display text-base font-semibold text-gold-700">Mission</p>
-          <p className="mt-1.5 leading-relaxed text-navy-800">{arm.mission}</p>
+          <p className="font-display text-base font-semibold text-green-700">Mission</p>
+          <p className="mt-1.5 leading-relaxed text-ink-800">{arm.mission}</p>
         </div>
         <div>
-          <p className="font-display text-base font-semibold text-gold-700">Vision</p>
-          <p className="mt-1.5 leading-relaxed text-navy-800">{arm.vision}</p>
+          <p className="font-display text-base font-semibold text-green-700">Vision</p>
+          <p className="mt-1.5 leading-relaxed text-ink-800">{arm.vision}</p>
         </div>
       </div>
 
@@ -300,7 +300,7 @@ function ArmBody({ arm }: { arm: Arm }) {
         {arm.highlights.map((h) => (
           <li
             key={h}
-            className="rounded-full bg-navy-50 px-3.5 py-1.5 text-sm font-medium text-navy-700 ring-1 ring-navy-100"
+            className="rounded-full bg-ink-50 px-3.5 py-1.5 text-sm font-medium text-ink-700 ring-1 ring-ink-100"
           >
             {h}
           </li>
@@ -311,14 +311,14 @@ function ArmBody({ arm }: { arm: Arm }) {
         {arm.live && arm.href ? (
           <Link
             href={arm.href}
-            className="inline-flex min-h-11 items-center gap-1.5 rounded-md bg-gold-500 px-6 text-sm font-bold text-navy-950 transition-colors hover:bg-gold-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400"
+            className="inline-flex min-h-11 items-center gap-1.5 rounded-md bg-green-500 px-6 text-sm font-bold text-ink-950 transition-colors hover:bg-green-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400"
           >
             Enter the movement
             <span aria-hidden="true">→</span>
           </Link>
         ) : (
-          <span className="inline-flex items-center gap-2 text-sm font-semibold text-navy-500">
-            <span aria-hidden="true" className="h-px w-6 bg-navy-300" />
+          <span className="inline-flex items-center gap-2 text-sm font-semibold text-ink-500">
+            <span aria-hidden="true" className="h-px w-6 bg-ink-300" />
             Opening soon
           </span>
         )}

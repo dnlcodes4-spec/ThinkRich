@@ -20,15 +20,15 @@
   --foreground: #0f172a;
   --muted: #64748b;
 
-  --primary: #0a2a4e;            /* navy-700 */
-  --primary-hover: #193759;      /* navy-600 */
+  --primary: #1e1e21;            /* ink-700 (ADR-0010) */
+  --primary-hover: #2b2b30;      /* ink-600 */
   --primary-foreground: #ffffff;
 
-  --accent: #c9a227;             /* gold-500 */
-  --accent-hover: #a98821;       /* gold-600 */
-  --accent-foreground: #071c33;  /* navy-900 — dark text ON gold */
+  --accent: #009752;             /* green-500 (ThinkRich umbrella accent, ADR-0010) */
+  --accent-hover: #057948;       /* green-600 */
+  --accent-foreground: #101012;  /* ink-900 — dark text ON green */
 
-  --ring: #2c4867;               /* navy-500 */
+  --ring: #45454b;               /* ink-500 */
 
   --success: #15803d; --success-soft: #f0fdf4;
   --warning: #c2410c; --warning-soft: #fff7ed;
@@ -39,11 +39,11 @@
 /* System dark for visitors who haven't chosen (and for the no-JS case). */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
-    --background: #051527; --surface: #071c33; --surface-muted: #082240;
-    --border: #193759; --foreground: #f1f5f9; --muted: #94a3b8;
-    --primary: #8999aa; --primary-hover: #b6bfca; --primary-foreground: #051527;
-    --accent: #e5d297; --accent-hover: #efe3be; --accent-foreground: #051527;
-    --ring: #8999aa;
+    --background: #0a0a0b; --surface: #101012; --surface-muted: #17171a;
+    --border: #2b2b30; --foreground: #f1f5f9; --muted: #94a3b8;
+    --primary: #9a9aa1; --primary-hover: #c7c7cc; --primary-foreground: #0a0a0b;
+    --accent: #5ac78e; --accent-hover: #97ddb7; --accent-foreground: #0a0a0b;
+    --ring: #9a9aa1;
     --success: #4ade80; --success-soft: #052e16;
     --warning: #fb923c; --warning-soft: #431407;
     --danger:  #f87171; --danger-soft:  #450a0a;
@@ -53,11 +53,11 @@
 
 /* Explicit choice wins in both directions. */
 [data-theme="dark"] {
-  --background: #051527; --surface: #071c33; --surface-muted: #082240;
-  --border: #193759; --foreground: #f1f5f9; --muted: #94a3b8;
-  --primary: #8999aa; --primary-hover: #b6bfca; --primary-foreground: #051527;
-  --accent: #e5d297; --accent-hover: #efe3be; --accent-foreground: #051527;
-  --ring: #8999aa;
+  --background: #0a0a0b; --surface: #101012; --surface-muted: #17171a;
+  --border: #2b2b30; --foreground: #f1f5f9; --muted: #94a3b8;
+  --primary: #9a9aa1; --primary-hover: #c7c7cc; --primary-foreground: #0a0a0b;
+  --accent: #5ac78e; --accent-hover: #97ddb7; --accent-foreground: #0a0a0b;
+  --ring: #9a9aa1;
   --success: #4ade80; --success-soft: #052e16;
   --warning: #fb923c; --warning-soft: #431407;
   --danger:  #f87171; --danger-soft:  #450a0a;
@@ -71,16 +71,24 @@
   --color-navy-600: #193759; --color-navy-700: #0a2a4e; --color-navy-800: #082240;
   --color-navy-900: #071c33; --color-navy-950: #051527;
 
+  /* Ink — the ThinkRich umbrella's near-black scale (ADR-0010 / CR-0006). Neutral,
+     never pure #000. Root site + member app use this; Think-Winners keeps navy. */
+  --color-ink-50: #f5f5f7;  --color-ink-100: #e5e5e8; --color-ink-200: #c7c7cc;
+  --color-ink-300: #9a9aa1; --color-ink-400: #6b6b72; --color-ink-500: #45454b;
+  --color-ink-600: #2b2b30; --color-ink-700: #1e1e21; --color-ink-800: #17171a;
+  --color-ink-900: #101012; --color-ink-950: #0a0a0b;
+
   --color-gold-50: #fcf9f2;  --color-gold-100: #f7f2e1; --color-gold-200: #efe3be;
   --color-gold-300: #e5d297; --color-gold-400: #d9be68; --color-gold-500: #c9a227;
   --color-gold-600: #a98821; --color-gold-700: #896e1b; --color-gold-800: #695414;
   --color-gold-900: #4c3e0f; --color-gold-950: #382d0b;
 
-  /* Think-Winners brand green (provisional — confirm vs the official green asset). */
-  --color-green-50: #ecf2ee;  --color-green-100: #d7e4db; --color-green-200: #afc9b8;
-  --color-green-300: #85ac92; --color-green-400: #548b66; --color-green-500: #317347;
-  --color-green-600: #216838; --color-green-700: #15602e; --color-green-800: #125127;
-  --color-green-900: #0e411f; --color-green-950: #0b3419;
+  /* ThinkRich brand green — sampled from the ThinkRich Community logo (emerald→forest).
+     The umbrella's accent (ADR-0010 / CR-0006). Think-Winners keeps gold. */
+  --color-green-50: #e9f8ef;  --color-green-100: #c9edd9; --color-green-200: #97ddb7;
+  --color-green-300: #5ac78e; --color-green-400: #1fae69; --color-green-500: #009752;
+  --color-green-600: #057948; --color-green-700: #09603e; --color-green-800: #0a4d33;
+  --color-green-900: #083a28; --color-green-950: #05271b;
 
   --radius-card: 14px;
 }

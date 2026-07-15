@@ -7,10 +7,10 @@ import { HeroSlider } from "@/components/marketing/hero-slider";
 import { ArmsExplorer } from "@/components/marketing/arms-explorer";
 import { PhilosophyFlow } from "@/components/marketing/philosophy-flow";
 
-// ThinkRich Community — the umbrella front door (T-016). Purpose: inspire prospective members
-// about the community and route them to the arm that fits — above all to Think-Winners, the one
-// LIVE platform. Content: docs/project/content/thinkrich-community-arms.md. Navy + gold; no
-// eyebrow kickers; arm logos are branded PLACEHOLDERS until the client supplies the real ones.
+// ThinkRich Community: the umbrella front door (T-016). Purpose: inspire prospective members
+// about the community and route them to the arm that fits, above all to Think-Winners, the one
+// LIVE platform. Content: docs/project/content/thinkrich-community-arms.md. Black + green
+// (ADR-0010); no eyebrow kickers; arm logos are branded PLACEHOLDERS until the client supplies them.
 
 // "Get involved" routes to the arms explorer ("there is an arm for your purpose").
 // TODO(T-021): point at a real community join/contact flow once the client confirms
@@ -151,14 +151,14 @@ function Rule({ light = false }: { light?: boolean }) {
   return (
     <div
       aria-hidden="true"
-      className={`mb-6 h-px w-12 ${light ? "bg-gold-400" : "bg-gold-500"}`}
+      className={`mb-6 h-px w-12 ${light ? "bg-green-400" : "bg-green-500"}`}
     />
   );
 }
 
 export default function ThinkRichLanding() {
   return (
-    <main className="bg-white text-navy-950">
+    <main className="bg-white text-ink-950">
       <ThinkRichNav />
 
       {/* ───────────── Hero — slider (ThinkRich · Think-Winners · Arms) ───────────── */}
@@ -173,7 +173,7 @@ export default function ThinkRichLanding() {
               <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
                 A community built to turn purpose into prosperity.
               </h2>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-navy-800">
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-800">
                 ThinkRich exists to build leaders who connect the right people
                 to verifiable opportunities by creating sustainable value for
                 members and society, through initiatives and partnerships across
@@ -182,7 +182,7 @@ export default function ThinkRichLanding() {
             </div>
             <Reveal
               delay={100}
-              className="relative aspect-4/3 overflow-hidden rounded-2xl ring-1 ring-navy-200"
+              className="relative aspect-4/3 overflow-hidden rounded-2xl ring-1 ring-ink-200"
             >
               <Image
                 src="/think-winners/img/hero-v2.jpeg"
@@ -202,15 +202,15 @@ export default function ThinkRichLanding() {
                 delay={i * 40}
                 className={`font-display text-2xl leading-tight tracking-tight sm:text-3xl ${
                   i % 2
-                    ? "font-medium italic text-navy-700"
-                    : "font-semibold text-navy-950"
+                    ? "font-medium italic text-ink-700"
+                    : "font-semibold text-ink-950"
                 }`}
               >
                 {f}
                 {i < focusAreas.length - 1 && (
                   <span
                     aria-hidden="true"
-                    className="ml-6 hidden align-middle text-xl not-italic text-gold-500 sm:inline"
+                    className="ml-6 hidden align-middle text-xl not-italic text-green-500 sm:inline"
                   >
                     ·
                   </span>
@@ -224,7 +224,7 @@ export default function ThinkRichLanding() {
       {/* ───────────── Featured: Think-Winners (live) ───────────── */}
       <section
         id="live"
-        className="relative overflow-hidden bg-navy-950 text-navy-50"
+        className="relative overflow-hidden bg-ink-950 text-ink-50"
       >
         <Image
           src="/think-winners/img/hero-crowd.jpg"
@@ -233,29 +233,29 @@ export default function ThinkRichLanding() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-navy-950/80" />
+        <div aria-hidden="true" className="absolute inset-0 bg-ink-950/80" />
         <div
           aria-hidden="true"
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, rgb(5,21,39) 15%, rgba(5,21,39,0.4) 75%)",
+              "linear-gradient(to right, rgb(10,10,11) 15%, rgba(10,10,11,0.4) 75%)",
           }}
         />
         <Grain opacity={0.08} />
         <div className="relative mx-auto max-w-6xl px-6 py-14 sm:py-20 lg:py-28">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 rounded-full bg-gold-400/15 px-3.5 py-1.5 text-sm font-semibold text-gold-300">
+            <span className="inline-flex items-center gap-2 rounded-full bg-green-400/15 px-3.5 py-1.5 text-sm font-semibold text-green-300">
               <span
                 aria-hidden="true"
-                className="tw-ignite h-1.5 w-1.5 rounded-full bg-gold-400"
+                className="tw-ignite h-1.5 w-1.5 rounded-full bg-green-400"
               />
               Live now
             </span>
             <h2 className="mt-5 font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
               The Think-Winners Movement is mobilizing. Join it first.
             </h2>
-            <p className="mt-5 text-lg text-navy-50/85">
+            <p className="mt-5 text-lg text-ink-50/85">
               The community&rsquo;s flagship arm: an organized grassroots
               network of leaders turning communities into votes through
               education, engagement, and lawful mobilization. It&rsquo;s the one
@@ -263,7 +263,7 @@ export default function ThinkRichLanding() {
             </p>
             <Link
               href="/think-winners"
-              className="mt-8 inline-flex min-h-12 items-center justify-center gap-1.5 rounded-md bg-gold-500 px-7 text-sm font-bold text-navy-950 transition-colors hover:bg-gold-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400"
+              className="mt-8 inline-flex min-h-12 items-center justify-center gap-1.5 rounded-md bg-green-500 px-7 text-sm font-bold text-ink-950 transition-colors hover:bg-green-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400"
             >
               Enter the movement
               <span aria-hidden="true">→</span>
@@ -273,14 +273,14 @@ export default function ThinkRichLanding() {
       </section>
 
       {/* ───────────── The Arms — interactive explorer ───────────── */}
-      <section id="arms" className="scroll-mt-20 bg-navy-50/60">
+      <section id="arms" className="scroll-mt-20 bg-ink-50/60">
         <div className="mx-auto max-w-6xl px-6 py-14 sm:py-20 lg:py-28">
           <div className="max-w-2xl">
             <Rule />
             <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
               Six arms, one purpose.
             </h2>
-            <p className="mt-5 text-lg text-navy-800">
+            <p className="mt-5 text-lg text-ink-800">
               Each arm pursues a distinct mission under the same idea by
               creating value for mankind. Choose the one that fits you; one is
               live today, the rest are opening soon.
@@ -296,7 +296,7 @@ export default function ThinkRichLanding() {
       {/* ───────────── Philosophy (four-beat) ───────────── */}
       <section
         id="philosophy"
-        className="relative scroll-mt-20 overflow-hidden bg-navy-950 text-navy-50"
+        className="relative scroll-mt-20 overflow-hidden bg-ink-950 text-ink-50"
       >
         <Grain opacity={0.08} />
         <div
@@ -304,7 +304,7 @@ export default function ThinkRichLanding() {
           className="pointer-events-none absolute inset-0 opacity-70"
           style={{
             background:
-              "radial-gradient(50% 60% at 15% 10%, rgba(201,162,39,0.12), transparent 60%)",
+              "radial-gradient(50% 60% at 15% 10%, rgba(0,151,82,0.12), transparent 60%)",
           }}
         />
         <div className="relative mx-auto max-w-5xl px-6 py-14 sm:py-20 lg:py-28">
@@ -319,12 +319,12 @@ export default function ThinkRichLanding() {
       </section>
 
       {/* ───────────── Get involved ───────────── */}
-      <section id="join" className="scroll-mt-20 bg-gold-500 text-navy-950">
+      <section id="join" className="scroll-mt-20 bg-green-500 text-ink-950">
         <div className="mx-auto max-w-4xl px-6 py-14 text-center sm:py-20 lg:py-24">
           <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
             Join a community creating value for mankind.
           </h2>
-          <p className="mx-auto mt-5 max-w-xl text-lg text-navy-950/80">
+          <p className="mx-auto mt-5 max-w-xl text-lg text-ink-950/80">
             Whether you want to lead, learn, build wealth, serve, or mobilize,
             there is an arm for your purpose. Start with the one that&rsquo;s
             live.
@@ -332,14 +332,14 @@ export default function ThinkRichLanding() {
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/think-winners"
-              className="inline-flex min-h-12 items-center justify-center gap-1.5 rounded-md bg-navy-950 px-8 text-sm font-bold text-navy-50 transition-colors hover:bg-navy-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy-950"
+              className="inline-flex min-h-12 items-center justify-center gap-1.5 rounded-md bg-ink-950 px-8 text-sm font-bold text-ink-50 transition-colors hover:bg-ink-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink-950"
             >
               Enter Think-Winners
               <span aria-hidden="true">→</span>
             </Link>
             <a
               href={GET_INVOLVED}
-              className="inline-flex min-h-12 items-center justify-center rounded-md border border-navy-950/30 px-7 text-sm font-bold text-navy-950 transition-colors hover:border-navy-950"
+              className="inline-flex min-h-12 items-center justify-center rounded-md border border-ink-950/30 px-7 text-sm font-bold text-ink-950 transition-colors hover:border-ink-950"
             >
               Get involved
             </a>
@@ -348,24 +348,24 @@ export default function ThinkRichLanding() {
       </section>
 
       {/* ───────────── Footer ───────────── */}
-      <footer className="bg-navy-950 text-navy-50">
+      <footer className="bg-ink-950 text-ink-50">
         <div className="mx-auto max-w-6xl px-6 py-14">
-          <div className="flex flex-col gap-8 border-b border-navy-50/10 pb-10 sm:flex-row sm:items-start sm:justify-between">
+          <div className="flex flex-col gap-8 border-b border-ink-50/10 pb-10 sm:flex-row sm:items-start sm:justify-between">
             <div className="max-w-sm">
               <p className="font-display text-xl font-semibold">
-                Think<span className="text-gold-400">Rich</span> Community
+                Think<span className="text-green-400">Rich</span> Community
               </p>
-              <p className="mt-2 text-sm text-navy-50/60">
+              <p className="mt-2 text-sm text-ink-50/60">
                 Creating Value for Mankind · Thinking Together, Winning
                 Together.
               </p>
             </div>
-            <ul className="grid grid-cols-1 gap-x-10 gap-y-1.5 text-sm text-navy-50/70 sm:grid-cols-2">
+            <ul className="grid grid-cols-1 gap-x-10 gap-y-1.5 text-sm text-ink-50/70 sm:grid-cols-2">
               {arms.map((a) => (
                 <li key={a.key}>
                   {a.live && a.href ? (
-                    <Link href={a.href} className="hover:text-gold-400">
-                      {a.name} <span className="text-gold-400">· live</span>
+                    <Link href={a.href} className="hover:text-green-400">
+                      {a.name} <span className="text-green-400">· live</span>
                     </Link>
                   ) : (
                     a.name
@@ -374,7 +374,7 @@ export default function ThinkRichLanding() {
               ))}
             </ul>
           </div>
-          <p className="mt-8 text-sm text-navy-50/50">
+          <p className="mt-8 text-sm text-ink-50/50">
             © {new Date().getFullYear()} ThinkRich Community. All rights
             reserved.
           </p>

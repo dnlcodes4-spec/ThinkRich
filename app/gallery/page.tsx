@@ -65,19 +65,20 @@ export default function Home() {
       </header>
 
       <div className="mx-auto flex max-w-5xl flex-col gap-12 px-6 py-12">
-        <Section title="Brand: navy + gold">
+        <Section title="Brand: black + green">
           <p className="max-w-2xl text-sm text-muted">
-            Both ThinkRich Community and Think-Winners Movement use{" "}
-            <span className="font-semibold">navy + gold</span> (ADR-0008). Gold accent,
-            neutrals, and surfaces are shared; the per-brand{" "}
-            <span className="font-mono">data-brand</span> override is dormant.
+            The ThinkRich umbrella (this app + the root site) uses{" "}
+            <span className="font-semibold">black + green</span>: the near-black{" "}
+            <span className="font-mono">ink-*</span> scale + the logo green (ADR-0010).
+            Think-Winners keeps <span className="font-semibold">navy + gold</span>. Neutrals and
+            status colours are shared.
           </p>
           <div className="flex max-w-xs flex-col gap-3 rounded-card border border-border bg-surface p-5">
             <p className="text-xs font-bold uppercase tracking-[0.14em] text-muted">
-              Navy primary · gold accent
+              Black primary · green accent
             </p>
             <Button>Primary action</Button>
-            <Button variant="accent">Gold accent</Button>
+            <Button variant="accent">Green accent</Button>
           </div>
         </Section>
 
