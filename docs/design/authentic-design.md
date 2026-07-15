@@ -37,6 +37,10 @@ into one of these **by default** (rather than by a deliberate, justified choice)
   is a strong template/AI tell — fold the meaning into the headline or a real sentence, or drop it.
   (Plain, sentence-case data labels *under* a number are fine.)
 - ❌ **Inter or Space Grotesk as the reflexive "safe" font** with no reason. (See [typography.md](typography.md).)
+- ❌ **Em dashes (`—`) in copy — banned project-wide.** They are a strong "AI-generated" tell.
+  Rewrite the sentence: use a period (two short sentences), a comma, a colon, or parentheses.
+  Applies to all user-facing copy, and preferably code comments too. (En dashes for numeric
+  ranges are fine.)
 - ❌ **Emoji as section markers / bullet icons** (🚀 features, ✨ benefits). Use real icons or none.
 - ❌ **Numbered markers `01 / 02 / 03`** on content that isn't actually a sequence. Numbering must
   encode real order (a process, a ranked list) — otherwise it's decoration.

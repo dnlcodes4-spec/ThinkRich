@@ -2,11 +2,12 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Grain } from "./motifs";
 
 const leftLinks = [
+  { href: "#about", label: "Who we are" },
   { href: "#offer", label: "What we offer" },
-  { href: "#reach", label: "Reach" },
 ];
 const rightLinks = [
   { href: "#how", label: "How we work" },
@@ -60,6 +61,9 @@ export function ThinkWinnersNav() {
         >
           {/* Left links (desktop) */}
           <nav className="hidden items-center gap-7 md:flex">
+            <Link href="/" className={`${linkCls} flex items-center gap-1.5`}>
+              <span aria-hidden="true">←</span> ThinkRich
+            </Link>
             {leftLinks.map((l) => (
               <a key={l.href} href={l.href} className={linkCls}>
                 {l.label}
@@ -147,6 +151,17 @@ export function ThinkWinnersNav() {
                   </span>
                 </a>
               ))}
+              <Link
+                href="/"
+                onClick={() => setOpen(false)}
+                className="tw-rise group flex items-center justify-between border-b border-navy-50/10 py-5"
+                style={{ animationDelay: `${80 + allLinks.length * 70}ms` }}
+              >
+                <span className="flex items-center gap-3 font-display text-3xl font-semibold text-navy-50/80 transition-colors group-hover:text-gold-400">
+                  <span aria-hidden="true" className="text-gold-500/70">←</span>
+                  ThinkRich
+                </span>
+              </Link>
             </nav>
 
             <div className="mt-auto">
@@ -154,13 +169,13 @@ export function ThinkWinnersNav() {
                 href="#partnership"
                 onClick={() => setOpen(false)}
                 className="tw-rise flex min-h-14 items-center justify-center rounded-md bg-gold-500 text-base font-bold text-navy-950 transition-colors hover:bg-gold-400"
-                style={{ animationDelay: `${80 + allLinks.length * 70}ms` }}
+                style={{ animationDelay: `${80 + (allLinks.length + 1) * 70}ms` }}
               >
                 Partner with us
               </a>
               <p
                 className="tw-rise mt-6 font-display text-lg italic text-navy-50/55"
-                style={{ animationDelay: `${140 + allLinks.length * 70}ms` }}
+                style={{ animationDelay: `${140 + (allLinks.length + 1) * 70}ms` }}
               >
                 Thinking Together, Winning Together
               </p>

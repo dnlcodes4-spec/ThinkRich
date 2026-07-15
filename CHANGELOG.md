@@ -15,8 +15,16 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   Geist tell. JetBrains Mono still carries numerals pending consolidation onto Hanken tabular-nums.
 - **ThinkRich landing polish:** wired client-generated hero photography (optimised), removed the
   per-slide eyebrow labels, set the slider cadence to 5s, and fixed `#join`'s self-referential CTA.
+- **Mobile-first restructure:** Think-Winners rebuilt from 9 sections to 6 (dropped the redundant
+  reach band, folded benefits into "what we bring", merged vision + principles), and both landings
+  compacted (Think-Winners ~13.4→8.9 phone screens; root ~8.4→6.8). Added cross-nav CTAs
+  (ThinkRich → Think-Winners, and Think-Winners → back to ThinkRich).
+- **Rule:** banned em dashes project-wide as an AI tell (authentic-design.md).
 
 ### Fixed
+- Arms explorer: guard the mobile-accordion collapsed state (`active = -1`) so the desktop
+  panel and deep-link URL effect no longer crash on `arms[-1]`; the mobile accordion now uses
+  its own state and starts collapsed.
 - Hero slider: auto-advance no longer freezes on hover/focus of the full-screen hero (explicit
   Pause/Play only); each segment's progress restarts from 0; completed segments stay filled.
 - Gated the internal `/think-winners/organization` page — 404s in production unless

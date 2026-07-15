@@ -119,7 +119,7 @@ export function Hero() {
       />
       <FilmGrain />
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 sm:px-8 sm:pb-28">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-14 sm:px-8 sm:pb-28">
         <h1 className="max-w-4xl font-display text-5xl font-black leading-[0.9] text-balance [text-shadow:0_2px_40px_rgba(0,0,0,0.55)] sm:text-8xl">
           Thinking Together,
           <span className="mt-1 block font-medium italic text-gold-400">
