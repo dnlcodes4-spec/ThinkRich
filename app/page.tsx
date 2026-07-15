@@ -162,11 +162,11 @@ export default function ThinkRichLanding() {
 
       {/* ───────────── The Community ───────────── */}
       <section id="community" className="scroll-mt-20 bg-white">
-        <div className="mx-auto max-w-6xl px-6 py-20 lg:py-28">
+        <div className="mx-auto max-w-6xl px-6 py-14 sm:py-20 lg:py-28">
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div>
               <Rule />
-              <h2 className="font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+              <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
                 A community built to turn purpose into prosperity.
               </h2>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-navy-800">
@@ -186,7 +186,7 @@ export default function ThinkRichLanding() {
             </Reveal>
           </div>
 
-          <div className="mt-16 flex flex-wrap items-baseline gap-x-6 gap-y-2">
+          <div className="mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-2 sm:mt-16">
             {focusAreas.map((f, i) => (
               <Reveal
                 as="span"
@@ -224,13 +224,13 @@ export default function ThinkRichLanding() {
           style={{ background: "linear-gradient(to right, rgb(5,21,39) 15%, rgba(5,21,39,0.4) 75%)" }}
         />
         <Grain opacity={0.08} />
-        <div className="relative mx-auto max-w-6xl px-6 py-20 lg:py-28">
+        <div className="relative mx-auto max-w-6xl px-6 py-14 sm:py-20 lg:py-28">
           <div className="max-w-2xl">
             <span className="inline-flex items-center gap-2 rounded-full bg-gold-400/15 px-3.5 py-1.5 text-sm font-semibold text-gold-300">
               <span aria-hidden="true" className="tw-ignite h-1.5 w-1.5 rounded-full bg-gold-400" />
               Live now
             </span>
-            <h2 className="mt-5 font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+            <h2 className="mt-5 font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
               The Think-Winners Movement is mobilizing — join it first.
             </h2>
             <p className="mt-5 text-lg text-navy-50/85">
@@ -251,10 +251,10 @@ export default function ThinkRichLanding() {
 
       {/* ───────────── The Arms — interactive explorer ───────────── */}
       <section id="arms" className="scroll-mt-20 bg-navy-50/60">
-        <div className="mx-auto max-w-6xl px-6 py-20 lg:py-28">
+        <div className="mx-auto max-w-6xl px-6 py-14 sm:py-20 lg:py-28">
           <div className="max-w-2xl">
             <Rule />
-            <h2 className="font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+            <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
               Six arms, one purpose.
             </h2>
             <p className="mt-5 text-lg text-navy-800">
@@ -263,7 +263,7 @@ export default function ThinkRichLanding() {
             </p>
           </div>
 
-          <div className="mt-14">
+          <div className="mt-10 sm:mt-14">
             <ArmsExplorer arms={arms} />
           </div>
         </div>
@@ -277,9 +277,9 @@ export default function ThinkRichLanding() {
           className="pointer-events-none absolute inset-0 opacity-70"
           style={{ background: "radial-gradient(50% 60% at 15% 10%, rgba(201,162,39,0.12), transparent 60%)" }}
         />
-        <div className="relative mx-auto max-w-5xl px-6 py-20 lg:py-28">
+        <div className="relative mx-auto max-w-5xl px-6 py-14 sm:py-20 lg:py-28">
           <Rule light />
-          <h2 className="font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+          <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
             Our core philosophy.
           </h2>
           <ol className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-navy-50/10 bg-navy-50/10 sm:grid-cols-2 lg:grid-cols-4">
@@ -298,8 +298,8 @@ export default function ThinkRichLanding() {
 
       {/* ───────────── Get involved ───────────── */}
       <section id="join" className="scroll-mt-20 bg-gold-500 text-navy-950">
-        <div className="mx-auto max-w-4xl px-6 py-20 text-center lg:py-24">
-          <h2 className="font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+        <div className="mx-auto max-w-4xl px-6 py-14 text-center sm:py-20 lg:py-24">
+          <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
             Join a community creating value for mankind.
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg text-navy-950/80">

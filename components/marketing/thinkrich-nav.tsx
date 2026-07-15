@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
+import Link from "next/link";
 import { Grain } from "./motifs";
 import { ThinkRichWordmark } from "./arm-mark";
 
@@ -67,7 +68,14 @@ export function ThinkRichNav() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
+            <Link
+              href="/think-winners"
+              className="hidden items-center gap-1.5 rounded-md border border-gold-400/40 px-3.5 py-2 text-sm font-semibold text-gold-300 transition-colors hover:border-gold-400 hover:text-gold-200 sm:inline-flex"
+            >
+              <span aria-hidden="true" className="tw-ignite h-1.5 w-1.5 rounded-full bg-gold-400" />
+              Think-Winners
+            </Link>
             <a
               href="#join"
               className="hidden rounded-md bg-gold-500 px-4 py-2 text-sm font-bold text-navy-950 transition-colors hover:bg-gold-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400 sm:inline-flex"
@@ -118,19 +126,33 @@ export function ThinkRichNav() {
                   </span>
                 </a>
               ))}
+              <Link
+                href="/think-winners"
+                onClick={() => setOpen(false)}
+                className="tw-rise group flex items-center justify-between border-b border-navy-50/10 py-5"
+                style={{ animationDelay: `${80 + links.length * 70}ms` }}
+              >
+                <span className="flex items-center gap-3 font-display text-3xl font-semibold text-gold-400">
+                  <span aria-hidden="true" className="tw-ignite h-2.5 w-2.5 rounded-full bg-gold-400" />
+                  Think-Winners
+                </span>
+                <span aria-hidden="true" className="text-xl text-gold-500/70 transition-transform group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
             </nav>
             <div className="mt-auto">
               <a
                 href="#join"
                 onClick={() => setOpen(false)}
                 className="tw-rise flex min-h-14 items-center justify-center rounded-md bg-gold-500 text-base font-bold text-navy-950 transition-colors hover:bg-gold-400"
-                style={{ animationDelay: `${80 + links.length * 70}ms` }}
+                style={{ animationDelay: `${80 + (links.length + 1) * 70}ms` }}
               >
                 Get involved
               </a>
               <p
                 className="tw-rise mt-6 font-display text-lg italic text-navy-50/55"
-                style={{ animationDelay: `${140 + links.length * 70}ms` }}
+                style={{ animationDelay: `${140 + (links.length + 1) * 70}ms` }}
               >
                 Creating Value for Mankind.
               </p>

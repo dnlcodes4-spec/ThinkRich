@@ -39,6 +39,9 @@ const ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
 
 export function ArmsExplorer({ arms }: { arms: Arm[] }) {
   const [active, setActive] = useState(0);
+  // Mobile accordion is independent of the desktop tabs and starts fully
+  // collapsed (-1) so the section is compact on phones.
+  const [open, setOpen] = useState(-1);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const rootRef = useRef<HTMLDivElement>(null);
   const interacted = useRef(false);
@@ -54,16 +57,20 @@ export function ArmsExplorer({ arms }: { arms: Arm[] }) {
       if (idx >= 0) {
         fromUrl.current = true;
         if (idx > 0) setActive(idx);
+        setOpen(idx); // open the linked arm on mobile too
       }
     });
     return () => cancelAnimationFrame(id);
   }, [arms]);
 
   // Deep-link: reflect the choice in the URL — only after a real user interaction.
+  // active can be -1 when the mobile accordion is fully collapsed → clear the param.
   useEffect(() => {
     if (!interacted.current) return;
+    const arm = arms[active];
     const url = new URL(window.location.href);
-    url.searchParams.set("arm", arms[active].key);
+    if (arm) url.searchParams.set("arm", arm.key);
+    else url.searchParams.delete("arm");
     history.replaceState(null, "", url);
   }, [active, arms]);
 
@@ -109,6 +116,10 @@ export function ArmsExplorer({ arms }: { arms: Arm[] }) {
       tabs.current[next]?.focus();
     }
   }
+
+  // Mobile accordion can collapse to active = -1; the desktop panel (always
+  // rendered, just CSS-hidden on mobile) needs a valid arm to show.
+  const panelIndex = active < 0 ? 0 : active;
 
   return (
     <div ref={rootRef}>
@@ -172,21 +183,21 @@ export function ArmsExplorer({ arms }: { arms: Arm[] }) {
           })}
         </div>
 
-        <div role="tabpanel" id="arm-panel" aria-labelledby={`arm-tab-${active}`} className="lg:min-h-136">
-          <ArmDetail key={arms[active].key} arm={arms[active]} />
+        <div role="tabpanel" id="arm-panel" aria-labelledby={`arm-tab-${panelIndex}`} className="lg:min-h-136">
+          <ArmDetail key={arms[panelIndex].key} arm={arms[panelIndex]} />
         </div>
       </div>
 
       {/* ── Mobile: accordion ── */}
       <div className="flex flex-col gap-3 lg:hidden">
         {arms.map((a, i) => {
-          const on = i === active;
+          const on = i === open;
           return (
             <div key={a.key} className="overflow-hidden rounded-2xl border border-navy-100 bg-white">
               <button
                 onClick={() => {
                   interacted.current = true;
-                  setActive(on ? -1 : i);
+                  setOpen(on ? -1 : i);
                 }}
                 aria-expanded={on}
                 className="flex w-full items-center gap-3.5 p-4 text-left"
