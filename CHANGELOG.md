@@ -9,6 +9,10 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Changed
+- **Premium copy + component pass:** rewrote the marketing copy into scannable fragments and
+  purged em dashes from all user-facing copy. Replaced the Think-Winners process timeline with an
+  interactive step-through "journey" (one step in focus at a time), and reframed "What we bring"
+  from an eight-item list into three themed capability cards (the vital few).
 - **Type system** (ADR-0009): replaced the scaffold's Geist with **Hanken Grotesk** (body) +
   **Zodiak** (ThinkRich display, self-hosted Fontshare serif) + Fraunces retained for
   Think-Winners; per-surface display face via `--font-display-face`. Removes the "AI-default"

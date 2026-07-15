@@ -1,6 +1,6 @@
 /*
   Branded PLACEHOLDER marks for the ThinkRich arms, until the client supplies the real
-  logos. Each is a navy chip with the arm's monogram in gold — intentional, on-brand, and
+  logos. Each is a navy chip with the arm's monogram in gold: intentional, on-brand, and
   clearly a placeholder (not a grey box). Swap for real logos when they arrive (T-016).
 */
 

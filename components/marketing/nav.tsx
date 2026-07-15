@@ -74,7 +74,7 @@ export function ThinkWinnersNav() {
           {/* Centered logo */}
           <a
             href="#top"
-            aria-label="Think-Winners — top"
+            aria-label="Think-Winners, back to top"
             className="justify-self-start md:justify-self-center"
           >
             <Image

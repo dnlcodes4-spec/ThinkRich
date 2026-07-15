@@ -26,7 +26,7 @@ const slides: Slide[] = [
     alt: "Three young Nigerian professionals standing together",
     lead: "Creating value",
     accent: "for mankind.",
-    body: "A community of people who think right, connect right, and build together — leaders, entrepreneurs, savers, learners, and changemakers creating lasting value.",
+    body: "People who think right, connect right, and build together. Leaders, entrepreneurs, savers, learners, and changemakers creating lasting value.",
     ctas: [
       { label: "Explore the community", href: "#arms", primary: true },
       { label: "Enter Think-Winners", href: "/think-winners", arrow: true },
@@ -38,7 +38,7 @@ const slides: Slide[] = [
     alt: "A large Nigerian grassroots crowd gathered at sunset",
     lead: "Thinking Together,",
     accent: "Winning Together.",
-    body: "The Think-Winners Movement is mobilizing — an organized grassroots network of 20,000 leaders turning communities into votes. It is the one platform you can step into today.",
+    body: "The Think-Winners Movement is mobilizing. An organized grassroots network of 20,000 leaders turning communities into votes. Step into it today.",
     ctas: [
       { label: "Enter the movement", href: "/think-winners", primary: true, arrow: true },
       { label: "See the six arms", href: "#arms" },
@@ -50,7 +50,7 @@ const slides: Slide[] = [
     alt: "Community members planning together around a table",
     lead: "Six arms.",
     accent: "One purpose.",
-    body: "Leadership, cooperative finance, humanitarian service, education, wealth-building, and civic mobilization — pick the arm that matches your purpose, or grow through several.",
+    body: "Leadership, cooperative finance, humanitarian service, education, wealth-building, civic mobilization. Pick the arm that matches your purpose, or grow through several.",
     ctas: [{ label: "Explore the arms", href: "#arms", primary: true }],
   },
 ];
