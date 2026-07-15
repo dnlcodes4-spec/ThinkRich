@@ -9,6 +9,11 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Changed
+- **ThinkRich → black + green** (CR-0006 / ADR-0010, amending ADR-0008): the ThinkRich umbrella
+  (root site + member app + shared UI primitives) rebrands from navy + gold to a near-black `ink-*`
+  scale + the **logo green** (`green-*` re-sampled from the ThinkRich Community logo). Root
+  components swap `navy-* → ink-*` and `gold-* → green-*`; the member app/primitives get it via the
+  semantic tokens (light + dark). **Think-Winners keeps navy + gold** (untouched).
 - **Premium pass (root):** replaced the philosophy four-cell grid with a connected "one idea,
   four moves" flow whose links draw in on scroll; finished purging em dashes from the remaining
   user-facing copy (page titles, meta descriptions, form messages, login). Fixed the `#community`

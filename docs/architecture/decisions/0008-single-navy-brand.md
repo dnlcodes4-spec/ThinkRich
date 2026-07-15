@@ -1,6 +1,6 @@
 # ADR-0008: Single navy + gold brand — Think-Winners reverts from green
 
-- **Status:** Accepted
+- **Status:** Accepted (amended by [ADR-0010](0010-thinkrich-black-brand.md) — ThinkRich moves to black + gold; Think-Winners stays navy)
 - **Date:** 2026-07-14
 - **Deciders:** DNLCodess (client-confirmed via [CR-0005](../../project/change-requests/0005-think-winners-navy-brand.md))
 - **Supersedes:** [ADR-0007](0007-dual-brand-palette.md) (dual navy/green brand)

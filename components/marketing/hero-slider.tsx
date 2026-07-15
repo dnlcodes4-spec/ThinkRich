@@ -55,7 +55,7 @@ const slides: Slide[] = [
   },
 ];
 
-// Navy panel diagonal — content lives on navy (never on the image, so nothing is cut).
+// Ink panel diagonal: content lives on the panel (never on the image, so nothing is cut).
 const PANEL = "polygon(0 0, 58% 0, 47% 100%, 0 100%)";
 const SEAM = "polygon(0 0, 58.5% 0, 47.5% 100%, 0 100%)";
 
@@ -77,7 +77,7 @@ export function HeroSlider() {
       id="top"
       aria-roledescription="carousel"
       aria-label="ThinkRich Community"
-      className="relative h-dvh min-h-[42rem] overflow-hidden bg-navy-950 text-navy-50"
+      className="relative h-dvh min-h-[42rem] overflow-hidden bg-ink-950 text-ink-50"
       onTouchStart={(e) => {
         touchX.current = e.changedTouches[0].clientX;
       }}
@@ -107,25 +107,25 @@ export function HeroSlider() {
               sizes="100vw"
               className={`object-cover object-center ${on ? "tw-kenburns" : ""}`}
             />
-            {/* Mobile: left-weighted navy wash for legibility */}
-            <div aria-hidden="true" className="absolute inset-0 bg-navy-950/55 lg:hidden" />
+            {/* Mobile: left-weighted ink wash for legibility */}
+            <div aria-hidden="true" className="absolute inset-0 bg-ink-950/55 lg:hidden" />
             <div
               aria-hidden="true"
               className="absolute inset-0 lg:hidden"
               style={{
                 background:
-                  "linear-gradient(100deg, rgb(5,21,39) 20%, rgba(5,21,39,0.62) 58%, rgba(5,21,39,0.3) 100%)",
+                  "linear-gradient(100deg, rgb(10,10,11) 20%, rgba(10,10,11,0.62) 58%, rgba(10,10,11,0.3) 100%)",
               }}
             />
-            {/* Desktop: navy diagonal panel with a gold seam */}
+            {/* Desktop: ink diagonal panel with a green seam */}
             <div aria-hidden="true" className="absolute inset-0 hidden lg:block">
-              <div className="absolute inset-0 bg-gold-500" style={{ clipPath: SEAM }} />
-              <div className="absolute inset-0 bg-navy-950" style={{ clipPath: PANEL }} />
+              <div className="absolute inset-0 bg-green-500" style={{ clipPath: SEAM }} />
+              <div className="absolute inset-0 bg-ink-950" style={{ clipPath: PANEL }} />
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(100deg, transparent 46%, rgba(5,21,39,0.55) 58%, transparent 82%)",
+                    "linear-gradient(100deg, transparent 46%, rgba(10,10,11,0.55) 58%, transparent 82%)",
                 }}
               />
             </div>
@@ -136,7 +136,7 @@ export function HeroSlider() {
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
-        style={{ background: "radial-gradient(45% 55% at 6% 22%, rgba(201,162,39,0.14), transparent 60%)" }}
+        style={{ background: "radial-gradient(45% 55% at 6% 22%, rgba(0,151,82,0.14), transparent 60%)" }}
       />
       <Grain opacity={0.07} />
 
@@ -155,9 +155,9 @@ export function HeroSlider() {
               >
                 <h1 className="font-display text-6xl font-black leading-[0.92] text-balance [text-shadow:0_2px_30px_rgba(0,0,0,0.45)] sm:text-7xl">
                   {s.lead}
-                  <span className="mt-1 block font-medium italic text-gold-400">{s.accent}</span>
+                  <span className="mt-1 block font-medium italic text-green-400">{s.accent}</span>
                 </h1>
-                <p className="mt-6 max-w-md text-lg leading-relaxed text-navy-50/85">{s.body}</p>
+                <p className="mt-6 max-w-md text-lg leading-relaxed text-ink-50/85">{s.body}</p>
                 <div className="mt-9 flex flex-wrap gap-3">
                   {s.ctas.map((c) =>
                     c.href.startsWith("#") ? (
@@ -191,7 +191,7 @@ export function HeroSlider() {
             type="button"
             onClick={() => setPlaying((p) => !p)}
             aria-label={playing ? "Pause slideshow" : "Play slideshow"}
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-navy-50/25 text-navy-50 transition-colors hover:border-gold-400 hover:text-gold-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400"
+            className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-ink-50/25 text-ink-50 transition-colors hover:border-green-400 hover:text-green-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400"
           >
             {playing ? (
               <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
@@ -212,14 +212,14 @@ export function HeroSlider() {
                 onClick={() => go(i)}
                 aria-label={`Go to slide ${i + 1}: ${s.lead} ${s.accent}`}
                 aria-current={i === active}
-                className="group relative h-1.5 flex-1 overflow-hidden rounded-full bg-navy-50/25 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-400"
+                className="group relative h-1.5 flex-1 overflow-hidden rounded-full bg-ink-50/25 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-400"
               >
                 <span
                   // Remount the active fill each advance so its CSS animation
                   // restarts from 0 (a reused node keeps the old timeline —
                   // that's what made the bar appear to start mid-way).
                   key={i === active ? `fill-${active}` : `fill-idle-${i}`}
-                  className="block h-full w-0 rounded-full bg-gold-400"
+                  className="block h-full w-0 rounded-full bg-green-400"
                   style={
                     reduce
                       ? { width: i <= active ? "100%" : "0%" }
@@ -245,6 +245,6 @@ export function HeroSlider() {
 
 function ctaCls(c: Cta) {
   return c.primary
-    ? "inline-flex min-h-12 items-center justify-center rounded-md bg-gold-500 px-6 text-sm font-bold text-navy-950 transition-colors hover:bg-gold-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400"
-    : "inline-flex min-h-12 items-center justify-center rounded-md border border-navy-50/30 px-6 text-sm font-semibold text-navy-50 transition-colors hover:border-gold-400 hover:text-gold-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400";
+    ? "inline-flex min-h-12 items-center justify-center rounded-md bg-green-500 px-6 text-sm font-bold text-ink-950 transition-colors hover:bg-green-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400"
+    : "inline-flex min-h-12 items-center justify-center rounded-md border border-ink-50/30 px-6 text-sm font-semibold text-ink-50 transition-colors hover:border-green-400 hover:text-green-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400";
 }

@@ -8,15 +8,21 @@ The colour system is the backbone of the design. It is built from the **Think-Wi
 
 ## Brand story
 
-Two colours, sampled from the logo mark:
+The brand is **per surface** (ADR-0010) — each has its own dark colour *and* accent:
 
-- **Navy** `#0A2A4E` — deep, stable, authoritative. It carries **text, primary actions, and
-  dark surfaces**. It is the workhorse (~15:1 on white).
-- **Gold** `#C9A227` — warm, aspirational, celebratory. It is an **accent/highlight**, used
-  sparingly for emphasis and success moments.
+- **ThinkRich umbrella** (root site + member app) → **black + green**: the neutral near-black
+  **`ink-*`** scale (anchor `ink-700` `#1E1E21`; deepest `ink-950` `#0A0A0B`, never pure `#000`)
+  with the **logo green** as the accent (`green-*`, emerald `#009752` → forest `#09603E`, sampled
+  from the ThinkRich Community logo).
+- **Think-Winners** → **navy + gold**: navy `#0A2A4E` + gold `#C9A227` (grounded in its own logo).
 
-Navy + gold reads as *trustworthy, established, and aspirational* — the right tone for a
-movement about winning together, and for software that holds people's data and guides their vote.
+Black + green reads *stark and on-brand* for the umbrella; navy + gold stays *trustworthy and
+established* for the movement. (History: navy → green → navy [ADR-0008] → ThinkRich black + green [ADR-0010].)
+
+> **How the two are kept apart:** the root marketing components use the raw **`ink-*`/`green-*`**
+> utilities; the member app + primitives use the **semantic tokens** (`--primary`, `--accent`)
+> which now resolve to ink + green. Think-Winners uses the raw **`navy-*`/`gold-*`** utilities, so
+> it is untouched by either.
 
 ---
 
@@ -34,8 +40,27 @@ movement about winning together, and for software that holds people's data and g
 | `navy-600` | `#193759` | primary hover |
 | **`navy-700`** | **`#0A2A4E`** | **primary actions, headings, brand** |
 | `navy-800` | `#082240` | pressed state, dark surfaces |
-| `navy-900` | `#071C33` | dark-mode background |
-| `navy-950` | `#051527` | deepest background |
+| `navy-900` | `#071C33` | dark-mode background (Think-Winners) |
+| `navy-950` | `#051527` | deepest background (Think-Winners) |
+
+> Navy now serves **Think-Winners only** on the marketing side (ADR-0010).
+
+### Ink (ThinkRich umbrella primary) — anchor `700` = `#1E1E21` · ADR-0010
+Neutral near-black. **Never pure `#000`.** Root site uses `ink-*` utilities directly; the member
+app + primitives get it through the semantic tokens.
+| Token | Hex | Typical use |
+|-------|-----|-------------|
+| `ink-50` | `#F5F5F7` | tinted backgrounds, hover fills |
+| `ink-100` | `#E5E5E8` | subtle surfaces |
+| `ink-200` | `#C7C7CC` | dividers, disabled text on light |
+| `ink-300` | `#9A9AA1` | placeholder, dark-mode primary |
+| `ink-400` | `#6B6B72` | muted icons |
+| `ink-500` | `#45454B` | secondary interactive, focus ring |
+| `ink-600` | `#2B2B30` | primary hover |
+| **`ink-700`** | **`#1E1E21`** | **primary actions, headings, brand** |
+| `ink-800` | `#17171A` | pressed state, dark surfaces |
+| `ink-900` | `#101012` | dark-mode surface |
+| `ink-950` | `#0A0A0B` | deepest background |
 
 ### Gold (brand accent) — anchor `500` = `#C9A227`
 | Token | Hex | Typical use |
@@ -52,19 +77,18 @@ movement about winning together, and for software that holds people's data and g
 | `gold-900` | `#4C3E0F` | deepest gold |
 | `gold-950` | `#382D0B` | — |
 
-### Green scale — retained but currently unused
-Per [ADR-0008](../architecture/decisions/0008-single-navy-brand.md) (superseding ADR-0007), both
-**ThinkRich Community and Think-Winners Movement use navy + gold** — the earlier "Think-Winners =
-green" was a miscommunication (CR-0005). The green scale below is **retained but unused**, kept only
-for a possible future arm; it is AA-verified (green-700 = 7.65:1 both ways).
+### Green (ThinkRich umbrella accent) — anchor `500` = `#009752` · ADR-0010
+Re-sampled from the ThinkRich Community logo (emerald→forest). This is the umbrella's accent
+(replacing gold on the ThinkRich surfaces); Think-Winners keeps gold. Light sections can use
+`green-700`+ for green *text* on white; on black bands use `green-400`. Fills take dark text.
 
 | Token | Hex | | Token | Hex |
 |-------|-----|-|-------|-----|
-| `green-50` | `#ECF2EE` | | `green-500` | `#317347` |
-| `green-100` | `#D7E4DB` | | `green-600` | `#216838` |
-| `green-200` | `#AFC9B8` | | **`green-700`** | **`#15602E`** |
-| `green-300` | `#85AC92` (dark-mode primary) | | `green-800` | `#125127` |
-| `green-400` | `#548B66` | | `green-900` / `950` | `#0E411F` / `#0B3419` |
+| `green-50` | `#E9F8EF` | | `green-500` (accent) | `#009752` |
+| `green-100` | `#C9EDD9` | | `green-600` | `#057948` |
+| `green-200` | `#97DDB7` (dark-mode hover) | | **`green-700`** | **`#09603E`** |
+| `green-300` | `#5AC78E` (dark-mode accent) | | `green-800` | `#0A4D33` |
+| `green-400` | `#1FAE69` (accent on black) | | `green-900` / `950` | `#083A28` / `#05271B` |
 
 **Switching brand:** set `data-brand="think-winners"` on a surface's root (a landing page, the
 members' app). It redefines `--primary`/`--primary-hover`/`--primary-foreground`/`--ring` to green

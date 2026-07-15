@@ -13,7 +13,7 @@ const beats = [
 function Dot({ n, size = "h-14 w-14" }: { n: string; size?: string }) {
   return (
     <span
-      className={`relative z-10 grid ${size} shrink-0 place-items-center rounded-full bg-navy-900 font-mono text-sm font-bold text-gold-400 ring-1 ring-gold-400/30`}
+      className={`relative z-10 grid ${size} shrink-0 place-items-center rounded-full bg-ink-900 font-mono text-sm font-bold text-green-400 ring-1 ring-green-400/30`}
     >
       {n}
     </span>
@@ -28,14 +28,14 @@ export function PhilosophyFlow() {
       <div className="relative hidden md:block">
         <div
           aria-hidden="true"
-          className="absolute left-[12.5%] right-[12.5%] top-7 h-px -translate-y-1/2 bg-gold-400/35"
+          className="absolute left-[12.5%] right-[12.5%] top-7 h-px -translate-y-1/2 bg-green-400/35"
         />
         <ol className="relative grid grid-cols-4">
           {beats.map((b) => (
             <li key={b.label} className="flex flex-col items-center px-3 text-center">
               <Dot n={b.n} />
-              <span className="mt-4 font-display text-xl font-semibold text-navy-50">{b.label}</span>
-              <span className="mt-1 text-sm text-navy-50/55">{b.sub}</span>
+              <span className="mt-4 font-display text-xl font-semibold text-ink-50">{b.label}</span>
+              <span className="mt-1 text-sm text-ink-50/55">{b.sub}</span>
             </li>
           ))}
         </ol>
@@ -47,11 +47,11 @@ export function PhilosophyFlow() {
           <li key={b.label} className="flex gap-4">
             <div className="flex flex-col items-center self-stretch">
               <Dot n={b.n} size="h-12 w-12" />
-              {i < last && <span aria-hidden="true" className="my-1 w-px flex-1 bg-gold-400/35" />}
+              {i < last && <span aria-hidden="true" className="my-1 w-px flex-1 bg-green-400/35" />}
             </div>
             <div className={i < last ? "pb-7 pt-2" : "pt-2"}>
-              <p className="font-display text-xl font-semibold text-navy-50">{b.label}</p>
-              <p className="mt-0.5 text-sm text-navy-50/55">{b.sub}</p>
+              <p className="font-display text-xl font-semibold text-ink-50">{b.label}</p>
+              <p className="mt-0.5 text-sm text-ink-50/55">{b.sub}</p>
             </div>
           </li>
         ))}

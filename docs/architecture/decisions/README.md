@@ -39,4 +39,6 @@ Small, local, easily-reversed choices do **not** need an ADR.
 | [0005](0005-rls-as-authorization-boundary.md) | Use Postgres RLS as the authorization boundary | Accepted |
 | [0006](0006-design-system-and-brand.md) | Adopt a token-based design system with the Think-Winners brand palette | Accepted |
 | [0007](0007-dual-brand-palette.md) | Dual-brand palette — ThinkRich (navy) + Think-Winners (green) | Superseded (0008) |
-| [0008](0008-single-navy-brand.md) | Single navy + gold brand — Think-Winners reverts from green | Accepted |
+| [0008](0008-single-navy-brand.md) | Single navy + gold brand — Think-Winners reverts from green | Accepted (amended by 0010) |
+| [0009](0009-type-system.md) | Type system — Zodiak (display) + Hanken Grotesk (body), replacing Geist | Accepted |
+| [0010](0010-thinkrich-black-brand.md) | ThinkRich umbrella adopts a black + green brand (per-surface) | Accepted |

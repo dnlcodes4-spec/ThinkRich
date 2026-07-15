@@ -32,6 +32,7 @@ reviewable, impact-assessed, trackable unit of work.
 | [0003](0003-ward-tier-and-leadership-model.md) | Ward leadership tier + six-level leadership model | Client | 2026-07-14 | Assessed | T-001b | — |
 | [0004](0004-candidate-first-public-landing.md) | Candidate-first public landing (audience pivot) | Client | 2026-07-14 | In Progress | T-017, T-021, T-022 | — |
 | [0005](0005-think-winners-navy-brand.md) | Think-Winners brand → navy + gold (correcting green) | Client | 2026-07-14 | In Progress | T-014 | ADR-0008 |
+| [0006](0006-thinkrich-root-black-brand.md) | ThinkRich root site → black + green (retire navy on root) | Client | 2026-07-15 | Assessed | T-023, T-024, T-025 | ADR-0010 (proposed) |
 | [0003](0003-ward-tier-and-leadership-model.md) | Ward leadership tier & the six-level leadership model | Client | 2026-07-13 | Assessed | T-021, T-001b, T-017 | — (extends ADR-0005) |
 
 <!--
