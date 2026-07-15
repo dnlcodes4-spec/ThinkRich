@@ -18,12 +18,16 @@ advisor (MCP `get_advisors type=security`) to catch missing RLS.
 
 | File | What |
 |------|------|
-| `0001_geography.sql` | states → lgas → wards, units + unit_wards; reference-data RLS (world-readable, service-role writes) |
+| `0001_geography.sql` | states → lgas → wards, and the (later-replaced) units + unit_wards; reference-data RLS |
 | `0002_seed_states.sql` | the 37 first-order divisions (36 states + FCT) with 2-letter codes |
+| `0003_polling_units.sql` | CR-0002: drop `units`/`unit_wards`, add `polling_units` (child of ward) |
+| `0004_identity.sql` | `role`/`member_status` enums, `profiles` + `members`, invariants (immutable number, ≤10/leader, age ≥18), RLS enabled |
+| `0005_rls_policies.sql` | hierarchical RLS (National→…→Member) + geographic-consistency triggers |
+| `0006_private_schema_hardening.sql` | move RLS/trigger helpers into a non-exposed `private` schema; pin `search_path` (advisors clean) |
 
-Identity (`profiles`, `members`) and the hierarchical role/scope RLS land in the next migration
-(their own focused PR). Workflow/content tables (change requests, candidates, notifications) come
-with the features that own them.
+RLS is verified by `tests/rls_test.sql` (seeds a mini hierarchy, impersonates each role, asserts
+allow/deny + the invariants, then rolls back). Workflow/content tables (change requests,
+candidates, notifications) come with the features that own them.
 
 ## Geography import (LGAs & wards) — pending an authoritative dataset
 
@@ -54,5 +58,6 @@ Drop the file in and it's loaded with an idempotent import migration (LGAs upser
 distinct `(state, lga)` pairs, then wards). A template loader will be added with the file so the
 import is a reviewed migration, not a manual dashboard action.
 
-> Units (2+ wards) are defined per the movement's own structure and are created via the admin
-> tools, not the geographic import.
+> Polling units (children of wards) come from the same authoritative dataset (CR-0002: the client
+> sources States → LGAs → Wards → Polling Units). Extend the loader with a `polling_unit_name`
+> (and optional code) column when that data arrives.

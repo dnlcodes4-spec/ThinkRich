@@ -27,8 +27,7 @@ _Not yet refined / not yet Ready._
 ## 🟡 Ready
 _Refined, unblocked, ready to pull._
 
-- **T-001** — Supabase schema + migrations + geography seed + RLS
-  _AC: tables + enums per data-model.md; RLS enabled with allow/deny tests; 36(+FCT?) states seeded._
+_(none)_
 
 ## 🟠 In Progress
 _One person, one task at a time. Keep this column small._
@@ -38,6 +37,9 @@ _(none)_
 ## 🟣 In Review
 _PR open, awaiting review + CI._
 
+- **T-001b** — Identity + membership schema + hierarchical RLS (branch `feat/identity-membership-rls`)
+  _Done: polling_units correction; profiles + members + enums + invariants; hierarchical RLS with
+  allow/deny + invariant tests passing; security advisors clean; types regenerated._
 - **T-014** — Dual-brand palette: green Think-Winners via `data-brand` (PR `feat/dual-brand-palette`)
   _Done: AA-verified green scale, light/dark, brands demo + E2E; ADR-0007. Green provisional._
 

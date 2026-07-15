@@ -44,6 +44,12 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- Identity + membership + hierarchical RLS (T-001b): corrected geography to `polling_units`
+  (child of ward, CR-0002); `profiles` + `members` with the `role`/`member_status` enums and the
+  invariants (immutable `TWM-<STATE>-<LGA>-<seq>`, unique NIN, age ≥18, ≤10 active/leader,
+  geographic consistency); full hierarchical RLS (National→…→Member) with role-rank provisioning
+  (no privilege escalation) and member self-reads only. Helpers live in a non-exposed `private`
+  schema (security advisors clean). Verified by `supabase/tests/rls_test.sql`; types regenerated.
 - Dual-brand palette (T-014, from CR-0001): **ThinkRich Community = navy**, **Think-Winners
   Movement = green**, switched via `data-brand` (only the primary hue + focus ring change; gold
   accent, neutrals, surfaces, status shared). Added an AA-verified `green-*` scale (green-700
