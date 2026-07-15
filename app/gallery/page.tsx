@@ -65,7 +65,7 @@ export default function Home() {
       </header>
 
       <div className="mx-auto flex max-w-5xl flex-col gap-12 px-6 py-12">
-        <Section title="Brand — navy + gold">
+        <Section title="Brand: navy + gold">
           <p className="max-w-2xl text-sm text-muted">
             Both ThinkRich Community and Think-Winners Movement use{" "}
             <span className="font-semibold">navy + gold</span> (ADR-0008). Gold accent,
@@ -139,7 +139,7 @@ export default function Home() {
           </Card>
         </Section>
 
-        <Section title="Records — same data, two presentations">
+        <Section title="Records: same data, two presentations">
           <p className="-mt-2 text-sm text-muted">
             Table on desktop, card list on mobile. Resize to see it switch at the
             <span className="font-mono"> lg </span> breakpoint.

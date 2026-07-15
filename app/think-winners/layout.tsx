@@ -11,7 +11,7 @@ const display = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Think-Winners Movement — Thinking Together, Winning Together",
+  title: "Think-Winners Movement: Thinking Together, Winning Together",
   description:
     "A grassroots mobilization engine for campaigns: an organized, data-driven network of trained community leaders reaching engaged voters across Nigeria through education, engagement, and lawful participation. Partner with us.",
 };

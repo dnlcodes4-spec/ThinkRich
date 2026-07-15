@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "Organizational structure — Think-Winners (internal)",
+  title: "Organizational structure (Think-Winners, internal)",
   robots: { index: false, follow: false },
 };
 
@@ -25,7 +25,7 @@ const LEVELS = [
     level: "National",
     role: "National Admin",
     code: "national_admin",
-    scope: "All 37 — 36 states + FCT",
+    scope: "All 37 (36 states + FCT)",
     oversees: "State Admins",
     apex: true,
   },
@@ -68,7 +68,7 @@ const LEVELS = [
     role: "Leader",
     code: "leader",
     scope: "Their registered members (≤10)",
-    oversees: "Members — serves directly",
+    oversees: "Members (serves directly)",
   },
 ];
 
@@ -103,8 +103,8 @@ export default function OrganizationPage() {
           Organizational structure
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-navy-800">
-          The full chain, top to bottom. <strong>Every level is a leader except Member</strong> —
-          the apex (#1) is the National Admin; authority narrows at each step down to a single
+          The full chain, top to bottom. <strong>Every level is a leader except Member.</strong>
+          The apex (#1) is the National Admin; authority narrows at each step down to a single
           Leader with up to ten members. This page is for verification only and is not part of the
           public site.
         </p>

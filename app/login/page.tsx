@@ -6,7 +6,7 @@ export default function LoginPage() {
       <h1 className="text-2xl font-bold tracking-tight">Sign in</h1>
       <p className="text-muted">
         Sign-in is coming with the authentication task. There is no public
-        sign-up — members are registered by their leader.
+        sign-up. Members are registered by their leader.
       </p>
     </main>
   );
