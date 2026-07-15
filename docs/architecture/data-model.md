@@ -46,8 +46,9 @@ erDiagram
 | `polling_units` | `id`, `ward_id`, `name`, `code?` | **Smallest electoral unit** — a ward has many. "Unit" in the role hierarchy = **polling unit** (CR-0002). Members are assigned here for agent allocation. |
 
 > Correction (CR-0002): the earlier `units` (2+ wards) / `unit_wards` model was wrong. Hierarchy is
-> **State → LGA → Ward → Polling Unit**; a corrective migration replaces `units`/`unit_wards` with
-> `polling_units` (see [supabase/README.md](../../supabase/README.md)).
+> **State → LGA → Ward → Polling Unit**. Migration `0003_polling_units.sql` dropped `units`/`unit_wards`
+> and added `polling_units` (child of ward). Identity + hierarchical RLS land in `0004`–`0006`
+> (T-001b), verified by `supabase/tests/rls_test.sql`.
 
 ## Identity & roles
 
