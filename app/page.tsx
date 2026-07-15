@@ -5,6 +5,7 @@ import { Grain } from "@/components/marketing/motifs";
 import { ThinkRichNav } from "@/components/marketing/thinkrich-nav";
 import { HeroSlider } from "@/components/marketing/hero-slider";
 import { ArmsExplorer } from "@/components/marketing/arms-explorer";
+import { PhilosophyFlow } from "@/components/marketing/philosophy-flow";
 
 // ThinkRich Community — the umbrella front door (T-016). Purpose: inspire prospective members
 // about the community and route them to the arm that fits — above all to Think-Winners, the one
@@ -146,13 +147,6 @@ const arms = [
   },
 ];
 
-const philosophy = [
-  "Think Right",
-  "Connect Right",
-  "Create Value",
-  "Transform Lives",
-];
-
 function Rule({ light = false }: { light?: boolean }) {
   return (
     <div
@@ -192,7 +186,7 @@ export default function ThinkRichLanding() {
             >
               <Image
                 src="/think-winners/img/hero-v2.jpeg"
-                alt="Young Nigerian graduates"
+                alt="A Nigerian community gathered on a city street at sunset"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover object-center"
@@ -315,29 +309,12 @@ export default function ThinkRichLanding() {
         />
         <div className="relative mx-auto max-w-5xl px-6 py-14 sm:py-20 lg:py-28">
           <Rule light />
-          <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
-            Our core philosophy.
+          <h2 className="max-w-xl font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+            One idea, four moves.
           </h2>
-          <ol className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-navy-50/10 bg-navy-50/10 sm:grid-cols-2 lg:grid-cols-4">
-            {philosophy.map((p, i) => (
-              <Reveal
-                as="li"
-                key={p}
-                delay={i * 80}
-                className="bg-navy-950 p-8"
-              >
-                <span className="font-mono text-sm text-gold-400">
-                  0{i + 1}
-                </span>
-                <p className="mt-3 font-display text-2xl font-semibold text-navy-50">
-                  {p}.
-                </p>
-              </Reveal>
-            ))}
-          </ol>
-          <p className="mt-10 font-display text-xl italic text-navy-50/70">
-            Building leaders, connecting opportunities, creating value.
-          </p>
+          <div className="mt-12 sm:mt-16">
+            <PhilosophyFlow />
+          </div>
         </div>
       </section>
 

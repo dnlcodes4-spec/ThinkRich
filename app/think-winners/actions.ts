@@ -50,6 +50,6 @@ export async function requestPartnership(
   return {
     status: "success",
     message:
-      "Thank you — your partnership request has been received. We'll be in touch shortly.",
+      "Thank you. Your partnership request has been received, and we'll be in touch shortly.",
   };
 }

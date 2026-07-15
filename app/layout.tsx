@@ -30,9 +30,9 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ThinkRich Community — Creating Value for Mankind",
+  title: "ThinkRich Community: Creating Value for Mankind",
   description:
-    "A value-driven community building leaders who connect the right people to verifiable opportunities. Six arms — one purpose: creating value for mankind.",
+    "A value-driven community building leaders who connect the right people to verifiable opportunities. Six arms, one purpose: creating value for mankind.",
 };
 
 // Runs before paint to set the theme, avoiding a flash of the wrong colours.

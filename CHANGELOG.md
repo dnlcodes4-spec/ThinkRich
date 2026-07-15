@@ -9,6 +9,10 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Changed
+- **Premium pass (root):** replaced the philosophy four-cell grid with a connected "one idea,
+  four moves" flow whose links draw in on scroll; finished purging em dashes from the remaining
+  user-facing copy (page titles, meta descriptions, form messages, login). Fixed the `#community`
+  image alt to match the photo.
 - **Premium copy + component pass:** rewrote the marketing copy into scannable fragments and
   purged em dashes from all user-facing copy. Replaced the Think-Winners process timeline with an
   interactive step-through "journey" (one step in focus at a time), and reframed "What we bring"
