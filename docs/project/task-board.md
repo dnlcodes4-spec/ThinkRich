@@ -37,6 +37,11 @@ _(none)_
 ## 🟣 In Review
 _PR open, awaiting review + CI._
 
+- **T-004** — Leader registers a member + membership-number generation (branch `feat/member-registration`)
+  _Done: atomic `TWM-<STATE>-<LGA>-<seq>` (per-LGA counter + trigger); leader form + server action;
+  geography auto-derived from the leader's PU; NIN-unique / ≥18 / ≤10 enforced; email captured;
+  advisors clean; verified live. Deferred: photo upload (Storage) + member login provisioning (invite)._
+
 - **T-003** — Auth: email/password sign-in, session, sign-out (branch `feat/auth-email-password`)
   _Done: Supabase email+password sign-in (ADR-0011, resolves Q1); server-validated actions; sign-out;
   safe `next` redirect; login-page + invalid-creds e2e; happy path verified with a provisioned account._

@@ -18,6 +18,29 @@ export type Database = {
   }
   public: {
     Tables: {
+      lga_member_counters: {
+        Row: {
+          lga_id: string
+          seq: number
+        }
+        Insert: {
+          lga_id: string
+          seq?: number
+        }
+        Update: {
+          lga_id?: string
+          seq?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lga_member_counters_lga_id_fkey"
+            columns: ["lga_id"]
+            isOneToOne: true
+            referencedRelation: "lgas"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       lgas: {
         Row: {
           code: string
@@ -57,6 +80,7 @@ export type Database = {
           bank_name: string | null
           created_at: string
           date_of_birth: string
+          email: string | null
           full_name: string
           id: string
           lga_id: string
@@ -77,10 +101,11 @@ export type Database = {
           bank_name?: string | null
           created_at?: string
           date_of_birth: string
+          email?: string | null
           full_name: string
           id?: string
           lga_id: string
-          membership_number: string
+          membership_number?: string
           nin: string
           passport_photo_url?: string | null
           polling_unit_id: string
@@ -97,6 +122,7 @@ export type Database = {
           bank_name?: string | null
           created_at?: string
           date_of_birth?: string
+          email?: string | null
           full_name?: string
           id?: string
           lga_id?: string

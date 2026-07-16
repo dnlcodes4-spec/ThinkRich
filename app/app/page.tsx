@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 import { signOut } from "@/app/login/actions";
@@ -25,6 +26,15 @@ export default async function MembersHome() {
         {user ? `Signed in as ${user.email}` : "No active session (placeholder)."}
         {profile?.role ? ` · role: ${profile.role}` : ""}
       </p>
+      {profile?.role === "leader" ? (
+        <Link
+          href="/app/register"
+          className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
+        >
+          Register a member
+        </Link>
+      ) : null}
+
       {user ? (
         <form action={signOut}>
           <Button type="submit" variant="secondary" size="sm">

@@ -18,6 +18,7 @@ test("invalid credentials show a generic error and stay on /login", async ({ pag
   await page.fill('input[name="email"]', "nobody@example.com");
   await page.fill('input[name="password"]', "wrong-password");
   await page.getByRole("button", { name: "Sign in" }).click();
-  await expect(page.getByText(/Invalid email or password/i)).toBeVisible();
+  // The action makes a real round-trip to Supabase Auth, so allow generous time.
+  await expect(page.getByText(/Invalid email or password/i)).toBeVisible({ timeout: 15000 });
   expect(new URL(page.url()).pathname).toBe("/login");
 });
