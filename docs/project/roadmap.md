@@ -63,5 +63,6 @@ end-to-end test suite for critical journeys.
 | ~~Q9~~ | ✅ **Resolved (CR-0002):** "Unit" = **Polling Unit**; hierarchy State→LGA→Ward→Polling Unit | Geography schema, roles | Client |
 | ~~Q7~~ | ✅ **Resolved (CR-0005/ADR-0008):** single brand — both ThinkRich and Think-Winners are **navy + gold** (earlier "green" was a miscommunication) | Design system | Client |
 | ~~Q8~~ | ✅ **Resolved:** units stay geographic (2+ wards); National tier kept; `unit_manager`, voter=member | Identity/RLS migration | Client |
+| Q10 | Opt-out **retention window** length before permanent deletion? (T-008 ships with a **30-day** default) | Opt-out flow, data-retention policy | Client |
 
 Update this table as answers arrive; move unblocked items in the phase table above.
