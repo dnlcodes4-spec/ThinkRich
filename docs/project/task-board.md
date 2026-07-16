@@ -37,6 +37,10 @@ _(none)_
 ## 🟣 In Review
 _PR open, awaiting review + CI._
 
+- **T-003** — Auth: email/password sign-in, session, sign-out (branch `feat/auth-email-password`)
+  _Done: Supabase email+password sign-in (ADR-0011, resolves Q1); server-validated actions; sign-out;
+  safe `next` redirect; login-page + invalid-creds e2e; happy path verified with a provisioned account._
+
 - **T-001b** — Identity + membership schema + hierarchical RLS (branch `feat/identity-membership-rls`)
   _Done: polling_units correction; profiles + members + enums + invariants; hierarchical RLS with
   allow/deny + invariant tests passing; security advisors clean; types regenerated._
