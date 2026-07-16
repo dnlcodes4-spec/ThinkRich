@@ -36,10 +36,15 @@ _(none)_
 ## 🟣 In Review
 _PR open, awaiting review + CI._
 
-- **T-018** — Geography data import: 774 LGAs / 8.8k wards / 120k PUs (branch `feat/geography-import`)
-  _Done: `scripts/import-geography.mjs` loaded the full electoral hierarchy from `docs/project/data/`
-  (idempotent, service-role, retry/backoff). Verified against source totals (119,971 PUs exact);
-  16 same-name wards merged, 1,235 PUs suffixed, none dropped. Every state now has real LGAs._
+- **T-006 (partial)** — Member profile + passport photo (branch `feat/member-profile-photo`)
+  _Done: `/app/profile` member self-view + passport-photo upload to a private `member-photos` bucket
+  (service-role write, code-checked ownership, signed-URL reads, no object policies). Verified live.
+  Deferred: leader-side upload + details change-request flow._
+- **T-017** — Member login provisioning: temp password (branch `feat/member-login-provisioning`)
+  _Done: creates the member's `auth.users` + `profiles(role=member)` + `members.user_id` (service
+  role, rollback on failure), returning a one-time temp password. Auto at registration when an email
+  is present; on-demand from the roster's Login column. Authz reuses RLS visibility. Verified live
+  (member signs in; roster button provisions)._
 - **T-014** — Dual-brand palette: green Think-Winners via `data-brand` (PR `feat/dual-brand-palette`)
   _Done: AA-verified green scale, light/dark, brands demo + E2E; ADR-0007. Green provisional._
 

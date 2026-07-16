@@ -44,15 +44,14 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
-- Geography data import (T-018): loaded Nigeria's full electoral hierarchy into `lgas` / `wards` /
-  `polling_units` — **774 LGAs, ~8.8k wards, 119,971 polling units** across all 37 jurisdictions,
-  from the per-state datasets in `docs/project/data/`. Runs via `node scripts/import-geography.mjs`
-  (service-role, idempotent upserts with retry/backoff; re-runnable). Every state now has real LGAs,
-  so provisioning and registration operate on live geography. Two schema-driven fidelity notes:
-  same-named wards within an LGA merge to one record (16 total, since `wards` is `unique(lga_id,
-  name)`) and 1,235 same-named polling units within a ward were disambiguated with a `[code]` suffix
-  — **no polling unit was dropped** (count matches the source exactly). The dev seed LGA/ward/PU
-  under Lagos remain for the seed leader.
+- Member profile + passport photo (T-006, partial): a signed-in member has a profile at
+  `/app/profile` showing their details (name, membership number, status, DOB, email, polling-unit
+  path, all read-only) and can upload/replace their **passport photo**. Photos live in a new
+  **private** Storage bucket `member-photos` (migration `0008`, 5 MB, JPEG/PNG/WebP): all access is
+  server-mediated. The service role writes (authorized in code by confirming the row is the caller's
+  own, since members can't update their row under RLS), reads use short-lived signed URLs, and no
+  `storage.objects` policies exist so nothing else can touch the PII. Verified live (member uploads,
+  renders, persists). Deferred: leader-side photo upload and the details change-request flow.
 - Member login provisioning (T-017): a registered member can now be given their own login. A member
   needs three linked things to be recognised by RLS — an `auth.users` row, a `profiles` row with
   `role = 'member'`, and `members.user_id` — so provisioning creates all three via the service-role
