@@ -5,6 +5,8 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { StatusPill, type MemberStatus } from "@/components/ui/status-pill";
 import { PhotoUpload } from "./photo-upload";
 import { MembershipStatusPanel } from "./opt-out";
+import { ChangeRequestForm } from "./change-request";
+import { fieldLabel } from "@/app/app/members/change-request-fields";
 
 export const metadata: Metadata = {
   title: "Your profile",
@@ -69,6 +71,13 @@ export default async function ProfilePage() {
     retentionUntil = req?.retention_until ?? null;
   }
 
+  const { data: changeRequests } = await supabase
+    .from("change_requests")
+    .select("id, field, new_value, status, created_at")
+    .eq("member_id", member.id)
+    .order("created_at", { ascending: false })
+    .limit(10);
+
   const dob = member.date_of_birth
     ? new Date(member.date_of_birth).toLocaleDateString("en-NG", { year: "numeric", month: "long", day: "numeric" })
     : "—";
@@ -107,10 +116,21 @@ export default async function ProfilePage() {
               <dd className="mt-0.5 font-medium text-foreground">{geography || "—"}</dd>
             </div>
           </dl>
-          <p className="mt-8 rounded-md bg-surface-muted p-3 text-xs text-muted">
-            To correct your details, contact the leader who registered you. Editing here is coming
-            with the change-request flow.
-          </p>
+          <div className="mt-6">
+            <ChangeRequestForm />
+          </div>
+          {changeRequests && changeRequests.length > 0 ? (
+            <ul className="mt-4 flex flex-col gap-2">
+              {changeRequests.map((r) => (
+                <li key={r.id} className="flex items-center justify-between gap-3 rounded-md bg-surface-muted px-3 py-2 text-xs">
+                  <span className="text-muted">
+                    <span className="font-medium text-foreground">{fieldLabel(r.field)}</span> → {r.new_value}
+                  </span>
+                  <span className="font-semibold capitalize text-muted">{r.status}</span>
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </div>
       </div>
 

@@ -17,7 +17,6 @@ only when it meets the [Definition of Done](../engineering/definition-of-done.md
 _Not yet refined / not yet Ready._
 
 - **T-005** — Membership card render + download 🔒 _(blocked: Q3 card design)_
-- **T-006** — Member profile: view + photo upload + change-request flow
 - **T-008** — Opt-out flow (freeze → retention → delete/reactivate)
 - **T-009** — PWA shell: manifest + service worker + install prompt
 - **T-010** — Web Push notifications + Leader KYM verification (see [notifications.md](../architecture/notifications.md))
@@ -39,6 +38,10 @@ _PR open, awaiting review + CI._
   _Done: `/app/vote` member hero (their LGA chairman + governor + president); `/app/admin/candidates`
   scoped admin management + photo upload (public bucket); `candidates` table, RLS read-for-all-signed-in,
   service-role writes with role-derived scope. Verified live. Office taxonomy to be client-confirmed._
+- **T-006 (completed)** — Change-requests + leader photo upload (branch `feat/change-requests-leader-photo`, migration `0011`)
+  _Done: member requests a detail correction on `/app/profile`; state-level admin reviews on
+  `/app/members/[id]` and approval applies the value; leader/admin uploads a member's photo there.
+  `change_requests` table + RLS; service-role actions. Verified live. Completes T-006 (partial #12)._
 - **T-006 (partial)** — Member profile + passport photo (branch `feat/member-profile-photo`)
   _Done: `/app/profile` member self-view + passport-photo upload to a private `member-photos` bucket
   (service-role write, code-checked ownership, signed-URL reads, no object policies). Verified live.

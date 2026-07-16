@@ -44,6 +44,17 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- Member change-requests + leader photo upload (T-006 completed, migration `0011`): a member can
+  **request a correction** to one of their details from `/app/profile` (name, DOB, VIN, email, bank
+  details) with a reason; a **state-level admin reviews** it on a new member detail page
+  (`/app/members/[id]`) and, on approval, the value is **applied to the member record** (DB triggers
+  still guard age/uniqueness). The member sees their own requests' status. That detail page is also
+  where a **leader/admin uploads a member's passport photo** (the counterpart to member self-upload,
+  for members without a login), reusing the private `member-photos` bucket. New `change_requests`
+  table (allowed fields enforced by a DB check; one open request per field) readable by member +
+  in-scope leaders/admins (RLS); submit/review/upload go through service-role actions with authz
+  re-checked in code. Roster member names now link to the detail page. Verified live end-to-end
+  (member submits → admin approves → value applied; leader photo upload).
 - Candidates + member voting view (T-007, migration `0010`): a member's hero screen at `/app/vote`
   shows the movement's candidates for **their own geography** — their **LGA chairman** (the hero),
   their **governor**, and the **president** — each with photo, party, running mate, and slogan, and

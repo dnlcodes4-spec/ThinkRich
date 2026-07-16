@@ -85,6 +85,57 @@ export type Database = {
           },
         ]
       }
+      change_requests: {
+        Row: {
+          created_at: string
+          field: string
+          id: string
+          member_id: string
+          new_value: string
+          reason: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: Database["public"]["Enums"]["change_request_status"]
+        }
+        Insert: {
+          created_at?: string
+          field: string
+          id?: string
+          member_id: string
+          new_value: string
+          reason?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: Database["public"]["Enums"]["change_request_status"]
+        }
+        Update: {
+          created_at?: string
+          field?: string
+          id?: string
+          member_id?: string
+          new_value?: string
+          reason?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: Database["public"]["Enums"]["change_request_status"]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "change_requests_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "members"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "change_requests_reviewed_by_fkey"
+            columns: ["reviewed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       lga_member_counters: {
         Row: {
           lga_id: string
@@ -458,6 +509,7 @@ export type Database = {
     }
     Enums: {
       candidate_level: "presidential" | "state" | "lg"
+      change_request_status: "pending" | "approved" | "rejected"
       member_status: "active" | "frozen" | "deleted"
       opt_out_status: "requested" | "frozen" | "deleted" | "reactivated"
       user_role:
@@ -596,6 +648,7 @@ export const Constants = {
   public: {
     Enums: {
       candidate_level: ["presidential", "state", "lg"],
+      change_request_status: ["pending", "approved", "rejected"],
       member_status: ["active", "frozen", "deleted"],
       opt_out_status: ["requested", "frozen", "deleted", "reactivated"],
       user_role: [
