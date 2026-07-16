@@ -1,9 +1,9 @@
 "use server";
 
-import { randomBytes } from "node:crypto";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { generateTempPassword } from "@/lib/provisioning";
 import type { Database } from "@/lib/database.types";
 import { NEXT_TIER, type Role } from "./tiers";
 
@@ -24,11 +24,6 @@ export type CreateAccountState = {
   role?: string;
   fieldErrors?: Record<string, string>;
 };
-
-function tempPassword(): string {
-  // 16 hex chars + a symbol/upper/digit so it satisfies any policy.
-  return randomBytes(8).toString("hex") + "!Aa9";
-}
 
 export async function createAccount(
   _prev: CreateAccountState,
@@ -94,7 +89,7 @@ export async function createAccount(
   }
 
   // Create the auth user, then the profile. Roll back the user if the profile fails.
-  const password = tempPassword();
+  const password = generateTempPassword();
   const { data: created, error: createErr } = await admin.auth.admin.createUser({
     email: parsed.data.email,
     password,

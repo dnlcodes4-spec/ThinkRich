@@ -36,17 +36,17 @@ _(none)_
 ## 🟣 In Review
 _PR open, awaiting review + CI._
 
-- **T-015** — Admin account provisioning: next-tier, in-scope (branch `feat/account-provisioning`)
-  _Done: `/app/admin/new-account` provisions the next tier down within the caller's scope via a
-  service-role client; the action re-enforces the RLS hierarchy + scope containment; temp password
-  returned once; auth-user rollback on profile failure. Verified live (National → State admin →
-  scoped LGAs). Deferred: member login invite flow._
+- **T-016** — National-admin bootstrap: dev-only page + prod seed (branch `feat/national-admin-bootstrap`)
+  _Done: `/dev/national-admins` create/list/delete with temp password, gated `NODE_ENV !== production`
+  (page + every action); lives outside `/app` (no session at bootstrap). ADR-0012. Prod = one-time
+  DB seed. Verified live (create → sign in → provision → delete) + prod build 404s the page._
 - **T-014** — Dual-brand palette: green Think-Winners via `data-brand` (PR `feat/dual-brand-palette`)
   _Done: AA-verified green scale, light/dark, brands demo + E2E; ADR-0007. Green provisional._
 
 ## ✅ Done
 _Merged to `main`, meets Definition of Done._
 
+- **T-015** — Admin account provisioning: next-tier, in-scope (PR #8)
 - **T-006a** — Member roster: scoped list at `/app/members` (PR #7)
 - **T-004** — Leader registers a member + membership-number generation (PR #6)
 - **T-003** — Auth: email/password sign-in + session (ADR-0011, resolves Q1) (PR #5)
