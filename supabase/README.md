@@ -24,6 +24,7 @@ advisor (MCP `get_advisors type=security`) to catch missing RLS.
 | `0004_identity.sql` | `role`/`member_status` enums, `profiles` + `members`, invariants (immutable number, ≤10/leader, age ≥18), RLS enabled |
 | `0005_rls_policies.sql` | hierarchical RLS (National→…→Member) + geographic-consistency triggers |
 | `0006_private_schema_hardening.sql` | move RLS/trigger helpers into a non-exposed `private` schema; pin `search_path` (advisors clean) |
+| `0007_membership_number.sql` | `members.email`; atomic `TWM-<STATE>-<LGA>-<seq>` generation (per-LGA counter + BEFORE INSERT trigger) |
 
 RLS is verified by `tests/rls_test.sql` (seeds a mini hierarchy, impersonates each role, asserts
 allow/deny + the invariants, then rolls back). Workflow/content tables (change requests,

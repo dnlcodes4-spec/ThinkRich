@@ -44,6 +44,12 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- Member registration (T-004): a leader registers a member via a server-validated form. Geography
+  is auto-derived from the leader's own polling unit; the membership number `TWM-<STATE>-<LGA>-<seq>`
+  is assigned atomically by the DB (per-LGA counter + BEFORE INSERT trigger). Enforces NIN
+  uniqueness, age ≥18, and the ≤10-active-members cap, with friendly errors. Email is captured for
+  the member's future login account. Deferred: passport-photo upload (needs Storage) and provisioning
+  the member's login account (invite flow). Verified live end-to-end (numbers, sequence, invariants).
 - Authentication (T-003, ADR-0011, resolves Q1): **email + password** sign-in via Supabase Auth.
   Server-validated `signIn`/`signOut` actions, a login form on the (now black + green) primitives,
   a safe `next` redirect, and sign-out + role display on `/app`. No public sign-up (accounts are
