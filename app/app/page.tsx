@@ -26,13 +26,23 @@ export default async function MembersHome() {
         {user ? `Signed in as ${user.email}` : "No active session (placeholder)."}
         {profile?.role ? ` · role: ${profile.role}` : ""}
       </p>
-      {profile?.role === "leader" ? (
-        <Link
-          href="/app/register"
-          className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
-        >
-          Register a member
-        </Link>
+      {profile && profile.role !== "member" ? (
+        <div className="flex flex-wrap gap-3">
+          {profile.role === "leader" ? (
+            <Link
+              href="/app/register"
+              className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
+            >
+              Register a member
+            </Link>
+          ) : null}
+          <Link
+            href="/app/members"
+            className="inline-flex min-h-11 items-center justify-center rounded-md border border-ring px-4 text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted"
+          >
+            View members
+          </Link>
+        </div>
       ) : null}
 
       {user ? (

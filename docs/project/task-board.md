@@ -37,24 +37,18 @@ _(none)_
 ## 🟣 In Review
 _PR open, awaiting review + CI._
 
-- **T-004** — Leader registers a member + membership-number generation (branch `feat/member-registration`)
-  _Done: atomic `TWM-<STATE>-<LGA>-<seq>` (per-LGA counter + trigger); leader form + server action;
-  geography auto-derived from the leader's PU; NIN-unique / ≥18 / ≤10 enforced; email captured;
-  advisors clean; verified live. Deferred: photo upload (Storage) + member login provisioning (invite)._
-
-- **T-003** — Auth: email/password sign-in, session, sign-out (branch `feat/auth-email-password`)
-  _Done: Supabase email+password sign-in (ADR-0011, resolves Q1); server-validated actions; sign-out;
-  safe `next` redirect; login-page + invalid-creds e2e; happy path verified with a provisioned account._
-
-- **T-001b** — Identity + membership schema + hierarchical RLS (branch `feat/identity-membership-rls`)
-  _Done: polling_units correction; profiles + members + enums + invariants; hierarchical RLS with
-  allow/deny + invariant tests passing; security advisors clean; types regenerated._
+- **T-006a** — Member roster: scoped list at `/app/members` (branch `feat/member-roster`)
+  _Done: RLS-scoped list (leader → own, admins → geography); responsive table/cards on the
+  primitives; empty state; `/app` entry. Verified live as the seed leader._
 - **T-014** — Dual-brand palette: green Think-Winners via `data-brand` (PR `feat/dual-brand-palette`)
   _Done: AA-verified green scale, light/dark, brands demo + E2E; ADR-0007. Green provisional._
 
 ## ✅ Done
 _Merged to `main`, meets Definition of Done._
 
+- **T-004** — Leader registers a member + membership-number generation (PR #6)
+- **T-003** — Auth: email/password sign-in + session (ADR-0011, resolves Q1) (PR #5)
+- **T-001b** — Identity + membership schema + hierarchical RLS (PR #4)
 - **T-002** — Supabase bootstrap: clients, env, proxy auth routing (PR #8)
 - **T-001 (geography)** — schema + reference RLS + 37 states + types + import path (PR #9)
 - **CR-0001** — client brand/org/landing capture + resolution (PR #10)
