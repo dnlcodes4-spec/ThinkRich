@@ -19,11 +19,37 @@ function Inner({ onReset }: { onReset: () => void }) {
 
   if (state.status === "success" && state.membershipNumber) {
     return (
-      <div className="rounded-card border border-border bg-surface p-6 text-center">
-        <p className="text-sm text-muted">Member registered. Membership number:</p>
-        <p className="mt-2 font-mono text-2xl font-bold tracking-tight text-foreground">
-          {state.membershipNumber}
-        </p>
+      <div className="rounded-card border border-border bg-surface p-6">
+        <div className="text-center">
+          <p className="text-sm text-muted">Member registered. Membership number:</p>
+          <p className="mt-2 font-mono text-2xl font-bold tracking-tight text-foreground">
+            {state.membershipNumber}
+          </p>
+        </div>
+
+        {state.loginTempPassword ? (
+          <div className="mt-6 border-t border-border pt-5">
+            <p className="text-sm font-semibold text-foreground">Login created</p>
+            <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
+              <dt className="text-muted">Email</dt>
+              <dd className="font-medium break-all">{state.loginEmail}</dd>
+              <dt className="text-muted">Temp password</dt>
+              <dd className="font-mono font-bold break-all">{state.loginTempPassword}</dd>
+            </dl>
+            <p className="mt-3 rounded-md bg-surface-muted p-3 text-xs text-muted">
+              Give these to the member. Ask them to change the password after their first sign-in.
+              This password will not be shown again.
+            </p>
+          </div>
+        ) : state.loginNote ? (
+          <div className="mt-6 border-t border-border pt-5">
+            <p className="text-sm text-muted">
+              Member saved, but their login was not created: {state.loginNote} You can provision it
+              later from the members list.
+            </p>
+          </div>
+        ) : null}
+
         <Button className="mt-6" onClick={onReset}>
           Register another member
         </Button>
@@ -50,7 +76,7 @@ function Inner({ onReset }: { onReset: () => void }) {
           name="email"
           type="email"
           autoComplete="off"
-          hint="For their login account (optional for now)"
+          hint="Creates their login now (optional)"
           error={fe.email}
         />
         <Input label="Bank name" name="bank_name" error={fe.bank_name} />

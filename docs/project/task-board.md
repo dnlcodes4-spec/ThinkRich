@@ -36,16 +36,18 @@ _(none)_
 ## 🟣 In Review
 _PR open, awaiting review + CI._
 
-- **T-016** — National-admin bootstrap: dev-only page + prod seed (branch `feat/national-admin-bootstrap`)
-  _Done: `/dev/national-admins` create/list/delete with temp password, gated `NODE_ENV !== production`
-  (page + every action); lives outside `/app` (no session at bootstrap). ADR-0012. Prod = one-time
-  DB seed. Verified live (create → sign in → provision → delete) + prod build 404s the page._
+- **T-017** — Member login provisioning: temp password (branch `feat/member-login-provisioning`)
+  _Done: creates the member's `auth.users` + `profiles(role=member)` + `members.user_id` (service
+  role, rollback on failure), returning a one-time temp password. Auto at registration when an email
+  is present; on-demand from the roster's Login column. Authz reuses RLS visibility. Verified live
+  (member signs in; roster button provisions)._
 - **T-014** — Dual-brand palette: green Think-Winners via `data-brand` (PR `feat/dual-brand-palette`)
   _Done: AA-verified green scale, light/dark, brands demo + E2E; ADR-0007. Green provisional._
 
 ## ✅ Done
 _Merged to `main`, meets Definition of Done._
 
+- **T-016** — National-admin bootstrap: dev-only page + prod seed (ADR-0012, PR #9)
 - **T-015** — Admin account provisioning: next-tier, in-scope (PR #8)
 - **T-006a** — Member roster: scoped list at `/app/members` (PR #7)
 - **T-004** — Leader registers a member + membership-number generation (PR #6)
