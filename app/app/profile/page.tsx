@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { StatusPill, type MemberStatus } from "@/components/ui/status-pill";
 import { PhotoUpload } from "./photo-upload";
+import { MembershipStatusPanel } from "./opt-out";
 
 export const metadata: Metadata = {
   title: "Your profile",
@@ -57,6 +58,17 @@ export default async function ProfilePage() {
     photoUrl = data?.signedUrl ?? null;
   }
 
+  let retentionUntil: string | null = null;
+  if (member.status === "frozen") {
+    const { data: req } = await supabase
+      .from("opt_out_requests")
+      .select("retention_until")
+      .eq("member_id", member.id)
+      .eq("status", "frozen")
+      .maybeSingle();
+    retentionUntil = req?.retention_until ?? null;
+  }
+
   const dob = member.date_of_birth
     ? new Date(member.date_of_birth).toLocaleDateString("en-NG", { year: "numeric", month: "long", day: "numeric" })
     : "—";
@@ -100,6 +112,10 @@ export default async function ProfilePage() {
             with the change-request flow.
           </p>
         </div>
+      </div>
+
+      <div className="mt-12 border-t border-border pt-8">
+        <MembershipStatusPanel status={member.status} retentionUntil={retentionUntil} />
       </div>
     </main>
   );

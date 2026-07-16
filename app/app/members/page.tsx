@@ -5,6 +5,7 @@ import { DataTable, type Column } from "@/components/ui/data-table";
 import { RecordCard } from "@/components/ui/record-card";
 import { StatusPill, type MemberStatus } from "@/components/ui/status-pill";
 import { MemberLoginCell } from "./member-login-cell";
+import { MemberLifecycleCell } from "./member-lifecycle-cell";
 
 export const metadata: Metadata = {
   title: "Members",
@@ -40,6 +41,18 @@ export default async function MembersPage() {
     .order("membership_number", { ascending: true });
   const rows = (data ?? []) as Row[];
 
+  // Retention dates for frozen members (drives the delete gate on their actions).
+  const frozenIds = rows.filter((r) => r.status === "frozen").map((r) => r.id);
+  const retentionByMember = new Map<string, string>();
+  if (frozenIds.length) {
+    const { data: reqs } = await supabase
+      .from("opt_out_requests")
+      .select("member_id, retention_until")
+      .eq("status", "frozen")
+      .in("member_id", frozenIds);
+    for (const q of reqs ?? []) retentionByMember.set(q.member_id, q.retention_until);
+  }
+
   const registered = (r: Row) =>
     new Date(r.created_at).toLocaleDateString("en-NG", { year: "numeric", month: "short", day: "numeric" });
 
@@ -52,6 +65,13 @@ export default async function MembersPage() {
       key: "login",
       header: "Login",
       render: (r) => <MemberLoginCell id={r.id} hasLogin={!!r.user_id} hasEmail={!!r.email} />,
+    },
+    {
+      key: "actions",
+      header: "Actions",
+      render: (r) => (
+        <MemberLifecycleCell id={r.id} status={r.status} retentionUntil={retentionByMember.get(r.id) ?? null} />
+      ),
     },
   ];
 
@@ -106,7 +126,17 @@ export default async function MembersPage() {
                   identifier={r.membership_number}
                   facts={`Registered ${registered(r)}`}
                   status={r.status}
-                  actions={<MemberLoginCell id={r.id} hasLogin={!!r.user_id} hasEmail={!!r.email} />}
+                  actions={
+                    r.status === "frozen" ? (
+                      <MemberLifecycleCell
+                        id={r.id}
+                        status={r.status}
+                        retentionUntil={retentionByMember.get(r.id) ?? null}
+                      />
+                    ) : (
+                      <MemberLoginCell id={r.id} hasLogin={!!r.user_id} hasEmail={!!r.email} />
+                    )
+                  }
                 />
               </li>
             ))}

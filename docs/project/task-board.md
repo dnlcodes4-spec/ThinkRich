@@ -19,7 +19,6 @@ _Not yet refined / not yet Ready._
 - **T-005** — Membership card render + download 🔒 _(blocked: Q3 card design)_
 - **T-006** — Member profile: view + photo upload + change-request flow
 - **T-007** — Member home: voting view + candidates
-- **T-008** — Opt-out flow (freeze → retention → delete/reactivate)
 - **T-009** — PWA shell: manifest + service worker + install prompt
 - **T-010** — Web Push notifications + Leader KYM verification (see [notifications.md](../architecture/notifications.md))
 
@@ -36,6 +35,11 @@ _(none)_
 ## 🟣 In Review
 _PR open, awaiting review + CI._
 
+- **T-008** — Membership lifecycle / opt-out (branch `feat/membership-lifecycle`, stacked on T-006)
+  _Done: member opt-out (freeze) + self/leader reactivate + retention-gated permanent delete with
+  PII purge + login revocation. `active→frozen→active|deleted` enforced by a DB trigger; service-role
+  transitions with code authz; `opt_out_requests` table + RLS; migration `0009`. Retention = 30 days
+  (default; client to confirm, roadmap Q10). Verified live + delete/trigger checks._
 - **T-006 (partial)** — Member profile + passport photo (branch `feat/member-profile-photo`)
   _Done: `/app/profile` member self-view + passport-photo upload to a private `member-photos` bucket
   (service-role write, code-checked ownership, signed-URL reads, no object policies). Verified live.
