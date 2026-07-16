@@ -19,7 +19,7 @@ _Not yet refined / not yet Ready._
 - **T-005** — Membership card render + download 🔒 _(blocked: Q3 card design)_
 - **T-006** — Member profile: view + photo upload + change-request flow
 - **T-007** — Member home: voting view + candidates
-- **T-008** — Opt-out flow (freeze → retention → delete/reactivate)
+- **T-009** — PWA shell: manifest + service worker + install prompt
 - **T-010** — Web Push notifications + Leader KYM verification (see [notifications.md](../architecture/notifications.md))
 
 ## 🟡 Ready

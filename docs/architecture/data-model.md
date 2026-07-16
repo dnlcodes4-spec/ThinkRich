@@ -83,7 +83,7 @@ erDiagram
 | Table | Key columns | Notes |
 |-------|-------------|-------|
 | `change_requests` | `id`, `member_id`, `field`, `new_value`, `reason`, `status`, `reviewed_by`, `reviewed_at` | Non-photo profile edits. Approved/rejected by State Admin. |
-| `opt_out_requests` | `id`, `member_id`, `reason`, `status` (`requested`/`frozen`/`deleted`/`reactivated`) | Freeze → leader retention → delete or reactivate. |
+| `opt_out_requests` | `id`, `member_id`, `reason`, `status` (`requested`/`frozen`/`deleted`/`reactivated`), `retention_until`, `requested_at`, `resolved_at`, `resolved_by` | Freeze → leader retention → delete or reactivate (T-008, migration `0009`). Member freeze sets `status='frozen'`; delete allowed only after `retention_until` (default **30 days**, roadmap Q10). Member lifecycle columns live on `members` (`frozen_at`, `deleted_at`); permanent delete erases PII (`nin`/`date_of_birth` made nullable) and keeps the membership number as a tombstone. State machine `active→frozen→active\|deleted` is enforced by a DB trigger. |
 | `leader_kym_codes` | `id`, `leader_id`, `code` (unique) | Leader-to-leader verification (KYM). |
 
 ## Movement content
