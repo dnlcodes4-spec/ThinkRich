@@ -52,6 +52,16 @@ export default async function MembersHome() {
           ) : null}
         </div>
       ) : null}
+      {profile?.role === "member" ? (
+        <div className="flex flex-wrap gap-3">
+          <Link
+            href="/app/profile"
+            className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
+          >
+            Your profile
+          </Link>
+        </div>
+      ) : null}
 
       {user ? (
         <form action={signOut}>

@@ -36,6 +36,10 @@ _(none)_
 ## 🟣 In Review
 _PR open, awaiting review + CI._
 
+- **T-006 (partial)** — Member profile + passport photo (branch `feat/member-profile-photo`)
+  _Done: `/app/profile` member self-view + passport-photo upload to a private `member-photos` bucket
+  (service-role write, code-checked ownership, signed-URL reads, no object policies). Verified live.
+  Deferred: leader-side upload + details change-request flow._
 - **T-017** — Member login provisioning: temp password (branch `feat/member-login-provisioning`)
   _Done: creates the member's `auth.users` + `profiles(role=member)` + `members.user_id` (service
   role, rollback on failure), returning a one-time temp password. Auto at registration when an email
