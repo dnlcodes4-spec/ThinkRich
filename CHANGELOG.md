@@ -44,6 +44,19 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- Membership lifecycle / opt-out (T-008, migration `0009`): a member can **opt out** from their
+  profile (with an optional reason), which **freezes** their membership immediately and starts a
+  retention window. During it they can **reactivate** themselves; a leader/admin in scope can
+  reactivate them from the roster, or **permanently delete** once the window elapses. Deletion
+  erases PII (NIN, VIN, email, DOB, bank details, photo) and revokes the login, keeping the
+  immutable membership number + geography as a tombstone. The state machine
+  (`active -> frozen -> active | deleted`, `deleted` terminal) is enforced by a DB trigger; all
+  transitions run through the service role (members can't self-update under RLS) with authz
+  re-checked in code. New `opt_out_requests` table (RLS: caller sees requests for members in scope).
+  Destructive actions use named-consequence confirmations. Verified live end-to-end (freeze,
+  self-reactivate, leader-reactivate, retention-gated delete + PII purge + login revocation) plus a
+  DB check that `deleted -> active` is rejected. **Retention window = 30 days (our default; the
+  client has not confirmed a retention policy — see roadmap Q10).**
 - Member profile + passport photo (T-006, partial): a signed-in member has a profile at
   `/app/profile` showing their details (name, membership number, status, DOB, email, polling-unit
   path, all read-only) and can upload/replace their **passport photo**. Photos live in a new
