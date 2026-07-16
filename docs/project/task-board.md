@@ -51,6 +51,7 @@ _PR open, awaiting review + CI._
 ## ✅ Done
 _Merged to `main`, meets Definition of Done._
 
+- **T-017** — Member login provisioning: temp password at registration + roster (PR #10)
 - **T-016** — National-admin bootstrap: dev-only page + prod seed (ADR-0012, PR #9)
 - **T-015** — Admin account provisioning: next-tier, in-scope (PR #8)
 - **T-006a** — Member roster: scoped list at `/app/members` (PR #7)
