@@ -44,6 +44,18 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- Candidates + member voting view (T-007, migration `0010`): a member's hero screen at `/app/vote`
+  shows the movement's candidates for **their own geography** — their **LGA chairman** (the hero),
+  their **governor**, and the **president** — each with photo, party, running mate, and slogan, and
+  a graceful "not announced yet" state. Admins manage the one candidate for their scope at
+  `/app/admin/candidates` (national → presidential, state admin → their state, LG admin → their
+  LGA), including a photo upload to a new **public** `candidate-photos` bucket. New `candidates`
+  table (`level` presidential/state/lg with matching geography; one per scope) readable by any
+  signed-in user (RLS); writes go through service-role Server Actions that derive level+geography
+  from the caller's role/profile (never the form). Verified live: national admin published the
+  presidential candidate; a member saw all three, hero = their LGA chairman. **The office taxonomy
+  (presidential/state/lg) + fields follow the documented data-model; the client should confirm the
+  exact set.**
 - Member profile + passport photo (T-006, partial): a signed-in member has a profile at
   `/app/profile` showing their details (name, membership number, status, DOB, email, polling-unit
   path, all read-only) and can upload/replace their **passport photo**. Photos live in a new

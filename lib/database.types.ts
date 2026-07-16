@@ -18,6 +18,73 @@ export type Database = {
   }
   public: {
     Tables: {
+      candidates: {
+        Row: {
+          created_at: string
+          full_name: string
+          id: string
+          lga_id: string | null
+          level: Database["public"]["Enums"]["candidate_level"]
+          party: string | null
+          photo_url: string | null
+          running_mate: string | null
+          slogan: string | null
+          state_id: string | null
+          updated_at: string
+          uploaded_by: string | null
+        }
+        Insert: {
+          created_at?: string
+          full_name: string
+          id?: string
+          lga_id?: string | null
+          level: Database["public"]["Enums"]["candidate_level"]
+          party?: string | null
+          photo_url?: string | null
+          running_mate?: string | null
+          slogan?: string | null
+          state_id?: string | null
+          updated_at?: string
+          uploaded_by?: string | null
+        }
+        Update: {
+          created_at?: string
+          full_name?: string
+          id?: string
+          lga_id?: string | null
+          level?: Database["public"]["Enums"]["candidate_level"]
+          party?: string | null
+          photo_url?: string | null
+          running_mate?: string | null
+          slogan?: string | null
+          state_id?: string | null
+          updated_at?: string
+          uploaded_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidates_lga_id_fkey"
+            columns: ["lga_id"]
+            isOneToOne: false
+            referencedRelation: "lgas"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidates_state_id_fkey"
+            columns: ["state_id"]
+            isOneToOne: false
+            referencedRelation: "states"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidates_uploaded_by_fkey"
+            columns: ["uploaded_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       lga_member_counters: {
         Row: {
           lga_id: string
@@ -333,6 +400,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
+      candidate_level: "presidential" | "state" | "lg"
       member_status: "active" | "frozen" | "deleted"
       user_role:
         | "national_admin"
@@ -469,6 +537,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      candidate_level: ["presidential", "state", "lg"],
       member_status: ["active", "frozen", "deleted"],
       user_role: [
         "national_admin",

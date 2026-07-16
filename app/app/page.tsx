@@ -50,13 +50,27 @@ export default async function MembersHome() {
               Create an account
             </Link>
           ) : null}
+          {profile.role === "national_admin" || profile.role === "state_admin" || profile.role === "lg_admin" ? (
+            <Link
+              href="/app/admin/candidates"
+              className="inline-flex min-h-11 items-center justify-center rounded-md border border-ring px-4 text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted"
+            >
+              Manage candidate
+            </Link>
+          ) : null}
         </div>
       ) : null}
       {profile?.role === "member" ? (
         <div className="flex flex-wrap gap-3">
           <Link
-            href="/app/profile"
+            href="/app/vote"
             className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
+          >
+            Who to vote for
+          </Link>
+          <Link
+            href="/app/profile"
+            className="inline-flex min-h-11 items-center justify-center rounded-md border border-ring px-4 text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted"
           >
             Your profile
           </Link>
