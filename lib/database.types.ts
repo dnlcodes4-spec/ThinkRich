@@ -146,13 +146,15 @@ export type Database = {
           account_number: string | null
           bank_name: string | null
           created_at: string
-          date_of_birth: string
+          date_of_birth: string | null
+          deleted_at: string | null
           email: string | null
+          frozen_at: string | null
           full_name: string
           id: string
           lga_id: string
           membership_number: string
-          nin: string
+          nin: string | null
           passport_photo_url: string | null
           polling_unit_id: string
           registered_by: string
@@ -167,13 +169,15 @@ export type Database = {
           account_number?: string | null
           bank_name?: string | null
           created_at?: string
-          date_of_birth: string
+          date_of_birth?: string | null
+          deleted_at?: string | null
           email?: string | null
+          frozen_at?: string | null
           full_name: string
           id?: string
           lga_id: string
           membership_number?: string
-          nin: string
+          nin?: string | null
           passport_photo_url?: string | null
           polling_unit_id: string
           registered_by: string
@@ -188,13 +192,15 @@ export type Database = {
           account_number?: string | null
           bank_name?: string | null
           created_at?: string
-          date_of_birth?: string
+          date_of_birth?: string | null
+          deleted_at?: string | null
           email?: string | null
+          frozen_at?: string | null
           full_name?: string
           id?: string
           lga_id?: string
           membership_number?: string
-          nin?: string
+          nin?: string | null
           passport_photo_url?: string | null
           polling_unit_id?: string
           registered_by?: string
@@ -238,6 +244,57 @@ export type Database = {
             columns: ["ward_id"]
             isOneToOne: false
             referencedRelation: "wards"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      opt_out_requests: {
+        Row: {
+          created_at: string
+          id: string
+          member_id: string
+          reason: string | null
+          requested_at: string
+          resolved_at: string | null
+          resolved_by: string | null
+          retention_until: string
+          status: Database["public"]["Enums"]["opt_out_status"]
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          member_id: string
+          reason?: string | null
+          requested_at?: string
+          resolved_at?: string | null
+          resolved_by?: string | null
+          retention_until: string
+          status?: Database["public"]["Enums"]["opt_out_status"]
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          member_id?: string
+          reason?: string | null
+          requested_at?: string
+          resolved_at?: string | null
+          resolved_by?: string | null
+          retention_until?: string
+          status?: Database["public"]["Enums"]["opt_out_status"]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "opt_out_requests_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "members"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "opt_out_requests_resolved_by_fkey"
+            columns: ["resolved_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
         ]
@@ -402,6 +459,7 @@ export type Database = {
     Enums: {
       candidate_level: "presidential" | "state" | "lg"
       member_status: "active" | "frozen" | "deleted"
+      opt_out_status: "requested" | "frozen" | "deleted" | "reactivated"
       user_role:
         | "national_admin"
         | "state_admin"
@@ -539,6 +597,7 @@ export const Constants = {
     Enums: {
       candidate_level: ["presidential", "state", "lg"],
       member_status: ["active", "frozen", "deleted"],
+      opt_out_status: ["requested", "frozen", "deleted", "reactivated"],
       user_role: [
         "national_admin",
         "state_admin",
