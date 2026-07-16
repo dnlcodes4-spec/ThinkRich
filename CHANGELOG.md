@@ -44,6 +44,16 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- PWA shell (T-009, ADR-0004): the app is now installable to the home screen with no app store. A
+  typed Web App Manifest (`app/manifest.ts`, served at `/manifest.webmanifest`, ThinkRich black
+  brand, `standalone`, `start_url: /app`), a service worker (`public/sw.js`) providing an **offline
+  fallback page** + cache-first static assets (offline *writes* are out of scope per ADR-0004), an
+  app-wide SW registrar, and a quiet, dismissible **install prompt** (`beforeinstallprompt` on
+  Android/desktop; "Add to Home Screen" guidance on iOS). Added `theme-color` + Apple web-app meta,
+  and `/sw.js` response headers (no-store + CSP) per the Next 16 PWA guide. The SW also carries
+  push/notificationclick handlers so it is push-ready (subscription/send side is T-010). Verified
+  live: manifest + `/sw.js` headers + offline page served; SW registers, controls the page, and
+  serves the offline fallback when navigation fails.
 - Member profile + passport photo (T-006, partial): a signed-in member has a profile at
   `/app/profile` showing their details (name, membership number, status, DOB, email, polling-unit
   path, all read-only) and can upload/replace their **passport photo**. Photos live in a new

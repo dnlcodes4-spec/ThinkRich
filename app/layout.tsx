@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ServiceWorkerRegistrar } from "@/components/pwa/service-worker-registrar";
 
 // Body — Hanken Grotesk: warm, humanist, highly legible. Replaces Geist (the
 // create-next-app default that reads as a templated/AI build).
@@ -33,6 +34,13 @@ export const metadata: Metadata = {
   title: "ThinkRich Community: Creating Value for Mankind",
   description:
     "A value-driven community building leaders who connect the right people to verifiable opportunities. Six arms, one purpose: creating value for mankind.",
+  applicationName: "ThinkRich Community",
+  appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "ThinkRich" },
+  icons: { apple: "/apple-touch-icon.png" },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0a0a0b",
 };
 
 // Runs before paint to set the theme, avoiding a flash of the wrong colours.
@@ -57,6 +65,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         {children}
+        <ServiceWorkerRegistrar />
       </body>
     </html>
   );
