@@ -35,11 +35,10 @@ _(none)_
 ## 🟣 In Review
 _PR open, awaiting review + CI._
 
-- **T-008** — Membership lifecycle / opt-out (branch `feat/membership-lifecycle`, stacked on T-006)
-  _Done: member opt-out (freeze) + self/leader reactivate + retention-gated permanent delete with
-  PII purge + login revocation. `active→frozen→active|deleted` enforced by a DB trigger; service-role
-  transitions with code authz; `opt_out_requests` table + RLS; migration `0009`. Retention = 30 days
-  (default; client to confirm, roadmap Q10). Verified live + delete/trigger checks._
+- **T-009** — PWA shell: manifest + SW + install prompt (branch `feat/pwa-shell`, ADR-0004)
+  _Done: installable manifest, offline-fallback service worker (cache-first static; offline writes
+  out of scope), app-wide registrar, dismissible install prompt (Android + iOS guidance), `/sw.js`
+  headers. SW is push-ready for T-010. Verified live (SW registers/controls; offline fallback)._
 - **T-006 (partial)** — Member profile + passport photo (branch `feat/member-profile-photo`)
   _Done: `/app/profile` member self-view + passport-photo upload to a private `member-photos` bucket
   (service-role write, code-checked ownership, signed-URL reads, no object policies). Verified live.

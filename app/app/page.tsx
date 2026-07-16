@@ -2,6 +2,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 import { signOut } from "@/app/login/actions";
+import { InstallPrompt } from "@/components/pwa/install-prompt";
 
 // Protected landing. The proxy redirects unauthenticated users to /login before
 // this renders; the page still reads the user + profile itself, because the proxy
@@ -62,6 +63,8 @@ export default async function MembersHome() {
           </Link>
         </div>
       ) : null}
+
+      <InstallPrompt />
 
       {user ? (
         <form action={signOut}>
