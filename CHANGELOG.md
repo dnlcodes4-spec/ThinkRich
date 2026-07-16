@@ -44,6 +44,17 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- Member login provisioning (T-017): a registered member can now be given their own login. A member
+  needs three linked things to be recognised by RLS — an `auth.users` row, a `profiles` row with
+  `role = 'member'`, and `members.user_id` — so provisioning creates all three via the service-role
+  client (with rollback if any step fails) and returns a one-time temporary password. It runs
+  **automatically at registration when an email was captured** (the temp password shows on the
+  success screen beside the membership number; a provisioning failure is a note, never a failed
+  registration), and on demand from the roster's new **Login** column ("Provision login" for members
+  who have an email but no login yet; "Enabled" once done; "No email" otherwise). Authorization is
+  re-checked in code by reusing RLS visibility (if the caller can see the member, they may manage
+  it) and refusing members. Verified live: registered with email → member signed in with the temp
+  password; roster button provisioned a login end-to-end.
 - National-admin bootstrap (T-016, ADR-0012): a **dev-only** page at `/dev/national-admins` that
   creates, lists, and deletes national admins with a generated temporary password, solving the
   chain's start point (nothing sits above a national admin). Gated strictly on

@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { DataTable, type Column } from "@/components/ui/data-table";
 import { RecordCard } from "@/components/ui/record-card";
 import { StatusPill, type MemberStatus } from "@/components/ui/status-pill";
+import { MemberLoginCell } from "./member-login-cell";
 
 export const metadata: Metadata = {
   title: "Members",
@@ -16,6 +17,8 @@ type Row = {
   full_name: string;
   status: MemberStatus;
   created_at: string;
+  email: string | null;
+  user_id: string | null;
 };
 
 // The list is scoped by RLS: a leader sees the members they registered; admins
@@ -33,7 +36,7 @@ export default async function MembersPage() {
 
   const { data } = await supabase
     .from("members")
-    .select("id, membership_number, full_name, status, created_at")
+    .select("id, membership_number, full_name, status, created_at, email, user_id")
     .order("membership_number", { ascending: true });
   const rows = (data ?? []) as Row[];
 
@@ -45,6 +48,11 @@ export default async function MembersPage() {
     { key: "number", header: "Number", className: "font-mono", render: (r) => r.membership_number },
     { key: "registered", header: "Registered", render: (r) => registered(r) },
     { key: "status", header: "Status", render: (r) => <StatusPill status={r.status} /> },
+    {
+      key: "login",
+      header: "Login",
+      render: (r) => <MemberLoginCell id={r.id} hasLogin={!!r.user_id} hasEmail={!!r.email} />,
+    },
   ];
 
   return (
@@ -98,6 +106,7 @@ export default async function MembersPage() {
                   identifier={r.membership_number}
                   facts={`Registered ${registered(r)}`}
                   status={r.status}
+                  actions={<MemberLoginCell id={r.id} hasLogin={!!r.user_id} hasEmail={!!r.email} />}
                 />
               </li>
             ))}

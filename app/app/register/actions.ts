@@ -3,6 +3,7 @@
 import { z } from "zod";
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { provisionMemberLogin } from "@/app/app/members/provision-login";
 
 // A leader registers a member (T-004). Geography is NOT chosen — it is derived
 // from the leader's own polling unit. The membership number is assigned by the DB
@@ -25,6 +26,9 @@ export type RegisterState = {
   status: "idle" | "success" | "error";
   message?: string;
   membershipNumber?: string;
+  loginEmail?: string;
+  loginTempPassword?: string;
+  loginNote?: string;
   fieldErrors?: Record<string, string>;
 };
 
@@ -108,7 +112,7 @@ export async function registerMember(
       account_name: parsed.data.account_name || null,
       bank_name: parsed.data.bank_name || null,
     })
-    .select("membership_number")
+    .select("id, membership_number")
     .single();
 
   if (error) {
@@ -143,10 +147,31 @@ export async function registerMember(
     return { status: "error", message: "Could not register the member. Please try again." };
   }
 
+  // If an email was captured, provision the member's own login now and hand the
+  // temporary password back to the leader. A provisioning failure does NOT fail
+  // the registration (the member exists); it is surfaced as a note instead, and
+  // the login can be provisioned later from the roster.
+  let loginEmail: string | undefined;
+  let loginTempPassword: string | undefined;
+  let loginNote: string | undefined;
+  if (email) {
+    const res = await provisionMemberLogin(inserted.id);
+    if (res.ok) {
+      loginEmail = res.email;
+      loginTempPassword = res.tempPassword;
+    } else {
+      loginNote = res.error;
+    }
+  }
+
   revalidatePath("/app");
+  revalidatePath("/app/members");
   return {
     status: "success",
     membershipNumber: inserted.membership_number,
     message: "Member registered.",
+    loginEmail,
+    loginTempPassword,
+    loginNote,
   };
 }
