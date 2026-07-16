@@ -16,7 +16,6 @@ only when it meets the [Definition of Done](../engineering/definition-of-done.md
 ## 🔵 Backlog
 _Not yet refined / not yet Ready._
 
-- **T-004** — Leader: register member + membership-number generation 🔒 _(blocked: Q2 number format)_
 - **T-005** — Membership card render + download 🔒 _(blocked: Q3 card design)_
 - **T-006** — Member profile: view + photo upload + change-request flow
 - **T-007** — Member home: voting view + candidates
@@ -37,15 +36,18 @@ _(none)_
 ## 🟣 In Review
 _PR open, awaiting review + CI._
 
-- **T-006a** — Member roster: scoped list at `/app/members` (branch `feat/member-roster`)
-  _Done: RLS-scoped list (leader → own, admins → geography); responsive table/cards on the
-  primitives; empty state; `/app` entry. Verified live as the seed leader._
+- **T-015** — Admin account provisioning: next-tier, in-scope (branch `feat/account-provisioning`)
+  _Done: `/app/admin/new-account` provisions the next tier down within the caller's scope via a
+  service-role client; the action re-enforces the RLS hierarchy + scope containment; temp password
+  returned once; auth-user rollback on profile failure. Verified live (National → State admin →
+  scoped LGAs). Deferred: member login invite flow._
 - **T-014** — Dual-brand palette: green Think-Winners via `data-brand` (PR `feat/dual-brand-palette`)
   _Done: AA-verified green scale, light/dark, brands demo + E2E; ADR-0007. Green provisional._
 
 ## ✅ Done
 _Merged to `main`, meets Definition of Done._
 
+- **T-006a** — Member roster: scoped list at `/app/members` (PR #7)
 - **T-004** — Leader registers a member + membership-number generation (PR #6)
 - **T-003** — Auth: email/password sign-in + session (ADR-0011, resolves Q1) (PR #5)
 - **T-001b** — Identity + membership schema + hierarchical RLS (PR #4)

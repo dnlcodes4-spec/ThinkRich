@@ -27,6 +27,19 @@ history, or an existing doc.
 
 ## Entries
 
+### 2026-07-16 — Service-role writes bypass RLS, so re-enforce the hierarchy in app code
+- **Context:** admin account provisioning needs `auth.admin.createUser` + a `profiles` insert,
+  which only the **service-role** client can do — and that client bypasses RLS entirely.
+- **Lesson:** the moment you reach for the service role, RLS is no longer protecting you. Any
+  authorization the DB was enforcing (here: an admin may only create the *next tier down*, within
+  their *own scope*) has to be re-checked in the Server Action, or an admin could forge any role at
+  any scope. Two writes across two systems (Auth + Postgres) also means a partial failure leaves an
+  **orphan auth user** if the profile insert fails.
+- **Action:** `createAccount` re-derives the tier from `NEXT_TIER` (the same map RLS uses),
+  validates the chosen geography is inside the caller's scope, and `deleteUser`s on profile-insert
+  failure. The service-role client is quarantined in `lib/supabase/admin.ts` (never `NEXT_PUBLIC_`,
+  runtime env guard). Rule of thumb: **service role ⇒ you own the authz check.**
+
 ### 2026-07-13 — Parallel branches silently reverted resolved doc lines
 - **Context:** running several PRs at once (#8/#9/#10), all editing `roadmap.md` open-questions.
   After merging, **Q5/Q6 resolutions from #9 were gone** — reverted to the original text.

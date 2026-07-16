@@ -44,6 +44,15 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- Admin account provisioning (T-015): an admin creates the **next tier down** within their own
+  scope at `/app/admin/new-account` (National→State→LG→Ward→Unit-coordinator→Leader). The Server
+  Action re-enforces the same hierarchy the RLS `profiles_insert` policy does, because the
+  service-role client used to create the auth user + profile bypasses RLS; the chosen geography is
+  validated to sit inside the caller's scope, and a temporary password is returned once (change on
+  first sign-in). The auth user is rolled back if the profile insert fails (no orphan users). The
+  admin service-role client is isolated in `lib/supabase/admin.ts` (server-only by convention +
+  runtime env guard). Deferred: member login provisioning (invite flow). Verified live end-to-end
+  (National provisioned a State admin, who then signed in and saw only their in-scope LGAs).
 - Member roster (T-006a): a scoped list of members at `/app/members` — a leader sees the members
   they registered, admins see their geography, all via RLS (no app-side scope logic). Responsive
   table (desktop) / cards (mobile) on the primitives, with the membership number, registered date,
