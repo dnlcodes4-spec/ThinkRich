@@ -57,7 +57,15 @@ export default async function MembersPage() {
     new Date(r.created_at).toLocaleDateString("en-NG", { year: "numeric", month: "short", day: "numeric" });
 
   const columns: Column<Row>[] = [
-    { key: "name", header: "Member", render: (r) => <span className="font-medium">{r.full_name}</span> },
+    {
+      key: "name",
+      header: "Member",
+      render: (r) => (
+        <Link href={`/app/members/${r.id}`} className="font-medium text-primary underline-offset-4 hover:underline">
+          {r.full_name}
+        </Link>
+      ),
+    },
     { key: "number", header: "Number", className: "font-mono", render: (r) => r.membership_number },
     { key: "registered", header: "Registered", render: (r) => registered(r) },
     { key: "status", header: "Status", render: (r) => <StatusPill status={r.status} /> },
@@ -127,15 +135,23 @@ export default async function MembersPage() {
                   facts={`Registered ${registered(r)}`}
                   status={r.status}
                   actions={
-                    r.status === "frozen" ? (
-                      <MemberLifecycleCell
-                        id={r.id}
-                        status={r.status}
-                        retentionUntil={retentionByMember.get(r.id) ?? null}
-                      />
-                    ) : (
-                      <MemberLoginCell id={r.id} hasLogin={!!r.user_id} hasEmail={!!r.email} />
-                    )
+                    <>
+                      <Link
+                        href={`/app/members/${r.id}`}
+                        className="text-xs font-semibold text-primary underline-offset-4 hover:underline"
+                      >
+                        Details
+                      </Link>
+                      {r.status === "frozen" ? (
+                        <MemberLifecycleCell
+                          id={r.id}
+                          status={r.status}
+                          retentionUntil={retentionByMember.get(r.id) ?? null}
+                        />
+                      ) : (
+                        <MemberLoginCell id={r.id} hasLogin={!!r.user_id} hasEmail={!!r.email} />
+                      )}
+                    </>
                   }
                 />
               </li>
