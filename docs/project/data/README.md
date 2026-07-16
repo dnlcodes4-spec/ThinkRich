@@ -103,3 +103,24 @@ Nothing here is hand-transcribed or model-generated; every row is parsed from th
 CSV columns: `state, lga_code, lga_name, ward_code, ward_name, pu_code, pu_name`
 (Abia & Delta add `regd_voters, voting_points`). JSON is nested `LGA → ward → polling_units[]`.
 Codes are the INEC LGA / RA (ward) / PU codes, zero-padded.
+
+## Importing into the database (T-018)
+
+```bash
+node scripts/import-geography.mjs            # all 37 states
+node scripts/import-geography.mjs lagos fct  # specific state slug(s)
+```
+
+Reads the per-state **JSON** and upserts into `lgas` / `wards` / `polling_units` with the service
+role (reference data is world-readable, service-role-write only). Reads `NEXT_PUBLIC_SUPABASE_URL`
+and `SUPABASE_SERVICE_ROLE_KEY` from `.env.local`. **Idempotent** — every write is an upsert with
+`ignoreDuplicates` on the table's natural key, so re-running is safe and resumes after a failure.
+
+Two schema-driven adjustments (the tables enforce `unique(parent, name)`):
+
+- **Same-named wards in an LGA** collapse to one record — the name-keyed JSON already merges them
+  (their polling units are kept). 16 wards nationwide; DB ward total is therefore ~8,793, not 8,809.
+- **Same-named polling units in a ward** are disambiguated with a ` [code]` suffix (1,235 rows).
+  **No polling unit is dropped** — the DB PU total matches the source's 119,971 exactly.
+
+Verify a run against the totals table above rather than the raw row count.

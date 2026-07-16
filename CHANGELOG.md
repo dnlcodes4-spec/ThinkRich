@@ -44,6 +44,15 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- Geography data import (T-018): loaded Nigeria's full electoral hierarchy into `lgas` / `wards` /
+  `polling_units` — **774 LGAs, ~8.8k wards, 119,971 polling units** across all 37 jurisdictions,
+  from the per-state datasets in `docs/project/data/`. Runs via `node scripts/import-geography.mjs`
+  (service-role, idempotent upserts with retry/backoff; re-runnable). Every state now has real LGAs,
+  so provisioning and registration operate on live geography. Two schema-driven fidelity notes:
+  same-named wards within an LGA merge to one record (16 total, since `wards` is `unique(lga_id,
+  name)`) and 1,235 same-named polling units within a ward were disambiguated with a `[code]` suffix
+  — **no polling unit was dropped** (count matches the source exactly). The dev seed LGA/ward/PU
+  under Lagos remain for the seed leader.
 - Member login provisioning (T-017): a registered member can now be given their own login. A member
   needs three linked things to be recognised by RLS — an `auth.users` row, a `profiles` row with
   `role = 'member'`, and `members.user_id` — so provisioning creates all three via the service-role

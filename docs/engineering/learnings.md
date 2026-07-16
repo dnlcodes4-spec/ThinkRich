@@ -27,6 +27,20 @@ history, or an existing doc.
 
 ## Entries
 
+### 2026-07-16 — Name-keyed JSON silently merges same-named siblings; the schema decides fidelity
+- **Context:** importing electoral geography from the per-state `*_polling_units.json` (an object
+  keyed by LGA name → ward name → PU list).
+- **Lesson:** a JSON object keyed by *name* can't represent two siblings with the same name — the
+  source's dup-named wards were already collapsed into one key (Abia showed 170 ward keys vs the
+  README's raw 184). This isn't a bug to "fix" by switching to the CSV: the `wards` table is
+  `unique(lga_id, name)`, so the schema itself forbids two same-named wards in an LGA. The data
+  model, not the file format, sets the ceiling. Polling units survived only because the JSON builder
+  *merged* their lists under the shared key (PU totals matched the source exactly, 119,971).
+- **Action:** import from the JSON, disambiguate same-named leaves with a `[code]` suffix (1,235
+  PUs), accept the 16 merged wards, and **verify against source totals** rather than trusting the
+  row-by-row count. If distinct same-named wards ever matter operationally, that's a schema change
+  (add a code to the uniqueness key) via ADR — not an import tweak.
+
 ### 2026-07-16 — Gating a page by env does NOT gate its Server Actions
 - **Context:** the dev-only national-admin bootstrap page (`notFound()` in production) — a page that
   mints the highest-privilege account with no auth, so it must be unreachable in prod.
