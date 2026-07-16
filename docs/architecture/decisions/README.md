@@ -42,3 +42,4 @@ Small, local, easily-reversed choices do **not** need an ADR.
 | [0008](0008-single-navy-brand.md) | Single navy + gold brand — Think-Winners reverts from green | Accepted (amended by 0010) |
 | [0009](0009-type-system.md) | Type system — Zodiak (display) + Hanken Grotesk (body), replacing Geist | Accepted |
 | [0010](0010-thinkrich-black-brand.md) | ThinkRich umbrella adopts a black + green brand (per-surface) | Accepted |
+| [0011](0011-auth-email-password.md) | Authentication — email + password via Supabase Auth | Accepted |

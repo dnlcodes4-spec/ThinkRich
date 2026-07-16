@@ -54,7 +54,7 @@ end-to-end test suite for critical journeys.
 
 | # | Question | Blocks | Owner |
 |---|----------|--------|-------|
-| Q1 | Member login credential — membership number, phone, or email? | Auth, registration UX | Client |
+| ~~Q1~~ | ✅ **Resolved (ADR-0011):** login credential = **email + password** (Supabase Auth); accounts are provisioned, so members must have an email captured at registration | Auth, registration UX | Client |
 | ~~Q2~~ | ✅ **Resolved:** membership number = `TWM-<STATE>-<LGA>-<seq>` (per-LGA, zero-padded) | Deliverable 4 | Client |
 | Q3 | Official membership-card design file | Deliverable 5 | Client |
 | Q4 | Push notifications in Phase 1 or deferred? | Deliverable 10 scope | Client |

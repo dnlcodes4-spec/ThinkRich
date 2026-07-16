@@ -44,6 +44,10 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- Authentication (T-003, ADR-0011, resolves Q1): **email + password** sign-in via Supabase Auth.
+  Server-validated `signIn`/`signOut` actions, a login form on the (now black + green) primitives,
+  a safe `next` redirect, and sign-out + role display on `/app`. No public sign-up (accounts are
+  provisioned). Login-page + invalid-credentials e2e; happy path verified with a provisioned account.
 - Identity + membership + hierarchical RLS (T-001b): corrected geography to `polling_units`
   (child of ward, CR-0002); `profiles` + `members` with the `role`/`member_status` enums and the
   invariants (immutable `TWM-<STATE>-<LGA>-<seq>`, unique NIN, age ≥18, ≤10 active/leader,
