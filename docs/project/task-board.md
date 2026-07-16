@@ -18,7 +18,7 @@ _Not yet refined / not yet Ready._
 
 - **T-005** — Membership card render + download 🔒 _(blocked: Q3 card design)_
 - **T-006** — Member profile: view + photo upload + change-request flow
-- **T-007** — Member home: voting view + candidates
+- **T-008** — Opt-out flow (freeze → retention → delete/reactivate)
 - **T-009** — PWA shell: manifest + service worker + install prompt
 - **T-010** — Web Push notifications + Leader KYM verification (see [notifications.md](../architecture/notifications.md))
 
@@ -35,10 +35,10 @@ _(none)_
 ## 🟣 In Review
 _PR open, awaiting review + CI._
 
-- **T-009** — PWA shell: manifest + SW + install prompt (branch `feat/pwa-shell`, ADR-0004)
-  _Done: installable manifest, offline-fallback service worker (cache-first static; offline writes
-  out of scope), app-wide registrar, dismissible install prompt (Android + iOS guidance), `/sw.js`
-  headers. SW is push-ready for T-010. Verified live (SW registers/controls; offline fallback)._
+- **T-007** — Member voting view + candidates (branch `feat/candidates-voting`, migration `0010`)
+  _Done: `/app/vote` member hero (their LGA chairman + governor + president); `/app/admin/candidates`
+  scoped admin management + photo upload (public bucket); `candidates` table, RLS read-for-all-signed-in,
+  service-role writes with role-derived scope. Verified live. Office taxonomy to be client-confirmed._
 - **T-006 (partial)** — Member profile + passport photo (branch `feat/member-profile-photo`)
   _Done: `/app/profile` member self-view + passport-photo upload to a private `member-photos` bucket
   (service-role write, code-checked ownership, signed-URL reads, no object policies). Verified live.
