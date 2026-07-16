@@ -44,6 +44,15 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- National-admin bootstrap (T-016, ADR-0012): a **dev-only** page at `/dev/national-admins` that
+  creates, lists, and deletes national admins with a generated temporary password, solving the
+  chain's start point (nothing sits above a national admin). Gated strictly on
+  `NODE_ENV !== "production"` — the page `notFound()`s and every Server Action refuses in a prod
+  build (verified: prod returns 404, dev returns 200); it lives outside the proxy-gated `/app`
+  because bootstrapping runs with no session. Production's first national admin is a deliberate
+  one-time DB seed instead (ADR-0012). Extracted the shared `generateTempPassword` helper. Verified
+  live: created an admin, signed in as them, reached the provisioning page, deleted them (auth user
+  + profile both removed).
 - Admin account provisioning (T-015): an admin creates the **next tier down** within their own
   scope at `/app/admin/new-account` (National→State→LG→Ward→Unit-coordinator→Leader). The Server
   Action re-enforces the same hierarchy the RLS `profiles_insert` policy does, because the

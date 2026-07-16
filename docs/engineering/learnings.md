@@ -27,6 +27,17 @@ history, or an existing doc.
 
 ## Entries
 
+### 2026-07-16 — Gating a page by env does NOT gate its Server Actions
+- **Context:** the dev-only national-admin bootstrap page (`notFound()` in production) — a page that
+  mints the highest-privilege account with no auth, so it must be unreachable in prod.
+- **Lesson:** `notFound()` in a Server Component only stops the *render*. The page's Server Actions
+  are separate POST endpoints that can be invoked directly, regardless of whether the page rendered.
+  Guarding only the page would leave the dangerous action callable in production.
+- **Action:** each action re-checks `process.env.NODE_ENV` itself and refuses. Rule: **guard the
+  page AND every action independently.** (Bonus: in a prod build the page prerenders as the static
+  404, since `notFound()` fires at build time when `NODE_ENV=production` — verified prod = 404,
+  dev = 200.) See [ADR-0012](../architecture/decisions/0012-national-admin-bootstrap.md).
+
 ### 2026-07-16 — Service-role writes bypass RLS, so re-enforce the hierarchy in app code
 - **Context:** admin account provisioning needs `auth.admin.createUser` + a `profiles` insert,
   which only the **service-role** client can do — and that client bypasses RLS entirely.
