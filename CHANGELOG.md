@@ -44,6 +44,10 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- Member roster (T-006a): a scoped list of members at `/app/members` — a leader sees the members
+  they registered, admins see their geography, all via RLS (no app-side scope logic). Responsive
+  table (desktop) / cards (mobile) on the primitives, with the membership number, registered date,
+  and status; empty state + a "View members" entry on `/app`.
 - Member registration (T-004): a leader registers a member via a server-validated form. Geography
   is auto-derived from the leader's own polling unit; the membership number `TWM-<STATE>-<LGA>-<seq>`
   is assigned atomically by the DB (per-LGA counter + BEFORE INSERT trigger). Enforces NIN
