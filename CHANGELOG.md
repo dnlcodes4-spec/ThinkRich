@@ -44,6 +44,11 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- Notification toasts (T-025): a lightweight app-wide toast system (`ToastProvider` in the signed-in
+  `/app` layout; `useToast()` hook) giving brief, auto-dismissing, dismissible confirmation for
+  actions, per components.md. Wired to announcement-sent, passport-photo-updated, and
+  change-request-submitted (success = green, error = red, errors linger longer). No-op outside the
+  provider. Verified live (toast appears on a member's correction request).
 - Leader verification / KYM (T-010, migration `0014`): a `/app/kym` page where a leader/admin mints a
   personal, no-ambiguous-character code (`ABC-DEF-GHJ`) to share, and verifies another leader by
   entering their code — returning a clear **verified** (name, role, geography) or **not verified**
