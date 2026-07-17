@@ -67,6 +67,19 @@ export async function registerMember(
     return { status: "error", message: "Only leaders can register members." };
   }
 
+  // A state must be activated (T-019) before members can be registered in it.
+  const { data: state } = await supabase
+    .from("states")
+    .select("is_active")
+    .eq("id", profile.state_id)
+    .maybeSingle();
+  if (!state?.is_active) {
+    return {
+      status: "error",
+      message: "Your state is not active yet. Registration opens once it is activated.",
+    };
+  }
+
   const parsed = schema.safeParse({
     full_name: formData.get("full_name"),
     date_of_birth: formData.get("date_of_birth"),
