@@ -27,6 +27,16 @@ history, or an existing doc.
 
 ## Entries
 
+### 2026-07-17 — `z.string().uuid()` rejects hand-crafted non-v4 UUIDs (a test-data trap)
+- **Context:** the admin-team deactivate action looked broken in testing — it returned 200 but made
+  no change. Debug logging showed the Zod `profile_id` parse failing on `a5eed000-0000-0000-0000-…`.
+- **Lesson:** our seed accounts used a memorable fake UUID prefix (`a5eed000-…`) whose version nibble
+  is `0`. `z.string().uuid()` enforces RFC-4122 (version 1-5, correct variant), so it **rejects**
+  those — even though Postgres stores them fine. Production ids come from `gen_random_uuid()` (valid
+  v4), so real data always passes; only the seed was invalid. It *looked* like an authz/RLS bug.
+- **Action:** seed test rows whose id is validated from client input with **real `gen_random_uuid()`**
+  values, not a hand-crafted pattern. (`z.string().uuid()` is correct; don't loosen it.)
+
 ### 2026-07-16 — Name-keyed JSON silently merges same-named siblings; the schema decides fidelity
 - **Context:** importing electoral geography from the per-state `*_polling_units.json` (an object
   keyed by LGA name → ward name → PU list).

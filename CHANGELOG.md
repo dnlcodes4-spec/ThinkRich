@@ -44,14 +44,13 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
-- State activation (T-019): a national-admin page at `/app/admin/states` lists all 37 states with
-  their **active status** and per-state context (state admins, LGAs, active members) and toggles
-  each state active/inactive. Uses the existing `states.is_active`; the write is a service-role
-  Server Action gated to national admins (states are reference data with no write RLS).
-  **Inactive states block member registration** (a leader can't register until their state is
-  active), and **provisioning a state admin auto-activates that state** (per the spec's "active once
-  a State Admin is assigned"), on top of the manual toggle. Verified live (toggle, gated
-  registration, auto-activation).
+- Admin management (T-021): a scoped `/app/admin/team` where an admin views and **deactivates /
+  reactivates the tier directly below them** (national → state admins, state → LG admins, LG → ward
+  admins, ward → unit coordinators, unit coordinator → leaders), reusing the `NEXT_TIER` map.
+  Deactivating sets the profile status **and bans the auth user**, so their sign-in is blocked
+  immediately; reactivating reverses both. The list is RLS-scoped (an admin sees only their own
+  scope); the action re-checks in code that the target is exactly the direct tier below. Verified
+  live (national deactivated a state admin: status inactive + auth-banned; reactivate reverses).
 - Member change-requests + leader photo upload (T-006 completed, migration `0011`): a member can
   **request a correction** to one of their details from `/app/profile` (name, DOB, VIN, email, bank
   details) with a reason; a **state-level admin reviews** it on a new member detail page

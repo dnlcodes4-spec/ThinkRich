@@ -57,6 +57,14 @@ export default async function MembersHome() {
               Create an account
             </Link>
           ) : null}
+          {profile.role !== "leader" ? (
+            <Link
+              href="/app/admin/team"
+              className="inline-flex min-h-11 items-center justify-center rounded-md border border-ring px-4 text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted"
+            >
+              Team
+            </Link>
+          ) : null}
           {profile.role === "national_admin" || profile.role === "state_admin" || profile.role === "lg_admin" ? (
             <Link
               href="/app/admin/candidates"
