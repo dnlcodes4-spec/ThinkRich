@@ -4,7 +4,8 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { isChangeField } from "./change-request-fields";
+import { notify } from "@/lib/notify";
+import { isChangeField, fieldLabel } from "./change-request-fields";
 
 // Leader/admin actions on a single member: upload their passport photo, and
 // review their change requests. All go through the service role with authz
@@ -106,6 +107,19 @@ export async function reviewChangeRequest(formData: FormData): Promise<void> {
       reviewed_at: new Date().toISOString(),
     })
     .eq("id", req.id);
+
+  // Notify the member of the decision (N3), if they have a login.
+  const { data: member } = await admin.from("members").select("user_id").eq("id", req.member_id).maybeSingle();
+  if (member?.user_id) {
+    const label = fieldLabel(req.field);
+    await notify([member.user_id], {
+      type: "change_request",
+      title: decision === "approve" ? `Your ${label} change was approved` : `Your ${label} change was declined`,
+      body: decision === "approve" ? `Your ${label} has been updated.` : undefined,
+      link: "/app/profile",
+      createdBy: user.id,
+    });
+  }
 
   revalidatePath(`/app/members/${req.member_id}`);
   revalidatePath("/app/members");
