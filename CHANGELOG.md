@@ -44,6 +44,16 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- Web Push (T-010, resolves Q4; migration `0013`): notifications now also deliver as **Web Push** so
+  users are re-engaged when the app is closed. An opt-in **push toggle** on `/app/notifications`
+  (shown in context, never prompted on first load) subscribes the device via the PWA service worker
+  (already push-ready) and stores it in a new `push_subscriptions` table (per-user, RLS read-own).
+  `notify()` now sends a **minimal payload (title + link, no PII)** to a recipient's subscriptions
+  after writing the in-app row (best-effort; in-app stays the source of truth), pruning expired
+  subscriptions (404/410). VAPID keys are read from env (`NEXT_PUBLIC_VAPID_PUBLIC_KEY` +
+  `VAPID_PRIVATE_KEY`; a dev pair is generated locally, prod supplies its own). Verified: toggle +
+  subscribe flow + the announcement path with push wired in. (End-to-end device receipt needs a real
+  browser; headless can't subscribe to a push service.)
 - In-app notifications (T-023, migration `0012`): a notification centre at `/app/notifications` (own
   notifications, newest first, unread markers, mark-read / mark-all-read) plus an **unread badge** on
   `/app`. Leaders/admins can **send an announcement** that fans out to every member in their scope

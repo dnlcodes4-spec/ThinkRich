@@ -1,8 +1,10 @@
 import { createAdminClient } from "@/lib/supabase/admin";
+import { sendPushToUsers } from "@/lib/push";
 
-// Server-side notification fan-out: inserts one row per recipient. Used by Server
-// Actions (announcements) and system events (e.g. a change-request decision).
-// Uses the service role, so callers must have already authorized the send.
+// Server-side notification fan-out: inserts one row per recipient (the in-app
+// source of truth), then sends a best-effort Web Push. Used by Server Actions
+// (announcements) and system events (e.g. a change-request decision). Uses the
+// service role, so callers must have already authorized the send.
 export async function notify(
   userIds: string[],
   n: { type: string; title: string; body?: string | null; link?: string | null; createdBy?: string | null },
@@ -22,5 +24,13 @@ export async function notify(
     const { error } = await admin.from("notifications").insert(rows.slice(i, i + 1000));
     if (error) throw new Error(error.message);
   }
+
+  // Best-effort Web Push (title + link only, no PII); never blocks the in-app write.
+  try {
+    await sendPushToUsers(unique, { title: n.title, body: n.body, link: n.link });
+  } catch {
+    /* push is a re-engagement layer, not the source of truth */
+  }
+
   return unique.length;
 }
