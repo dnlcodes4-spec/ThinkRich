@@ -13,8 +13,8 @@ The delivery plan by phase. This is the strategic view; the tactical, day-to-day
 - ✅ Root governance (README, CONTRIBUTING, SECURITY, CHANGELOG) + GitHub templates
 - ✅ Claude Code project configuration (rules, commands, reviewer agent, guardrail hooks)
 - ✅ Design system (brand tokens, responsive/dashboard rules, accessibility, UI DoD) — ADR-0006
-- ⏳ Repo bootstrap: dependencies, `.env`, Supabase project, `proxy.ts`, base layout
-- ⏳ Implement design tokens in code (T-011) + base UI primitives (T-012)
+- ✅ Repo bootstrap: dependencies, `.env`, Supabase project, `proxy.ts`, base layout
+- ✅ Implement design tokens in code (T-011) + base UI primitives (T-012)
 
 ## Phase 1 — Members' App (PWA) 🚧 (current focus)
 
@@ -22,16 +22,16 @@ The member + leader experience, plus the minimal foundation it depends on.
 
 | # | Deliverable | Status |
 |---|-------------|--------|
-| 1 | Supabase schema + migrations + geography seed + RLS | ⏳ |
-| 2 | Supabase clients, `proxy.ts`, env, base layout | ⏳ |
-| 3 | Auth: login, session, role-based redirect | ⏳ |
-| 4 | Leader: register member + membership-number generation | 🔒 (number format) |
-| 5 | Membership card render + download | 🔒 (card design) |
-| 6 | Member: profile view + photo update + change-request flow | ⏳ |
-| 7 | Member: voting/home view + candidates | ⏳ |
-| 8 | Opt-out flow (freeze → retain → delete/reactivate) | ⏳ |
-| 9 | PWA shell (manifest, service worker, install prompt) | ⏳ |
-| 10 | Web Push notifications + KYM | ⏳ |
+| 1 | Supabase schema + migrations + geography seed + RLS | ✅ (incl. full 120k-PU import, T-018) |
+| 2 | Supabase clients, `proxy.ts`, env, base layout | ✅ |
+| 3 | Auth: login, session, role-based redirect | ✅ (ADR-0011) |
+| 4 | Leader: register member + membership-number generation | ✅ |
+| 5 | Membership card render + download | 🔒 (card design, Q3) |
+| 6 | Member: profile view + photo update + change-request flow | ✅ |
+| 7 | Member: voting/home view + candidates | ✅ |
+| 8 | Opt-out flow (freeze → retain → delete/reactivate) | ✅ |
+| 9 | PWA shell (manifest, service worker, install prompt) | ✅ |
+| 10 | Web Push notifications + KYM | 🔒 (push: Q4; SW push-ready) |
 
 ## Phase 2 — Admin dashboards ⏳
 
