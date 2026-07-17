@@ -44,6 +44,13 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- Admin management (T-021): a scoped `/app/admin/team` where an admin views and **deactivates /
+  reactivates the tier directly below them** (national → state admins, state → LG admins, LG → ward
+  admins, ward → unit coordinators, unit coordinator → leaders), reusing the `NEXT_TIER` map.
+  Deactivating sets the profile status **and bans the auth user**, so their sign-in is blocked
+  immediately; reactivating reverses both. The list is RLS-scoped (an admin sees only their own
+  scope); the action re-checks in code that the target is exactly the direct tier below. Verified
+  live (national deactivated a state admin: status inactive + auth-banned; reactivate reverses).
 - Member change-requests + leader photo upload (T-006 completed, migration `0011`): a member can
   **request a correction** to one of their details from `/app/profile` (name, DOB, VIN, email, bank
   details) with a reason; a **state-level admin reviews** it on a new member detail page
