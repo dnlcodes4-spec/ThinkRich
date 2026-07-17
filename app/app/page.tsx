@@ -53,6 +53,12 @@ export default async function MembersHome() {
           >
             Statistics
           </Link>
+          <Link
+            href="/app/kym"
+            className="inline-flex min-h-11 items-center justify-center rounded-md border border-ring px-4 text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted"
+          >
+            Verify a leader
+          </Link>
           {profile.role !== "leader" ? (
             <Link
               href="/app/admin/new-account"

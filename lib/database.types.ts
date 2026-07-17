@@ -136,6 +136,35 @@ export type Database = {
           },
         ]
       }
+      leader_kym_codes: {
+        Row: {
+          code: string
+          created_at: string
+          id: string
+          leader_id: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          id?: string
+          leader_id: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          id?: string
+          leader_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "leader_kym_codes_leader_id_fkey"
+            columns: ["leader_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       lga_member_counters: {
         Row: {
           lga_id: string

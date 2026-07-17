@@ -44,6 +44,13 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- Leader verification / KYM (T-010, migration `0014`): a `/app/kym` page where a leader/admin mints a
+  personal, no-ambiguous-character code (`ABC-DEF-GHJ`) to share, and verifies another leader by
+  entering their code — returning a clear **verified** (name, role, geography) or **not verified**
+  result. Only **active** leaders verify (a deactivated one fails). New `leader_kym_codes` table (one
+  per leader; RLS: read own); verification runs through a service-role action that returns only the
+  leader's public identity, never the code table. Verified live (generate → verify a real leader →
+  reject a bogus code).
 - In-app notifications (T-023, migration `0012`): a notification centre at `/app/notifications` (own
   notifications, newest first, unread markers, mark-read / mark-all-read) plus an **unread badge** on
   `/app`. Leaders/admins can **send an announcement** that fans out to every member in their scope
