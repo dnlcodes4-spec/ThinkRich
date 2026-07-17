@@ -44,6 +44,12 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- Notification events wired (extends T-023): three system events now generate notifications (in-app +
+  push once T-010 lands). A **member opting out** notifies their **leader**; a member **reactivating**
+  or a leader/admin **reactivating** them notifies the relevant party; a member **submitting a
+  change request** notifies the **state admin(s)** for their state so they know to review. Recipients
+  resolved by scope; all via the shared `notify()` helper. Verified live (correct recipients per
+  event).
 - In-app notifications (T-023, migration `0012`): a notification centre at `/app/notifications` (own
   notifications, newest first, unread markers, mark-read / mark-all-read) plus an **unread badge** on
   `/app`. Leaders/admins can **send an announcement** that fans out to every member in their scope
