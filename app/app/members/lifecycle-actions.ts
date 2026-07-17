@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { notify } from "@/lib/notify";
 
 // Membership lifecycle (T-008): active -> frozen -> (active | deleted).
 // Members can't update their own row under RLS, and permanent deletion erases
@@ -42,7 +43,7 @@ export async function requestOptOut(_prev: OptOutState, formData: FormData): Pro
 
   const { data: member } = await c.supabase
     .from("members")
-    .select("id, status")
+    .select("id, status, full_name, registered_by")
     .eq("user_id", c.userId)
     .maybeSingle();
   if (!member) return { status: "error", message: "No member profile for this account." };
@@ -69,6 +70,15 @@ export async function requestOptOut(_prev: OptOutState, formData: FormData): Pro
     return { status: "error", message: "Could not process your request. Please try again." };
   }
 
+  // Notify the registering leader that a member paused (N4).
+  await notify([member.registered_by], {
+    type: "opt_out",
+    title: `${member.full_name} paused their membership`,
+    body: "They can reactivate during the retention window, or you can reach out.",
+    link: `/app/members/${member.id}`,
+    createdBy: c.userId,
+  });
+
   revalidatePath("/app/profile");
   return { status: "success", message: "Your membership has been paused." };
 }
@@ -79,7 +89,7 @@ export async function cancelOptOut(): Promise<void> {
   if (!c) return;
   const { data: member } = await c.supabase
     .from("members")
-    .select("id, status")
+    .select("id, status, full_name, registered_by")
     .eq("user_id", c.userId)
     .maybeSingle();
   if (!member || member.status !== "frozen") return;
@@ -91,6 +101,12 @@ export async function cancelOptOut(): Promise<void> {
     .update({ status: "reactivated", resolved_at: nowIso(), resolved_by: c.userId })
     .eq("member_id", member.id)
     .eq("status", "frozen");
+  await notify([member.registered_by], {
+    type: "opt_out",
+    title: `${member.full_name} reactivated their membership`,
+    link: `/app/members/${member.id}`,
+    createdBy: c.userId,
+  });
   revalidatePath("/app/profile");
 }
 
@@ -103,7 +119,11 @@ export async function reactivateMember(formData: FormData): Promise<void> {
   if (!id.success) return;
 
   // RLS-scoped read = the scope check.
-  const { data: member } = await c.supabase.from("members").select("id, status").eq("id", id.data).maybeSingle();
+  const { data: member } = await c.supabase
+    .from("members")
+    .select("id, status, user_id")
+    .eq("id", id.data)
+    .maybeSingle();
   if (!member || member.status !== "frozen") return;
 
   const admin = createAdminClient();
@@ -113,6 +133,16 @@ export async function reactivateMember(formData: FormData): Promise<void> {
     .update({ status: "reactivated", resolved_at: nowIso(), resolved_by: c.userId })
     .eq("member_id", member.id)
     .eq("status", "frozen");
+  // Notify the member that a leader/admin reactivated them (N4).
+  if (member.user_id) {
+    await notify([member.user_id], {
+      type: "opt_out",
+      title: "Your membership was reactivated",
+      body: "Welcome back. Your membership is active again.",
+      link: "/app/profile",
+      createdBy: c.userId,
+    });
+  }
   revalidatePath("/app/members");
 }
 
