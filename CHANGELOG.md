@@ -44,6 +44,14 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- State activation (T-019): a national-admin page at `/app/admin/states` lists all 37 states with
+  their **active status** and per-state context (state admins, LGAs, active members) and toggles
+  each state active/inactive. Uses the existing `states.is_active`; the write is a service-role
+  Server Action gated to national admins (states are reference data with no write RLS).
+  **Inactive states block member registration** (a leader can't register until their state is
+  active), and **provisioning a state admin auto-activates that state** (per the spec's "active once
+  a State Admin is assigned"), on top of the manual toggle. Verified live (toggle, gated
+  registration, auto-activation).
 - Member change-requests + leader photo upload (T-006 completed, migration `0011`): a member can
   **request a correction** to one of their details from `/app/profile` (name, DOB, VIN, email, bank
   details) with a reason; a **state-level admin reviews** it on a new member detail page
