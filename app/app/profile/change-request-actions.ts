@@ -3,7 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { isChangeField } from "@/app/app/members/change-request-fields";
+import { notify } from "@/lib/notify";
+import { isChangeField, fieldLabel } from "@/app/app/members/change-request-fields";
 
 // A member requests a correction to one of their details. It is stored pending;
 // a state-level admin reviews it (see detail-actions.ts). Members can't update
@@ -24,7 +25,7 @@ export async function submitChangeRequest(_prev: ChangeReqState, formData: FormD
 
   const { data: member } = await supabase
     .from("members")
-    .select("id, status")
+    .select("id, status, full_name, state_id")
     .eq("user_id", user.id)
     .maybeSingle();
   if (!member) return { status: "error", message: "This is for members only." };
@@ -55,6 +56,23 @@ export async function submitChangeRequest(_prev: ChangeReqState, formData: FormD
       return { status: "error", message: "You already have a pending request for that field." };
     }
     return { status: "error", message: "Could not submit your request. Please try again." };
+  }
+
+  // Notify the state admin(s) for this member's state so they can review.
+  const { data: reviewers } = await admin
+    .from("profiles")
+    .select("id")
+    .eq("role", "state_admin")
+    .eq("state_id", member.state_id);
+  const reviewerIds = (reviewers ?? []).map((r) => r.id);
+  if (reviewerIds.length > 0) {
+    await notify(reviewerIds, {
+      type: "change_request",
+      title: `${member.full_name} requested a ${fieldLabel(field)} correction`,
+      body: "Review it on their member page.",
+      link: `/app/members/${member.id}`,
+      createdBy: user.id,
+    });
   }
 
   revalidatePath("/app/profile");
