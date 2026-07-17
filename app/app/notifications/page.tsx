@@ -3,6 +3,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { markRead, markAllRead } from "./actions";
 import { ComposeAnnouncement } from "./compose";
+import { PushToggle } from "./push-toggle";
 
 export const metadata: Metadata = {
   title: "Notifications",
@@ -51,6 +52,10 @@ export default async function NotificationsPage() {
             </button>
           </form>
         ) : null}
+      </div>
+
+      <div className="mt-6 rounded-card border border-border bg-surface p-4">
+        <PushToggle />
       </div>
 
       {profile && profile.role !== "member" ? (
