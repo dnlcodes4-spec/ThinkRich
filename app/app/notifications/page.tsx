@@ -3,6 +3,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { markRead, markAllRead } from "./actions";
 import { ComposeAnnouncement } from "./compose";
+import { VotingReminderButton } from "./voting-reminder";
 import { PushToggle } from "./push-toggle";
 
 export const metadata: Metadata = {
@@ -59,8 +60,9 @@ export default async function NotificationsPage() {
       </div>
 
       {profile && profile.role !== "member" ? (
-        <div className="mt-6">
+        <div className="mt-6 flex flex-wrap gap-3">
           <ComposeAnnouncement />
+          <VotingReminderButton />
         </div>
       ) : null}
 
