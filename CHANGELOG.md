@@ -44,6 +44,11 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- Member search (T-024): the roster at `/app/members` now takes an optional `?q=` search over
+  **member name + membership number**, within the viewer's RLS scope (a national admin searches
+  everyone, a leader only their own). A search box + clear control + match count on the page; input
+  is sanitized before the PostgREST `ilike` filter and results are capped. Verified live (name,
+  membership-number, and no-match cases).
 - Leader verification / KYM (T-010, migration `0014`): a `/app/kym` page where a leader/admin mints a
   personal, no-ambiguous-character code (`ABC-DEF-GHJ`) to share, and verifies another leader by
   entering their code — returning a clear **verified** (name, role, geography) or **not verified**
