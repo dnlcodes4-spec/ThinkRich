@@ -44,6 +44,13 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- Statistics dashboard (T-020): a scoped `/app/stats` for leaders and admins showing **active member
+  counts in their scope** (active / frozen / deleted), plus a **breakdown by the level below** them
+  (national → by state, state admin → by LGA, LG admin → by ward, ward admin → by polling unit) as a
+  simple bar list; national admins also see active-states (X / 37). Counts are computed from the
+  RLS-visible member rows (scope needs no app logic); an aggregate RPC is the scale path noted for
+  later. Verified live (national by-state totals; leader totals without breakdown). Entry point on
+  `/app`.
 - Member change-requests + leader photo upload (T-006 completed, migration `0011`): a member can
   **request a correction** to one of their details from `/app/profile` (name, DOB, VIN, email, bank
   details) with a reason; a **state-level admin reviews** it on a new member detail page
