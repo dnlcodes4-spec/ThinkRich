@@ -17,11 +17,7 @@ only when it meets the [Definition of Done](../engineering/definition-of-done.md
 _Not yet refined / not yet Ready._
 
 - **T-005** — Membership card render + download 🔒 _(blocked: Q3 card design)_
-- **T-010** — Web Push notifications + Leader KYM verification 🔒 _(push blocked: Q4; SW is already push-ready)_
-- **T-019** — State activation: National admin activates/deactivates states (`states.is_active`)
-- **T-020** — Statistics dashboard: member counts by geography + live totals
-- **T-021** — Admin management: view/deactivate admins within scope
-- **T-023** — In-app notifications: notification centre + toasts (Web Push comes later, T-010)
+- **T-010** — Web Push notifications + Leader KYM verification 🔒 _(push blocked: Q4; SW is already push-ready; KYM unblocked)_
 
 ## 🟡 Ready
 _Refined, unblocked, ready to pull._
@@ -36,11 +32,16 @@ _(none)_
 ## 🟣 In Review
 _PR open, awaiting review + CI._
 
-_(none)_
+- **T-023** — In-app notifications: centre + unread badge + announcements (branch `feat/in-app-notifications`, migration `0012`)
+  _Done: `/app/notifications` centre + mark-read; unread badge on `/app`; leaders/admins broadcast to
+  members in scope (fan-out); change-request decision notifies the member (N3). Verified live._
 
 ## ✅ Done
 _Merged to `main`, meets Definition of Done._
 
+- **T-021** — Admin management: deactivate/reactivate subordinate admins (PR #22)
+- **T-020** — Statistics dashboard: scoped member counts + breakdown (PR #21)
+- **T-019** — State activation + inactive-state gating (PR #20)
 - **T-006** — Member change-requests + leader photo upload (PR #18) · **completes** T-006
 - **T-007** — Member voting view + scoped candidate management (PR #17)
 - **T-009** — PWA shell: manifest + SW + offline + install prompt (ADR-0004, PR #16)

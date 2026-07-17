@@ -44,6 +44,14 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   `ENABLE_INTERNAL_PAGES=1` (T-022), on top of its existing noindex.
 
 ### Added
+- In-app notifications (T-023, migration `0012`): a notification centre at `/app/notifications` (own
+  notifications, newest first, unread markers, mark-read / mark-all-read) plus an **unread badge** on
+  `/app`. Leaders/admins can **send an announcement** that fans out to every member in their scope
+  who has a login (recipients resolved through the sender's RLS-scoped member view; fan-out insert
+  via the service role). Wired the first system event: a **change-request decision notifies the
+  member** (N3). Per-recipient `notifications` table (RLS: a user reads only their own); sending +
+  mark-read go through service-role actions. Web Push (Q4) is a later layer over the same rows.
+  Verified live (leader announcement → member received it, unread badge, mark-read clears it).
 - Admin management (T-021): a scoped `/app/admin/team` where an admin views and **deactivates /
   reactivates the tier directly below them** (national → state admins, state → LG admins, LG → ward
   admins, ward → unit coordinators, unit coordinator → leaders), reusing the `NEXT_TIER` map.

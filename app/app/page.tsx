@@ -18,6 +18,10 @@ export default async function MembersHome() {
     ? await supabase.from("profiles").select("role, full_name").eq("id", user.id).maybeSingle()
     : { data: null };
 
+  const { count: unread } = user
+    ? await supabase.from("notifications").select("*", { count: "exact", head: true }).is("read_at", null)
+    : { count: 0 };
+
   return (
     <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
       <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground">
@@ -98,6 +102,20 @@ export default async function MembersHome() {
             Your profile
           </Link>
         </div>
+      ) : null}
+
+      {user ? (
+        <Link
+          href="/app/notifications"
+          className="inline-flex min-h-11 w-fit items-center gap-2 rounded-md border border-ring px-4 text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted"
+        >
+          Notifications
+          {unread && unread > 0 ? (
+            <span className="inline-flex min-w-5 items-center justify-center rounded-full bg-accent px-1.5 text-xs font-bold text-primary-foreground">
+              {unread}
+            </span>
+          ) : null}
+        </Link>
       ) : null}
 
       <InstallPrompt />
