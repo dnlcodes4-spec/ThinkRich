@@ -114,6 +114,11 @@ export async function createAccount(
     return { status: "error", message: "Could not save the account profile. Please try again." };
   }
 
+  // Assigning a state admin activates that state (T-019: "active once a State Admin is assigned").
+  if (tier.role === "state_admin" && scope.state_id) {
+    await admin.from("states").update({ is_active: true }).eq("id", scope.state_id);
+  }
+
   return {
     status: "success",
     message: "Account created.",

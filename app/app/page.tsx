@@ -59,6 +59,14 @@ export default async function MembersHome() {
               Manage candidate
             </Link>
           ) : null}
+          {profile.role === "national_admin" ? (
+            <Link
+              href="/app/admin/states"
+              className="inline-flex min-h-11 items-center justify-center rounded-md border border-ring px-4 text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted"
+            >
+              States
+            </Link>
+          ) : null}
         </div>
       ) : null}
       {profile?.role === "member" ? (
