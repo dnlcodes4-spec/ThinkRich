@@ -43,6 +43,12 @@ export default async function MembersHome() {
           >
             View members
           </Link>
+          <Link
+            href="/app/stats"
+            className="inline-flex min-h-11 items-center justify-center rounded-md border border-ring px-4 text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted"
+          >
+            Statistics
+          </Link>
           {profile.role !== "leader" ? (
             <Link
               href="/app/admin/new-account"
