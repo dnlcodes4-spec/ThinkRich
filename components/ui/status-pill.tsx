@@ -12,10 +12,10 @@ export type MemberStatus =
 const config: Record<MemberStatus, { label: string; className: string }> = {
   active: { label: "Active", className: "text-success bg-success-soft border-success/30" },
   approved: { label: "Approved", className: "text-success bg-success-soft border-success/30" },
-  frozen: { label: "Frozen", className: "text-warning bg-warning-soft border-warning/30" },
+  frozen: { label: "Paused", className: "text-warning bg-warning-soft border-warning/30" },
   pending: { label: "Pending", className: "text-warning bg-warning-soft border-warning/30" },
-  rejected: { label: "Rejected", className: "text-danger bg-danger-soft border-danger/30" },
-  deleted: { label: "Deleted", className: "text-muted bg-surface-muted border-border" },
+  rejected: { label: "Declined", className: "text-danger bg-danger-soft border-danger/30" },
+  deleted: { label: "Removed", className: "text-muted bg-surface-muted border-border" },
 };
 
 export function StatusPill({

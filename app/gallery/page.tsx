@@ -1,4 +1,3 @@
-import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardTitle, CardContent } from "@/components/ui/card";
@@ -8,8 +7,7 @@ import { RecordCard } from "@/components/ui/record-card";
 import { DataTable, type Column } from "@/components/ui/data-table";
 
 // Temporary internal surface: a gallery that exercises the base UI primitives
-// (T-012) and verifies they render consistently in light/dark. Real product
-// screens replace this.
+// (T-012) and verifies they render consistently. Real product screens replace this.
 
 type Member = {
   id: string;
@@ -57,10 +55,9 @@ export default function Home() {
             </h1>
             <p className="mt-3 max-w-xl text-primary-foreground/80">
               The base components, built on the design tokens. Every element is
-              token-driven, accessible, and flips with the theme.
+              token-driven and accessible.
             </p>
           </div>
-          <ThemeToggle />
         </div>
       </header>
 

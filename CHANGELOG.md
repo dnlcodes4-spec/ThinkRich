@@ -9,6 +9,17 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Changed
+- **App UI/UX overhaul (Phase 1 + 2):** the member app moves from a flat list of links to a real
+  product. Added a navigation shell (`components/app-shell/`): desktop sidebar + mobile bottom tabs
+  driven by the caller's role, plus a header with a notifications bell (unread badge) and account
+  menu. `/app` is now a role-aware home (member / leader / coordinator dashboards). Redesigned the
+  **login** into a split brand layout (green ThinkRich panel + navy Think-Winners sign-in card).
+  Polished the member surfaces: **Who to vote for** leads with the local chairman; **My details**
+  (renamed from "Your profile") reads in plain language. Introduced a plain-language glossary
+  (`lib/terms.ts`) and updated `StatusPill` (`frozen → Paused`, `deleted → Removed`,
+  `rejected → Declined`).
+- **Removed dark mode (light-only, for now):** dropped the theme toggle, the `@media dark` /
+  `[data-theme="dark"]` token blocks, and the pre-paint theme script. May return for the dashboard.
 - **ThinkRich → black + green** (CR-0006 / ADR-0010, amending ADR-0008): the ThinkRich umbrella
   (root site + member app + shared UI primitives) rebrands from navy + gold to a near-black `ink-*`
   scale + the **logo green** (`green-*` re-sampled from the ThinkRich Community logo). Root
