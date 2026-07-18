@@ -60,15 +60,22 @@ export default async function VotePage() {
   const lga = lgaName.data?.name ?? "your LGA";
 
   return (
-    <main className="mx-auto w-full max-w-xl flex-1 px-6 py-12">
+    <main className="mx-auto w-full max-w-xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
       <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground">Who to vote for</h1>
-      <p className="mt-1 text-sm text-muted">The movement&rsquo;s candidates for {lga}, {state}.</p>
+      <p className="mt-1 text-sm text-muted">
+        The candidates the movement is backing in your area: {lga}, {state}. Your local chairman
+        comes first.
+      </p>
 
       <div className="mt-8 flex flex-col gap-4">
         <CandidateCard office="Your LGA chairman" where={lga} candidate={toCard(lgRes.data)} hero />
         <CandidateCard office="Governor" where={state} candidate={toCard(stateRes.data)} />
         <CandidateCard office="President" where="Nigeria" candidate={toCard(presRes.data)} />
       </div>
+
+      <p className="mt-8 text-center text-xs text-muted">
+        Candidates are chosen by the movement. Check back as election day nears.
+      </p>
     </main>
   );
 }

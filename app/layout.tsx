@@ -43,10 +43,6 @@ export const viewport: Viewport = {
   themeColor: "#0a0a0b",
 };
 
-// Runs before paint to set the theme, avoiding a flash of the wrong colours.
-// Uses the user's saved choice, else their system preference.
-const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();`;
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -55,14 +51,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      // The pre-paint script sets `data-theme` before hydration; suppress the
-      // resulting attribute mismatch warning on <html> only.
-      suppressHydrationWarning
       className={`${sans.variable} ${display.variable} ${mono.variable} h-full antialiased`}
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         {children}
         <ServiceWorkerRegistrar />

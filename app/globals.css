@@ -8,10 +8,9 @@
   needed; neutrals use Tailwind's built-in slate scale (identical values).
 */
 
-/* `dark:` utilities follow the active data-theme (set on <html> before paint). */
-@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+/* Light-only for now (dark mode removed by request; may return for the dashboard). */
 
-/* ---- Semantic tokens : LIGHT (default) ---- */
+/* ---- Semantic tokens : LIGHT ---- */
 :root {
   --background: #ffffff;
   --surface: #ffffff;
@@ -36,34 +35,6 @@
   --info:    #1d4ed8; --info-soft:    #eff6ff;
 }
 
-/* System dark for visitors who haven't chosen (and for the no-JS case). */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --background: #0a0a0b; --surface: #101012; --surface-muted: #17171a;
-    --border: #2b2b30; --foreground: #f1f5f9; --muted: #94a3b8;
-    --primary: #9a9aa1; --primary-hover: #c7c7cc; --primary-foreground: #0a0a0b;
-    --accent: #5ac78e; --accent-hover: #97ddb7; --accent-foreground: #0a0a0b;
-    --ring: #9a9aa1;
-    --success: #4ade80; --success-soft: #052e16;
-    --warning: #fb923c; --warning-soft: #431407;
-    --danger:  #f87171; --danger-soft:  #450a0a;
-    --info:    #60a5fa; --info-soft:    #172554;
-  }
-}
-
-/* Explicit choice wins in both directions. */
-[data-theme="dark"] {
-  --background: #0a0a0b; --surface: #101012; --surface-muted: #17171a;
-  --border: #2b2b30; --foreground: #f1f5f9; --muted: #94a3b8;
-  --primary: #9a9aa1; --primary-hover: #c7c7cc; --primary-foreground: #0a0a0b;
-  --accent: #5ac78e; --accent-hover: #97ddb7; --accent-foreground: #0a0a0b;
-  --ring: #9a9aa1;
-  --success: #4ade80; --success-soft: #052e16;
-  --warning: #fb923c; --warning-soft: #431407;
-  --danger:  #f87171; --danger-soft:  #450a0a;
-  --info:    #60a5fa; --info-soft:    #172554;
-}
-
 /* ---- Brand scales (utilities: bg-navy-700, text-gold-500, …) ---- */
 @theme {
   --color-navy-50: #f0f2f4;  --color-navy-100: #dde1e6; --color-navy-200: #b6bfca;
@@ -73,8 +44,9 @@
 
   /* Ink — the ThinkRich umbrella's near-black scale (ADR-0010 / CR-0006). Neutral,
      never pure #000. Root site + member app use this; Think-Winners keeps navy. */
-  --color-ink-50: #f5f5f7;  --color-ink-100: #e5e5e8; --color-ink-200: #c7c7cc;
-  --color-ink-300: #9a9aa1; --color-ink-400: #6b6b72; --color-ink-500: #45454b;
+  --color-ink-50: #f5f5f7;  --color-ink-100: #e5e5e8; --color-ink-150: #d6d6da;
+  --color-ink-200: #c7c7cc; --color-ink-250: #b0b0b6; --color-ink-300: #9a9aa1;
+  --color-ink-400: #6b6b72; --color-ink-500: #45454b;
   --color-ink-600: #2b2b30; --color-ink-700: #1e1e21; --color-ink-800: #17171a;
   --color-ink-900: #101012; --color-ink-950: #0a0a0b;
 

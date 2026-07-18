@@ -9,8 +9,15 @@ import { ChangeRequestForm } from "./change-request";
 import { fieldLabel } from "@/app/app/members/change-request-fields";
 
 export const metadata: Metadata = {
-  title: "Your profile",
+  title: "My details",
   robots: { index: false, follow: false },
+};
+
+// Plain-language labels for a member's own correction requests.
+const CORRECTION_STATUS: Record<string, string> = {
+  pending: "Waiting for review",
+  approved: "Applied",
+  rejected: "Declined",
 };
 
 // A member's own profile: their details (read-only) + passport photo upload.
@@ -36,7 +43,7 @@ export default async function ProfilePage() {
   if (!member) {
     return (
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
-        <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">Your profile</h1>
+        <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">My details</h1>
         <p className="text-sm text-muted">This area is for members.</p>
         <Link href="/app" className="text-sm font-semibold text-primary underline-offset-4 hover:underline">
           Back to your area
@@ -80,7 +87,7 @@ export default async function ProfilePage() {
 
   const dob = member.date_of_birth
     ? new Date(member.date_of_birth).toLocaleDateString("en-NG", { year: "numeric", month: "long", day: "numeric" })
-    : "—";
+    : "Not provided";
 
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-12">
@@ -109,11 +116,11 @@ export default async function ProfilePage() {
             </div>
             <div>
               <dt className="text-muted">Email</dt>
-              <dd className="mt-0.5 font-medium break-all text-foreground">{member.email ?? "—"}</dd>
+              <dd className="mt-0.5 font-medium break-all text-foreground">{member.email ?? "Not provided"}</dd>
             </div>
             <div className="sm:col-span-2">
-              <dt className="text-muted">Polling unit</dt>
-              <dd className="mt-0.5 font-medium text-foreground">{geography || "—"}</dd>
+              <dt className="text-muted">Your area</dt>
+              <dd className="mt-0.5 font-medium text-foreground">{geography || "Not set"}</dd>
             </div>
           </dl>
           <div className="mt-6">
@@ -124,9 +131,9 @@ export default async function ProfilePage() {
               {changeRequests.map((r) => (
                 <li key={r.id} className="flex items-center justify-between gap-3 rounded-md bg-surface-muted px-3 py-2 text-xs">
                   <span className="text-muted">
-                    <span className="font-medium text-foreground">{fieldLabel(r.field)}</span> → {r.new_value}
+                    <span className="font-medium text-foreground">{fieldLabel(r.field)}</span> to {r.new_value}
                   </span>
-                  <span className="font-semibold capitalize text-muted">{r.status}</span>
+                  <span className="font-semibold text-muted">{CORRECTION_STATUS[r.status] ?? r.status}</span>
                 </li>
               ))}
             </ul>
