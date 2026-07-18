@@ -17,7 +17,8 @@ only when it meets the [Definition of Done](../engineering/definition-of-done.md
 _Not yet refined / not yet Ready._
 
 - **T-005** — Membership card render + download 🔒 _(blocked: Q3 card design)_
-- **T-010** — Web Push notifications + Leader KYM verification 🔒 _(push blocked: Q4; SW is already push-ready; KYM unblocked)_
+- **T-025** — Notification toasts + remaining catalog (voting reminder N1, card-ready N5)
+- **T-026** — Reward oversight (needs product definition)
 
 ## 🟡 Ready
 _Refined, unblocked, ready to pull._
@@ -32,13 +33,15 @@ _(none)_
 ## 🟣 In Review
 _PR open, awaiting review + CI._
 
-- **T-023** — In-app notifications: centre + unread badge + announcements (branch `feat/in-app-notifications`, migration `0012`)
-  _Done: `/app/notifications` centre + mark-read; unread badge on `/app`; leaders/admins broadcast to
-  members in scope (fan-out); change-request decision notifies the member (N3). Verified live._
+- **T-024** — Cross-scope member search on the roster (branch `feat/member-search`)
+  _Done: `q` searchParam, sanitized `ilike` on name + membership number within RLS scope; search
+  box + clear + match count on `/app/members`. Verified live._
 
 ## ✅ Done
 _Merged to `main`, meets Definition of Done._
 
+- **T-010** — Web Push (PR #24, resolves Q4) + KYM leader verification (PR #26) + wired opt-out/change-request notification events (PR #25)
+- **T-023** — In-app notifications: centre + unread badge + announcements (PR #23)
 - **T-021** — Admin management: deactivate/reactivate subordinate admins (PR #22)
 - **T-020** — Statistics dashboard: scoped member counts + breakdown (PR #21)
 - **T-019** — State activation + inactive-state gating (PR #20)

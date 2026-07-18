@@ -23,8 +23,9 @@ type Row = {
 };
 
 // The list is scoped by RLS: a leader sees the members they registered; admins
-// see the members within their geography. No scope logic in the app.
-export default async function MembersPage() {
+// see the members within their geography. No scope logic in the app. An optional
+// `q` searches name + membership number within that scope.
+export default async function MembersPage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
   const supabase = await createClient();
   const {
     data: { user },
@@ -35,10 +36,15 @@ export default async function MembersPage() {
     : { data: null };
   const isLeader = profile?.role === "leader";
 
-  const { data } = await supabase
+  const rawQ = ((await searchParams).q ?? "").trim();
+  // Strip characters that would break the PostgREST `or()` filter syntax.
+  const q = rawQ.replace(/[,()*%\\]/g, "").slice(0, 60);
+
+  let query = supabase
     .from("members")
-    .select("id, membership_number, full_name, status, created_at, email, user_id")
-    .order("membership_number", { ascending: true });
+    .select("id, membership_number, full_name, status, created_at, email, user_id");
+  if (q) query = query.or(`full_name.ilike.%${q}%,membership_number.ilike.%${q}%`);
+  const { data } = await query.order("membership_number", { ascending: true }).limit(200);
   const rows = (data ?? []) as Row[];
 
   // Retention dates for frozen members (drives the delete gate on their actions).
@@ -91,7 +97,9 @@ export default async function MembersPage() {
             {isLeader ? "Your members" : "Members"}
           </h1>
           <p className="mt-1 text-sm text-muted">
-            {rows.length} {rows.length === 1 ? "member" : "members"} in your scope.
+            {q
+              ? `${rows.length} ${rows.length === 1 ? "match" : "matches"} for “${q}”.`
+              : `${rows.length}${rows.length === 200 ? "+" : ""} ${rows.length === 1 ? "member" : "members"} in your scope.`}
           </p>
         </div>
         {isLeader ? (
@@ -104,16 +112,47 @@ export default async function MembersPage() {
         ) : null}
       </div>
 
+      <form method="get" className="mt-6 flex flex-wrap gap-2">
+        <input
+          type="search"
+          name="q"
+          defaultValue={q}
+          placeholder="Search name or membership number"
+          aria-label="Search members"
+          className="min-h-11 flex-1 rounded-md border border-border bg-surface px-3 text-base text-foreground placeholder:text-muted focus:outline-2 focus:outline-offset-1 focus:outline-ring"
+        />
+        <button
+          type="submit"
+          className="min-h-11 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
+        >
+          Search
+        </button>
+        {q ? (
+          <Link
+            href="/app/members"
+            className="inline-flex min-h-11 items-center justify-center rounded-md border border-ring px-4 text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted"
+          >
+            Clear
+          </Link>
+        ) : null}
+      </form>
+
       {rows.length === 0 ? (
         <div className="mt-10 rounded-card border border-dashed border-border p-10 text-center">
           <p className="text-sm text-muted">
-            No members yet.{" "}
-            {isLeader ? (
-              <Link href="/app/register" className="font-semibold text-primary underline-offset-4 hover:underline">
-                Register your first member.
-              </Link>
+            {q ? (
+              <>No members match “{q}”.</>
             ) : (
-              "Members appear here once leaders in your scope register them."
+              <>
+                No members yet.{" "}
+                {isLeader ? (
+                  <Link href="/app/register" className="font-semibold text-primary underline-offset-4 hover:underline">
+                    Register your first member.
+                  </Link>
+                ) : (
+                  "Members appear here once leaders in your scope register them."
+                )}
+              </>
             )}
           </p>
         </div>
