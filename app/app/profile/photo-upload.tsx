@@ -1,7 +1,8 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/toast";
 import { uploadPhoto, type PhotoState } from "./actions";
 
 const initial: PhotoState = { status: "idle" };
@@ -23,6 +24,11 @@ function Frame({ children }: { children: React.ReactNode }) {
 function Inner({ currentUrl, onReset }: { currentUrl: string | null; onReset: () => void }) {
   const [state, action, pending] = useActionState(uploadPhoto, initial);
   const [preview, setPreview] = useState<string | null>(null);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    if (state.status === "success") toast("Photo updated.", "success");
+  }, [state, toast]);
 
   if (state.status === "success") {
     return (
