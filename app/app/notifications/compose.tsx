@@ -1,8 +1,9 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/toast";
 import { sendAnnouncement, type AnnounceState } from "./actions";
 
 const initial: AnnounceState = { status: "idle" };
@@ -11,7 +12,12 @@ const initial: AnnounceState = { status: "idle" };
 export function ComposeAnnouncement() {
   const [open, setOpen] = useState(false);
   const [state, action, pending] = useActionState(sendAnnouncement, initial);
+  const { toast } = useToast();
   const fe = state.fieldErrors ?? {};
+
+  useEffect(() => {
+    if (state.status === "success" && state.message) toast(state.message, "success");
+  }, [state, toast]);
 
   if (!open) {
     return (

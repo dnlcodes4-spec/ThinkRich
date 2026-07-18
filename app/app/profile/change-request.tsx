@@ -1,8 +1,9 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/toast";
 import { submitChangeRequest, type ChangeReqState } from "./change-request-actions";
 import { CHANGE_FIELDS, CHANGE_FIELD_KEYS } from "@/app/app/members/change-request-fields";
 
@@ -12,7 +13,12 @@ export function ChangeRequestForm() {
   const [open, setOpen] = useState(false);
   const [field, setField] = useState<string>(CHANGE_FIELD_KEYS[0]);
   const [state, action, pending] = useActionState(submitChangeRequest, initial);
+  const { toast } = useToast();
   const fe = state.fieldErrors ?? {};
+
+  useEffect(() => {
+    if (state.status === "success") toast("Correction request submitted.", "success");
+  }, [state, toast]);
 
   if (!open) {
     return (
