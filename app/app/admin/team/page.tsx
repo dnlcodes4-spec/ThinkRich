@@ -85,7 +85,9 @@ export default async function TeamPage() {
               <li key={r.id} className="flex flex-wrap items-center justify-between gap-3 px-4 py-3">
                 <div className="min-w-0">
                   <p className="truncate text-sm font-medium text-foreground">{r.full_name}</p>
-                  <p className="truncate text-xs text-muted">{nameById.get(r[geo.col] ?? "") ?? "—"}</p>
+                  <p className="truncate text-xs text-muted">
+                    {nameById.get(r[geo.col] ?? "") ?? "No area set"}
+                  </p>
                 </div>
                 <div className="flex items-center gap-3">
                   <span

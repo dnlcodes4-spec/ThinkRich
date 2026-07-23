@@ -9,6 +9,23 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- **Loading, error and not-found states across the app** (UI/UX overhaul Phase 5): the app had **no**
+  `loading.tsx`, `error.tsx` or `not-found.tsx` anywhere, so every data page rendered with no loading
+  feedback and any thrown error or `notFound()` fell through to Next's raw defaults. Adds a
+  reduced-motion-aware `Skeleton` primitive plus skeletons shaped like the real content for the app
+  segment, Members, Correction requests and Statistics (each announced to assistive tech via a
+  `role="status"` region, with the boxes themselves `aria-hidden`); a plain-language **error boundary**
+  ("Something went wrong", Try again / Go to home, showing only the digest, never the raw error); and a
+  **not-found** page whose wording deliberately does not distinguish "does not exist" from "outside your
+  area", so it never confirms a record RLS is hiding.
+- **Skip to content link** in the app shell: the sidebar precedes the content in the DOM, so keyboard
+  users can now jump past it. Sidebar and bottom-nav destinations also gained explicit
+  `focus-visible` rings, matching the rest of the app instead of relying on the browser default.
+
+### Changed
+- Team roster: an empty area read as a bare dash; it now reads **"No area set"**.
+
+### Added
 - **Correction request review queue** (`/app/corrections`, UI/UX overhaul Phase 4): every correction
   a member has asked for, across the coordinator's scope, in one place. Previously these could only
   be found one member at a time on that member's detail page, and the Home KPI pointed at the member
