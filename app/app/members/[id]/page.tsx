@@ -80,11 +80,11 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
         <div>
           <h2 className="mb-3 text-sm font-semibold text-foreground">Details</h2>
           <dl className="grid grid-cols-1 gap-x-6 gap-y-4 text-sm sm:grid-cols-2">
-            <Fact label="Date of birth" value={member.date_of_birth ? fmtDate(member.date_of_birth) : "—"} />
-            <Fact label="Email" value={member.email ?? "—"} />
-            <Fact label="Voter's ID (VIN)" value={member.vin ?? "—"} />
+            <Fact label="Date of birth" value={member.date_of_birth ? fmtDate(member.date_of_birth) : "Not provided"} />
+            <Fact label="Email" value={member.email ?? "Not provided"} />
+            <Fact label="Voter's ID (VIN)" value={member.vin ?? "Not provided"} />
             <div className="sm:col-span-2">
-              <Fact label="Polling unit" value={geography || "—"} />
+              <Fact label="Area" value={geography || "Not set"} />
             </div>
           </dl>
         </div>
@@ -92,10 +92,10 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
 
       <section className="mt-12 border-t border-border pt-8">
         <h2 className="text-sm font-semibold text-foreground">
-          Change requests <span className="text-muted">({requests.length})</span>
+          Correction requests <span className="text-muted">({requests.length})</span>
         </h2>
         {requests.length === 0 ? (
-          <p className="mt-3 text-sm text-muted">No change requests.</p>
+          <p className="mt-3 text-sm text-muted">No correction requests.</p>
         ) : (
           <ul className="mt-4 flex flex-col gap-3">
             {requests.map((r) => (
@@ -124,7 +124,7 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
                       <input type="hidden" name="request_id" value={r.id} />
                       <input type="hidden" name="decision" value="reject" />
                       <button className="min-h-9 rounded-md border border-danger/50 px-3 text-xs font-semibold text-danger hover:bg-danger-soft">
-                        Reject
+                        Decline
                       </button>
                     </form>
                   </div>
@@ -148,14 +148,15 @@ function Fact({ label, value }: { label: string; value: string }) {
 }
 
 function RequestStatus({ status }: { status: string }) {
-  const map: Record<string, string> = {
-    pending: "text-warning bg-warning-soft border-warning/30",
-    approved: "text-success bg-success-soft border-success/30",
-    rejected: "text-danger bg-danger-soft border-danger/30",
+  const map: Record<string, { label: string; className: string }> = {
+    pending: { label: "Waiting for review", className: "text-warning bg-warning-soft border-warning/30" },
+    approved: { label: "Applied", className: "text-success bg-success-soft border-success/30" },
+    rejected: { label: "Declined", className: "text-danger bg-danger-soft border-danger/30" },
   };
+  const s = map[status] ?? { label: status, className: "" };
   return (
-    <span className={`shrink-0 rounded-full border px-2.5 py-1 text-xs font-bold capitalize ${map[status] ?? ""}`}>
-      {status}
+    <span className={`shrink-0 rounded-full border px-2.5 py-1 text-xs font-bold ${s.className}`}>
+      {s.label}
     </span>
   );
 }

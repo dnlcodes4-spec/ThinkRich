@@ -69,7 +69,7 @@ export function BottomNav({ items }: { items: NavItem[] }) {
               )}
             >
               <Icon name={item.icon} className="size-6" />
-              <span className="max-w-full truncate">{item.label}</span>
+              <span className="max-w-full truncate">{item.short ?? item.label}</span>
             </Link>
           );
         })}

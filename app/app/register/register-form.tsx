@@ -58,31 +58,51 @@ function Inner({ onReset }: { onReset: () => void }) {
   }
 
   return (
-    <form action={action} noValidate className="flex flex-col gap-5">
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Input label="Full name" name="full_name" autoComplete="name" required error={fe.full_name} />
-        <Input
-          label="Date of birth"
-          name="date_of_birth"
-          type="date"
-          required
-          hint="Must be 18 or older."
-          error={fe.date_of_birth}
-        />
-        <Input label="NIN" name="nin" required hint="National ID number" error={fe.nin} />
-        <Input label="VIN" name="vin" hint="Voter's ID number (optional)" error={fe.vin} />
+    <form action={action} noValidate className="flex flex-col gap-8">
+      <fieldset className="min-w-0 border-0 p-0">
+        <legend className="mb-4 text-sm font-semibold text-foreground">Member details</legend>
+        <div className="grid gap-5 sm:grid-cols-2">
+          <Input label="Full name" name="full_name" autoComplete="name" required error={fe.full_name} />
+          <Input
+            label="Date of birth"
+            name="date_of_birth"
+            type="date"
+            required
+            hint="Must be 18 or older."
+            error={fe.date_of_birth}
+          />
+          <Input label="NIN" name="nin" required hint="National ID number" error={fe.nin} />
+          <Input label="VIN" name="vin" hint="Voter's ID number (optional)" error={fe.vin} />
+        </div>
+      </fieldset>
+
+      <fieldset className="min-w-0 border-0 p-0">
+        <legend className="mb-1 text-sm font-semibold text-foreground">
+          Bank details <span className="font-normal text-muted">(optional)</span>
+        </legend>
+        <p className="mb-4 text-sm text-muted">Used for member rewards. You can add this later.</p>
+        <div className="grid gap-5 sm:grid-cols-2">
+          <Input label="Bank name" name="bank_name" error={fe.bank_name} />
+          <Input label="Account name" name="account_name" error={fe.account_name} />
+          <Input label="Account number" name="account_number" inputMode="numeric" error={fe.account_number} />
+        </div>
+      </fieldset>
+
+      <fieldset className="min-w-0 border-0 p-0">
+        <legend className="mb-1 text-sm font-semibold text-foreground">
+          Login <span className="font-normal text-muted">(optional)</span>
+        </legend>
+        <p className="mb-4 text-sm text-muted">
+          Add an email to create their app login now. We show a temporary password once.
+        </p>
         <Input
           label="Email"
           name="email"
           type="email"
           autoComplete="off"
-          hint="Creates their login now (optional)"
           error={fe.email}
         />
-        <Input label="Bank name" name="bank_name" error={fe.bank_name} />
-        <Input label="Account name" name="account_name" error={fe.account_name} />
-        <Input label="Account number" name="account_number" inputMode="numeric" error={fe.account_number} />
-      </div>
+      </fieldset>
 
       {state.status === "error" && state.message ? (
         <p role="alert" className="text-sm text-danger">
