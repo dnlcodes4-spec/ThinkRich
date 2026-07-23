@@ -34,6 +34,7 @@ const LEADER: NavItem[] = [
 const COORDINATOR_BASE: NavItem[] = [
   { href: "/app", label: "Home", icon: "home" },
   { href: "/app/members", label: "Members", icon: "members" },
+  { href: "/app/corrections", label: "Correction requests", icon: "inbox", short: "Requests" },
   { href: "/app/stats", label: "Statistics", icon: "overview", short: "Stats" },
   { href: "/app/admin/team", label: "Team", icon: "team" },
   { href: "/app/admin/new-account", label: "Give app access", icon: "access", short: "Access" },

@@ -84,8 +84,8 @@ export default async function StatsPage() {
 
       <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
         <Stat label="Active members" value={active} emphasis />
-        <Stat label="Frozen" value={frozen} />
-        <Stat label="Deleted" value={deleted} />
+        <Stat label="Paused" value={frozen} />
+        <Stat label="Removed" value={deleted} />
         {activeStates !== null ? (
           <Stat label="Active states" value={`${activeStates} / 37`} />
         ) : (
