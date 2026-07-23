@@ -5,6 +5,8 @@ export type NavItem = {
   href: string;
   label: string;
   icon: IconName;
+  /** Compact label for the mobile bottom bar, where five tabs share ~390px. */
+  short?: string;
 };
 
 // Navigation destinations per role, in display order. The shell renders these as
@@ -16,15 +18,15 @@ export type NavItem = {
 // hiding is a courtesy, not the control (RLS is the boundary, ADR-0005).
 const MEMBER: NavItem[] = [
   { href: "/app", label: "Home", icon: "home" },
-  { href: "/app/vote", label: "Who to vote for", icon: "vote" },
-  { href: "/app/profile", label: "My details", icon: "profile" },
+  { href: "/app/vote", label: "Who to vote for", icon: "vote", short: "Vote" },
+  { href: "/app/profile", label: "My details", icon: "profile", short: "Details" },
 ];
 
 const LEADER: NavItem[] = [
   { href: "/app", label: "Home", icon: "home" },
-  { href: "/app/register", label: "Register a member", icon: "register" },
-  { href: "/app/members", label: "My members", icon: "members" },
-  { href: "/app/kym", label: "Verify a leader", icon: "verify" },
+  { href: "/app/register", label: "Register a member", icon: "register", short: "Register" },
+  { href: "/app/members", label: "My members", icon: "members", short: "Members" },
+  { href: "/app/kym", label: "Verify a leader", icon: "verify", short: "Verify" },
   { href: "/app/stats", label: "Overview", icon: "overview" },
 ];
 
@@ -32,16 +34,17 @@ const LEADER: NavItem[] = [
 const COORDINATOR_BASE: NavItem[] = [
   { href: "/app", label: "Home", icon: "home" },
   { href: "/app/members", label: "Members", icon: "members" },
-  { href: "/app/stats", label: "Statistics", icon: "overview" },
+  { href: "/app/stats", label: "Statistics", icon: "overview", short: "Stats" },
   { href: "/app/admin/team", label: "Team", icon: "team" },
-  { href: "/app/admin/new-account", label: "Give app access", icon: "access" },
-  { href: "/app/kym", label: "Verify a leader", icon: "verify" },
+  { href: "/app/admin/new-account", label: "Give app access", icon: "access", short: "Access" },
+  { href: "/app/kym", label: "Verify a leader", icon: "verify", short: "Verify" },
 ];
 
 const CANDIDATES: NavItem = {
   href: "/app/admin/candidates",
   label: "Who to vote for",
   icon: "candidates",
+  short: "Candidates",
 };
 const STATES: NavItem = { href: "/app/admin/states", label: "States", icon: "states" };
 

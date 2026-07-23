@@ -6,7 +6,7 @@ import { generateMyKymCode } from "./actions";
 import { VerifyForm } from "./verify-form";
 
 export const metadata: Metadata = {
-  title: "Leader verification",
+  title: "Verify a leader",
   robots: { index: false, follow: false },
 };
 
@@ -24,7 +24,7 @@ export default async function KymPage() {
   if (!me || me.role === "member") {
     return (
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
-        <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">Leader verification</h1>
+        <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">Verify a leader</h1>
         <p className="text-sm text-muted">This is for leaders.</p>
         <Link href="/app" className="text-sm font-semibold text-primary underline-offset-4 hover:underline">
           Back to your area
@@ -41,7 +41,7 @@ export default async function KymPage() {
 
   return (
     <main className="mx-auto w-full max-w-xl flex-1 px-6 py-12">
-      <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground">Leader verification</h1>
+      <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground">Verify a leader</h1>
       <p className="mt-1 text-sm text-muted">Confirm another leader is genuine, or share your own code.</p>
 
       <section className="mt-8">
@@ -64,7 +64,7 @@ export default async function KymPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="mb-3 text-sm font-semibold text-foreground">Verify a leader</h2>
+        <h2 className="mb-3 text-sm font-semibold text-foreground">Check a leader&rsquo;s code</h2>
         <VerifyForm />
       </section>
     </main>

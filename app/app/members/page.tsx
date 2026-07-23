@@ -46,6 +46,7 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
   if (q) query = query.or(`full_name.ilike.%${q}%,membership_number.ilike.%${q}%`);
   const { data } = await query.order("membership_number", { ascending: true }).limit(200);
   const rows = (data ?? []) as Row[];
+  const activeCount = rows.filter((r) => r.status === "active").length;
 
   // Retention dates for frozen members (drives the delete gate on their actions).
   const frozenIds = rows.filter((r) => r.status === "frozen").map((r) => r.id);
@@ -80,14 +81,19 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
       header: "Login",
       render: (r) => <MemberLoginCell id={r.id} hasLogin={!!r.user_id} hasEmail={!!r.email} />,
     },
-    {
+  ];
+
+  // Lifecycle controls only exist for a paused member, so the column is added
+  // only when someone is paused. Otherwise the roster showed an empty "Actions".
+  if (rows.some((r) => r.status === "frozen")) {
+    columns.push({
       key: "actions",
       header: "Actions",
       render: (r) => (
         <MemberLifecycleCell id={r.id} status={r.status} retentionUntil={retentionByMember.get(r.id) ?? null} />
       ),
-    },
-  ];
+    });
+  }
 
   return (
     <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-12">
@@ -99,7 +105,9 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
           <p className="mt-1 text-sm text-muted">
             {q
               ? `${rows.length} ${rows.length === 1 ? "match" : "matches"} for “${q}”.`
-              : `${rows.length}${rows.length === 200 ? "+" : ""} ${rows.length === 1 ? "member" : "members"} in your scope.`}
+              : isLeader
+                ? `${activeCount} of 10 active${rows.length > activeCount ? ` · ${rows.length - activeCount} paused` : ""}.`
+                : `${rows.length}${rows.length === 200 ? "+" : ""} ${rows.length === 1 ? "member" : "members"} in your scope.`}
           </p>
         </div>
         {isLeader ? (

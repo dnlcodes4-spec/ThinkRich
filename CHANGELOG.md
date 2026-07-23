@@ -9,6 +9,15 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Changed
+- **UI/UX overhaul Phase 3 (leader experience):** the rules the database already enforced are now
+  visible before a leader starts typing. **Register a member** leads with capacity (`3 of 10` +
+  progress), replaces the form with a clear notice when the leader is **at the 10-member cap** or
+  when their **state is not activated yet**, and groups the eight fields into *Member details*,
+  *Bank details* and *Login*, each explaining why it is asked. **My members** reads `3 of 10 active`
+  and only renders the Actions column when a member is actually paused (it was an always-empty
+  column). **Member detail** reads in plain language ("Not provided", "Area", "Correction requests"
+  with *Waiting for review / Applied / Declined*). Mobile nav tabs gained short labels, since five
+  leader destinations share a 390px bar.
 - **App UI/UX overhaul (Phase 1 + 2):** the member app moves from a flat list of links to a real
   product. Added a navigation shell (`components/app-shell/`): desktop sidebar + mobile bottom tabs
   driven by the caller's role, plus a header with a notifications bell (unread badge) and account
