@@ -30,6 +30,14 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 
   return (
     <div className="flex min-h-svh flex-1">
+      {/* The sidebar precedes the content in the DOM, so keyboard users get a
+          way past it. Hidden until focused. */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:inline-flex focus:min-h-11 focus:items-center focus:rounded-md focus:bg-primary focus:px-4 focus:text-sm focus:font-semibold focus:text-primary-foreground"
+      >
+        Skip to content
+      </a>
       <Sidebar items={items} />
       <div className="flex min-w-0 flex-1 flex-col">
         <AppHeader
@@ -38,7 +46,9 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           email={user?.email ?? ""}
           unread={unread ?? 0}
         />
-        {children}
+        <div id="main-content" tabIndex={-1} className="flex flex-1 flex-col outline-none">
+          {children}
+        </div>
         <BottomNav items={items} />
       </div>
     </div>
