@@ -123,4 +123,7 @@ export async function reviewChangeRequest(formData: FormData): Promise<void> {
 
   revalidatePath(`/app/members/${req.member_id}`);
   revalidatePath("/app/members");
+  // The review queue and the Home KPI both count pending requests.
+  revalidatePath("/app/corrections");
+  revalidatePath("/app");
 }

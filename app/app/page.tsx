@@ -301,7 +301,7 @@ async function CoordinatorHome({ role, firstName }: { role: string; firstName: s
           label="Correction requests"
           value={pending ?? 0}
           hint={pending && pending > 0 ? "Waiting for review" : "Nothing waiting"}
-          href="/app/members"
+          href="/app/corrections"
         />
         {isNational ? (
           <Stat label="Active states" value={activeStates ?? 0} href="/app/admin/states" />
@@ -315,6 +315,12 @@ async function CoordinatorHome({ role, firstName }: { role: string; firstName: s
       </h2>
       <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <Tile href="/app/members" icon="members" label="Members" desc="Search and manage" />
+        <Tile
+          href="/app/corrections"
+          icon="inbox"
+          label="Correction requests"
+          desc="Review what members asked to fix"
+        />
         <Tile
           href="/app/admin/new-account"
           icon="access"

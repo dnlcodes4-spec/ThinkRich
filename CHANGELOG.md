@@ -8,7 +8,19 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 
 ## [Unreleased]
 
+### Added
+- **Correction request review queue** (`/app/corrections`, UI/UX overhaul Phase 4): every correction
+  a member has asked for, across the coordinator's scope, in one place. Previously these could only
+  be found one member at a time on that member's detail page, and the Home KPI pointed at the member
+  list. Shows the member (linked), the field, the new value and their reason, with **Approve & apply
+  / Decline** inline plus a *Recently decided* section. Deciding is restricted to State and National
+  Coordinators (re-checked server-side in `reviewChangeRequest`); lower tiers see the same queue
+  read-only. Wired into coordinator nav, the Home KPI and a quick-action tile, and the review action
+  now revalidates the queue and Home.
+
 ### Changed
+- **UI/UX overhaul Phase 4 (coordinators):** Statistics dropped the last database wording, so
+  `Frozen` / `Deleted` now read **Paused** / **Removed**.
 - **UI/UX overhaul Phase 3 (leader experience):** the rules the database already enforced are now
   visible before a leader starts typing. **Register a member** leads with capacity (`3 of 10` +
   progress), replaces the form with a clear notice when the leader is **at the 10-member cap** or
