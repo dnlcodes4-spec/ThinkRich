@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { SearchSelect } from "@/components/ui/search-select";
 import { Card, CardTitle, CardContent } from "@/components/ui/card";
 import { StatusPill } from "@/components/ui/status-pill";
 import { RoleBadge } from "@/components/ui/badge";
@@ -110,6 +111,36 @@ export default function Home() {
               label="Phone"
               defaultValue="0803 000"
               error="Enter a valid 11-digit phone number"
+            />
+          </div>
+        </Section>
+
+        <Section title="Searchable select">
+          <p className="-mt-2 max-w-2xl text-sm text-muted">
+            For long lists (states, LGAs, wards, polling units). Type to filter, arrow keys to
+            move, Enter to choose. The chosen id posts through a hidden input, so it drops into any
+            form.
+          </p>
+          <div className="max-w-sm">
+            <SearchSelect
+              name="demo_state"
+              label="State"
+              placeholder="Search states…"
+              options={[
+                { id: "1", name: "Abia" },
+                { id: "2", name: "Adamawa" },
+                { id: "3", name: "Akwa Ibom" },
+                { id: "4", name: "Anambra" },
+                { id: "5", name: "Bauchi" },
+                { id: "6", name: "Cross River" },
+                { id: "7", name: "Delta" },
+                { id: "8", name: "Enugu" },
+                { id: "9", name: "Kaduna" },
+                { id: "10", name: "Kano" },
+                { id: "11", name: "Lagos" },
+                { id: "12", name: "Oyo" },
+                { id: "13", name: "Rivers" },
+              ]}
             />
           </div>
         </Section>

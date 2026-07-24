@@ -3,6 +3,7 @@
 import { useActionState, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { SearchSelect } from "@/components/ui/search-select";
 import { createAccount, type CreateAccountState } from "./actions";
 
 type GeoOption = { id: string; name: string };
@@ -61,29 +62,14 @@ function Inner({
       <Input label="Email" name="email" type="email" autoComplete="off" required error={fe.email} />
 
       {geoLabel ? (
-        <div className="flex flex-col gap-1.5">
-          <label htmlFor="geo_id" className="text-sm font-semibold text-foreground">
-            {geoLabel}
-          </label>
-          <select
-            id="geo_id"
-            name="geo_id"
-            required
-            defaultValue=""
-            aria-invalid={fe.geo_id ? true : undefined}
-            className="min-h-11 rounded-sm border border-border bg-surface px-3 text-base text-foreground focus:outline-2 focus:outline-offset-1 focus:outline-ring"
-          >
-            <option value="" disabled>
-              Select {geoLabel.toLowerCase()}…
-            </option>
-            {geoOptions.map((o) => (
-              <option key={o.id} value={o.id}>
-                {o.name}
-              </option>
-            ))}
-          </select>
-          {fe.geo_id ? <p className="text-xs text-danger">{fe.geo_id}</p> : null}
-        </div>
+        <SearchSelect
+          name="geo_id"
+          label={geoLabel}
+          options={geoOptions}
+          placeholder={`Search ${geoLabel.toLowerCase()}…`}
+          required
+          error={fe.geo_id}
+        />
       ) : null}
 
       {state.status === "error" && state.message ? (
