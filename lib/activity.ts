@@ -12,6 +12,7 @@ export type ActivityAction =
   | "member.paused"
   | "member.reactivated"
   | "member.removed"
+  | "member.login_reset"
   | "account.created"
   | "account.deactivated"
   | "account.reactivated"

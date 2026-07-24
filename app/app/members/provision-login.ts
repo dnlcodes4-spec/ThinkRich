@@ -4,6 +4,7 @@ import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient, isAdminConfigured, ADMIN_NOT_CONFIGURED } from "@/lib/supabase/admin";
 import { generateTempPassword } from "@/lib/provisioning";
+import { logActivityAs } from "@/lib/activity";
 
 // Provision a member's own login. A member needs THREE things to sign in and be
 // recognised by RLS: an `auth.users` row, a `profiles` row with role = 'member'
@@ -93,6 +94,58 @@ export async function provisionMemberLoginAction(
   if (!id.success) return { status: "error", message: "Invalid member." };
 
   const res = await provisionMemberLogin(id.data);
+  if (!res.ok) return { status: "error", message: res.error };
+  return { status: "success", tempPassword: res.tempPassword, email: res.email };
+}
+
+// Reset an EXISTING member login's password to a fresh temporary one. This is how
+// a leader/admin recovers a login whose one-time password was missed (there is
+// nowhere else to retrieve it). Same authorization as provisioning: caller is not
+// a member, the member is visible under RLS (the scope check), and the member
+// already has a login. Uses the service role.
+export async function resetMemberLoginPassword(memberId: string): Promise<ProvisionResult> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { ok: false, error: "You must be signed in." };
+  if (!isAdminConfigured()) return { ok: false, error: ADMIN_NOT_CONFIGURED };
+
+  const { data: me } = await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle();
+  if (!me || me.role === "member") return { ok: false, error: "You cannot reset logins." };
+
+  const { data: member } = await supabase
+    .from("members")
+    .select("id, full_name, email, user_id, status")
+    .eq("id", memberId)
+    .maybeSingle();
+  if (!member) return { ok: false, error: "Member not found." };
+  if (!member.user_id) return { ok: false, error: "This member has no login yet." };
+  if (member.status === "deleted") return { ok: false, error: "This member is not active." };
+
+  const admin = createAdminClient();
+  const password = generateTempPassword();
+  const { error } = await admin.auth.admin.updateUserById(member.user_id, { password });
+  if (error) return { ok: false, error: "Could not reset the password. Please try again." };
+
+  await logActivityAs(user.id, {
+    action: "member.login_reset",
+    summary: `Reset the login password for ${member.full_name}`,
+    subjectType: "member",
+    subjectId: member.id,
+  });
+
+  return { ok: true, tempPassword: password, email: member.email ?? "" };
+}
+
+export async function resetMemberLoginPasswordAction(
+  _prev: ProvisionState,
+  formData: FormData,
+): Promise<ProvisionState> {
+  const id = z.string().uuid().safeParse(formData.get("member_id"));
+  if (!id.success) return { status: "error", message: "Invalid member." };
+
+  const res = await resetMemberLoginPassword(id.data);
   if (!res.ok) return { status: "error", message: res.error };
   return { status: "success", tempPassword: res.tempPassword, email: res.email };
 }
