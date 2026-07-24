@@ -5,6 +5,8 @@ import { BottomNav } from "@/components/app-shell/bottom-nav";
 import { Sidebar } from "@/components/app-shell/sidebar";
 import { navForRole } from "@/components/app-shell/nav";
 import { ServiceWorkerRegistrar } from "@/components/pwa/service-worker-registrar";
+import { ChangePasswordPrompt } from "@/components/account/change-password-prompt";
+import { needsPasswordChange } from "@/lib/must-change-password";
 
 // The app shell wraps every /app/* route: a desktop sidebar + mobile bottom bar
 // driven by the caller's role, and a header with notifications + account menu.
@@ -51,6 +53,8 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           {children}
         </div>
         <BottomNav items={items} />
+        {/* Still on the temporary password we generated: nudge them to pick one. */}
+        {needsPasswordChange(user?.app_metadata) ? <ChangePasswordPrompt /> : null}
       </div>
       {/* Scoped to the app shell, not the root layout: after the two-origin
           split (CR-0008) the root layout also renders the umbrella landing,
