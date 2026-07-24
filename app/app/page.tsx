@@ -316,8 +316,6 @@ async function CoordinatorHome({ role, firstName }: { role: string; firstName: s
     ? await supabase.from("states").select("*", { count: "exact", head: true }).eq("is_active", true)
     : { count: null };
 
-  const canCandidates = role === "national_admin" || role === "state_admin" || role === "lg_admin";
-
   return (
     <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
       <Greeting firstName={firstName} sub={`${roleLabel(role)} dashboard.`} />
@@ -353,33 +351,19 @@ async function CoordinatorHome({ role, firstName }: { role: string; firstName: s
         Quick actions
       </h2>
       <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        <Tile href="/app/members" icon="members" label="Members" desc="Search and manage" />
-        <Tile
-          href="/app/corrections"
-          icon="inbox"
-          label="Correction requests"
-          desc="Review what members asked to fix"
-        />
         <Tile
           href="/app/admin/new-account"
           icon="access"
           label="Give app access"
           desc="Set up a new account"
         />
-        <Tile href="/app/admin/team" icon="team" label="Team" desc="Your coordinators and leaders" />
-        <Tile href="/app/stats" icon="overview" label="Statistics" desc="Numbers across your area" />
+        <Tile
+          href="/app/notifications"
+          icon="bell"
+          label="Send announcement"
+          desc="Message members in your area"
+        />
         <Tile href="/app/kym" icon="verify" label="Verify a leader" desc="Confirm a leader is genuine" />
-        {canCandidates ? (
-          <Tile
-            href="/app/admin/candidates"
-            icon="candidates"
-            label="Who to vote for"
-            desc="Manage the candidates members see"
-          />
-        ) : null}
-        {isNational ? (
-          <Tile href="/app/admin/states" icon="states" label="States" desc="Activate and manage states" />
-        ) : null}
       </div>
     </main>
   );
