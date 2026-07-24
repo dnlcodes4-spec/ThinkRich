@@ -201,6 +201,23 @@ function MapBoard({
               );
             })}
 
+            {/* Presence markers: any state with members OR leaders gets a dot,
+                so leader-only states (which have no member-count fill) still read
+                as active. Non-interactive; the state path underneath takes taps. */}
+            {NIGERIA_STATES.map((s) => {
+              const d = byName.get(s.name);
+              if (!d || (d.members <= 0 && d.leaders <= 0)) return null;
+              return (
+                <circle
+                  key={`dot-${s.name}`}
+                  cx={s.cx}
+                  cy={s.cy}
+                  r={5}
+                  style={{ fill: GOLD, stroke: MAP_BG, strokeWidth: 1.4, pointerEvents: "none" }}
+                />
+              );
+            })}
+
             {outlined.map((name) => {
               const s = NIGERIA_STATES.find((x) => x.name === name);
               if (!s) return null;
@@ -221,7 +238,7 @@ function MapBoard({
 
           {tip ? (
             <div
-              className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-[130%] whitespace-nowrap rounded-md px-2.5 py-1.5 text-xs font-semibold shadow-lg"
+              className="pointer-events-none absolute z-10 translate-x-[-50%] translate-y-[-130%] whitespace-nowrap rounded-md px-2.5 py-1.5 text-xs font-semibold shadow-lg"
               style={{ left: tip.x, top: tip.y, background: "#0a1830", border: `1px solid ${CARD_BORDER}`, color: TEXT }}
             >
               {tip.name}
@@ -243,6 +260,10 @@ function MapBoard({
                 {i === BUCKETS.length - 1 ? <span className="text-xs" style={{ color: MUTED }}>{max}</span> : null}
               </span>
             ))}
+            <span className="ml-2 flex items-center gap-1.5">
+              <span className="inline-block size-2.5 rounded-full" style={{ background: GOLD, boxShadow: `0 0 0 1px ${MAP_BG}` }} />
+              <span className="text-xs" style={{ color: MUTED }}>has members or leaders</span>
+            </span>
           </div>
         </div>
 
