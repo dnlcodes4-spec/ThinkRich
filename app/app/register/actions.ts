@@ -1,7 +1,6 @@
 "use server";
 
 import { z } from "zod";
-import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { provisionMemberLogin } from "@/app/app/members/provision-login";
 import { logActivityAs } from "@/lib/activity";
@@ -186,8 +185,12 @@ export async function registerMember(
     stateId: profile.state_id,
   });
 
-  revalidatePath("/app");
-  revalidatePath("/app/members");
+  // No revalidatePath here: the member's one-time temporary password lives only
+  // in the client state below and is shown once. Revalidating refreshes the
+  // router and remounts this form, wiping that password before the leader can
+  // read it (the roster's provisioning action omits it for the same reason).
+  // The home capacity and roster are auth-dynamic pages, so they re-fetch on the
+  // next navigation anyway.
   return {
     status: "success",
     membershipNumber: inserted.membership_number,
