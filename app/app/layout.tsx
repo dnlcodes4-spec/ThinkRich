@@ -38,7 +38,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
       >
         Skip to content
       </a>
-      <Sidebar items={items} />
+      <Sidebar items={items} name={profile?.full_name ?? ""} roleLabel={roleLabel(profile?.role)} />
       <div className="flex min-w-0 flex-1 flex-col">
         <AppHeader
           name={profile?.full_name ?? ""}
