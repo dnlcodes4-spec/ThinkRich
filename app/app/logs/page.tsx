@@ -25,6 +25,7 @@ const ACTION_META: Record<string, { label: string; tone: "neutral" | "good" | "w
   "member.paused": { label: "Member paused", tone: "warn" },
   "member.reactivated": { label: "Member reactivated", tone: "good" },
   "member.removed": { label: "Member removed", tone: "bad" },
+  "member.login_reset": { label: "Login password reset", tone: "warn" },
   "account.created": { label: "Account created", tone: "good" },
   "account.deactivated": { label: "Account deactivated", tone: "warn" },
   "account.reactivated": { label: "Account reactivated", tone: "good" },

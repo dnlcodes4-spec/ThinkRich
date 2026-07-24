@@ -1,13 +1,18 @@
 "use client";
 
 import { useActionState } from "react";
-import { provisionMemberLoginAction, type ProvisionState } from "./provision-login";
+import {
+  provisionMemberLoginAction,
+  resetMemberLoginPasswordAction,
+  type ProvisionState,
+} from "./provision-login";
 
 const initial: ProvisionState = { status: "idle" };
 
-// Per-row login control on the roster. Shows whether the member has a login;
-// for those without one (but with an email), offers to provision it and reveals
-// the one-time temporary password inline.
+// Per-row login control on the roster. For a member without a login (but with an
+// email) it provisions one; for a member who already has a login it can reset the
+// password. Either way the one-time temporary password is revealed inline (it is
+// shown once and never stored, so a reset is the only way to recover a missed one).
 export function MemberLoginCell({
   id,
   hasLogin,
@@ -17,19 +22,36 @@ export function MemberLoginCell({
   hasLogin: boolean;
   hasEmail: boolean;
 }) {
-  const [state, action, pending] = useActionState(provisionMemberLoginAction, initial);
+  const [provState, provAction, provPending] = useActionState(provisionMemberLoginAction, initial);
+  const [resetState, resetAction, resetPending] = useActionState(
+    resetMemberLoginPasswordAction,
+    initial,
+  );
 
   if (hasLogin) {
-    return <span className="text-xs font-medium text-muted">Enabled</span>;
+    if (resetState.status === "success") {
+      return <TempPassword value={resetState.tempPassword} label="New temp password" />;
+    }
+    return (
+      <form action={resetAction} className="flex flex-col items-start gap-1">
+        <input type="hidden" name="member_id" value={id} />
+        <span className="text-xs font-medium text-muted">Enabled</span>
+        <button
+          type="submit"
+          disabled={resetPending}
+          className="text-xs font-semibold text-primary underline-offset-4 hover:underline disabled:opacity-60"
+        >
+          {resetPending ? "Resetting…" : "Reset password"}
+        </button>
+        {resetState.status === "error" && resetState.message ? (
+          <span className="text-xs text-danger">{resetState.message}</span>
+        ) : null}
+      </form>
+    );
   }
 
-  if (state.status === "success") {
-    return (
-      <span className="flex flex-col gap-0.5 text-xs">
-        <span className="text-muted">Temp password</span>
-        <span className="font-mono font-bold break-all text-foreground">{state.tempPassword}</span>
-      </span>
-    );
+  if (provState.status === "success") {
+    return <TempPassword value={provState.tempPassword} label="Temp password" />;
   }
 
   if (!hasEmail) {
@@ -37,18 +59,28 @@ export function MemberLoginCell({
   }
 
   return (
-    <form action={action}>
+    <form action={provAction}>
       <input type="hidden" name="member_id" value={id} />
       <button
         type="submit"
-        disabled={pending}
+        disabled={provPending}
         className="min-h-8 rounded-md border border-ring px-2.5 text-xs font-semibold text-foreground transition-colors hover:bg-surface-muted disabled:opacity-60"
       >
-        {pending ? "Creating…" : "Provision login"}
+        {provPending ? "Creating…" : "Provision login"}
       </button>
-      {state.status === "error" && state.message ? (
-        <p className="mt-1 text-xs text-danger">{state.message}</p>
+      {provState.status === "error" && provState.message ? (
+        <p className="mt-1 text-xs text-danger">{provState.message}</p>
       ) : null}
     </form>
+  );
+}
+
+function TempPassword({ value, label }: { value?: string; label: string }) {
+  return (
+    <span className="flex flex-col gap-0.5 text-xs">
+      <span className="text-muted">{label}</span>
+      <span className="font-mono font-bold break-all text-foreground">{value}</span>
+      <span className="text-muted">Shown once. Give it to the member.</span>
+    </span>
   );
 }
