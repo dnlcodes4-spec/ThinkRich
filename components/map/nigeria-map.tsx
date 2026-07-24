@@ -21,6 +21,7 @@ const ZERO_FILL = "#1d3b5a"; // an empty state still reads on the dark ground
 // Sequential brightening blue: more members reads as brighter, not just darker.
 const BUCKETS = ["#2f6aa6", "#4489cf", "#63a8ea", "#8ec7f6", "#c2e2ff"];
 const GOLD = "#f4c95d"; // hover + selection: pops on navy, never fades to the edge
+const ACTIVE_BORDER = "#4bbf87"; // green = a state that is active (open for registration)
 const TEXT = "#eaf1f8";
 const MUTED = "#9fb6cf";
 
@@ -201,6 +202,19 @@ function MapBoard({
               );
             })}
 
+            {/* Active states get a persistent green outline (open for
+                registration), drawn over the fills so shared edges stay crisp. */}
+            {NIGERIA_STATES.map((s) => {
+              if (!byName.get(s.name)?.active) return null;
+              return (
+                <path
+                  key={`active-${s.name}`}
+                  d={s.d}
+                  style={{ fill: "none", stroke: ACTIVE_BORDER, strokeWidth: 1.5, pointerEvents: "none" }}
+                />
+              );
+            })}
+
             {/* Presence markers: any state with members OR leaders gets a dot,
                 so leader-only states (which have no member-count fill) still read
                 as active. Non-interactive; the state path underneath takes taps. */}
@@ -261,6 +275,10 @@ function MapBoard({
               </span>
             ))}
             <span className="ml-2 flex items-center gap-1.5">
+              <span className="inline-block size-3 rounded-xs" style={{ boxShadow: `inset 0 0 0 1.5px ${ACTIVE_BORDER}` }} />
+              <span className="text-xs" style={{ color: MUTED }}>active state</span>
+            </span>
+            <span className="flex items-center gap-1.5">
               <span className="inline-block size-2.5 rounded-full" style={{ background: GOLD, boxShadow: `0 0 0 1px ${MAP_BG}` }} />
               <span className="text-xs" style={{ color: MUTED }}>has members or leaders</span>
             </span>
