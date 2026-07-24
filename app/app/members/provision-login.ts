@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { createAdminClient, isAdminConfigured, ADMIN_NOT_CONFIGURED } from "@/lib/supabase/admin";
 import { generateTempPassword } from "@/lib/provisioning";
 import { logActivityAs } from "@/lib/activity";
+import { FLAG_TEMPORARY } from "@/lib/must-change-password";
 
 // Provision a member's own login. A member needs THREE things to sign in and be
 // recognised by RLS: an `auth.users` row, a `profiles` row with role = 'member'
@@ -48,6 +49,7 @@ export async function provisionMemberLogin(memberId: string): Promise<ProvisionR
     email: member.email,
     password,
     email_confirm: true,
+    app_metadata: FLAG_TEMPORARY,
   });
   if (createErr || !created.user) {
     const m = (createErr?.message ?? "").toLowerCase();
@@ -125,7 +127,10 @@ export async function resetMemberLoginPassword(memberId: string): Promise<Provis
 
   const admin = createAdminClient();
   const password = generateTempPassword();
-  const { error } = await admin.auth.admin.updateUserById(member.user_id, { password });
+  const { error } = await admin.auth.admin.updateUserById(member.user_id, {
+    password,
+    app_metadata: FLAG_TEMPORARY,
+  });
   if (error) return { ok: false, error: "Could not reset the password. Please try again." };
 
   await logActivityAs(user.id, {

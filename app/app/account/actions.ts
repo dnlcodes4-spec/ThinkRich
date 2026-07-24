@@ -2,6 +2,8 @@
 
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
+import { tryCreateAdminClient } from "@/lib/supabase/admin";
+import { FLAG_CHOSEN } from "@/lib/must-change-password";
 
 // Every signed-in user can change their own password. This uses the caller's own
 // session (never the service role): Supabase applies the change to the caller,
@@ -49,6 +51,15 @@ export async function changePassword(
   if (error) {
     // Supabase rejects a password identical to the current one, among others.
     return { status: "error", message: error.message };
+  }
+
+  // The password is now one the user chose, so drop the "still temporary" flag.
+  // app_metadata is service-role only, which is why this needs the admin client;
+  // it only ever targets the caller's own id. If the key is missing the password
+  // change still stands, the prompt simply appears again.
+  const admin = tryCreateAdminClient();
+  if (admin) {
+    await admin.auth.admin.updateUserById(user.id, { app_metadata: FLAG_CHOSEN });
   }
 
   return { status: "success", message: "Your password has been changed." };
