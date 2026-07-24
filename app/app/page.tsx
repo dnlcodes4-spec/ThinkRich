@@ -342,9 +342,7 @@ async function CoordinatorHome({ role, firstName }: { role: string; firstName: s
           <h2 className="font-display text-xl font-semibold tracking-tight text-foreground">
             Across the country
           </h2>
-          <p className="mt-1 text-sm text-muted">
-            Members by state. Select a state for its numbers.
-          </p>
+          <p className="mt-1 text-sm text-muted">Members by state across Nigeria.</p>
           <div className="mt-4">
             <NigeriaMap data={mapData} />
           </div>
