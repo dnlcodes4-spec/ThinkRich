@@ -17,6 +17,7 @@ export type IconName =
   | "states"
   | "bell"
   | "inbox"
+  | "layers"
   | "more"
   | "signout"
   | "chevron";
@@ -81,6 +82,7 @@ const paths: Record<IconName, React.ReactNode> = {
     </>
   ),
   bell: <path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6M10 20a2 2 0 0 0 4 0" />,
+  layers: <path d="M12 3 3 8l9 5 9-5-9-5ZM3 13l9 5 9-5M3 17.5l9 5 9-5" />,
   inbox: (
     <>
       <path d="M3 13h4l1.5 2.5h7L17 13h4" />
