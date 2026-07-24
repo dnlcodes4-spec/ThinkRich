@@ -48,6 +48,8 @@ const CANDIDATES: NavItem = {
   short: "Candidates",
 };
 const STATES: NavItem = { href: "/app/admin/states", label: "States", icon: "states" };
+// National only: the platform-wide activity log (RLS restricts reads to them).
+const LOGS: NavItem = { href: "/app/logs", label: "Activity", icon: "inbox", short: "Activity" };
 
 export function navForRole(role: Role | string | null | undefined): NavItem[] {
   switch (role) {
@@ -56,7 +58,7 @@ export function navForRole(role: Role | string | null | undefined): NavItem[] {
     case "leader":
       return LEADER;
     case "national_admin":
-      return [...COORDINATOR_BASE, CANDIDATES, STATES];
+      return [...COORDINATOR_BASE, CANDIDATES, STATES, LOGS];
     case "state_admin":
     case "lg_admin":
       return [...COORDINATOR_BASE, CANDIDATES];

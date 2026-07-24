@@ -65,13 +65,13 @@ export function UserMenu({
             {email ? <p className="mt-0.5 truncate text-xs text-muted">{email}</p> : null}
           </div>
           <Link
-            href="/app/profile"
+            href="/app/account"
             role="menuitem"
             onClick={() => setOpen(false)}
             className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-foreground transition-colors hover:bg-surface-muted"
           >
             <Icon name="profile" className="size-4 text-muted" />
-            My details
+            Your account
           </Link>
           <form action={signOut} className="border-t border-border">
             <button

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { createAdminClient } from "@/lib/supabase/admin";
+import { tryCreateAdminClient } from "@/lib/supabase/admin";
+import { NotConfigured } from "@/components/ui/not-configured";
 import { setStateActive } from "./actions";
 
 export const metadata: Metadata = {
@@ -32,7 +33,9 @@ export default async function StatesPage() {
     );
   }
 
-  const admin = createAdminClient();
+  const admin = tryCreateAdminClient();
+  if (!admin) return <NotConfigured title="States" />;
+
   const [statesRes, lgasRes, adminsRes, membersRes] = await Promise.all([
     admin.from("states").select("id, name, code, is_active").order("name"),
     admin.from("lgas").select("state_id"),

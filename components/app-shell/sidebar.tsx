@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
@@ -14,7 +15,15 @@ export function Sidebar({ items }: { items: NavItem[] }) {
   return (
     <aside className="sticky top-0 hidden h-svh w-60 shrink-0 flex-col border-r border-border bg-surface lg:flex">
       <div className="flex h-16 items-center px-5">
-        <Link href="/app" className="flex items-center" aria-label="ThinkRich home">
+        <Link href="/app" className="flex items-center gap-2" aria-label="ThinkRich home">
+          <Image
+            src="/logos/ThinkrichCommunity_transparent.png"
+            alt=""
+            width={1072}
+            height={1072}
+            className="size-8 shrink-0 object-contain"
+            priority
+          />
           <span className="font-display text-xl font-semibold tracking-tight text-foreground">
             Think<span className="text-accent">Rich</span>
           </span>

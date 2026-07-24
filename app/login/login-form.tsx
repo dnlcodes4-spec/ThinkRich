@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
 import { Button } from "@/components/ui/button";
 import { signIn, type SignInState } from "./actions";
 
@@ -21,10 +22,9 @@ export function LoginForm({ next }: { next?: string }) {
         required
         placeholder="you@example.com"
       />
-      <Input
+      <PasswordInput
         label="Password"
         name="password"
-        type="password"
         autoComplete="current-password"
         required
       />

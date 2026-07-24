@@ -4,6 +4,7 @@ import { z } from "zod";
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { provisionMemberLogin } from "@/app/app/members/provision-login";
+import { logActivityAs } from "@/lib/activity";
 
 // A leader registers a member (T-004). Geography is NOT chosen — it is derived
 // from the leader's own polling unit. The membership number is assigned by the DB
@@ -176,6 +177,14 @@ export async function registerMember(
       loginNote = res.error;
     }
   }
+
+  await logActivityAs(user.id, {
+    action: "member.registered",
+    summary: `Registered ${parsed.data.full_name} (${inserted.membership_number})`,
+    subjectType: "member",
+    subjectId: inserted.id,
+    stateId: profile.state_id,
+  });
 
   revalidatePath("/app");
   revalidatePath("/app/members");

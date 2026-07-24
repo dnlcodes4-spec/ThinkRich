@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
-import { createAdminClient } from "@/lib/supabase/admin";
+import { createAdminClient, isAdminConfigured, ADMIN_NOT_CONFIGURED } from "@/lib/supabase/admin";
 import { generateTempPassword } from "@/lib/provisioning";
 import type { Database } from "@/lib/database.types";
 import { NEXT_TIER, type Role } from "./tiers";
@@ -34,6 +34,7 @@ export async function createAccount(
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) return { status: "error", message: "You must be signed in." };
+  if (!isAdminConfigured()) return { status: "error", message: ADMIN_NOT_CONFIGURED };
 
   const { data: me } = await supabase
     .from("profiles")

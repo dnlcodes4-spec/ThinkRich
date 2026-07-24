@@ -3,6 +3,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { NEXT_TIER, roleLabel, type Role } from "@/app/app/admin/new-account/tiers";
 import { setAdminStatus } from "./actions";
+import { DeleteAccountButton } from "./delete-account";
 
 export const metadata: Metadata = {
   title: "Team",
@@ -83,6 +84,7 @@ export default async function TeamPage() {
             const inactive = r.status !== "active";
             return (
               <li key={r.id} className="flex flex-wrap items-center justify-between gap-3 px-4 py-3">
+                {/* The delete panel expands to full width below the row. */}
                 <div className="min-w-0">
                   <p className="truncate text-sm font-medium text-foreground">{r.full_name}</p>
                   <p className="truncate text-xs text-muted">
@@ -113,6 +115,7 @@ export default async function TeamPage() {
                       {inactive ? "Reactivate" : "Deactivate"}
                     </button>
                   </form>
+                  <DeleteAccountButton id={r.id} name={r.full_name} />
                 </div>
               </li>
             );

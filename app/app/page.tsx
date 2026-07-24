@@ -4,6 +4,7 @@ import { StatusPill } from "@/components/ui/status-pill";
 import { InstallPrompt } from "@/components/pwa/install-prompt";
 import { Icon, type IconName } from "@/components/app-shell/icons";
 import { isCoordinator, roleLabel } from "@/lib/terms";
+import { NigeriaMap, type StateDatum } from "@/components/map/nigeria-map";
 
 // Protected landing, now a role-aware home. The proxy redirects unauthenticated
 // users to /login before this renders; the page still reads the user + profile
@@ -285,6 +286,32 @@ async function CoordinatorHome({ role, firstName }: { role: string; firstName: s
     .eq("status", "pending");
 
   const isNational = role === "national_admin";
+
+  // National sees the whole country on a map. Counts are grouped in memory from
+  // the RLS-visible rows, so no scope logic lives here; at national scale this
+  // would move to an aggregate RPC.
+  let mapData: StateDatum[] = [];
+  if (isNational) {
+    const [statesRes, memberRows, leaderRows] = await Promise.all([
+      supabase.from("states").select("id, name, is_active"),
+      supabase.from("members").select("state_id").neq("status", "deleted"),
+      supabase.from("profiles").select("state_id").eq("role", "leader"),
+    ]);
+    const tally = (rows: { state_id: string | null }[] | null) => {
+      const m = new Map<string, number>();
+      for (const r of rows ?? []) if (r.state_id) m.set(r.state_id, (m.get(r.state_id) ?? 0) + 1);
+      return m;
+    };
+    const memberBy = tally(memberRows.data);
+    const leaderBy = tally(leaderRows.data);
+    mapData = (statesRes.data ?? []).map((s) => ({
+      name: s.name,
+      members: memberBy.get(s.id) ?? 0,
+      leaders: leaderBy.get(s.id) ?? 0,
+      active: !!s.is_active,
+    }));
+  }
+
   const { count: activeStates } = isNational
     ? await supabase.from("states").select("*", { count: "exact", head: true }).eq("is_active", true)
     : { count: null };
@@ -309,6 +336,18 @@ async function CoordinatorHome({ role, firstName }: { role: string; firstName: s
           <Stat label="Overview" value="View" hint="Registration trends" href="/app/stats" />
         )}
       </div>
+
+      {isNational ? (
+        <section className="mt-8">
+          <h2 className="font-display text-xl font-semibold tracking-tight text-foreground">
+            Across the country
+          </h2>
+          <p className="mt-1 text-sm text-muted">Members by state across Nigeria.</p>
+          <div className="mt-4">
+            <NigeriaMap data={mapData} />
+          </div>
+        </section>
+      ) : null}
 
       <h2 className="mt-8 font-display text-xl font-semibold tracking-tight text-foreground">
         Quick actions

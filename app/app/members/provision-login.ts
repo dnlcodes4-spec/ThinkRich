@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
-import { createAdminClient } from "@/lib/supabase/admin";
+import { createAdminClient, isAdminConfigured, ADMIN_NOT_CONFIGURED } from "@/lib/supabase/admin";
 import { generateTempPassword } from "@/lib/provisioning";
 
 // Provision a member's own login. A member needs THREE things to sign in and be
@@ -23,6 +23,7 @@ export async function provisionMemberLogin(memberId: string): Promise<ProvisionR
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) return { ok: false, error: "You must be signed in." };
+  if (!isAdminConfigured()) return { ok: false, error: ADMIN_NOT_CONFIGURED };
 
   const { data: me } = await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle();
   if (!me || me.role === "member") return { ok: false, error: "You cannot provision logins." };

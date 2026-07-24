@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "./icons";
 import { UserMenu } from "./user-menu";
@@ -18,7 +19,15 @@ export function AppHeader({
 }) {
   return (
     <header className="sticky top-0 z-20 flex h-16 items-center justify-between gap-3 border-b border-border bg-surface/95 px-4 backdrop-blur sm:px-6">
-      <Link href="/app" className="flex items-center lg:hidden" aria-label="ThinkRich home">
+      <Link href="/app" className="flex items-center gap-2 lg:hidden" aria-label="ThinkRich home">
+        <Image
+          src="/logos/ThinkrichCommunity_transparent.png"
+          alt=""
+          width={1072}
+          height={1072}
+          className="size-7 shrink-0 object-contain"
+          priority
+        />
         <span className="font-display text-lg font-semibold tracking-tight text-foreground">
           Think<span className="text-accent">Rich</span>
         </span>

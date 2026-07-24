@@ -9,6 +9,30 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- **Activity log (national)**: an append-only `activity_log` (migration `0015`) with a read policy
+  scoped to active National Coordinators and **no insert policy at all**, so only the service role
+  can write (no user JWT can forge an entry). `lib/activity.ts` records best-effort (never throws,
+  never blocks the action). A new `/app/logs` shows the feed with plain-language labels and filters.
+  Wired: member registered, account deactivated/reactivated/deleted, state activated/deactivated,
+  correction applied/declined.
+- **Nigeria map on the National home**: an interactive SVG choropleth shading states by member
+  count (navy scale), with a selectable side panel (members + leaders per state). Boundaries are
+  precomputed to SVG paths at build time (`scripts/build-nigeria-map.mjs`), so the app ships **no
+  runtime map library**. Source: geoBoundaries gbOpen NGA ADM1, CC BY 4.0.
+- **Account page** (`/app/account`): every role can see their own name, role, email and area, and
+  **change their password**. Fixes coordinators having no account surface (the account menu
+  previously sent every role to the member-only profile page).
+- **Permanent account delete** in Team: gated by a typed-name confirmation and refused (in plain
+  words) while the account still holds members. The database `RESTRICT` foreign key is the backstop.
+- **Login password show/hide** toggle (reusable `PasswordInput` + an `Input` trailing slot), and the
+  ThinkRich logo mark now sits beside the wordmark in the dashboard sidebar and mobile header.
+
+### Fixed
+- **`createAdminClient()` now fails readably** when `SUPABASE_SERVICE_ROLE_KEY` is missing on a
+  deployment, instead of an opaque 500. Pages that only need it for extras degrade (photos hidden, a
+  "not configured" notice on Candidates/States); provisioning actions return the message inline.
+
+### Added
 - **Loading, error and not-found states across the app** (UI/UX overhaul Phase 5): the app had **no**
   `loading.tsx`, `error.tsx` or `not-found.tsx` anywhere, so every data page rendered with no loading
   feedback and any thrown error or `notFound()` fell through to Next's raw defaults. Adds a
