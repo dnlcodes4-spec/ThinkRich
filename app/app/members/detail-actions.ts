@@ -5,6 +5,7 @@ import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { notify } from "@/lib/notify";
+import { logActivityAs } from "@/lib/activity";
 import { isChangeField, fieldLabel } from "./change-request-fields";
 
 // Leader/admin actions on a single member: upload their passport photo, and
@@ -108,10 +109,17 @@ export async function reviewChangeRequest(formData: FormData): Promise<void> {
     })
     .eq("id", req.id);
 
+  const label = fieldLabel(req.field);
+  await logActivityAs(user.id, {
+    action: decision === "approve" ? "correction.approved" : "correction.declined",
+    summary: `${decision === "approve" ? "Applied" : "Declined"} a ${label} correction`,
+    subjectType: "member",
+    subjectId: req.member_id,
+  });
+
   // Notify the member of the decision (N3), if they have a login.
   const { data: member } = await admin.from("members").select("user_id").eq("id", req.member_id).maybeSingle();
   if (member?.user_id) {
-    const label = fieldLabel(req.field);
     await notify([member.user_id], {
       type: "change_request",
       title: decision === "approve" ? `Your ${label} change was approved` : `Your ${label} change was declined`,

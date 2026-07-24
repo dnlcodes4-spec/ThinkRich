@@ -7,6 +7,8 @@ type InputProps = ComponentProps<"input"> & {
   label?: string;
   hint?: string;
   error?: string;
+  /** Control rendered inside the field's trailing edge, e.g. a password reveal. */
+  trailing?: React.ReactNode;
 };
 
 /**
@@ -17,6 +19,7 @@ export function Input({
   label,
   hint,
   error,
+  trailing,
   id,
   className,
   ref,
@@ -35,18 +38,24 @@ export function Input({
           {label}
         </label>
       )}
-      <input
-        id={inputId}
-        ref={ref}
-        aria-invalid={error ? true : undefined}
-        aria-describedby={describedBy}
-        className={cn(
-          "min-h-11 rounded-sm border bg-surface px-3 text-base text-foreground placeholder:text-muted focus:outline-2 focus:outline-offset-1 focus:outline-ring",
-          error ? "border-danger" : "border-border",
-          className,
-        )}
-        {...props}
-      />
+      <div className="relative flex flex-col">
+        <input
+          id={inputId}
+          ref={ref}
+          aria-invalid={error ? true : undefined}
+          aria-describedby={describedBy}
+          className={cn(
+            "min-h-11 rounded-sm border bg-surface px-3 text-base text-foreground placeholder:text-muted focus:outline-2 focus:outline-offset-1 focus:outline-ring",
+            error ? "border-danger" : "border-border",
+            trailing ? "pr-12" : undefined,
+            className,
+          )}
+          {...props}
+        />
+        {trailing ? (
+          <span className="absolute inset-y-0 right-1 flex items-center">{trailing}</span>
+        ) : null}
+      </div>
       {error ? (
         <p id={errorId} className="flex items-center gap-1.5 text-xs text-danger">
           <span aria-hidden="true">✕</span>

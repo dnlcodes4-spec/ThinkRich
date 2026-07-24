@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { createAdminClient } from "@/lib/supabase/admin";
+import { tryCreateAdminClient } from "@/lib/supabase/admin";
+import { NotConfigured } from "@/components/ui/not-configured";
 import { CANDIDATE_SCOPE, LEVEL_LABEL, CANDIDATE_PHOTOS_BUCKET, type Role } from "./scope";
 import { CandidateForm } from "./candidate-form";
 
@@ -35,7 +36,9 @@ export default async function ManageCandidatePage() {
     );
   }
 
-  const admin = createAdminClient();
+  const admin = tryCreateAdminClient();
+  if (!admin) return <NotConfigured title="Manage candidate" />;
+
   let q = admin.from("candidates").select("*").eq("level", scope.level);
   q = scope.geo === "state" ? q.eq("state_id", profile.state_id!) : scope.geo === "lga" ? q.eq("lga_id", profile.lga_id!) : q.is("state_id", null);
   const { data: existing } = await q.maybeSingle();

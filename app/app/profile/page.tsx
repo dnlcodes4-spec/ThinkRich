@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { createAdminClient } from "@/lib/supabase/admin";
+import { tryCreateAdminClient } from "@/lib/supabase/admin";
 import { StatusPill, type MemberStatus } from "@/components/ui/status-pill";
 import { PhotoUpload } from "./photo-upload";
 import { MembershipStatusPanel } from "./opt-out";
@@ -62,8 +62,8 @@ export default async function ProfilePage() {
 
   let photoUrl: string | null = null;
   if (member.passport_photo_url) {
-    const admin = createAdminClient();
-    const { data } = await admin.storage.from("member-photos").createSignedUrl(member.passport_photo_url, 600);
+    const admin = tryCreateAdminClient();
+    const { data } = (await admin?.storage.from("member-photos").createSignedUrl(member.passport_photo_url, 600)) ?? { data: null };
     photoUrl = data?.signedUrl ?? null;
   }
 
