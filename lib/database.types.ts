@@ -1072,6 +1072,15 @@ export type Database = {
         }
         Returns: boolean
       }
+      verify_kym_code: {
+        Args: { p_code: string }
+        Returns: {
+          full_name: string
+          lga_name: string
+          role: Database["public"]["Enums"]["user_role"]
+          state_name: string
+        }[]
+      }
     }
     Enums: {
       change_request_status: "pending" | "approved" | "rejected"

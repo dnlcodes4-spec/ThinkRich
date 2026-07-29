@@ -1,86 +1,52 @@
 "use server";
 
-import { randomInt } from "node:crypto";
-import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
-import { createAdminClient } from "@/lib/supabase/admin";
 import { roleLabel, type Role } from "@/app/app/admin/new-account/tiers";
 
-// No ambiguous characters (0/O, 1/I).
-const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-function genCode(): string {
-  const group = () => Array.from({ length: 3 }, () => ALPHABET[randomInt(ALPHABET.length)]).join("");
-  return `${group()}-${group()}-${group()}`;
-}
+// KYM verification (T-010, repaired in T-038 / CR-0009 §3.6).
+//
+// Codes are no longer minted here. The database mints one for every leadership
+// profile the moment it is created or promoted (migration 0021), because there
+// are three ways a profile is born and this action only ever saw one of them.
+// That is why `leader_kym_codes` held zero rows and every verification correctly
+// answered "not verified".
+//
+// Lookup goes through the `verify_kym_code` SECURITY DEFINER function (migration
+// 0022) under the CALLER's own client. No service role: the function can read the
+// code table, but can only ever return the holder's public identity.
 
-async function callerIsLeaderish(): Promise<string | null> {
+export type VerifyState = {
+  status: "idle" | "found" | "notfound" | "signedout";
+  leader?: { name: string; role: string; where: string };
+};
+
+export async function verifyKymCode(_prev: VerifyState, formData: FormData): Promise<VerifyState> {
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) return null;
+  if (!user) return { status: "signedout" };
+
+  // Product gate, not a security boundary: everything the function returns is
+  // already public-facing. Whether members (or the public) may verify is the open
+  // question in CR-0009 §3.6.
   const { data: me } = await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle();
-  if (!me || me.role === "member") return null;
-  return user.id;
-}
+  if (!me || me.role === "member") return { status: "signedout" };
 
-// Mint the caller's KYM code if they don't have one yet.
-export async function generateMyKymCode(): Promise<void> {
-  const uid = await callerIsLeaderish();
-  if (!uid) return;
-  const admin = createAdminClient();
-  const { data: existing } = await admin.from("leader_kym_codes").select("id").eq("leader_id", uid).maybeSingle();
-  if (existing) return;
-  for (let i = 0; i < 6; i++) {
-    const { error } = await admin.from("leader_kym_codes").insert({ leader_id: uid, code: genCode() });
-    if (!error) break;
-    if (error.code === "23505") {
-      // Either the code collided (retry) or a concurrent insert made ours (stop).
-      const { data: now } = await admin.from("leader_kym_codes").select("id").eq("leader_id", uid).maybeSingle();
-      if (now) break;
-    }
-  }
-  revalidatePath("/app/kym");
-}
+  const code = String(formData.get("code") ?? "").trim();
+  if (!code) return { status: "notfound" };
 
-export type VerifyState = {
-  status: "idle" | "found" | "notfound" | "error";
-  leader?: { name: string; role: string; where: string };
-};
+  const { data, error } = await supabase.rpc("verify_kym_code", { p_code: code });
+  const found = data?.[0];
+  if (error || !found) return { status: "notfound" };
 
-// Verify a code belongs to a real, active leader; return their public identity.
-export async function verifyKymCode(_prev: VerifyState, formData: FormData): Promise<VerifyState> {
-  const uid = await callerIsLeaderish();
-  if (!uid) return { status: "error" };
-
-  const code = String(formData.get("code") ?? "")
-    .trim()
-    .toUpperCase();
-  if (!code) return { status: "error" };
-
-  const admin = createAdminClient();
-  const { data: row } = await admin.from("leader_kym_codes").select("leader_id").eq("code", code).maybeSingle();
-  if (!row) return { status: "notfound" };
-
-  const { data: prof } = await admin
-    .from("profiles")
-    .select("role, full_name, status, state_id, lga_id")
-    .eq("id", row.leader_id)
-    .maybeSingle();
-  if (!prof || prof.status !== "active") return { status: "notfound" };
-
-  const parts: string[] = [];
-  if (prof.lga_id) {
-    const { data } = await admin.from("lgas").select("name").eq("id", prof.lga_id).maybeSingle();
-    if (data) parts.push(data.name);
-  }
-  if (prof.state_id) {
-    const { data } = await admin.from("states").select("name").eq("id", prof.state_id).maybeSingle();
-    if (data) parts.push(data.name);
-  }
-
+  const where = [found.lga_name, found.state_name].filter(Boolean).join(", ");
   return {
     status: "found",
-    leader: { name: prof.full_name, role: roleLabel(prof.role as Role), where: parts.join(", ") || "Nationwide" },
+    leader: {
+      name: found.full_name,
+      role: roleLabel(found.role as Role),
+      where: where || "Nationwide",
+    },
   };
 }

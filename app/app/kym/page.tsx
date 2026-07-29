@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { Button } from "@/components/ui/button";
-import { generateMyKymCode } from "./actions";
 import { VerifyForm } from "./verify-form";
 
 export const metadata: Metadata = {
@@ -54,11 +52,12 @@ export default async function KymPage() {
             </p>
           </div>
         ) : (
+          // Should not happen: the database mints a code with the profile
+          // (migration 0021) and backfilled everyone who predates that trigger.
           <div className="mt-3 rounded-card border border-dashed border-border p-5">
-            <p className="text-sm text-muted">You don&rsquo;t have a code yet.</p>
-            <form action={generateMyKymCode} className="mt-3">
-              <Button type="submit">Generate my code</Button>
-            </form>
+            <p className="text-sm text-muted">
+              Your code hasn&rsquo;t been issued yet. Contact your coordinator.
+            </p>
           </div>
         )}
       </section>
