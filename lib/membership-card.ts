@@ -46,24 +46,38 @@ function xml(value: string): string {
     .replace(/"/g, "&quot;");
 }
 
-// Field geometry. The label baselines were MEASURED off the blank PNG by scanning
-// the label column for dark glyph bands, rather than eyeballed, so the values sit
-// on the same baseline as the labels the artwork already draws. Re-measure if the
-// client ever supplies new artwork.
-//   NAME: 243   GENDER: 371   STATE: 504   L.G: 637   WARD: 770
-const VALUE_X = 1180;
+// Field geometry, MEASURED off the blank PNG (glyph bands scanned per row and
+// per column) rather than eyeballed. Re-measure if the client supplies new
+// artwork; the numbers below are the only thing tying text to the image.
+//
+// Each value starts just after ITS OWN label, not in a shared column. The labels
+// are different widths (L.G: ends at 898, GENDER: at 1105), so a single column
+// set to clear the widest one left a visibly large gap after the short labels,
+// and did not match the client's filled sample, where every value sits a
+// consistent short distance from its label.
+//
+//   label            baseline   right edge
+//   NAME:            243        1010
+//   GENDER:          371        1105
+//   STATE:           504        1017
+//   L.G:             637         898
+//   WARD:            770        1022
+const LABEL_END_X = [1010, 1105, 1017, 898, 1022];
 const ROWS_Y = [243, 371, 504, 637, 770];
+const LABEL_GAP = 75;
 const ROW_FONT = 62;
 
-// How much room a value has before it would run into the card's right edge and
-// the watermark behind it.
-const VALUE_MAX_W = CARD_WIDTH - VALUE_X - 70;
+// Right-hand limit: the card edge, kept clear of the watermark.
+const VALUE_LIMIT_X = CARD_WIDTH - 70;
 
-// Code strip geometry, and the room the number has before the signature block.
+// Code strip. The strip carries a vertical divider at x=643 (measured), and the
+// number must stop before it: at the old 620px budget "TWM-OG-01-000001" ran
+// straight through the divider and into the signature block.
 const CODE_X = 270;
 const CODE_Y = 1035;
 const CODE_FONT = 54;
-const CODE_MAX_W = 620;
+const CODE_DIVIDER_X = 643;
+const CODE_MAX_W = CODE_DIVIDER_X - CODE_X - 25;
 
 // Width per character as a fraction of font size. MEASURED off a real render
 // rather than guessed: "Okesooto Olanrewaju" (19 chars at 62px) spans ~545px,
@@ -134,11 +148,11 @@ export function renderCardSvg(data: CardData, blankDataUri: string): string {
   ];
 
   const rows = values
-    .map((v, i) =>
-      v
-        ? textEl(VALUE_X, ROWS_Y[i], "v", fitText(v, VALUE_MAX_W, ROW_FONT, MIN_ROW_FONT, SANS_RATIO))
-        : "",
-    )
+    .map((v, i) => {
+      if (!v) return "";
+      const x = LABEL_END_X[i] + LABEL_GAP;
+      return textEl(x, ROWS_Y[i], "v", fitText(v, VALUE_LIMIT_X - x, ROW_FONT, MIN_ROW_FONT, SANS_RATIO));
+    })
     .filter(Boolean)
     .join("\n    ");
 
