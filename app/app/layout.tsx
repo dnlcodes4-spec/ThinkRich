@@ -4,6 +4,8 @@ import { AppHeader } from "@/components/app-shell/app-header";
 import { BottomNav } from "@/components/app-shell/bottom-nav";
 import { Sidebar } from "@/components/app-shell/sidebar";
 import { navForRole } from "@/components/app-shell/nav";
+import { ChangePasswordPrompt } from "@/components/account/change-password-prompt";
+import { needsPasswordChange } from "@/lib/must-change-password";
 
 // The app shell wraps every /app/* route: a desktop sidebar + mobile bottom bar
 // driven by the caller's role, and a header with notifications + account menu.
@@ -50,6 +52,8 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           {children}
         </div>
         <BottomNav items={items} />
+        {/* Still on the temporary password we generated: nudge them to pick one. */}
+        {needsPasswordChange(user?.app_metadata) ? <ChangePasswordPrompt /> : null}
       </div>
     </div>
   );

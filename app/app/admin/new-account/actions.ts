@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { createAdminClient, isAdminConfigured, ADMIN_NOT_CONFIGURED } from "@/lib/supabase/admin";
 import { generateTempPassword } from "@/lib/provisioning";
 import type { Database } from "@/lib/database.types";
+import { FLAG_TEMPORARY } from "@/lib/must-change-password";
 import { NEXT_TIER, type Role } from "./tiers";
 
 // The provisioning hierarchy (NEXT_TIER) is the SAME one the RLS profiles_insert
@@ -95,6 +96,7 @@ export async function createAccount(
     email: parsed.data.email,
     password,
     email_confirm: true,
+    app_metadata: FLAG_TEMPORARY,
   });
   if (createErr || !created.user) {
     const m = (createErr?.message ?? "").toLowerCase();
