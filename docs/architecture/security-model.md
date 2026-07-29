@@ -10,13 +10,13 @@ model. The reporting process lives in [SECURITY.md](../../SECURITY.md).
 
 | Role | Scope | Core powers |
 |------|-------|-------------|
-| **National Admin** | All 37 (36 states + FCT) | Activate states, create/manage State Admins, upload Presidential candidate, full visibility |
-| **State Admin** | One assigned state | Oversee members & activities, approve/reject change requests, upload state candidates |
-| **L.G Admin** | One Local Government | Oversee the wards (and everything below) in the L.G |
-| **Ward Admin** | One ward | Oversee the polling units (and the leaders/members below) in the ward |
+| **National Admin** | All 37 (36 states + FCT) | Activate states, create/manage State Admins, own the elective-office catalogue, manage any candidacy, full visibility |
+| **State Admin** | One assigned state | Oversee members & activities, approve/reject change requests, manage any candidacy inside their state |
+| **L.G Admin** | One Local Government | Oversee the wards (and everything below) in the L.G; manage chairman + councillor candidacies in it |
+| **Ward Admin** | One ward | Oversee the polling units (and the leaders/members below) in the ward; manage its councillor candidacy |
 | **Unit Coordinator** | One polling unit | Coordinate the grassroots leaders in the polling unit |
 | **Leader** | Their ≤10 registered members | Register members, edit their info, download their cards, KYM |
-| **Member** | Self | View own profile & candidate, request changes/opt-out |
+| **Member** | Self | View own profile, browse candidates in any area, request changes/opt-out |
 | **Visitor** | Public site | Read & enquire only |
 
 > **Every role except Member is a leader** (CR-0003) — the table above is one chain of leadership,
@@ -24,6 +24,39 @@ model. The reporting process lives in [SECURITY.md](../../SECURITY.md).
 
 Authority strictly narrows as you go down the hierarchy. Scope is stored on `profiles`
 (`state_id` / `lga_id` / `ward_id` / `polling_unit_id`) and enforced in the database.
+
+### The National Admin is unscoped (CR-0007)
+
+**Their scope fields are all NULL**, which the `profiles_scope_matches_role` check requires, and
+every scope predicate (`member_in_scope`, `profile_in_scope`, `candidacy_in_scope`) short-circuits
+to `true` for them. So they see and change anything at any level: any state's members, any tier of
+the leadership chain, any candidacy, the whole reference catalogue. Nothing special-cases them;
+"no scope set" simply means "nothing constrains the comparison".
+
+Concretely, they may **create any role below them at any geography** (not just a State Admin) and
+**manage every tier on the Team page** (not just the tier directly below).
+
+They may also **register a member into any polling unit in the country** (migration `0019`), either
+attributing the member to a leader who sits in that polling unit, or holding the member themselves
+where no leader exists yet.
+
+That required moving the **≤10-members cap**, which previously counted by `registered_by`
+regardless of who that was and so would have capped the national admin at ten. The invariant is,
+and always was, *"a **leader** may hold at most 10 active members"*. `enforce_leader_capacity()`
+now checks the registrar's role and applies only to leaders. Attributing a member to a leader still
+counts against that leader, which is the behaviour worth keeping.
+
+One limit remains, and it is a capability limit rather than a scope limit:
+
+- **No national admin may create or edit another national admin.** The rank rule in
+  `profiles_insert` / `profiles_update` requires the target to rank strictly lower. This is
+  [ADR-0012](decisions/0012-national-admin-bootstrap.md) by design: if the highest privilege could
+  mint itself, one compromised session becomes permanent, unbounded access, with no higher
+  authority left to revoke it. Additional national admins stay a deliberate DBA action.
+
+Two workflow gates also still apply to everyone, including them, because they are product rules
+rather than scope: a state must be **activated** before members can be registered in it (T-019),
+and a member must be **18 or older**.
 
 ---
 
@@ -46,6 +79,30 @@ flowchart LR
     rls --> data[(Rows returned)]
     style rls fill:#1B3A5C,color:#fff
 ```
+
+### Candidacy writes: containment, not a permission table
+
+Elective-office data (CR-0007, [ADR-0013](decisions/0013-elective-office-catalogue.md)) uses a
+different scope shape from members and profiles: a candidacy's constituency can span many LGAs, so
+the existing `member_in_scope` style of single-column equality does not apply.
+
+The rule is **geographic containment**: an admin may write a candidacy if and only if its
+constituency lies inside their own scope. `private.candidacy_in_scope()` resolves the candidacy
+down to (state, LGA, ward) and compares against the caller's profile. No role-to-office mapping
+table exists, so nothing can drift out of sync with the geography.
+
+Consequences worth knowing:
+
+- A **national office (President) is national-admin only**: containment returns false for everyone else.
+- An **LG admin cannot touch a federal or senatorial constituency**, because it is normally larger
+  than their LGA. They only get it if the constituency maps to exactly one LGA and is not ward-split.
+- **Catalogue tables** (offices, parties, elections, constituencies) are world-readable and
+  **national-admin-write-only**, via their own policies.
+- **Reads are deliberately open**: any signed-in user may read `is_published` candidacies in any
+  geography, because members were asked to be able to look at other areas. Unpublished drafts are
+  visible only to admins who could edit them.
+- Candidacy writes go through the **caller's** Supabase client, not the service role, so RLS is the
+  actual gate. The service role touches only the photo object in storage.
 
 ## Authentication & sessions
 

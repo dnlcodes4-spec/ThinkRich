@@ -1,0 +1,2137 @@
+[
+ {
+  "code": "SD/010/AN",
+  "state": "Anambra",
+  "lga": "ONITSHA NORTH"
+ },
+ {
+  "code": "SD/010/AN",
+  "state": "Anambra",
+  "lga": "ONITSHA SOUTH"
+ },
+ {
+  "code": "SD/010/AN",
+  "state": "Anambra",
+  "lga": "OYI"
+ },
+ {
+  "code": "SD/010/AN",
+  "state": "Anambra",
+  "lga": "OGBARU"
+ },
+ {
+  "code": "SD/010/AN",
+  "state": "Anambra",
+  "lga": "ANAMBRA EAST"
+ },
+ {
+  "code": "SD/010/AN",
+  "state": "Anambra",
+  "lga": "ANAMBRA WEST"
+ },
+ {
+  "code": "SD/010/AN",
+  "state": "Anambra",
+  "lga": "AYAMELUM"
+ },
+ {
+  "code": "SD/011/AN",
+  "state": "Anambra",
+  "lga": "AWKA NORTH"
+ },
+ {
+  "code": "SD/011/AN",
+  "state": "Anambra",
+  "lga": "AWKA SOUTH"
+ },
+ {
+  "code": "SD/011/AN",
+  "state": "Anambra",
+  "lga": "NJIKOKA"
+ },
+ {
+  "code": "SD/011/AN",
+  "state": "Anambra",
+  "lga": "ANAOCHA"
+ },
+ {
+  "code": "SD/011/AN",
+  "state": "Anambra",
+  "lga": "IDEMILI NORTH"
+ },
+ {
+  "code": "SD/011/AN",
+  "state": "Anambra",
+  "lga": "IDEMILI SOUTH"
+ },
+ {
+  "code": "SD/011/AN",
+  "state": "Anambra",
+  "lga": "DUNUKOFIA"
+ },
+ {
+  "code": "SD/012/AN",
+  "state": "Anambra",
+  "lga": "IHALA"
+ },
+ {
+  "code": "SD/012/AN",
+  "state": "Anambra",
+  "lga": "NNEWI NORTH"
+ },
+ {
+  "code": "SD/012/AN",
+  "state": "Anambra",
+  "lga": "NNEWI SOUTH"
+ },
+ {
+  "code": "SD/012/AN",
+  "state": "Anambra",
+  "lga": "ORUMBA SOUTH"
+ },
+ {
+  "code": "SD/012/AN",
+  "state": "Anambra",
+  "lga": "ORUMBA NORTH"
+ },
+ {
+  "code": "SD/012/AN",
+  "state": "Anambra",
+  "lga": "AGUATA"
+ },
+ {
+  "code": "SD/012/AN",
+  "state": "Anambra",
+  "lga": "EKWUSIGO"
+ },
+ {
+  "code": "SD/013/BA",
+  "state": "Bauchi",
+  "lga": "ALKALERI"
+ },
+ {
+  "code": "SD/013/BA",
+  "state": "Bauchi",
+  "lga": "KIRFI"
+ },
+ {
+  "code": "SD/013/BA",
+  "state": "Bauchi",
+  "lga": "BAUCHI"
+ },
+ {
+  "code": "SD/013/BA",
+  "state": "Bauchi",
+  "lga": "TAFAWA-BALEWA"
+ },
+ {
+  "code": "SD/013/BA",
+  "state": "Bauchi",
+  "lga": "BOGORO"
+ },
+ {
+  "code": "SD/013/BA",
+  "state": "Bauchi",
+  "lga": "DASS"
+ },
+ {
+  "code": "SD/013/BA",
+  "state": "Bauchi",
+  "lga": "TORO"
+ },
+ {
+  "code": "SD/014/BA",
+  "state": "Bauchi",
+  "lga": "NINGI"
+ },
+ {
+  "code": "SD/014/BA",
+  "state": "Bauchi",
+  "lga": "WARJI"
+ },
+ {
+  "code": "SD/014/BA",
+  "state": "Bauchi",
+  "lga": "DARAZO"
+ },
+ {
+  "code": "SD/014/BA",
+  "state": "Bauchi",
+  "lga": "GANJUWA"
+ },
+ {
+  "code": "SD/014/BA",
+  "state": "Bauchi",
+  "lga": "MISAU"
+ },
+ {
+  "code": "SD/014/BA",
+  "state": "Bauchi",
+  "lga": "DAMBAN"
+ },
+ {
+  "code": "SD/015/BA",
+  "state": "Bauchi",
+  "lga": "ZAKI"
+ },
+ {
+  "code": "SD/015/BA",
+  "state": "Bauchi",
+  "lga": "GAMAWA"
+ },
+ {
+  "code": "SD/015/BA",
+  "state": "Bauchi",
+  "lga": "JAMA'ARE"
+ },
+ {
+  "code": "SD/015/BA",
+  "state": "Bauchi",
+  "lga": "ITAS/GADAU"
+ },
+ {
+  "code": "SD/015/BA",
+  "state": "Bauchi",
+  "lga": "SHIRA"
+ },
+ {
+  "code": "SD/015/BA",
+  "state": "Bauchi",
+  "lga": "GIADE"
+ },
+ {
+  "code": "SD/015/BA",
+  "state": "Bauchi",
+  "lga": "KATAGUM"
+ },
+ {
+  "code": "SD/016/BY",
+  "state": "Bayelsa",
+  "lga": "BRASS"
+ },
+ {
+  "code": "SD/016/BY",
+  "state": "Bayelsa",
+  "lga": "NEMBE"
+ },
+ {
+  "code": "SD/016/BY",
+  "state": "Bayelsa",
+  "lga": "OGBIA"
+ },
+ {
+  "code": "SD/017/BY",
+  "state": "Bayelsa",
+  "lga": "KOLOKUMA/OPOKUMA"
+ },
+ {
+  "code": "SD/017/BY",
+  "state": "Bayelsa",
+  "lga": "SOUTHERN IJAW"
+ },
+ {
+  "code": "SD/017/BY",
+  "state": "Bayelsa",
+  "lga": "YENEGOA"
+ },
+ {
+  "code": "SD/018/BY",
+  "state": "Bayelsa",
+  "lga": "EKEREMOR"
+ },
+ {
+  "code": "SD/018/BY",
+  "state": "Bayelsa",
+  "lga": "SAGBAMA"
+ },
+ {
+  "code": "SD/019/BN",
+  "state": "Benue",
+  "lga": "KATSINA- ALA"
+ },
+ {
+  "code": "SD/019/BN",
+  "state": "Benue",
+  "lga": "KONSHISHA"
+ },
+ {
+  "code": "SD/019/BN",
+  "state": "Benue",
+  "lga": "KWANDE"
+ },
+ {
+  "code": "SD/019/BN",
+  "state": "Benue",
+  "lga": "LOGO"
+ },
+ {
+  "code": "SD/019/BN",
+  "state": "Benue",
+  "lga": "UKUM"
+ },
+ {
+  "code": "SD/019/BN",
+  "state": "Benue",
+  "lga": "USHONGO"
+ },
+ {
+  "code": "SD/019/BN",
+  "state": "Benue",
+  "lga": "VANDEIKYA"
+ },
+ {
+  "code": "SD/020/BN",
+  "state": "Benue",
+  "lga": "BURUKU"
+ },
+ {
+  "code": "SD/020/BN",
+  "state": "Benue",
+  "lga": "GBOKO"
+ },
+ {
+  "code": "SD/020/BN",
+  "state": "Benue",
+  "lga": "GUMA"
+ },
+ {
+  "code": "SD/020/BN",
+  "state": "Benue",
+  "lga": "GWER EAST"
+ },
+ {
+  "code": "SD/020/BN",
+  "state": "Benue",
+  "lga": "GWER WEST"
+ },
+ {
+  "code": "SD/020/BN",
+  "state": "Benue",
+  "lga": "MAKURDI"
+ },
+ {
+  "code": "SD/020/BN",
+  "state": "Benue",
+  "lga": "TARKA"
+ },
+ {
+  "code": "SD/021/BN",
+  "state": "Benue",
+  "lga": "ADO"
+ },
+ {
+  "code": "SD/021/BN",
+  "state": "Benue",
+  "lga": "AGATU"
+ },
+ {
+  "code": "SD/021/BN",
+  "state": "Benue",
+  "lga": "APA"
+ },
+ {
+  "code": "SD/021/BN",
+  "state": "Benue",
+  "lga": "OBI"
+ },
+ {
+  "code": "SD/021/BN",
+  "state": "Benue",
+  "lga": "OGBADIBO"
+ },
+ {
+  "code": "SD/021/BN",
+  "state": "Benue",
+  "lga": "OHIMINI"
+ },
+ {
+  "code": "SD/021/BN",
+  "state": "Benue",
+  "lga": "OJU"
+ },
+ {
+  "code": "SD/021/BN",
+  "state": "Benue",
+  "lga": "OKPOKWU"
+ },
+ {
+  "code": "SD/021/BN",
+  "state": "Benue",
+  "lga": "OTUKPO"
+ },
+ {
+  "code": "SD/031/EB",
+  "state": "Ebonyi",
+  "lga": "ABAKALIKI"
+ },
+ {
+  "code": "SD/031/EB",
+  "state": "Ebonyi",
+  "lga": "EBONYI"
+ },
+ {
+  "code": "SD/031/EB",
+  "state": "Ebonyi",
+  "lga": "IZZI"
+ },
+ {
+  "code": "SD/031/EB",
+  "state": "Ebonyi",
+  "lga": "OHAUKWU"
+ },
+ {
+  "code": "SD/032/EB",
+  "state": "Ebonyi",
+  "lga": "EZZA NORTH"
+ },
+ {
+  "code": "SD/032/EB",
+  "state": "Ebonyi",
+  "lga": "EZZA SOUTH"
+ },
+ {
+  "code": "SD/032/EB",
+  "state": "Ebonyi",
+  "lga": "IKWO"
+ },
+ {
+  "code": "SD/032/EB",
+  "state": "Ebonyi",
+  "lga": "ISHIELU"
+ },
+ {
+  "code": "SD/033/EB",
+  "state": "Ebonyi",
+  "lga": "AFIKPO NORTH"
+ },
+ {
+  "code": "SD/033/EB",
+  "state": "Ebonyi",
+  "lga": "AFIKPO SOUTH"
+ },
+ {
+  "code": "SD/033/EB",
+  "state": "Ebonyi",
+  "lga": "IVO"
+ },
+ {
+  "code": "SD/033/EB",
+  "state": "Ebonyi",
+  "lga": "OHAOZARA"
+ },
+ {
+  "code": "SD/033/EB",
+  "state": "Ebonyi",
+  "lga": "ONICHA"
+ },
+ {
+  "code": "SD/034/ED",
+  "state": "Edo",
+  "lga": "ESAN CENTRAL"
+ },
+ {
+  "code": "SD/034/ED",
+  "state": "Edo",
+  "lga": "ESAN NORTH-EAST"
+ },
+ {
+  "code": "SD/034/ED",
+  "state": "Edo",
+  "lga": "ESAN SOUTH-EAST"
+ },
+ {
+  "code": "SD/034/ED",
+  "state": "Edo",
+  "lga": "ESAN WEST"
+ },
+ {
+  "code": "SD/034/ED",
+  "state": "Edo",
+  "lga": "IGUEBEN"
+ },
+ {
+  "code": "SD/035/ED",
+  "state": "Edo",
+  "lga": "AKOKO-EDO"
+ },
+ {
+  "code": "SD/035/ED",
+  "state": "Edo",
+  "lga": "ETSAKO EAST"
+ },
+ {
+  "code": "SD/035/ED",
+  "state": "Edo",
+  "lga": "ETSAKO CENTRAL"
+ },
+ {
+  "code": "SD/035/ED",
+  "state": "Edo",
+  "lga": "ETSAKO WEST"
+ },
+ {
+  "code": "SD/035/ED",
+  "state": "Edo",
+  "lga": "OWAN EAST"
+ },
+ {
+  "code": "SD/035/ED",
+  "state": "Edo",
+  "lga": "OWAN WEST"
+ },
+ {
+  "code": "SD/036/ED",
+  "state": "Edo",
+  "lga": "OREDO"
+ },
+ {
+  "code": "SD/036/ED",
+  "state": "Edo",
+  "lga": "ORHIONMWON"
+ },
+ {
+  "code": "SD/036/ED",
+  "state": "Edo",
+  "lga": "OVIA NORTH-EAST"
+ },
+ {
+  "code": "SD/036/ED",
+  "state": "Edo",
+  "lga": "OVIA SOUTH-WEST"
+ },
+ {
+  "code": "SD/036/ED",
+  "state": "Edo",
+  "lga": "EGOR"
+ },
+ {
+  "code": "SD/036/ED",
+  "state": "Edo",
+  "lga": "UHUNMWONDE"
+ },
+ {
+  "code": "SD/036/ED",
+  "state": "Edo",
+  "lga": "IKPOBA-OKHA"
+ },
+ {
+  "code": "SD/037/EK",
+  "state": "Ekiti",
+  "lga": "IKOLE"
+ },
+ {
+  "code": "SD/037/EK",
+  "state": "Ekiti",
+  "lga": "OYE"
+ },
+ {
+  "code": "SD/037/EK",
+  "state": "Ekiti",
+  "lga": "IDO/OSI"
+ },
+ {
+  "code": "SD/037/EK",
+  "state": "Ekiti",
+  "lga": "MOBA"
+ },
+ {
+  "code": "SD/037/EK",
+  "state": "Ekiti",
+  "lga": "ILEJEMEJE"
+ },
+ {
+  "code": "SD/038/EK",
+  "state": "Ekiti",
+  "lga": "ADO-EKITI"
+ },
+ {
+  "code": "SD/038/EK",
+  "state": "Ekiti",
+  "lga": "IREPODUN/IFELODUN"
+ },
+ {
+  "code": "SD/038/EK",
+  "state": "Ekiti",
+  "lga": "IJERO"
+ },
+ {
+  "code": "SD/038/EK",
+  "state": "Ekiti",
+  "lga": "EFON"
+ },
+ {
+  "code": "SD/038/EK",
+  "state": "Ekiti",
+  "lga": "EKITI WEST"
+ },
+ {
+  "code": "SD/039/EK",
+  "state": "Ekiti",
+  "lga": "EKITI SOUTH-WEST"
+ },
+ {
+  "code": "SD/039/EK",
+  "state": "Ekiti",
+  "lga": "IKERE"
+ },
+ {
+  "code": "SD/039/EK",
+  "state": "Ekiti",
+  "lga": "EMURE"
+ },
+ {
+  "code": "SD/039/EK",
+  "state": "Ekiti",
+  "lga": "ISE/ORUN"
+ },
+ {
+  "code": "SD/039/EK",
+  "state": "Ekiti",
+  "lga": "GBOYIN"
+ },
+ {
+  "code": "SD/039/EK",
+  "state": "Ekiti",
+  "lga": "EKITI EAST"
+ },
+ {
+  "code": "SD/040/EN",
+  "state": "Enugu",
+  "lga": "ENUGU EAST"
+ },
+ {
+  "code": "SD/040/EN",
+  "state": "Enugu",
+  "lga": "ENUGU NORTH"
+ },
+ {
+  "code": "SD/040/EN",
+  "state": "Enugu",
+  "lga": "ENUGU SOUTH"
+ },
+ {
+  "code": "SD/040/EN",
+  "state": "Enugu",
+  "lga": "ISI-UZO"
+ },
+ {
+  "code": "SD/040/EN",
+  "state": "Enugu",
+  "lga": "NKANU EAST"
+ },
+ {
+  "code": "SD/040/EN",
+  "state": "Enugu",
+  "lga": "NKANU WEST"
+ },
+ {
+  "code": "SD/041/EN",
+  "state": "Enugu",
+  "lga": "ANINRI"
+ },
+ {
+  "code": "SD/041/EN",
+  "state": "Enugu",
+  "lga": "AWGU"
+ },
+ {
+  "code": "SD/041/EN",
+  "state": "Enugu",
+  "lga": "EZEAGU"
+ },
+ {
+  "code": "SD/041/EN",
+  "state": "Enugu",
+  "lga": "OJI-RIVER"
+ },
+ {
+  "code": "SD/041/EN",
+  "state": "Enugu",
+  "lga": "UDI"
+ },
+ {
+  "code": "SD/042/EN",
+  "state": "Enugu",
+  "lga": "IGBO-ETITI"
+ },
+ {
+  "code": "SD/042/EN",
+  "state": "Enugu",
+  "lga": "IGBO-EZE NORTH"
+ },
+ {
+  "code": "SD/042/EN",
+  "state": "Enugu",
+  "lga": "IGBO-EZE SOUTH"
+ },
+ {
+  "code": "SD/042/EN",
+  "state": "Enugu",
+  "lga": "UZO-UWANI"
+ },
+ {
+  "code": "SD/042/EN",
+  "state": "Enugu",
+  "lga": "UDENU"
+ },
+ {
+  "code": "SD/042/EN",
+  "state": "Enugu",
+  "lga": "NSUKKA"
+ },
+ {
+  "code": "SD/043/GM",
+  "state": "Gombe",
+  "lga": "AKKO"
+ },
+ {
+  "code": "SD/043/GM",
+  "state": "Gombe",
+  "lga": "YAMALTU/DEBA"
+ },
+ {
+  "code": "SD/044/GM",
+  "state": "Gombe",
+  "lga": "BALANGA"
+ },
+ {
+  "code": "SD/044/GM",
+  "state": "Gombe",
+  "lga": "BILLIRI"
+ },
+ {
+  "code": "SD/044/GM",
+  "state": "Gombe",
+  "lga": "KALTUNGO"
+ },
+ {
+  "code": "SD/044/GM",
+  "state": "Gombe",
+  "lga": "SHOMGOM"
+ },
+ {
+  "code": "SD/045/GM",
+  "state": "Gombe",
+  "lga": "FUNAKAYE"
+ },
+ {
+  "code": "SD/045/GM",
+  "state": "Gombe",
+  "lga": "NAFADA"
+ },
+ {
+  "code": "SD/045/GM",
+  "state": "Gombe",
+  "lga": "GOMBE"
+ },
+ {
+  "code": "SD/045/GM",
+  "state": "Gombe",
+  "lga": "KWAMI"
+ },
+ {
+  "code": "SD/045/GM",
+  "state": "Gombe",
+  "lga": "DUKKU"
+ },
+ {
+  "code": "SD/058/KT",
+  "state": "Katsina",
+  "lga": "DAURA"
+ },
+ {
+  "code": "SD/058/KT",
+  "state": "Katsina",
+  "lga": "ZANGO"
+ },
+ {
+  "code": "SD/058/KT",
+  "state": "Katsina",
+  "lga": "MAI'ADUA"
+ },
+ {
+  "code": "SD/058/KT",
+  "state": "Katsina",
+  "lga": "MASHI"
+ },
+ {
+  "code": "SD/058/KT",
+  "state": "Katsina",
+  "lga": "MANI"
+ },
+ {
+  "code": "SD/058/KT",
+  "state": "Katsina",
+  "lga": "INGAWA"
+ },
+ {
+  "code": "SD/058/KT",
+  "state": "Katsina",
+  "lga": "BINDAWA"
+ },
+ {
+  "code": "SD/058/KT",
+  "state": "Katsina",
+  "lga": "SANDAMU"
+ },
+ {
+  "code": "SD/058/KT",
+  "state": "Katsina",
+  "lga": "DUTSI"
+ },
+ {
+  "code": "SD/058/KT",
+  "state": "Katsina",
+  "lga": "KANKIA"
+ },
+ {
+  "code": "SD/058/KT",
+  "state": "Katsina",
+  "lga": "KUSADA"
+ },
+ {
+  "code": "SD/058/KT",
+  "state": "Katsina",
+  "lga": "BAURE"
+ },
+ {
+  "code": "SD/059/KT",
+  "state": "Katsina",
+  "lga": "FUNTUA"
+ },
+ {
+  "code": "SD/059/KT",
+  "state": "Katsina",
+  "lga": "FASKARI"
+ },
+ {
+  "code": "SD/059/KT",
+  "state": "Katsina",
+  "lga": "DANJA"
+ },
+ {
+  "code": "SD/059/KT",
+  "state": "Katsina",
+  "lga": "DANDUME"
+ },
+ {
+  "code": "SD/059/KT",
+  "state": "Katsina",
+  "lga": "BAKORI"
+ },
+ {
+  "code": "SD/059/KT",
+  "state": "Katsina",
+  "lga": "KANKARA"
+ },
+ {
+  "code": "SD/059/KT",
+  "state": "Katsina",
+  "lga": "MALUMFASHI"
+ },
+ {
+  "code": "SD/059/KT",
+  "state": "Katsina",
+  "lga": "KAFUR"
+ },
+ {
+  "code": "SD/059/KT",
+  "state": "Katsina",
+  "lga": "MUSAWA"
+ },
+ {
+  "code": "SD/059/KT",
+  "state": "Katsina",
+  "lga": "MATAZU"
+ },
+ {
+  "code": "SD/059/KT",
+  "state": "Katsina",
+  "lga": "SABUWA"
+ },
+ {
+  "code": "SD/060/KT",
+  "state": "Katsina",
+  "lga": "KATSINA"
+ },
+ {
+  "code": "SD/060/KT",
+  "state": "Katsina",
+  "lga": "KAITA"
+ },
+ {
+  "code": "SD/060/KT",
+  "state": "Katsina",
+  "lga": "JIBIA"
+ },
+ {
+  "code": "SD/060/KT",
+  "state": "Katsina",
+  "lga": "BATSARI"
+ },
+ {
+  "code": "SD/060/KT",
+  "state": "Katsina",
+  "lga": "SAFANA"
+ },
+ {
+  "code": "SD/060/KT",
+  "state": "Katsina",
+  "lga": "DUTSIN-MA"
+ },
+ {
+  "code": "SD/060/KT",
+  "state": "Katsina",
+  "lga": "KURFI"
+ },
+ {
+  "code": "SD/060/KT",
+  "state": "Katsina",
+  "lga": "BATAGARAWA"
+ },
+ {
+  "code": "SD/060/KT",
+  "state": "Katsina",
+  "lga": "RIMI"
+ },
+ {
+  "code": "SD/060/KT",
+  "state": "Katsina",
+  "lga": "CHARANCHI"
+ },
+ {
+  "code": "SD/060/KT",
+  "state": "Katsina",
+  "lga": "DAN MUSA"
+ },
+ {
+  "code": "SD/067/KW",
+  "state": "Kwara",
+  "lga": "BARUTEN"
+ },
+ {
+  "code": "SD/067/KW",
+  "state": "Kwara",
+  "lga": "EDU"
+ },
+ {
+  "code": "SD/067/KW",
+  "state": "Kwara",
+  "lga": "PATEGI"
+ },
+ {
+  "code": "SD/067/KW",
+  "state": "Kwara",
+  "lga": "KAIAMA"
+ },
+ {
+  "code": "SD/067/KW",
+  "state": "Kwara",
+  "lga": "MORO"
+ },
+ {
+  "code": "SD/068/KW",
+  "state": "Kwara",
+  "lga": "ASA"
+ },
+ {
+  "code": "SD/068/KW",
+  "state": "Kwara",
+  "lga": "ILORIN EAST"
+ },
+ {
+  "code": "SD/068/KW",
+  "state": "Kwara",
+  "lga": "ILORIN SOUTH"
+ },
+ {
+  "code": "SD/068/KW",
+  "state": "Kwara",
+  "lga": "ILORIN WEST"
+ },
+ {
+  "code": "SD/068/KW",
+  "state": "Kwara",
+  "lga": "OFFA"
+ },
+ {
+  "code": "SD/069/KW",
+  "state": "Kwara",
+  "lga": "EKITI"
+ },
+ {
+  "code": "SD/069/KW",
+  "state": "Kwara",
+  "lga": "OKE-ERO"
+ },
+ {
+  "code": "SD/069/KW",
+  "state": "Kwara",
+  "lga": "IFELODUN"
+ },
+ {
+  "code": "SD/069/KW",
+  "state": "Kwara",
+  "lga": "IREPODUN"
+ },
+ {
+  "code": "SD/069/KW",
+  "state": "Kwara",
+  "lga": "ISIN"
+ },
+ {
+  "code": "SD/069/KW",
+  "state": "Kwara",
+  "lga": "OYUN"
+ },
+ {
+  "code": "SD/070/LA",
+  "state": "Lagos",
+  "lga": "LAGOS ISLAND"
+ },
+ {
+  "code": "SD/070/LA",
+  "state": "Lagos",
+  "lga": "LAGOS MAINLAND"
+ },
+ {
+  "code": "SD/070/LA",
+  "state": "Lagos",
+  "lga": "SURULERE"
+ },
+ {
+  "code": "SD/070/LA",
+  "state": "Lagos",
+  "lga": "APAPA"
+ },
+ {
+  "code": "SD/070/LA",
+  "state": "Lagos",
+  "lga": "ETI-OSA"
+ },
+ {
+  "code": "SD/071/LA",
+  "state": "Lagos",
+  "lga": "SHOMOLU"
+ },
+ {
+  "code": "SD/071/LA",
+  "state": "Lagos",
+  "lga": "KOSOFE"
+ },
+ {
+  "code": "SD/071/LA",
+  "state": "Lagos",
+  "lga": "EPE"
+ },
+ {
+  "code": "SD/071/LA",
+  "state": "Lagos",
+  "lga": "IBEJU/LEKKI"
+ },
+ {
+  "code": "SD/071/LA",
+  "state": "Lagos",
+  "lga": "IKORODU"
+ },
+ {
+  "code": "SD/072/LA",
+  "state": "Lagos",
+  "lga": "AGEGE"
+ },
+ {
+  "code": "SD/072/LA",
+  "state": "Lagos",
+  "lga": "IFAKO/IJAYE"
+ },
+ {
+  "code": "SD/072/LA",
+  "state": "Lagos",
+  "lga": "ALIMOSHO"
+ },
+ {
+  "code": "SD/072/LA",
+  "state": "Lagos",
+  "lga": "BADAGRY"
+ },
+ {
+  "code": "SD/072/LA",
+  "state": "Lagos",
+  "lga": "OJO"
+ },
+ {
+  "code": "SD/072/LA",
+  "state": "Lagos",
+  "lga": "AJEROMI/IFELODUN"
+ },
+ {
+  "code": "SD/072/LA",
+  "state": "Lagos",
+  "lga": "AMUWO/ODOFIN"
+ },
+ {
+  "code": "SD/072/LA",
+  "state": "Lagos",
+  "lga": "OSHODI/ISOLO"
+ },
+ {
+  "code": "SD/072/LA",
+  "state": "Lagos",
+  "lga": "IKEJA"
+ },
+ {
+  "code": "SD/072/LA",
+  "state": "Lagos",
+  "lga": "MUSHIN"
+ },
+ {
+  "code": "SD/073/NW",
+  "state": "Nasarawa",
+  "lga": "AKWANGA"
+ },
+ {
+  "code": "SD/073/NW",
+  "state": "Nasarawa",
+  "lga": "NASSARAWA EGON"
+ },
+ {
+  "code": "SD/073/NW",
+  "state": "Nasarawa",
+  "lga": "WAMBA"
+ },
+ {
+  "code": "SD/074/NW",
+  "state": "Nasarawa",
+  "lga": "NASARAWA"
+ },
+ {
+  "code": "SD/074/NW",
+  "state": "Nasarawa",
+  "lga": "KEFFI"
+ },
+ {
+  "code": "SD/074/NW",
+  "state": "Nasarawa",
+  "lga": "KOKONA"
+ },
+ {
+  "code": "SD/074/NW",
+  "state": "Nasarawa",
+  "lga": "KARU"
+ },
+ {
+  "code": "SD/074/NW",
+  "state": "Nasarawa",
+  "lga": "TOTO"
+ },
+ {
+  "code": "SD/075/NW",
+  "state": "Nasarawa",
+  "lga": "LAFIA"
+ },
+ {
+  "code": "SD/075/NW",
+  "state": "Nasarawa",
+  "lga": "AWE"
+ },
+ {
+  "code": "SD/075/NW",
+  "state": "Nasarawa",
+  "lga": "DOMA"
+ },
+ {
+  "code": "SD/075/NW",
+  "state": "Nasarawa",
+  "lga": "KEANA"
+ },
+ {
+  "code": "SD/075/NW",
+  "state": "Nasarawa",
+  "lga": "OBI"
+ },
+ {
+  "code": "SD/079/OG",
+  "state": "Ogun",
+  "lga": "IFO"
+ },
+ {
+  "code": "SD/079/OG",
+  "state": "Ogun",
+  "lga": "EWEKORO"
+ },
+ {
+  "code": "SD/079/OG",
+  "state": "Ogun",
+  "lga": "OBAFEMI-OWODE"
+ },
+ {
+  "code": "SD/079/OG",
+  "state": "Ogun",
+  "lga": "ABEOKUTA NORTH"
+ },
+ {
+  "code": "SD/079/OG",
+  "state": "Ogun",
+  "lga": "ABEOKUTA SOUTH"
+ },
+ {
+  "code": "SD/079/OG",
+  "state": "Ogun",
+  "lga": "ODEDA"
+ },
+ {
+  "code": "SD/080/OG",
+  "state": "Ogun",
+  "lga": "SAGAMU"
+ },
+ {
+  "code": "SD/080/OG",
+  "state": "Ogun",
+  "lga": "IKENNE"
+ },
+ {
+  "code": "SD/080/OG",
+  "state": "Ogun",
+  "lga": "REMO NORTH"
+ },
+ {
+  "code": "SD/080/OG",
+  "state": "Ogun",
+  "lga": "IJEBU-ODE"
+ },
+ {
+  "code": "SD/080/OG",
+  "state": "Ogun",
+  "lga": "ODOGBOLU"
+ },
+ {
+  "code": "SD/080/OG",
+  "state": "Ogun",
+  "lga": "IJEBU NORTH-EAST"
+ },
+ {
+  "code": "SD/080/OG",
+  "state": "Ogun",
+  "lga": "IJEBU NORTH"
+ },
+ {
+  "code": "SD/080/OG",
+  "state": "Ogun",
+  "lga": "IJEBU EAST"
+ },
+ {
+  "code": "SD/080/OG",
+  "state": "Ogun",
+  "lga": "OGUN WATERSIDE"
+ },
+ {
+  "code": "SD/081/OG",
+  "state": "Ogun",
+  "lga": "IMEKO-AFON"
+ },
+ {
+  "code": "SD/081/OG",
+  "state": "Ogun",
+  "lga": "EGBADO NORTH"
+ },
+ {
+  "code": "SD/081/OG",
+  "state": "Ogun",
+  "lga": "EGBADO SOUTH"
+ },
+ {
+  "code": "SD/081/OG",
+  "state": "Ogun",
+  "lga": "IPOKIA"
+ },
+ {
+  "code": "SD/081/OG",
+  "state": "Ogun",
+  "lga": "ADO ODO/OTA"
+ },
+ {
+  "code": "SD/082/OD",
+  "state": "Ondo",
+  "lga": "AKOKO NORTH-EAST"
+ },
+ {
+  "code": "SD/082/OD",
+  "state": "Ondo",
+  "lga": "AKOKO NORTH-WEST"
+ },
+ {
+  "code": "SD/082/OD",
+  "state": "Ondo",
+  "lga": "AKOKO SOUTH-WEST"
+ },
+ {
+  "code": "SD/082/OD",
+  "state": "Ondo",
+  "lga": "AKOKO SOUTH-EAST"
+ },
+ {
+  "code": "SD/082/OD",
+  "state": "Ondo",
+  "lga": "OSE"
+ },
+ {
+  "code": "SD/082/OD",
+  "state": "Ondo",
+  "lga": "OWO"
+ },
+ {
+  "code": "SD/083/OD",
+  "state": "Ondo",
+  "lga": "AKURE NORTH"
+ },
+ {
+  "code": "SD/083/OD",
+  "state": "Ondo",
+  "lga": "AKURE SOUTH"
+ },
+ {
+  "code": "SD/083/OD",
+  "state": "Ondo",
+  "lga": "IFEDORE"
+ },
+ {
+  "code": "SD/083/OD",
+  "state": "Ondo",
+  "lga": "IDANRE"
+ },
+ {
+  "code": "SD/083/OD",
+  "state": "Ondo",
+  "lga": "ONDO EAST"
+ },
+ {
+  "code": "SD/083/OD",
+  "state": "Ondo",
+  "lga": "ONDO WEST"
+ },
+ {
+  "code": "SD/084/OD",
+  "state": "Ondo",
+  "lga": "ILE-OLUJI/OKEIGBO"
+ },
+ {
+  "code": "SD/084/OD",
+  "state": "Ondo",
+  "lga": "ODIGBO"
+ },
+ {
+  "code": "SD/084/OD",
+  "state": "Ondo",
+  "lga": "IRELE"
+ },
+ {
+  "code": "SD/084/OD",
+  "state": "Ondo",
+  "lga": "OKITIPUPA"
+ },
+ {
+  "code": "SD/084/OD",
+  "state": "Ondo",
+  "lga": "ESE-ODO"
+ },
+ {
+  "code": "SD/084/OD",
+  "state": "Ondo",
+  "lga": "ILAJE"
+ },
+ {
+  "code": "SD/085/OS",
+  "state": "Osun",
+  "lga": "BORIPE"
+ },
+ {
+  "code": "SD/085/OS",
+  "state": "Osun",
+  "lga": "BOLUWADURO"
+ },
+ {
+  "code": "SD/085/OS",
+  "state": "Osun",
+  "lga": "IFELODUN"
+ },
+ {
+  "code": "SD/085/OS",
+  "state": "Osun",
+  "lga": "ILA"
+ },
+ {
+  "code": "SD/085/OS",
+  "state": "Osun",
+  "lga": "IFEDAYO"
+ },
+ {
+  "code": "SD/085/OS",
+  "state": "Osun",
+  "lga": "IREPODUN"
+ },
+ {
+  "code": "SD/085/OS",
+  "state": "Osun",
+  "lga": "OROLU"
+ },
+ {
+  "code": "SD/085/OS",
+  "state": "Osun",
+  "lga": "ODO-OTIN"
+ },
+ {
+  "code": "SD/085/OS",
+  "state": "Osun",
+  "lga": "OLORUNDA"
+ },
+ {
+  "code": "SD/085/OS",
+  "state": "Osun",
+  "lga": "OSOGBO"
+ },
+ {
+  "code": "SD/086/OS",
+  "state": "Osun",
+  "lga": "ATAKUMOSA EAST"
+ },
+ {
+  "code": "SD/086/OS",
+  "state": "Osun",
+  "lga": "ATAKUMOSA WEST"
+ },
+ {
+  "code": "SD/086/OS",
+  "state": "Osun",
+  "lga": "IFE CENTRAL"
+ },
+ {
+  "code": "SD/086/OS",
+  "state": "Osun",
+  "lga": "IFE EAST"
+ },
+ {
+  "code": "SD/086/OS",
+  "state": "Osun",
+  "lga": "IFE NORTH"
+ },
+ {
+  "code": "SD/086/OS",
+  "state": "Osun",
+  "lga": "IFE SOUTH"
+ },
+ {
+  "code": "SD/086/OS",
+  "state": "Osun",
+  "lga": "ILESHA EAST"
+ },
+ {
+  "code": "SD/086/OS",
+  "state": "Osun",
+  "lga": "ILESHA WEST"
+ },
+ {
+  "code": "SD/086/OS",
+  "state": "Osun",
+  "lga": "OBOKUN"
+ },
+ {
+  "code": "SD/086/OS",
+  "state": "Osun",
+  "lga": "ORIADE"
+ },
+ {
+  "code": "SD/087/OS",
+  "state": "Osun",
+  "lga": "AYEDAADE"
+ },
+ {
+  "code": "SD/087/OS",
+  "state": "Osun",
+  "lga": "AYEDIRE"
+ },
+ {
+  "code": "SD/087/OS",
+  "state": "Osun",
+  "lga": "EDE NORTH"
+ },
+ {
+  "code": "SD/087/OS",
+  "state": "Osun",
+  "lga": "EDE SOUTH"
+ },
+ {
+  "code": "SD/087/OS",
+  "state": "Osun",
+  "lga": "EGBEDORE"
+ },
+ {
+  "code": "SD/087/OS",
+  "state": "Osun",
+  "lga": "EJIGBO"
+ },
+ {
+  "code": "SD/087/OS",
+  "state": "Osun",
+  "lga": "IREWOLE"
+ },
+ {
+  "code": "SD/087/OS",
+  "state": "Osun",
+  "lga": "ISOKAN"
+ },
+ {
+  "code": "SD/087/OS",
+  "state": "Osun",
+  "lga": "IWO"
+ },
+ {
+  "code": "SD/087/OS",
+  "state": "Osun",
+  "lga": "OLA-OLUWA"
+ },
+ {
+  "code": "SD/088/OY",
+  "state": "Oyo",
+  "lga": "AFIJIO"
+ },
+ {
+  "code": "SD/088/OY",
+  "state": "Oyo",
+  "lga": "AKINYELE"
+ },
+ {
+  "code": "SD/088/OY",
+  "state": "Oyo",
+  "lga": "EGBEDA"
+ },
+ {
+  "code": "SD/088/OY",
+  "state": "Oyo",
+  "lga": "OGO-OLUWA"
+ },
+ {
+  "code": "SD/088/OY",
+  "state": "Oyo",
+  "lga": "SURULERE"
+ },
+ {
+  "code": "SD/088/OY",
+  "state": "Oyo",
+  "lga": "LAGELU"
+ },
+ {
+  "code": "SD/088/OY",
+  "state": "Oyo",
+  "lga": "OLUYOLE"
+ },
+ {
+  "code": "SD/088/OY",
+  "state": "Oyo",
+  "lga": "ONA-ARA"
+ },
+ {
+  "code": "SD/088/OY",
+  "state": "Oyo",
+  "lga": "OYO EAST"
+ },
+ {
+  "code": "SD/088/OY",
+  "state": "Oyo",
+  "lga": "OYO WEST"
+ },
+ {
+  "code": "SD/088/OY",
+  "state": "Oyo",
+  "lga": "ATIBA"
+ },
+ {
+  "code": "SD/089/OY",
+  "state": "Oyo",
+  "lga": "SAKI WEST"
+ },
+ {
+  "code": "SD/089/OY",
+  "state": "Oyo",
+  "lga": "SAKI EAST"
+ },
+ {
+  "code": "SD/089/OY",
+  "state": "Oyo",
+  "lga": "ATISBO"
+ },
+ {
+  "code": "SD/089/OY",
+  "state": "Oyo",
+  "lga": "IREPO"
+ },
+ {
+  "code": "SD/089/OY",
+  "state": "Oyo",
+  "lga": "OLORUNSOGO"
+ },
+ {
+  "code": "SD/089/OY",
+  "state": "Oyo",
+  "lga": "KAJOLA"
+ },
+ {
+  "code": "SD/089/OY",
+  "state": "Oyo",
+  "lga": "IWAJOWA"
+ },
+ {
+  "code": "SD/089/OY",
+  "state": "Oyo",
+  "lga": "OGBOMOSO NORTH"
+ },
+ {
+  "code": "SD/089/OY",
+  "state": "Oyo",
+  "lga": "OGBOMOSO SOUTH"
+ },
+ {
+  "code": "SD/089/OY",
+  "state": "Oyo",
+  "lga": "ISEYIN"
+ },
+ {
+  "code": "SD/089/OY",
+  "state": "Oyo",
+  "lga": "ORELOPE"
+ },
+ {
+  "code": "SD/089/OY",
+  "state": "Oyo",
+  "lga": "ORI-IRE"
+ },
+ {
+  "code": "SD/089/OY",
+  "state": "Oyo",
+  "lga": "ITESIWAJU"
+ },
+ {
+  "code": "SD/090/OY",
+  "state": "Oyo",
+  "lga": "IBADAN NORTH"
+ },
+ {
+  "code": "SD/090/OY",
+  "state": "Oyo",
+  "lga": "IBADAN NORTH-EAST"
+ },
+ {
+  "code": "SD/090/OY",
+  "state": "Oyo",
+  "lga": "IBADAN NORTH-WEST"
+ },
+ {
+  "code": "SD/090/OY",
+  "state": "Oyo",
+  "lga": "IBADAN SOUTH-EAST"
+ },
+ {
+  "code": "SD/090/OY",
+  "state": "Oyo",
+  "lga": "IBADAN SOUTH-WEST"
+ },
+ {
+  "code": "SD/090/OY",
+  "state": "Oyo",
+  "lga": "IBARAPA CENTRAL"
+ },
+ {
+  "code": "SD/090/OY",
+  "state": "Oyo",
+  "lga": "IBARAPA NORTH"
+ },
+ {
+  "code": "SD/090/OY",
+  "state": "Oyo",
+  "lga": "IBARAPA EAST"
+ },
+ {
+  "code": "SD/090/OY",
+  "state": "Oyo",
+  "lga": "IDO"
+ },
+ {
+  "code": "SD/091/PL",
+  "state": "Plateau",
+  "lga": "LANGTANG NORTH"
+ },
+ {
+  "code": "SD/091/PL",
+  "state": "Plateau",
+  "lga": "LANGTANG SOUTH"
+ },
+ {
+  "code": "SD/091/PL",
+  "state": "Plateau",
+  "lga": "MIKANG"
+ },
+ {
+  "code": "SD/091/PL",
+  "state": "Plateau",
+  "lga": "QUA'AN PAN"
+ },
+ {
+  "code": "SD/091/PL",
+  "state": "Plateau",
+  "lga": "SHENDAM"
+ },
+ {
+  "code": "SD/091/PL",
+  "state": "Plateau",
+  "lga": "WASE"
+ },
+ {
+  "code": "SD/092/PL",
+  "state": "Plateau",
+  "lga": "BOKKOS"
+ },
+ {
+  "code": "SD/092/PL",
+  "state": "Plateau",
+  "lga": "KANKE"
+ },
+ {
+  "code": "SD/092/PL",
+  "state": "Plateau",
+  "lga": "MANGU"
+ },
+ {
+  "code": "SD/092/PL",
+  "state": "Plateau",
+  "lga": "PANKSHIN"
+ },
+ {
+  "code": "SD/092/PL",
+  "state": "Plateau",
+  "lga": "KANAM"
+ },
+ {
+  "code": "SD/093/PL",
+  "state": "Plateau",
+  "lga": "BARKIN LADI"
+ },
+ {
+  "code": "SD/093/PL",
+  "state": "Plateau",
+  "lga": "BASSA"
+ },
+ {
+  "code": "SD/093/PL",
+  "state": "Plateau",
+  "lga": "JOS EAST"
+ },
+ {
+  "code": "SD/093/PL",
+  "state": "Plateau",
+  "lga": "JOS NORTH"
+ },
+ {
+  "code": "SD/093/PL",
+  "state": "Plateau",
+  "lga": "JOS SOUTH"
+ },
+ {
+  "code": "SD/093/PL",
+  "state": "Plateau",
+  "lga": "RIYOM"
+ },
+ {
+  "code": "SD/094/RV",
+  "state": "Rivers",
+  "lga": "ETCHE"
+ },
+ {
+  "code": "SD/094/RV",
+  "state": "Rivers",
+  "lga": "OMUMMA"
+ },
+ {
+  "code": "SD/094/RV",
+  "state": "Rivers",
+  "lga": "IKWERRE"
+ },
+ {
+  "code": "SD/094/RV",
+  "state": "Rivers",
+  "lga": "OBIO/AKPOR"
+ },
+ {
+  "code": "SD/094/RV",
+  "state": "Rivers",
+  "lga": "PORT HARCOURT"
+ },
+ {
+  "code": "SD/094/RV",
+  "state": "Rivers",
+  "lga": "OKRIKA"
+ },
+ {
+  "code": "SD/094/RV",
+  "state": "Rivers",
+  "lga": "OGU/BOLO"
+ },
+ {
+  "code": "SD/094/RV",
+  "state": "Rivers",
+  "lga": "EMUOHA"
+ },
+ {
+  "code": "SD/095/RV",
+  "state": "Rivers",
+  "lga": "OPOBO/NKORO"
+ },
+ {
+  "code": "SD/095/RV",
+  "state": "Rivers",
+  "lga": "ANDONI"
+ },
+ {
+  "code": "SD/095/RV",
+  "state": "Rivers",
+  "lga": "OYIGBO"
+ },
+ {
+  "code": "SD/095/RV",
+  "state": "Rivers",
+  "lga": "TAI"
+ },
+ {
+  "code": "SD/095/RV",
+  "state": "Rivers",
+  "lga": "ELEME"
+ },
+ {
+  "code": "SD/095/RV",
+  "state": "Rivers",
+  "lga": "GOKANA"
+ },
+ {
+  "code": "SD/095/RV",
+  "state": "Rivers",
+  "lga": "KHANA"
+ },
+ {
+  "code": "SD/096/RV",
+  "state": "Rivers",
+  "lga": "ASARI-TORU"
+ },
+ {
+  "code": "SD/096/RV",
+  "state": "Rivers",
+  "lga": "AKUKU-TORU"
+ },
+ {
+  "code": "SD/096/RV",
+  "state": "Rivers",
+  "lga": "DEGEMA"
+ },
+ {
+  "code": "SD/096/RV",
+  "state": "Rivers",
+  "lga": "OGBA/EGBEMA/NDONI"
+ },
+ {
+  "code": "SD/096/RV",
+  "state": "Rivers",
+  "lga": "ABUA/ODUAL"
+ },
+ {
+  "code": "SD/096/RV",
+  "state": "Rivers",
+  "lga": "AHOADA EAST"
+ },
+ {
+  "code": "SD/096/RV",
+  "state": "Rivers",
+  "lga": "AHOADA WEST"
+ },
+ {
+  "code": "SD/096/RV",
+  "state": "Rivers",
+  "lga": "BONNY"
+ },
+ {
+  "code": "SD/097/SO",
+  "state": "Sokoto",
+  "lga": "ISA"
+ },
+ {
+  "code": "SD/097/SO",
+  "state": "Sokoto",
+  "lga": "SABON BIRNI"
+ },
+ {
+  "code": "SD/097/SO",
+  "state": "Sokoto",
+  "lga": "WURNO"
+ },
+ {
+  "code": "SD/097/SO",
+  "state": "Sokoto",
+  "lga": "GORONYO"
+ },
+ {
+  "code": "SD/097/SO",
+  "state": "Sokoto",
+  "lga": "RABAH"
+ },
+ {
+  "code": "SD/097/SO",
+  "state": "Sokoto",
+  "lga": "GADA"
+ },
+ {
+  "code": "SD/097/SO",
+  "state": "Sokoto",
+  "lga": "ILLELA"
+ },
+ {
+  "code": "SD/097/SO",
+  "state": "Sokoto",
+  "lga": "GWADABAWA"
+ },
+ {
+  "code": "SD/098/SO",
+  "state": "Sokoto",
+  "lga": "TANGAZA"
+ },
+ {
+  "code": "SD/098/SO",
+  "state": "Sokoto",
+  "lga": "BINJI"
+ },
+ {
+  "code": "SD/098/SO",
+  "state": "Sokoto",
+  "lga": "SILAME"
+ },
+ {
+  "code": "SD/098/SO",
+  "state": "Sokoto",
+  "lga": "GUDU"
+ },
+ {
+  "code": "SD/098/SO",
+  "state": "Sokoto",
+  "lga": "KWARE"
+ },
+ {
+  "code": "SD/098/SO",
+  "state": "Sokoto",
+  "lga": "WAMAKKO"
+ },
+ {
+  "code": "SD/098/SO",
+  "state": "Sokoto",
+  "lga": "SOKOTO NORTH"
+ },
+ {
+  "code": "SD/098/SO",
+  "state": "Sokoto",
+  "lga": "SOKOTO SOUTH"
+ },
+ {
+  "code": "SD/099/SO",
+  "state": "Sokoto",
+  "lga": "DANGE/SHUNI"
+ },
+ {
+  "code": "SD/099/SO",
+  "state": "Sokoto",
+  "lga": "TURETA"
+ },
+ {
+  "code": "SD/099/SO",
+  "state": "Sokoto",
+  "lga": "BODINGA"
+ },
+ {
+  "code": "SD/099/SO",
+  "state": "Sokoto",
+  "lga": "SHAGARI"
+ },
+ {
+  "code": "SD/099/SO",
+  "state": "Sokoto",
+  "lga": "YABO"
+ },
+ {
+  "code": "SD/099/SO",
+  "state": "Sokoto",
+  "lga": "TAMBUWAL"
+ },
+ {
+  "code": "SD/099/SO",
+  "state": "Sokoto",
+  "lga": "KEBBE"
+ },
+ {
+  "code": "SD/100/TR",
+  "state": "Taraba",
+  "lga": "WUKARI"
+ },
+ {
+  "code": "SD/100/TR",
+  "state": "Taraba",
+  "lga": "IBI"
+ },
+ {
+  "code": "SD/100/TR",
+  "state": "Taraba",
+  "lga": "DONGA"
+ },
+ {
+  "code": "SD/100/TR",
+  "state": "Taraba",
+  "lga": "USSA"
+ },
+ {
+  "code": "SD/100/TR",
+  "state": "Taraba",
+  "lga": "TAKUM"
+ },
+ {
+  "code": "SD/101/TR",
+  "state": "Taraba",
+  "lga": "SARDAUNA"
+ },
+ {
+  "code": "SD/101/TR",
+  "state": "Taraba",
+  "lga": "KURMI"
+ },
+ {
+  "code": "SD/101/TR",
+  "state": "Taraba",
+  "lga": "BALI"
+ },
+ {
+  "code": "SD/101/TR",
+  "state": "Taraba",
+  "lga": "GASHAKA"
+ },
+ {
+  "code": "SD/101/TR",
+  "state": "Taraba",
+  "lga": "GASSOL"
+ },
+ {
+  "code": "SD/102/TR",
+  "state": "Taraba",
+  "lga": "JALINGO"
+ },
+ {
+  "code": "SD/102/TR",
+  "state": "Taraba",
+  "lga": "YORRO"
+ },
+ {
+  "code": "SD/102/TR",
+  "state": "Taraba",
+  "lga": "ZING"
+ },
+ {
+  "code": "SD/102/TR",
+  "state": "Taraba",
+  "lga": "LAU"
+ },
+ {
+  "code": "SD/102/TR",
+  "state": "Taraba",
+  "lga": "ARDO-KOLA"
+ },
+ {
+  "code": "SD/102/TR",
+  "state": "Taraba",
+  "lga": "KARIM LAMIDO"
+ },
+ {
+  "code": "SD/103/YB",
+  "state": "Yobe",
+  "lga": "BURSARI"
+ },
+ {
+  "code": "SD/103/YB",
+  "state": "Yobe",
+  "lga": "GEIDAM"
+ },
+ {
+  "code": "SD/103/YB",
+  "state": "Yobe",
+  "lga": "GUJBA"
+ },
+ {
+  "code": "SD/103/YB",
+  "state": "Yobe",
+  "lga": "GULANI"
+ },
+ {
+  "code": "SD/103/YB",
+  "state": "Yobe",
+  "lga": "TARMUWA"
+ },
+ {
+  "code": "SD/103/YB",
+  "state": "Yobe",
+  "lga": "YUNUSARI"
+ },
+ {
+  "code": "SD/104/YB",
+  "state": "Yobe",
+  "lga": "BADE"
+ },
+ {
+  "code": "SD/104/YB",
+  "state": "Yobe",
+  "lga": "JAKUSKO"
+ },
+ {
+  "code": "SD/104/YB",
+  "state": "Yobe",
+  "lga": "MACHINA"
+ },
+ {
+  "code": "SD/104/YB",
+  "state": "Yobe",
+  "lga": "KARASUWA"
+ },
+ {
+  "code": "SD/104/YB",
+  "state": "Yobe",
+  "lga": "NGURU"
+ },
+ {
+  "code": "SD/104/YB",
+  "state": "Yobe",
+  "lga": "YUSUFARI"
+ },
+ {
+  "code": "SD/105/YB",
+  "state": "Yobe",
+  "lga": "FIKA"
+ },
+ {
+  "code": "SD/105/YB",
+  "state": "Yobe",
+  "lga": "FUNE"
+ },
+ {
+  "code": "SD/105/YB",
+  "state": "Yobe",
+  "lga": "NANGERE"
+ },
+ {
+  "code": "SD/105/YB",
+  "state": "Yobe",
+  "lga": "POTISKUM"
+ },
+ {
+  "code": "SD/105/YB",
+  "state": "Yobe",
+  "lga": "DAMATURU"
+ }
+]

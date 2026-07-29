@@ -7,13 +7,20 @@ import { registerMember, type RegisterState } from "./actions";
 
 const initial: RegisterState = { status: "idle" };
 
-export function RegisterMemberForm() {
+export type RegisterFormProps = {
+  /** Set only for the National Coordinator, who chooses the polling unit. */
+  pollingUnitId: string | null;
+  /** Leaders in that polling unit, offered so the member stays inside the chain. */
+  leaders: { id: string; full_name: string }[] | null;
+};
+
+export function RegisterMemberForm(props: RegisterFormProps) {
   // Remount to fully reset the form + action state after a successful registration.
   const [instance, setInstance] = useState(0);
-  return <Inner key={instance} onReset={() => setInstance((i) => i + 1)} />;
+  return <Inner key={instance} onReset={() => setInstance((i) => i + 1)} {...props} />;
 }
 
-function Inner({ onReset }: { onReset: () => void }) {
+function Inner({ onReset, pollingUnitId, leaders }: RegisterFormProps & { onReset: () => void }) {
   const [state, action, pending] = useActionState(registerMember, initial);
   const fe = state.fieldErrors ?? {};
 
@@ -59,6 +66,40 @@ function Inner({ onReset }: { onReset: () => void }) {
 
   return (
     <form action={action} noValidate className="flex flex-col gap-8">
+      {pollingUnitId ? <input type="hidden" name="polling_unit_id" value={pollingUnitId} /> : null}
+
+      {leaders ? (
+        <fieldset className="min-w-0 border-0 p-0">
+          <legend className="mb-1 text-sm font-semibold text-foreground">
+            Assign to a leader <span className="font-normal text-muted">(optional)</span>
+          </legend>
+          <p className="mb-4 text-sm text-muted">
+            {leaders.length > 0
+              ? "The member counts towards that leader's ten. Leave it unassigned to hold them yourself."
+              : "No leader has been created in this polling unit yet, so you will hold this member yourself."}
+          </p>
+          {leaders.length > 0 ? (
+            <label className="flex flex-col gap-1.5">
+              <span className="text-sm font-semibold text-foreground">Leader</span>
+              <select
+                name="registered_by"
+                defaultValue=""
+                aria-invalid={fe.registered_by ? true : undefined}
+                className="min-h-11 rounded-sm border border-border bg-surface px-3 text-base text-foreground focus:outline-2 focus:outline-offset-1 focus:outline-ring"
+              >
+                <option value="">No leader (I will hold this member)</option>
+                {leaders.map((l) => (
+                  <option key={l.id} value={l.id}>
+                    {l.full_name}
+                  </option>
+                ))}
+              </select>
+              {fe.registered_by ? <span className="text-xs text-danger">{fe.registered_by}</span> : null}
+            </label>
+          ) : null}
+        </fieldset>
+      ) : null}
+
       <fieldset className="min-w-0 border-0 p-0">
         <legend className="mb-4 text-sm font-semibold text-foreground">Member details</legend>
         <div className="grid gap-5 sm:grid-cols-2">

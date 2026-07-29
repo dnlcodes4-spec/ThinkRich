@@ -29,8 +29,15 @@ erDiagram
     profiles ||--o{ leader_kym_codes : has
     profiles ||--o{ push_subscriptions : registers
 
-    states ||--o{ candidates : "state candidate"
-    lgas ||--o{ candidates : "lg candidate"
+    office_types ||--o{ candidacies : "office contested"
+    elections ||--o{ candidacies : "held at"
+    parties ||--o{ candidacies : "sponsors"
+    constituencies ||--o{ candidacies : "seat scope"
+    constituencies ||--o{ constituency_lgas : "made of"
+    constituencies ||--o{ constituency_wards : "split by"
+    states ||--o{ candidacies : "governorship"
+    lgas ||--o{ candidacies : "chairmanship"
+    wards ||--o{ candidacies : "councillorship"
     profiles ||--o{ notifications : receives
 ```
 
@@ -71,7 +78,10 @@ erDiagram
 
 1. `membership_number` is **unique** and **never updated** after insert. **Format (confirmed):**
    `TWM-<STATE>-<LGA>-<seq>` (e.g. `TWM-LA-IKJ-000123`) — sequence is per-LGA, zero-padded.
-2. A `leader` has **≤ 10** `active` members (`registered_by` count check).
+2. A `leader` has **≤ 10** `active` members (`registered_by` count check). The cap is scoped to
+   **leaders**: the National Coordinator may also register members (migration `0019`), and when a
+   member is held by them rather than attributed to a leader, no cap applies. Attributing a member
+   to a leader still counts against that leader's ten.
 3. **No duplicate registration** — key = **NIN** (CR-0002). Enforced by a **UNIQUE constraint on
    `members.nin`** (plus a soft-warn at registration for a friendly message).
 4. **Age ≥ 18** at registration — DB check on `date_of_birth` (anyone under 18 cannot be registered).
@@ -90,9 +100,45 @@ erDiagram
 
 | Table | Key columns | Notes |
 |-------|-------------|-------|
-| `candidates` | `id`, `level` (`presidential`/`state`/`lg`), `state_id?`, `lga_id?`, `uploaded_by`, details | Members see the candidate for their L.G + the presidential candidate. |
 | `notifications` | `id`, `audience` (scope), `title`, `body`, `type`, `created_at` | Voting reminders + major updates; delivered in-app and via Web Push. |
 | `push_subscriptions` | `id`, `user_id`, `endpoint`, `keys` | Web Push endpoints per user. |
+
+## Elective offices (CR-0007, ADR-0013)
+
+Migrations `0016`–`0018`. This is **not a voting system**: nothing casts or counts a vote. It
+exists so members can see the candidates that have been uploaded for their area. The offices are
+**data, not an enum**, so the national admin can add and correct them without a deploy.
+
+| Table | Key columns | Notes |
+|-------|-------------|-------|
+| `office_types` | `key`, `title`, `tier`, **`constituency_kind`**, `has_running_mate`, `running_mate_title`, `sort_order`, `is_active` | The seven elective offices. `constituency_kind` (`nation`/`state`/`lga`/`ward`/`senatorial_district`/`federal_constituency`/`state_constituency`) declares what geography a seat is elected from, and everything else branches on it. `has_running_mate` records that President/VP, Governor/Deputy and Chairman/Vice are one joint ticket. |
+| `parties` | `name`, `acronym`, `color?`, `logo_url?`, `is_active` | Seeded with INEC's 21 registered parties as at April 2026. Verify before each cycle. |
+| `elections` | `name`, `election_date`, `scope` (`national`/`state`), `state_id?` | Dates move, so they are data. Seeded with the 2027 general (16 Jan + 6 Feb) and Osun 2026. |
+| `election_office_types` | `election_id`, `office_type_id` | Which offices a given election fills. |
+| `constituencies` | `kind`, `state_id`, `name`, `code?` | The INEC overlay: senatorial districts, federal and state constituencies. Every constituency lies in exactly one state. |
+| `constituency_lgas` / `constituency_wards` | `constituency_id`, `kind`, `lga_id`/`ward_id` | Membership. A **ward row overrides its LGA's row** for the same kind, so ward-level data is only needed where an LGA is split. `kind` is filled by trigger under a composite FK, making "one constituency of each kind per ward" a real constraint. |
+| `candidacies` | `election_id`, `office_type_id`, one of `state_id`/`lga_id`/`ward_id`/`constituency_id`, `full_name`, `running_mate_name?`, `party_id?`, `photo_url?`, `slogan?`, `is_endorsed`, `is_published` | Replaces `candidates`. **Multiple candidacies per race are allowed.** Exactly one scope column is filled, decided by the office and enforced by `private.enforce_candidacy_scope()`. |
+
+**The constituency overlay does not nest in the geography tree.** A federal constituency is built
+from whole wards and may split a populous LGA (Lagos: 20 LGAs, 24 federal constituencies). It
+therefore cannot be derived from `ward.lga_id`. See
+[nigeria-elective-offices.md](../project/nigeria-elective-offices.md#32-the-overlay-that-does-not-nest-read-this-before-modelling).
+
+> **Constituency coverage (T-031).** All **1,459** constituencies are imported from INEC's own
+> workbook (109 senatorial, 360 federal, 990 state). **Senatorial LGA membership exists for 22 of
+> 37 states**, so 5,017 wards resolve to a senatorial district; federal and state constituencies
+> have no membership yet, so those two races resolve for nobody and the UI says so. Provenance,
+> verification and what remains: [docs/project/data/constituencies](../project/data/constituencies/README.md)
+> and **T-031b**.
+
+### Functions
+
+| Function | Purpose |
+|---|---|
+| `public.candidacies_for_geography(state?, lga?, ward?)` | Every race that applies to a place. Not `security definer`, so RLS still hides unpublished rows from members. |
+| `public.candidacies_i_manage()` | The races the caller may edit, so the admin UI and the write policies cannot drift. |
+| `public.can_manage_candidacy(office, …)` | Pre-flight for the admin form. |
+| `public.ward_constituencies` (view) | Ward to constituency resolution, ward rows overriding LGA rows. |
 
 ---
 

@@ -4,127 +4,149 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { CANDIDATE_SCOPE, CANDIDATE_PHOTOS_BUCKET, type Role } from "./scope";
+import { CANDIDATE_PHOTOS_BUCKET, scopeValuesFor, type ConstituencyKind } from "@/lib/offices";
 
-// Admins manage the candidate for their own scope. `candidates` has no write RLS
-// policy, so writes go through the service role with authz re-checked in code:
-// the caller's role decides the level, and the geography comes from the caller's
-// own profile (never from the form).
+// Writes go through the CALLER's client, so the containment policies in
+// 0017_elective_offices_rls.sql are the authorization boundary (ADR-0005): an
+// admin can only touch a race whose constituency sits inside their own scope.
+// The service role is used for the photo object only, never for the row.
 
 const EXT: Record<string, string> = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp" };
 const MAX_BYTES = 5 * 1024 * 1024;
 
 const schema = z.object({
+  id: z.string().uuid().optional(),
+  election_id: z.string().uuid("Choose an election."),
+  office_type_id: z.string().uuid("Choose an office."),
+  geo_id: z.string().uuid().optional(),
   full_name: z.string().trim().min(2, "Enter the candidate's full name."),
-  party: z.string().trim().max(120).optional(),
-  running_mate: z.string().trim().max(160).optional(),
+  running_mate_name: z.string().trim().max(160).optional(),
+  party_id: z.string().uuid().optional(),
   slogan: z.string().trim().max(200).optional(),
+  bio: z.string().trim().max(2000).optional(),
+  is_endorsed: z.boolean(),
+  is_published: z.boolean(),
 });
 
-export type CandidateState = { status: "idle" | "success" | "error"; message?: string; fieldErrors?: Record<string, string> };
+export type CandidacyState = {
+  status: "idle" | "success" | "error";
+  message?: string;
+  fieldErrors?: Record<string, string>;
+};
 
-async function callerScope() {
+function str(fd: FormData, key: string) {
+  const v = fd.get(key);
+  return typeof v === "string" && v.trim() !== "" ? v : undefined;
+}
+
+export async function saveCandidacy(_prev: CandidacyState, formData: FormData): Promise<CandidacyState> {
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) return null;
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("role, state_id, lga_id")
-    .eq("id", user.id)
-    .maybeSingle();
-  if (!profile) return null;
-  const scope = CANDIDATE_SCOPE[profile.role as Role];
-  if (!scope) return null;
-  return { userId: user.id, profile, scope };
-}
-
-// Resolve the target candidate's identity from the caller's scope (never the form).
-function targetFor(c: NonNullable<Awaited<ReturnType<typeof callerScope>>>) {
-  const { scope, profile } = c;
-  if (scope.level === "presidential") return { level: scope.level, state_id: null, lga_id: null };
-  if (scope.level === "state") return { level: scope.level, state_id: profile.state_id, lga_id: null };
-  return { level: scope.level, state_id: profile.state_id, lga_id: profile.lga_id };
-}
-
-export async function upsertCandidate(_prev: CandidateState, formData: FormData): Promise<CandidateState> {
-  const c = await callerScope();
-  if (!c) return { status: "error", message: "You cannot manage candidates." };
-  const target = targetFor(c);
-  if ((target.level === "state" && !target.state_id) || (target.level === "lg" && !target.lga_id)) {
-    return { status: "error", message: "Your account has no geography set." };
-  }
+  if (!user) return { status: "error", message: "You are not signed in." };
 
   const parsed = schema.safeParse({
+    id: str(formData, "id"),
+    election_id: str(formData, "election_id"),
+    office_type_id: str(formData, "office_type_id"),
+    geo_id: str(formData, "geo_id"),
     full_name: formData.get("full_name"),
-    party: formData.get("party") || undefined,
-    running_mate: formData.get("running_mate") || undefined,
-    slogan: formData.get("slogan") || undefined,
+    running_mate_name: str(formData, "running_mate_name"),
+    party_id: str(formData, "party_id"),
+    slogan: str(formData, "slogan"),
+    bio: str(formData, "bio"),
+    is_endorsed: formData.get("is_endorsed") === "on",
+    is_published: formData.get("is_published") === "on",
   });
   if (!parsed.success) {
     const fieldErrors: Record<string, string> = {};
     for (const [k, m] of Object.entries(parsed.error.flatten().fieldErrors)) if (m && m[0]) fieldErrors[k] = m[0];
     return { status: "error", message: "Please fix the highlighted fields.", fieldErrors };
   }
+  const d = parsed.data;
 
-  const admin = createAdminClient();
+  // The office decides which geography column is filled. Read it from the
+  // catalogue rather than trusting the form.
+  const { data: office } = await supabase
+    .from("office_types")
+    .select("constituency_kind, has_running_mate")
+    .eq("id", d.office_type_id)
+    .maybeSingle();
+  if (!office) return { status: "error", message: "That office no longer exists." };
 
-  // Find the existing candidate for this exact scope.
-  let query = admin.from("candidates").select("id, photo_url").eq("level", target.level);
-  query = target.state_id ? query.eq("state_id", target.state_id) : query.is("state_id", null);
-  query = target.lga_id ? query.eq("lga_id", target.lga_id) : query.is("lga_id", null);
-  const { data: existing } = await query.maybeSingle();
+  const kind = office.constituency_kind as ConstituencyKind;
+  if (kind !== "nation" && !d.geo_id) {
+    return {
+      status: "error",
+      message: "Choose the area this candidate is standing in.",
+      fieldErrors: { geo_id: "Required." },
+    };
+  }
+  const scope = scopeValuesFor(kind, {
+    stateId: d.geo_id,
+    lgaId: d.geo_id,
+    wardId: d.geo_id,
+    constituencyId: d.geo_id,
+  });
 
-  // Optional photo upload to the public bucket.
-  let photoPath: string | null = existing?.photo_url ?? null;
+  // Optional photo, uploaded to the public bucket before the row is written.
+  let photoPath: string | null = null;
   const file = formData.get("photo");
   if (file instanceof File && file.size > 0) {
-    if (!EXT[file.type]) return { status: "error", message: "Use a JPEG, PNG, or WebP image.", fieldErrors: { photo: "Invalid type." } };
-    if (file.size > MAX_BYTES) return { status: "error", message: "The image must be 5 MB or smaller.", fieldErrors: { photo: "Too large." } };
-    const key = `${target.level}/${target.lga_id ?? target.state_id ?? "national"}-${Date.now()}.${EXT[file.type]}`;
+    if (!EXT[file.type]) {
+      return { status: "error", message: "Use a JPEG, PNG, or WebP image.", fieldErrors: { photo: "Invalid type." } };
+    }
+    if (file.size > MAX_BYTES) {
+      return { status: "error", message: "The image must be 5 MB or smaller.", fieldErrors: { photo: "Too large." } };
+    }
+    const admin = createAdminClient();
+    const key = `${d.office_type_id}/${d.geo_id ?? "national"}-${Date.now()}.${EXT[file.type]}`;
     const bytes = new Uint8Array(await file.arrayBuffer());
-    const { error: upErr } = await admin.storage.from(CANDIDATE_PHOTOS_BUCKET).upload(key, bytes, { contentType: file.type });
+    const { error: upErr } = await admin.storage
+      .from(CANDIDATE_PHOTOS_BUCKET)
+      .upload(key, bytes, { contentType: file.type });
     if (upErr) return { status: "error", message: "Photo upload failed. Please try again." };
-    if (existing?.photo_url) await admin.storage.from(CANDIDATE_PHOTOS_BUCKET).remove([existing.photo_url]);
     photoPath = key;
   }
 
   const row = {
-    level: target.level,
-    state_id: target.state_id,
-    lga_id: target.lga_id,
-    full_name: parsed.data.full_name,
-    party: parsed.data.party ?? null,
-    running_mate: parsed.data.running_mate ?? null,
-    slogan: parsed.data.slogan ?? null,
-    photo_url: photoPath,
-    uploaded_by: c.userId,
-    updated_at: new Date().toISOString(),
+    election_id: d.election_id,
+    office_type_id: d.office_type_id,
+    ...scope,
+    full_name: d.full_name,
+    running_mate_name: office.has_running_mate ? (d.running_mate_name ?? null) : null,
+    party_id: d.party_id ?? null,
+    slogan: d.slogan ?? null,
+    bio: d.bio ?? null,
+    is_endorsed: d.is_endorsed,
+    is_published: d.is_published,
+    updated_by: user.id,
   };
 
-  const { error } = existing
-    ? await admin.from("candidates").update(row).eq("id", existing.id)
-    : await admin.from("candidates").insert(row);
-  if (error) return { status: "error", message: "Could not save the candidate. Please try again." };
+  const { error } = d.id
+    ? await supabase
+        .from("candidacies")
+        .update(photoPath ? { ...row, photo_url: photoPath } : row)
+        .eq("id", d.id)
+    : await supabase.from("candidacies").insert({ ...row, photo_url: photoPath, created_by: user.id });
+
+  if (error) {
+    // RLS refusing is the expected failure for an out-of-scope attempt.
+    return { status: "error", message: "Could not save. You may not manage candidates for that area." };
+  }
 
   revalidatePath("/app/admin/candidates");
   revalidatePath("/app/vote");
   return { status: "success", message: "Candidate saved." };
 }
 
-export async function deleteCandidate(): Promise<void> {
-  const c = await callerScope();
-  if (!c) return;
-  const target = targetFor(c);
-  const admin = createAdminClient();
-  let query = admin.from("candidates").select("id, photo_url").eq("level", target.level);
-  query = target.state_id ? query.eq("state_id", target.state_id) : query.is("state_id", null);
-  query = target.lga_id ? query.eq("lga_id", target.lga_id) : query.is("lga_id", null);
-  const { data: existing } = await query.maybeSingle();
-  if (!existing) return;
-  if (existing.photo_url) await admin.storage.from(CANDIDATE_PHOTOS_BUCKET).remove([existing.photo_url]);
-  await admin.from("candidates").delete().eq("id", existing.id);
+export async function deleteCandidacy(formData: FormData): Promise<void> {
+  const id = formData.get("id");
+  if (typeof id !== "string") return;
+  const supabase = await createClient();
+  // RLS decides whether this is allowed; no extra check is needed here.
+  await supabase.from("candidacies").delete().eq("id", id);
   revalidatePath("/app/admin/candidates");
   revalidatePath("/app/vote");
 }

@@ -61,13 +61,18 @@ insert into public.members
   ('f0000000-0000-0000-0000-000000000004','TWM-T2-LG2-000001','a0000000-0000-0000-0000-00000000000a','b0000000-0000-0000-0000-000000000002','c0000000-0000-0000-0000-000000000002','d0000000-0000-0000-0000-000000000002','e0000000-0000-0000-0000-000000000003','M4','1990-01-01','NIN0000004');
 
 -- ─────────────────── helper to run a member-count check as a user ───────────────────
+-- Counts only THIS test's members (the two seeded states). The table is shared
+-- with real data, so an unfiltered count made every expectation depend on how
+-- many members happened to exist when the suite ran.
 create or replace function pg_temp.expect_member_count(sub text, expected int, label text)
 returns void language plpgsql as $$
 declare n int;
 begin
   perform set_config('role', 'authenticated', true);
   perform set_config('request.jwt.claims', json_build_object('sub', sub)::text, true);
-  select count(*) into n from public.members;
+  select count(*) into n from public.members
+   where state_id in ('b0000000-0000-0000-0000-000000000001',
+                      'b0000000-0000-0000-0000-000000000002');
   perform set_config('role', 'none', true);
   if n <> expected then
     raise exception 'RLS FAIL [%]: expected % members, got %', label, expected, n;

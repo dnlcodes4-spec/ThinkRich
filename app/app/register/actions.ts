@@ -5,11 +5,19 @@ import { createClient } from "@/lib/supabase/server";
 import { provisionMemberLogin } from "@/app/app/members/provision-login";
 import { logActivityAs } from "@/lib/activity";
 
-// A leader registers a member (T-004). Geography is NOT chosen — it is derived
-// from the leader's own polling unit. The membership number is assigned by the DB
-// trigger; RLS + triggers enforce scope, NIN uniqueness, age >= 18, and the
-// <= 10-active-members cap. This action validates input and maps DB errors to
-// friendly messages; it never bypasses RLS (no service role).
+// Registering a member (T-004, extended by T-033).
+//
+// A LEADER registers into their own polling unit; geography is not chosen, it is
+// derived from their profile, and the <= 10-active-members cap applies.
+//
+// The NATIONAL COORDINATOR registers into any polling unit and may attribute the
+// member to a leader there. Attributed to a leader, the member counts against
+// that leader's ten. Held by the coordinator, the cap does not apply, because the
+// invariant is about leaders (see 0019).
+//
+// The membership number is assigned by a DB trigger; RLS + triggers enforce
+// scope, NIN uniqueness, age >= 18 and the cap. This action validates input and
+// maps DB errors to friendly messages; it never bypasses RLS (no service role).
 
 const schema = z.object({
   full_name: z.string().trim().min(2, "Enter the member's full name."),
@@ -20,6 +28,8 @@ const schema = z.object({
   account_number: z.string().trim().optional(),
   account_name: z.string().trim().optional(),
   bank_name: z.string().trim().optional(),
+  polling_unit_id: z.string().uuid().optional(),
+  registered_by: z.string().uuid().optional(),
 });
 
 export type RegisterState = {
@@ -56,28 +66,17 @@ export async function registerMember(
     .eq("id", user.id)
     .maybeSingle();
 
-  if (
-    !profile ||
-    profile.role !== "leader" ||
-    !profile.state_id ||
-    !profile.lga_id ||
-    !profile.ward_id ||
-    !profile.polling_unit_id
-  ) {
-    return { status: "error", message: "Only leaders can register members." };
-  }
+  const isNational = profile?.role === "national_admin";
+  const isLeader =
+    !!profile &&
+    profile.role === "leader" &&
+    !!profile.state_id &&
+    !!profile.lga_id &&
+    !!profile.ward_id &&
+    !!profile.polling_unit_id;
 
-  // A state must be activated (T-019) before members can be registered in it.
-  const { data: state } = await supabase
-    .from("states")
-    .select("is_active")
-    .eq("id", profile.state_id)
-    .maybeSingle();
-  if (!state?.is_active) {
-    return {
-      status: "error",
-      message: "Your state is not active yet. Registration opens once it is activated.",
-    };
+  if (!profile || (!isLeader && !isNational)) {
+    return { status: "error", message: "Only leaders and the National Coordinator can register members." };
   }
 
   const parsed = schema.safeParse({
@@ -89,6 +88,8 @@ export async function registerMember(
     account_number: formData.get("account_number"),
     account_name: formData.get("account_name"),
     bank_name: formData.get("bank_name"),
+    polling_unit_id: formData.get("polling_unit_id") || undefined,
+    registered_by: formData.get("registered_by") || undefined,
   });
   if (!parsed.success) {
     const fieldErrors: Record<string, string> = {};
@@ -106,16 +107,77 @@ export async function registerMember(
     };
   }
 
+  // Resolve the target polling unit and its full path. A leader's is fixed; the
+  // national coordinator's comes from the form and may be anywhere.
+  const targetPu = isLeader ? profile.polling_unit_id! : parsed.data.polling_unit_id;
+  if (!targetPu) {
+    return { status: "error", message: "Choose the polling unit this member belongs to." };
+  }
+
+  const { data: unit } = await supabase
+    .from("polling_units")
+    .select("id, ward_id")
+    .eq("id", targetPu)
+    .maybeSingle();
+  const { data: ward } = unit
+    ? await supabase.from("wards").select("id, lga_id").eq("id", unit.ward_id).maybeSingle()
+    : { data: null };
+  const { data: lga } = ward
+    ? await supabase.from("lgas").select("id, state_id").eq("id", ward.lga_id).maybeSingle()
+    : { data: null };
+  const { data: state } = lga
+    ? await supabase.from("states").select("id, name, is_active").eq("id", lga.state_id).maybeSingle()
+    : { data: null };
+
+  if (!unit || !ward || !lga || !state) {
+    return { status: "error", message: "That polling unit could not be found." };
+  }
+  const lgaId = lga.id;
+  const stateId = state.id;
+
+  // A state must be activated (T-019) before members can be registered in it.
+  // This is a workflow gate, not a scope limit, so it holds for everyone; the
+  // coordinator is the one who can lift it.
+  if (!state.is_active) {
+    return {
+      status: "error",
+      message: isNational
+        ? `${state.name} is not activated yet. Activate it, then register.`
+        : "Your state is not active yet. Registration opens once it is activated.",
+    };
+  }
+
+  // Who holds this member. A leader always holds their own. The coordinator may
+  // attribute to a leader in that polling unit, or hold the member themselves.
+  let registeredBy = user.id;
+  if (isNational && parsed.data.registered_by) {
+    const { data: leader } = await supabase
+      .from("profiles")
+      .select("id")
+      .eq("id", parsed.data.registered_by)
+      .eq("role", "leader")
+      .eq("polling_unit_id", unit.id)
+      .maybeSingle();
+    if (!leader) {
+      return {
+        status: "error",
+        message: "That leader is not in this polling unit.",
+        fieldErrors: { registered_by: "Not in this polling unit." },
+      };
+    }
+    registeredBy = leader.id;
+  }
+
   const email = parsed.data.email ? parsed.data.email : null;
 
   const { data: inserted, error } = await supabase
     .from("members")
     .insert({
-      registered_by: user.id,
-      state_id: profile.state_id,
-      lga_id: profile.lga_id,
-      ward_id: profile.ward_id,
-      polling_unit_id: profile.polling_unit_id,
+      registered_by: registeredBy,
+      state_id: stateId,
+      lga_id: lgaId,
+      ward_id: unit.ward_id,
+      polling_unit_id: unit.id,
       full_name: parsed.data.full_name,
       date_of_birth: parsed.data.date_of_birth,
       nin: parsed.data.nin,
@@ -145,7 +207,13 @@ export async function registerMember(
       };
     }
     if (m.includes("capacity")) {
-      return { status: "error", message: "You have reached your limit of 10 active members." };
+      return {
+        status: "error",
+        message: isNational
+          ? "That leader already holds 10 active members. Choose another leader, or leave it unassigned."
+          : "You have reached your limit of 10 active members.",
+        fieldErrors: isNational ? { registered_by: "Leader is full." } : undefined,
+      };
     }
     if (m.includes("18 years")) {
       return {

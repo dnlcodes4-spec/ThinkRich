@@ -1,0 +1,490 @@
+{
+ "close_matches_needing_confirmation": [
+  {
+   "state": "ABIA",
+   "source_text": "UMUNNEOCHI",
+   "matched_lga": "UMU - NNEOCHI",
+   "score": 0.952
+  },
+  {
+   "state": "ABIA",
+   "source_text": "ISUKWUATO",
+   "matched_lga": "ISUIKWUATO",
+   "score": 0.947
+  },
+  {
+   "state": "ABIA",
+   "source_text": "ISIALA NGWA NORTH",
+   "matched_lga": "ISIALA NGWA SOUTH",
+   "score": 0.923
+  },
+  {
+   "state": "ANAMBRA",
+   "source_text": "IHIALA",
+   "matched_lga": "IHALA",
+   "score": 0.909
+  },
+  {
+   "state": "BAYELSA",
+   "source_text": "YENAGOA",
+   "matched_lga": "YENEGOA",
+   "score": 0.857
+  },
+  {
+   "state": "BENUE",
+   "source_text": "MARKURDI",
+   "matched_lga": "MAKURDI",
+   "score": 0.933
+  },
+  {
+   "state": "BORNO",
+   "source_text": "NGANZA",
+   "matched_lga": "NGANZAI",
+   "score": 0.923
+  },
+  {
+   "state": "BORNO",
+   "source_text": "MOGUNO",
+   "matched_lga": "MONGUNO",
+   "score": 0.923
+  },
+  {
+   "state": "BORNO",
+   "source_text": "DAMABOA",
+   "matched_lga": "DAMBOA",
+   "score": 0.923
+  },
+  {
+   "state": "DELTA",
+   "source_text": "UGHELI SOUTH",
+   "matched_lga": "UGHELLI SOUTH",
+   "score": 0.941
+  },
+  {
+   "state": "DELTA",
+   "source_text": "ANIOCHA SOUTH",
+   "matched_lga": "ANIOCHA NORTH",
+   "score": 0.889
+  },
+  {
+   "state": "DELTA",
+   "source_text": "NDOKWA WEST",
+   "matched_lga": "NDOKWA EAST",
+   "score": 0.875
+  },
+  {
+   "state": "EDO",
+   "source_text": "UHUNMWODE",
+   "matched_lga": "UHUNMWONDE",
+   "score": 0.947
+  },
+  {
+   "state": "EKITI",
+   "source_text": "GBONYIN",
+   "matched_lga": "GBOYIN",
+   "score": 0.923
+  },
+  {
+   "state": "ENUGU",
+   "source_text": "ANINIRI",
+   "matched_lga": "ANINRI",
+   "score": 0.923
+  },
+  {
+   "state": "ENUGU",
+   "source_text": "IGO-EZE SOUTH",
+   "matched_lga": "IGBO-EZE SOUTH",
+   "score": 0.947
+  },
+  {
+   "state": "GOMBE",
+   "source_text": "SHONGOM",
+   "matched_lga": "SHOMGOM",
+   "score": 0.857
+  },
+  {
+   "state": "IMO",
+   "source_text": "NKWERE",
+   "matched_lga": "NKWERRE",
+   "score": 0.923
+  },
+  {
+   "state": "IMO",
+   "source_text": "ORU WEST",
+   "matched_lga": "ORU EAST",
+   "score": 0.8
+  },
+  {
+   "state": "JIGAWA",
+   "source_text": "JAUN",
+   "matched_lga": "JAHUN",
+   "score": 0.889
+  },
+  {
+   "state": "JIGAWA",
+   "source_text": "BIRNIWA",
+   "matched_lga": "BIRINIWA",
+   "score": 0.933
+  },
+  {
+   "state": "JIGAWA",
+   "source_text": "K/KASAMMA",
+   "matched_lga": "KIRI KASAMMA",
+   "score": 0.857
+  },
+  {
+   "state": "JIGAWA",
+   "source_text": "GAGARA",
+   "matched_lga": "GAGARAWA",
+   "score": 0.857
+  },
+  {
+   "state": "JIGAWA",
+   "source_text": "MAIGATAR",
+   "matched_lga": "MAIGATARI",
+   "score": 0.941
+  },
+  {
+   "state": "JIGAWA",
+   "source_text": "RINGIN",
+   "matched_lga": "RINGIM",
+   "score": 0.833
+  },
+  {
+   "state": "JIGAWA",
+   "source_text": "GUME",
+   "matched_lga": "GUMEL",
+   "score": 0.889
+  },
+  {
+   "state": "KANO",
+   "source_text": "GARUM MALLAM",
+   "matched_lga": "GARUM MALAM",
+   "score": 0.957
+  },
+  {
+   "state": "KANO",
+   "source_text": "DANBATTA",
+   "matched_lga": "DAMBATTA",
+   "score": 0.875
+  },
+  {
+   "state": "KANO",
+   "source_text": "RIMI GADO",
+   "matched_lga": "RIMIN GADO",
+   "score": 0.947
+  },
+  {
+   "state": "KANO",
+   "source_text": "TUDUN WADA",
+   "matched_lga": "TUNDUN WADA",
+   "score": 0.952
+  },
+  {
+   "state": "KATSINA",
+   "source_text": "MAIADUA",
+   "matched_lga": "MAI'ADUA",
+   "score": 0.933
+  },
+  {
+   "state": "KATSINA",
+   "source_text": "MALUMEFASHI",
+   "matched_lga": "MALUMFASHI",
+   "score": 0.952
+  },
+  {
+   "state": "KATSINA",
+   "source_text": "DANMUSA",
+   "matched_lga": "DAN MUSA",
+   "score": 0.933
+  },
+  {
+   "state": "KOGI",
+   "source_text": "MOPAMURO",
+   "matched_lga": "MOPA-MURO",
+   "score": 0.941
+  },
+  {
+   "state": "KWARA",
+   "source_text": "PATIGI",
+   "matched_lga": "PATEGI",
+   "score": 0.833
+  },
+  {
+   "state": "NASARAWA",
+   "source_text": "AKAWANGA",
+   "matched_lga": "AKWANGA",
+   "score": 0.933
+  },
+  {
+   "state": "NASARAWA",
+   "source_text": "NASSARAWA EGGON",
+   "matched_lga": "NASSARAWA EGON",
+   "score": 0.966
+  },
+  {
+   "state": "NASARAWA",
+   "source_text": "NASSARAWA",
+   "matched_lga": "NASARAWA",
+   "score": 0.941
+  },
+  {
+   "state": "NIGER",
+   "source_text": "KONTOGORA",
+   "matched_lga": "KONTAGORA",
+   "score": 0.889
+  },
+  {
+   "state": "ONDO",
+   "source_text": "ILEOLUJI/OKEIGBO",
+   "matched_lga": "ILE-OLUJI/OKEIGBO",
+   "score": 0.97
+  },
+  {
+   "state": "OSUN",
+   "source_text": "BOLOWADURO",
+   "matched_lga": "BOLUWADURO",
+   "score": 0.9
+  },
+  {
+   "state": "OSUN",
+   "source_text": "ATAKUNMOSA EAST",
+   "matched_lga": "ATAKUMOSA EAST",
+   "score": 0.957
+  },
+  {
+   "state": "OSUN",
+   "source_text": "ATAKUNMOSA WEST",
+   "matched_lga": "ATAKUMOSA WEST",
+   "score": 0.957
+  },
+  {
+   "state": "OSUN",
+   "source_text": "ILESA EAST",
+   "matched_lga": "ILESHA EAST",
+   "score": 0.933
+  },
+  {
+   "state": "OSUN",
+   "source_text": "ILESA WEST",
+   "matched_lga": "ILESHA WEST",
+   "score": 0.933
+  },
+  {
+   "state": "OSUN",
+   "source_text": "AYADAADE",
+   "matched_lga": "AYEDAADE",
+   "score": 0.875
+  },
+  {
+   "state": "OYO",
+   "source_text": "ATIGBO",
+   "matched_lga": "ATISBO",
+   "score": 0.833
+  },
+  {
+   "state": "OYO",
+   "source_text": "OGBOMOSHO NORTH",
+   "matched_lga": "OGBOMOSO NORTH",
+   "score": 0.952
+  },
+  {
+   "state": "OYO",
+   "source_text": "OGBOMOSHO SOUTH",
+   "matched_lga": "OGBOMOSO SOUTH",
+   "score": 0.952
+  },
+  {
+   "state": "OYO",
+   "source_text": "OORELOPE",
+   "matched_lga": "ORELOPE",
+   "score": 0.933
+  },
+  {
+   "state": "OYO",
+   "source_text": "ORIRE",
+   "matched_lga": "ORI-IRE",
+   "score": 0.833
+  },
+  {
+   "state": "PLATEAU",
+   "source_text": "LANTANG NORTH",
+   "matched_lga": "LANGTANG NORTH",
+   "score": 0.947
+  },
+  {
+   "state": "PLATEAU",
+   "source_text": "LANTANG SOUTH",
+   "matched_lga": "LANGTANG SOUTH",
+   "score": 0.947
+  },
+  {
+   "state": "RIVERS",
+   "source_text": "OMUMA",
+   "matched_lga": "OMUMMA",
+   "score": 0.909
+  },
+  {
+   "state": "RIVERS",
+   "source_text": "OKIRIKA",
+   "matched_lga": "OKRIKA",
+   "score": 0.923
+  },
+  {
+   "state": "RIVERS",
+   "source_text": "EMOHUA",
+   "matched_lga": "EMUOHA",
+   "score": 0.833
+  },
+  {
+   "state": "SOKOTO",
+   "source_text": "TAMBUWA",
+   "matched_lga": "TAMBUWAL",
+   "score": 0.933
+  },
+  {
+   "state": "ZAMFARA",
+   "source_text": "K/NAMODA",
+   "matched_lga": "KAURA NAMODA",
+   "score": 0.8
+  },
+  {
+   "state": "ZAMFARA",
+   "source_text": "BIRNIN MAGAJI",
+   "matched_lga": "BIRNIN-MAGAJI/KIYAW",
+   "score": 0.812
+  }
+ ],
+ "states_not_verified": {
+  "ABIA": {
+   "unmapped_lgas": 2,
+   "claimed_twice": 1,
+   "unrecognised_names": [
+    "OHAFIA"
+   ]
+  },
+  "AKWA IBOM": {
+   "unmapped_lgas": 1,
+   "claimed_twice": 0,
+   "unrecognised_names": [
+    "ESIT EKET"
+   ]
+  },
+  "ADAMAWA": {
+   "unmapped_lgas": 2,
+   "claimed_twice": 0,
+   "unrecognised_names": [
+    "GERFI"
+   ]
+  },
+  "BORNO": {
+   "unmapped_lgas": 2,
+   "claimed_twice": 0,
+   "unrecognised_names": [
+    "KWAYA",
+    "METROPOLITAN"
+   ]
+  },
+  "CROSS RIVER": {
+   "unmapped_lgas": 1,
+   "claimed_twice": 0,
+   "unrecognised_names": [
+    "YALA"
+   ]
+  },
+  "DELTA": {
+   "unmapped_lgas": 3,
+   "claimed_twice": 2,
+   "unrecognised_names": [
+    "SAPELE"
+   ]
+  },
+  "IMO": {
+   "unmapped_lgas": 15,
+   "claimed_twice": 1,
+   "unrecognised_names": [
+    "EZINIHITTE",
+    "IHITE/UBOMA",
+    "ISIALA MBANO",
+    "ISU",
+    "MBAITOLI",
+    "NGOR OKPALA",
+    "NJABA",
+    "NWANGELE",
+    "OBOWO",
+    "OHAJI/EGBEMA",
+    "ONUIMO",
+    "ORSU",
+    "OWERRI NORTH",
+    "OWERRI WEST"
+   ]
+  },
+  "JIGAWA": {
+   "unmapped_lgas": 3,
+   "claimed_twice": 0,
+   "unrecognised_names": [
+    "K/HAUSA",
+    "M/MADORI",
+    "S/TANKAR"
+   ]
+  },
+  "KADUNA": {
+   "unmapped_lgas": 2,
+   "claimed_twice": 1,
+   "unrecognised_names": [
+    "ZANGON"
+   ]
+  },
+  "KANO": {
+   "unmapped_lgas": 2,
+   "claimed_twice": 0,
+   "unrecognised_names": [
+    "DAWAKIN"
+   ]
+  },
+  "KEBBI": {
+   "unmapped_lgas": 1,
+   "claimed_twice": 0,
+   "unrecognised_names": [
+    "WASAGU/DANKO"
+   ]
+  },
+  "KOGI": {
+   "unmapped_lgas": 2,
+   "claimed_twice": 0,
+   "unrecognised_names": [
+    "KABBA",
+    "KOGI"
+   ]
+  },
+  "NIGER": {
+   "unmapped_lgas": 5,
+   "claimed_twice": 0,
+   "unrecognised_names": [
+    "BATAGI",
+    "CHACHANGA",
+    "EDATI-IDATI",
+    "MASHEGU MAGAMA"
+   ]
+  },
+  "ZAMFARA": {
+   "unmapped_lgas": 1,
+   "claimed_twice": 0,
+   "unrecognised_names": [
+    "T/MAFARA"
+   ]
+  },
+  "FCT": {
+   "unmapped_lgas": 6,
+   "claimed_twice": 0,
+   "unrecognised_names": [
+    "ABAJI AREA COUNCIL",
+    "BWARI AREA COUNCIL",
+    "GWAGWA AREA COUNCIL",
+    "KUJE AREA COUNCIL",
+    "KWALI AREA COUNCIL",
+    "MUNICIPAL AREA COUNCIL"
+   ]
+  }
+ }
+}

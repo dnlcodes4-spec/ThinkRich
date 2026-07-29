@@ -6,15 +6,23 @@ import { createAdminClient, isAdminConfigured, ADMIN_NOT_CONFIGURED } from "@/li
 import { generateTempPassword } from "@/lib/provisioning";
 import type { Database } from "@/lib/database.types";
 import { FLAG_TEMPORARY } from "@/lib/must-change-password";
-import { NEXT_TIER, type Role } from "./tiers";
+import { allowedTargets, ROLE_LEVEL, type Role } from "./tiers";
 
-// The provisioning hierarchy (NEXT_TIER) is the SAME one the RLS profiles_insert
-// policy enforces, re-checked here because the service role bypasses RLS.
+// Provisioning authorization, re-checked here because the service role bypasses
+// RLS. Two rules, the same ones profiles_insert enforces:
+//   1. the target role must rank strictly BELOW the caller's;
+//   2. the target's geographic path must sit inside the caller's own scope.
+// For a national admin rule 2 is vacuous: their scope is the country, so any
+// path passes. That is deliberate, not an oversight.
 
 const schema = z.object({
   full_name: z.string().trim().min(2, "Enter the person's full name."),
   email: z.email("Enter a valid email address."),
-  geo_id: z.string().uuid().optional(),
+  target_role: z.string().min(1, "Choose a role."),
+  state_id: z.string().uuid().optional(),
+  lga_id: z.string().uuid().optional(),
+  ward_id: z.string().uuid().optional(),
+  polling_unit_id: z.string().uuid().optional(),
 });
 
 export type CreateAccountState = {
@@ -25,6 +33,11 @@ export type CreateAccountState = {
   role?: string;
   fieldErrors?: Record<string, string>;
 };
+
+function str(fd: FormData, key: string) {
+  const v = fd.get(key);
+  return typeof v === "string" && v.trim() !== "" ? v : undefined;
+}
 
 export async function createAccount(
   _prev: CreateAccountState,
@@ -44,13 +57,14 @@ export async function createAccount(
     .maybeSingle();
   if (!me) return { status: "error", message: "Your profile was not found." };
 
-  const tier = NEXT_TIER[me.role as Role];
-  if (!tier) return { status: "error", message: "Your role cannot create accounts." };
-
   const parsed = schema.safeParse({
     full_name: formData.get("full_name"),
     email: formData.get("email"),
-    geo_id: formData.get("geo_id") || undefined,
+    target_role: str(formData, "target_role"),
+    state_id: str(formData, "state_id"),
+    lga_id: str(formData, "lga_id"),
+    ward_id: str(formData, "ward_id"),
+    polling_unit_id: str(formData, "polling_unit_id"),
   });
   if (!parsed.success) {
     const fieldErrors: Record<string, string> = {};
@@ -59,41 +73,81 @@ export async function createAccount(
     }
     return { status: "error", message: "Please fix the highlighted fields.", fieldErrors };
   }
+  const d = parsed.data;
 
-  // Resolve the new account's full geographic path, validating that the chosen
-  // entity sits within the caller's own scope.
+  // Rule 1: is this a role the caller may create at all?
+  const targets = allowedTargets(me.role as Role);
+  const target = targets.find((t) => t.role === d.target_role);
+  if (!target) return { status: "error", message: "Your role cannot create that kind of account." };
+
   const admin = createAdminClient();
+
+  // Resolve and verify the full path bottom-up, so every level is genuinely the
+  // child of the one above it (no stitching an LGA onto the wrong state).
   let scope: Pick<
     Database["public"]["Tables"]["profiles"]["Insert"],
     "state_id" | "lga_id" | "ward_id" | "polling_unit_id"
   > = { state_id: null, lga_id: null, ward_id: null, polling_unit_id: null };
 
-  if (tier.level === "state") {
-    if (!parsed.data.geo_id) return { status: "error", message: "Select a state.", fieldErrors: { geo_id: "Required." } };
-    const { data } = await admin.from("states").select("id").eq("id", parsed.data.geo_id).maybeSingle();
-    if (!data) return { status: "error", message: "That state is not valid.", fieldErrors: { geo_id: "Invalid." } };
-    scope.state_id = parsed.data.geo_id;
-  } else if (tier.level === "lga") {
-    const { data } = await admin.from("lgas").select("id").eq("id", parsed.data.geo_id ?? "").eq("state_id", me.state_id ?? "").maybeSingle();
-    if (!data) return { status: "error", message: "Select an LGA within your state.", fieldErrors: { geo_id: "Out of scope." } };
-    scope = { state_id: me.state_id, lga_id: parsed.data.geo_id!, ward_id: null, polling_unit_id: null };
-  } else if (tier.level === "ward") {
-    const { data } = await admin.from("wards").select("id").eq("id", parsed.data.geo_id ?? "").eq("lga_id", me.lga_id ?? "").maybeSingle();
-    if (!data) return { status: "error", message: "Select a ward within your LGA.", fieldErrors: { geo_id: "Out of scope." } };
-    scope = { state_id: me.state_id, lga_id: me.lga_id, ward_id: parsed.data.geo_id!, polling_unit_id: null };
-  } else if (tier.level === "polling_unit") {
-    const { data } = await admin.from("polling_units").select("id").eq("id", parsed.data.geo_id ?? "").eq("ward_id", me.ward_id ?? "").maybeSingle();
-    if (!data) return { status: "error", message: "Select a polling unit within your ward.", fieldErrors: { geo_id: "Out of scope." } };
-    scope = { state_id: me.state_id, lga_id: me.lga_id, ward_id: me.ward_id, polling_unit_id: parsed.data.geo_id! };
-  } else {
-    // unit_coordinator -> leader: inherit the coordinator's full PU path.
-    scope = { state_id: me.state_id, lga_id: me.lga_id, ward_id: me.ward_id, polling_unit_id: me.polling_unit_id };
+  const level = ROLE_LEVEL[target.role];
+  const missing = (what: string) => ({
+    status: "error" as const,
+    message: `Select a ${what}.`,
+    fieldErrors: { geo: "Required." },
+  });
+
+  if (level === "state") {
+    if (!d.state_id) return missing("state");
+    const { data } = await admin.from("states").select("id").eq("id", d.state_id).maybeSingle();
+    if (!data) return { status: "error", message: "That state is not valid.", fieldErrors: { geo: "Invalid." } };
+    scope.state_id = d.state_id;
+  } else if (level === "lga") {
+    if (!d.lga_id) return missing("LGA");
+    const { data } = await admin.from("lgas").select("id, state_id").eq("id", d.lga_id).maybeSingle();
+    if (!data) return { status: "error", message: "That LGA is not valid.", fieldErrors: { geo: "Invalid." } };
+    scope = { state_id: data.state_id, lga_id: data.id, ward_id: null, polling_unit_id: null };
+  } else if (level === "ward") {
+    if (!d.ward_id) return missing("ward");
+    const { data } = await admin
+      .from("wards")
+      .select("id, lga_id, lgas(state_id)")
+      .eq("id", d.ward_id)
+      .maybeSingle();
+    if (!data) return { status: "error", message: "That ward is not valid.", fieldErrors: { geo: "Invalid." } };
+    const st = (data.lgas as { state_id?: string } | null)?.state_id ?? null;
+    scope = { state_id: st, lga_id: data.lga_id, ward_id: data.id, polling_unit_id: null };
+  } else if (level === "polling_unit") {
+    if (!d.polling_unit_id) return missing("polling unit");
+    const { data } = await admin
+      .from("polling_units")
+      .select("id, ward_id, wards(lga_id, lgas(state_id))")
+      .eq("id", d.polling_unit_id)
+      .maybeSingle();
+    if (!data) return { status: "error", message: "That polling unit is not valid.", fieldErrors: { geo: "Invalid." } };
+    const w = data.wards as { lga_id?: string; lgas?: { state_id?: string } } | null;
+    scope = {
+      state_id: w?.lgas?.state_id ?? null,
+      lga_id: w?.lga_id ?? null,
+      ward_id: data.ward_id,
+      polling_unit_id: data.id,
+    };
+  }
+
+  // Rule 2: containment. Every scope field the CALLER has set must match the
+  // target's path. A national admin has none set, so nothing constrains them.
+  const outOfScope =
+    (me.state_id && scope.state_id !== me.state_id) ||
+    (me.lga_id && scope.lga_id !== me.lga_id) ||
+    (me.ward_id && scope.ward_id !== me.ward_id) ||
+    (me.polling_unit_id && scope.polling_unit_id !== me.polling_unit_id);
+  if (outOfScope) {
+    return { status: "error", message: "That area is outside your own.", fieldErrors: { geo: "Out of scope." } };
   }
 
   // Create the auth user, then the profile. Roll back the user if the profile fails.
   const password = generateTempPassword();
   const { data: created, error: createErr } = await admin.auth.admin.createUser({
-    email: parsed.data.email,
+    email: d.email,
     password,
     email_confirm: true,
     app_metadata: FLAG_TEMPORARY,
@@ -108,8 +162,8 @@ export async function createAccount(
 
   const { error: profileErr } = await admin.from("profiles").insert({
     id: created.user.id,
-    role: tier.role,
-    full_name: parsed.data.full_name,
+    role: target.role,
+    full_name: d.full_name,
     ...scope,
   });
   if (profileErr) {
@@ -118,7 +172,7 @@ export async function createAccount(
   }
 
   // Assigning a state admin activates that state (T-019: "active once a State Admin is assigned").
-  if (tier.role === "state_admin" && scope.state_id) {
+  if (target.role === "state_admin" && scope.state_id) {
     await admin.from("states").update({ is_active: true }).eq("id", scope.state_id);
   }
 
@@ -126,7 +180,7 @@ export async function createAccount(
     status: "success",
     message: "Account created.",
     tempPassword: password,
-    email: parsed.data.email,
-    role: tier.role,
+    email: d.email,
+    role: target.role,
   };
 }

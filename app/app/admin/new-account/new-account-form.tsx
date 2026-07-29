@@ -3,33 +3,25 @@
 import { useActionState, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { SearchSelect } from "@/components/ui/search-select";
 import { createAccount, type CreateAccountState } from "./actions";
-
-type GeoOption = { id: string; name: string };
 
 const initial: CreateAccountState = { status: "idle" };
 
-export function NewAccountForm(props: {
-  targetRoleLabel: string;
-  geoLabel: string | null;
-  geoOptions: GeoOption[];
-}) {
+type Scope = {
+  state_id?: string;
+  lga_id?: string;
+  ward_id?: string;
+  polling_unit_id?: string;
+};
+
+type Props = { targetRole: string; targetRoleLabel: string; scope: Scope };
+
+export function NewAccountForm(props: Props) {
   const [instance, setInstance] = useState(0);
   return <Inner key={instance} onReset={() => setInstance((i) => i + 1)} {...props} />;
 }
 
-function Inner({
-  onReset,
-  targetRoleLabel,
-  geoLabel,
-  geoOptions,
-}: {
-  onReset: () => void;
-  targetRoleLabel: string;
-  geoLabel: string | null;
-  geoOptions: GeoOption[];
-}) {
+function Inner({ onReset, targetRole, targetRoleLabel, scope }: Props & { onReset: () => void }) {
   const [state, action, pending] = useActionState(createAccount, initial);
   const fe = state.fieldErrors ?? {};
 
@@ -58,19 +50,16 @@ function Inner({
 
   return (
     <form action={action} noValidate className="flex flex-col gap-5">
+      <input type="hidden" name="target_role" value={targetRole} />
+      {scope.state_id ? <input type="hidden" name="state_id" value={scope.state_id} /> : null}
+      {scope.lga_id ? <input type="hidden" name="lga_id" value={scope.lga_id} /> : null}
+      {scope.ward_id ? <input type="hidden" name="ward_id" value={scope.ward_id} /> : null}
+      {scope.polling_unit_id ? <input type="hidden" name="polling_unit_id" value={scope.polling_unit_id} /> : null}
+
       <Input label="Full name" name="full_name" autoComplete="name" required error={fe.full_name} />
       <Input label="Email" name="email" type="email" autoComplete="off" required error={fe.email} />
 
-      {geoLabel ? (
-        <SearchSelect
-          name="geo_id"
-          label={geoLabel}
-          options={geoOptions}
-          placeholder={`Search ${geoLabel.toLowerCase()}…`}
-          required
-          error={fe.geo_id}
-        />
-      ) : null}
+      {fe.geo ? <p className="text-xs text-danger">{fe.geo}</p> : null}
 
       {state.status === "error" && state.message ? (
         <p role="alert" className="text-sm text-danger">
@@ -78,7 +67,7 @@ function Inner({
         </p>
       ) : null}
 
-      <Button type="submit" loading={pending} className="sm:self-start">
+      <Button type="submit" loading={pending} className="capitalize sm:self-start">
         Create {targetRoleLabel} account
       </Button>
     </form>
