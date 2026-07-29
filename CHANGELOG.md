@@ -8,6 +8,28 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 
 ## [Unreleased]
 
+### Changed
+- **The product now lives on two origins** (CR-0008, ADR-0014). `thinkrichcommunity.com` serves the
+  ThinkRich Community umbrella landing and nothing else; everything Think-Winners — its landing, now
+  at the root, plus `/login` and every `/app` dashboard — moves to
+  `thinkwinners.thinkrichcommunity.com`. One Vercel project and one build still serve both: the
+  proxy branches on the `Host` header, redirecting misplaced paths (307, so a rollback is not stuck
+  in browser caches) and mounting the Think-Winners subtree at its own origin's root. The routing
+  table is a pure function with a unit-tested truth table, and the cross-origin link helpers are
+  generated from the same definition, so a link cannot drift from the routing.
+  The apex keeps one "Member login" link into the subdomain.
+  Setup and rollback: [deployment.md](docs/engineering/deployment.md).
+- **The split is configuration, not code.** `NEXT_PUBLIC_APEX_HOST` and
+  `NEXT_PUBLIC_THINK_WINNERS_HOST` enable it; with either unset it is a no-op and every surface
+  stays on one origin, which is what local dev and Vercel previews need. Unrecognised hosts, such as
+  preview URLs, are left unsplit rather than redirected into production. Unsetting both is also the
+  documented rollback.
+- **The PWA narrowed from the whole origin to `/app`.** Service workers are origin-scoped, and after
+  the split the root layout also renders a marketing site with nothing to install, so the registrar
+  moved out of the root layout into the app shell and both it and the manifest now scope to `/app`.
+  The manifest re-brands to Think-Winners navy (ADR-0008), since navy is what the installed app
+  opens into. No install base existed to migrate.
+
 ### Added
 - **Activity log (national)**: an append-only `activity_log` (migration `0015`) with a read policy
   scoped to active National Coordinators and **no insert policy at all**, so only the service role

@@ -22,6 +22,7 @@ How the system is built and why.
 ### 🛠 Engineering — [`engineering/`](engineering/)
 How we work.
 - [sdlc.md](engineering/sdlc.md) — lifecycle & environments
+- [deployment.md](engineering/deployment.md) — Vercel, DNS, and the two-origin split
 - [git-workflow.md](engineering/git-workflow.md) — trunk-based dev + Conventional Commits
 - [coding-standards.md](engineering/coding-standards.md) — conventions & Next 16 rules
 - [code-review.md](engineering/code-review.md) — review checklist & etiquette

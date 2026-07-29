@@ -1,20 +1,28 @@
 import type { MetadataRoute } from "next";
 
-// PWA manifest (ADR-0004). Served at /manifest.webmanifest and auto-linked by Next.
-// The members' app installs to the home screen with no app store; icons + colours
-// come from the ThinkRich (black) brand.
+// PWA manifest (ADR-0004, rescoped by CR-0008). Served at /manifest.webmanifest
+// and auto-linked by Next.
+//
+// The installable app is the Think-Winners members' app, which lives on the
+// Think-Winners origin under /app. It is NOT the ThinkRich umbrella landing, so
+// scope is /app rather than the whole origin: the apex is a marketing site with
+// nothing to install. That narrowing, plus a registrar that now mounts only
+// inside the app shell, is what keeps the two surfaces apart.
+//
+// Colours follow the Think-Winners navy (ADR-0008) rather than the ThinkRich
+// black (ADR-0010), because navy is what the installed app opens into.
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "ThinkRich Community",
-    short_name: "ThinkRich",
+    name: "Think-Winners Movement",
+    short_name: "Think-Winners",
     description:
-      "The ThinkRich Community members' app: your membership, candidates, and updates.",
+      "The Think-Winners members' app: your membership, your candidates, and updates from the movement.",
     start_url: "/app",
-    scope: "/",
+    scope: "/app",
     display: "standalone",
     orientation: "portrait",
-    background_color: "#0a0a0b",
-    theme_color: "#0a0a0b",
+    background_color: "#051527",
+    theme_color: "#051527",
     icons: [
       { src: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
       { src: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },

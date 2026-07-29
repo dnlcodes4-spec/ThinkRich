@@ -1,9 +1,16 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
-import Link from "next/link";
 import { Grain } from "./motifs";
 import { ThinkRichWordmark } from "./arm-mark";
+import { thinkWinnersHref } from "@/lib/origins";
+
+// Think-Winners lives on its own origin (CR-0008), so these are plain anchors,
+// not next/link: the destination is a different brand world with its own fonts
+// and palette, and a full navigation is both correct and cheaper than hydrating
+// two type systems. With the split off the helpers return same-origin paths.
+const TW_HOME = thinkWinnersHref("/");
+const TW_LOGIN = thinkWinnersHref("/login");
 
 const links = [
   { href: "#community", label: "The Community" },
@@ -69,13 +76,16 @@ export function ThinkRichNav() {
           </nav>
 
           <div className="flex items-center gap-2.5">
-            <Link
-              href="/think-winners"
+            <a href={TW_LOGIN} className={`${linkCls} hidden lg:inline-flex`}>
+              Member login
+            </a>
+            <a
+              href={TW_HOME}
               className="hidden items-center gap-1.5 rounded-md border border-green-400/40 px-3.5 py-2 text-sm font-semibold text-green-300 transition-colors hover:border-green-400 hover:text-green-200 sm:inline-flex"
             >
               <span aria-hidden="true" className="tw-ignite h-1.5 w-1.5 rounded-full bg-green-400" />
               Think-Winners
-            </Link>
+            </a>
             <a
               href="#join"
               className="hidden rounded-md bg-green-500 px-4 py-2 text-sm font-bold text-ink-950 transition-colors hover:bg-green-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400 sm:inline-flex"
@@ -126,8 +136,8 @@ export function ThinkRichNav() {
                   </span>
                 </a>
               ))}
-              <Link
-                href="/think-winners"
+              <a
+                href={TW_HOME}
                 onClick={() => setOpen(false)}
                 className="tw-rise group flex items-center justify-between border-b border-ink-50/10 py-5"
                 style={{ animationDelay: `${80 + links.length * 70}ms` }}
@@ -139,7 +149,7 @@ export function ThinkRichNav() {
                 <span aria-hidden="true" className="text-xl text-green-500/70 transition-transform group-hover:translate-x-1">
                   →
                 </span>
-              </Link>
+              </a>
             </nav>
             <div className="mt-auto">
               <a
@@ -149,6 +159,14 @@ export function ThinkRichNav() {
                 style={{ animationDelay: `${80 + (links.length + 1) * 70}ms` }}
               >
                 Get involved
+              </a>
+              <a
+                href={TW_LOGIN}
+                onClick={() => setOpen(false)}
+                className="tw-rise mt-4 flex min-h-11 items-center justify-center text-sm font-medium text-ink-50/70 transition-colors hover:text-green-400"
+                style={{ animationDelay: `${110 + (links.length + 1) * 70}ms` }}
+              >
+                Member login
               </a>
               <p
                 className="tw-rise mt-6 font-display text-lg italic text-ink-50/55"

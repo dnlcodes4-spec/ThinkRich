@@ -1,11 +1,11 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Reveal } from "@/components/marketing/reveal";
 import { Grain } from "@/components/marketing/motifs";
 import { ThinkRichNav } from "@/components/marketing/thinkrich-nav";
 import { HeroSlider } from "@/components/marketing/hero-slider";
 import { ArmsExplorer } from "@/components/marketing/arms-explorer";
 import { PhilosophyFlow } from "@/components/marketing/philosophy-flow";
+import { thinkWinnersHref } from "@/lib/origins";
 
 // ThinkRich Community: the umbrella front door (T-016). Purpose: inspire prospective members
 // about the community and route them to the arm that fits, above all to Think-Winners, the one
@@ -16,6 +16,10 @@ import { PhilosophyFlow } from "@/components/marketing/philosophy-flow";
 // TODO(T-021): point at a real community join/contact flow once the client confirms
 // the destination (self-serve signup isn't the model — members are leader-registered).
 const GET_INVOLVED = "#arms";
+
+// Think-Winners is its own origin once the split is on (CR-0008), so every route
+// into it is an absolute cross-origin URL and a plain <a>, not next/link.
+const TW_HOME = thinkWinnersHref("/");
 
 const focusAreas = [
   "Personal Development",
@@ -142,7 +146,7 @@ const arms = [
       "20,000 leaders → 200,000 voters",
       "Live today",
     ],
-    href: "/think-winners",
+    href: TW_HOME,
     live: true,
   },
 ];
@@ -261,13 +265,13 @@ export default function ThinkRichLanding() {
               education, engagement, and lawful mobilization. It&rsquo;s the one
               platform you can step into today.
             </p>
-            <Link
-              href="/think-winners"
+            <a
+              href={TW_HOME}
               className="mt-8 inline-flex min-h-12 items-center justify-center gap-1.5 rounded-md bg-green-500 px-7 text-sm font-bold text-ink-950 transition-colors hover:bg-green-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400"
             >
               Enter the movement
               <span aria-hidden="true">→</span>
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -330,13 +334,13 @@ export default function ThinkRichLanding() {
             live.
           </p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              href="/think-winners"
+            <a
+              href={TW_HOME}
               className="inline-flex min-h-12 items-center justify-center gap-1.5 rounded-md bg-ink-950 px-8 text-sm font-bold text-ink-50 transition-colors hover:bg-ink-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink-950"
             >
               Enter Think-Winners
               <span aria-hidden="true">→</span>
-            </Link>
+            </a>
             <a
               href={GET_INVOLVED}
               className="inline-flex min-h-12 items-center justify-center rounded-md border border-ink-950/30 px-7 text-sm font-bold text-ink-950 transition-colors hover:border-ink-950"
@@ -364,9 +368,9 @@ export default function ThinkRichLanding() {
               {arms.map((a) => (
                 <li key={a.key}>
                   {a.live && a.href ? (
-                    <Link href={a.href} className="hover:text-green-400">
+                    <a href={a.href} className="hover:text-green-400">
                       {a.name} <span className="text-green-400">· live</span>
-                    </Link>
+                    </a>
                   ) : (
                     a.name
                   )}

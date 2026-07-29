@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ServiceWorkerRegistrar } from "@/components/pwa/service-worker-registrar";
 
 // Body — Hanken Grotesk: warm, humanist, highly legible. Replaces Geist (the
 // create-next-app default that reads as a templated/AI build).
@@ -55,7 +54,6 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         {children}
-        <ServiceWorkerRegistrar />
       </body>
     </html>
   );

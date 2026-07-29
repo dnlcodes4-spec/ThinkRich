@@ -5,8 +5,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { Grain } from "./motifs";
 import { usePrefersReducedMotion } from "./use-reduced-motion";
+import { thinkWinnersHref } from "@/lib/origins";
 
 const DURATION = 5000;
+
+// Think-Winners sits on its own origin once the split is on (CR-0008).
+const TW_HOME = thinkWinnersHref("/");
+
+// In-page anchors and cross-origin URLs both want a plain <a>; only same-origin
+// route changes benefit from next/link.
+const isPlainAnchor = (href: string) => href.startsWith("#") || href.includes("://");
 
 type Cta = { label: string; href: string; primary?: boolean; arrow?: boolean };
 type Slide = {
@@ -29,7 +37,7 @@ const slides: Slide[] = [
     body: "People who think right, connect right, and build together. Leaders, entrepreneurs, savers, learners, and changemakers creating lasting value.",
     ctas: [
       { label: "Explore the community", href: "#arms", primary: true },
-      { label: "Enter Think-Winners", href: "/think-winners", arrow: true },
+      { label: "Enter Think-Winners", href: TW_HOME, arrow: true },
     ],
   },
   {
@@ -40,7 +48,7 @@ const slides: Slide[] = [
     accent: "Winning Together.",
     body: "The Think-Winners Movement is mobilizing. An organized grassroots network of 20,000 leaders turning communities into votes. Step into it today.",
     ctas: [
-      { label: "Enter the movement", href: "/think-winners", primary: true, arrow: true },
+      { label: "Enter the movement", href: TW_HOME, primary: true, arrow: true },
       { label: "See the six arms", href: "#arms" },
     ],
   },
@@ -160,7 +168,7 @@ export function HeroSlider() {
                 <p className="mt-6 max-w-md text-lg leading-relaxed text-ink-50/85">{s.body}</p>
                 <div className="mt-9 flex flex-wrap gap-3">
                   {s.ctas.map((c) =>
-                    c.href.startsWith("#") ? (
+                    isPlainAnchor(c.href) ? (
                       <a key={c.label} href={c.href} className={ctaCls(c)}>
                         {c.label}
                         {c.arrow && <span aria-hidden="true"> →</span>}

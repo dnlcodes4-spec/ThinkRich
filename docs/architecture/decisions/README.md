@@ -43,3 +43,5 @@ Small, local, easily-reversed choices do **not** need an ADR.
 | [0009](0009-type-system.md) | Type system — Zodiak (display) + Hanken Grotesk (body), replacing Geist | Accepted |
 | [0010](0010-thinkrich-black-brand.md) | ThinkRich umbrella adopts a black + green brand (per-surface) | Accepted |
 | [0011](0011-auth-email-password.md) | Authentication — email + password via Supabase Auth | Accepted |
+| [0012](0012-national-admin-bootstrap.md) | Bootstrapping the first national admin (dev-only page + prod seed) | Accepted |
+| [0014](0014-two-origin-host-split.md) | One deployment, two origins, split by Host in the proxy | Proposed |
