@@ -105,7 +105,7 @@ async function MemberHome({ userId, firstName }: { userId?: string; firstName: s
   const { data: me } = userId
     ? await supabase
         .from("members")
-        .select("membership_number, status")
+        .select("id, membership_number, status")
         .eq("user_id", userId)
         .maybeSingle()
     : { data: null };
@@ -124,6 +124,25 @@ async function MemberHome({ userId, firstName }: { userId?: string; firstName: s
           </div>
           <StatusPill status={me.status} />
         </div>
+      ) : null}
+
+      {/* CR-0009 §3.5: the card is downloadable at any time, not a one-off at
+          registration. Hidden while frozen or removed, matching the route, which
+          refuses those regardless of what the UI shows. */}
+      {me && me.status === "active" ? (
+        <a
+          href={`/app/members/${me.id}/card`}
+          className="mt-4 flex items-center gap-4 rounded-card border border-border bg-surface p-5 transition-colors hover:bg-surface-muted"
+        >
+          <span className="grid size-11 shrink-0 place-items-center rounded-md bg-surface-muted text-foreground">
+            <Icon name="profile" className="size-6" />
+          </span>
+          <div className="min-w-0 flex-1">
+            <p className="font-semibold text-foreground">Membership card</p>
+            <p className="mt-0.5 text-sm text-muted">Download your card to save or print.</p>
+          </div>
+          <Icon name="chevron" className="size-5 -rotate-90 text-muted" />
+        </a>
       ) : null}
 
       <Link
@@ -182,10 +201,17 @@ async function LeaderHome({ userId, firstName }: { userId?: string; firstName: s
         .limit(5)
     : { data: [] };
 
-  const CAP = 10;
+  // Ten is a MILESTONE, not a limit (CR-0009 §3.4). The cap and its database
+  // trigger are gone; a leader may register as many members as they can reach.
+  // The client asked for a congratulations message at ten, as a permanent badge,
+  // so it is derived from the count rather than stored as an event: no "seen"
+  // record, no dismissal. It follows that it also disappears if a leader drops
+  // back under ten through opt-outs, which is the honest behaviour for a badge
+  // that means "you currently hold ten or more".
+  const MILESTONE = 10;
   const count = total ?? 0;
-  const atCap = count >= CAP;
-  const pct = Math.min(100, Math.round((count / CAP) * 100));
+  const reachedMilestone = count >= MILESTONE;
+  const pct = Math.min(100, Math.round((count / MILESTONE) * 100));
 
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
@@ -196,31 +222,35 @@ async function LeaderHome({ userId, firstName }: { userId?: string; firstName: s
           <div>
             <p className="text-sm text-muted">Members registered</p>
             <p className="mt-1 font-display text-3xl font-semibold text-foreground">
-              {count} <span className="text-lg font-normal text-muted">of {CAP}</span>
+              {count}
+              {reachedMilestone ? null : (
+                <span className="text-lg font-normal text-muted"> of {MILESTONE}</span>
+              )}
             </p>
           </div>
-          {atCap ? (
-            <span className="rounded-md bg-surface-muted px-3 py-2 text-sm font-semibold text-muted">
-              Limit reached
-            </span>
-          ) : (
-            <Link
-              href="/app/register"
-              className="inline-flex min-h-11 items-center gap-2 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
-            >
-              <Icon name="register" className="size-5" />
-              Register a member
-            </Link>
-          )}
+          <Link
+            href="/app/register"
+            className="inline-flex min-h-11 items-center gap-2 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
+          >
+            <Icon name="register" className="size-5" />
+            Register a member
+          </Link>
         </div>
-        <div className="mt-4 h-2 overflow-hidden rounded-full bg-surface-muted">
-          <div className="h-full rounded-full bg-primary" style={{ width: `${pct}%` }} />
-        </div>
-        {atCap ? (
-          <p className="mt-3 text-sm text-muted">
-            You have reached the 10-member limit. Contact your coordinator if you need to register
-            more.
-          </p>
+        {reachedMilestone ? null : (
+          <div className="mt-4 h-2 overflow-hidden rounded-full bg-surface-muted">
+            <div className="h-full rounded-full bg-primary" style={{ width: `${pct}%` }} />
+          </div>
+        )}
+        {reachedMilestone ? (
+          <div className="mt-4 rounded-card border border-success/40 bg-success-soft p-4">
+            <p className="font-display text-lg font-semibold text-foreground">
+              Congratulations, {firstName}.
+            </p>
+            <p className="mt-1 text-sm text-foreground/80">
+              You have registered {count} members and passed your first ten. Keep going: there is no
+              limit on how many people you can bring into the movement.
+            </p>
+          </div>
         ) : null}
       </div>
 

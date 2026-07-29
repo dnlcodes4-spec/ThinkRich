@@ -29,49 +29,6 @@ _Not yet refined / not yet Ready._
      document this one cannot substitute for.
   Start from `docs/project/data/constituencies/unresolved-review.json`.
 
-### CR-0009 — captured 2026-07-29, not yet refined
-
-Pull order matters: T-038 to T-041 are independent and cheap; T-042 (the ADR) blocks the two items
-that touch authorization. See [CR-0009](change-requests/0009-vin-identity-role-upgrades-uncapped-leaders-and-membership-card.md).
-
-- **T-038** — Repair KYM leader verification. Mint a code at provisioning + backfill existing
-  leaders/admins (nothing mints one today, which is why verification "doesn't work"), add the
-  missing `isAdminConfigured()` guard, give `generateMyKymCode` a real action state. _(§3.6)_
-- **T-039** — Any admin may create any role below them. Generalise `allowedTargets()` to match what
-  `profiles_insert` already permits, deepen the geography cascade to the target role, delete the
-  national-admin special case. Application code only. _(§3.2)_
-- **T-040** — Lift the ≤10 leader cap: drop `private.enforce_leader_capacity()` + trigger, update
-  both RLS test suites, sweep the eleven docs that state ten as a ceiling. _(§3.4)_
-- **T-041** — Tenth-member congratulations on the leader dashboard. **Permanent badge**
-  (client-answered 2026-07-29), so it is derived from the active member count with no "seen" record
-  and no dismissal. _(§3.4. UI, needs visual sign-off. Depends on T-040.)_
-- **T-042** — **ADR-0015**: where voter identity lives, and the role-upgrade model. _(Blocks T-043,
-  T-045.)_
-- **T-043** — Migration: `voter_ids` table + FKs from `members` and `profiles`, the partial
-  constraint, server-side sanitise/uppercase/validate, VIN required in Zod at registration and
-  provisioning. Fixes the 3 fixture rows in the same migration (two share a VIN, none match the
-  format). _(§3.1. Depends on T-042. Do before launch: trivial now, expensive once real members
-  exist.)_
-- ~~**T-044**~~ — **Dropped 2026-07-29.** Existed to backfill VINs before constraining; measurement
-  showed 3 test rows and no real members, so nothing to backfill. Folded into T-043.
-- **T-045** — Migration: scope columns on member profiles plus backfill. Closes a real RLS hole:
-  member profiles carry no scope, so **no admin can currently read or update one**, and promotion is
-  impossible without this. _(§3.3. Depends on T-042.)_
-- **T-046** — Promote a member to leader (and an admin to any role below the caller): scoped action
-  under the caller's own credentials, confirmation UI, activity-log entry, RLS tests per role.
-  _(§3.3. UI, needs visual sign-off. Depends on T-045.)_
-- **T-047** — Migration: `gender` on `members`, plus the registration and change-request fields.
-  Required for the card's GENDER line. _(§3.5)_
-- **T-048** — Membership card download: server-side render onto the supplied blank template,
-  authorized route handler, member dashboard + leader roster entry points, deduplicated artwork.
-  Supersedes T-005. _(§3.5. UI, needs visual sign-off. Depends on T-047.)_
-  🔒 **Partly blocked:** the client asked for "WARD: 12" but no ward number exists (`wards` holds
-  only id/lga_id/name; names are place names). Ships with the ward NAME unless an INEC ward-code
-  import is funded. See CR-0009 §3.5.
-- **T-049** — Demotion, with "move their members first" enforced by a trigger plus a reassignment
-  step in the UI. Engineer-decided 2026-07-29; the client delegated it.
-  _(§3.3. UI, needs visual sign-off. Depends on T-046.)_
-
 ## 🟡 Ready
 _Refined, unblocked, ready to pull._
 
@@ -135,6 +92,31 @@ _One person, one task at a time. Keep this column small._
   Namecheap DNS records, the env-var contract, split verification, and the rollback path._
   _Outstanding for the CR: visual sign-off on both origins, then promote the 307s to 308 once the
   split has been stable in production._
+
+- **T-038 … T-049** — CR-0009 (VIN identity, role upgrades, uncapped leaders, membership card,
+  KYM repair), ADR-0015, branch `feat/t-041-t-049-cr-0009-remainder`.
+  _Done: **T-038** KYM codes are minted by the database on profile insert and on promotion, and every
+  existing leader/admin backfilled (`0021`); verification moved off the service role to a
+  `SECURITY DEFINER` `verify_kym_code()` returning only public identity (`0022`).
+  **T-039** `allowedTargets()` generalised to every role below the caller, matching `profiles_insert`
+  and deleting the national-admin special case.
+  **T-040** the ≤10 cap dropped (`0023`) with an eleven-site docs sweep.
+  **T-041** permanent milestone badge on the leader dashboard.
+  **T-042** [ADR-0015](../architecture/decisions/0015-voter-identity-and-role-upgrades.md).
+  **T-043** `voter_ids` table + FKs + partial constraints (`0024`), `lib/vin.ts` normalisation with
+  10 unit tests, VIN required at registration and provisioning; `0029` tightened the policies after
+  the Supabase advisor flagged an always-true INSERT and an over-broad read.
+  **T-045** member-profile scope backfilled + kept in step by a trigger (`0026`), closing the RLS
+  hole where no admin could read or write any member profile.
+  **T-046 / T-049** role change under the caller's own credentials, with demotion blocked while a
+  leader still holds members (`0028`).
+  **T-047** `members.gender` (`0025`). **T-048** server-rendered membership card behind an authorized
+  route, field geometry measured off the blank artwork.
+  Verified live: 12/12 leadership profiles hold codes, a leader registered 15 members, all four
+  privilege-escalation refusals hold, and a member can neither read nor write `voter_ids`.
+  Suites: `supabase/tests/kym_test.sql`, `supabase/tests/role_change_test.sql`, 74 unit tests._
+  _Outstanding: visual sign-off (deferred by the user), and **T-044 dropped** (no VINs to backfill).
+  T-048 prints a **system-assigned** ward number, not an INEC code, per the client's direction._
 
 ## 🟣 In Review
 _PR open, awaiting review + CI._

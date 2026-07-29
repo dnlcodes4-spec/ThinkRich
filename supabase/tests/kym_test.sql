@@ -34,11 +34,13 @@ insert into public.polling_units (id, ward_id, name)
   values ('e1000000-0000-0000-0000-000000000001','d1000000-0000-0000-0000-000000000001','KymPU');
 
 -- ─────────────── minting on insert ───────────────
-insert into public.profiles (id, role, full_name, state_id, lga_id, ward_id, polling_unit_id) values
-  ('a1000000-0000-0000-0000-000000000001','national_admin','KymNA',null,null,null,null),
-  ('a1000000-0000-0000-0000-000000000002','leader','KymLD','b1000000-0000-0000-0000-000000000001','c1000000-0000-0000-0000-000000000001','d1000000-0000-0000-0000-000000000001','e1000000-0000-0000-0000-000000000001'),
-  ('a1000000-0000-0000-0000-000000000003','member','KymMB',null,null,null,null),
-  ('a1000000-0000-0000-0000-000000000004','member','KymPromo',null,null,null,null);
+insert into public.voter_ids (vin) values ('KY00000000000000001'), ('KY00000000000000002');
+
+insert into public.profiles (id, role, full_name, vin_id, state_id, lga_id, ward_id, polling_unit_id) values
+  ('a1000000-0000-0000-0000-000000000001','national_admin','KymNA','KY00000000000000001',null,null,null,null),
+  ('a1000000-0000-0000-0000-000000000002','leader','KymLD','KY00000000000000002','b1000000-0000-0000-0000-000000000001','c1000000-0000-0000-0000-000000000001','d1000000-0000-0000-0000-000000000001','e1000000-0000-0000-0000-000000000001'),
+  ('a1000000-0000-0000-0000-000000000003','member','KymMB',null,null,null,null,null),
+  ('a1000000-0000-0000-0000-000000000004','member','KymPromo',null,null,null,null,null);
 
 select pg_temp.check(
   (select count(*) from public.leader_kym_codes
@@ -57,8 +59,10 @@ select pg_temp.check(
   'minted codes are XXX-XXX-XXX over the unambiguous alphabet (no 0/O, no 1/I)');
 
 -- ─────────────── minting on promotion (CR-0009 §3.3) ───────────────
+insert into public.voter_ids (vin) values ('KY00000000000000004');
 update public.profiles set
   role = 'leader',
+  vin_id = 'KY00000000000000004',
   state_id = 'b1000000-0000-0000-0000-000000000001',
   lga_id = 'c1000000-0000-0000-0000-000000000001',
   ward_id = 'd1000000-0000-0000-0000-000000000001',

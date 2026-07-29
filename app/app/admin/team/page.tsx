@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { manageableRoles, roleLabel, type Role } from "@/app/app/admin/new-account/tiers";
+import { ChangeRoleButton } from "./change-role-button";
 import { setAdminStatus } from "./actions";
 import { DeleteAccountButton } from "./delete-account";
 
@@ -142,6 +143,12 @@ export default async function TeamPage({
                       {inactive ? "Reactivate" : "Deactivate"}
                     </button>
                   </form>
+                  <ChangeRoleButton
+                    id={r.id}
+                    name={r.full_name}
+                    currentRole={shown}
+                    options={roles}
+                  />
                   <DeleteAccountButton id={r.id} name={r.full_name} />
                 </div>
               </li>

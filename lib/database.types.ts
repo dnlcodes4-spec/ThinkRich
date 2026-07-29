@@ -535,6 +535,7 @@ export type Database = {
           email: string | null
           frozen_at: string | null
           full_name: string
+          gender: Database["public"]["Enums"]["gender"] | null
           id: string
           lga_id: string
           membership_number: string
@@ -546,6 +547,7 @@ export type Database = {
           status: Database["public"]["Enums"]["member_status"]
           user_id: string | null
           vin: string | null
+          vin_id: string | null
           ward_id: string
         }
         Insert: {
@@ -558,6 +560,7 @@ export type Database = {
           email?: string | null
           frozen_at?: string | null
           full_name: string
+          gender?: Database["public"]["Enums"]["gender"] | null
           id?: string
           lga_id: string
           membership_number?: string
@@ -569,6 +572,7 @@ export type Database = {
           status?: Database["public"]["Enums"]["member_status"]
           user_id?: string | null
           vin?: string | null
+          vin_id?: string | null
           ward_id: string
         }
         Update: {
@@ -581,6 +585,7 @@ export type Database = {
           email?: string | null
           frozen_at?: string | null
           full_name?: string
+          gender?: Database["public"]["Enums"]["gender"] | null
           id?: string
           lga_id?: string
           membership_number?: string
@@ -592,6 +597,7 @@ export type Database = {
           status?: Database["public"]["Enums"]["member_status"]
           user_id?: string | null
           vin?: string | null
+          vin_id?: string | null
           ward_id?: string
         }
         Relationships: [
@@ -853,6 +859,7 @@ export type Database = {
           role: Database["public"]["Enums"]["user_role"]
           state_id: string | null
           status: string
+          vin_id: string | null
           ward_id: string | null
         }
         Insert: {
@@ -864,6 +871,7 @@ export type Database = {
           role: Database["public"]["Enums"]["user_role"]
           state_id?: string | null
           status?: string
+          vin_id?: string | null
           ward_id?: string | null
         }
         Update: {
@@ -875,6 +883,7 @@ export type Database = {
           role?: Database["public"]["Enums"]["user_role"]
           state_id?: string | null
           status?: string
+          vin_id?: string | null
           ward_id?: string | null
         }
         Relationships: [
@@ -959,24 +968,42 @@ export type Database = {
         }
         Relationships: []
       }
+      voter_ids: {
+        Row: {
+          created_at: string
+          vin: string
+        }
+        Insert: {
+          created_at?: string
+          vin: string
+        }
+        Update: {
+          created_at?: string
+          vin?: string
+        }
+        Relationships: []
+      }
       wards: {
         Row: {
           created_at: string
           id: string
           lga_id: string
           name: string
+          ward_number: number
         }
         Insert: {
           created_at?: string
           id?: string
           lga_id: string
           name: string
+          ward_number?: number
         }
         Update: {
           created_at?: string
           id?: string
           lga_id?: string
           name?: string
+          ward_number?: number
         }
         Relationships: [
           {
@@ -1093,6 +1120,7 @@ export type Database = {
         | "federal_constituency"
         | "state_constituency"
       election_scope: "national" | "state"
+      gender: "male" | "female"
       member_status: "active" | "frozen" | "deleted"
       opt_out_status: "requested" | "frozen" | "deleted" | "reactivated"
       user_role:
@@ -1241,6 +1269,7 @@ export const Constants = {
         "state_constituency",
       ],
       election_scope: ["national", "state"],
+      gender: ["male", "female"],
       member_status: ["active", "frozen", "deleted"],
       opt_out_status: ["requested", "frozen", "deleted", "reactivated"],
       user_role: [

@@ -84,6 +84,12 @@ erDiagram
    member to whoever registered them, and every count in the product keys on it.
 3. **No duplicate registration** — key = **NIN** (CR-0002). Enforced by a **UNIQUE constraint on
    `members.nin`** (plus a soft-warn at registration for a friendly message).
+4. **Voter identity is unique across the whole system** (CR-0009 §3.1, ADR-0015). The VIN lives in
+   `public.voter_ids` keyed by the number itself; `members.vin_id` and `profiles.vin_id` are
+   nullable, uniquely-indexed references to it. That makes system-wide uniqueness a **primary key**
+   rather than a cross-table trigger, and lets one person who is both a member and a leader point
+   both rows at the same entry. Required by partial CHECK (not `NOT NULL`, which would break the
+   PII erasure in `0009`), and normalised server-side by `lib/vin.ts` before any write.
 4. **Age ≥ 18** at registration — DB check on `date_of_birth` (anyone under 18 cannot be registered).
 4. A member's `state_id`/`lga_id`/`ward_id` are consistent (ward ∈ lga ∈ state).
 5. Members cannot self-register: inserts into `members` come only from a leader's Server Action.

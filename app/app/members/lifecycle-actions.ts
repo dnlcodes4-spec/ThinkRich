@@ -154,7 +154,7 @@ export async function deleteMember(formData: FormData): Promise<void> {
 
   const { data: member } = await c.supabase
     .from("members")
-    .select("id, status, user_id, passport_photo_url")
+    .select("id, status, user_id, passport_photo_url, vin_id")
     .eq("id", id.data)
     .maybeSingle();
   if (!member || member.status !== "frozen") return;
@@ -177,7 +177,7 @@ export async function deleteMember(formData: FormData): Promise<void> {
       deleted_at: nowIso(),
       full_name: "(deleted)",
       nin: null,
-      vin: null,
+      vin_id: null,
       email: null,
       date_of_birth: null,
       account_number: null,
@@ -187,6 +187,21 @@ export async function deleteMember(formData: FormData): Promise<void> {
       user_id: null,
     })
     .eq("id", member.id);
+
+  // Release the voter ID. A bare VIN still identifies a real person against
+  // INEC's register, so leaving the row behind would defeat the erasure this
+  // function exists to perform. It is a shared row (ADR-0015), so it is only
+  // removed once nothing else points at it; the FK is ON DELETE RESTRICT, which
+  // makes a mistake here fail loudly rather than cascade.
+  if (member.vin_id) {
+    const [{ count: memberRefs }, { count: profileRefs }] = await Promise.all([
+      admin.from("members").select("id", { count: "exact", head: true }).eq("vin_id", member.vin_id),
+      admin.from("profiles").select("id", { count: "exact", head: true }).eq("vin_id", member.vin_id),
+    ]);
+    if ((memberRefs ?? 0) === 0 && (profileRefs ?? 0) === 0) {
+      await admin.from("voter_ids").delete().eq("vin", member.vin_id);
+    }
+  }
 
   if (member.passport_photo_url) {
     await admin.storage.from("member-photos").remove([member.passport_photo_url]);

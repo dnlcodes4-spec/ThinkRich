@@ -1,6 +1,6 @@
 # CR-0009: VIN identity, role upgrades, uncapped leaders, membership card, KYM repair
 
-- **Status:** Planned <!-- Captured | Assessed | Planned | In Progress | Shipped | Rejected | Deferred -->
+- **Status:** In Progress <!-- Captured | Assessed | Planned | In Progress | Shipped | Rejected | Deferred -->
 - **Requested by:** Client (relayed by engineer)
 - **Date requested:** 2026-07-29
 - **Channel:** message
@@ -425,5 +425,29 @@ in the data (§3.5). It ships with the ward *name* unless the client funds an IN
 
 ## 7. Outcome
 
-- **Shipped in:** _pending_
+All eleven planned tasks are built and verified against the live database. **T-044 was dropped**
+(nothing to backfill), and **T-049** was added once the demotion rule was decided.
+
+Verified live, each inside a transaction that rolled back:
+
+- 12 of 12 leadership profiles hold a well-formed KYM code; the 2 members correctly hold none.
+- A leader registered 15 members with the cap gone.
+- All four privilege-escalation attempts are refused: promoting to the caller's own rank, above it,
+  promoting themselves, and acting out of scope.
+- A leader holding an active member cannot be demoted; once the member is moved, the demotion goes
+  through.
+- A member can neither read nor write `voter_ids`; a leader can insert.
+- Both `role='member'` profiles now carry scope, where before neither did.
+
+**Two things a reviewer should look at before this merges:**
+
+1. **Visual sign-off is outstanding.** The user deferred it for this stretch. Surfaces that changed:
+   the leader dashboard (milestone badge replaces the cap meter), registration (VIN + gender fields),
+   account provisioning (VIN field), the team page (change-role control), the member dashboard and
+   member detail (card download), and `/app/kym`.
+2. **The ward number on the card is system-assigned** (§3.5). It is an ordinal within the LGA, not an
+   INEC ward code, adopted on the client's direction after we flagged that no ward number exists in
+   the data. It must never be presented as an official code.
+
+- **Shipped in:** _pending PR_
 - **Client confirmed:** _pending_
