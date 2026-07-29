@@ -69,7 +69,7 @@ erDiagram
 > **Leadership model (CR-0003).** Every role **except `member` is a leader**, at a different level.
 > The chain is **National → State → LG → Ward → Polling Unit → Leader → Member**: `national_admin`
 > is the apex (#1); `unit_coordinator` (polling unit) coordinates the grassroots `leader`s beneath
-> it; each `leader` serves **≤10 members**. `ward_admin` was added here between `lg_admin` and
+> it; each `leader` serves their own members. `ward_admin` was added here between `lg_admin` and
 > `unit_coordinator`, mirroring the electoral geography (State → LGA → Ward → Polling Unit).
 
 **`member.status` enum:** `active` · `frozen` · `deleted`.
@@ -78,10 +78,10 @@ erDiagram
 
 1. `membership_number` is **unique** and **never updated** after insert. **Format (confirmed):**
    `TWM-<STATE>-<LGA>-<seq>` (e.g. `TWM-LA-IKJ-000123`) — sequence is per-LGA, zero-padded.
-2. A `leader` has **≤ 10** `active` members (`registered_by` count check). The cap is scoped to
-   **leaders**: the National Coordinator may also register members (migration `0019`), and when a
-   member is held by them rather than attributed to a leader, no cap applies. Attributing a member
-   to a leader still counts against that leader's ten.
+2. **There is no limit on how many members a `leader` may hold.** Ten was a hard cap until
+   CR-0009 §3.4; migration `0023` dropped `enforce_leader_capacity()` and its trigger, turning ten
+   into a **milestone** celebrated on the leader's dashboard. `registered_by` still attributes every
+   member to whoever registered them, and every count in the product keys on it.
 3. **No duplicate registration** — key = **NIN** (CR-0002). Enforced by a **UNIQUE constraint on
    `members.nin`** (plus a soft-warn at registration for a friendly message).
 4. **Age ≥ 18** at registration — DB check on `date_of_birth` (anyone under 18 cannot be registered).
@@ -153,7 +153,7 @@ Every table has RLS enabled. Representative policies (full SQL in migrations):
 | L.G admin | members in their `lga_id` (all wards within) | scoped oversight |
 | Ward admin | members in their `ward_id` (all polling units within) | scoped oversight |
 | Unit coordinator | members in their `polling_unit_id` | scoped oversight of the leaders beneath |
-| Leader | their own ≤10 members | register/edit their members; download their cards |
+| Leader | their own registered members | register/edit their members; download their cards |
 | Member | their own record only | profile photo; submit change/opt-out requests |
 
 See [security-model.md](security-model.md) and

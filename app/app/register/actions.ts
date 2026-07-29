@@ -5,19 +5,19 @@ import { createClient } from "@/lib/supabase/server";
 import { provisionMemberLogin } from "@/app/app/members/provision-login";
 import { logActivityAs } from "@/lib/activity";
 
-// Registering a member (T-004, extended by T-033).
+// Registering a member (T-004, extended by T-033 and T-040).
 //
 // A LEADER registers into their own polling unit; geography is not chosen, it is
-// derived from their profile, and the <= 10-active-members cap applies.
+// derived from their profile. There is no longer a limit on how many members they
+// may hold: CR-0009 §3.4 turned ten from a ceiling into a milestone, and migration
+// 0023 dropped the enforcing trigger.
 //
 // The NATIONAL COORDINATOR registers into any polling unit and may attribute the
-// member to a leader there. Attributed to a leader, the member counts against
-// that leader's ten. Held by the coordinator, the cap does not apply, because the
-// invariant is about leaders (see 0019).
+// member to a leader there, which keeps the member inside the leadership chain.
 //
 // The membership number is assigned by a DB trigger; RLS + triggers enforce
-// scope, NIN uniqueness, age >= 18 and the cap. This action validates input and
-// maps DB errors to friendly messages; it never bypasses RLS (no service role).
+// scope, NIN uniqueness and age >= 18. This action validates input and maps DB
+// errors to friendly messages; it never bypasses RLS (no service role).
 
 const schema = z.object({
   full_name: z.string().trim().min(2, "Enter the member's full name."),
@@ -204,15 +204,6 @@ export async function registerMember(
         status: "error",
         message: "That email is already in use.",
         fieldErrors: { email: "Already in use." },
-      };
-    }
-    if (m.includes("capacity")) {
-      return {
-        status: "error",
-        message: isNational
-          ? "That leader already holds 10 active members. Choose another leader, or leave it unassigned."
-          : "You have reached your limit of 10 active members.",
-        fieldErrors: isNational ? { registered_by: "Leader is full." } : undefined,
       };
     }
     if (m.includes("18 years")) {
