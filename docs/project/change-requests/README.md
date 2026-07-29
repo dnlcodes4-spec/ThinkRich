@@ -36,6 +36,7 @@ reviewable, impact-assessed, trackable unit of work.
 | [0007](0007-full-elective-office-coverage.md) | Full elective-office coverage, admin-maintained | Client | 2026-07-28 | In Progress | T-026 … T-031 | ADR-0013 |
 | [0008](0008-two-origin-split-apex-landing-thinkwinners-subdomain.md) | Two-origin split — apex serves the umbrella landing, Think-Winners moves to a subdomain | Client | 2026-07-29 | In Progress | T-034 … T-037 | ADR-0014 |
 | [0009](0009-vin-identity-role-upgrades-uncapped-leaders-and-membership-card.md) | VIN identity, role upgrades, uncapped leaders, membership card, KYM repair | Client | 2026-07-29 | In Progress | T-038 … T-049 | ADR-0015 |
+| [0010](0010-leadership-section-and-president-profile.md) | Leadership section on both landings + President's profile page | Client | 2026-07-29 | Captured | T-050 … T-053 | — |
 
 <!--
 Example row once CRs exist:

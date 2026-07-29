@@ -1,4 +1,6 @@
 import { Reveal } from "@/components/marketing/reveal";
+import { Leadership } from "@/components/marketing/leadership";
+import { apexHref } from "@/lib/origins";
 import { ThinkWinnersNav } from "@/components/marketing/nav";
 import { Hero, NigeriaMap } from "@/components/marketing/hero";
 import { Grain } from "@/components/marketing/motifs";
@@ -221,6 +223,12 @@ export default function ThinkWinnersLanding() {
           <ProcessStepper phases={phases} />
         </div>
       </section>
+
+      {/* ───────────── Who runs it (CR-0010) ───────────── */}
+      {/* Placed after the process and before the manifesto: a campaign has just
+          seen how the work is done, so the people accountable for it land next.
+          The profile page lives on the apex origin, hence apexHref (CR-0008). */}
+      <Leadership brand="think-winners" profileHref={apexHref("/leaders/president")} />
 
       {/* ───────────── What we stand for (vision + mission + values + lawful) ───────────── */}
       <section className={`bg-white ${SECTION} mx-auto max-w-5xl`}>

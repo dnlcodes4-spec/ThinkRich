@@ -41,6 +41,21 @@ _Refined, unblocked, ready to pull._
 ## 🟠 In Progress
 _One person, one task at a time. Keep this column small._
 
+- **T-050 … T-053** — Leadership section on both landings + the President's profile page
+  (CR-0010), on `feat/leadership-section-and-president-profile`.
+  _Done: `lib/leadership.ts` content module with 13 tests; the `Leadership` section component,
+  brand-parametrised and mounted on both landings with per-audience copy; `/leaders/president` as a
+  full editorial page; "Leadership" added to the ThinkRich nav, which now also takes a `base` so its
+  anchors work away from the landing. Client portraits cropped to five normalised 4:5 plates with
+  the recipe recorded in `public/leaders/CREDITS.md`. Roster reading and the President's styling
+  confirmed by the client. Lint, typecheck, 100 tests and the production build are green._
+  _Two things the photographs forced, both in CR-0010 §9: the supporting band dropped from a 2+1+1
+  layout to equal thirds because only one of the Vice President's two images is usable, and the
+  President's spread was rebuilt (primary fills its column, second insets off the corner) after the
+  side-by-side pair computed smaller than the portraits below it and inverted the hierarchy._
+  _Outstanding: visual sign-off, then a clean second portrait of the Vice President and a
+  watermark-free copy of the Secretary's photo from the client._
+
 - **T-027 / T-028** — Elective-office model (CR-0007, ADR-0013), branch pending.
   _Done: migrations `0016`–`0018` applied (office catalogue, parties, elections, constituencies +
   membership, candidacies; containment RLS; `candidacies_for_geography()` /

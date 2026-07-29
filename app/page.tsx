@@ -5,6 +5,7 @@ import { ThinkRichNav } from "@/components/marketing/thinkrich-nav";
 import { HeroSlider } from "@/components/marketing/hero-slider";
 import { ArmsExplorer } from "@/components/marketing/arms-explorer";
 import { PhilosophyFlow } from "@/components/marketing/philosophy-flow";
+import { Leadership } from "@/components/marketing/leadership";
 import { thinkWinnersHref } from "@/lib/origins";
 
 // ThinkRich Community: the umbrella front door (T-016). Purpose: inspire prospective members
@@ -296,6 +297,12 @@ export default function ThinkRichLanding() {
           </div>
         </div>
       </section>
+
+      {/* ───────────── Leadership (CR-0010) ───────────── */}
+      {/* Sits here deliberately: it answers "who is behind these six arms?" the
+          moment the arms have been laid out, and hands off to the philosophy
+          section, which is the President's own idea. */}
+      <Leadership brand="thinkrich" profileHref="/leaders/president" />
 
       {/* ───────────── Philosophy (four-beat) ───────────── */}
       <section

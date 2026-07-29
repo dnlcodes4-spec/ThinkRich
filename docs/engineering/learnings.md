@@ -170,3 +170,32 @@ history, or an existing doc.
 - **Lesson:** a PR that references files living in another unmerged PR has dangling links until
   both merge. Foundational, dependency-ordered work is cleaner merged in order than stacked.
 - **Action:** merge the depended-on PR first, then branch the dependent work off updated `main`.
+
+### 2026-07-29 — A passed-in `absolute` loses to a component's own `relative`
+- **Context:** CR-0010's leadership section. The President's second portrait had to overlap the
+  primary's corner, so `absolute right-0 bottom-0` was passed to `<Portrait>` via `className`.
+  It rendered *below* the primary instead, in normal flow.
+- **Lesson:** `Portrait` sets `relative` on its own root and appends the incoming `className`.
+  Both utilities have identical specificity, so the winner is whichever Tailwind emits **later in
+  the generated stylesheet**, not whichever appears later in the class attribute. `relative` won.
+  Class-attribute order is not a cascade.
+- **Action:** never override a component's own positioning by passing a competing utility. Wrap it
+  in a positioned parent instead, or have the component accept an explicit prop. The same trap
+  applies to any single-property pair a component sets internally (`block`/`flex`, `static`/`fixed`).
+
+### 2026-07-29 — Verify client assets before designing around their count
+- **Context:** the leadership section was designed on the client's statement that "the president and
+  vice president have two images." The supporting band was built as a 2+1+1 grid so the Vice
+  President's double-width cell could hold both of theirs. When the files arrived, one of the two
+  was a full-length shot across a hall: head ~170px inside 851x1280, so a head-and-shoulders crop
+  lands near 350px and is too soft for any tile. Effectively one usable image, and the band had to
+  be rebuilt as equal thirds.
+- **Lesson:** an asset count is not an asset. "We have two images" says nothing about register,
+  resolution, or framing, and a layout whose structure *depends* on the count is a layout built on
+  an unverified premise. Real photos also broke the hierarchy a second way: the President's
+  side-by-side pair computed to ~263px against ~347px tiles below, so the lead was smaller than the
+  supporting cast — invisible while placeholders stood in.
+- **Action:** for asset-dependent layouts, inspect the actual files (dimensions and subject framing)
+  before committing to a structure, and sanity-check computed element widths against the hierarchy
+  you intend. Placeholders hide both problems. Where assets are still outstanding, prefer a
+  structure that degrades to fewer items rather than one that requires a specific count.
