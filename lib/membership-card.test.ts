@@ -1,5 +1,12 @@
 import { describe, it, expect } from "vitest";
-import { renderCardSvg, cardFileName, fitText, CARD_WIDTH, CARD_HEIGHT } from "./membership-card";
+import {
+  renderCardSvg,
+  cardFileName,
+  fitText,
+  splitMembershipNumber,
+  CARD_WIDTH,
+  CARD_HEIGHT,
+} from "./membership-card";
 
 const BLANK = "data:image/png;base64,AAAA";
 
@@ -20,7 +27,10 @@ describe("renderCardSvg", () => {
     expect(svg).toContain("Oyo");
     expect(svg).toContain("Ibadan South-West");
     expect(svg).toContain(">12<");
-    expect(svg).toContain("TWM-OG-01-000001");
+    // The number is set across two lines (see "code strip layout"), so it is no
+    // longer one contiguous string in the output.
+    expect(svg).toContain(">TWM-OG-<");
+    expect(svg).toContain(">01-000001<");
     expect(svg).toContain(BLANK);
   });
 
@@ -115,5 +125,48 @@ describe("renderCardSvg overflow handling", () => {
     expect(svg).toMatch(/font-size="62"[^>]*>Oyo</);
     const nameSize = svg.match(/font-size="(\d+)"[^>]*>Oluwadamilare/)?.[1];
     expect(Number(nameSize)).toBeLessThan(62);
+  });
+});
+
+describe("splitMembershipNumber", () => {
+  it("breaks after the LGA segment, the way the client's sample does", () => {
+    expect(splitMembershipNumber("TWM-OG-01-000001")).toEqual(["TWM-OG-", "01-000001"]);
+  });
+
+  it("refuses to split anything that is not the four-part format", () => {
+    expect(splitMembershipNumber("TWM-OG-000001")).toBeNull();
+    expect(splitMembershipNumber("SOMETHINGELSE")).toBeNull();
+    expect(splitMembershipNumber("TWM-OG-01-000001-X")).toBeNull();
+  });
+
+  it("rejoins to the original, so no character is lost in the break", () => {
+    const n = "TWM-FC-31-004821";
+    expect(splitMembershipNumber(n)!.join("")).toBe(n);
+  });
+});
+
+describe("code strip layout", () => {
+  it("sets a well-formed number on two lines at full size", () => {
+    const svg = renderCardSvg(base, BLANK);
+    expect(svg).toContain('>TWM-OG-<');
+    expect(svg).toContain('>01-000001<');
+    // Both lines keep the artwork's size rather than shrinking to fit one line.
+    expect(svg).toMatch(/font-size="58"[^>]*>TWM-OG-</);
+  });
+
+  it("clears the 'Code' label rather than printing over it", () => {
+    const svg = renderCardSvg(base, BLANK);
+    const xs = [...svg.matchAll(/<text x="(\d+)"[^>]*class="code"/g)].map((m) => Number(m[1]));
+    expect(xs.length).toBe(2);
+    // The number begins at x=253 in the client's sample; the white "Code" label
+    // sits to the left of it and must not be overlapped.
+    for (const x of xs) expect(x).toBeGreaterThanOrEqual(253);
+  });
+
+  it("falls back to a single fitted line for an unexpected format", () => {
+    const svg = renderCardSvg({ ...base, membershipNumber: "LEGACY0001" }, BLANK);
+    const xs = [...svg.matchAll(/class="code"/g)];
+    expect(xs.length).toBe(1);
+    expect(svg).toContain("LEGACY0001");
   });
 });

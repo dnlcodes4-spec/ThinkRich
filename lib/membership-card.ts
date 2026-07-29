@@ -70,14 +70,40 @@ const ROW_FONT = 62;
 // Right-hand limit: the card edge, kept clear of the watermark.
 const VALUE_LIMIT_X = CARD_WIDTH - 70;
 
-// Code strip. The strip carries a vertical divider at x=643 (measured), and the
-// number must stop before it: at the old 620px budget "TWM-OG-01-000001" ran
-// straight through the divider and into the signature block.
-const CODE_X = 270;
-const CODE_Y = 1035;
-const CODE_FONT = 54;
+// Code strip, measured off the client's FILLED sample rather than guessed, so the
+// number is set the way they set it: TWO lines at full size, not one shrunken
+// line. Their sample renders "TWM-OG-" above "01-000001" at baselines 1009 and
+// 1064 (cap height ~43px, so ~58px type).
+//
+// The x was found by DIFFERENCING the filled sample against the blank, keeping
+// only pixels white in one and not the other. Scanning the filled sample alone
+// gave x=180, which is the vertical white "Code" label that exists in both, and
+// positioning the number there put it straight through that label.
+// The number itself spans x=253 to x=588.
+//
+// The strip carries a vertical divider at x=643. Fitting the whole number on one
+// line inside that box forced it down to 35px, which is legible but noticeably
+// smaller than the artwork intends. Splitting on the membership number's own
+// structure keeps it large AND inside the box.
+const CODE_X = 253;
+const CODE_LINE_Y = [1009, 1064];
+const CODE_SINGLE_Y = 1040;
+const CODE_FONT = 58;
 const CODE_DIVIDER_X = 643;
-const CODE_MAX_W = CODE_DIVIDER_X - CODE_X - 25;
+const CODE_MAX_W = CODE_DIVIDER_X - CODE_X - 20;
+
+/**
+ * Split a membership number across the two lines the artwork expects.
+ *
+ * The format is TWM-<STATE>-<LGA>-<seq> (0007), and the client's sample breaks it
+ * after the LGA segment. Anything that does not have those four parts falls back
+ * to a single fitted line rather than being split at an arbitrary point.
+ */
+export function splitMembershipNumber(value: string): [string, string] | null {
+  const parts = value.split("-");
+  if (parts.length !== 4) return null;
+  return [`${parts[0]}-${parts[1]}-`, `${parts[2]}-${parts[3]}`];
+}
 
 // Width per character as a fraction of font size. MEASURED off a real render
 // rather than guessed: "Okesooto Olanrewaju" (19 chars at 62px) spans ~545px,
@@ -156,12 +182,19 @@ export function renderCardSvg(data: CardData, blankDataUri: string): string {
     .filter(Boolean)
     .join("\n    ");
 
-  const code = textEl(
-    CODE_X,
-    CODE_Y,
-    "code",
-    fitText(data.membershipNumber, CODE_MAX_W, CODE_FONT, MIN_CODE_FONT, MONO_RATIO),
-  );
+  const split = splitMembershipNumber(data.membershipNumber);
+  const code = split
+    ? split
+        .map((line, i) =>
+          textEl(CODE_X, CODE_LINE_Y[i], "code", fitText(line, CODE_MAX_W, CODE_FONT, MIN_CODE_FONT, MONO_RATIO)),
+        )
+        .join("\n  ")
+    : textEl(
+        CODE_X,
+        CODE_SINGLE_Y,
+        "code",
+        fitText(data.membershipNumber, CODE_MAX_W, CODE_FONT, MIN_CODE_FONT, MONO_RATIO),
+      );
 
   // The membership number sits in the dark footer strip, beside the "Code" label.
   // Font sizes are per-element (set by fitText) rather than in the stylesheet, so
