@@ -7,9 +7,9 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { manageableRoles, type Role } from "@/app/app/admin/new-account/tiers";
 import { logActivityAs } from "@/lib/activity";
 
-// Deactivate / reactivate a subordinate admin. Every admin manages exactly the
-// tier below them; the NATIONAL ADMIN manages every level (manageableRoles, the
-// same rule as provisioning). Authorization is re-checked in code: the target
+// Deactivate / reactivate a subordinate admin. Every admin manages every role
+// that ranks below them (manageableRoles, the same rule as provisioning, and the
+// same rule the database enforces). Authorization is re-checked in code: the target
 // must be visible under RLS (the scope check) and its role must be one the
 // caller manages. Deactivating sets the profile status AND bans the auth user so
 // they can no longer sign in.

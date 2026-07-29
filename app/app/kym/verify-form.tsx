@@ -37,6 +37,13 @@ export function VerifyForm() {
           <p className="mt-1 text-sm text-muted">No active leader matches that code.</p>
         </div>
       ) : null}
+
+      {state.status === "signedout" ? (
+        <div className="mt-4 rounded-card border border-border bg-surface-muted p-4">
+          <p className="text-sm font-semibold text-foreground">Sign in again to verify</p>
+          <p className="mt-1 text-sm text-muted">Your session ended while this page was open.</p>
+        </div>
+      ) : null}
     </div>
   );
 }

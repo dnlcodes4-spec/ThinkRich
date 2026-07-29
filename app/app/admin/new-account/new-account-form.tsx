@@ -2,6 +2,7 @@
 
 import { useActionState, useState } from "react";
 import { Input } from "@/components/ui/input";
+import { VinInput } from "@/components/ui/vin-input";
 import { Button } from "@/components/ui/button";
 import { createAccount, type CreateAccountState } from "./actions";
 
@@ -58,6 +59,7 @@ function Inner({ onReset, targetRole, targetRoleLabel, scope }: Props & { onRese
 
       <Input label="Full name" name="full_name" autoComplete="name" required error={fe.full_name} />
       <Input label="Email" name="email" type="email" autoComplete="off" required error={fe.email} />
+      <VinInput error={fe.vin} />
 
       {fe.geo ? <p className="text-xs text-danger">{fe.geo}</p> : null}
 

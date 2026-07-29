@@ -25,41 +25,49 @@ export const ROLE_LEVEL: Record<Role, GeoLevel> = {
   member: "polling_unit",
 };
 
-// Who a caller may provision.
+// Who a caller may provision: EVERY role that ranks strictly below them.
 //
-// The NATIONAL ADMIN IS NOT SCOPED: they may create any role below them, at any
-// geography in the country. This matches what the database already allows
-// (profiles_insert only requires a lower rank, and profile_in_scope is true for
-// them), and what the client asked for. Every other admin stays on the strict
-// next tier down, inside their own scope.
+// This is a restatement of `profiles_insert`, not an extension of it. That policy
+// has always required only two things (rank strictly below the caller, and a
+// geographic path inside the caller's scope), so the database already permitted a
+// ward admin to create a leader. The old `NEXT_TIER` table pinned each admin to
+// exactly one role below them, which was application code contradicting the
+// database, the same defect CR-0007 §4a corrected for the national admin.
 //
-// `member` is absent everywhere on purpose: member records are created by a
-// leader through registration (`members`), not by provisioning a profile.
+// CR-0009 §3.2: the client asked for "any admin above leader should be able to
+// register anyone to be a leader". Generalising to "everything below you" answers
+// that and deletes the national-admin special case, which becomes an instance of
+// the general rule rather than a branch: they rank 1, so everything is below them.
+//
+// The caller's own scope still constrains WHERE, and it is enforced in the
+// database. This function only decides WHAT the role picker offers.
+//
+// `member` is absent on purpose: member records are created through registration
+// (`members`), not by provisioning a profile.
 export function allowedTargets(role: Role): { role: Role; level: GeoLevel }[] {
-  if (role === "national_admin") {
-    return (["state_admin", "lg_admin", "ward_admin", "unit_coordinator", "leader"] as const).map((r) => ({
-      role: r as Role,
-      level: ROLE_LEVEL[r as Role],
-    }));
-  }
-  const next = NEXT_TIER[role];
-  return next ? [next] : [];
+  return ROLE_ORDER.filter((r) => r !== "member" && ROLE_RANK[r] > ROLE_RANK[role]).map((r) => ({
+    role: r,
+    level: ROLE_LEVEL[r],
+  }));
 }
 
 // Which roles a caller may see and manage on the Team page. Same rule as
-// provisioning: the national admin manages every level, everyone else manages
-// exactly the tier below them.
+// provisioning: everything below you.
 export function manageableRoles(role: Role): Role[] {
   return allowedTargets(role).map((t) => t.role);
 }
 
-// Each non-national admin provisions exactly the next tier down.
-export const NEXT_TIER: Partial<Record<Role, { role: Role; level: GeoLevel }>> = {
-  state_admin: { role: "lg_admin", level: "lga" },
-  lg_admin: { role: "ward_admin", level: "ward" },
-  ward_admin: { role: "unit_coordinator", level: "polling_unit" },
-  unit_coordinator: { role: "leader", level: "polling_unit" },
-};
+// Hierarchy order, most senior first. Drives the role picker's ordering so it
+// always reads top-down.
+export const ROLE_ORDER: Role[] = [
+  "national_admin",
+  "state_admin",
+  "lg_admin",
+  "ward_admin",
+  "unit_coordinator",
+  "leader",
+  "member",
+];
 
 export const LEVEL_LABEL: Record<Exclude<GeoLevel, null>, string> = {
   state: "State",

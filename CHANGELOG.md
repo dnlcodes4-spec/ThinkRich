@@ -8,6 +8,50 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 
 ## [Unreleased]
 
+### Added
+- **Voter identity is held for everyone, and is unique system-wide** (CR-0009 §3.1, ADR-0015).
+  The VIN moves into its own `voter_ids` table keyed by the number itself, referenced by both
+  `members` and `profiles`. The client asked us to "set the VIN column to UNIQUE"; that could not be
+  one constraint, because admins and members live in different tables and one person is legitimately
+  both, so uniqueness is now a primary key instead of a trigger that would have raced. Every VIN is
+  stripped of punctuation, uppercased and validated server-side before it is stored, so the same card
+  cannot occupy two rows. Required for new members and new admin accounts; the existing fixture rows
+  and the twelve pre-existing admin accounts are grandfathered by `NOT VALID` constraints.
+- **Members can download their membership card at any time** (CR-0009 §3.5). Rendered server-side
+  onto the client's supplied artwork and served through an authorized route, so a card can only be
+  fetched by someone RLS already lets see that member, and a frozen or removed membership cannot
+  produce a current card. Field positions were measured off the blank template rather than eyeballed.
+  Adds `members.gender`, which the card's GENDER line needs.
+- **An admin can change the role of anyone below them** (CR-0009 §3.3, ADR-0015), which is how a
+  unit coordinator promotes a member to leader. It runs under the caller's own credentials with no
+  service role, so `profiles_update` is the authorization boundary rather than an `if` statement.
+- **Demotion is supported, with a rule** (CR-0009 §3.3): a leader still holding active members
+  cannot be moved out of the role until those members are reassigned. Enforced by a trigger.
+
+### Changed
+- **Leaders are no longer capped at ten members** (CR-0009 §3.4). The trigger and function are
+  dropped; ten becomes a milestone celebrated permanently on the leader's dashboard rather than a
+  ceiling. Eleven documentation sites that described it as a limit were corrected. Note this is not
+  cleanly reversible: restoring the cap would freeze any leader already past ten at their current
+  count rather than un-registering anyone.
+- **Any admin may now create any role below them** (CR-0009 §3.2), so a ward or LG admin can appoint
+  a leader directly. This removes a restriction that lived only in application code: `profiles_insert`
+  has always permitted it, and the old `NEXT_TIER` table contradicted the database.
+
+### Fixed
+- **Leader verification actually works** (CR-0009 §3.6). It was reported as "not functional" and it
+  was: `leader_kym_codes` held zero rows against fourteen profiles, because nothing ever minted a
+  code. A leader had to find `/app/kym` and press a button, and nobody had, so every check correctly
+  returned "not verified". Codes are now minted by the database whenever a leadership profile is
+  created or promoted, and every existing leader and admin was backfilled.
+- **Verification no longer depends on the service-role key.** The lookup moved to a `SECURITY
+  DEFINER` function that returns only the holder's public identity, so a deploy missing
+  `SUPABASE_SERVICE_ROLE_KEY` no longer 500s the whole feature.
+- **Member profiles were invisible to every admin.** They were created with no geographic scope while
+  the read and write policies both test exactly those columns, so `profile_in_scope` returned NULL
+  for anyone but the member themselves. Found while planning the upgrade system, which could not
+  have worked without fixing it. Scope is now backfilled and kept in step by a trigger.
+
 ### Changed
 - **The product now lives on two origins** (CR-0008, ADR-0014). `thinkrichcommunity.com` serves the
   ThinkRich Community umbrella landing and nothing else; everything Think-Winners — its landing, now

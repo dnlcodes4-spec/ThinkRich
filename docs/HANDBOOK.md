@@ -20,7 +20,7 @@ movement (a client's product). It has three parts, called **surfaces**:
 3. **Admin dashboards** — a chain of command: National → State → Local Government → Polling Unit → Leader.
 
 The defining feature is **hierarchy**: who can see and do what depends on their level. A
-Leader manages exactly 10 members; a State Admin manages one state; the National Admin runs
+Leader manages their own members, celebrating their first 10; a State Admin manages one state; the National Admin runs
 everything. Getting that access control right — so nobody sees data they shouldn't — is the
 most important job of the system.
 
@@ -160,8 +160,8 @@ expensive, so you use fewer of them on only the most important journeys. See
 
 ### Row-Level Security (RLS) & "defense in depth"
 
-Our database (Postgres, via Supabase) can enforce rules like "a Leader can only read their own
-10 members" _at the database level_. That's **RLS**. We make the database the final authority on
+Our database (Postgres, via Supabase) can enforce rules like "a Leader can only read the
+members they registered" _at the database level_. That's **RLS**. We make the database the final authority on
 access — even if the app code has a bug, the database won't hand over data the user isn't
 allowed to see. Layering multiple defenses (UI hides buttons, server double-checks, database
 enforces) is called **defense in depth**. Why it's a big deal here: the whole system is about

@@ -7,6 +7,7 @@ import { generateTempPassword } from "@/lib/provisioning";
 import type { Database } from "@/lib/database.types";
 import { FLAG_TEMPORARY } from "@/lib/must-change-password";
 import { allowedTargets, ROLE_LEVEL, type Role } from "./tiers";
+import { normalizeVin, VIN_INVALID } from "@/lib/vin";
 
 // Provisioning authorization, re-checked here because the service role bypasses
 // RLS. Two rules, the same ones profiles_insert enforces:
@@ -18,6 +19,8 @@ import { allowedTargets, ROLE_LEVEL, type Role } from "./tiers";
 const schema = z.object({
   full_name: z.string().trim().min(2, "Enter the person's full name."),
   email: z.email("Enter a valid email address."),
+  // CR-0009 item 1: "before registering any admin, include voter card number".
+  vin: z.string().trim().min(1, "Enter the voter's card number (VIN)."),
   target_role: z.string().min(1, "Choose a role."),
   state_id: z.string().uuid().optional(),
   lga_id: z.string().uuid().optional(),
@@ -60,6 +63,7 @@ export async function createAccount(
   const parsed = schema.safeParse({
     full_name: formData.get("full_name"),
     email: formData.get("email"),
+    vin: formData.get("vin"),
     target_role: str(formData, "target_role"),
     state_id: str(formData, "state_id"),
     lga_id: str(formData, "lga_id"),
@@ -74,6 +78,14 @@ export async function createAccount(
     return { status: "error", message: "Please fix the highlighted fields.", fieldErrors };
   }
   const d = parsed.data;
+
+  // Normalise server-side. The field mirrors this as you type, but the database
+  // is what has to be right: `voter_ids.vin` is a primary key, so an unsanitised
+  // value would silently create a second row for the same card.
+  const vin = normalizeVin(d.vin);
+  if (!vin) {
+    return { status: "error", message: VIN_INVALID, fieldErrors: { vin: VIN_INVALID } };
+  }
 
   // Rule 1: is this a role the caller may create at all?
   const targets = allowedTargets(me.role as Role);
@@ -144,6 +156,25 @@ export async function createAccount(
     return { status: "error", message: "That area is outside your own.", fieldErrors: { geo: "Out of scope." } };
   }
 
+  // Refuse early if this card already belongs to someone, so we do not create an
+  // auth user we are about to throw away. The unique index is still the actual
+  // guarantee; this is just a better error.
+  const [{ data: vinOnMember }, { data: vinOnProfile }] = await Promise.all([
+    admin.from("members").select("id").eq("vin_id", vin).maybeSingle(),
+    admin.from("profiles").select("id").eq("vin_id", vin).maybeSingle(),
+  ]);
+  if (vinOnMember || vinOnProfile) {
+    return {
+      status: "error",
+      message: "That voter's card number is already registered.",
+      fieldErrors: { vin: "Already registered." },
+    };
+  }
+  const { error: vinErr } = await admin.from("voter_ids").upsert({ vin }, { onConflict: "vin" });
+  if (vinErr) {
+    return { status: "error", message: VIN_INVALID, fieldErrors: { vin: VIN_INVALID } };
+  }
+
   // Create the auth user, then the profile. Roll back the user if the profile fails.
   const password = generateTempPassword();
   const { data: created, error: createErr } = await admin.auth.admin.createUser({
@@ -164,6 +195,7 @@ export async function createAccount(
     id: created.user.id,
     role: target.role,
     full_name: d.full_name,
+    vin_id: vin,
     ...scope,
   });
   if (profileErr) {

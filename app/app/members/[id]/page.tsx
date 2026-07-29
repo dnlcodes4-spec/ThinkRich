@@ -29,7 +29,7 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
   // RLS scopes this: only an in-scope member is returned.
   const { data: member } = await supabase
     .from("members")
-    .select("id, membership_number, full_name, date_of_birth, email, vin, status, passport_photo_url, state_id, lga_id, ward_id, polling_unit_id")
+    .select("id, membership_number, full_name, date_of_birth, email, vin_id, gender, status, passport_photo_url, state_id, lga_id, ward_id, polling_unit_id")
     .eq("id", id)
     .maybeSingle();
   if (!member) notFound();
@@ -69,7 +69,17 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
           <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground">{member.full_name}</h1>
           <p className="mt-1 font-mono text-sm text-muted">{member.membership_number}</p>
         </div>
-        <StatusPill status={member.status as MemberStatus} />
+        <div className="flex items-center gap-3">
+          {member.status === "active" ? (
+            <a
+              href={`/app/members/${member.id}/card`}
+              className="inline-flex min-h-11 items-center rounded-md border border-border bg-surface px-4 text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted"
+            >
+              Download card
+            </a>
+          ) : null}
+          <StatusPill status={member.status as MemberStatus} />
+        </div>
       </div>
 
       <div className="mt-10 grid gap-10 sm:grid-cols-[10rem_1fr]">
@@ -82,7 +92,8 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
           <dl className="grid grid-cols-1 gap-x-6 gap-y-4 text-sm sm:grid-cols-2">
             <Fact label="Date of birth" value={member.date_of_birth ? fmtDate(member.date_of_birth) : "Not provided"} />
             <Fact label="Email" value={member.email ?? "Not provided"} />
-            <Fact label="Voter's ID (VIN)" value={member.vin ?? "Not provided"} />
+            <Fact label="Voter's ID (VIN)" value={member.vin_id ?? "Not provided"} />
+            <Fact label="Gender" value={member.gender ?? "Not provided"} />
             <div className="sm:col-span-2">
               <Fact label="Area" value={geography || "Not set"} />
             </div>

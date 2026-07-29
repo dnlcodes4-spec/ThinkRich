@@ -4,26 +4,30 @@ import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { provisionMemberLogin } from "@/app/app/members/provision-login";
 import { logActivityAs } from "@/lib/activity";
+import { normalizeVin, VIN_INVALID } from "@/lib/vin";
 
-// Registering a member (T-004, extended by T-033).
+// Registering a member (T-004, extended by T-033 and T-040).
 //
 // A LEADER registers into their own polling unit; geography is not chosen, it is
-// derived from their profile, and the <= 10-active-members cap applies.
+// derived from their profile. There is no longer a limit on how many members they
+// may hold: CR-0009 §3.4 turned ten from a ceiling into a milestone, and migration
+// 0023 dropped the enforcing trigger.
 //
 // The NATIONAL COORDINATOR registers into any polling unit and may attribute the
-// member to a leader there. Attributed to a leader, the member counts against
-// that leader's ten. Held by the coordinator, the cap does not apply, because the
-// invariant is about leaders (see 0019).
+// member to a leader there, which keeps the member inside the leadership chain.
 //
 // The membership number is assigned by a DB trigger; RLS + triggers enforce
-// scope, NIN uniqueness, age >= 18 and the cap. This action validates input and
-// maps DB errors to friendly messages; it never bypasses RLS (no service role).
+// scope, NIN uniqueness and age >= 18. This action validates input and maps DB
+// errors to friendly messages; it never bypasses RLS (no service role).
 
 const schema = z.object({
   full_name: z.string().trim().min(2, "Enter the member's full name."),
   date_of_birth: z.string().min(1, "Enter the date of birth."),
   nin: z.string().trim().min(1, "Enter the NIN."),
-  vin: z.string().trim().optional(),
+  // Required for everyone as of CR-0009 §3.1. Validated after normalisation, not
+  // on the raw string, so a member may type it with spaces or dashes.
+  vin: z.string().trim().min(1, "Enter the voter's card number (VIN)."),
+  gender: z.enum(["male", "female"], { message: "Choose a gender." }),
   email: z.union([z.literal(""), z.email("Enter a valid email address.")]).optional(),
   account_number: z.string().trim().optional(),
   account_name: z.string().trim().optional(),
@@ -84,6 +88,7 @@ export async function registerMember(
     date_of_birth: formData.get("date_of_birth"),
     nin: formData.get("nin"),
     vin: formData.get("vin"),
+    gender: formData.get("gender"),
     email: formData.get("email"),
     account_number: formData.get("account_number"),
     account_name: formData.get("account_name"),
@@ -97,6 +102,13 @@ export async function registerMember(
       if (msgs && msgs[0]) fieldErrors[key] = msgs[0];
     }
     return { status: "error", message: "Please fix the highlighted fields.", fieldErrors };
+  }
+
+  // Normalise BEFORE anything touches the database. This is the only gate; the
+  // field's own sanitising is a typing convenience, not the control.
+  const vin = normalizeVin(parsed.data.vin);
+  if (!vin) {
+    return { status: "error", message: VIN_INVALID, fieldErrors: { vin: VIN_INVALID } };
   }
 
   if (!isAdult(parsed.data.date_of_birth)) {
@@ -170,6 +182,17 @@ export async function registerMember(
 
   const email = parsed.data.email ? parsed.data.email : null;
 
+  // The VIN must exist in `voter_ids` before a member can reference it. Upsert
+  // rather than insert because the row may legitimately exist already: the same
+  // person can hold both a membership record and a leadership profile (ADR-0015),
+  // and both point at this one row. A retry after a partial failure lands here too.
+  // It does NOT mean two people may share a VIN; the unique indexes on
+  // members.vin_id and profiles.vin_id still refuse that.
+  const { error: vinErr } = await supabase.from("voter_ids").upsert({ vin }, { onConflict: "vin" });
+  if (vinErr) {
+    return { status: "error", message: VIN_INVALID, fieldErrors: { vin: VIN_INVALID } };
+  }
+
   const { data: inserted, error } = await supabase
     .from("members")
     .insert({
@@ -181,7 +204,8 @@ export async function registerMember(
       full_name: parsed.data.full_name,
       date_of_birth: parsed.data.date_of_birth,
       nin: parsed.data.nin,
-      vin: parsed.data.vin || null,
+      vin_id: vin,
+      gender: parsed.data.gender,
       email,
       account_number: parsed.data.account_number || null,
       account_name: parsed.data.account_name || null,
@@ -199,20 +223,18 @@ export async function registerMember(
         fieldErrors: { nin: "Already registered." },
       };
     }
+    if (error.code === "23505" && m.includes("vin")) {
+      return {
+        status: "error",
+        message: "That voter's card number is already registered to someone else.",
+        fieldErrors: { vin: "Already registered." },
+      };
+    }
     if (error.code === "23505" && m.includes("email")) {
       return {
         status: "error",
         message: "That email is already in use.",
         fieldErrors: { email: "Already in use." },
-      };
-    }
-    if (m.includes("capacity")) {
-      return {
-        status: "error",
-        message: isNational
-          ? "That leader already holds 10 active members. Choose another leader, or leave it unassigned."
-          : "You have reached your limit of 10 active members.",
-        fieldErrors: isNational ? { registered_by: "Leader is full." } : undefined,
       };
     }
     if (m.includes("18 years")) {

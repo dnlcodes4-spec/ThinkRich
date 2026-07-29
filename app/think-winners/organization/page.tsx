@@ -67,7 +67,7 @@ const LEVELS = [
     level: "Leader",
     role: "Leader",
     code: "leader",
-    scope: "Their registered members (≤10)",
+    scope: "The members they register",
     oversees: "Members (serves directly)",
   },
 ];
@@ -105,7 +105,7 @@ export default function OrganizationPage() {
         <p className="mt-4 max-w-2xl text-lg text-navy-800">
           The full chain, top to bottom. <strong>Every level is a leader except Member.</strong>
           The apex (#1) is the National Admin; authority narrows at each step down to a single
-          Leader with up to ten members. This page is for verification only and is not part of the
+          Leader with the members they register. This page is for verification only and is not part of the
           public site.
         </p>
 

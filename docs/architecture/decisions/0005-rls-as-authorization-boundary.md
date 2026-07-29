@@ -8,7 +8,7 @@
 ## Context
 
 The platform's core rule is hierarchical, scoped access to **personal data**: a Leader may
-see only their ≤10 members; a State Admin only their state; National sees everything. Getting
+see only the members they registered; a State Admin only their state; National sees everything. Getting
 this wrong means leaking members' personal information across scopes — the most serious
 failure mode of the system. We use Supabase/Postgres ([ADR-0003](0003-supabase-as-backend.md)),
 which supports Row-Level Security natively.

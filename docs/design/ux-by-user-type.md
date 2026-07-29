@@ -28,7 +28,7 @@ the group.
 
 ## Leader — mobile-first, sometimes desktop
 
-**Context:** manages **exactly 10 members**; registers and maintains them; often on a phone in the field.
+**Context:** manages their own members, with the **first 10** marked as a milestone; registers and maintains them; often on a phone in the field.
 **Goals:** register a member (generate card), view/edit their 10, KYM-verify another leader.
 
 **UX priorities**

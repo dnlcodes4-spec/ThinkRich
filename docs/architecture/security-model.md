@@ -15,12 +15,12 @@ model. The reporting process lives in [SECURITY.md](../../SECURITY.md).
 | **L.G Admin** | One Local Government | Oversee the wards (and everything below) in the L.G; manage chairman + councillor candidacies in it |
 | **Ward Admin** | One ward | Oversee the polling units (and the leaders/members below) in the ward; manage its councillor candidacy |
 | **Unit Coordinator** | One polling unit | Coordinate the grassroots leaders in the polling unit |
-| **Leader** | Their ≤10 registered members | Register members, edit their info, download their cards, KYM |
+| **Leader** | Their own registered members | Register members, edit their info, download their cards, KYM |
 | **Member** | Self | View own profile, browse candidates in any area, request changes/opt-out |
 | **Visitor** | Public site | Read & enquire only |
 
 > **Every role except Member is a leader** (CR-0003) — the table above is one chain of leadership,
-> narrowing scope at each step from the National Admin (#1) down to a single Leader with ten members.
+> narrowing scope at each step from the National Admin (#1) down to a single Leader with their own members.
 
 Authority strictly narrows as you go down the hierarchy. Scope is stored on `profiles`
 (`state_id` / `lga_id` / `ward_id` / `polling_unit_id`) and enforced in the database.
@@ -40,11 +40,14 @@ They may also **register a member into any polling unit in the country** (migrat
 attributing the member to a leader who sits in that polling unit, or holding the member themselves
 where no leader exists yet.
 
-That required moving the **≤10-members cap**, which previously counted by `registered_by`
-regardless of who that was and so would have capped the national admin at ten. The invariant is,
-and always was, *"a **leader** may hold at most 10 active members"*. `enforce_leader_capacity()`
-now checks the registrar's role and applies only to leaders. Attributing a member to a leader still
-counts against that leader, which is the behaviour worth keeping.
+That once required scoping the **≤10-members cap** to leaders, so the national admin was not
+capped at ten by a rule that never described them. **The cap is gone entirely** as of CR-0009 §3.4:
+migration `0023` dropped `enforce_leader_capacity()` and its trigger, and ten is now a milestone the
+dashboard celebrates rather than a ceiling the database enforces. Attributing a member to a leader
+still counts against that leader, which is the behaviour worth keeping.
+
+Note for reviewers: **no authorization rule ever depended on the cap.** It was a business rule, so
+removing it changes what a leader may *do*, never what they may *see*.
 
 One limit remains, and it is a capability limit rather than a scope limit:
 

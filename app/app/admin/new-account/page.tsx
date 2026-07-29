@@ -10,9 +10,10 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// A national admin may create ANY role below them, anywhere in the country. Every
-// other admin provisions the next tier down, inside their own scope. The Server
-// Action re-checks both rules (the service role bypasses RLS).
+// Any admin may create ANY role that ranks below them (CR-0009 §3.2), which is
+// what `profiles_insert` has always permitted. WHERE is still bounded by the
+// caller's own scope, and the national admin has none, so they reach the whole
+// country. The Server Action re-checks both rules (the service role bypasses RLS).
 export default async function NewAccountPage({
   searchParams,
 }: {
@@ -79,7 +80,7 @@ export default async function NewAccountPage({
       <p className="mt-2 text-sm text-muted">
         {unscoped
           ? "You can create any role, anywhere in the country. They receive a temporary password to sign in with."
-          : "You can provision the next tier below your role, within your own area. They receive a temporary password to sign in with."}
+          : "You can create any role below yours, within your own area. They receive a temporary password to sign in with."}
       </p>
 
       {targets.length > 1 ? (

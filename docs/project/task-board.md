@@ -16,7 +16,8 @@ only when it meets the [Definition of Done](../engineering/definition-of-done.md
 ## 🔵 Backlog
 _Not yet refined / not yet Ready._
 
-- **T-005** — Membership card render + download 🔒 _(blocked: Q3 card design)_
+- **T-005** — Membership card render + download. **Unblocked**: the client supplied the artwork on
+  2026-07-29 (`public/cards/`). Superseded by **T-047 / T-048** _(CR-0009 §3.5)_.
 - **T-025** — Notification toasts + remaining catalog (voting reminder N1, card-ready N5)
 - **T-026** — Reward oversight (needs product definition)
 - **T-031b** — **Finish the constituency mapping.** T-031 imported all 1,459 constituencies and
@@ -91,6 +92,31 @@ _One person, one task at a time. Keep this column small._
   Namecheap DNS records, the env-var contract, split verification, and the rollback path._
   _Outstanding for the CR: visual sign-off on both origins, then promote the 307s to 308 once the
   split has been stable in production._
+
+- **T-038 … T-049** — CR-0009 (VIN identity, role upgrades, uncapped leaders, membership card,
+  KYM repair), ADR-0015, branch `feat/t-041-t-049-cr-0009-remainder`.
+  _Done: **T-038** KYM codes are minted by the database on profile insert and on promotion, and every
+  existing leader/admin backfilled (`0021`); verification moved off the service role to a
+  `SECURITY DEFINER` `verify_kym_code()` returning only public identity (`0022`).
+  **T-039** `allowedTargets()` generalised to every role below the caller, matching `profiles_insert`
+  and deleting the national-admin special case.
+  **T-040** the ≤10 cap dropped (`0023`) with an eleven-site docs sweep.
+  **T-041** permanent milestone badge on the leader dashboard.
+  **T-042** [ADR-0015](../architecture/decisions/0015-voter-identity-and-role-upgrades.md).
+  **T-043** `voter_ids` table + FKs + partial constraints (`0024`), `lib/vin.ts` normalisation with
+  10 unit tests, VIN required at registration and provisioning; `0029` tightened the policies after
+  the Supabase advisor flagged an always-true INSERT and an over-broad read.
+  **T-045** member-profile scope backfilled + kept in step by a trigger (`0026`), closing the RLS
+  hole where no admin could read or write any member profile.
+  **T-046 / T-049** role change under the caller's own credentials, with demotion blocked while a
+  leader still holds members (`0028`).
+  **T-047** `members.gender` (`0025`). **T-048** server-rendered membership card behind an authorized
+  route, field geometry measured off the blank artwork.
+  Verified live: 12/12 leadership profiles hold codes, a leader registered 15 members, all four
+  privilege-escalation refusals hold, and a member can neither read nor write `voter_ids`.
+  Suites: `supabase/tests/kym_test.sql`, `supabase/tests/role_change_test.sql`, 74 unit tests._
+  _Outstanding: visual sign-off (deferred by the user), and **T-044 dropped** (no VINs to backfill).
+  T-048 prints a **system-assigned** ward number, not an INEC code, per the client's direction._
 
 ## 🟣 In Review
 _PR open, awaiting review + CI._

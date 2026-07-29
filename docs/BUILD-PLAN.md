@@ -28,7 +28,7 @@ Phase 1 therefore includes the backbone, scoped tightly to what the member + lea
 **Identity & roles:**
 - `profiles` — 1:1 with `auth.users`; `role` enum (`national_admin`, `state_admin`, `lg_admin`, `unit_coordinator`, `leader`, `member`), plus scope FKs (`state_id`, `lga_id`, `unit_id`) that are non-null only at the relevant level.
 - `members` — the membership record. `membership_number` (unique, **immutable**), `registered_by` (leader FK), demographic fields, `ward_id`/`lga_id`/`state_id`, `status` (`active` | `frozen` | `deleted`), `profile_photo_url`.
-- Constraint: a leader may have **at most 10** active members (enforced in the registration Server Action + a DB check).
+- Milestone (not a limit): a leader's first **10** active members are celebrated on their dashboard. The cap that used to enforce this was removed in CR-0009 §3.4.
 
 **Workflows:**
 - `change_requests` — member-submitted field changes; `field`, `new_value`, `reason`, `status` (pending/approved/rejected), reviewed by State Admin.
@@ -90,7 +90,7 @@ the card design/graphic file; whether members log in with membership number, pho
 
 ## 6. Leader tools (inside the same app, role-gated)
 
-1. **Register member** — form → Server Action; auto-generate membership number + card; enforce ≤10 members.
+1. **Register member** — form → Server Action; auto-generate membership number + card. No member limit.
 2. **My members** — list, edit info, download each member's card.
 3. **KYM** — verify another leader by their unique code.
 

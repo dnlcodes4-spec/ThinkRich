@@ -2,6 +2,7 @@
 
 import { useActionState, useState } from "react";
 import { Input } from "@/components/ui/input";
+import { VinInput } from "@/components/ui/vin-input";
 import { Button } from "@/components/ui/button";
 import { registerMember, type RegisterState } from "./actions";
 
@@ -113,7 +114,24 @@ function Inner({ onReset, pollingUnitId, leaders }: RegisterFormProps & { onRese
             error={fe.date_of_birth}
           />
           <Input label="NIN" name="nin" required hint="National ID number" error={fe.nin} />
-          <Input label="VIN" name="vin" hint="Voter's ID number (optional)" error={fe.vin} />
+          <VinInput error={fe.vin} />
+          <label className="flex min-w-0 flex-col gap-1.5">
+            <span className="text-sm font-semibold text-foreground">Gender</span>
+            <select
+              name="gender"
+              required
+              defaultValue=""
+              aria-invalid={fe.gender ? true : undefined}
+              className="min-h-11 w-full rounded-sm border border-border bg-surface px-3 text-base text-foreground focus:outline-2 focus:outline-offset-1 focus:outline-ring"
+            >
+              <option value="" disabled>
+                Select&hellip;
+              </option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            {fe.gender ? <span className="text-sm text-danger">{fe.gender}</span> : null}
+          </label>
         </div>
       </fieldset>
 

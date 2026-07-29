@@ -17,6 +17,8 @@ export type ActivityAction =
   | "account.deactivated"
   | "account.reactivated"
   | "account.deleted"
+  | "account.promoted"
+  | "account.role_changed"
   | "correction.approved"
   | "correction.declined"
   | "state.activated"

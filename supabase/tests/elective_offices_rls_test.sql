@@ -413,21 +413,22 @@ begin
   perform set_config('role','none',true);
   if ok then raise exception 'RLS FAIL: a state admin registered a member'; end if;
 
-  -- the cap is scoped to LEADERS: the national admin may hold more than ten
+  -- the national admin may hold any number of members
   for i in 1..12 loop
     insert into public.members (registered_by, state_id, lga_id, ward_id, polling_unit_id, full_name, date_of_birth, nin)
       values ('90000000-0000-0000-0000-000000000001','91000000-0000-0000-0000-000000000001','92000000-0000-0000-0000-00000000000a','93000000-0000-0000-0000-000000000001','94000000-0000-0000-0000-000000000001','EO Bulk '||i,'1990-01-01','EOBULK'||i);
   end loop;
 
-  -- ...but a leader still cannot exceed ten
-  begin
-    for i in 1..11 loop
-      insert into public.members (registered_by, state_id, lga_id, ward_id, polling_unit_id, full_name, date_of_birth, nin)
-        values ('90000000-0000-0000-0000-000000000009','91000000-0000-0000-0000-000000000001','92000000-0000-0000-0000-00000000000a','93000000-0000-0000-0000-000000000001','94000000-0000-0000-0000-000000000001','EO LdCap '||i,'1990-01-01','EOLDCAP'||i);
-    end loop;
-    ok := true;
-  exception when others then ok := false; end;
-  if ok then raise exception 'INVARIANT FAIL: a leader exceeded 10 active members'; end if;
+  -- ...and since CR-0009 §3.4, so may a LEADER. Ten is a milestone, not a
+  -- ceiling: this used to assert the eleventh insert was refused.
+  for i in 1..11 loop
+    insert into public.members (registered_by, state_id, lga_id, ward_id, polling_unit_id, full_name, date_of_birth, nin)
+      values ('90000000-0000-0000-0000-000000000009','91000000-0000-0000-0000-000000000001','92000000-0000-0000-0000-00000000000a','93000000-0000-0000-0000-000000000001','94000000-0000-0000-0000-000000000001','EO LdCap '||i,'1990-01-01','EOLDCAP'||i);
+  end loop;
+  if (select count(*) from public.members
+        where registered_by = '90000000-0000-0000-0000-000000000009' and status = 'active') <> 11 then
+    raise exception 'INVARIANT FAIL: a leader could not register past ten';
+  end if;
 
   raise notice 'ALL ELECTIVE-OFFICE RLS + RESOLVER + INVARIANT CHECKS PASSED';
 end;

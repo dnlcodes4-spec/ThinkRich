@@ -29,7 +29,7 @@ graph TB
 
     visitor -->|browses products| sys
     member -->|views candidate, profile, card| sys
-    leader -->|registers & manages 10 members| sys
+    leader -->|registers & manages members| sys
     admin -->|oversight & administration| sys
 
     sys --> supabase
