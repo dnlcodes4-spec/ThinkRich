@@ -2,8 +2,14 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Grain } from "./motifs";
+import { apexHref } from "@/lib/origins";
+
+// "← ThinkRich" leaves this origin for the umbrella landing (CR-0008). It used
+// to be href="/", which on this origin now points at Think-Winners itself and
+// would loop straight back. A plain anchor, not next/link: crossing to the
+// umbrella means a different palette and type system.
+const APEX_HOME = apexHref("/");
 
 const leftLinks = [
   { href: "#about", label: "Who we are" },
@@ -61,9 +67,9 @@ export function ThinkWinnersNav() {
         >
           {/* Left links (desktop) */}
           <nav className="hidden items-center gap-7 md:flex">
-            <Link href="/" className={`${linkCls} flex items-center gap-1.5`}>
+            <a href={APEX_HOME} className={`${linkCls} flex items-center gap-1.5`}>
               <span aria-hidden="true">←</span> ThinkRich
-            </Link>
+            </a>
             {leftLinks.map((l) => (
               <a key={l.href} href={l.href} className={linkCls}>
                 {l.label}
@@ -151,8 +157,8 @@ export function ThinkWinnersNav() {
                   </span>
                 </a>
               ))}
-              <Link
-                href="/"
+              <a
+                href={APEX_HOME}
                 onClick={() => setOpen(false)}
                 className="tw-rise group flex items-center justify-between border-b border-navy-50/10 py-5"
                 style={{ animationDelay: `${80 + allLinks.length * 70}ms` }}
@@ -161,7 +167,7 @@ export function ThinkWinnersNav() {
                   <span aria-hidden="true" className="text-gold-500/70">←</span>
                   ThinkRich
                 </span>
-              </Link>
+              </a>
             </nav>
 
             <div className="mt-auto">

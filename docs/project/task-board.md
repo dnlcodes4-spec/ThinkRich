@@ -28,7 +28,29 @@ _(none)_
 ## 🟠 In Progress
 _One person, one task at a time. Keep this column small._
 
-_(none)_
+- **T-034** — Host-based routing for the two-origin split (CR-0008, ADR-0014), branch
+  `feat/two-origin-split`.
+  _Done: `resolveOriginRoute` in `lib/origins.ts` is a pure routing table (`pass | redirect |
+  rewrite`); `lib/origin-split.ts` turns it into responses; `proxy.ts` runs it ahead of
+  `updateSession`. Config-driven via `NEXT_PUBLIC_APEX_HOST` / `NEXT_PUBLIC_THINK_WINNERS_HOST`,
+  a no-op when either is unset, and unrecognised hosts (previews) are left unsplit. 40 unit tests.
+  Verified against a production build by `Host`-header probes on both origins, including query
+  preservation and the `public/think-winners/` asset collision._
+- **T-035** — Think-Winners moves to the subdomain root; cross-origin links fixed.
+  _Done: `thinkWinnersHref` / `apexHref` generate links from the same definition the proxy routes
+  by, with a test asserting the two are inverse. Fixed the inverted "← ThinkRich" link in
+  `nav.tsx`, which pointed at `/` and would have looped back on the new origin. Apex gained a
+  "Member login" link (desktop nav + mobile menu). Per-subtree brand tokens unchanged._
+- **T-036** — PWA rescoped to `/app`.
+  _Done: registrar moved from the root layout into the app shell, its scope and the manifest's
+  narrowed from `/` to `/app`, manifest re-branded to Think-Winners navy. No install base to
+  migrate (client-confirmed 2026-07-29)._
+- **T-037** — ADR-0014 + deployment runbook.
+  _Done: [ADR-0014](../architecture/decisions/0014-two-origin-host-split.md) and
+  [deployment.md](../engineering/deployment.md), the repo's first deployment doc: Vercel domains,
+  Namecheap DNS records, the env-var contract, split verification, and the rollback path._
+  _Outstanding for the CR: visual sign-off on both origins, then promote the 307s to 308 once the
+  split has been stable in production._
 
 ## 🟣 In Review
 _PR open, awaiting review + CI._

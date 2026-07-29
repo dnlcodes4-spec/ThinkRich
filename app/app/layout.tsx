@@ -4,6 +4,7 @@ import { AppHeader } from "@/components/app-shell/app-header";
 import { BottomNav } from "@/components/app-shell/bottom-nav";
 import { Sidebar } from "@/components/app-shell/sidebar";
 import { navForRole } from "@/components/app-shell/nav";
+import { ServiceWorkerRegistrar } from "@/components/pwa/service-worker-registrar";
 
 // The app shell wraps every /app/* route: a desktop sidebar + mobile bottom bar
 // driven by the caller's role, and a header with notifications + account menu.
@@ -51,6 +52,10 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         </div>
         <BottomNav items={items} />
       </div>
+      {/* Scoped to the app shell, not the root layout: after the two-origin
+          split (CR-0008) the root layout also renders the umbrella landing,
+          which is not installable. */}
+      <ServiceWorkerRegistrar />
     </div>
   );
 }
