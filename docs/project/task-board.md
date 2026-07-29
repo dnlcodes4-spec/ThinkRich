@@ -42,8 +42,9 @@ that touch authorization. See [CR-0009](change-requests/0009-vin-identity-role-u
   national-admin special case. Application code only. _(§3.2)_
 - **T-040** — Lift the ≤10 leader cap: drop `private.enforce_leader_capacity()` + trigger, update
   both RLS test suites, sweep the eleven docs that state ten as a ceiling. _(§3.4)_
-- **T-041** — Tenth-member congratulations on the leader dashboard, dismissible, tracked per leader.
-  _(§3.4. UI, needs visual sign-off. Depends on T-040.)_
+- **T-041** — Tenth-member congratulations on the leader dashboard. **Permanent badge**
+  (client-answered 2026-07-29), so it is derived from the active member count with no "seen" record
+  and no dismissal. _(§3.4. UI, needs visual sign-off. Depends on T-040.)_
 - **T-042** — **ADR-0015**: where voter identity lives, and the role-upgrade model. _(Blocks T-043,
   T-045.)_
 - **T-043** — Migration: `voter_ids` table + FKs from `members` and `profiles`, the partial
@@ -64,6 +65,12 @@ that touch authorization. See [CR-0009](change-requests/0009-vin-identity-role-u
 - **T-048** — Membership card download: server-side render onto the supplied blank template,
   authorized route handler, member dashboard + leader roster entry points, deduplicated artwork.
   Supersedes T-005. _(§3.5. UI, needs visual sign-off. Depends on T-047.)_
+  🔒 **Partly blocked:** the client asked for "WARD: 12" but no ward number exists (`wards` holds
+  only id/lga_id/name; names are place names). Ships with the ward NAME unless an INEC ward-code
+  import is funded. See CR-0009 §3.5.
+- **T-049** — Demotion, with "move their members first" enforced by a trigger plus a reassignment
+  step in the UI. Engineer-decided 2026-07-29; the client delegated it.
+  _(§3.3. UI, needs visual sign-off. Depends on T-046.)_
 
 ## 🟡 Ready
 _Refined, unblocked, ready to pull._

@@ -183,9 +183,23 @@ leader (6) passes; the same coordinator promoting a leader to coordinator (5) fa
 
 **Open questions to settle in the ADR, not here:**
 
-- **Demotion.** The client said "upgrade". Reversing one is the same mechanism, but a demoted leader
-  with ten members attached needs those members reassigned or orphaned. Recommend **out of scope**
-  for this CR, and captured as a follow-up.
+- **Demotion. Decided by the engineer on 2026-07-29** (the client delegated this one).
+  **Demotion is supported, and a leader holding active members cannot be demoted until those members
+  are moved.**
+
+  The mechanism is already there: `profiles_update` checks rank on both the old and the new row, so
+  an admin may demote anyone below them to any other level still below them, and cannot demote
+  someone to their own rank or above. Nothing new is needed for *who may* demote.
+
+  What is needed is a rule for the members left behind. `members.registered_by` is `on delete
+  restrict` and not nullable, so they cannot simply be orphaned; and silently reassigning them
+  destroys the recruitment history the whole structure is counted from. So: **the demoting admin
+  must first move the leader's active members**, to another leader in the same polling unit or to
+  themselves (migration `0019` already permits an admin to hold members directly). Enforced by a
+  trigger, not just the UI, because it is a data-integrity rule.
+
+  Rejected: auto-reassigning to the demoting admin (hides a real decision inside an unrelated
+  action), and blocking demotion outright (leaves no way to correct a bad appointment).
 - **A promoted member's old attribution.** They keep counting against the leader who registered
   them. With the cap gone (§3.4) this is harmless, and keeping it preserves the recruitment history.
 - **Geography on promotion.** A leader profile requires the full state→LGA→ward→PU path; take it
@@ -222,10 +236,11 @@ registrars whose role is `leader` in migration `0019`; it now gets dropped, alon
 `rls_test.sql` and `elective_offices_rls_test.sql` both assert the cap and must be updated in the
 same change, or CI goes red.
 
-The congratulations message needs a decision the client did not give: **is it a one-time celebration
-or a permanent badge?** Recommend showing it once the tenth member is active and keeping it
-dismissible, tracked per leader, so it does not become dashboard furniture. Flagging for
-confirmation.
+**Answered 2026-07-29: a permanent badge**, not a one-time celebration. So it is derived state, not
+an event: the dashboard shows it whenever the leader's active member count is ten or more, and it
+needs no per-leader "seen" record and no dismissal. Simpler than the dismissible version originally
+recommended. It does mean the badge disappears if a leader drops back under ten (through opt-outs),
+which is the honest behaviour for a derived badge.
 
 - **Surfaces:** leader dashboard (`app/app/page.tsx`), the registration action's error mapping, the
   docs listed above, both RLS test suites.
@@ -243,8 +258,25 @@ fields: **NAME, GENDER, STATE, L.G, WARD, Code**.
 - **`gender` does not exist on `members`.** New nullable column plus a registration field. Note this
   makes gender a new category of PII we store, which the privacy documentation should acknowledge.
   Existing members render a blank GENDER line until they supply it via `change_requests`.
-- **WARD renders as a number on the sample card** ("WARD: 12") but `wards` are held by name. Needs
-  confirmation of which the client wants printed.
+- **WARD renders as a number on the sample card** ("WARD: 12"). **The client answered "number" on
+  2026-07-29, and we cannot honour it: there is no ward number in this system.** `public.wards`
+  holds exactly `id, lga_id, name, created_at` (verified against the live database), and ward names
+  are place names, not numbers: "Auna South", "Awkuzu III", "Gandi 'B'", "SI, (Lekki I)". Nothing in
+  the 8,793 rows yields "12".
+
+  Three ways forward, and this needs a client decision before T-048 can finish:
+
+  1. **Print the ward name** (what we hold, today, for free). The card reads "WARD: Awkuzu III".
+  2. **Source INEC's official ward codes** and add a `code` column to `wards`, mirroring what
+     `polling_units.code` already does. This is a real data-import task on the scale of T-031, and
+     it is the only option that produces a genuine ward number.
+  3. **Number the wards ourselves**, e.g. by position within the LGA. **Recommend against.** It
+     would be a number we invented that matches no INEC document, printed onto a card members
+     present as identification, and it would silently renumber if ward data were ever re-imported.
+     It also breaks the standard T-031 set for this repo: geography data is parsed from source
+     documents, never model-generated.
+
+  **Recommendation: (1) now, (2) as a separate task if the client wants true ward numbers.**
 - **`members.status`** must gate this: a frozen or deleted member should not be able to download a
   current card.
 - **Rendering approach.** Recommend server-side composition onto the supplied PNG, returned as a
@@ -277,11 +309,13 @@ The flow is built (`0014_leader_kym_codes.sql`, `/app/kym`), and reading it agai
    ever had a code and *every* verification attempt has correctly returned "not verified". **This
    alone explains the report.** Fix: mint on provisioning, and backfill every existing leader and
    admin.
-2. **Members cannot verify anyone.** `callerIsLeaderish` rejects `role = 'member'`
-   ([kym/actions.ts:16-25](../../../app/app/kym/actions.ts)), so verification is leader-to-leader
-   only. The person who most needs to check that a recruiter is genuine is the prospect being
-   recruited, and they cannot. Worth putting back to the client: leaders only, members too, or fully
-   public via a code on the membership card (§3.5 makes the second and third natural).
+2. **Members cannot verify anyone.** Verification is leader-to-leader only. **Answered 2026-07-29:
+   keep it that way, only a leader may verify another leader.** So this is not a fault, and the
+   behaviour stands. Recorded here because the reasoning matters for anyone reading the code later:
+   the restriction is a *product* choice, not a security boundary. Everything the lookup returns
+   (name, role, state, LGA) is public-facing, so the gate lives in the Server Action, and
+   `verify_kym_code` is granted to `authenticated` but explicitly revoked from `anon`. Opening it to
+   members or the public later is a grant change plus rate limiting, not a redesign.
 3. **Missing configuration guard.** Both KYM actions call `createAdminClient()` with no
    `isAdminConfigured()` check, unlike every other service-role caller in the codebase
    (`new-account/actions.ts:51`, `provision-login.ts:28`). On a deploy without
@@ -364,8 +398,15 @@ Tasks proposed for the [task board](../task-board.md), in the order they should 
   route handler, member dashboard and leader roster entry points, deduplicated artwork.
   *(§3.5. UI, needs visual sign-off. Depends on T-047.)*
 
-Not planned, deliberately: **demotion** (§3.3) and **opening verification beyond leaders** (§3.6
-fault 2). Both need a client answer first.
+- [ ] **T-049** — Demotion, with the "move their members first" rule enforced by a trigger plus a
+  reassignment step in the UI. *(§3.3, decided 2026-07-29. UI, needs visual sign-off. Depends on
+  T-046.)*
+
+**Opening verification beyond leaders is closed, not deferred**: the client confirmed leaders-only
+on 2026-07-29 (§3.6).
+
+**One task is blocked on the client**: T-048 cannot print "WARD: 12" because no ward number exists
+in the data (§3.5). It ships with the ward *name* unless the client funds an INEC ward-code import.
 
 ## 6. Rollback plan
 
