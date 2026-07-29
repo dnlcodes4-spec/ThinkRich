@@ -39,7 +39,10 @@ export function Sidebar({
             className="h-8 w-auto shrink-0 object-contain"
             priority
           />
-          <span className="font-display text-xl font-semibold tracking-tight text-foreground">
+          {/* nowrap: the Think-Winners mark is wider than the square ThinkRich one
+              it replaced, and "Think-Winners" is longer than "ThinkRich", so the
+              wordmark wrapped to two lines in the 15rem sidebar. */}
+          <span className="whitespace-nowrap font-display text-lg font-semibold tracking-tight text-foreground">
             Think<span className="text-accent">-Winners</span>
           </span>
         </Link>

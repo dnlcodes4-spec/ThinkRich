@@ -66,13 +66,40 @@
 }
 
 /*
-  Brand palette. Both ThinkRich Community and Think-Winners Movement use
-  navy + gold (the logo). The earlier green Think-Winners palette was a
-  miscommunication and has been reverted (CR-0005, superseding CR-0001 Q7 /
-  T-014): Think-Winners inherits the default navy `:root` above, so no
-  per-brand override is needed. The `green-*` scale is retained below for any
-  future arm that may want it.
+  Brand palette, per subtree.
+
+  The `:root` tokens above are the THINKRICH UMBRELLA brand: ink + green
+  (ADR-0010 / CR-0006). That was fine when the umbrella was the whole product.
+  It is not any more: CR-0008 moved `/login` and every `/app` dashboard onto the
+  Think-Winners origin, and Think-Winners is navy + gold (ADR-0008). Those
+  surfaces consume SEMANTIC tokens, so they were silently rendering in the
+  umbrella's black and green.
+
+  (The comment that used to sit here said Think-Winners "inherits the default
+  navy :root". That stopped being true when ADR-0010 changed :root to ink +
+  green, and nothing caught it because the marketing pages hard-code the navy
+  and gold brand utilities directly instead of going through tokens.)
+
+  So the Think-Winners palette is scoped rather than global: anything inside
+  `[data-brand="think-winners"]` gets navy + gold, and the umbrella keeps :root.
 */
+
+[data-brand="think-winners"] {
+  --primary: #0a2a4e;            /* navy-700 */
+  --primary-hover: #193759;      /* navy-600 */
+  --primary-foreground: #ffffff;
+
+  /* gold-700, NOT gold-500. `text-accent` outnumbers `bg-accent` roughly 5:1 on
+     these surfaces, and gold-500 on white is 2.4:1 — it FAILS WCAG AA as text.
+     gold-700 on white is 4.9:1 and passes, and white on a gold-700 fill is the
+     same 4.9:1, so the one accent fill (the unread badge) passes too.
+     See docs/design/brand-and-color.md "The gold contrast rule". */
+  --accent: #896e1b;             /* gold-700 */
+  --accent-hover: #695414;       /* gold-800 */
+  --accent-foreground: #ffffff;
+
+  --ring: #2c4867;               /* navy-500 */
+}
 
 /* ---- Semantic tokens → Tailwind utilities (theme-reactive) ---- */
 @theme inline {

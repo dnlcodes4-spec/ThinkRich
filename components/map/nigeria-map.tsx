@@ -11,7 +11,7 @@ export type StateDatum = {
 };
 
 // The map gets its own dark navy world (the Think-Winners half of the brand) so
-// it reads as a distinct hero on the otherwise light, green dashboard. Fills are
+// it reads as a distinct hero on the otherwise light dashboard. Fills are
 // data-driven and applied inline (Tailwind's JIT can't see a runtime lookup).
 const MAP_BG = "#0b1f38";
 const CARD_BORDER = "#1c3a5e";
@@ -21,7 +21,9 @@ const ZERO_FILL = "#1d3b5a"; // an empty state still reads on the dark ground
 // Sequential brightening blue: more members reads as brighter, not just darker.
 const BUCKETS = ["#2f6aa6", "#4489cf", "#63a8ea", "#8ec7f6", "#c2e2ff"];
 const GOLD = "#f4c95d"; // hover + selection: pops on navy, never fades to the edge
-const ACTIVE_BORDER = "#4bbf87"; // green = a state that is active (open for registration)
+const ACTIVE_BORDER = "#4bbf87"; // green = STATUS (open for registration), not brand.
+// Deliberately not gold: gold already means hover/selection on this map, so reusing
+// it would make "active" and "selected" indistinguishable.
 const TEXT = "#eaf1f8";
 const MUTED = "#9fb6cf";
 

@@ -27,7 +27,7 @@ export function BottomNav({ items }: { items: NavItem[] }) {
             type="button"
             aria-label="Close menu"
             onClick={() => setMoreOpen(false)}
-            className="absolute inset-0 bg-ink-950/40"
+            className="absolute inset-0 bg-navy-950/40"
           />
           <div className="absolute inset-x-0 bottom-0 rounded-t-2xl border-t border-border bg-surface p-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] shadow-lg">
             <div className="mx-auto mb-1 h-1 w-10 rounded-full bg-border" />
