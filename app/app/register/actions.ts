@@ -180,7 +180,11 @@ export async function registerMember(
     registeredBy = leader.id;
   }
 
-  const email = parsed.data.email ? parsed.data.email : null;
+  // Lowercased so what we store matches what `members_email_unique` compares
+  // (migration 0030 indexes lower(email)), and so it matches what Supabase Auth
+  // will use if this member is later given a login. Without this, two members
+  // could differ only by capitalisation and the second could never sign in.
+  const email = parsed.data.email ? parsed.data.email.trim().toLowerCase() : null;
 
   // The VIN must exist in `voter_ids` before a member can reference it. Upsert
   // rather than insert because the row may legitimately exist already: the same
