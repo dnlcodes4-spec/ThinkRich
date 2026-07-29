@@ -19,15 +19,55 @@ _Not yet refined / not yet Ready._
 - **T-005** — Membership card render + download 🔒 _(blocked: Q3 card design)_
 - **T-025** — Notification toasts + remaining catalog (voting reminder N1, card-ready N5)
 - **T-026** — Reward oversight (needs product definition)
+- **T-031b** — **Finish the constituency mapping.** T-031 imported all 1,459 constituencies and
+  senatorial LGA membership for 22 of 37 states. Remaining, in order of value:
+  1. a **reviewed LGA alias table** (~40 to 60 names) for the 15 states where the 2010 workbook and
+     our 2015 LGA names disagree, unlocking Senate races nationwide;
+  2. **federal constituency** membership (parseable from the same workbook, same review needed);
+  3. **state constituency** membership, which needs INEC's ward-level delimitation, a different
+     document this one cannot substitute for.
+  Start from `docs/project/data/constituencies/unresolved-review.json`.
 
 ## 🟡 Ready
 _Refined, unblocked, ready to pull._
 
-_(none)_
+- **T-029** — Admin: design pass on scoped candidacy CRUD, plus national-admin catalogue
+  management (offices, parties, elections, constituencies). Functional version exists; needs the
+  design method + visual sign-off. _(CR-0007)_
+- **T-030** — Member: design pass on the geography-driven candidate view. Functional version
+  exists; needs the design method + visual sign-off. _(CR-0007)_
 
 ## 🟠 In Progress
 _One person, one task at a time. Keep this column small._
 
+- **T-027 / T-028** — Elective-office model (CR-0007, ADR-0013), branch pending.
+  _Done: migrations `0016`–`0018` applied (office catalogue, parties, elections, constituencies +
+  membership, candidacies; containment RLS; `candidacies_for_geography()` /
+  `candidacies_i_manage()`); `candidates` + `candidate_level` dropped (0 rows); types regenerated;
+  app rewritten off the dropped table; resolver and scope triggers smoke-tested against live
+  geography._
+  _Outstanding: RLS tests per role per office type in `supabase/tests/`, and the UI design pass._
+- **T-028** — RLS + resolver test suite for the elective-office model.
+  _Done: `supabase/tests/elective_offices_rls_test.sql` walks every role against every office kind
+  (including the three overlay shapes: single-LGA, multi-LGA, ward-split), plus catalogue
+  write-protection, publication gating, the scope triggers, the resolver at ward/LGA/state, and the
+  national-admin member paths. Passing, and it rolls back. It caught one real defect in its own
+  expectations and one pre-existing bug in `rls_test.sql`, which counted all members and so broke
+  once production held any._
+- **T-031** — Import the INEC constituency delimitation.
+  _Done: sourced INEC's own workbook, wrote `scripts/extract-constituencies.py` +
+  `scripts/import-constituencies.mjs`, imported **1,459 constituencies** (109/360/990) and
+  senatorial LGA membership for **22 of 37 states** (427 links, 5,017 wards resolving). Parse
+  validated against per-state counts and the constitutional 24..40 rule; membership validated by
+  exact partition of each state's LGAs. Remainder tracked as **T-031b**._
+- **T-032** — Remove the stray `Seed LGA` row.
+  _Done: migration `0020`. Counts now match the official 774 / 8,793 / 119,971 exactly._
+- **T-033** — Unscope the National Coordinator across the app (CR-0007 §4a).
+  _Done: they provision any role at any geography (was State Admin only), manage every tier on the
+  Team page (was State Admins only), and register a member into any polling unit with optional
+  leader attribution (migration `0019`, which also scoped the ≤10 cap to leaders). Ward admins
+  gained the candidates screen. Verified under a real national-admin JWT._
+  _Outstanding: the same RLS tests as T-028 should cover these paths._
 - **T-034** — Host-based routing for the two-origin split (CR-0008, ADR-0014), branch
   `feat/two-origin-split`.
   _Done: `resolveOriginRoute` in `lib/origins.ts` is a pure routing table (`pass | redirect |

@@ -48,6 +48,13 @@ const CANDIDATES: NavItem = {
   short: "Candidates",
 };
 const STATES: NavItem = { href: "/app/admin/states", label: "States", icon: "states" };
+// National only: they may register a member into any polling unit (T-033).
+const REGISTER: NavItem = {
+  href: "/app/register",
+  label: "Register a member",
+  icon: "register",
+  short: "Register",
+};
 // National only: the platform-wide activity log (RLS restricts reads to them).
 const LOGS: NavItem = { href: "/app/logs", label: "Activity", icon: "inbox", short: "Activity" };
 // National only: browse the geography data (states / LGAs / wards / polling units).
@@ -60,11 +67,12 @@ export function navForRole(role: Role | string | null | undefined): NavItem[] {
     case "leader":
       return LEADER;
     case "national_admin":
-      return [...COORDINATOR_BASE, CANDIDATES, STATES, GEOGRAPHY, LOGS];
+      return [...COORDINATOR_BASE, REGISTER, CANDIDATES, STATES, GEOGRAPHY, LOGS];
+    // Ward admins are included: they own their ward's councillor race (CR-0007).
     case "state_admin":
     case "lg_admin":
-      return [...COORDINATOR_BASE, CANDIDATES];
     case "ward_admin":
+      return [...COORDINATOR_BASE, CANDIDATES];
     case "unit_coordinator":
       return COORDINATOR_BASE;
     default:

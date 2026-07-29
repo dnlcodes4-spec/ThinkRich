@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { NEXT_TIER, roleLabel, type Role } from "@/app/app/admin/new-account/tiers";
+import { manageableRoles, roleLabel, type Role } from "@/app/app/admin/new-account/tiers";
 import { setAdminStatus } from "./actions";
 import { DeleteAccountButton } from "./delete-account";
 
@@ -20,7 +20,14 @@ const GEO: Partial<Record<Role, { col: "state_id" | "lga_id" | "ward_id" | "poll
 };
 
 // An admin views + deactivates the tier directly below them, within their scope.
-export default async function TeamPage() {
+// The NATIONAL ADMIN is not scoped: they manage every level, so they get a level
+// picker instead of a single fixed tier.
+export default async function TeamPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ level?: string }>;
+}) {
+  const sp = await searchParams;
   const supabase = await createClient();
   const {
     data: { user },
@@ -28,9 +35,9 @@ export default async function TeamPage() {
   const { data: me } = user
     ? await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle()
     : { data: null };
-  const tier = me ? NEXT_TIER[me.role as Role] : undefined;
+  const roles = me ? manageableRoles(me.role as Role) : [];
 
-  if (!me || !tier) {
+  if (!me || roles.length === 0) {
     return (
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
         <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">Team</h1>
@@ -42,12 +49,13 @@ export default async function TeamPage() {
     );
   }
 
-  const geo = GEO[tier.role]!;
-  // RLS scopes this to the caller's own scope; filter to the direct tier below.
+  const shown = roles.find((r) => r === sp.level) ?? roles[0];
+  const geo = GEO[shown]!;
+  // RLS scopes this to the caller's own scope; filter to the level being viewed.
   const { data: team } = await supabase
     .from("profiles")
     .select("id, full_name, status, state_id, lga_id, ward_id, polling_unit_id")
-    .eq("role", tier.role)
+    .eq("role", shown)
     .order("full_name");
   const rows = team ?? [];
 
@@ -57,7 +65,7 @@ export default async function TeamPage() {
     : { data: [] };
   const nameById = new Map((names ?? []).map((n) => [n.id, n.name]));
 
-  const label = roleLabel(tier.role);
+  const label = roleLabel(shown);
   const activeCount = rows.filter((r) => r.status === "active").length;
 
   return (
@@ -68,6 +76,25 @@ export default async function TeamPage() {
       <p className="mt-1 text-sm text-muted">
         {activeCount} active. Deactivating one blocks their sign-in immediately.
       </p>
+
+      {roles.length > 1 ? (
+        <nav className="mt-5 flex flex-wrap gap-2" aria-label="Leadership level">
+          {roles.map((r) => (
+            <Link
+              key={r}
+              href={`/app/admin/team?level=${r}`}
+              aria-current={r === shown ? "page" : undefined}
+              className={
+                r === shown
+                  ? "rounded-full border border-accent/40 bg-surface px-3 py-1.5 text-xs font-semibold capitalize text-accent"
+                  : "rounded-full border border-border bg-surface-muted px-3 py-1.5 text-xs font-semibold capitalize text-muted hover:text-foreground"
+              }
+            >
+              {roleLabel(r)}s
+            </Link>
+          ))}
+        </nav>
+      ) : null}
 
       {rows.length === 0 ? (
         <div className="mt-10 rounded-card border border-dashed border-border p-10 text-center">

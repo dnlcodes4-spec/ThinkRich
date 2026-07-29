@@ -48,6 +48,10 @@ What we're building and when.
 - [task-board.md](project/task-board.md) — in-repo Kanban board
 - [change-management.md](project/change-management.md) — how we absorb client changes safely
 - [change-requests/](project/change-requests/) — **Change Records (CRs)** per client request
+- [nigeria-elective-offices.md](project/nigeria-elective-offices.md) — every elective office, how
+  constituencies nest, the 2027 calendar, and what it implies for the candidate taxonomy
+- [data/](project/data/) — the LGA → ward → polling-unit reference datasets, and the
+  [constituency overlay](project/data/constituencies/README.md)
 
 ### 📄 Source material
 - [BUILD-PLAN.md](BUILD-PLAN.md) — Phase 1 (Members' PWA) build plan

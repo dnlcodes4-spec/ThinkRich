@@ -31,6 +31,67 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   opens into. No install base existed to migrate.
 
 ### Added
+- **Full elective-office coverage** (CR-0007, ADR-0013, migrations `0016`–`0018`). All seven offices
+  Nigerians elect are now modelled, not three: President, Senate, House of Representatives,
+  Governor, State House of Assembly, LG Chairman and Councillor. Offices, parties, elections and
+  constituencies are **admin-editable reference data**, so the national admin can add and correct
+  positions and dates without a deploy. `office_types.constituency_kind` declares what geography a
+  seat is elected from, and scope validation, the member view and the permission check all branch
+  on it. Seeded with INEC's 21 registered parties and the revised 2027 timetable (16 Jan / 6 Feb).
+  Background: [nigeria-elective-offices.md](docs/project/nigeria-elective-offices.md).
+- **Candidate permissions by geographic containment.** An admin may write a candidacy only if its
+  constituency sits inside their own scope; national admin's scope is the country. Enforced in
+  Postgres (`private.candidacy_in_scope`) on insert, update and delete, with candidacy writes going
+  through the caller's client rather than the service role, so RLS is the real gate.
+- **Members can browse any area's candidates**, defaulting to their own ward. `/app/vote` now lists
+  every race that applies to a place, most local first, with all uploaded candidates per race and
+  the movement's own pick marked. This is an awareness surface: nothing casts or counts a vote.
+
+### Changed
+- **The National Coordinator is no longer scoped anywhere in the app.** The database already
+  treated them as unscoped; application code did not. They can now **create any role below them at
+  any geography** (previously State Admin only, via a `NEXT_TIER` table) using a full
+  state → LGA → ward → polling-unit cascade, and **manage every tier on the Team page**
+  (previously State Admins only). Provisioning is now two explicit rules matching `profiles_insert`:
+  the target must rank below the caller, and its path must sit inside the caller's scope. The
+  national admin has no scope, so the second rule does not bind them. Other admins are unchanged:
+  next tier down, own scope only.
+- **The National Coordinator can register a member** into any polling unit in the country
+  (migration `0019`), optionally attributing them to a leader there so the member stays inside the
+  leadership chain. This also corrected the **≤10-members cap**, which counted by `registered_by`
+  regardless of role and so would have capped the Coordinator at ten: the rule is "a *leader* may
+  hold at most 10 active members", so it now applies only when the registrar is a leader. A member
+  attributed to a leader still counts against that leader.
+- **Ward Admins can reach the candidates screen**, since they own their ward's councillor race.
+- **`candidates` replaced by `candidacies`.** The `candidate_level` enum
+  (`presidential`/`state`/`lg`) and the one-candidate-per-scope unique indexes are gone; multiple
+  candidates per race are now allowed. The old table held 0 rows, so nothing was migrated.
+
+- **Electoral constituencies imported** from INEC's own workbook (T-031): **1,459** rows, being 109
+  senatorial districts, 360 federal constituencies and 990 state constituencies, with names and
+  codes. Senatorial LGA membership landed for **22 of 37 states** (427 links), so **5,017 wards now
+  resolve to a senatorial district** and Senate races appear for members in those states. Extracted
+  by `scripts/extract-constituencies.py`, imported by `scripts/import-constituencies.mjs`, both
+  idempotent. Provenance and coverage: [docs/project/data/constituencies](docs/project/data/constituencies/README.md).
+- **Elective-office RLS test suite** (`supabase/tests/elective_offices_rls_test.sql`): every role
+  against every office kind, including the three overlay shapes that containment has to tell apart
+  (a constituency inside one LGA, one spanning several, one that is ward-split), plus catalogue
+  write-protection, draft/published gating, the scope triggers and the resolver.
+
+### Fixed
+- **`rls_test.sql` counted every member in the table**, so its expectations broke as soon as
+  production held any real member. It now counts only its own fixtures.
+- **Removed a stray `Seed LGA`** (Lagos, code `SEED`) inserted outside the migrations during early
+  bootstrapping (migration `0020`). Geography counts now match the official figures exactly:
+  **774 LGAs / 8,793 wards / 119,971 polling units**.
+
+### Known gaps
+- **House of Reps and State Assembly races still resolve for nobody.** Their constituencies exist
+  and candidates can be attached to them, but no ward maps to one yet. Senate resolves in 22 of 37
+  states. Finishing this needs a reviewed LGA alias table (the 2010 workbook and our 2015 LGA names
+  spell ~40-60 LGAs differently) and, for state constituencies, INEC's ward-level delimitation,
+  which is a different document. Tracked as **T-031b**.
+- Our polling-unit reference data is a generation behind INEC's (119,971 held vs 176,846 in use).
 - **Activity log (national)**: an append-only `activity_log` (migration `0015`) with a read policy
   scoped to active National Coordinators and **no insert policy at all**, so only the service role
   can write (no user JWT can forge an entry). `lib/activity.ts` records best-effort (never throws,

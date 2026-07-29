@@ -18,69 +18,192 @@ export type Database = {
   }
   public: {
     Tables: {
-      candidates: {
+      activity_log: {
         Row: {
+          action: string
+          actor_id: string | null
+          actor_name: string
+          actor_role: Database["public"]["Enums"]["user_role"] | null
           created_at: string
-          full_name: string
           id: string
-          lga_id: string | null
-          level: Database["public"]["Enums"]["candidate_level"]
-          party: string | null
-          photo_url: string | null
-          running_mate: string | null
-          slogan: string | null
+          metadata: Json | null
           state_id: string | null
-          updated_at: string
-          uploaded_by: string | null
+          subject_id: string | null
+          subject_type: string | null
+          summary: string
         }
         Insert: {
+          action: string
+          actor_id?: string | null
+          actor_name: string
+          actor_role?: Database["public"]["Enums"]["user_role"] | null
           created_at?: string
-          full_name: string
           id?: string
-          lga_id?: string | null
-          level: Database["public"]["Enums"]["candidate_level"]
-          party?: string | null
-          photo_url?: string | null
-          running_mate?: string | null
-          slogan?: string | null
+          metadata?: Json | null
           state_id?: string | null
-          updated_at?: string
-          uploaded_by?: string | null
+          subject_id?: string | null
+          subject_type?: string | null
+          summary: string
         }
         Update: {
+          action?: string
+          actor_id?: string | null
+          actor_name?: string
+          actor_role?: Database["public"]["Enums"]["user_role"] | null
           created_at?: string
-          full_name?: string
           id?: string
-          lga_id?: string | null
-          level?: Database["public"]["Enums"]["candidate_level"]
-          party?: string | null
-          photo_url?: string | null
-          running_mate?: string | null
-          slogan?: string | null
+          metadata?: Json | null
           state_id?: string | null
-          updated_at?: string
-          uploaded_by?: string | null
+          subject_id?: string | null
+          subject_type?: string | null
+          summary?: string
         }
         Relationships: [
           {
-            foreignKeyName: "candidates_lga_id_fkey"
+            foreignKeyName: "activity_log_actor_id_fkey"
+            columns: ["actor_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "activity_log_state_id_fkey"
+            columns: ["state_id"]
+            isOneToOne: false
+            referencedRelation: "states"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidacies: {
+        Row: {
+          bio: string | null
+          constituency_id: string | null
+          created_at: string
+          created_by: string | null
+          election_id: string
+          full_name: string
+          id: string
+          is_endorsed: boolean
+          is_published: boolean
+          lga_id: string | null
+          office_type_id: string
+          party_id: string | null
+          photo_url: string | null
+          published_at: string | null
+          running_mate_name: string | null
+          slogan: string | null
+          state_id: string | null
+          updated_at: string
+          updated_by: string | null
+          ward_id: string | null
+        }
+        Insert: {
+          bio?: string | null
+          constituency_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          election_id: string
+          full_name: string
+          id?: string
+          is_endorsed?: boolean
+          is_published?: boolean
+          lga_id?: string | null
+          office_type_id: string
+          party_id?: string | null
+          photo_url?: string | null
+          published_at?: string | null
+          running_mate_name?: string | null
+          slogan?: string | null
+          state_id?: string | null
+          updated_at?: string
+          updated_by?: string | null
+          ward_id?: string | null
+        }
+        Update: {
+          bio?: string | null
+          constituency_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          election_id?: string
+          full_name?: string
+          id?: string
+          is_endorsed?: boolean
+          is_published?: boolean
+          lga_id?: string | null
+          office_type_id?: string
+          party_id?: string | null
+          photo_url?: string | null
+          published_at?: string | null
+          running_mate_name?: string | null
+          slogan?: string | null
+          state_id?: string | null
+          updated_at?: string
+          updated_by?: string | null
+          ward_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidacies_constituency_id_fkey"
+            columns: ["constituency_id"]
+            isOneToOne: false
+            referencedRelation: "constituencies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidacies_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidacies_election_id_fkey"
+            columns: ["election_id"]
+            isOneToOne: false
+            referencedRelation: "elections"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidacies_lga_id_fkey"
             columns: ["lga_id"]
             isOneToOne: false
             referencedRelation: "lgas"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "candidates_state_id_fkey"
+            foreignKeyName: "candidacies_office_type_id_fkey"
+            columns: ["office_type_id"]
+            isOneToOne: false
+            referencedRelation: "office_types"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidacies_party_id_fkey"
+            columns: ["party_id"]
+            isOneToOne: false
+            referencedRelation: "parties"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidacies_state_id_fkey"
             columns: ["state_id"]
             isOneToOne: false
             referencedRelation: "states"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "candidates_uploaded_by_fkey"
-            columns: ["uploaded_by"]
+            foreignKeyName: "candidacies_updated_by_fkey"
+            columns: ["updated_by"]
             isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidacies_ward_id_fkey"
+            columns: ["ward_id"]
+            isOneToOne: false
+            referencedRelation: "wards"
             referencedColumns: ["id"]
           },
         ]
@@ -132,6 +255,187 @@ export type Database = {
             columns: ["reviewed_by"]
             isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      constituencies: {
+        Row: {
+          code: string | null
+          created_at: string
+          id: string
+          is_active: boolean
+          kind: Database["public"]["Enums"]["constituency_kind"]
+          name: string
+          state_id: string
+          updated_at: string
+        }
+        Insert: {
+          code?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          kind: Database["public"]["Enums"]["constituency_kind"]
+          name: string
+          state_id: string
+          updated_at?: string
+        }
+        Update: {
+          code?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          kind?: Database["public"]["Enums"]["constituency_kind"]
+          name?: string
+          state_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "constituencies_state_id_fkey"
+            columns: ["state_id"]
+            isOneToOne: false
+            referencedRelation: "states"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      constituency_lgas: {
+        Row: {
+          constituency_id: string
+          kind: Database["public"]["Enums"]["constituency_kind"]
+          lga_id: string
+        }
+        Insert: {
+          constituency_id: string
+          kind: Database["public"]["Enums"]["constituency_kind"]
+          lga_id: string
+        }
+        Update: {
+          constituency_id?: string
+          kind?: Database["public"]["Enums"]["constituency_kind"]
+          lga_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "constituency_lgas_constituency_id_kind_fkey"
+            columns: ["constituency_id", "kind"]
+            isOneToOne: false
+            referencedRelation: "constituencies"
+            referencedColumns: ["id", "kind"]
+          },
+          {
+            foreignKeyName: "constituency_lgas_lga_id_fkey"
+            columns: ["lga_id"]
+            isOneToOne: false
+            referencedRelation: "lgas"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      constituency_wards: {
+        Row: {
+          constituency_id: string
+          kind: Database["public"]["Enums"]["constituency_kind"]
+          ward_id: string
+        }
+        Insert: {
+          constituency_id: string
+          kind: Database["public"]["Enums"]["constituency_kind"]
+          ward_id: string
+        }
+        Update: {
+          constituency_id?: string
+          kind?: Database["public"]["Enums"]["constituency_kind"]
+          ward_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "constituency_wards_constituency_id_kind_fkey"
+            columns: ["constituency_id", "kind"]
+            isOneToOne: false
+            referencedRelation: "constituencies"
+            referencedColumns: ["id", "kind"]
+          },
+          {
+            foreignKeyName: "constituency_wards_ward_id_fkey"
+            columns: ["ward_id"]
+            isOneToOne: false
+            referencedRelation: "wards"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      election_office_types: {
+        Row: {
+          election_id: string
+          office_type_id: string
+        }
+        Insert: {
+          election_id: string
+          office_type_id: string
+        }
+        Update: {
+          election_id?: string
+          office_type_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "election_office_types_election_id_fkey"
+            columns: ["election_id"]
+            isOneToOne: false
+            referencedRelation: "elections"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "election_office_types_office_type_id_fkey"
+            columns: ["office_type_id"]
+            isOneToOne: false
+            referencedRelation: "office_types"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      elections: {
+        Row: {
+          created_at: string
+          election_date: string
+          id: string
+          is_active: boolean
+          name: string
+          notes: string | null
+          scope: Database["public"]["Enums"]["election_scope"]
+          state_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          election_date: string
+          id?: string
+          is_active?: boolean
+          name: string
+          notes?: string | null
+          scope: Database["public"]["Enums"]["election_scope"]
+          state_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          election_date?: string
+          id?: string
+          is_active?: boolean
+          name?: string
+          notes?: string | null
+          scope?: Database["public"]["Enums"]["election_scope"]
+          state_id?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "elections_state_id_fkey"
+            columns: ["state_id"]
+            isOneToOne: false
+            referencedRelation: "states"
             referencedColumns: ["id"]
           },
         ]
@@ -372,6 +676,57 @@ export type Database = {
           },
         ]
       }
+      office_types: {
+        Row: {
+          constituency_kind: Database["public"]["Enums"]["constituency_kind"]
+          created_at: string
+          has_running_mate: boolean
+          id: string
+          is_active: boolean
+          key: string
+          notes: string | null
+          running_mate_title: string | null
+          seat_count: number | null
+          sort_order: number
+          tier: string
+          title: string
+          title_plural: string
+          updated_at: string
+        }
+        Insert: {
+          constituency_kind: Database["public"]["Enums"]["constituency_kind"]
+          created_at?: string
+          has_running_mate?: boolean
+          id?: string
+          is_active?: boolean
+          key: string
+          notes?: string | null
+          running_mate_title?: string | null
+          seat_count?: number | null
+          sort_order: number
+          tier: string
+          title: string
+          title_plural: string
+          updated_at?: string
+        }
+        Update: {
+          constituency_kind?: Database["public"]["Enums"]["constituency_kind"]
+          created_at?: string
+          has_running_mate?: boolean
+          id?: string
+          is_active?: boolean
+          key?: string
+          notes?: string | null
+          running_mate_title?: string | null
+          seat_count?: number | null
+          sort_order?: number
+          tier?: string
+          title?: string
+          title_plural?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       opt_out_requests: {
         Row: {
           created_at: string
@@ -422,6 +777,39 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      parties: {
+        Row: {
+          acronym: string
+          color: string | null
+          created_at: string
+          id: string
+          is_active: boolean
+          logo_url: string | null
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          acronym: string
+          color?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          logo_url?: string | null
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          acronym?: string
+          color?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          logo_url?: string | null
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
       }
       polling_units: {
         Row: {
@@ -602,14 +990,100 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      ward_constituencies: {
+        Row: {
+          constituency_id: string | null
+          kind: Database["public"]["Enums"]["constituency_kind"] | null
+          ward_id: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
-      [_ in never]: never
+      candidacies_for_geography: {
+        Args: { p_lga_id?: string; p_state_id?: string; p_ward_id?: string }
+        Returns: {
+          bio: string | null
+          constituency_id: string | null
+          created_at: string
+          created_by: string | null
+          election_id: string
+          full_name: string
+          id: string
+          is_endorsed: boolean
+          is_published: boolean
+          lga_id: string | null
+          office_type_id: string
+          party_id: string | null
+          photo_url: string | null
+          published_at: string | null
+          running_mate_name: string | null
+          slogan: string | null
+          state_id: string | null
+          updated_at: string
+          updated_by: string | null
+          ward_id: string | null
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "candidacies"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
+      candidacies_i_manage: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          bio: string | null
+          constituency_id: string | null
+          created_at: string
+          created_by: string | null
+          election_id: string
+          full_name: string
+          id: string
+          is_endorsed: boolean
+          is_published: boolean
+          lga_id: string | null
+          office_type_id: string
+          party_id: string | null
+          photo_url: string | null
+          published_at: string | null
+          running_mate_name: string | null
+          slogan: string | null
+          state_id: string | null
+          updated_at: string
+          updated_by: string | null
+          ward_id: string | null
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "candidacies"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
+      can_manage_candidacy: {
+        Args: {
+          p_constituency_id?: string
+          p_lga_id?: string
+          p_office_type_id: string
+          p_state_id?: string
+          p_ward_id?: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      candidate_level: "presidential" | "state" | "lg"
       change_request_status: "pending" | "approved" | "rejected"
+      constituency_kind:
+        | "nation"
+        | "state"
+        | "lga"
+        | "ward"
+        | "senatorial_district"
+        | "federal_constituency"
+        | "state_constituency"
+      election_scope: "national" | "state"
       member_status: "active" | "frozen" | "deleted"
       opt_out_status: "requested" | "frozen" | "deleted" | "reactivated"
       user_role:
@@ -747,8 +1221,17 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      candidate_level: ["presidential", "state", "lg"],
       change_request_status: ["pending", "approved", "rejected"],
+      constituency_kind: [
+        "nation",
+        "state",
+        "lga",
+        "ward",
+        "senatorial_district",
+        "federal_constituency",
+        "state_constituency",
+      ],
+      election_scope: ["national", "state"],
       member_status: ["active", "frozen", "deleted"],
       opt_out_status: ["requested", "frozen", "deleted", "reactivated"],
       user_role: [
