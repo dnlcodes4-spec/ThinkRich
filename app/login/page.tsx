@@ -30,12 +30,15 @@ export default async function LoginPage({
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-ink-250/40 via-ink-950/75 to-ink-250" />
 
+        {/* Think-Winners, not the ThinkRich umbrella: /login lives on the
+            Think-Winners origin (CR-0008) and this is where members sign in.
+            The full lockup reads better than the bare mark against the photo. */}
         <div className="inline-flex w-fit self-start rounded-2xl bg-white p-2 shadow-sm">
           <Image
-            src="/logos/ThinkrichCommunity_transparent.png"
-            alt="ThinkRich Community"
-            width={1072}
-            height={1072}
+            src="/think-winners/logo-full.png"
+            alt="Think-Winners Movement"
+            width={1254}
+            height={1254}
             className="size-14 sm:size-16"
           />
         </div>

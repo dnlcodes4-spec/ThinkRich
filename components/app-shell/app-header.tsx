@@ -19,17 +19,17 @@ export function AppHeader({
 }) {
   return (
     <header className="sticky top-0 z-20 flex h-16 items-center justify-between gap-3 border-b border-border bg-surface/95 px-4 backdrop-blur sm:px-6">
-      <Link href="/app" className="flex items-center gap-2 lg:hidden" aria-label="ThinkRich home">
+      <Link href="/app" className="flex items-center gap-2 lg:hidden" aria-label="Think-Winners home">
         <Image
-          src="/logos/ThinkrichCommunity_transparent.png"
+          src="/think-winners/logo-mark-light.png"
           alt=""
-          width={1072}
-          height={1072}
-          className="size-7 shrink-0 object-contain"
+          width={911}
+          height={582}
+          className="h-7 w-auto shrink-0 object-contain"
           priority
         />
         <span className="font-display text-lg font-semibold tracking-tight text-foreground">
-          Think<span className="text-accent">Rich</span>
+          Think<span className="text-accent">-Winners</span>
         </span>
       </Link>
       <div className="hidden lg:block" />
