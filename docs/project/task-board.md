@@ -16,6 +16,13 @@ only when it meets the [Definition of Done](../engineering/definition-of-done.md
 ## 🔵 Backlog
 _Not yet refined / not yet Ready._
 
+- **T-055** — Regression test pinning plural position holders: two `state_admin`s in one state, two
+  `lg_admin`s in one LGA, two `unit_coordinator`s over one polling unit, plus the refusals that must
+  survive (peer cannot update peer, no cross-scope or upward insert). Stops a later "tidy-up" adding
+  a `unique (role, scope)` index and silently breaking the client's requirement. _(CR-0011)_
+- **T-056** — Surface co-admins read-only on the Team page, and state the plurality invariant in
+  `security-model.md`. RLS already permits the read; the gap is presentational. _(CR-0011 §3.1)_
+
 - **T-054** — Arm logos in the arms explorer. Two of six exist (`TCMS_transparent.png` = the MCPS
   Cooperative arm; `BeRich_transparent.png` maps to no arm we list). **Not wired up deliberately:**
   both are red/blue/yellow shield-and-sunburst marks, one containing a stock handshake photo, and
@@ -153,6 +160,11 @@ _Merged to `main`, meets Definition of Done._
 - **T-023** — In-app notifications: centre + unread badge + announcements (PR #23)
 - **T-021** — Admin management: deactivate/reactivate subordinate admins (PR #22)
 - **T-020** — Statistics dashboard: scoped member counts + breakdown (PR #21)
+- **T-057** — State activation lifecycle: a state closes when it loses its last State Coordinator
+  (migration `0031`, 13 assertions in `supabase/tests/state_activation_test.sql`). Found in
+  production via the national map: Ogun and Oyo sat open with no coordinator because deleting an
+  account never reversed the activation. Closing is enforced in the database and one-directional;
+  opening stays an intentional act. _(CR-0011 §3.2)_ · **completes** T-019's other edge
 - **T-019** — State activation + inactive-state gating (PR #20)
 - **T-006** — Member change-requests + leader photo upload (PR #18) · **completes** T-006
 - **T-007** — Member voting view + scoped candidate management (PR #17)
