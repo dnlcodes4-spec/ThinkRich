@@ -4,6 +4,7 @@ import { ThinkRichNav } from "@/components/marketing/thinkrich-nav";
 import { Grain } from "@/components/marketing/motifs";
 import { Reveal } from "@/components/marketing/reveal";
 import { Portrait } from "@/components/marketing/portrait";
+import { ThinkRichLogo } from "@/components/marketing/thinkrich-logo";
 import { thinkWinnersHref } from "@/lib/origins";
 import {
   president,
@@ -234,8 +235,8 @@ export default function PresidentProfilePage() {
 
       <footer className="bg-ink-950 text-ink-50">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
-          <Link href="/" className="font-display text-xl font-semibold">
-            Think<span className="text-green-400">Rich</span> Community
+          <Link href="/" aria-label="ThinkRich Community, home">
+            <ThinkRichLogo height={28} textClassName="text-lg text-ink-50" />
           </Link>
           <p className="text-sm text-ink-50/50">
             © {new Date().getFullYear()} ThinkRich Community. All rights reserved.

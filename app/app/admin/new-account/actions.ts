@@ -6,6 +6,7 @@ import { createAdminClient, isAdminConfigured, ADMIN_NOT_CONFIGURED } from "@/li
 import { generateTempPassword } from "@/lib/provisioning";
 import type { Database } from "@/lib/database.types";
 import { FLAG_TEMPORARY } from "@/lib/must-change-password";
+import { openStateFor } from "@/lib/states";
 import { allowedTargets, ROLE_LEVEL, type Role } from "./tiers";
 import { normalizeVin, VIN_INVALID } from "@/lib/vin";
 
@@ -203,9 +204,11 @@ export async function createAccount(
     return { status: "error", message: "Could not save the account profile. Please try again." };
   }
 
-  // Assigning a state admin activates that state (T-019: "active once a State Admin is assigned").
+  // Assigning a state admin activates that state (T-019: "active once a State Admin
+  // is assigned"). Losing the last one closes it again, in the database: see
+  // migration 0031_state_closes_without_admin.sql.
   if (target.role === "state_admin" && scope.state_id) {
-    await admin.from("states").update({ is_active: true }).eq("id", scope.state_id);
+    await openStateFor(user.id, scope.state_id);
   }
 
   return {

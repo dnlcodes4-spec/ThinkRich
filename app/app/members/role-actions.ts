@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { logActivityAs } from "@/lib/activity";
+import { openStateFor } from "@/lib/states";
 import { ROLE_RANK, roleLabel, type Role } from "@/app/app/admin/new-account/tiers";
 
 // Promotion and demotion (T-046 / T-049, CR-0009 §3.3, ADR-0015).
@@ -137,6 +138,18 @@ export async function changeRole(
     subjectType: "account",
     subjectId: profile_id,
   });
+
+  // Appointing a State Coordinator opens that state, exactly as creating one from
+  // scratch does (new-account/actions.ts). Without this, a state promoted into a
+  // coordinator stayed shut and no member could be registered there.
+  //
+  // The service role appears here only for this consequence write: `states` is
+  // reference data with no write policy by design. The escalation itself stayed
+  // under the caller's own credentials above, which is the point of this file.
+  // Best effort, like the log: the role change has already succeeded.
+  if (new_role === "state_admin" && target.state_id) {
+    await openStateFor(user.id, target.state_id);
+  }
 
   revalidatePath("/app/admin/team");
   revalidatePath("/app/members");

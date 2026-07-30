@@ -44,3 +44,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+supabase/migrations/0031_state_closes_without_admin.sql
+supabase/tests/state_activation_test.sql
+docs/engineering/learnings.md
+docs/project/change-requests/0011-multiple-admins-per-position.md
+CHANGELOG.md
