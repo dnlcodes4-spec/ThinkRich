@@ -27,17 +27,23 @@ export function Sidebar({
   return (
     <aside className="sticky top-0 hidden h-svh w-60 shrink-0 flex-col border-r border-border bg-surface lg:flex">
       <div className="flex h-16 items-center px-5">
-        <Link href="/app" className="flex items-center gap-2" aria-label="ThinkRich home">
+        {/* The /app dashboards are Think-Winners, not the ThinkRich umbrella:
+            they moved to their own origin in CR-0008 and carry the navy + gold
+            brand (ADR-0008). This was still showing the ThinkRich mark. */}
+        <Link href="/app" className="flex items-center gap-2" aria-label="Think-Winners home">
           <Image
-            src="/logos/ThinkrichCommunity_transparent.png"
+            src="/think-winners/logo-mark-light.png"
             alt=""
-            width={1072}
-            height={1072}
-            className="size-8 shrink-0 object-contain"
+            width={911}
+            height={582}
+            className="h-8 w-auto shrink-0 object-contain"
             priority
           />
-          <span className="font-display text-xl font-semibold tracking-tight text-foreground">
-            Think<span className="text-accent">Rich</span>
+          {/* nowrap: the Think-Winners mark is wider than the square ThinkRich one
+              it replaced, and "Think-Winners" is longer than "ThinkRich", so the
+              wordmark wrapped to two lines in the 15rem sidebar. */}
+          <span className="whitespace-nowrap font-display text-lg font-semibold tracking-tight text-foreground">
+            Think<span className="text-accent">-Winners</span>
           </span>
         </Link>
       </div>

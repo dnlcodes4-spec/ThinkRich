@@ -3,7 +3,7 @@ import Image from "next/image";
 import { LoginForm } from "./login-form";
 
 export const metadata: Metadata = {
-  title: "Sign in to ThinkRich",
+  title: "Sign in to Think-Winners",
   robots: { index: false, follow: false },
 };
 
@@ -18,24 +18,27 @@ export default async function LoginPage({
   const { next } = await searchParams;
 
   return (
-    <main className="flex min-h-svh flex-1 flex-col lg:flex-row">
-      <aside className="relative isolate flex min-h-[34svh] flex-col justify-between overflow-hidden bg-ink-250 px-6 py-8 text-white lg:min-h-0 lg:w-[45%] lg:px-12 lg:py-14">
+    <main data-brand="think-winners" className="flex min-h-svh flex-1 flex-col lg:flex-row">
+      <aside className="relative isolate flex min-h-[34svh] flex-col justify-between overflow-hidden bg-navy-900 px-6 py-8 text-white lg:min-h-0 lg:w-[45%] lg:px-12 lg:py-14">
         <Image
-          src="/thinkrich/img/hero-grassroots.jpg"
+          src="/think-winners/img/hero-crowd.jpg"
           alt=""
           fill
           priority
           sizes="(max-width: 1024px) 100vw, 45vw"
           className="-z-10 object-cover"
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-ink-250/40 via-ink-950/75 to-ink-250" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-navy-900/40 via-navy-950/75 to-navy-900" />
 
+        {/* Think-Winners, not the ThinkRich umbrella: /login lives on the
+            Think-Winners origin (CR-0008) and this is where members sign in.
+            The full lockup reads better than the bare mark against the photo. */}
         <div className="inline-flex w-fit self-start rounded-2xl bg-white p-2 shadow-sm">
           <Image
-            src="/logos/ThinkrichCommunity_transparent.png"
-            alt="ThinkRich Community"
-            width={1072}
-            height={1072}
+            src="/think-winners/logo-full.png"
+            alt="Think-Winners Movement"
+            width={1254}
+            height={1254}
             className="size-14 sm:size-16"
           />
         </div>

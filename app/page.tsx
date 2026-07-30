@@ -2,9 +2,11 @@ import Image from "next/image";
 import { Reveal } from "@/components/marketing/reveal";
 import { Grain } from "@/components/marketing/motifs";
 import { ThinkRichNav } from "@/components/marketing/thinkrich-nav";
+import { ThinkRichLockup } from "@/components/marketing/thinkrich-logo";
 import { HeroSlider } from "@/components/marketing/hero-slider";
 import { ArmsExplorer } from "@/components/marketing/arms-explorer";
 import { PhilosophyFlow } from "@/components/marketing/philosophy-flow";
+import { Leadership } from "@/components/marketing/leadership";
 import { thinkWinnersHref } from "@/lib/origins";
 
 // ThinkRich Community: the umbrella front door (T-016). Purpose: inspire prospective members
@@ -297,6 +299,12 @@ export default function ThinkRichLanding() {
         </div>
       </section>
 
+      {/* ───────────── Leadership (CR-0010) ───────────── */}
+      {/* Sits here deliberately: it answers "who is behind these six arms?" the
+          moment the arms have been laid out, and hands off to the philosophy
+          section, which is the President's own idea. */}
+      <Leadership brand="thinkrich" profileHref="/leaders/president" />
+
       {/* ───────────── Philosophy (four-beat) ───────────── */}
       <section
         id="philosophy"
@@ -355,14 +363,10 @@ export default function ThinkRichLanding() {
       <footer className="bg-ink-950 text-ink-50">
         <div className="mx-auto max-w-6xl px-6 py-14">
           <div className="flex flex-col gap-8 border-b border-ink-50/10 pb-10 sm:flex-row sm:items-start sm:justify-between">
+            {/* The full lockup carries the name and "Creating Value for Mankind",
+                so the tagline that used to sit here would only repeat it. */}
             <div className="max-w-sm">
-              <p className="font-display text-xl font-semibold">
-                Think<span className="text-green-400">Rich</span> Community
-              </p>
-              <p className="mt-2 text-sm text-ink-50/60">
-                Creating Value for Mankind · Thinking Together, Winning
-                Together.
-              </p>
+              <ThinkRichLockup width={200} className="h-auto w-44 sm:w-50" />
             </div>
             <ul className="grid grid-cols-1 gap-x-10 gap-y-1.5 text-sm text-ink-50/70 sm:grid-cols-2">
               {arms.map((a) => (

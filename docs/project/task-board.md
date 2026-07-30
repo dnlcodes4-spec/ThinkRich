@@ -16,6 +16,19 @@ only when it meets the [Definition of Done](../engineering/definition-of-done.md
 ## 🔵 Backlog
 _Not yet refined / not yet Ready._
 
+- **T-055** — Regression test pinning plural position holders: two `state_admin`s in one state, two
+  `lg_admin`s in one LGA, two `unit_coordinator`s over one polling unit, plus the refusals that must
+  survive (peer cannot update peer, no cross-scope or upward insert). Stops a later "tidy-up" adding
+  a `unique (role, scope)` index and silently breaking the client's requirement. _(CR-0011)_
+- **T-056** — Surface co-admins read-only on the Team page, and state the plurality invariant in
+  `security-model.md`. RLS already permits the read; the gap is presentational. _(CR-0011 §3.1)_
+
+- **T-054** — Arm logos in the arms explorer. Two of six exist (`TCMS_transparent.png` = the MCPS
+  Cooperative arm; `BeRich_transparent.png` maps to no arm we list). **Not wired up deliberately:**
+  both are red/blue/yellow shield-and-sunburst marks, one containing a stock handshake photo, and
+  beside the green umbrella mark on an ink ground they read as clip art. Needs either a redraw in the
+  umbrella palette or a client decision to accept the clash. Reasoning in `public/logos/CREDITS.md`.
+
 - **T-005** — Membership card render + download. **Unblocked**: the client supplied the artwork on
   2026-07-29 (`public/cards/`). Superseded by **T-047 / T-048** _(CR-0009 §3.5)_.
 - **T-025** — Notification toasts + remaining catalog (voting reminder N1, card-ready N5)
@@ -40,6 +53,21 @@ _Refined, unblocked, ready to pull._
 
 ## 🟠 In Progress
 _One person, one task at a time. Keep this column small._
+
+- **T-050 … T-053** — Leadership section on both landings + the President's profile page
+  (CR-0010), on `feat/leadership-section-and-president-profile`.
+  _Done: `lib/leadership.ts` content module with 13 tests; the `Leadership` section component,
+  brand-parametrised and mounted on both landings with per-audience copy; `/leaders/president` as a
+  full editorial page; "Leadership" added to the ThinkRich nav, which now also takes a `base` so its
+  anchors work away from the landing. Client portraits cropped to five normalised 4:5 plates with
+  the recipe recorded in `public/leaders/CREDITS.md`. Roster reading and the President's styling
+  confirmed by the client. Lint, typecheck, 100 tests and the production build are green._
+  _Two things the photographs forced, both in CR-0010 §9: the supporting band dropped from a 2+1+1
+  layout to equal thirds because only one of the Vice President's two images is usable, and the
+  President's spread was rebuilt (primary fills its column, second insets off the corner) after the
+  side-by-side pair computed smaller than the portraits below it and inverted the hierarchy._
+  _Outstanding: visual sign-off, then a clean second portrait of the Vice President and a
+  watermark-free copy of the Secretary's photo from the client._
 
 - **T-027 / T-028** — Elective-office model (CR-0007, ADR-0013), branch pending.
   _Done: migrations `0016`–`0018` applied (office catalogue, parties, elections, constituencies +
@@ -132,6 +160,11 @@ _Merged to `main`, meets Definition of Done._
 - **T-023** — In-app notifications: centre + unread badge + announcements (PR #23)
 - **T-021** — Admin management: deactivate/reactivate subordinate admins (PR #22)
 - **T-020** — Statistics dashboard: scoped member counts + breakdown (PR #21)
+- **T-057** — State activation lifecycle: a state closes when it loses its last State Coordinator
+  (migration `0031`, 13 assertions in `supabase/tests/state_activation_test.sql`). Found in
+  production via the national map: Ogun and Oyo sat open with no coordinator because deleting an
+  account never reversed the activation. Closing is enforced in the database and one-directional;
+  opening stays an intentional act. _(CR-0011 §3.2)_ · **completes** T-019's other edge
 - **T-019** — State activation + inactive-state gating (PR #20)
 - **T-006** — Member change-requests + leader photo upload (PR #18) · **completes** T-006
 - **T-007** — Member voting view + scoped candidate management (PR #17)

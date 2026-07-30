@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { MAP_HEIGHT, MAP_WIDTH, NIGERIA_STATES } from "@/lib/geo/nigeria-states";
 
 export type StateDatum = {
@@ -11,7 +11,7 @@ export type StateDatum = {
 };
 
 // The map gets its own dark navy world (the Think-Winners half of the brand) so
-// it reads as a distinct hero on the otherwise light, green dashboard. Fills are
+// it reads as a distinct hero on the otherwise light dashboard. Fills are
 // data-driven and applied inline (Tailwind's JIT can't see a runtime lookup).
 const MAP_BG = "#0b1f38";
 const CARD_BORDER = "#1c3a5e";
@@ -21,9 +21,18 @@ const ZERO_FILL = "#1d3b5a"; // an empty state still reads on the dark ground
 // Sequential brightening blue: more members reads as brighter, not just darker.
 const BUCKETS = ["#2f6aa6", "#4489cf", "#63a8ea", "#8ec7f6", "#c2e2ff"];
 const GOLD = "#f4c95d"; // hover + selection: pops on navy, never fades to the edge
-const ACTIVE_BORDER = "#4bbf87"; // green = a state that is active (open for registration)
+const ACTIVE_BORDER = "#4bbf87"; // green = STATUS (open for registration), not brand.
+// Deliberately not gold: gold already means hover/selection on this map, so reusing
+// it would make "active" and "selected" indistinguishable.
+const ACTIVE_WASH = "rgba(75, 191, 135, 0.16)"; // the same green, filling the shape
 const TEXT = "#eaf1f8";
 const MUTED = "#9fb6cf";
+
+/** One phrasing for both counts, shared by the tooltip, the accessible name and
+ *  the SVG <title>, so a hover and a screen reader never disagree. */
+function countsLabel(name: string, members: number, leaders: number): string {
+  return `${name}: ${members} member${members === 1 ? "" : "s"}, ${leaders} leader${leaders === 1 ? "" : "s"}`;
+}
 
 /** Quantile-ish buckets off the observed maximum, so the scale adapts to real data. */
 function bucketOf(count: number, max: number): number {
@@ -118,10 +127,12 @@ function MapBoard({
   const byName = new Map(data.map((d) => [d.name, d]));
   const max = Math.max(0, ...data.map((d) => d.members));
   const totalMembers = data.reduce((n, d) => n + d.members, 0);
+  const totalLeaders = data.reduce((n, d) => n + d.leaders, 0);
   const activeStates = data.filter((d) => d.active).length;
 
+  const uid = useId().replace(/:/g, "");
   const wrapRef = useRef<HTMLDivElement>(null);
-  const [tip, setTip] = useState<{ x: number; y: number; name: string; members: number } | null>(null);
+  const [tip, setTip] = useState<{ x: number; y: number; name: string; members: number; leaders: number } | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
 
   const current = selected ? byName.get(selected) : undefined;
@@ -129,7 +140,14 @@ function MapBoard({
   const showTip = (name: string, e: React.MouseEvent) => {
     const rect = wrapRef.current?.getBoundingClientRect();
     if (!rect) return;
-    setTip({ x: e.clientX - rect.left, y: e.clientY - rect.top, name, members: byName.get(name)?.members ?? 0 });
+    const d = byName.get(name);
+    setTip({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+      name,
+      members: d?.members ?? 0,
+      leaders: d?.leaders ?? 0,
+    });
     setHovered(name);
   };
   const clearTip = () => {
@@ -140,6 +158,14 @@ function MapBoard({
   // Selected first, then hovered (if different), drawn on top so their gold
   // outline is never clipped by a neighbour painted afterwards.
   const outlined = [selected, hovered !== selected ? hovered : null].filter(Boolean) as string[];
+
+  // Every mark a state carries (green status border, gold hover/selection
+  // border) is clipped to that state's own shape, so a stroke centred on a
+  // shared edge can never paint half of itself onto the neighbour. Only the
+  // handful of states that need one get a clip path: the shape data is heavy.
+  const activeNames = data.filter((d) => d.active).map((d) => d.name);
+  const clipNames = [...new Set([...activeNames, ...outlined])];
+  const clipId = (name: string) => `${uid}-${name.replace(/[^a-zA-Z]/g, "")}`;
 
   return (
     <div
@@ -170,10 +196,13 @@ function MapBoard({
             className="h-auto w-full"
             style={{ maxHeight: fullscreen ? "82vh" : undefined }}
             role="img"
-            aria-label={`Map of Nigeria showing members by state. ${totalMembers} members across ${activeStates} active states. Tap a state for its numbers.`}
+            aria-label={`Map of Nigeria showing members and leaders by state. ${totalMembers} members and ${totalLeaders} leaders across ${activeStates} active states. Tap a state for its numbers.`}
           >
             {NIGERIA_STATES.map((s) => {
-              const count = byName.get(s.name)?.members ?? 0;
+              const datum = byName.get(s.name);
+              const count = datum?.members ?? 0;
+              const leaderCount = datum?.leaders ?? 0;
+              const label = countsLabel(s.name, count, leaderCount);
               const isSelected = selected === s.name;
               return (
                 <path
@@ -181,7 +210,7 @@ function MapBoard({
                   d={s.d}
                   tabIndex={0}
                   role="button"
-                  aria-label={`${s.name}: ${count} member${count === 1 ? "" : "s"}`}
+                  aria-label={label}
                   aria-pressed={isSelected}
                   onClick={() => setSelected(isSelected ? null : s.name)}
                   onMouseMove={(e) => showTip(s.name, e)}
@@ -197,20 +226,41 @@ function MapBoard({
                   style={{ fill: fillFor(count, max), stroke: STATE_BORDER, strokeWidth: 0.75, cursor: "pointer" }}
                   className="outline-none transition-[fill] hover:brightness-110 focus-visible:brightness-110"
                 >
-                  <title>{`${s.name}: ${count} member${count === 1 ? "" : "s"}`}</title>
+                  <title>{label}</title>
                 </path>
               );
             })}
 
-            {/* Active states get a persistent green outline (open for
-                registration), drawn over the fills so shared edges stay crisp. */}
+            <defs>
+              {clipNames.map((name) => {
+                const s = NIGERIA_STATES.find((x) => x.name === name);
+                if (!s) return null;
+                return (
+                  <clipPath key={`clip-${name}`} id={clipId(name)}>
+                    <path d={s.d} />
+                  </clipPath>
+                );
+              })}
+            </defs>
+
+            {/* Active states (open for registration) read from the inside out:
+                a green wash over the data fill, then a green border sitting
+                wholly inside the shape. Two active states that share an edge
+                (Ogun and Oyo) each keep their own ring, so the map agrees with
+                the "N of 37" count instead of merging into one silhouette. */}
             {NIGERIA_STATES.map((s) => {
               if (!byName.get(s.name)?.active) return null;
               return (
                 <path
                   key={`active-${s.name}`}
                   d={s.d}
-                  style={{ fill: "none", stroke: ACTIVE_BORDER, strokeWidth: 1.5, pointerEvents: "none" }}
+                  clipPath={`url(#${clipId(s.name)})`}
+                  style={{
+                    fill: ACTIVE_WASH,
+                    stroke: ACTIVE_BORDER,
+                    strokeWidth: 3.5, // clipped, so half of it shows: a ~1.75 inner border
+                    pointerEvents: "none",
+                  }}
                 />
               );
             })}
@@ -239,10 +289,14 @@ function MapBoard({
                 <path
                   key={`outline-${name}`}
                   d={s.d}
+                  clipPath={`url(#${clipId(name)})`}
                   style={{
                     fill: "none",
                     stroke: GOLD,
-                    strokeWidth: name === selected ? 3 : 2,
+                    // Clipped like the status border, so hovering a state never
+                    // lights up the edge of the one beside it. Doubled to keep
+                    // the visible (inner) half at the weight it was before.
+                    strokeWidth: name === selected ? 6 : 4,
                     pointerEvents: "none",
                   }}
                 />
@@ -256,8 +310,14 @@ function MapBoard({
               style={{ left: tip.x, top: tip.y, background: "#0a1830", border: `1px solid ${CARD_BORDER}`, color: TEXT }}
             >
               {tip.name}
+              {/* Both counts, so the hover answers the same question the side
+                  panel does without needing a click. Separated by a middot
+                  rather than a second line: the tooltip follows the cursor and
+                  a taller box starts colliding with the states around it. */}
               <span className="ml-1.5 font-normal" style={{ color: MUTED }}>
                 {tip.members} member{tip.members === 1 ? "" : "s"}
+                <span className="mx-1" aria-hidden="true">&middot;</span>
+                {tip.leaders} leader{tip.leaders === 1 ? "" : "s"}
               </span>
             </div>
           ) : null}
@@ -275,7 +335,10 @@ function MapBoard({
               </span>
             ))}
             <span className="ml-2 flex items-center gap-1.5">
-              <span className="inline-block size-3 rounded-xs" style={{ boxShadow: `inset 0 0 0 1.5px ${ACTIVE_BORDER}` }} />
+              <span
+                className="inline-block size-3 rounded-xs"
+                style={{ background: ACTIVE_WASH, boxShadow: `inset 0 0 0 1.5px ${ACTIVE_BORDER}` }}
+              />
               <span className="text-xs" style={{ color: MUTED }}>active state</span>
             </span>
             <span className="flex items-center gap-1.5">

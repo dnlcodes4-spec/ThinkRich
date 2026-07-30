@@ -32,7 +32,10 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   const items = navForRole(profile?.role);
 
   return (
-    <div className="flex min-h-svh flex-1">
+    // Think-Winners brand tokens (navy + gold, ADR-0008). Without this the whole
+    // dashboard inherits the ThinkRich umbrella's ink + green from :root, which
+    // is what it was doing after CR-0008 moved these screens to their own origin.
+    <div data-brand="think-winners" className="flex min-h-svh flex-1">
       {/* The sidebar precedes the content in the DOM, so keyboard users get a
           way past it. Hidden until focused. */}
       <a

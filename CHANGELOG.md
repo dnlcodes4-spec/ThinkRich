@@ -9,6 +9,35 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- **The community's four executive officers are named publicly, on both landings** (CR-0010). The
+  layout is deliberately not a four-up card grid: we hold a full profile on the President and a name
+  plus an office on the other three, so visual weight tracks office rank rather than pretending the
+  four are equally documented. The President takes a spread with both his supplied images, the Vice
+  President a double-width cell holding both of theirs, the Secretary and Treasurer a compact pair.
+  The hook is specific rather than "meet the team": the President's signature is on every membership
+  card the movement issues. One component serves both brands (ink+green on the umbrella, navy+gold on
+  Think-Winners) with copy cut for each audience. The client's photographs are shipped as five
+  normalised 4:5 crops, which also removed a photographer's watermark that a wider crop would have
+  published; `public/leaders/CREDITS.md` records the recipe and what is wrong with the source set.
+  - This partially reverses CR-0004, which said the Think-Winners landing would not show "the internal
+    leadership chain". That decision is now scoped, in writing, to the **operational hierarchy**
+    (National → State → LG → Ward → Polling Unit), which stays unpublished. Executive officers are a
+    different thing and help rather than dilute a pitch to a campaign.
+- **The umbrella landing uses the real ThinkRich Community logo.** The nav had been showing a
+  hand-made "TR" monogram chip and the footer a text wordmark, both placeholders, while the client's
+  artwork sat unused in `public/logos/`. The nav and compact footers now pair the real striding-figure
+  mark with live text; the landing footer carries the full lockup, which made the tagline beside it
+  redundant. Two traps in the source file are handled by the derivation rather than shipped: a **1px
+  pale yellow frame baked into its edges**, invisible on white but a hard rectangle on every dark
+  surface this brand uses (and `-trim` does not remove it, it stops at the frame), and a blackletter
+  name that is illegible below ~120px, which is why small contexts get live text instead of the
+  supplied wordmark. Recipe and findings in `public/logos/CREDITS.md`.
+
+- **A full profile page for the President** at `/leaders/president` (CR-0010), carrying the client's
+  profile document as an editorial page: a dark masthead with the portraits, the creed, and a record
+  block of hard facts, then the narrative with headings set in the left margin and the six
+  organizations he leads as a register. It lives on the apex origin, so the Think-Winners landing
+  links across to it with `apexHref` (CR-0008).
 - **Voter identity is held for everyone, and is unique system-wide** (CR-0009 §3.1, ADR-0015).
   The VIN moves into its own `voter_ids` table keyed by the number itself, referenced by both
   `members` and `profiles`. The client asked us to "set the VIN column to UNIQUE"; that could not be
@@ -39,6 +68,24 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   has always permitted it, and the old `NEXT_TIER` table contradicted the database.
 
 ### Fixed
+- **A state closes for registration when it loses its last State Coordinator.** Noticed on the
+  national map: Ogun and Oyo were shown as active with no coordinator and nobody registered. Their
+  coordinators had been created, which opens the state, and then permanently deleted. Deleting an
+  account only removes the auth user, so nothing reversed the activation, and both states sat open
+  for member registration with nobody supervising them. The invariant was enforced on one edge only.
+  It now holds on both: a trigger closes a state when its last coordinator is deleted, deactivated,
+  moved, or given another role, and it logs why, because the absence of any such entry is what made
+  the original case impossible to explain. Deliberately one-directional. The database only ever
+  closes a state, never opens one, so the national coordinator can still hold a state shut while it
+  has an admin or open one ahead of an appointment. Both opening paths (create and promote) now share
+  one helper and log too; promoting someone to State Coordinator previously left their state shut,
+  blocking registration there.
+- **Active states on the national map are drawn inside their own borders.** The green status stroke
+  was centred on each boundary, so half of it painted the neighbouring inactive state, and two active
+  states that share an edge (Ogun and Oyo) merged into a single silhouette that contradicted the
+  "2 of 37" beside it. The status border and the gold hover/selection border are now clipped to the
+  state's own shape, and an active state carries a green wash so the fill says something too rather
+  than looking identical to every inactive state with no members.
 - **Leader verification actually works** (CR-0009 §3.6). It was reported as "not functional" and it
   was: `leader_kym_codes` held zero rows against fourteen profiles, because nothing ever minted a
   code. A leader had to find `/app/kym` and press a button, and nobody had, so every check correctly

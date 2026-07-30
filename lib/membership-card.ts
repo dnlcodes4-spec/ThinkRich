@@ -46,14 +46,123 @@ function xml(value: string): string {
     .replace(/"/g, "&quot;");
 }
 
-// Field geometry. The label baselines were MEASURED off the blank PNG by scanning
-// the label column for dark glyph bands, rather than eyeballed, so the values sit
-// on the same baseline as the labels the artwork already draws. Re-measure if the
-// client ever supplies new artwork.
-//   NAME: 243   GENDER: 371   STATE: 504   L.G: 637   WARD: 770
-const VALUE_X = 1180;
+// Field geometry, MEASURED off the blank PNG (glyph bands scanned per row and
+// per column) rather than eyeballed. Re-measure if the client supplies new
+// artwork; the numbers below are the only thing tying text to the image.
+//
+// Each value starts just after ITS OWN label, not in a shared column. The labels
+// are different widths (L.G: ends at 898, GENDER: at 1105), so a single column
+// set to clear the widest one left a visibly large gap after the short labels,
+// and did not match the client's filled sample, where every value sits a
+// consistent short distance from its label.
+//
+//   label            baseline   right edge
+//   NAME:            243        1010
+//   GENDER:          371        1105
+//   STATE:           504        1017
+//   L.G:             637         898
+//   WARD:            770        1022
+const LABEL_END_X = [1010, 1105, 1017, 898, 1022];
 const ROWS_Y = [243, 371, 504, 637, 770];
+const LABEL_GAP = 75;
 const ROW_FONT = 62;
+
+// Right-hand limit: the card edge, kept clear of the watermark.
+const VALUE_LIMIT_X = CARD_WIDTH - 70;
+
+// Code strip, measured off the client's FILLED sample rather than guessed, so the
+// number is set the way they set it: TWO lines at full size, not one shrunken
+// line. Their sample renders "TWM-OG-" above "01-000001" at baselines 1009 and
+// 1064 (cap height ~43px, so ~58px type).
+//
+// The x was found by DIFFERENCING the filled sample against the blank, keeping
+// only pixels white in one and not the other. Scanning the filled sample alone
+// gave x=180, which is the vertical white "Code" label that exists in both, and
+// positioning the number there put it straight through that label.
+// The number itself spans x=253 to x=588.
+//
+// The strip carries a vertical divider at x=643. Fitting the whole number on one
+// line inside that box forced it down to 35px, which is legible but noticeably
+// smaller than the artwork intends. Splitting on the membership number's own
+// structure keeps it large AND inside the box.
+const CODE_X = 253;
+const CODE_LINE_Y = [1009, 1064];
+const CODE_SINGLE_Y = 1040;
+const CODE_FONT = 58;
+const CODE_DIVIDER_X = 643;
+const CODE_MAX_W = CODE_DIVIDER_X - CODE_X - 20;
+
+/**
+ * Split a membership number across the two lines the artwork expects.
+ *
+ * The format is TWM-<STATE>-<LGA>-<seq> (0007), and the client's sample breaks it
+ * after the LGA segment. Anything that does not have those four parts falls back
+ * to a single fitted line rather than being split at an arbitrary point.
+ */
+export function splitMembershipNumber(value: string): [string, string] | null {
+  const parts = value.split("-");
+  if (parts.length !== 4) return null;
+  return [`${parts[0]}-${parts[1]}-`, `${parts[2]}-${parts[3]}`];
+}
+
+// Width per character as a fraction of font size. MEASURED off a real render
+// rather than guessed: "Okesooto Olanrewaju" (19 chars at 62px) spans ~545px,
+// giving ~0.46. 0.50 leaves a small safety margin without shrinking ordinary
+// names for no reason, which an earlier 0.56 guess did.
+const SANS_RATIO = 0.5;
+const MONO_RATIO = 0.62;
+
+/** Smallest we will shrink a value before truncating it instead. */
+const MIN_ROW_FONT = 24;
+const MIN_CODE_FONT = 30;
+
+type Fitted = { fontSize: number; text: string; textLength?: number };
+
+/**
+ * Fit a value into `maxWidth` (CR-0009 follow-up: long names must not overflow
+ * the card or run over the watermark).
+ *
+ * Three stages, in order of how well they preserve the value:
+ *   1. Use the full size if it already fits.
+ *   2. Shrink the font until it fits, down to a floor that is still legible in
+ *      print. This handles every realistic Nigerian name.
+ *   3. Only past that floor, truncate with an ellipsis.
+ *
+ * TRUNCATION IS THE GUARANTEE, not `textLength`. The first version of this relied
+ * on `textLength` + `lengthAdjust` to compress overlong text, which is valid SVG
+ * and which browsers honour, but the macOS renderer ignored it outright and the
+ * name ran off the card. Members download this file and open it in whatever they
+ * have, so correctness cannot depend on optional renderer features. `textLength`
+ * is still emitted when we truncate, so renderers that do honour it land exactly
+ * on the boundary, but the output is already within budget without it.
+ */
+export function fitText(
+  value: string,
+  maxWidth: number,
+  baseFont: number,
+  minFont: number,
+  ratio: number,
+): Fitted {
+  const width = (chars: number, font: number) => chars * font * ratio;
+
+  if (width(value.length, baseFont) <= maxWidth) return { fontSize: baseFont, text: value };
+
+  const scaled = Math.floor(maxWidth / (value.length * ratio));
+  if (scaled >= minFont) return { fontSize: scaled, text: value };
+
+  const maxChars = Math.floor(maxWidth / (minFont * ratio));
+  if (value.length <= maxChars) return { fontSize: minFont, text: value };
+
+  const text = value.slice(0, Math.max(1, maxChars - 1)).trimEnd() + "\u2026";
+  return { fontSize: minFont, text, textLength: maxWidth };
+}
+
+function textEl(x: number, y: number, cls: string, fit: Fitted): string {
+  const length = fit.textLength
+    ? ` textLength="${fit.textLength}" lengthAdjust="spacingAndGlyphs"`
+    : "";
+  return `<text x="${x}" y="${y}" class="${cls}" font-size="${fit.fontSize}"${length}>${xml(fit.text)}</text>`;
+}
 
 export function renderCardSvg(data: CardData, blankDataUri: string): string {
   const values = [
@@ -65,24 +174,41 @@ export function renderCardSvg(data: CardData, blankDataUri: string): string {
   ];
 
   const rows = values
-    .map((v, i) =>
-      v
-        ? `<text x="${VALUE_X}" y="${ROWS_Y[i]}" class="v">${xml(v)}</text>`
-        : "",
-    )
+    .map((v, i) => {
+      if (!v) return "";
+      const x = LABEL_END_X[i] + LABEL_GAP;
+      return textEl(x, ROWS_Y[i], "v", fitText(v, VALUE_LIMIT_X - x, ROW_FONT, MIN_ROW_FONT, SANS_RATIO));
+    })
+    .filter(Boolean)
     .join("\n    ");
 
+  const split = splitMembershipNumber(data.membershipNumber);
+  const code = split
+    ? split
+        .map((line, i) =>
+          textEl(CODE_X, CODE_LINE_Y[i], "code", fitText(line, CODE_MAX_W, CODE_FONT, MIN_CODE_FONT, MONO_RATIO)),
+        )
+        .join("\n  ")
+    : textEl(
+        CODE_X,
+        CODE_SINGLE_Y,
+        "code",
+        fitText(data.membershipNumber, CODE_MAX_W, CODE_FONT, MIN_CODE_FONT, MONO_RATIO),
+      );
+
   // The membership number sits in the dark footer strip, beside the "Code" label.
+  // Font sizes are per-element (set by fitText) rather than in the stylesheet, so
+  // one long field shrinks alone instead of dragging the others down with it.
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${CARD_WIDTH}" height="${CARD_HEIGHT}" viewBox="0 0 ${CARD_WIDTH} ${CARD_HEIGHT}">
   <style>
-    .v { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: ${ROW_FONT}px; font-weight: 700; fill: #3f3f46; }
-    .code { font-family: "Courier New", Courier, monospace; font-size: 54px; font-weight: 700; fill: #ffffff; letter-spacing: 1px; }
+    .v { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 700; fill: #3f3f46; }
+    .code { font-family: "Courier New", Courier, monospace; font-weight: 700; fill: #ffffff; letter-spacing: 1px; }
   </style>
   <image href="${blankDataUri}" x="0" y="0" width="${CARD_WIDTH}" height="${CARD_HEIGHT}" />
   <g>
     ${rows}
   </g>
-  <text x="270" y="1035" class="code">${xml(data.membershipNumber)}</text>
+  ${code}
 </svg>`;
 }
 

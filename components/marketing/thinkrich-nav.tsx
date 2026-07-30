@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { Grain } from "./motifs";
-import { ThinkRichWordmark } from "./arm-mark";
+import { ThinkRichMark } from "./thinkrich-logo";
 import { thinkWinnersHref } from "@/lib/origins";
 
 // Think-Winners lives on its own origin (CR-0008), so these are plain anchors,
@@ -12,10 +12,11 @@ import { thinkWinnersHref } from "@/lib/origins";
 const TW_HOME = thinkWinnersHref("/");
 const TW_LOGIN = thinkWinnersHref("/login");
 
-const links = [
-  { href: "#community", label: "The Community" },
-  { href: "#arms", label: "The Arms" },
-  { href: "#philosophy", label: "Philosophy" },
+const sections = [
+  { hash: "#community", label: "The Community" },
+  { hash: "#arms", label: "The Arms" },
+  { hash: "#leaders", label: "Leadership" },
+  { hash: "#philosophy", label: "Philosophy" },
 ];
 
 function useScrolled() {
@@ -32,10 +33,18 @@ function useScrolled() {
 const linkCls =
   "text-sm font-medium text-ink-50/90 transition-colors hover:text-green-400 [text-shadow:0_1px_10px_rgba(0,0,0,0.5)]";
 
-export function ThinkRichNav() {
+/**
+ * `base` prefixes the in-page anchors so the nav also works away from the
+ * landing: the President's profile passes "/" and gets "/#arms", which navigates
+ * home and then scrolls. On the landing itself it stays a bare hash.
+ */
+export function ThinkRichNav({ base = "" }: { base?: string } = {}) {
   const [open, setOpen] = useState(false);
   const scrolled = useScrolled();
   const solid = scrolled || open;
+  const links = sections.map((s) => ({ ...s, href: `${base}${s.hash}` }));
+  const home = base || "#top";
+  const joinHref = `${base}#join`;
 
   useEffect(() => {
     if (!open) return;
@@ -60,11 +69,15 @@ export function ThinkRichNav() {
             solid ? "py-3" : "py-5"
           }`}
         >
-          <a href="#top" className="flex items-center gap-2.5 text-ink-50" aria-label="ThinkRich Community, back to top">
-            <span aria-hidden="true" className="grid h-8 w-8 place-items-center rounded-lg border border-green-400/30 bg-ink-900 font-display text-sm font-black text-green-400">
-              TR
+          <a
+            href={home}
+            className="flex items-center gap-2.5 text-ink-50"
+            aria-label="ThinkRich Community, back to top"
+          >
+            <ThinkRichMark height={30} className="shrink-0" />
+            <span className="font-display text-lg font-semibold tracking-tight text-ink-50 [text-shadow:0_1px_10px_rgba(0,0,0,0.5)]">
+              Think<span className="text-green-400">Rich</span>
             </span>
-            <ThinkRichWordmark className="text-ink-50 [text-shadow:0_1px_10px_rgba(0,0,0,0.5)]" />
           </a>
 
           <nav className="hidden items-center gap-8 md:flex">
@@ -87,7 +100,7 @@ export function ThinkRichNav() {
               Think-Winners
             </a>
             <a
-              href="#join"
+              href={joinHref}
               className="hidden rounded-md bg-green-500 px-4 py-2 text-sm font-bold text-ink-950 transition-colors hover:bg-green-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400 sm:inline-flex"
             >
               Get involved
@@ -153,7 +166,7 @@ export function ThinkRichNav() {
             </nav>
             <div className="mt-auto">
               <a
-                href="#join"
+                href={joinHref}
                 onClick={() => setOpen(false)}
                 className="tw-rise flex min-h-14 items-center justify-center rounded-md bg-green-500 text-base font-bold text-ink-950 transition-colors hover:bg-green-400"
                 style={{ animationDelay: `${80 + (links.length + 1) * 70}ms` }}

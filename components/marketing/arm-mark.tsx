@@ -36,11 +36,7 @@ export function ArmMark({
   );
 }
 
-// The umbrella wordmark placeholder (ThinkRich Community).
-export function ThinkRichWordmark({ className = "" }: { className?: string }) {
-  return (
-    <span className={`font-display text-lg font-semibold tracking-tight ${className}`}>
-      Think<span className="text-green-400">Rich</span>
-    </span>
-  );
-}
+// The umbrella's own wordmark placeholder lived here until the client's logo
+// arrived. It now has a real one: see components/marketing/thinkrich-logo.tsx.
+// The ArmMark placeholders above still stand, since only two of the six arms
+// have supplied artwork and neither matches this palette (see CR-0010 notes).

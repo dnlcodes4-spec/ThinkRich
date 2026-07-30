@@ -11,7 +11,10 @@ export const metadata: Metadata = {
 };
 
 // National-admin only: activate/deactivate states, with per-state context (LGAs,
-// state admins, active members). A state is inactive until it has a state admin.
+// state admins, active members). A state is inactive until it has a state admin,
+// and goes inactive again when it loses its last one (migration 0031). Activating
+// one here with no coordinator yet is allowed and sticks: the database only ever
+// closes a state, it never opens one.
 export default async function StatesPage() {
   const supabase = await createClient();
   const {
@@ -59,7 +62,8 @@ export default async function StatesPage() {
     <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-12">
       <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground">States</h1>
       <p className="mt-1 text-sm text-muted">
-        {activeCount} of {states.length} active. A state should be active once it has a state admin.
+        {activeCount} of {states.length} active. Active means open for member registration. A state
+        opens when it gets a State Coordinator, and closes on its own when it no longer has one.
       </p>
 
       <div className="mt-8 overflow-x-auto">

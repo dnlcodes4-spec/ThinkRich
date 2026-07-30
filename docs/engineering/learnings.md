@@ -170,3 +170,53 @@ history, or an existing doc.
 - **Lesson:** a PR that references files living in another unmerged PR has dangling links until
   both merge. Foundational, dependency-ordered work is cleaner merged in order than stacked.
 - **Action:** merge the depended-on PR first, then branch the dependent work off updated `main`.
+
+### 2026-07-29 — A passed-in `absolute` loses to a component's own `relative`
+- **Context:** CR-0010's leadership section. The President's second portrait had to overlap the
+  primary's corner, so `absolute right-0 bottom-0` was passed to `<Portrait>` via `className`.
+  It rendered *below* the primary instead, in normal flow.
+- **Lesson:** `Portrait` sets `relative` on its own root and appends the incoming `className`.
+  Both utilities have identical specificity, so the winner is whichever Tailwind emits **later in
+  the generated stylesheet**, not whichever appears later in the class attribute. `relative` won.
+  Class-attribute order is not a cascade.
+- **Action:** never override a component's own positioning by passing a competing utility. Wrap it
+  in a positioned parent instead, or have the component accept an explicit prop. The same trap
+  applies to any single-property pair a component sets internally (`block`/`flex`, `static`/`fixed`).
+
+### 2026-07-29 — Verify client assets before designing around their count
+- **Context:** the leadership section was designed on the client's statement that "the president and
+  vice president have two images." The supporting band was built as a 2+1+1 grid so the Vice
+  President's double-width cell could hold both of theirs. When the files arrived, one of the two
+  was a full-length shot across a hall: head ~170px inside 851x1280, so a head-and-shoulders crop
+  lands near 350px and is too soft for any tile. Effectively one usable image, and the band had to
+  be rebuilt as equal thirds.
+- **Lesson:** an asset count is not an asset. "We have two images" says nothing about register,
+  resolution, or framing, and a layout whose structure *depends* on the count is a layout built on
+  an unverified premise. Real photos also broke the hierarchy a second way: the President's
+  side-by-side pair computed to ~263px against ~347px tiles below, so the lead was smaller than the
+  supporting cast — invisible while placeholders stood in.
+- **Action:** for asset-dependent layouts, inspect the actual files (dimensions and subject framing)
+  before committing to a structure, and sanity-check computed element widths against the hierarchy
+  you intend. Placeholders hide both problems. Where assets are still outstanding, prefer a
+  structure that degrades to fewer items rather than one that requires a specific count.
+
+### 2026-07-30 — An invariant enforced on one edge is not enforced
+- **Context:** the national map showed Ogun and Oyo as active states with no State Coordinator and
+  nobody registered. The rule, written into the schema since 0001 and printed on the states page, is
+  "active once a State Admin is assigned". Creating a coordinator set `states.is_active = true`
+  (`new-account/actions.ts`). Deleting that coordinator deleted the auth user and nothing else, so
+  the flag stayed true. Both states sat open for member registration, which `is_active` gates, with
+  nobody supervising them. No activity log entry existed either way, so the state of the data could
+  not be explained from the audit trail.
+- **Lesson:** a rule phrased as "X once Y" quietly describes a transition, not an invariant, and it
+  is natural to implement only the direction the sentence mentions. The forgotten direction is
+  usually the unsafe one, because the safe direction is the one someone deliberately performs. Two
+  aggravating factors: the write lived in a server action, so every *other* path to the same state
+  change (cascade delete, deactivation, role change, geographic move) bypassed it; and a flag that
+  changes with nothing logged leaves nobody able to reconstruct why.
+- **Action:** when writing "A once B", state the contrapositive out loud and decide explicitly
+  whether it holds. If it does, enforce the closing direction in the database, where no code path can
+  forget it, and keep the opening direction in app code where it is an intentional act. Log both.
+  Prefer one-directional automation: closing on its own is safe, opening on its own overrules a human
+  decision. Check that a UI encoding of a status is not the only thing that would ever reveal a stale
+  flag; here the map was correct and the data was wrong.
