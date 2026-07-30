@@ -199,3 +199,24 @@ history, or an existing doc.
   before committing to a structure, and sanity-check computed element widths against the hierarchy
   you intend. Placeholders hide both problems. Where assets are still outstanding, prefer a
   structure that degrades to fewer items rather than one that requires a specific count.
+
+### 2026-07-30 — An invariant enforced on one edge is not enforced
+- **Context:** the national map showed Ogun and Oyo as active states with no State Coordinator and
+  nobody registered. The rule, written into the schema since 0001 and printed on the states page, is
+  "active once a State Admin is assigned". Creating a coordinator set `states.is_active = true`
+  (`new-account/actions.ts`). Deleting that coordinator deleted the auth user and nothing else, so
+  the flag stayed true. Both states sat open for member registration, which `is_active` gates, with
+  nobody supervising them. No activity log entry existed either way, so the state of the data could
+  not be explained from the audit trail.
+- **Lesson:** a rule phrased as "X once Y" quietly describes a transition, not an invariant, and it
+  is natural to implement only the direction the sentence mentions. The forgotten direction is
+  usually the unsafe one, because the safe direction is the one someone deliberately performs. Two
+  aggravating factors: the write lived in a server action, so every *other* path to the same state
+  change (cascade delete, deactivation, role change, geographic move) bypassed it; and a flag that
+  changes with nothing logged leaves nobody able to reconstruct why.
+- **Action:** when writing "A once B", state the contrapositive out loud and decide explicitly
+  whether it holds. If it does, enforce the closing direction in the database, where no code path can
+  forget it, and keep the opening direction in app code where it is an intentional act. Log both.
+  Prefer one-directional automation: closing on its own is safe, opening on its own overrules a human
+  decision. Check that a UI encoding of a status is not the only thing that would ever reveal a stale
+  flag; here the map was correct and the data was wrong.

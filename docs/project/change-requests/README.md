@@ -37,6 +37,7 @@ reviewable, impact-assessed, trackable unit of work.
 | [0008](0008-two-origin-split-apex-landing-thinkwinners-subdomain.md) | Two-origin split — apex serves the umbrella landing, Think-Winners moves to a subdomain | Client | 2026-07-29 | In Progress | T-034 … T-037 | ADR-0014 |
 | [0009](0009-vin-identity-role-upgrades-uncapped-leaders-and-membership-card.md) | VIN identity, role upgrades, uncapped leaders, membership card, KYM repair | Client | 2026-07-29 | In Progress | T-038 … T-049 | ADR-0015 |
 | [0010](0010-leadership-section-and-president-profile.md) | Leadership section on both landings + President's profile page | Client | 2026-07-29 | Captured | T-050 … T-053 | — |
+| [0011](0011-multiple-admins-per-position.md) | More than one admin may hold the same position | Client | 2026-07-30 | Assessed | T-055, T-056, T-057 | — (confirms ADR-0005) |
 
 <!--
 Example row once CRs exist:

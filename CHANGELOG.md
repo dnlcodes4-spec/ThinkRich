@@ -68,6 +68,24 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   has always permitted it, and the old `NEXT_TIER` table contradicted the database.
 
 ### Fixed
+- **A state closes for registration when it loses its last State Coordinator.** Noticed on the
+  national map: Ogun and Oyo were shown as active with no coordinator and nobody registered. Their
+  coordinators had been created, which opens the state, and then permanently deleted. Deleting an
+  account only removes the auth user, so nothing reversed the activation, and both states sat open
+  for member registration with nobody supervising them. The invariant was enforced on one edge only.
+  It now holds on both: a trigger closes a state when its last coordinator is deleted, deactivated,
+  moved, or given another role, and it logs why, because the absence of any such entry is what made
+  the original case impossible to explain. Deliberately one-directional. The database only ever
+  closes a state, never opens one, so the national coordinator can still hold a state shut while it
+  has an admin or open one ahead of an appointment. Both opening paths (create and promote) now share
+  one helper and log too; promoting someone to State Coordinator previously left their state shut,
+  blocking registration there.
+- **Active states on the national map are drawn inside their own borders.** The green status stroke
+  was centred on each boundary, so half of it painted the neighbouring inactive state, and two active
+  states that share an edge (Ogun and Oyo) merged into a single silhouette that contradicted the
+  "2 of 37" beside it. The status border and the gold hover/selection border are now clipped to the
+  state's own shape, and an active state carries a green wash so the fill says something too rather
+  than looking identical to every inactive state with no members.
 - **Leader verification actually works** (CR-0009 §3.6). It was reported as "not functional" and it
   was: `leader_kym_codes` held zero rows against fourteen profiles, because nothing ever minted a
   code. A leader had to find `/app/kym` and press a button, and nobody had, so every check correctly
