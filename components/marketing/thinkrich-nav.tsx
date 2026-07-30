@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { Grain } from "./motifs";
-import { ThinkRichWordmark } from "./arm-mark";
+import { ThinkRichMark } from "./thinkrich-logo";
 import { thinkWinnersHref } from "@/lib/origins";
 
 // Think-Winners lives on its own origin (CR-0008), so these are plain anchors,
@@ -69,11 +69,15 @@ export function ThinkRichNav({ base = "" }: { base?: string } = {}) {
             solid ? "py-3" : "py-5"
           }`}
         >
-          <a href={home} className="flex items-center gap-2.5 text-ink-50" aria-label="ThinkRich Community, back to top">
-            <span aria-hidden="true" className="grid h-8 w-8 place-items-center rounded-lg border border-green-400/30 bg-ink-900 font-display text-sm font-black text-green-400">
-              TR
+          <a
+            href={home}
+            className="flex items-center gap-2.5 text-ink-50"
+            aria-label="ThinkRich Community, back to top"
+          >
+            <ThinkRichMark height={30} className="shrink-0" />
+            <span className="font-display text-lg font-semibold tracking-tight text-ink-50 [text-shadow:0_1px_10px_rgba(0,0,0,0.5)]">
+              Think<span className="text-green-400">Rich</span>
             </span>
-            <ThinkRichWordmark className="text-ink-50 [text-shadow:0_1px_10px_rgba(0,0,0,0.5)]" />
           </a>
 
           <nav className="hidden items-center gap-8 md:flex">

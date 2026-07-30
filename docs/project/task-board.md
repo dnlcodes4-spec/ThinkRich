@@ -16,6 +16,12 @@ only when it meets the [Definition of Done](../engineering/definition-of-done.md
 ## 🔵 Backlog
 _Not yet refined / not yet Ready._
 
+- **T-054** — Arm logos in the arms explorer. Two of six exist (`TCMS_transparent.png` = the MCPS
+  Cooperative arm; `BeRich_transparent.png` maps to no arm we list). **Not wired up deliberately:**
+  both are red/blue/yellow shield-and-sunburst marks, one containing a stock handshake photo, and
+  beside the green umbrella mark on an ink ground they read as clip art. Needs either a redraw in the
+  umbrella palette or a client decision to accept the clash. Reasoning in `public/logos/CREDITS.md`.
+
 - **T-005** — Membership card render + download. **Unblocked**: the client supplied the artwork on
   2026-07-29 (`public/cards/`). Superseded by **T-047 / T-048** _(CR-0009 §3.5)_.
 - **T-025** — Notification toasts + remaining catalog (voting reminder N1, card-ready N5)

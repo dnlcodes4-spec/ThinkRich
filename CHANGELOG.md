@@ -23,6 +23,16 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
     leadership chain". That decision is now scoped, in writing, to the **operational hierarchy**
     (National → State → LG → Ward → Polling Unit), which stays unpublished. Executive officers are a
     different thing and help rather than dilute a pitch to a campaign.
+- **The umbrella landing uses the real ThinkRich Community logo.** The nav had been showing a
+  hand-made "TR" monogram chip and the footer a text wordmark, both placeholders, while the client's
+  artwork sat unused in `public/logos/`. The nav and compact footers now pair the real striding-figure
+  mark with live text; the landing footer carries the full lockup, which made the tagline beside it
+  redundant. Two traps in the source file are handled by the derivation rather than shipped: a **1px
+  pale yellow frame baked into its edges**, invisible on white but a hard rectangle on every dark
+  surface this brand uses (and `-trim` does not remove it, it stops at the frame), and a blackletter
+  name that is illegible below ~120px, which is why small contexts get live text instead of the
+  supplied wordmark. Recipe and findings in `public/logos/CREDITS.md`.
+
 - **A full profile page for the President** at `/leaders/president` (CR-0010), carrying the client's
   profile document as an editorial page: a dark masthead with the portraits, the creed, and a record
   block of hard facts, then the narrative with headings set in the left margin and the six
