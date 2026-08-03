@@ -34,13 +34,22 @@ _Not yet refined / not yet Ready._
 - **T-025** — Notification toasts + remaining catalog (voting reminder N1, card-ready N5)
 - **T-026** — Reward oversight (needs product definition)
 - **T-031b** — **Finish the constituency mapping.** T-031 imported all 1,459 constituencies and
-  senatorial LGA membership for 22 of 37 states. Remaining, in order of value:
-  1. a **reviewed LGA alias table** (~40 to 60 names) for the 15 states where the 2010 workbook and
-     our 2015 LGA names disagree, unlocking Senate races nationwide;
-  2. **federal constituency** membership (parseable from the same workbook, same review needed);
-  3. **state constituency** membership, which needs INEC's ward-level delimitation, a different
-     document this one cannot substitute for.
+  senatorial LGA membership for 22 of 37 states. _(CR-0013.)_ Progress:
+  1. ✅ **Federal constituency membership — 16 states done** (315 links, 3,556 wards, verified
+     one-FC-per-ward) via `scripts/analyze-federal-constituencies.py` (maximal-munch). House of
+     Reps now resolves there.
+  2. a **reviewed LGA alias table** (~40 to 60 names) for the 15 states where the 2010 workbook and
+     our 2015 LGA names disagree, unlocking Senate nationwide + 4 more federal states
+     (Anambra, Bayelsa, Ondo, Oyo);
+  3. the 17 **split-LGA** federal states and all **state constituencies** need ward-level data —
+     handled by the in-app editor (**T-031c**), not this source.
   Start from `docs/project/data/constituencies/unresolved-review.json`.
+- **T-031c** — **Manual constituency-membership editor.** Let a national admin attach the
+  wards/LGAs of a constituency in-app. **UI-only**: schema, grants, RLS (`catalogue_write` =
+  national_admin) and the enforce trigger (auto-fills `kind`, rejects cross-state) are already in
+  place — verified live allow/deny 2026-08-03. Build a national-admin UI with the live coverage
+  preview shared with T-029, plus a regression test in `supabase/tests/` mirroring the allow/deny
+  check. Unblocks State Assembly + the split-LGA states. _(CR-0013 §4b; UI, visual sign-off.)_
 
 ## 🟡 Ready
 _Refined, unblocked, ready to pull._
