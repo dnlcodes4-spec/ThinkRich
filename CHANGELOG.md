@@ -9,6 +9,15 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- **Dashboard feedback & state system.** The `/app` dashboards had good primitives but no rules:
+  loading skeletons on only 4 of 17 routes, three different ways of showing success/error, no
+  empty-state component, and the action-result shape copy-pasted per form. Foundation added: a
+  shared `ActionState` type with `ok()`/`fail()`, a `useActionFeedback` hook that centralises the
+  one rule (toast on success, inline on error, with a one-time-artifact exception), and `FormError`,
+  `EmptyState`, `Select`, `Textarea` primitives plus `SkeletonList`/`SkeletonTable`. The rules are
+  documented in [docs/design/feedback-and-states.md](docs/design/feedback-and-states.md) and pinned
+  by the UI Definition of Done. Coverage sweep (loading on every route, `Suspense` on heavy
+  sections, forms and empty states migrated) follows.
 - **The community's four executive officers are named publicly, on both landings** (CR-0010). The
   layout is deliberately not a four-up card grid: we hold a full profile on the President and a name
   plus an office on the other three, so visual weight tracks office rank rather than pretending the
