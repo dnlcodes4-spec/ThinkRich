@@ -2,6 +2,9 @@
 
 import { useActionState, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { FormError } from "@/components/ui/form-error";
+import { useActionFeedback } from "@/components/ui/use-action-feedback";
 import { requestOptOut, cancelOptOut, type OptOutState } from "@/app/app/members/lifecycle-actions";
 
 const initial: OptOutState = { status: "idle" };
@@ -50,6 +53,8 @@ function FrozenPanel({ retentionUntil }: { retentionUntil: string | null }) {
 function OptOutPanel() {
   const [open, setOpen] = useState(false);
   const [state, action, pending] = useActionState(requestOptOut, initial);
+  // On success the panel is replaced by the paused view, so no toast is needed.
+  const { error } = useActionFeedback(state, { artifact: true });
 
   if (!open) {
     return (
@@ -72,18 +77,8 @@ function OptOutPanel() {
         details are erased, unless you reactivate before then.
       </p>
       <form action={action} className="mt-4 flex flex-col gap-3">
-        <label className="flex flex-col gap-1.5">
-          <span className="text-sm font-medium text-foreground">Reason (optional)</span>
-          <textarea
-            name="reason"
-            rows={3}
-            maxLength={500}
-            className="rounded-sm border border-border bg-surface px-3 py-2 text-sm text-foreground focus:outline-2 focus:outline-offset-1 focus:outline-ring"
-          />
-        </label>
-        {state.status === "error" && state.message ? (
-          <p className="text-xs text-danger">{state.message}</p>
-        ) : null}
+        <Textarea label="Reason (optional)" name="reason" rows={3} maxLength={500} />
+        <FormError message={error} />
         <div className="flex flex-wrap gap-2">
           <Button type="submit" variant="destructive" loading={pending}>
             Pause my membership

@@ -3,12 +3,15 @@
 import { useActionState } from "react";
 import { Button } from "@/components/ui/button";
 import { PasswordInput } from "@/components/ui/password-input";
+import { FormError } from "@/components/ui/form-error";
+import { useActionFeedback } from "@/components/ui/use-action-feedback";
 import { changePassword, type ChangePasswordState } from "./actions";
 
 const initial: ChangePasswordState = { status: "idle" };
 
 export function ChangePasswordForm() {
   const [state, action, pending] = useActionState(changePassword, initial);
+  const { error } = useActionFeedback(state, { successMessage: "Password changed." });
   const fe = state.fieldErrors ?? {};
 
   return (
@@ -29,16 +32,7 @@ export function ChangePasswordForm() {
         error={fe.confirm}
       />
 
-      {state.status === "error" && state.message ? (
-        <p role="alert" className="text-sm text-danger">
-          {state.message}
-        </p>
-      ) : null}
-      {state.status === "success" && state.message ? (
-        <p role="status" className="text-sm text-success">
-          {state.message}
-        </p>
-      ) : null}
+      <FormError message={error} />
 
       <Button type="submit" loading={pending} className="sm:self-start">
         Change password
