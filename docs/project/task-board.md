@@ -45,6 +45,16 @@ _Not yet refined / not yet Ready._
 ## 🟡 Ready
 _Refined, unblocked, ready to pull._
 
+- **T-058** — Add a "Join the community" row (Telegram + WhatsApp links) to the Think-Winners
+  landing footer in `app/think-winners/page.tsx`, styled to the existing navy/gold footer.
+  **Acceptance:** both links present and correct (Telegram `https://t.me/+RN9Fxs0-4WBmNDdk`,
+  WhatsApp `https://chat.whatsapp.com/Cmkg0QWIJtiExqVrj0rDzA`), `target="_blank"` +
+  `rel="noopener noreferrer"`, WCAG AA contrast, verified light/dark + mobile/desktop, visual
+  sign-off obtained before commit. _(CR-0012)_
+- **T-059** — Add the same links as a "Join our community" block on `/app/account` (member app),
+  styled to the app's existing theme tokens. **Acceptance:** same links/attributes as T-058,
+  matches surrounding account-page layout, verified light/dark + mobile/desktop, visual sign-off
+  obtained before commit. _(CR-0012)_
 - **T-029** — Admin: design pass on scoped candidacy CRUD, plus national-admin catalogue
   management (offices, parties, elections, constituencies). Functional version exists; needs the
   design method + visual sign-off. _(CR-0007)_
