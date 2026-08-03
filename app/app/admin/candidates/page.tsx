@@ -11,6 +11,7 @@ import {
 import { CandidateForm } from "./candidate-form";
 import { GeoPicker } from "@/components/geo-picker";
 import { deleteCandidacy } from "./actions";
+import { CandidateTabs } from "./tabs";
 
 export const metadata: Metadata = {
   title: "Manage candidates",
@@ -106,6 +107,8 @@ export default async function ManageCandidatesPage({
       <p className="mt-1 text-sm text-muted">
         Add the candidates your members should know about. You can only manage races inside your own area.
       </p>
+
+      <CandidateTabs showAreas={profile.role === "national_admin"} />
 
       {/* ── existing ── */}
       <section className="mt-10">
