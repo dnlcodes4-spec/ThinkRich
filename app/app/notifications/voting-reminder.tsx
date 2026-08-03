@@ -2,6 +2,8 @@
 
 import { useActionState, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { FormError } from "@/components/ui/form-error";
+import { useActionFeedback } from "@/components/ui/use-action-feedback";
 import { sendVotingReminder, type ReminderState } from "./actions";
 
 const initial: ReminderState = { status: "idle" };
@@ -10,6 +12,7 @@ const initial: ReminderState = { status: "idle" };
 export function VotingReminderButton() {
   const [open, setOpen] = useState(false);
   const [state, action, pending] = useActionState(sendVotingReminder, initial);
+  const { error } = useActionFeedback(state, { successMessage: "Reminder sent." });
 
   if (!open) {
     return (
@@ -38,12 +41,11 @@ export function VotingReminderButton() {
           Close
         </Button>
       </form>
-      {state.status === "error" && state.message ? (
-        <p role="alert" className="mt-3 text-sm text-danger">
-          {state.message}
-        </p>
+      {error ? (
+        <div className="mt-3">
+          <FormError message={error} />
+        </div>
       ) : null}
-      {state.status === "success" ? <p className="mt-3 text-sm text-accent">{state.message}</p> : null}
     </div>
   );
 }

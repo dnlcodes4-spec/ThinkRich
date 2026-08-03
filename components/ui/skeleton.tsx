@@ -62,6 +62,21 @@ export function SkeletonTable({ rows = 5, cols = 4 }: { rows?: number; cols?: nu
   );
 }
 
+/** A stack of field-shaped skeletons plus a submit button, for form routes. */
+export function SkeletonForm({ fields = 4 }: { fields?: number }) {
+  return (
+    <div className="flex flex-col gap-5">
+      {Array.from({ length: fields }).map((_, i) => (
+        <div key={i} className="flex flex-col gap-1.5">
+          <Skeleton className="h-4 w-28" />
+          <Skeleton data-skel-field className="h-11" />
+        </div>
+      ))}
+      <Skeleton className="h-11 w-40" />
+    </div>
+  );
+}
+
 /**
  * Wrapper that announces loading to assistive tech. The visual skeleton itself
  * is aria-hidden, so a screen reader hears one clear message instead of a pile

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { EmptyState } from "@/components/ui/empty-state";
 import { createClient } from "@/lib/supabase/server";
 import { roleLabel } from "@/lib/terms";
 
@@ -126,12 +127,15 @@ export default async function LogsPage({
       </div>
 
       {rows.length === 0 ? (
-        <div className="mt-10 rounded-card border border-dashed border-border p-10 text-center">
-          <p className="text-sm text-muted">
-            {action
-              ? "Nothing recorded for this kind of activity yet."
-              : "Nothing recorded yet. Activity appears here as people use the platform."}
-          </p>
+        <div className="mt-10">
+          <EmptyState
+            title="Nothing recorded yet"
+            description={
+              action
+                ? "Nothing recorded for this kind of activity yet."
+                : "Activity appears here as people use the platform."
+            }
+          />
         </div>
       ) : (
         <ul className="mt-6 flex flex-col gap-2">

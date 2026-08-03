@@ -2,8 +2,10 @@
 
 import { useActionState, useState } from "react";
 import { Input } from "@/components/ui/input";
+import { Select } from "@/components/ui/select";
 import { VinInput } from "@/components/ui/vin-input";
 import { Button } from "@/components/ui/button";
+import { FormError } from "@/components/ui/form-error";
 import { registerMember, type RegisterState } from "./actions";
 
 const initial: RegisterState = { status: "idle" };
@@ -24,6 +26,8 @@ export function RegisterMemberForm(props: RegisterFormProps) {
 function Inner({ onReset, pollingUnitId, leaders }: RegisterFormProps & { onReset: () => void }) {
   const [state, action, pending] = useActionState(registerMember, initial);
   const fe = state.fieldErrors ?? {};
+  // Artifact form: on success it shows the persistent block above, so no toast.
+  const error = state.status === "error" ? state.message : undefined;
 
   if (state.status === "success" && state.membershipNumber) {
     return (
@@ -80,23 +84,14 @@ function Inner({ onReset, pollingUnitId, leaders }: RegisterFormProps & { onRese
               : "No leader has been created in this polling unit yet, so you will hold this member yourself."}
           </p>
           {leaders.length > 0 ? (
-            <label className="flex flex-col gap-1.5">
-              <span className="text-sm font-semibold text-foreground">Leader</span>
-              <select
-                name="registered_by"
-                defaultValue=""
-                aria-invalid={fe.registered_by ? true : undefined}
-                className="min-h-11 rounded-sm border border-border bg-surface px-3 text-base text-foreground focus:outline-2 focus:outline-offset-1 focus:outline-ring"
-              >
-                <option value="">No leader (I will hold this member)</option>
-                {leaders.map((l) => (
-                  <option key={l.id} value={l.id}>
-                    {l.full_name}
-                  </option>
-                ))}
-              </select>
-              {fe.registered_by ? <span className="text-xs text-danger">{fe.registered_by}</span> : null}
-            </label>
+            <Select label="Leader" name="registered_by" defaultValue="" error={fe.registered_by}>
+              <option value="">No leader (I will hold this member)</option>
+              {leaders.map((l) => (
+                <option key={l.id} value={l.id}>
+                  {l.full_name}
+                </option>
+              ))}
+            </Select>
           ) : null}
         </fieldset>
       ) : null}
@@ -115,23 +110,13 @@ function Inner({ onReset, pollingUnitId, leaders }: RegisterFormProps & { onRese
           />
           <Input label="NIN" name="nin" required hint="National ID number" error={fe.nin} />
           <VinInput error={fe.vin} />
-          <label className="flex min-w-0 flex-col gap-1.5">
-            <span className="text-sm font-semibold text-foreground">Gender</span>
-            <select
-              name="gender"
-              required
-              defaultValue=""
-              aria-invalid={fe.gender ? true : undefined}
-              className="min-h-11 w-full rounded-sm border border-border bg-surface px-3 text-base text-foreground focus:outline-2 focus:outline-offset-1 focus:outline-ring"
-            >
-              <option value="" disabled>
-                Select&hellip;
-              </option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
-            {fe.gender ? <span className="text-sm text-danger">{fe.gender}</span> : null}
-          </label>
+          <Select label="Gender" name="gender" required defaultValue="" error={fe.gender}>
+            <option value="" disabled>
+              Select&hellip;
+            </option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </Select>
         </div>
       </fieldset>
 
@@ -163,11 +148,7 @@ function Inner({ onReset, pollingUnitId, leaders }: RegisterFormProps & { onRese
         />
       </fieldset>
 
-      {state.status === "error" && state.message ? (
-        <p role="alert" className="text-sm text-danger">
-          {state.message}
-        </p>
-      ) : null}
+      <FormError message={error} />
 
       <Button type="submit" loading={pending} className="sm:self-start">
         Register member

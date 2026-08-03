@@ -4,6 +4,7 @@ import { useActionState, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { VinInput } from "@/components/ui/vin-input";
 import { Button } from "@/components/ui/button";
+import { FormError } from "@/components/ui/form-error";
 import { createAccount, type CreateAccountState } from "./actions";
 
 const initial: CreateAccountState = { status: "idle" };
@@ -63,11 +64,7 @@ function Inner({ onReset, targetRole, targetRoleLabel, scope }: Props & { onRese
 
       {fe.geo ? <p className="text-xs text-danger">{fe.geo}</p> : null}
 
-      {state.status === "error" && state.message ? (
-        <p role="alert" className="text-sm text-danger">
-          {state.message}
-        </p>
-      ) : null}
+      <FormError message={state.status === "error" ? state.message : undefined} />
 
       <Button type="submit" loading={pending} className="capitalize sm:self-start">
         Create {targetRoleLabel} account

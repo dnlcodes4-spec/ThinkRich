@@ -2,6 +2,8 @@
 
 import { useActionState, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { FormError } from "@/components/ui/form-error";
+import { useActionFeedback } from "@/components/ui/use-action-feedback";
 import { uploadMemberPhotoByLeader, type LeaderPhotoState } from "../detail-actions";
 
 const initial: LeaderPhotoState = { status: "idle" };
@@ -14,6 +16,7 @@ export function LeaderPhotoUpload({ memberId, currentUrl }: { memberId: string; 
 function Inner({ memberId, currentUrl, onReset }: { memberId: string; currentUrl: string | null; onReset: () => void }) {
   const [state, action, pending] = useActionState(uploadMemberPhotoByLeader, initial);
   const [preview, setPreview] = useState<string | null>(null);
+  const { error } = useActionFeedback(state, { successMessage: "Photo updated." });
   const shown = preview ?? currentUrl;
 
   if (state.status === "success") {
@@ -54,7 +57,7 @@ function Inner({ memberId, currentUrl, onReset }: { memberId: string; currentUrl
         }}
         className="block w-40 text-xs text-muted file:mr-3 file:rounded-md file:border-0 file:bg-surface-muted file:px-3 file:py-2 file:text-xs file:font-semibold file:text-foreground hover:file:bg-border"
       />
-      {state.status === "error" && state.message ? <p className="text-xs text-danger">{state.message}</p> : null}
+      <FormError message={error} />
       <Button type="submit" loading={pending} disabled={!preview} className="w-40">
         Save photo
       </Button>

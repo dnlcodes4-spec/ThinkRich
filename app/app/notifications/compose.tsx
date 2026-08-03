@@ -1,9 +1,11 @@
 "use client";
 
-import { useActionState, useEffect, useState } from "react";
+import { useActionState, useState } from "react";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/toast";
+import { FormError } from "@/components/ui/form-error";
+import { useActionFeedback } from "@/components/ui/use-action-feedback";
 import { sendAnnouncement, type AnnounceState } from "./actions";
 
 const initial: AnnounceState = { status: "idle" };
@@ -12,12 +14,8 @@ const initial: AnnounceState = { status: "idle" };
 export function ComposeAnnouncement() {
   const [open, setOpen] = useState(false);
   const [state, action, pending] = useActionState(sendAnnouncement, initial);
-  const { toast } = useToast();
+  const { error } = useActionFeedback(state, { successMessage: "Announcement sent." });
   const fe = state.fieldErrors ?? {};
-
-  useEffect(() => {
-    if (state.status === "success" && state.message) toast(state.message, "success");
-  }, [state, toast]);
 
   if (!open) {
     return (
@@ -37,21 +35,8 @@ export function ComposeAnnouncement() {
       <p className="mt-1 text-sm text-muted">Goes to every member in your scope who has a login.</p>
       <form action={action} className="mt-4 flex flex-col gap-4">
         <Input label="Headline" name="title" required error={fe.title} />
-        <label className="flex flex-col gap-1.5">
-          <span className="text-sm font-semibold text-foreground">Message (optional)</span>
-          <textarea
-            name="body"
-            rows={3}
-            maxLength={1000}
-            className="rounded-sm border border-border bg-surface px-3 py-2 text-sm text-foreground focus:outline-2 focus:outline-offset-1 focus:outline-ring"
-          />
-        </label>
-        {state.status === "error" && state.message ? (
-          <p role="alert" className="text-sm text-danger">
-            {state.message}
-          </p>
-        ) : null}
-        {state.status === "success" ? <p className="text-sm text-accent">{state.message}</p> : null}
+        <Textarea label="Message (optional)" name="body" rows={3} maxLength={1000} />
+        <FormError message={error} />
         <div className="flex flex-wrap gap-2">
           <Button type="submit" loading={pending}>
             Send

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EmptyState } from "@/components/ui/empty-state";
 import { createClient } from "@/lib/supabase/server";
 import { StatusPill } from "@/components/ui/status-pill";
 import { InstallPrompt } from "@/components/pwa/install-prompt";
@@ -284,10 +285,11 @@ async function LeaderHome({ userId, firstName }: { userId?: string; firstName: s
             ))}
           </ul>
         ) : (
-          <div className="mt-3 rounded-card border border-dashed border-border p-8 text-center">
-            <p className="text-sm text-muted">
-              No members yet. Register your first member to get started.
-            </p>
+          <div className="mt-3">
+            <EmptyState
+              title="No members yet"
+              description="Register your first member to get started."
+            />
           </div>
         )}
       </div>

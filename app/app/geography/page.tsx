@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { EmptyState } from "@/components/ui/empty-state";
 import { createClient } from "@/lib/supabase/server";
 import { Icon } from "@/components/app-shell/icons";
 
@@ -182,10 +183,8 @@ export default async function GeographyPage({ searchParams }: { searchParams: Pr
       </form>
 
       {count === 0 ? (
-        <div className="mt-8 rounded-card border border-dashed border-border p-10 text-center">
-          <p className="text-sm text-muted">
-            {q ? `No ${childNoun}s match “${q}”.` : `No ${childNoun}s found.`}
-          </p>
+        <div className="mt-8">
+          <EmptyState title={q ? `No ${childNoun}s match “${q}”` : `No ${childNoun}s found`} />
         </div>
       ) : (
         <ul className="mt-6 divide-y divide-border rounded-card border border-border">

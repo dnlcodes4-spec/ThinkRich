@@ -1,9 +1,12 @@
 "use client";
 
-import { useActionState, useEffect, useState } from "react";
+import { useActionState, useState } from "react";
 import { Input } from "@/components/ui/input";
+import { Select } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/toast";
+import { FormError } from "@/components/ui/form-error";
+import { useActionFeedback } from "@/components/ui/use-action-feedback";
 import { submitChangeRequest, type ChangeReqState } from "./change-request-actions";
 import { CHANGE_FIELDS, CHANGE_FIELD_KEYS } from "@/app/app/members/change-request-fields";
 
@@ -13,12 +16,9 @@ export function ChangeRequestForm() {
   const [open, setOpen] = useState(false);
   const [field, setField] = useState<string>(CHANGE_FIELD_KEYS[0]);
   const [state, action, pending] = useActionState(submitChangeRequest, initial);
-  const { toast } = useToast();
+  // This form shows its own persistent success panel below, so suppress the toast.
+  const { error } = useActionFeedback(state, { artifact: true });
   const fe = state.fieldErrors ?? {};
-
-  useEffect(() => {
-    if (state.status === "success") toast("Correction request submitted.", "success");
-  }, [state, toast]);
 
   if (!open) {
     return (
@@ -57,40 +57,25 @@ export function ChangeRequestForm() {
         at a time.
       </p>
       <form action={action} className="mt-4 flex flex-col gap-4">
-        <label className="flex flex-col gap-1.5">
-          <span className="text-sm font-semibold text-foreground">Field</span>
-          <select
-            name="field"
-            value={field}
-            onChange={(e) => setField(e.target.value)}
-            className="min-h-11 rounded-sm border border-border bg-surface px-3 text-base text-foreground focus:outline-2 focus:outline-offset-1 focus:outline-ring"
-          >
-            {CHANGE_FIELD_KEYS.map((k) => (
-              <option key={k} value={k}>
-                {CHANGE_FIELDS[k].label}
-              </option>
-            ))}
-          </select>
-          {fe.field ? <span className="text-xs text-danger">{fe.field}</span> : null}
-        </label>
+        <Select
+          label="Field"
+          name="field"
+          value={field}
+          onChange={(e) => setField(e.target.value)}
+          error={fe.field}
+        >
+          {CHANGE_FIELD_KEYS.map((k) => (
+            <option key={k} value={k}>
+              {CHANGE_FIELDS[k].label}
+            </option>
+          ))}
+        </Select>
 
         <Input label="New value" name="new_value" type={inputType} required error={fe.new_value} />
 
-        <label className="flex flex-col gap-1.5">
-          <span className="text-sm font-semibold text-foreground">Reason (optional)</span>
-          <textarea
-            name="reason"
-            rows={2}
-            maxLength={300}
-            className="rounded-sm border border-border bg-surface px-3 py-2 text-sm text-foreground focus:outline-2 focus:outline-offset-1 focus:outline-ring"
-          />
-        </label>
+        <Textarea label="Reason (optional)" name="reason" rows={2} maxLength={300} />
 
-        {state.status === "error" && state.message ? (
-          <p role="alert" className="text-sm text-danger">
-            {state.message}
-          </p>
-        ) : null}
+        <FormError message={error} />
 
         <div className="flex flex-wrap gap-2">
           <Button type="submit" loading={pending}>
