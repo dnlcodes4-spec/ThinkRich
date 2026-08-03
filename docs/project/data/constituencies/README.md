@@ -14,14 +14,22 @@ constituencies), so it cannot be derived from `ward.lga_id`. See
 | | Rows | LGA membership |
 |---|---:|---|
 | Senatorial districts | **109** | **22 of 37 states** mapped (427 LGA links) |
-| Federal constituencies | **360** | none yet |
-| State constituencies | **990** | none yet, and not derivable from this source |
+| Federal constituencies | **360** | **16 of 37 states** mapped (315 LGA links) — T-031b |
+| State constituencies | **990** | none, and not derivable from this source |
 | **Total** | **1,459** | |
 
-**5,017 of 8,793 wards** currently resolve to a senatorial district. Senate races appear for members
-in the mapped states and nowhere else. Reps and State Assembly races cannot resolve for anyone yet:
-the constituencies exist and an admin can attach candidates to them, but no member's ward maps to
-one, so `candidacies_for_geography()` will not return them.
+**Senate** resolves for the 22 mapped states (5,017 wards). **House of Reps** now resolves for the
+**16 states** whose federal constituencies partition their LGAs exactly (3,556 wards, no ward mapping
+to more than one FC — verified). The other 17 states **split** an LGA across federal constituencies
+(Lagos: 20 LGAs, 24 FCs) and cannot be mapped from this source; they need ward-level data, entered
+via the in-app constituency-membership editor (CR-0013). **State Assembly** still resolves for no one:
+its source composition never names the LGA.
+
+Federal membership was recovered from the already-extracted `composition`/`name` text (no re-fetch of
+the workbook) by `scripts/analyze-federal-constituencies.py`, which uses **maximal-munch** against the
+live LGA list to disambiguate slash-joined names ("Aba North/Aba South" = two LGAs) from real LGAs
+that contain a slash ("Askira/Uba" = one), and writes only states that pass the same exact-partition
+gate senatorial uses. Output: `federal-lgas.json`.
 
 ## Source
 
