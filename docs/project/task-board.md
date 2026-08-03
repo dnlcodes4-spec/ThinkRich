@@ -45,11 +45,11 @@ _Not yet refined / not yet Ready._
      handled by the in-app editor (**T-031c**), not this source.
   Start from `docs/project/data/constituencies/unresolved-review.json`.
 - **T-031c** — **Manual constituency-membership editor.** Let a national admin attach the
-  wards/LGAs of a constituency in-app (schema already supports it via `constituency_wards` + the
-  `ward_constituencies` view). Needs an RLS change (national-admin writes to `constituency_wards` /
-  `constituency_lgas`) with allow/deny tests, then a national-admin UI with the live coverage
-  preview shared with T-029. Unblocks State Assembly + the split-LGA states. _(CR-0013 §4b; UI +
-  RLS, visual sign-off.)_
+  wards/LGAs of a constituency in-app. **UI-only**: schema, grants, RLS (`catalogue_write` =
+  national_admin) and the enforce trigger (auto-fills `kind`, rejects cross-state) are already in
+  place — verified live allow/deny 2026-08-03. Build a national-admin UI with the live coverage
+  preview shared with T-029, plus a regression test in `supabase/tests/` mirroring the allow/deny
+  check. Unblocks State Assembly + the split-LGA states. _(CR-0013 §4b; UI, visual sign-off.)_
 
 ## 🟡 Ready
 _Refined, unblocked, ready to pull._

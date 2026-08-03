@@ -127,17 +127,22 @@ federal-constituency states split an LGA and need ward-level data. Rather than b
 new document, the client asked to **build the mapping in-app**: sourced offline, then a national
 admin attaches the wards (or LGAs) of a constituency manually through the dashboard.
 
-The **schema already supports this** (verified 2026-08-03): `constituency_wards` (direct
-ward→constituency membership) and `constituency_lgas` exist, each with an enforce trigger, and the
-`ward_constituencies` view already prefers a direct ward row over the LGA-derived one. So this is
-**not a schema change** — it needs:
+The **schema and authorization already support this** (verified live 2026-08-03): `constituency_wards`
+(direct ward→constituency membership) and `constituency_lgas` exist, each with an enforce trigger that
+**auto-fills `kind` and rejects cross-state membership**, and the `ward_constituencies` view already
+prefers a direct ward row over the LGA-derived one. The RLS `catalogue_write` policy **already grants
+a national admin insert/delete** on both tables (and `authenticated` holds the table grants). Verified
+by a live allow/deny test: a national admin's insert succeeds (kind auto-filled); a non-admin's insert
+is refused with `row violates row-level security policy`.
 
-- **RLS:** allow a national admin to `insert`/`delete` on `constituency_wards` / `constituency_lgas`
-  (today these reference tables are service-role-write only). This is an authorization change and
-  gets RLS allow/deny tests. Scoped admins are **not** given this (catalogue stays national-only,
-  consistent with CR-0007).
-- **UI:** a national-admin editor to pick a constituency and check the wards/LGAs it contains, with
-  the live coverage preview (shared with T-029).
+So T-031c is **not a schema or RLS change — it is UI-only**:
+
+- **UI:** a national-admin editor to pick a constituency and check the wards/LGAs it contains
+  (insert `{constituency_id, ward_id}`; the trigger fills the rest), with the live coverage preview
+  shared with T-029.
+- Scoped admins are **not** given this surface (catalogue stays national-only, consistent with
+  CR-0007); the existing RLS already enforces that.
+- A regression test mirroring the live allow/deny check belongs in `supabase/tests/`.
 
 ## 5. Plan
 
