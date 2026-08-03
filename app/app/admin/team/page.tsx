@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { EmptyState } from "@/components/ui/empty-state";
 import { createClient } from "@/lib/supabase/server";
 import { manageableRoles, roleLabel, type Role } from "@/app/app/admin/new-account/tiers";
 import { ChangeRoleButton } from "./change-role-button";
@@ -98,13 +99,18 @@ export default async function TeamPage({
       ) : null}
 
       {rows.length === 0 ? (
-        <div className="mt-10 rounded-card border border-dashed border-border p-10 text-center">
-          <p className="text-sm text-muted">
-            No <span className="capitalize">{label}s</span> yet.{" "}
-            <Link href="/app/admin/new-account" className="font-semibold text-primary underline-offset-4 hover:underline">
-              Create one.
-            </Link>
-          </p>
+        <div className="mt-10">
+          <EmptyState
+            title={`No ${label}s yet`}
+            action={
+              <Link
+                href="/app/admin/new-account"
+                className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
+              >
+                Create one
+              </Link>
+            }
+          />
         </div>
       ) : (
         <ul className="mt-8 divide-y divide-border rounded-card border border-border">

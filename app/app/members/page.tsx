@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { EmptyState } from "@/components/ui/empty-state";
 import { createClient } from "@/lib/supabase/server";
 import { DataTable, type Column } from "@/components/ui/data-table";
 import { RecordCard } from "@/components/ui/record-card";
@@ -146,23 +147,28 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
       </form>
 
       {rows.length === 0 ? (
-        <div className="mt-10 rounded-card border border-dashed border-border p-10 text-center">
-          <p className="text-sm text-muted">
-            {q ? (
-              <>No members match “{q}”.</>
-            ) : (
-              <>
-                No members yet.{" "}
-                {isLeader ? (
-                  <Link href="/app/register" className="font-semibold text-primary underline-offset-4 hover:underline">
-                    Register your first member.
-                  </Link>
-                ) : (
-                  "Members appear here once leaders in your scope register them."
-                )}
-              </>
-            )}
-          </p>
+        <div className="mt-10">
+          {q ? (
+            <EmptyState title={`No members match “${q}”`} />
+          ) : isLeader ? (
+            <EmptyState
+              title="No members yet"
+              description="Register your first member and they will appear here."
+              action={
+                <Link
+                  href="/app/register"
+                  className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
+                >
+                  Register your first member
+                </Link>
+              }
+            />
+          ) : (
+            <EmptyState
+              title="No members yet"
+              description="Members appear here once leaders in your scope register them."
+            />
+          )}
         </div>
       ) : (
         <>

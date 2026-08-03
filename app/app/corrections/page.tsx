@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { EmptyState } from "@/components/ui/empty-state";
 import { createClient } from "@/lib/supabase/server";
 import { fieldLabel } from "@/app/app/members/change-request-fields";
 import { reviewChangeRequest } from "@/app/app/members/detail-actions";
@@ -76,10 +77,11 @@ export default async function CorrectionsPage() {
       </p>
 
       {waiting.length === 0 ? (
-        <div className="mt-8 rounded-card border border-dashed border-border p-10 text-center">
-          <p className="text-sm text-muted">
-            When a member asks to correct their details, the request appears here.
-          </p>
+        <div className="mt-8">
+          <EmptyState
+            title="No correction requests"
+            description="When a member asks to correct their details, the request appears here."
+          />
         </div>
       ) : (
         <ul className="mt-8 flex flex-col gap-3">

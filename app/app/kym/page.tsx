@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { EmptyState } from "@/components/ui/empty-state";
 import { createClient } from "@/lib/supabase/server";
 import { VerifyForm } from "./verify-form";
 
@@ -54,10 +55,11 @@ export default async function KymPage() {
         ) : (
           // Should not happen: the database mints a code with the profile
           // (migration 0021) and backfilled everyone who predates that trigger.
-          <div className="mt-3 rounded-card border border-dashed border-border p-5">
-            <p className="text-sm text-muted">
-              Your code hasn&rsquo;t been issued yet. Contact your coordinator.
-            </p>
+          <div className="mt-3">
+            <EmptyState
+              title="Your code hasn’t been issued yet"
+              description="Contact your coordinator."
+            />
           </div>
         )}
       </section>
