@@ -32,6 +32,36 @@ export function SkeletonCard({ className }: { className?: string }) {
   return <Skeleton className={cn("h-24 rounded-card", className)} />;
 }
 
+/** A vertical list of row-shaped skeletons (roster, feed, team list). */
+export function SkeletonList({ rows = 5 }: { rows?: number }) {
+  return (
+    <div className="flex flex-col gap-2">
+      {Array.from({ length: rows }).map((_, i) => (
+        <Skeleton key={i} data-skel-row className="h-16 rounded-card" />
+      ))}
+    </div>
+  );
+}
+
+/** A grid of cell-shaped skeletons for tabular pages. */
+export function SkeletonTable({ rows = 5, cols = 4 }: { rows?: number; cols?: number }) {
+  return (
+    <div className="flex flex-col gap-2">
+      {Array.from({ length: rows }).map((_, r) => (
+        <div
+          key={r}
+          className="grid gap-2"
+          style={{ gridTemplateColumns: `repeat(${cols}, minmax(0,1fr))` }}
+        >
+          {Array.from({ length: cols }).map((_, c) => (
+            <Skeleton key={c} data-skel-cell className="h-8" />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 /**
  * Wrapper that announces loading to assistive tech. The visual skeleton itself
  * is aria-hidden, so a screen reader hears one clear message instead of a pile
