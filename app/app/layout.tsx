@@ -1,8 +1,10 @@
+import { Suspense } from "react";
 import { createClient } from "@/lib/supabase/server";
 import { roleLabel } from "@/lib/terms";
 import { AppHeader } from "@/components/app-shell/app-header";
 import { BottomNav } from "@/components/app-shell/bottom-nav";
 import { Sidebar } from "@/components/app-shell/sidebar";
+import { NavProgress } from "@/components/app-shell/nav-progress";
 import { navForRole } from "@/components/app-shell/nav";
 import { ServiceWorkerRegistrar } from "@/components/pwa/service-worker-registrar";
 import { ChangePasswordPrompt } from "@/components/account/change-password-prompt";
@@ -36,6 +38,11 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     // dashboard inherits the ThinkRich umbrella's ink + green from :root, which
     // is what it was doing after CR-0008 moved these screens to their own origin.
     <div data-brand="think-winners" className="flex min-h-svh flex-1">
+      {/* Suspense: NavProgress reads useSearchParams, which otherwise opts the
+          whole shell into client rendering. */}
+      <Suspense fallback={null}>
+        <NavProgress />
+      </Suspense>
       {/* The sidebar precedes the content in the DOM, so keyboard users get a
           way past it. Hidden until focused. */}
       <a
