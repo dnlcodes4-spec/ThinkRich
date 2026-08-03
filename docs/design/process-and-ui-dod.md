@@ -67,7 +67,10 @@ A UI change is **Done** only when all of these hold (in addition to the general
 - [ ] Zoom 200% intact; `prefers-reduced-motion` respected.
 
 ### States & content
-- [ ] Loading (skeleton), empty (with CTA), error (plain-language + retry), success all handled.
+- [ ] Loading, partial-loading, pending, success, error, and empty each handled with the
+      **sanctioned mechanism** per [feedback-and-states.md](feedback-and-states.md) (route
+      `loading.tsx`/`Suspense`; `Button loading`; toast on success, `FormError`/field `error` on
+      failure; `EmptyState`).
 - [ ] Copy is clear and on-tone; destructive actions confirmed with named consequences.
 
 ### Verification
