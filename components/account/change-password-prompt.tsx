@@ -4,6 +4,8 @@ import { useActionState, useEffect, useRef, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { PasswordInput } from "@/components/ui/password-input";
+import { FormError } from "@/components/ui/form-error";
+import { useActionFeedback } from "@/components/ui/use-action-feedback";
 import { changePassword, type ChangePasswordState } from "@/app/app/account/actions";
 
 const initial: ChangePasswordState = { status: "idle" };
@@ -37,6 +39,8 @@ function getServerSnapshot(): boolean {
 export function ChangePasswordPrompt() {
   const router = useRouter();
   const [state, action, pending] = useActionState(changePassword, initial);
+  // This modal shows its own success view then refreshes, so suppress the toast.
+  const { error } = useActionFeedback(state, { artifact: true });
   const dismissed = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const firstFieldRef = useRef<HTMLInputElement>(null);
 
@@ -107,11 +111,7 @@ export function ChangePasswordPrompt() {
               error={state.fieldErrors?.confirm}
             />
 
-            {state.status === "error" && state.message ? (
-              <p role="alert" className="text-sm text-danger">
-                {state.message}
-              </p>
-            ) : null}
+            <FormError message={error} />
 
             <div className="flex flex-wrap items-center gap-3">
               <Button type="submit" loading={pending}>
