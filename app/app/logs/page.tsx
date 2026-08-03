@@ -94,7 +94,7 @@ export default async function LogsPage({
   const filters = Object.keys(ACTION_META);
 
   return (
-    <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
+    <main className="app-fade-in mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
       <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground">Activity</h1>
       <p className="mt-1 text-sm text-muted">
         What has been happening across the platform. Newest first, last 100 entries.

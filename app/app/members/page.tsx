@@ -97,7 +97,7 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
   }
 
   return (
-    <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-12">
+    <main className="app-fade-in mx-auto w-full max-w-4xl flex-1 px-6 py-12">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground">

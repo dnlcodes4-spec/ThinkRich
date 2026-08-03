@@ -4,7 +4,7 @@ import { LoadingRegion, Skeleton, SkeletonHeader } from "@/components/ui/skeleto
 // layout does not shift when the members arrive.
 export default function MembersLoading() {
   return (
-    <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-12">
+    <main className="app-fade-in mx-auto w-full max-w-4xl flex-1 px-6 py-12">
       <LoadingRegion label="Loading members">
         <SkeletonHeader />
         <Skeleton className="mt-6 h-11 w-full" />
