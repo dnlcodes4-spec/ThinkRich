@@ -9,6 +9,7 @@ import {
   type ConstituencyKind,
 } from "@/lib/offices";
 import { CandidateForm } from "./candidate-form";
+import { ConstituencyChooser } from "./constituency-chooser";
 import { GeoPicker } from "@/components/geo-picker";
 import { deleteCandidacy } from "./actions";
 import { CandidateTabs } from "./tabs";
@@ -43,7 +44,7 @@ const depthFor = (kind: ConstituencyKind) =>
 export default async function ManageCandidatesPage({
   searchParams,
 }: {
-  searchParams: Promise<{ office?: string; state?: string; lga?: string; ward?: string; edit?: string }>;
+  searchParams: Promise<{ office?: string; state?: string; lga?: string; ward?: string; con?: string; edit?: string }>;
 }) {
   const sp = await searchParams;
   const supabase = await createClient();
@@ -93,13 +94,78 @@ export default async function ManageCandidatesPage({
     : kind === "state" ? (locked.stateId ?? sp.state ?? null)
     : kind === "lga" ? (locked.lgaId ?? sp.lga ?? null)
     : kind === "ward" ? (locked.wardId ?? sp.ward ?? null)
-    : null;
+    : (sp.con ?? null); // senatorial / federal / state constituency: the chosen seat
 
   const officeMap = new Map((offices ?? []).map((o) => [o.id, o]));
   const partyMap = new Map((parties ?? []).map((p) => [p.id, p]));
   const editing = managed.find((c) => c.id === sp.edit) ?? null;
 
   const whereLabel = await describeGeography(kind, chosenGeoId);
+
+  // Overlay offices (Senate / House of Reps / State Assembly) are elected from a
+  // constituency, so load the seats to choose from (scoped to the admin's state)
+  // and, once one is chosen, how many wards it currently maps to.
+  const overlay = Boolean(kind && needsConstituencyData(kind));
+  let overlayCons: { id: string; name: string; state_id: string }[] = [];
+  let overlayStates: { id: string; name: string }[] = [];
+  let coverageWards = 0;
+  if (office && kind && overlay) {
+    let cq = supabase.from("constituencies").select("id, name, state_id").eq("kind", kind);
+    if (locked.stateId) cq = cq.eq("state_id", locked.stateId);
+    const [{ data: cons }, sts] = await Promise.all([
+      cq.order("name"),
+      locked.stateId
+        ? Promise.resolve({ data: [] as { id: string; name: string }[] })
+        : supabase.from("states").select("id, name").order("name"),
+    ]);
+    overlayCons = cons ?? [];
+    overlayStates = sts.data ?? [];
+    if (chosenGeoId) {
+      const { count } = await supabase
+        .from("ward_constituencies")
+        .select("ward_id", { count: "exact", head: true })
+        .eq("constituency_id", chosenGeoId)
+        .eq("kind", kind);
+      coverageWards = count ?? 0;
+    }
+  }
+
+  // The candidate form is the same whether the area came from the geography tree
+  // or the constituency chooser, so build it once and drop it into either branch.
+  const formSection =
+    office && kind && (kind === "nation" || chosenGeoId) ? (
+      <section className="mt-6 rounded-card border border-border bg-surface p-5">
+        <CandidateForm
+          officeTypeId={office.id}
+          officeTitle={office.title}
+          hasRunningMate={office.has_running_mate}
+          runningMateTitle={office.running_mate_title}
+          geoId={chosenGeoId}
+          whereLabel={whereLabel}
+          elections={(elections ?? []).map((e) => ({ id: e.id, label: `${e.name} (${e.election_date})` }))}
+          parties={(parties ?? []).map((p) => ({ id: p.id, label: `${p.acronym} — ${p.name}` }))}
+          existing={
+            editing
+              ? {
+                  id: editing.id,
+                  full_name: editing.full_name,
+                  running_mate_name: editing.running_mate_name,
+                  party_id: editing.party_id,
+                  slogan: editing.slogan,
+                  bio: editing.bio,
+                  is_endorsed: editing.is_endorsed,
+                  is_published: editing.is_published,
+                }
+              : null
+          }
+          photoUrl={
+            editing?.photo_url
+              ? supabase.storage.from(CANDIDATE_PHOTOS_BUCKET).getPublicUrl(editing.photo_url).data.publicUrl
+              : null
+          }
+        />
+      </section>
+    ) : null;
 
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:px-6 sm:py-12">
@@ -174,12 +240,31 @@ export default async function ManageCandidatesPage({
 
       {/* ── pick the area, then the details ── */}
       {office && kind ? (
-        needsConstituencyData(kind) ? (
-          <p className="mt-6 rounded-card border border-border bg-surface-muted p-4 text-sm text-muted">
-            {office.title} seats are elected from {KIND_LABEL[kind].toLowerCase()}s. We have not loaded
-            INEC&apos;s constituency delimitation yet, so there is nothing to choose from. This unlocks
-            once that data is imported.
-          </p>
+        overlay ? (
+          <section className="mt-6">
+            <h2 className="text-sm font-semibold text-accent">Choose the seat</h2>
+            <p className="mt-1 max-w-prose text-sm text-muted">
+              {office.title} is elected from a {KIND_LABEL[kind].toLowerCase()}. Pick the exact seat this
+              candidate is standing for.
+            </p>
+            <div className="mt-3">
+              <ConstituencyChooser
+                officeId={office.id}
+                constituencies={overlayCons}
+                states={overlayStates}
+                lockedStateId={locked.stateId}
+                initialConId={sp.con}
+              />
+            </div>
+            {chosenGeoId ? (
+              <CoveragePreview
+                wards={coverageWards}
+                conId={chosenGeoId}
+                canEditAreas={profile.role === "national_admin"}
+              />
+            ) : null}
+            {formSection}
+          </section>
         ) : (
           <>
             {kind !== "nation" ? (
@@ -194,40 +279,7 @@ export default async function ManageCandidatesPage({
                 />
               </section>
             ) : null}
-
-            {kind === "nation" || chosenGeoId ? (
-              <section className="mt-8 rounded-card border border-border bg-surface p-5">
-                <CandidateForm
-                  officeTypeId={office.id}
-                  officeTitle={office.title}
-                  hasRunningMate={office.has_running_mate}
-                  runningMateTitle={office.running_mate_title}
-                  geoId={chosenGeoId}
-                  whereLabel={whereLabel}
-                  elections={(elections ?? []).map((e) => ({ id: e.id, label: `${e.name} (${e.election_date})` }))}
-                  parties={(parties ?? []).map((p) => ({ id: p.id, label: `${p.acronym} — ${p.name}` }))}
-                  existing={
-                    editing
-                      ? {
-                          id: editing.id,
-                          full_name: editing.full_name,
-                          running_mate_name: editing.running_mate_name,
-                          party_id: editing.party_id,
-                          slogan: editing.slogan,
-                          bio: editing.bio,
-                          is_endorsed: editing.is_endorsed,
-                          is_published: editing.is_published,
-                        }
-                      : null
-                  }
-                  photoUrl={
-                    editing?.photo_url
-                      ? supabase.storage.from(CANDIDATE_PHOTOS_BUCKET).getPublicUrl(editing.photo_url).data.publicUrl
-                      : null
-                  }
-                />
-              </section>
-            ) : null}
+            {formSection}
           </>
         )
       ) : null}
@@ -254,4 +306,51 @@ async function describeGeography(kind: ConstituencyKind | undefined, id: string 
   }
   const { data } = await supabase.from("constituencies").select("name").eq("id", id).maybeSingle();
   return data?.name ?? "";
+}
+
+// Tells the admin whether members will actually see a candidate they add to this
+// seat: a seat with no wards mapped resolves for nobody. Links to the areas
+// editor (national admin only) to fix it.
+function CoveragePreview({
+  wards,
+  conId,
+  canEditAreas,
+}: {
+  wards: number;
+  conId: string;
+  canEditAreas: boolean;
+}) {
+  if (wards > 0) {
+    return (
+      <p className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 rounded-sm border border-success/30 bg-success-soft px-3 py-2 text-sm text-foreground">
+        <span aria-hidden="true" className="text-success">✓</span>
+        This seat covers <span className="font-semibold">{wards.toLocaleString()}</span> ward
+        {wards === 1 ? "" : "s"}, so members there will see this candidate.
+        {canEditAreas ? (
+          <Link
+            href={`/app/admin/candidates/areas?c=${conId}`}
+            className="font-semibold text-primary underline-offset-4 hover:underline"
+          >
+            Edit areas
+          </Link>
+        ) : null}
+      </p>
+    );
+  }
+  return (
+    <p className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 rounded-sm border border-warning/40 bg-warning-soft px-3 py-2 text-sm text-foreground">
+      <span aria-hidden="true" className="text-warning">!</span>
+      This seat has no wards set yet, so members won&apos;t see a candidate added here.
+      {canEditAreas ? (
+        <Link
+          href={`/app/admin/candidates/areas?c=${conId}`}
+          className="font-semibold text-primary underline-offset-4 hover:underline"
+        >
+          Set its areas
+        </Link>
+      ) : (
+        <span className="text-muted">Ask a national admin to set its wards.</span>
+      )}
+    </p>
+  );
 }
