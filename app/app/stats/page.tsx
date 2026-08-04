@@ -78,7 +78,7 @@ export default async function StatsPage() {
   const max = Math.max(1, ...breakdown.map((b) => b.count));
 
   return (
-    <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-12">
+    <main className="app-fade-in mx-auto w-full max-w-3xl flex-1 px-6 py-12">
       <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground">Statistics</h1>
       <p className="mt-1 text-sm text-muted">Active members in your scope, and how they break down.</p>
 

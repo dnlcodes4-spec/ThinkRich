@@ -105,6 +105,45 @@ for (let i = 0; i < linkPayload.length; i += 500) {
 console.log(`senatorial LGA links: ${linkPayload.length} upserted`);
 if (unmatched.length) console.warn(`  unmatched links: ${unmatched.length}`, unmatched.slice(0, 5));
 
+// ── federal-constituency LGA membership (T-031b) ──
+// Only the states whose FCs partition the state's LGAs exactly (whole-LGA states);
+// split-LGA states (Lagos, Kano, …) are left for the manual ward editor. The
+// ward_constituencies VIEW expands these LGA links to every ward automatically.
+const { data: fedSaved, error: fErr } = await supabase
+  .from("constituencies")
+  .select("id, code")
+  .eq("kind", "federal_constituency");
+if (fErr) throw fErr;
+const fedIdByCode = new Map(fedSaved.map((c) => [c.code, c.id]));
+const fedStateById = new Map(
+  payload
+    .filter((p) => p.kind === "federal_constituency")
+    .map((p) => [fedIdByCode.get(p.code), p.state_id]),
+);
+
+const fedLinks = JSON.parse(readFileSync(join(DATA_DIR, "federal-lgas.json"), "utf8"));
+const fedPayload = [];
+const fedUnmatched = [];
+for (const l of fedLinks) {
+  const conId = fedIdByCode.get(l.code);
+  const stateId = fedStateById.get(conId);
+  const lgaId = stateId ? lgaIdByKey.get(`${stateId}::${norm(l.lga)}`) : null;
+  if (!conId || !lgaId) {
+    fedUnmatched.push(l);
+    continue;
+  }
+  fedPayload.push({ constituency_id: conId, lga_id: lgaId, kind: "federal_constituency" });
+}
+for (let i = 0; i < fedPayload.length; i += 500) {
+  const chunk = fedPayload.slice(i, i + 500);
+  const { error } = await supabase
+    .from("constituency_lgas")
+    .upsert(chunk, { onConflict: "constituency_id,lga_id", ignoreDuplicates: true });
+  if (error) throw error;
+}
+console.log(`federal LGA links: ${fedPayload.length} upserted`);
+if (fedUnmatched.length) console.warn(`  unmatched links: ${fedUnmatched.length}`, fedUnmatched.slice(0, 5));
+
 const review = JSON.parse(readFileSync(join(DATA_DIR, "unresolved-review.json"), "utf8"));
 const notVerified = Object.keys(review.states_not_verified ?? {});
 console.log(

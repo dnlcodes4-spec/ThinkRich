@@ -38,6 +38,11 @@ yarn-error.log*
 # ...but DO track the example template (contains only placeholders, no secrets)
 !.env.example
 
+# local DB dumps used by data importers (regenerated from our own database)
+/docs/project/data/constituencies/lgas.json
+# local test credentials (never commit real/shared logins)
+/test-credentials.md
+
 # vercel
 .vercel
 
