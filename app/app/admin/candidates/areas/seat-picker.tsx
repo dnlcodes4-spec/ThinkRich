@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { Select } from "@/components/ui/select";
-import { startNavProgress } from "@/components/app-shell/nav-progress";
 
 // Plain-language kinds. The database calls these senatorial_district etc.; here
 // they are the names people actually use.
@@ -42,10 +41,7 @@ export function SeatPicker({
   // that's already open, which reads as broken.
   function chooseSeat(id: string) {
     setSeatId(id);
-    if (id) {
-      startNavProgress();
-      router.push(`/app/admin/candidates/areas?c=${id}`);
-    }
+    if (id) router.push(`/app/admin/candidates/areas?c=${id}`);
   }
 
   return (
