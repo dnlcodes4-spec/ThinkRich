@@ -12,7 +12,7 @@ import { CandidateCard } from "./candidate-card";
 import { GeoPicker } from "@/components/geo-picker";
 
 export const metadata: Metadata = {
-  title: "Your candidates",
+  title: "Who to vote for",
   robots: { index: false, follow: false },
 };
 
@@ -38,7 +38,7 @@ export default async function CandidatesPage({
   if (!member) {
     return (
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
-        <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">Your candidates</h1>
+        <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">Who to vote for</h1>
         <p className="text-sm text-muted">This area is for members.</p>
         <Link href="/app" className="text-sm font-semibold text-primary underline-offset-4 hover:underline">
           Back to your area
@@ -80,19 +80,23 @@ export default async function CandidatesPage({
   const ordered = [...(offices ?? [])].reverse();
 
   return (
-    <main className="app-fade-in mx-auto w-full max-w-2xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
-      <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground">Your candidates</h1>
+    <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
+      <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground">Who to vote for</h1>
       <p className="mt-1 text-sm text-muted">
-        Everyone standing in {where}, closest to you first.
-        {browsing ? (
-          <>
-            {" "}
-            <Link href="/app/vote" className="font-semibold text-primary underline-offset-4 hover:underline">
-              Back to my area
-            </Link>
-          </>
-        ) : null}
+        The people standing for election where you live, closest to home first.
       </p>
+
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-card border border-border bg-surface-muted px-4 py-3">
+        <p className="text-sm text-foreground">
+          <span className="text-muted">{browsing ? "Showing" : "Your area"}: </span>
+          <span className="font-semibold">{where}</span>
+        </p>
+        {browsing ? (
+          <Link href="/app/vote" className="text-sm font-semibold text-primary underline-offset-4 hover:underline">
+            Back to my area
+          </Link>
+        ) : null}
+      </div>
 
       <details className="mt-6 rounded-card border border-border bg-surface-muted p-4">
         <summary className="cursor-pointer text-sm font-semibold text-foreground">Look at another area</summary>
@@ -114,7 +118,7 @@ export default async function CandidatesPage({
           const pending = list.length === 0 && needsConstituencyData(kind);
           return (
             <section key={office.id}>
-              <h2 className="text-sm font-semibold text-accent">{office.title}</h2>
+              <h2 className="border-b border-border pb-2 text-base font-semibold text-foreground">{office.title}</h2>
               {list.length > 0 ? (
                 <div className="mt-3 flex flex-col gap-3">
                   {list.map((c) => (
