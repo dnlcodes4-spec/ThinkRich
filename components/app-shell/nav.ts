@@ -39,6 +39,8 @@ const COORDINATOR_BASE: NavItem[] = [
   { href: "/app/admin/team", label: "Team", icon: "team" },
   { href: "/app/admin/new-account", label: "Give app access", icon: "access", short: "Access" },
   { href: "/app/kym", label: "Verify a leader", icon: "verify", short: "Verify" },
+  // CR-0018: add polling units the INEC seed missed, scoped to the caller's area.
+  { href: "/app/geography/add-unit", label: "Add polling unit", icon: "layers", short: "Add unit" },
 ];
 
 const CANDIDATES: NavItem = {
