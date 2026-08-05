@@ -9,6 +9,7 @@ import { FLAG_TEMPORARY } from "@/lib/must-change-password";
 import { openStateFor } from "@/lib/states";
 import { allowedTargets, ROLE_LEVEL, type Role } from "./tiers";
 import { normalizeVin, VIN_INVALID } from "@/lib/vin";
+import { normalizePhone, PHONE_INVALID } from "@/lib/phone";
 
 // Provisioning authorization, re-checked here because the service role bypasses
 // RLS. Two rules, the same ones profiles_insert enforces:
@@ -22,6 +23,8 @@ const schema = z.object({
   email: z.email("Enter a valid email address."),
   // CR-0009 item 1: "before registering any admin, include voter card number".
   vin: z.string().trim().min(1, "Enter the voter's card number (VIN)."),
+  // CR-0017 item 1: phone required on every creation form.
+  phone: z.string().trim().min(1, "Enter the phone number."),
   target_role: z.string().min(1, "Choose a role."),
   state_id: z.string().uuid().optional(),
   lga_id: z.string().uuid().optional(),
@@ -65,6 +68,7 @@ export async function createAccount(
     full_name: formData.get("full_name"),
     email: formData.get("email"),
     vin: formData.get("vin"),
+    phone: formData.get("phone"),
     target_role: str(formData, "target_role"),
     state_id: str(formData, "state_id"),
     lga_id: str(formData, "lga_id"),
@@ -86,6 +90,11 @@ export async function createAccount(
   const vin = normalizeVin(d.vin);
   if (!vin) {
     return { status: "error", message: VIN_INVALID, fieldErrors: { vin: VIN_INVALID } };
+  }
+
+  const phone = normalizePhone(d.phone);
+  if (!phone) {
+    return { status: "error", message: PHONE_INVALID, fieldErrors: { phone: PHONE_INVALID } };
   }
 
   // Rule 1: is this a role the caller may create at all?
@@ -197,6 +206,7 @@ export async function createAccount(
     role: target.role,
     full_name: d.full_name,
     vin_id: vin,
+    phone,
     ...scope,
   });
   if (profileErr) {

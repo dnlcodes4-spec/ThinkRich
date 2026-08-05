@@ -48,7 +48,8 @@ const CANDIDATES: NavItem = {
   short: "Candidates",
 };
 const STATES: NavItem = { href: "/app/admin/states", label: "States", icon: "states" };
-// National only: they may register a member into any polling unit (T-033).
+// Leaders + every coordinator tier may register members within their scope
+// (national anywhere) — CR-0017 item 7.
 const REGISTER: NavItem = {
   href: "/app/register",
   label: "Register a member",
@@ -72,9 +73,9 @@ export function navForRole(role: Role | string | null | undefined): NavItem[] {
     case "state_admin":
     case "lg_admin":
     case "ward_admin":
-      return [...COORDINATOR_BASE, CANDIDATES];
+      return [...COORDINATOR_BASE, REGISTER, CANDIDATES];
     case "unit_coordinator":
-      return COORDINATOR_BASE;
+      return [...COORDINATOR_BASE, REGISTER];
     default:
       return MEMBER;
   }

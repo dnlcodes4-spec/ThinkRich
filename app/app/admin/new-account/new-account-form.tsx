@@ -60,6 +60,15 @@ function Inner({ onReset, targetRole, targetRoleLabel, scope }: Props & { onRese
 
       <Input label="Full name" name="full_name" autoComplete="name" required error={fe.full_name} />
       <Input label="Email" name="email" type="email" autoComplete="off" required error={fe.email} />
+      <Input
+        label="Phone number"
+        name="phone"
+        type="tel"
+        autoComplete="tel"
+        required
+        hint="Nigerian mobile, e.g. 0803 123 4567."
+        error={fe.phone}
+      />
       <VinInput error={fe.vin} />
 
       {fe.geo ? <p className="text-xs text-danger">{fe.geo}</p> : null}
