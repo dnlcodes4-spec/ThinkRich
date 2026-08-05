@@ -59,8 +59,26 @@ export default async function LogsPage({
     data: { user },
   } = await supabase.auth.getUser();
   const { data: me } = user
-    ? await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle()
+    ? await supabase.from("profiles").select("role, status, vin_id").eq("id", user.id).maybeSingle()
     : { data: null };
+
+  // The read policy also requires status='active' (CR-0009). A national admin who
+  // has not supplied a voter's card is not active, so RLS returns nothing — which
+  // would otherwise read as "no activity" instead of "your account isn't active".
+  if (me?.role === "national_admin" && me.status !== "active") {
+    return (
+      <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
+        <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">Activity</h1>
+        <p className="text-sm text-muted">
+          Your account isn&apos;t fully active yet, so this is hidden. Add your voter&apos;s card
+          number to unlock it.
+        </p>
+        <Link href="/app/account" className="text-sm font-semibold text-primary underline-offset-4 hover:underline">
+          Go to your account
+        </Link>
+      </main>
+    );
+  }
 
   if (me?.role !== "national_admin") {
     return (

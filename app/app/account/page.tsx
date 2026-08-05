@@ -3,6 +3,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { roleLabel } from "@/lib/terms";
 import { ChangePasswordForm } from "./change-password";
+import { AddVinForm } from "./add-vin-form";
 
 export const metadata: Metadata = {
   title: "Your account",
@@ -21,10 +22,13 @@ export default async function AccountPage() {
   const { data: profile } = user
     ? await supabase
         .from("profiles")
-        .select("full_name, role, state_id, lga_id, ward_id, polling_unit_id")
+        .select("full_name, role, state_id, lga_id, ward_id, polling_unit_id, vin_id")
         .eq("id", user.id)
         .maybeSingle()
     : { data: null };
+
+  // Staff (non-member) accounts need a voter's card to be active (CR-0009).
+  const needsVin = Boolean(profile && profile.role !== "member" && !profile.vin_id);
 
   const [st, lg, wd, pu] = await Promise.all([
     profile?.state_id
@@ -86,6 +90,27 @@ export default async function AccountPage() {
           </Link>
         ) : null}
       </div>
+
+      {profile && profile.role !== "member" ? (
+        <section className="mt-10 border-t border-border pt-8">
+          <h2 className="font-display text-xl font-semibold tracking-tight text-foreground">
+            Voter&apos;s card
+          </h2>
+          {needsVin ? (
+            <>
+              <p className="mt-1 text-sm text-muted">
+                Add your voter&apos;s card number to fully activate your account. Until you do, some
+                pages will show nothing.
+              </p>
+              <AddVinForm />
+            </>
+          ) : (
+            <p className="mt-1 text-sm text-muted">
+              Your voter&apos;s card is on file and your account is active.
+            </p>
+          )}
+        </section>
+      ) : null}
 
       <section className="mt-10 border-t border-border pt-8">
         <h2 className="font-display text-xl font-semibold tracking-tight text-foreground">
