@@ -5,6 +5,22 @@ import { createClient } from "@/lib/supabase/server";
 import { provisionMemberLogin } from "@/app/app/members/provision-login";
 import { logActivityAs } from "@/lib/activity";
 import { normalizeVin, VIN_INVALID } from "@/lib/vin";
+import { normalizePhone, PHONE_INVALID } from "@/lib/phone";
+
+// Who may register a member (CR-0017 item 7). A leader and unit coordinator write
+// into their own polling unit; the higher coordinator tiers and the national
+// coordinator choose a polling unit within their scope. RLS (0033) is the control;
+// this list and the containment check below mirror it.
+const REGISTRAR_ROLES = [
+  "leader",
+  "unit_coordinator",
+  "ward_admin",
+  "lg_admin",
+  "state_admin",
+  "national_admin",
+] as const;
+// These have a fixed polling unit (their own); the rest choose one in their scope.
+const FIXED_PU_ROLES = ["leader", "unit_coordinator"] as const;
 
 // Registering a member (T-004, extended by T-033 and T-040).
 //
@@ -27,6 +43,8 @@ const schema = z.object({
   // Required for everyone as of CR-0009 §3.1. Validated after normalisation, not
   // on the raw string, so a member may type it with spaces or dashes.
   vin: z.string().trim().min(1, "Enter the voter's card number (VIN)."),
+  // Required for everyone as of CR-0017. Validated after normalisation.
+  phone: z.string().trim().min(1, "Enter the member's phone number."),
   gender: z.enum(["male", "female"], { message: "Choose a gender." }),
   email: z.union([z.literal(""), z.email("Enter a valid email address.")]).optional(),
   account_number: z.string().trim().optional(),
@@ -70,17 +88,14 @@ export async function registerMember(
     .eq("id", user.id)
     .maybeSingle();
 
-  const isNational = profile?.role === "national_admin";
-  const isLeader =
-    !!profile &&
-    profile.role === "leader" &&
-    !!profile.state_id &&
-    !!profile.lga_id &&
-    !!profile.ward_id &&
-    !!profile.polling_unit_id;
-
-  if (!profile || (!isLeader && !isNational)) {
-    return { status: "error", message: "Only leaders and the National Coordinator can register members." };
+  const role = profile?.role as (typeof REGISTRAR_ROLES)[number] | undefined;
+  if (!profile || !role || !REGISTRAR_ROLES.includes(role)) {
+    return { status: "error", message: "Your role cannot register members." };
+  }
+  const fixedPu = (FIXED_PU_ROLES as readonly string[]).includes(role);
+  // A fixed-PU registrar must actually have a polling unit on their profile.
+  if (fixedPu && !profile.polling_unit_id) {
+    return { status: "error", message: "Your account has no polling unit set, so you cannot register here." };
   }
 
   const parsed = schema.safeParse({
@@ -88,6 +103,7 @@ export async function registerMember(
     date_of_birth: formData.get("date_of_birth"),
     nin: formData.get("nin"),
     vin: formData.get("vin"),
+    phone: formData.get("phone"),
     gender: formData.get("gender"),
     email: formData.get("email"),
     account_number: formData.get("account_number"),
@@ -111,6 +127,11 @@ export async function registerMember(
     return { status: "error", message: VIN_INVALID, fieldErrors: { vin: VIN_INVALID } };
   }
 
+  const phone = normalizePhone(parsed.data.phone);
+  if (!phone) {
+    return { status: "error", message: PHONE_INVALID, fieldErrors: { phone: PHONE_INVALID } };
+  }
+
   if (!isAdult(parsed.data.date_of_birth)) {
     return {
       status: "error",
@@ -119,9 +140,10 @@ export async function registerMember(
     };
   }
 
-  // Resolve the target polling unit and its full path. A leader's is fixed; the
-  // national coordinator's comes from the form and may be anywhere.
-  const targetPu = isLeader ? profile.polling_unit_id! : parsed.data.polling_unit_id;
+  // Resolve the target polling unit and its full path. A leader's / unit
+  // coordinator's is fixed to their own; the higher tiers choose one, constrained
+  // to their scope by the containment check below (and by RLS).
+  const targetPu = fixedPu ? profile.polling_unit_id! : parsed.data.polling_unit_id;
   if (!targetPu) {
     return { status: "error", message: "Choose the polling unit this member belongs to." };
   }
@@ -147,22 +169,35 @@ export async function registerMember(
   const lgaId = lga.id;
   const stateId = state.id;
 
+  // Containment: the chosen polling unit must sit inside the registrar's own
+  // scope. Defence in depth, RLS (0033) enforces the same; this returns a clear
+  // message instead of a policy rejection. A national admin has no scope set, so
+  // nothing constrains them; each set level on the profile must match.
+  const outOfScope =
+    (profile.state_id && stateId !== profile.state_id) ||
+    (profile.lga_id && lgaId !== profile.lga_id) ||
+    (profile.ward_id && unit.ward_id !== profile.ward_id) ||
+    (profile.polling_unit_id && unit.id !== profile.polling_unit_id);
+  if (outOfScope) {
+    return { status: "error", message: "That polling unit is outside your own area." };
+  }
+
   // A state must be activated (T-019) before members can be registered in it.
   // This is a workflow gate, not a scope limit, so it holds for everyone; the
   // coordinator is the one who can lift it.
   if (!state.is_active) {
     return {
       status: "error",
-      message: isNational
+      message: role === "national_admin"
         ? `${state.name} is not activated yet. Activate it, then register.`
         : "Your state is not active yet. Registration opens once it is activated.",
     };
   }
 
-  // Who holds this member. A leader always holds their own. The coordinator may
-  // attribute to a leader in that polling unit, or hold the member themselves.
+  // Who holds this member. A leader always holds their own. Any coordinator tier
+  // may attribute to a leader in that polling unit, or hold the member themselves.
   let registeredBy = user.id;
-  if (isNational && parsed.data.registered_by) {
+  if (role !== "leader" && parsed.data.registered_by) {
     const { data: leader } = await supabase
       .from("profiles")
       .select("id")
@@ -209,6 +244,7 @@ export async function registerMember(
       date_of_birth: parsed.data.date_of_birth,
       nin: parsed.data.nin,
       vin_id: vin,
+      phone,
       gender: parsed.data.gender,
       email,
       account_number: parsed.data.account_number || null,

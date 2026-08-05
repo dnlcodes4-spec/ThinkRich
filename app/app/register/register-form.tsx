@@ -101,6 +101,15 @@ function Inner({ onReset, pollingUnitId, leaders }: RegisterFormProps & { onRese
         <div className="grid gap-5 sm:grid-cols-2">
           <Input label="Full name" name="full_name" autoComplete="name" required error={fe.full_name} />
           <Input
+            label="Phone number"
+            name="phone"
+            type="tel"
+            autoComplete="tel"
+            required
+            hint="Nigerian mobile, e.g. 0803 123 4567."
+            error={fe.phone}
+          />
+          <Input
             label="Date of birth"
             name="date_of_birth"
             type="date"

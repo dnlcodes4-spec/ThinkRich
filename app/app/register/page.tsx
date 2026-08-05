@@ -9,11 +9,16 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// Two callers, one form:
-//   * a LEADER registers into their own polling unit, capped at 10 active members;
-//   * the NATIONAL COORDINATOR registers into ANY polling unit (T-033), optionally
-//     attributing the member to a leader there so they stay inside the chain.
-// RLS (members_insert, 0019) is what actually decides; this page mirrors it.
+// Who registers, and how the polling unit is chosen (CR-0017 item 7):
+//   * a LEADER or UNIT COORDINATOR registers into their OWN polling unit (fixed);
+//   * a WARD / LGA / STATE coordinator picks a polling unit WITHIN their scope;
+//   * the NATIONAL COORDINATOR picks any polling unit.
+// Every non-leader may attribute the member to a leader in that polling unit so
+// they stay inside the chain. RLS (members_insert, 0033) is what actually decides;
+// this page mirrors it.
+const FIXED_PU_ROLES = ["leader", "unit_coordinator"];
+const CHOOSE_PU_ROLES = ["ward_admin", "lg_admin", "state_admin", "national_admin"];
+
 export default async function RegisterMemberPage({
   searchParams,
 }: {
@@ -33,24 +38,17 @@ export default async function RegisterMemberPage({
         .maybeSingle()
     : { data: null };
 
-  const isNational = profile?.role === "national_admin";
-  const isLeader =
-    !!profile &&
-    profile.role === "leader" &&
-    !!profile.state_id &&
-    !!profile.lga_id &&
-    !!profile.ward_id &&
-    !!profile.polling_unit_id;
+  const role = profile?.role ?? "";
+  const fixedPu = FIXED_PU_ROLES.includes(role);
+  const choosePu = CHOOSE_PU_ROLES.includes(role);
 
-  if (!profile || (!isLeader && !isNational)) {
+  if (!profile || (!fixedPu && !choosePu)) {
     return (
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
         <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">
           Register a member
         </h1>
-        <p className="text-sm text-muted">
-          Only leaders and the National Coordinator can register members.
-        </p>
+        <p className="text-sm text-muted">Your role cannot register members.</p>
         <Link href="/app" className="text-sm font-semibold text-primary underline-offset-4 hover:underline">
           Back to your area
         </Link>
@@ -58,24 +56,44 @@ export default async function RegisterMemberPage({
     );
   }
 
-  // A leader's polling unit is fixed; the national coordinator picks one.
-  const pollingUnitId = isLeader ? profile.polling_unit_id! : (sp.pu ?? null);
+  if (fixedPu && !profile.polling_unit_id) {
+    return (
+      <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
+        <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">
+          Register a member
+        </h1>
+        <p className="text-sm text-muted">
+          Your account has no polling unit set, so you cannot register members yet. Contact your
+          coordinator.
+        </p>
+      </main>
+    );
+  }
 
-  if (isNational && !pollingUnitId) {
+  // A fixed-PU registrar uses their own; everyone else picks one, constrained to
+  // their own scope by the locked levels below.
+  const pollingUnitId = fixedPu ? profile.polling_unit_id! : (sp.pu ?? null);
+
+  if (choosePu && !pollingUnitId) {
+    const locked = {
+      stateId: profile.state_id ?? undefined,
+      lgaId: profile.lga_id ?? undefined,
+      wardId: profile.ward_id ?? undefined,
+    };
     return (
       <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
         <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground">
           Register a member
         </h1>
         <p className="mt-2 text-sm text-muted">
-          Choose the polling unit this member belongs to. You are not restricted to any area.
+          Choose the polling unit this member belongs to, within your area.
         </p>
         <div className="mt-6">
           <GeoPicker
             action="/app/register"
             selection={{ stateId: sp.state, lgaId: sp.lga, wardId: sp.ward, pollingUnitId: sp.pu }}
             depth="polling_unit"
-            locked={{}}
+            locked={locked}
             submitLabel="Continue"
           />
         </div>
@@ -83,7 +101,7 @@ export default async function RegisterMemberPage({
     );
   }
 
-  // Resolve the full path from the polling unit, so the two callers converge.
+  // Resolve the full path from the polling unit, so every caller converges.
   const { data: unit } = await supabase
     .from("polling_units")
     .select("id, name, ward_id")
@@ -115,19 +133,22 @@ export default async function RegisterMemberPage({
 
   const where = [state.name, lga.name, ward.name, unit.name].filter(Boolean).join(" › ");
 
-  // Leaders in this polling unit, so the coordinator can keep the member inside
-  // the chain instead of holding them personally.
-  const { data: leaders } = isNational
-    ? await supabase
-        .from("profiles")
-        .select("id, full_name")
-        .eq("role", "leader")
-        .eq("polling_unit_id", unit.id)
-        .eq("status", "active")
-        .order("full_name")
-    : { data: null };
+  // Leaders in this polling unit, so any non-leader registrar can keep the member
+  // inside the chain instead of holding them personally.
+  const { data: leaders } =
+    role !== "leader"
+      ? await supabase
+          .from("profiles")
+          .select("id, full_name")
+          .eq("role", "leader")
+          .eq("polling_unit_id", unit.id)
+          .eq("status", "active")
+          .order("full_name")
+      : { data: null };
 
-  const { count: activeCount } = isLeader
+  // A leader's own tally. Since CR-0009 / migration 0023 ten is a milestone, not a
+  // ceiling, so this is shown for encouragement and never blocks registration.
+  const { count: activeCount } = role === "leader"
     ? await supabase
         .from("members")
         .select("*", { count: "exact", head: true })
@@ -135,10 +156,9 @@ export default async function RegisterMemberPage({
         .eq("status", "active")
     : { count: null };
 
-  const CAP = 10;
+  const MILESTONE = 10;
   const count = activeCount ?? 0;
-  const atCap = isLeader && count >= CAP;
-  const pct = Math.min(100, Math.round((count / CAP) * 100));
+  const pct = Math.min(100, Math.round((count / MILESTONE) * 100));
 
   return (
     <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
@@ -148,7 +168,7 @@ export default async function RegisterMemberPage({
       <p className="mt-2 text-sm text-muted">
         Registering into <span className="font-medium text-foreground">{where}</span>. A membership
         number is issued automatically.
-        {isNational ? (
+        {choosePu ? (
           <>
             {" "}
             <Link href="/app/register" className="font-semibold text-primary underline-offset-4 hover:underline">
@@ -158,16 +178,12 @@ export default async function RegisterMemberPage({
         ) : null}
       </p>
 
-      {isLeader ? (
+      {role === "leader" ? (
         <div className="mt-6 rounded-card border border-border bg-surface p-5">
-          <div className="flex items-end justify-between gap-4">
-            <div>
-              <p className="text-sm text-muted">Active members</p>
-              <p className="mt-1 font-display text-2xl font-semibold text-foreground">
-                {count} <span className="text-base font-normal text-muted">of {CAP}</span>
-              </p>
-            </div>
-          </div>
+          <p className="text-sm text-muted">Active members</p>
+          <p className="mt-1 font-display text-2xl font-semibold text-foreground">
+            {count} <span className="text-base font-normal text-muted">towards {MILESTONE}</span>
+          </p>
           <div className="mt-3 h-2 overflow-hidden rounded-full bg-surface-muted">
             <div className="h-full rounded-full bg-primary" style={{ width: `${pct}%` }} />
           </div>
@@ -179,7 +195,7 @@ export default async function RegisterMemberPage({
           <p className="text-sm font-semibold text-foreground">Registration is not open yet</p>
           <p className="mt-1 text-sm text-muted">
             {state.name} has not been activated.{" "}
-            {isNational ? (
+            {role === "national_admin" ? (
               <>
                 Activate it on the{" "}
                 <Link href="/app/admin/states" className="font-semibold text-primary underline-offset-4 hover:underline">
@@ -188,22 +204,14 @@ export default async function RegisterMemberPage({
                 and come back.
               </>
             ) : (
-              "You can register members once your coordinator activates it."
+              "You can register members once it is activated."
             )}
-          </p>
-        </div>
-      ) : atCap ? (
-        <div className="mt-6 rounded-card border border-border bg-surface p-5">
-          <p className="text-sm font-semibold text-foreground">You have reached your limit</p>
-          <p className="mt-1 text-sm text-muted">
-            You have {CAP} active members, the most a leader can hold. Contact your coordinator if
-            you need to register more.
           </p>
         </div>
       ) : (
         <div className="mt-8">
           <RegisterMemberForm
-            pollingUnitId={isNational ? unit.id : null}
+            pollingUnitId={fixedPu ? null : unit.id}
             leaders={leaders ?? null}
           />
         </div>
