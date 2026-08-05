@@ -9,6 +9,7 @@ import { navForRole } from "@/components/app-shell/nav";
 import { ServiceWorkerRegistrar } from "@/components/pwa/service-worker-registrar";
 import { ChangePasswordPrompt } from "@/components/account/change-password-prompt";
 import { needsPasswordChange } from "@/lib/must-change-password";
+import { VinPrompt } from "@/components/account/vin-prompt";
 
 // The app shell wraps every /app/* route: a desktop sidebar + mobile bottom bar
 // driven by the caller's role, and a header with notifications + account menu.
@@ -21,8 +22,13 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   } = await supabase.auth.getUser();
 
   const { data: profile } = user
-    ? await supabase.from("profiles").select("role, full_name").eq("id", user.id).maybeSingle()
+    ? await supabase.from("profiles").select("role, full_name, vin_id").eq("id", user.id).maybeSingle()
     : { data: null };
+
+  // A staff account (any non-member role) with no voter's card can't be `active`
+  // (CR-0009), which silently blocks every RLS check gated on active status.
+  // Prompt them to add it. Members carry their VIN on the member record instead.
+  const needsVin = Boolean(profile && profile.role !== "member" && !profile.vin_id);
 
   const { count: unread } = user
     ? await supabase
@@ -63,8 +69,14 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           {children}
         </div>
         <BottomNav items={items} />
-        {/* Still on the temporary password we generated: nudge them to pick one. */}
-        {needsPasswordChange(user?.app_metadata) ? <ChangePasswordPrompt /> : null}
+        {/* Still on the temporary password we generated: nudge them to pick one.
+            Password first; the VIN prompt waits until that is dealt with so the
+            two modals never stack. */}
+        {needsPasswordChange(user?.app_metadata) ? (
+          <ChangePasswordPrompt />
+        ) : needsVin ? (
+          <VinPrompt />
+        ) : null}
       </div>
       {/* Scoped to the app shell, not the root layout: after the two-origin
           split (CR-0008) the root layout also renders the umbrella landing,
