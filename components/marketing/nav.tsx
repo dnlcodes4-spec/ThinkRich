@@ -3,13 +3,18 @@
 import { useEffect, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { Grain } from "./motifs";
-import { apexHref } from "@/lib/origins";
+import { apexHref, thinkWinnersHref } from "@/lib/origins";
 
 // "← ThinkRich" leaves this origin for the umbrella landing (CR-0008). It used
 // to be href="/", which on this origin now points at Think-Winners itself and
 // would loop straight back. A plain anchor, not next/link: crossing to the
 // umbrella means a different palette and type system.
 const APEX_HOME = apexHref("/");
+
+// The member app (login + dashboards) lives on the Think-Winners origin, so its
+// sign-in belongs in this nav (CR-0012 item 4). ThinkRich only mirrors it for
+// convenience.
+const MEMBER_LOGIN = thinkWinnersHref("/login");
 
 const leftLinks = [
   { href: "#about", label: "Who we are" },
@@ -102,6 +107,9 @@ export function ThinkWinnersNav() {
                 </a>
               ))}
             </nav>
+            <a href={MEMBER_LOGIN} className={`${linkCls} hidden md:inline-flex`}>
+              Member login
+            </a>
             <a
               href="#partnership"
               className="hidden rounded-md bg-gold-500 px-4 py-2 text-sm font-bold text-navy-950 transition-colors hover:bg-gold-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400 lg:inline-flex"
@@ -178,6 +186,14 @@ export function ThinkWinnersNav() {
                 style={{ animationDelay: `${80 + (allLinks.length + 1) * 70}ms` }}
               >
                 Partner with us
+              </a>
+              <a
+                href={MEMBER_LOGIN}
+                onClick={() => setOpen(false)}
+                className="tw-rise mt-3 flex min-h-14 items-center justify-center rounded-md border border-navy-50/25 text-base font-semibold text-navy-50 transition-colors hover:bg-navy-50/10"
+                style={{ animationDelay: `${110 + (allLinks.length + 1) * 70}ms` }}
+              >
+                Member login
               </a>
               <p
                 className="tw-rise mt-6 font-display text-lg italic text-navy-50/55"
