@@ -39,6 +39,8 @@ reviewable, impact-assessed, trackable unit of work.
 | [0010](0010-leadership-section-and-president-profile.md) | Leadership section on both landings + President's profile page | Client | 2026-07-29 | Captured | T-050 … T-053 | — |
 | [0011](0011-multiple-admins-per-position.md) | More than one admin may hold the same position | Client | 2026-07-30 | Assessed | T-055, T-056, T-057 | — (confirms ADR-0005) |
 | [0013](0013-candidate-coverage-upload-ux-and-mapping.md) | Candidate coverage — easy upload UX + complete the mapping | Client (meeting) | 2026-08-03 | Assessed | T-031b, T-031c, T-029, T-030 | — (uses ADR-0013) |
+| [0012](0012-thinkwinners-social-links.md) | Community chat links on Think-Winners footer + account, member login in TW nav | Client | 2026-08-04 | In Progress | T-058, T-059 | — |
+| [0017](0017-phone-numbers-and-coordinator-registration.md) | Phone numbers on every form + coordinators can register members | Client | 2026-08-05 | Assessed | T-060, T-061, T-062 | — |
 
 <!--
 Example row once CRs exist:
