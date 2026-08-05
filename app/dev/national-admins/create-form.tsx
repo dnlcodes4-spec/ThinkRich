@@ -3,6 +3,7 @@
 import { useActionState, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { VIN_HINT } from "@/lib/vin";
 import { createNationalAdmin, type BootstrapState } from "./actions";
 
 const initial: BootstrapState = { status: "idle" };
@@ -41,6 +42,14 @@ function Inner({ onReset }: { onReset: () => void }) {
     <form action={action} noValidate className="flex flex-col gap-5">
       <Input label="Full name" name="full_name" autoComplete="name" required error={fe.full_name} />
       <Input label="Email" name="email" type="email" autoComplete="off" required error={fe.email} />
+      <Input
+        label="Voter's card number (VIN)"
+        name="vin"
+        autoComplete="off"
+        required
+        hint={VIN_HINT}
+        error={fe.vin}
+      />
       {state.status === "error" && state.message ? (
         <p role="alert" className="text-sm text-danger">
           {state.message}

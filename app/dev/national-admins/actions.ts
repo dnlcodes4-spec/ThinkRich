@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { generateTempPassword } from "@/lib/provisioning";
+import { normalizeVin, VIN_INVALID } from "@/lib/vin";
 
 // DEV-ONLY bootstrap (ADR-0012). There is no national admin above a national admin,
 // so the chain has to start somewhere. This page/actions create that first account
@@ -27,6 +28,9 @@ export type BootstrapState = {
 const schema = z.object({
   full_name: z.string().trim().min(2, "Enter the person's full name."),
   email: z.email("Enter a valid email address."),
+  // CR-0009: every active non-member profile must carry a VIN (profiles_vin_required).
+  // The bootstrap creates a national admin, so it needs one too.
+  vin: z.string().trim().min(1, "Enter the voter's card number (VIN)."),
 });
 
 export async function createNationalAdmin(
@@ -38,6 +42,7 @@ export async function createNationalAdmin(
   const parsed = schema.safeParse({
     full_name: formData.get("full_name"),
     email: formData.get("email"),
+    vin: formData.get("vin"),
   });
   if (!parsed.success) {
     const fieldErrors: Record<string, string> = {};
@@ -47,9 +52,29 @@ export async function createNationalAdmin(
     return { status: "error", message: "Please fix the highlighted fields.", fieldErrors };
   }
 
-  const admin = createAdminClient();
-  const password = generateTempPassword();
+  // Normalise server-side: voter_ids.vin is a primary key, so an unsanitised value
+  // would create a second row for the same card. Mirrors the new-account flow.
+  const vin = normalizeVin(parsed.data.vin);
+  if (!vin) {
+    return { status: "error", message: VIN_INVALID, fieldErrors: { vin: VIN_INVALID } };
+  }
 
+  const admin = createAdminClient();
+
+  // Refuse early if this card already belongs to someone.
+  const [{ data: vinOnMember }, { data: vinOnProfile }] = await Promise.all([
+    admin.from("members").select("id").eq("vin_id", vin).maybeSingle(),
+    admin.from("profiles").select("id").eq("vin_id", vin).maybeSingle(),
+  ]);
+  if (vinOnMember || vinOnProfile) {
+    return { status: "error", message: "That voter's card number is already registered.", fieldErrors: { vin: "Already registered." } };
+  }
+  const { error: vinErr } = await admin.from("voter_ids").upsert({ vin }, { onConflict: "vin" });
+  if (vinErr) {
+    return { status: "error", message: VIN_INVALID, fieldErrors: { vin: VIN_INVALID } };
+  }
+
+  const password = generateTempPassword();
   const { data: created, error: createErr } = await admin.auth.admin.createUser({
     email: parsed.data.email,
     password,
@@ -67,6 +92,7 @@ export async function createNationalAdmin(
     id: created.user.id,
     role: "national_admin",
     full_name: parsed.data.full_name,
+    vin_id: vin,
   });
   if (profileErr) {
     await admin.auth.admin.deleteUser(created.user.id); // no orphan auth user
