@@ -3,7 +3,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { GeoPicker } from "@/components/geo-picker";
 import { NewAccountForm } from "./new-account-form";
-import { allowedTargets, ROLE_LEVEL, LEVEL_LABEL, roleLabel, type Role } from "./tiers";
+import { allowedTargets, ROLE_LEVEL, LEVEL_LABEL, roleLabel, type Role, type GeoLevel } from "./tiers";
 
 export const metadata: Metadata = {
   title: "Create an account",
@@ -74,6 +74,20 @@ export default async function NewAccountPage({
     : null;
   const ready = level === null || Boolean(needed);
 
+  // Is there anything for the caller to actually pick? Only if the target's level
+  // sits BELOW the caller's own locked scope. A unit coordinator (locked down to a
+  // polling unit) creating a leader (also a polling unit) has nothing to choose, so
+  // the picker would just render a dead "Choose area" button. In that case skip it
+  // and go straight to the form, showing the fixed area as text.
+  const lockedAtLevel =
+    level === "state" ? locked.stateId
+    : level === "lga" ? locked.lgaId
+    : level === "ward" ? locked.wardId
+    : level === "polling_unit" ? locked.pollingUnitId
+    : undefined;
+  const pickerNeeded = level !== null && !lockedAtLevel;
+  const fixedArea = target && level && !pickerNeeded ? await resolveArea(level, chosen) : null;
+
   return (
     <main className="mx-auto w-full max-w-2xl flex-1 px-6 py-12">
       <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground">Create an account</h1>
@@ -111,7 +125,7 @@ export default async function NewAccountPage({
         </section>
       ) : null}
 
-      {target && level ? (
+      {target && level && pickerNeeded ? (
         <section className="mt-6">
           <p className="mb-3 text-sm text-muted">
             Where will this <span className="font-semibold capitalize text-foreground">{roleLabel(target.role)}</span>{" "}
@@ -126,6 +140,11 @@ export default async function NewAccountPage({
             submitLabel="Choose area"
           />
         </section>
+      ) : target && level && fixedArea ? (
+        <p className="mt-6 rounded-card border border-border bg-surface-muted px-4 py-3 text-sm text-muted">
+          This <span className="font-semibold capitalize text-foreground">{roleLabel(target.role)}</span> will serve
+          in <span className="font-medium text-foreground">{fixedArea}</span>, your own area.
+        </p>
       ) : null}
 
       {target && ready ? (
@@ -144,4 +163,41 @@ export default async function NewAccountPage({
       ) : null}
     </main>
   );
+}
+
+// A readable "State › LGA › Ward › Unit" label for the fixed area, used when the
+// caller's own scope already pins the target's level so no picker is shown.
+async function resolveArea(
+  level: Exclude<GeoLevel, null>,
+  chosen: { state_id?: string; lga_id?: string; ward_id?: string; polling_unit_id?: string },
+): Promise<string | null> {
+  const supabase = await createClient();
+  if (level === "polling_unit" && chosen.polling_unit_id) {
+    const { data } = await supabase
+      .from("polling_units")
+      .select("name, wards(name, lgas(name, states(name)))")
+      .eq("id", chosen.polling_unit_id)
+      .maybeSingle();
+    const w = data?.wards as { name?: string; lgas?: { name?: string; states?: { name?: string } } } | null;
+    return [w?.lgas?.states?.name, w?.lgas?.name, w?.name, data?.name].filter(Boolean).join(" › ") || null;
+  }
+  if (level === "ward" && chosen.ward_id) {
+    const { data } = await supabase
+      .from("wards")
+      .select("name, lgas(name, states(name))")
+      .eq("id", chosen.ward_id)
+      .maybeSingle();
+    const l = data?.lgas as { name?: string; states?: { name?: string } } | null;
+    return [l?.states?.name, l?.name, data?.name].filter(Boolean).join(" › ") || null;
+  }
+  if (level === "lga" && chosen.lga_id) {
+    const { data } = await supabase.from("lgas").select("name, states(name)").eq("id", chosen.lga_id).maybeSingle();
+    const s = data?.states as { name?: string } | null;
+    return [s?.name, data?.name].filter(Boolean).join(" › ") || null;
+  }
+  if (level === "state" && chosen.state_id) {
+    const { data } = await supabase.from("states").select("name").eq("id", chosen.state_id).maybeSingle();
+    return data?.name ?? null;
+  }
+  return null;
 }
