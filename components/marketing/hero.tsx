@@ -31,20 +31,20 @@ function FilmGrain() {
 
 function ReachAndCta() {
   return (
-    <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-5">
-      <div className="flex items-center gap-6">
-        <div>
-          <div className="font-mono text-3xl font-bold tabular-nums text-gold-400 sm:text-4xl">
+    <div className="mt-8 flex flex-col gap-6">
+      {/* Client's per-state target, verbatim: 20,000 Leaders = 200,000 Verified Voters. */}
+      <div>
+        <div className="text-sm text-navy-50/65">Each State Target</div>
+        <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <span className="font-mono text-3xl font-bold tabular-nums text-gold-400 sm:text-4xl">
             <Counter to={20000} />
-          </div>
-          <div className="mt-0.5 text-sm text-navy-50/65">trained leaders</div>
-        </div>
-        <div className="h-10 w-px bg-navy-50/20" />
-        <div>
-          <div className="font-mono text-3xl font-bold tabular-nums text-gold-400 sm:text-4xl">
+          </span>
+          <span className="text-lg text-navy-50/80">Leaders</span>
+
+          <span className="font-mono text-3xl font-bold tabular-nums text-gold-400 sm:text-4xl">
             <Counter to={200000} />
-          </div>
-          <div className="mt-0.5 text-sm text-navy-50/65">engaged voters</div>
+          </span>
+          <span className="text-lg text-navy-50/80">Verified Voters</span>
         </div>
       </div>
       <div className="flex flex-wrap gap-3">
@@ -126,8 +126,16 @@ export function Hero() {
             Winning Together
           </span>
         </h1>
-        <p className="mt-6 max-w-lg text-lg text-navy-50/85">
-          The grassroots network that turns communities into votes. Leader by leader, ward by ward.
+        {/* Client's message, verbatim (relayed 2026-08-06). */}
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-navy-50/85 sm:text-lg">
+          Our loyalty is to good leadership, responsible governance, and
+          sustainable development. We believe that when the right candidates
+          emerge and receive the support of informed citizens, everyone becomes
+          a winner.
+        </p>
+        <p className="mt-4 max-w-2xl font-display text-lg font-medium text-navy-50 sm:text-xl">
+          We are candidates focused not political party affiliated and people
+          centered
         </p>
         <ReachAndCta />
       </div>
