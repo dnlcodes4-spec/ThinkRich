@@ -156,6 +156,24 @@ function MembershipSummary({ member }: { member: OwnMember }) {
   );
 }
 
+// "Everyone in the movement" (CR-0014): count every base member plus every staff
+// person, once. Staff gain a member row when they complete onboarding; until then
+// they are counted from their profile, so the total reflects the whole movement
+// immediately instead of waiting on each person to self-onboard. All three reads
+// are RLS-scoped to the caller, so the figure is correct per role (an area
+// coordinator counts only their area). At national scale this would move to an
+// aggregate RPC; the row counts are small today.
+async function movementTotal(supabase: Awaited<ReturnType<typeof createClient>>): Promise<number> {
+  const [{ count: memberCount }, staffRes, onboardedRes] = await Promise.all([
+    supabase.from("members").select("*", { count: "exact", head: true }).neq("status", "deleted"),
+    supabase.from("profiles").select("id").neq("role", "member"),
+    supabase.from("members").select("user_id").neq("status", "deleted").not("user_id", "is", null),
+  ]);
+  const onboarded = new Set((onboardedRes.data ?? []).map((r) => r.user_id));
+  const staffWithoutMembership = (staffRes.data ?? []).filter((p) => !onboarded.has(p.id)).length;
+  return (memberCount ?? 0) + staffWithoutMembership;
+}
+
 // ---------- Member ----------
 
 async function MemberHome({ userId, firstName }: { userId?: string; firstName: string }) {
@@ -340,10 +358,7 @@ async function CoordinatorHome({
   const supabase = await createClient();
   const me = await fetchOwnMember(userId);
 
-  const { count: members } = await supabase
-    .from("members")
-    .select("*", { count: "exact", head: true })
-    .neq("status", "deleted");
+  const members = await movementTotal(supabase);
 
   const { count: pending } = await supabase
     .from("change_requests")
@@ -390,8 +405,8 @@ async function CoordinatorHome({
       <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <Stat
           label={isNational ? "Members" : "Members in your area"}
-          value={members ?? 0}
-          hint={isNational ? "Everyone in the movement" : undefined}
+          value={members}
+          hint={isNational ? "Everyone in the movement" : "Everyone in your area"}
           href="/app/members"
         />
         <Stat
@@ -414,7 +429,10 @@ async function CoordinatorHome({
           </h2>
           <p className="mt-1 text-sm text-muted">Members by state across Nigeria.</p>
           <div className="mt-4">
-            <NigeriaMap data={mapData} />
+            {/* The map colours states by recorded memberships; the Nationwide
+                headline shows the true movement total (incl. staff who have not
+                recorded a home yet), matching the card above. */}
+            <NigeriaMap data={mapData} nationwideMembers={members} />
           </div>
         </section>
       ) : null}

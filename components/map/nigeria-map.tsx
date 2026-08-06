@@ -72,7 +72,15 @@ function TapIcon() {
   );
 }
 
-export function NigeriaMap({ data }: { data: StateDatum[] }) {
+export function NigeriaMap({
+  data,
+  nationwideMembers,
+}: {
+  data: StateDatum[];
+  /** True movement total for the Nationwide headline (CR-0014). Falls back to the
+   *  sum of per-state recorded memberships when not provided. */
+  nationwideMembers?: number;
+}) {
   const [selected, setSelected] = useState<string | null>(null);
   const [fullscreen, setFullscreen] = useState(false);
 
@@ -94,6 +102,7 @@ export function NigeriaMap({ data }: { data: StateDatum[] }) {
   const board = (
     <MapBoard
       data={data}
+      nationwideMembers={nationwideMembers}
       selected={selected}
       setSelected={setSelected}
       fullscreen={fullscreen}
@@ -113,12 +122,14 @@ export function NigeriaMap({ data }: { data: StateDatum[] }) {
 
 function MapBoard({
   data,
+  nationwideMembers,
   selected,
   setSelected,
   fullscreen,
   onToggleFullscreen,
 }: {
   data: StateDatum[];
+  nationwideMembers?: number;
   selected: string | null;
   setSelected: (v: string | null) => void;
   fullscreen: boolean;
@@ -376,7 +387,7 @@ function MapBoard({
                 Nationwide
               </p>
               <dl className="mt-4 flex flex-col gap-3">
-                <Metric label="Members" value={totalMembers} />
+                <Metric label="Members" value={nationwideMembers ?? totalMembers} />
                 <Metric label="Active states" value={`${activeStates} of 37`} />
               </dl>
               <p className="mt-4 flex items-center gap-2 text-xs" style={{ color: MUTED }}>
