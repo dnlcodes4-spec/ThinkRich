@@ -95,6 +95,7 @@ export default async function RegisterMemberPage({
             depth="polling_unit"
             locked={locked}
             submitLabel="Continue"
+            addPollingUnit
           />
         </div>
       </main>
