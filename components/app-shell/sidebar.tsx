@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 import { signOut } from "@/app/login/actions";
+import { CommunityLinks } from "@/components/community-links";
 import { Icon } from "./icons";
 import { isActive, type NavItem } from "./nav";
 
@@ -69,6 +70,12 @@ export function Sidebar({
           );
         })}
       </nav>
+
+      {/* Promote the movement's social pages (CR-0012). Mobile shows these in a
+          slim footer instead, since the sidebar is desktop-only. */}
+      <div className="border-t border-border px-3 py-3">
+        <CommunityLinks />
+      </div>
 
       <div className="border-t border-border p-3">
         <Link
