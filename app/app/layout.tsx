@@ -10,6 +10,7 @@ import { ServiceWorkerRegistrar } from "@/components/pwa/service-worker-registra
 import { ChangePasswordPrompt } from "@/components/account/change-password-prompt";
 import { needsPasswordChange } from "@/lib/must-change-password";
 import { VinPrompt } from "@/components/account/vin-prompt";
+import { CommunityLinks } from "@/components/community-links";
 
 // The app shell wraps every /app/* route: a desktop sidebar + mobile bottom bar
 // driven by the caller's role, and a header with notifications + account menu.
@@ -68,6 +69,12 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         <div id="main-content" tabIndex={-1} className="flex flex-1 flex-col outline-none">
           {children}
         </div>
+        {/* Promote the movement's social pages on every dashboard and the members
+            app (CR-0012). Desktop shows these in the sidebar; this slim footer is
+            the mobile equivalent, where the sidebar is hidden. */}
+        <footer className="border-t border-border px-4 py-3 sm:px-6 lg:hidden">
+          <CommunityLinks />
+        </footer>
         <BottomNav items={items} />
         {/* Still on the temporary password we generated: nudge them to pick one.
             Password first; the VIN prompt waits until that is dealt with so the
