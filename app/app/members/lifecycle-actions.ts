@@ -5,6 +5,7 @@ import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { notify } from "@/lib/notify";
+import { logActivityAs } from "@/lib/activity";
 
 // Membership lifecycle (T-008): active -> frozen -> (active | deleted).
 // Members can't update their own row under RLS, and permanent deletion erases
@@ -79,6 +80,13 @@ export async function requestOptOut(_prev: OptOutState, formData: FormData): Pro
     createdBy: c.userId,
   });
 
+  await logActivityAs(c.userId, {
+    action: "member.paused",
+    summary: `Paused their own membership (${member.full_name})`,
+    subjectType: "member",
+    subjectId: member.id,
+  });
+
   revalidatePath("/app/profile");
   return { status: "success", message: "Your membership has been paused." };
 }
@@ -107,6 +115,12 @@ export async function cancelOptOut(): Promise<void> {
     link: `/app/members/${member.id}`,
     createdBy: c.userId,
   });
+  await logActivityAs(c.userId, {
+    action: "member.reactivated",
+    summary: `Reactivated their own membership (${member.full_name})`,
+    subjectType: "member",
+    subjectId: member.id,
+  });
   revalidatePath("/app/profile");
 }
 
@@ -121,7 +135,7 @@ export async function reactivateMember(formData: FormData): Promise<void> {
   // RLS-scoped read = the scope check.
   const { data: member } = await c.supabase
     .from("members")
-    .select("id, status, user_id")
+    .select("id, status, user_id, full_name")
     .eq("id", id.data)
     .maybeSingle();
   if (!member || member.status !== "frozen") return;
@@ -143,6 +157,12 @@ export async function reactivateMember(formData: FormData): Promise<void> {
       createdBy: c.userId,
     });
   }
+  await logActivityAs(c.userId, {
+    action: "member.reactivated",
+    summary: `Reactivated ${member.full_name}`,
+    subjectType: "member",
+    subjectId: member.id,
+  });
   revalidatePath("/app/members");
 }
 
@@ -154,10 +174,12 @@ export async function deleteMember(formData: FormData): Promise<void> {
 
   const { data: member } = await c.supabase
     .from("members")
-    .select("id, status, user_id, passport_photo_url, vin_id")
+    .select("id, status, user_id, passport_photo_url, vin_id, full_name")
     .eq("id", id.data)
     .maybeSingle();
   if (!member || member.status !== "frozen") return;
+  // Capture the name before the row is anonymised below, for the activity log.
+  const removedName = member.full_name;
 
   // Retention gate: only permanently delete after the window has elapsed.
   const { data: req } = await c.supabase
@@ -215,6 +237,13 @@ export async function deleteMember(formData: FormData): Promise<void> {
     .from("opt_out_requests")
     .update({ status: "deleted", resolved_at: nowIso(), resolved_by: c.userId })
     .eq("id", req.id);
+
+  await logActivityAs(c.userId, {
+    action: "member.removed",
+    summary: `Removed ${removedName}`,
+    subjectType: "member",
+    subjectId: member.id,
+  });
 
   revalidatePath("/app/members");
 }

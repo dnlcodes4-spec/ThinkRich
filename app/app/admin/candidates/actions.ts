@@ -5,6 +5,7 @@ import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { CANDIDATE_PHOTOS_BUCKET, scopeValuesFor, type ConstituencyKind } from "@/lib/offices";
+import { logActivityAs } from "@/lib/activity";
 
 // Writes go through the CALLER's client, so the containment policies in
 // 0017_elective_offices_rls.sql are the authorization boundary (ADR-0005): an
@@ -136,6 +137,13 @@ export async function saveCandidacy(_prev: CandidacyState, formData: FormData): 
     return { status: "error", message: "Could not save. You may not manage candidates for that area." };
   }
 
+  await logActivityAs(user.id, {
+    action: "candidate.saved",
+    summary: `${d.id ? "Updated" : "Added"} candidate ${d.full_name}`,
+    subjectType: "candidacy",
+    subjectId: d.id ?? null,
+  });
+
   revalidatePath("/app/admin/candidates");
   revalidatePath("/app/vote");
   return { status: "success", message: "Candidate saved." };
@@ -145,8 +153,25 @@ export async function deleteCandidacy(formData: FormData): Promise<void> {
   const id = formData.get("id");
   if (typeof id !== "string") return;
   const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  // Read the name first (RLS-scoped, so seeing it is the scope check) for the log.
+  const { data: cand } = await supabase
+    .from("candidacies")
+    .select("id, full_name")
+    .eq("id", id)
+    .maybeSingle();
+  if (!cand) return;
   // RLS decides whether this is allowed; no extra check is needed here.
-  await supabase.from("candidacies").delete().eq("id", id);
+  const { error } = await supabase.from("candidacies").delete().eq("id", id);
+  if (error) return;
+  await logActivityAs(user?.id ?? null, {
+    action: "candidate.removed",
+    summary: `Removed candidate ${cand.full_name}`,
+    subjectType: "candidacy",
+    subjectId: id,
+  });
   revalidatePath("/app/admin/candidates");
   revalidatePath("/app/vote");
 }

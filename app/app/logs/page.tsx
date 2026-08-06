@@ -3,6 +3,7 @@ import Link from "next/link";
 import { EmptyState } from "@/components/ui/empty-state";
 import { createClient } from "@/lib/supabase/server";
 import { roleLabel } from "@/lib/terms";
+import { ACTION_META, ACTION_KEYS } from "@/lib/activity-meta";
 
 export const metadata: Metadata = {
   title: "Activity",
@@ -18,27 +19,9 @@ type LogRow = {
   summary: string;
 };
 
-// What each action means in plain words, plus the tone it should read in. Unknown
-// actions fall back to the raw key rather than being hidden, so a newly added
-// action is never silently invisible in the log.
-const ACTION_META: Record<string, { label: string; tone: "neutral" | "good" | "warn" | "bad" }> = {
-  "member.registered": { label: "Voter registered", tone: "good" },
-  "member.paused": { label: "Voter paused", tone: "warn" },
-  "member.reactivated": { label: "Voter reactivated", tone: "good" },
-  "member.removed": { label: "Voter removed", tone: "bad" },
-  "member.login_reset": { label: "Login password reset", tone: "warn" },
-  "account.created": { label: "Account created", tone: "good" },
-  "account.deactivated": { label: "Account deactivated", tone: "warn" },
-  "account.reactivated": { label: "Account reactivated", tone: "good" },
-  "account.deleted": { label: "Account deleted", tone: "bad" },
-  "correction.approved": { label: "Correction applied", tone: "good" },
-  "correction.declined": { label: "Correction declined", tone: "warn" },
-  "state.activated": { label: "State activated", tone: "good" },
-  "state.deactivated": { label: "State deactivated", tone: "warn" },
-  "candidate.saved": { label: "Candidate updated", tone: "neutral" },
-  "announcement.sent": { label: "Announcement sent", tone: "neutral" },
-};
-
+// Action labels + tones live in lib/activity-meta (one source of truth shared with
+// the emitters). Unknown actions still fall back to the raw key below, so a newly
+// added action is never silently invisible.
 const TONE_CLASS: Record<string, string> = {
   neutral: "border-border bg-surface-muted text-muted",
   good: "border-success/30 bg-success-soft text-success",
@@ -109,7 +92,7 @@ export default async function LogsPage({
       minute: "2-digit",
     });
 
-  const filters = Object.keys(ACTION_META);
+  const filters = ACTION_KEYS;
 
   return (
     <main className="app-fade-in mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
@@ -158,7 +141,10 @@ export default async function LogsPage({
       ) : (
         <ul className="mt-6 flex flex-col gap-2">
           {rows.map((r) => {
-            const meta = ACTION_META[r.action] ?? { label: r.action, tone: "neutral" as const };
+            const meta = ACTION_META[r.action as keyof typeof ACTION_META] ?? {
+              label: r.action,
+              tone: "neutral" as const,
+            };
             return (
               <li
                 key={r.id}

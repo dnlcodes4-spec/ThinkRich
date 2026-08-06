@@ -6,6 +6,7 @@ import { tryCreateAdminClient, ADMIN_NOT_CONFIGURED } from "@/lib/supabase/admin
 import { normalizeVin, VIN_INVALID } from "@/lib/vin";
 import { normalizePhone, PHONE_INVALID } from "@/lib/phone";
 import { isAdult } from "@/lib/age";
+import { logActivityAs } from "@/lib/activity";
 
 // Everyone is a member (CR-0014 / ADR-0016). A staff account (any non-member role)
 // is also a member of the movement: they hold a real `members` record keyed to their
@@ -203,6 +204,14 @@ export async function completeMyMembership(
   const nextStatus =
     profile.status === "frozen" || profile.status === "deleted" ? profile.status : "active";
   await admin.from("profiles").update({ vin_id: vin, status: nextStatus }).eq("id", user.id);
+
+  await logActivityAs(user.id, {
+    action: "member.registered",
+    summary: `Completed their own membership (${inserted.membership_number})`,
+    subjectType: "member",
+    subjectId: inserted.id,
+    stateId: lga.state_id,
+  });
 
   return {
     status: "success",

@@ -5,6 +5,7 @@ import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { notify } from "@/lib/notify";
+import { logActivityAs } from "@/lib/activity";
 
 export type AnnounceState = {
   status: "idle" | "success" | "error";
@@ -51,6 +52,11 @@ export async function sendAnnouncement(_prev: AnnounceState, formData: FormData)
     title: parsed.data.title,
     body: parsed.data.body ?? null,
     createdBy: user.id,
+  });
+  await logActivityAs(user.id, {
+    action: "announcement.sent",
+    summary: `Sent an announcement "${parsed.data.title}" to ${sent} ${sent === 1 ? "person" : "people"}`,
+    subjectType: "announcement",
   });
   revalidatePath("/app/notifications");
   revalidatePath("/app");
@@ -146,6 +152,11 @@ export async function sendVotingReminder(_prev: ReminderState, _formData: FormDa
     });
   }
 
+  await logActivityAs(user.id, {
+    action: "announcement.sent",
+    summary: `Sent a voting reminder to ${total} ${total === 1 ? "person" : "people"}`,
+    subjectType: "announcement",
+  });
   revalidatePath("/app/notifications");
   return { status: "success", message: `Reminder sent to ${total} member${total === 1 ? "" : "s"}.` };
 }
