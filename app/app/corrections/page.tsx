@@ -80,7 +80,7 @@ export default async function CorrectionsPage() {
         <div className="mt-8">
           <EmptyState
             title="No correction requests"
-            description="When a member asks to correct their details, the request appears here."
+            description="When a voter asks to correct their details, the request appears here."
           />
         </div>
       ) : (
@@ -97,7 +97,7 @@ export default async function CorrectionsPage() {
                       {r.members.full_name}
                     </Link>
                   ) : (
-                    <span className="font-semibold text-foreground">Member</span>
+                    <span className="font-semibold text-foreground">Voter</span>
                   )}
                   {r.members ? (
                     <p className="font-mono text-xs text-muted">{r.members.membership_number}</p>

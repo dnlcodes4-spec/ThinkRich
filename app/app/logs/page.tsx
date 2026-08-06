@@ -22,10 +22,10 @@ type LogRow = {
 // actions fall back to the raw key rather than being hidden, so a newly added
 // action is never silently invisible in the log.
 const ACTION_META: Record<string, { label: string; tone: "neutral" | "good" | "warn" | "bad" }> = {
-  "member.registered": { label: "Member registered", tone: "good" },
-  "member.paused": { label: "Member paused", tone: "warn" },
-  "member.reactivated": { label: "Member reactivated", tone: "good" },
-  "member.removed": { label: "Member removed", tone: "bad" },
+  "member.registered": { label: "Voter registered", tone: "good" },
+  "member.paused": { label: "Voter paused", tone: "warn" },
+  "member.reactivated": { label: "Voter reactivated", tone: "good" },
+  "member.removed": { label: "Voter removed", tone: "bad" },
   "member.login_reset": { label: "Login password reset", tone: "warn" },
   "account.created": { label: "Account created", tone: "good" },
   "account.deactivated": { label: "Account deactivated", tone: "warn" },

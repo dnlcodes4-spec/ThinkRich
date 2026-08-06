@@ -108,7 +108,7 @@ export async function changeRole(
     if (!memberRow?.vin_id) {
       return {
         status: "error",
-        message: "This member has no voter's card number on record. Add one before promoting them.",
+        message: "This person has no voter's card number on record. Add one before promoting them.",
       };
     }
     patch.vin_id = memberRow.vin_id;

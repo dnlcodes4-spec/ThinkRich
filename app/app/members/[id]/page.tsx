@@ -9,7 +9,7 @@ import { reviewChangeRequest } from "../detail-actions";
 import { LeaderPhotoUpload } from "./leader-photo";
 
 export const metadata: Metadata = {
-  title: "Member",
+  title: "Voter",
   robots: { index: false, follow: false },
 };
 

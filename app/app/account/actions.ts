@@ -108,7 +108,7 @@ export async function addMyVin(_prev: AddVinState, formData: FormData): Promise<
     .maybeSingle();
   if (!me) return { status: "error", message: "Your profile was not found." };
   if (me.role === "member") {
-    return { status: "error", message: "Members manage their voter's card from their membership details." };
+    return { status: "error", message: "Registered voters manage their voter's card from their membership details." };
   }
   if (me.vin_id) return { status: "success", message: "Your voter's card is already on file." };
 

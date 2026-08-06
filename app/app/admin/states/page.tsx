@@ -75,7 +75,7 @@ export default async function StatesPage() {
               <th className="px-3 py-2 font-semibold">Status</th>
               <th className="px-3 py-2 text-right font-semibold">Admins</th>
               <th className="px-3 py-2 text-right font-semibold">LGAs</th>
-              <th className="px-3 py-2 text-right font-semibold">Members</th>
+              <th className="px-3 py-2 text-right font-semibold">Voters</th>
               <th className="px-3 py-2" />
             </tr>
           </thead>

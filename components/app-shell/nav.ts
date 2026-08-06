@@ -24,8 +24,8 @@ const MEMBER: NavItem[] = [
 
 const LEADER: NavItem[] = [
   { href: "/app", label: "Home", icon: "home" },
-  { href: "/app/register", label: "Register a member", icon: "register", short: "Register" },
-  { href: "/app/members", label: "My members", icon: "members", short: "Members" },
+  { href: "/app/register", label: "Register a voter", icon: "register", short: "Register" },
+  { href: "/app/members", label: "My voters", icon: "members", short: "Voters" },
   { href: "/app/kym", label: "Verify a leader", icon: "verify", short: "Verify" },
   { href: "/app/stats", label: "Overview", icon: "overview" },
 ];
@@ -33,7 +33,7 @@ const LEADER: NavItem[] = [
 // Coordinator tiers share a base; higher tiers add destinations they can act on.
 const COORDINATOR_BASE: NavItem[] = [
   { href: "/app", label: "Home", icon: "home" },
-  { href: "/app/members", label: "Members", icon: "members" },
+  { href: "/app/members", label: "Registered voters", icon: "members", short: "Voters" },
   { href: "/app/corrections", label: "Correction requests", icon: "inbox", short: "Requests" },
   { href: "/app/stats", label: "Statistics", icon: "overview", short: "Stats" },
   { href: "/app/admin/team", label: "Team", icon: "team" },
@@ -50,11 +50,11 @@ const CANDIDATES: NavItem = {
   short: "Candidates",
 };
 const STATES: NavItem = { href: "/app/admin/states", label: "States", icon: "states" };
-// Leaders + every coordinator tier may register members within their scope
+// Leaders + every coordinator tier may register voters within their scope
 // (national anywhere) — CR-0017 item 7.
 const REGISTER: NavItem = {
   href: "/app/register",
-  label: "Register a member",
+  label: "Register a voter",
   icon: "register",
   short: "Register",
 };

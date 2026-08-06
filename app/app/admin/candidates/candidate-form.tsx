@@ -110,7 +110,7 @@ export function CandidateForm(props: CandidateFormProps) {
       <Input label="Slogan" name="slogan" defaultValue={existing?.slogan ?? ""} hint="A short campaign line (optional)" error={fe.slogan} />
 
       <fieldset className="flex flex-col gap-3 rounded-card border border-border p-4">
-        <legend className="px-1 text-xs font-semibold text-muted">Before members can see this</legend>
+        <legend className="px-1 text-xs font-semibold text-muted">Before voters can see this</legend>
         <label className="flex items-start gap-2.5 text-sm text-foreground">
           <input type="checkbox" name="is_endorsed" defaultChecked={existing?.is_endorsed ?? false} className="mt-0.5 size-4 shrink-0" />
           <span>
@@ -122,7 +122,7 @@ export function CandidateForm(props: CandidateFormProps) {
           <input type="checkbox" name="is_published" defaultChecked={existing?.is_published ?? false} className="mt-0.5 size-4 shrink-0" />
           <span>
             Visible to members
-            <span className="block text-xs text-muted">Leave off to save a draft members can&apos;t see yet.</span>
+            <span className="block text-xs text-muted">Leave off to save a draft voters can&apos;t see yet.</span>
           </span>
         </label>
       </fieldset>

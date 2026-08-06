@@ -14,10 +14,10 @@ type GeoCol = "state_id" | "lga_id" | "ward_id" | "polling_unit_id";
 // The breakdown level is the one below the caller's role. Leaders / unit
 // coordinators just see their totals (no geography breakdown).
 const BREAKDOWN: Partial<Record<Role, { col: GeoCol; table: "states" | "lgas" | "wards" | "polling_units"; label: string }>> = {
-  national_admin: { col: "state_id", table: "states", label: "Members by state" },
-  state_admin: { col: "lga_id", table: "lgas", label: "Members by LGA" },
-  lg_admin: { col: "ward_id", table: "wards", label: "Members by ward" },
-  ward_admin: { col: "polling_unit_id", table: "polling_units", label: "Members by polling unit" },
+  national_admin: { col: "state_id", table: "states", label: "Voters by state" },
+  state_admin: { col: "lga_id", table: "lgas", label: "Voters by LGA" },
+  lg_admin: { col: "ward_id", table: "wards", label: "Voters by ward" },
+  ward_admin: { col: "polling_unit_id", table: "polling_units", label: "Voters by polling unit" },
 };
 
 // Counts are computed from the RLS-visible member rows (so scope needs no app
@@ -80,10 +80,10 @@ export default async function StatsPage() {
   return (
     <main className="app-fade-in mx-auto w-full max-w-3xl flex-1 px-6 py-12">
       <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground">Statistics</h1>
-      <p className="mt-1 text-sm text-muted">Active members in your scope, and how they break down.</p>
+      <p className="mt-1 text-sm text-muted">Active voters in your scope, and how they break down.</p>
 
       <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-        <Stat label="Active members" value={active} emphasis />
+        <Stat label="Active voters" value={active} emphasis />
         <Stat label="Paused" value={frozen} />
         <Stat label="Removed" value={deleted} />
         {activeStates !== null ? (
@@ -97,7 +97,7 @@ export default async function StatsPage() {
         <section className="mt-10">
           <h2 className="text-sm font-semibold text-foreground">{bd.label}</h2>
           {breakdown.length === 0 ? (
-            <p className="mt-3 text-sm text-muted">No active members yet.</p>
+            <p className="mt-3 text-sm text-muted">No active voters yet.</p>
           ) : (
             <ul className="mt-4 flex flex-col gap-2.5">
               {breakdown.map((b) => (

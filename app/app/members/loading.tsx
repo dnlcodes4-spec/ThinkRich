@@ -5,7 +5,7 @@ import { LoadingRegion, Skeleton, SkeletonHeader } from "@/components/ui/skeleto
 export default function MembersLoading() {
   return (
     <main className="app-fade-in mx-auto w-full max-w-4xl flex-1 px-6 py-12">
-      <LoadingRegion label="Loading members">
+      <LoadingRegion label="Loading voters">
         <SkeletonHeader />
         <Skeleton className="mt-6 h-11 w-full" />
         <div className="mt-8 flex flex-col gap-2">

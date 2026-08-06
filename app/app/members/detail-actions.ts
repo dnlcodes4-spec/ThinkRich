@@ -33,7 +33,7 @@ export async function uploadMemberPhotoByLeader(
   if (!me || me.role === "member") return { status: "error", message: "You cannot manage member photos." };
 
   const memberId = z.string().uuid().safeParse(formData.get("member_id"));
-  if (!memberId.success) return { status: "error", message: "Invalid member." };
+  if (!memberId.success) return { status: "error", message: "Invalid voter." };
 
   // RLS-scoped read = the scope check.
   const { data: member } = await supabase
@@ -41,8 +41,8 @@ export async function uploadMemberPhotoByLeader(
     .select("id, passport_photo_url, status")
     .eq("id", memberId.data)
     .maybeSingle();
-  if (!member) return { status: "error", message: "Member not found." };
-  if (member.status === "deleted") return { status: "error", message: "This member is not active." };
+  if (!member) return { status: "error", message: "Voter not found." };
+  if (member.status === "deleted") return { status: "error", message: "This voter is not active." };
 
   const file = formData.get("photo");
   if (!(file instanceof File) || file.size === 0) return { status: "error", message: "Choose a photo." };
