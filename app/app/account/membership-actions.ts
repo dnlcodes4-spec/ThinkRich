@@ -78,7 +78,7 @@ export async function completeMyMembership(
   if (profile.role === "member") {
     return {
       status: "error",
-      message: "Members already have a membership record from registration.",
+      message: "Registered voters already have a membership record from registration.",
     };
   }
 
@@ -177,7 +177,7 @@ export async function completeMyMembership(
     if (error.code === "23505" && m.includes("nin")) {
       return {
         status: "error",
-        message: "A member with this NIN is already registered.",
+        message: "A voter with this NIN is already registered.",
         fieldErrors: { nin: "Already registered." },
       };
     }

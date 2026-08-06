@@ -37,14 +37,14 @@ const FIXED_PU_ROLES = ["leader", "unit_coordinator"] as const;
 // errors to friendly messages; it never bypasses RLS (no service role).
 
 const schema = z.object({
-  full_name: z.string().trim().min(2, "Enter the member's full name."),
+  full_name: z.string().trim().min(2, "Enter the voter's full name."),
   date_of_birth: z.string().min(1, "Enter the date of birth."),
   nin: z.string().trim().min(1, "Enter the NIN."),
   // Required for everyone as of CR-0009 §3.1. Validated after normalisation, not
   // on the raw string, so a member may type it with spaces or dashes.
   vin: z.string().trim().min(1, "Enter the voter's card number (VIN)."),
   // Required for everyone as of CR-0017. Validated after normalisation.
-  phone: z.string().trim().min(1, "Enter the member's phone number."),
+  phone: z.string().trim().min(1, "Enter the voter's phone number."),
   gender: z.enum(["male", "female"], { message: "Choose a gender." }),
   email: z.union([z.literal(""), z.email("Enter a valid email address.")]).optional(),
   account_number: z.string().trim().optional(),
@@ -90,7 +90,7 @@ export async function registerMember(
 
   const role = profile?.role as (typeof REGISTRAR_ROLES)[number] | undefined;
   if (!profile || !role || !REGISTRAR_ROLES.includes(role)) {
-    return { status: "error", message: "Your role cannot register members." };
+    return { status: "error", message: "Your role cannot register voters." };
   }
   const fixedPu = (FIXED_PU_ROLES as readonly string[]).includes(role);
   // A fixed-PU registrar must actually have a polling unit on their profile.
@@ -135,7 +135,7 @@ export async function registerMember(
   if (!isAdult(parsed.data.date_of_birth)) {
     return {
       status: "error",
-      message: "The member must be at least 18 years old.",
+      message: "The voter must be at least 18 years old.",
       fieldErrors: { date_of_birth: "Must be 18 or older." },
     };
   }
@@ -145,7 +145,7 @@ export async function registerMember(
   // to their scope by the containment check below (and by RLS).
   const targetPu = fixedPu ? profile.polling_unit_id! : parsed.data.polling_unit_id;
   if (!targetPu) {
-    return { status: "error", message: "Choose the polling unit this member belongs to." };
+    return { status: "error", message: "Choose the polling unit this voter belongs to." };
   }
 
   const { data: unit } = await supabase
@@ -259,7 +259,7 @@ export async function registerMember(
     if (error.code === "23505" && m.includes("nin")) {
       return {
         status: "error",
-        message: "A member with this NIN is already registered.",
+        message: "A voter with this NIN is already registered.",
         fieldErrors: { nin: "Already registered." },
       };
     }
@@ -280,14 +280,14 @@ export async function registerMember(
     if (m.includes("18 years")) {
       return {
         status: "error",
-        message: "The member must be at least 18 years old.",
+        message: "The voter must be at least 18 years old.",
         fieldErrors: { date_of_birth: "Must be 18 or older." },
       };
     }
     if (m.includes("geography")) {
-      return { status: "error", message: "Member geography is invalid for your polling unit." };
+      return { status: "error", message: "Voter geography is invalid for your polling unit." };
     }
-    return { status: "error", message: "Could not register the member. Please try again." };
+    return { status: "error", message: "Could not register the voter. Please try again." };
   }
 
   // If an email was captured, provision the member's own login now and hand the
@@ -324,7 +324,7 @@ export async function registerMember(
   return {
     status: "success",
     membershipNumber: inserted.membership_number,
-    message: "Member registered.",
+    message: "Voter registered.",
     loginEmail,
     loginTempPassword,
     loginNote,

@@ -46,7 +46,7 @@ export async function requestOptOut(_prev: OptOutState, formData: FormData): Pro
     .select("id, status, full_name, registered_by")
     .eq("user_id", c.userId)
     .maybeSingle();
-  if (!member) return { status: "error", message: "No member profile for this account." };
+  if (!member) return { status: "error", message: "No membership record for this account." };
   if (member.status !== "active") return { status: "error", message: "Your membership is not active." };
 
   const admin = createAdminClient();

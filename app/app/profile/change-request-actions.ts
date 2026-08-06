@@ -69,7 +69,7 @@ export async function submitChangeRequest(_prev: ChangeReqState, formData: FormD
     await notify(reviewerIds, {
       type: "change_request",
       title: `${member.full_name} requested a ${fieldLabel(field)} correction`,
-      body: "Review it on their member page.",
+      body: "Review it on their voter page.",
       link: `/app/members/${member.id}`,
       createdBy: user.id,
     });

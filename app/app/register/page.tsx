@@ -5,7 +5,7 @@ import { GeoPicker } from "@/components/geo-picker";
 import { RegisterMemberForm } from "./register-form";
 
 export const metadata: Metadata = {
-  title: "Register a member",
+  title: "Register a voter",
   robots: { index: false, follow: false },
 };
 
@@ -46,9 +46,9 @@ export default async function RegisterMemberPage({
     return (
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
         <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">
-          Register a member
+          Register a voter
         </h1>
-        <p className="text-sm text-muted">Your role cannot register members.</p>
+        <p className="text-sm text-muted">Your role cannot register voters.</p>
         <Link href="/app" className="text-sm font-semibold text-primary underline-offset-4 hover:underline">
           Back to your area
         </Link>
@@ -60,7 +60,7 @@ export default async function RegisterMemberPage({
     return (
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
         <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">
-          Register a member
+          Register a voter
         </h1>
         <p className="text-sm text-muted">
           Your account has no polling unit set, so you cannot register members yet. Contact your
@@ -83,7 +83,7 @@ export default async function RegisterMemberPage({
     return (
       <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
         <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground">
-          Register a member
+          Register a voter
         </h1>
         <p className="mt-2 text-sm text-muted">
           Choose the polling unit this member belongs to, within your area.
@@ -122,7 +122,7 @@ export default async function RegisterMemberPage({
     return (
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
         <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">
-          Register a member
+          Register a voter
         </h1>
         <p className="text-sm text-muted">That polling unit could not be found.</p>
         <Link href="/app/register" className="text-sm font-semibold text-primary underline-offset-4 hover:underline">
@@ -164,7 +164,7 @@ export default async function RegisterMemberPage({
   return (
     <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
       <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground">
-        Register a member
+        Register a voter
       </h1>
       <p className="mt-2 text-sm text-muted">
         Registering into <span className="font-medium text-foreground">{where}</span>. A membership
@@ -181,7 +181,7 @@ export default async function RegisterMemberPage({
 
       {role === "leader" ? (
         <div className="mt-6 rounded-card border border-border bg-surface p-5">
-          <p className="text-sm text-muted">Active members</p>
+          <p className="text-sm text-muted">Active voters</p>
           <p className="mt-1 font-display text-2xl font-semibold text-foreground">
             {count} <span className="text-base font-normal text-muted">towards {MILESTONE}</span>
           </p>
@@ -205,7 +205,7 @@ export default async function RegisterMemberPage({
                 and come back.
               </>
             ) : (
-              "You can register members once it is activated."
+              "You can register voters once it is activated."
             )}
           </p>
         </div>

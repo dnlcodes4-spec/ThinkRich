@@ -37,10 +37,10 @@ export async function provisionMemberLogin(memberId: string): Promise<ProvisionR
     .select("id, full_name, email, user_id, status")
     .eq("id", memberId)
     .maybeSingle();
-  if (!member) return { ok: false, error: "Member not found." };
+  if (!member) return { ok: false, error: "Voter not found." };
   if (member.user_id) return { ok: false, error: "This member already has a login." };
-  if (!member.email) return { ok: false, error: "Add an email for this member first." };
-  if (member.status === "deleted") return { ok: false, error: "This member is not active." };
+  if (!member.email) return { ok: false, error: "Add an email for this voter first." };
+  if (member.status === "deleted") return { ok: false, error: "This voter is not active." };
 
   const admin = createAdminClient();
   const password = generateTempPassword();
@@ -73,7 +73,7 @@ export async function provisionMemberLogin(memberId: string): Promise<ProvisionR
   if (linkErr) {
     await admin.from("profiles").delete().eq("id", created.user.id);
     await admin.auth.admin.deleteUser(created.user.id);
-    return { ok: false, error: "Could not link the login to the member. Please try again." };
+    return { ok: false, error: "Could not link the login to the voter. Please try again." };
   }
 
   return { ok: true, tempPassword: password, email: member.email };
@@ -93,7 +93,7 @@ export async function provisionMemberLoginAction(
   formData: FormData,
 ): Promise<ProvisionState> {
   const id = z.string().uuid().safeParse(formData.get("member_id"));
-  if (!id.success) return { status: "error", message: "Invalid member." };
+  if (!id.success) return { status: "error", message: "Invalid voter." };
 
   const res = await provisionMemberLogin(id.data);
   if (!res.ok) return { status: "error", message: res.error };
@@ -121,9 +121,9 @@ export async function resetMemberLoginPassword(memberId: string): Promise<Provis
     .select("id, full_name, email, user_id, status")
     .eq("id", memberId)
     .maybeSingle();
-  if (!member) return { ok: false, error: "Member not found." };
+  if (!member) return { ok: false, error: "Voter not found." };
   if (!member.user_id) return { ok: false, error: "This member has no login yet." };
-  if (member.status === "deleted") return { ok: false, error: "This member is not active." };
+  if (member.status === "deleted") return { ok: false, error: "This voter is not active." };
 
   const admin = createAdminClient();
   const password = generateTempPassword();
@@ -148,7 +148,7 @@ export async function resetMemberLoginPasswordAction(
   formData: FormData,
 ): Promise<ProvisionState> {
   const id = z.string().uuid().safeParse(formData.get("member_id"));
-  if (!id.success) return { status: "error", message: "Invalid member." };
+  if (!id.success) return { status: "error", message: "Invalid voter." };
 
   const res = await resetMemberLoginPassword(id.data);
   if (!res.ok) return { status: "error", message: res.error };

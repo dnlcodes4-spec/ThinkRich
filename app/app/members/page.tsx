@@ -9,7 +9,7 @@ import { MemberLoginCell } from "./member-login-cell";
 import { MemberLifecycleCell } from "./member-lifecycle-cell";
 
 export const metadata: Metadata = {
-  title: "Members",
+  title: "Registered voters",
   robots: { index: false, follow: false },
 };
 
@@ -101,7 +101,7 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground">
-            {isLeader ? "Your members" : "Members"}
+            {isLeader ? "Your voters" : "Registered voters"}
           </h1>
           <p className="mt-1 text-sm text-muted">
             {q
@@ -116,7 +116,7 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
             href="/app/register"
             className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
           >
-            Register a member
+            Register a voter
           </Link>
         ) : null}
       </div>
@@ -127,7 +127,7 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
           name="q"
           defaultValue={q}
           placeholder="Search name or membership number"
-          aria-label="Search members"
+          aria-label="Search voters"
           className="min-h-11 flex-1 rounded-md border border-border bg-surface px-3 text-base text-foreground placeholder:text-muted focus:outline-2 focus:outline-offset-1 focus:outline-ring"
         />
         <button
@@ -149,24 +149,24 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
       {rows.length === 0 ? (
         <div className="mt-10">
           {q ? (
-            <EmptyState title={`No members match “${q}”`} />
+            <EmptyState title={`No voters match “${q}”`} />
           ) : isLeader ? (
             <EmptyState
-              title="No members yet"
-              description="Register your first member and they will appear here."
+              title="No voters yet"
+              description="Register your first voter and they will appear here."
               action={
                 <Link
                   href="/app/register"
                   className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
                 >
-                  Register your first member
+                  Register your first voter
                 </Link>
               }
             />
           ) : (
             <EmptyState
-              title="No members yet"
-              description="Members appear here once leaders in your scope register them."
+              title="No voters yet"
+              description="Voters appear here once leaders in your scope register them."
             />
           )}
         </div>
@@ -177,7 +177,7 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
             columns={columns}
             rows={rows}
             getRowKey={(r) => r.id}
-            caption="Members in your scope"
+            caption="Registered voters in your scope"
           />
           <ul className="mt-8 flex flex-col gap-3 lg:hidden">
             {rows.map((r) => (

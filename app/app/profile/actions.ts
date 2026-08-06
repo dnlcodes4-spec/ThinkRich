@@ -32,7 +32,7 @@ export async function uploadPhoto(_prev: PhotoState, formData: FormData): Promis
     .select("id, user_id, passport_photo_url")
     .eq("user_id", user.id)
     .maybeSingle();
-  if (!member) return { status: "error", message: "No member profile for this account." };
+  if (!member) return { status: "error", message: "No membership record for this account." };
 
   const file = formData.get("photo");
   if (!(file instanceof File) || file.size === 0) {

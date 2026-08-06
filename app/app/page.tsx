@@ -256,14 +256,14 @@ async function LeaderHome({ userId, firstName }: { userId?: string; firstName: s
 
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
-      <Greeting firstName={firstName} sub="Register and manage the members in your care." />
+      <Greeting firstName={firstName} sub="Register and manage the voters in your care." />
 
       {me ? <MembershipSummary member={me} /> : null}
 
       <div className="mt-6 rounded-card border border-border bg-surface p-5">
         <div className="flex items-end justify-between gap-4">
           <div>
-            <p className="text-sm text-muted">Members registered</p>
+            <p className="text-sm text-muted">Voters registered</p>
             <p className="mt-1 font-display text-3xl font-semibold text-foreground">
               {count}
               {reachedMilestone ? null : (
@@ -276,7 +276,7 @@ async function LeaderHome({ userId, firstName }: { userId?: string; firstName: s
             className="inline-flex min-h-11 items-center gap-2 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
           >
             <Icon name="register" className="size-5" />
-            Register a member
+            Register a voter
           </Link>
         </div>
         {reachedMilestone ? null : (
@@ -290,7 +290,7 @@ async function LeaderHome({ userId, firstName }: { userId?: string; firstName: s
               Congratulations, {firstName}.
             </p>
             <p className="mt-1 text-sm text-foreground/80">
-              You have registered {count} members and passed your first ten. Keep going: there is no
+              You have registered {count} voters and passed your first ten. Keep going: there is no
               limit on how many people you can bring into the movement.
             </p>
           </div>
@@ -300,7 +300,7 @@ async function LeaderHome({ userId, firstName }: { userId?: string; firstName: s
       <div className="mt-6">
         <div className="flex items-center justify-between">
           <h2 className="font-display text-xl font-semibold tracking-tight text-foreground">
-            Recent members
+            Recent voters
           </h2>
           <Link
             href="/app/members"
@@ -329,8 +329,8 @@ async function LeaderHome({ userId, firstName }: { userId?: string; firstName: s
         ) : (
           <div className="mt-3">
             <EmptyState
-              title="No members yet"
-              description="Register your first member to get started."
+              title="No voters yet"
+              description="Register your first voter to get started."
             />
           </div>
         )}
@@ -427,7 +427,7 @@ async function CoordinatorHome({
           <h2 className="font-display text-xl font-semibold tracking-tight text-foreground">
             Across the country
           </h2>
-          <p className="mt-1 text-sm text-muted">Members by state across Nigeria.</p>
+          <p className="mt-1 text-sm text-muted">Registered voters by state; the movement total is in the panel.</p>
           <div className="mt-4">
             {/* The map colours states by recorded memberships; the Nationwide
                 headline shows the true movement total (incl. staff who have not

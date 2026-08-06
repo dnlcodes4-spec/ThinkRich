@@ -80,12 +80,12 @@ function Inner({ onReset, pollingUnitId, leaders }: RegisterFormProps & { onRese
           </legend>
           <p className="mb-4 text-sm text-muted">
             {leaders.length > 0
-              ? "The member counts towards that leader's ten. Leave it unassigned to hold them yourself."
-              : "No leader has been created in this polling unit yet, so you will hold this member yourself."}
+              ? "The voter counts towards that leader's ten. Leave it unassigned to hold them yourself."
+              : "No leader has been created in this polling unit yet, so you will hold this voter yourself."}
           </p>
           {leaders.length > 0 ? (
             <Select label="Leader" name="registered_by" defaultValue="" error={fe.registered_by}>
-              <option value="">No leader (I will hold this member)</option>
+              <option value="">No leader (I will hold this voter)</option>
               {leaders.map((l) => (
                 <option key={l.id} value={l.id}>
                   {l.full_name}
@@ -97,7 +97,7 @@ function Inner({ onReset, pollingUnitId, leaders }: RegisterFormProps & { onRese
       ) : null}
 
       <fieldset className="min-w-0 border-0 p-0">
-        <legend className="mb-4 text-sm font-semibold text-foreground">Member details</legend>
+        <legend className="mb-4 text-sm font-semibold text-foreground">Voter details</legend>
         <div className="grid gap-5 sm:grid-cols-2">
           <Input label="Full name" name="full_name" autoComplete="name" required error={fe.full_name} />
           <Input
@@ -133,7 +133,7 @@ function Inner({ onReset, pollingUnitId, leaders }: RegisterFormProps & { onRese
         <legend className="mb-1 text-sm font-semibold text-foreground">
           Bank details <span className="font-normal text-muted">(optional)</span>
         </legend>
-        <p className="mb-4 text-sm text-muted">Used for member rewards. You can add this later.</p>
+        <p className="mb-4 text-sm text-muted">Used for voter rewards. You can add this later.</p>
         <div className="grid gap-5 sm:grid-cols-2">
           <Input label="Bank name" name="bank_name" error={fe.bank_name} />
           <Input label="Account name" name="account_name" error={fe.account_name} />
