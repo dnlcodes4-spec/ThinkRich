@@ -138,6 +138,7 @@ export default async function NewAccountPage({
             locked={locked}
             hiddenFields={{ role: target.role }}
             submitLabel="Choose area"
+            addPollingUnit={level === "polling_unit"}
           />
         </section>
       ) : target && level && fixedArea ? (

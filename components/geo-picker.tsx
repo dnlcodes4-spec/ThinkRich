@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { GeoPickerAddUnit } from "./geo-picker-add-unit";
 
 export type GeoDepth = "state" | "lga" | "ward" | "polling_unit";
 export type GeoSelection = { stateId?: string; lgaId?: string; wardId?: string; pollingUnitId?: string };
@@ -21,6 +22,7 @@ export async function GeoPicker({
   locked,
   hiddenFields = {},
   submitLabel = "Show",
+  addPollingUnit = false,
 }: {
   action: string;
   selection: GeoSelection;
@@ -28,6 +30,8 @@ export async function GeoPicker({
   locked: GeoSelection;
   hiddenFields?: Record<string, string>;
   submitLabel?: string;
+  /** Offer an inline "add a polling unit" once a ward is chosen (CR-0018). */
+  addPollingUnit?: boolean;
 }) {
   const supabase = await createClient();
 
@@ -76,21 +80,34 @@ export async function GeoPicker({
     );
   };
 
+  // Show the inline add once a ward is chosen and the polling-unit select is on
+  // screen (units !== null means it is being rendered, not locked/fixed).
+  const showAddUnit = addPollingUnit && reaches(depth, "polling_unit") && !!wardId && units !== null;
+  const preserved: Record<string, string> = { ...hiddenFields };
+  if (stateId) preserved.state = stateId;
+  if (lgaId) preserved.lga = lgaId;
+  if (wardId) preserved.ward = wardId;
+
   return (
-    <form method="get" action={action} className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end">
-      {Object.entries(hiddenFields).map(([k, v]) => (
-        <input key={k} type="hidden" name={k} value={v} />
-      ))}
-      {field("state", "State", states, stateId, true)}
-      {field("lga", "LGA", lgas, lgaId, reaches(depth, "lga"))}
-      {field("ward", "Ward", wards, wardId, reaches(depth, "ward"))}
-      {field("pu", "Polling unit", units, puId, reaches(depth, "polling_unit"))}
-      <button
-        type="submit"
-        className="min-h-11 shrink-0 rounded-sm border border-border bg-surface-muted px-4 text-sm font-semibold text-foreground hover:bg-border"
-      >
-        {submitLabel}
-      </button>
-    </form>
+    <div className="flex flex-col gap-4">
+      <form method="get" action={action} className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end">
+        {Object.entries(hiddenFields).map(([k, v]) => (
+          <input key={k} type="hidden" name={k} value={v} />
+        ))}
+        {field("state", "State", states, stateId, true)}
+        {field("lga", "LGA", lgas, lgaId, reaches(depth, "lga"))}
+        {field("ward", "Ward", wards, wardId, reaches(depth, "ward"))}
+        {field("pu", "Polling unit", units, puId, reaches(depth, "polling_unit"))}
+        <button
+          type="submit"
+          className="min-h-11 shrink-0 rounded-sm border border-border bg-surface-muted px-4 text-sm font-semibold text-foreground hover:bg-border"
+        >
+          {submitLabel}
+        </button>
+      </form>
+      {showAddUnit ? (
+        <GeoPickerAddUnit wardId={wardId!} action={action} params={preserved} />
+      ) : null}
+    </div>
   );
 }
