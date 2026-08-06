@@ -10,6 +10,7 @@ import { ServiceWorkerRegistrar } from "@/components/pwa/service-worker-registra
 import { ChangePasswordPrompt } from "@/components/account/change-password-prompt";
 import { needsPasswordChange } from "@/lib/must-change-password";
 import { VinPrompt } from "@/components/account/vin-prompt";
+import { CompleteMembershipPrompt } from "@/components/account/complete-membership-prompt";
 
 // The app shell wraps every /app/* route: a desktop sidebar + mobile bottom bar
 // driven by the caller's role, and a header with notifications + account menu.
@@ -29,6 +30,15 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   // (CR-0009), which silently blocks every RLS check gated on active status.
   // Prompt them to add it. Members carry their VIN on the member record instead.
   const needsVin = Boolean(profile && profile.role !== "member" && !profile.vin_id);
+
+  // Everyone is a member (CR-0014). A staff account with no membership record yet
+  // is nudged to complete their own membership (home registration + card). This
+  // supersedes the VIN prompt for staff, since completing membership also sets the
+  // profile VIN and activates the account.
+  const { data: memberRow } = user
+    ? await supabase.from("members").select("id").eq("user_id", user.id).maybeSingle()
+    : { data: null };
+  const needsMembership = Boolean(profile && profile.role !== "member" && !memberRow);
 
   const { count: unread } = user
     ? await supabase
@@ -69,11 +79,14 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           {children}
         </div>
         <BottomNav items={items} />
-        {/* Still on the temporary password we generated: nudge them to pick one.
-            Password first; the VIN prompt waits until that is dealt with so the
-            two modals never stack. */}
+        {/* One prompt at a time, in priority order, so modals never stack:
+            password first (still on the temp one), then completing membership
+            (CR-0014, which also sets the VIN), then the VIN-only fallback for a
+            staff account that has a membership but somehow no profile VIN. */}
         {needsPasswordChange(user?.app_metadata) ? (
           <ChangePasswordPrompt />
+        ) : needsMembership ? (
+          <CompleteMembershipPrompt />
         ) : needsVin ? (
           <VinPrompt />
         ) : null}
