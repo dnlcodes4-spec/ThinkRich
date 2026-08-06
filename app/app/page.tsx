@@ -25,7 +25,8 @@ export default async function AppHome() {
   const firstName = (profile?.full_name ?? "").trim().split(/\s+/)[0];
 
   if (role === "leader") return <LeaderHome userId={user?.id} firstName={firstName} />;
-  if (isCoordinator(role)) return <CoordinatorHome role={role} firstName={firstName} />;
+  if (isCoordinator(role))
+    return <CoordinatorHome role={role} firstName={firstName} userId={user?.id} />;
   return <MemberHome userId={user?.id} firstName={firstName} />;
 }
 
@@ -99,41 +100,47 @@ function Stat({
   );
 }
 
-// ---------- Member ----------
+// ---------- Membership summary (shared) ----------
 
-async function MemberHome({ userId, firstName }: { userId?: string; firstName: string }) {
+type OwnMember = {
+  id: string;
+  membership_number: string;
+  status: import("@/lib/database.types").Database["public"]["Enums"]["member_status"];
+};
+
+// The caller's own membership row, looked up by their auth id. Every account holds
+// one now (CR-0014): base-tier members from registration, staff from the
+// self-service onboarding flow.
+async function fetchOwnMember(userId?: string): Promise<OwnMember | null> {
+  if (!userId) return null;
   const supabase = await createClient();
-  const { data: me } = userId
-    ? await supabase
-        .from("members")
-        .select("id, membership_number, status")
-        .eq("user_id", userId)
-        .maybeSingle()
-    : { data: null };
+  const { data } = await supabase
+    .from("members")
+    .select("id, membership_number, status")
+    .eq("user_id", userId)
+    .maybeSingle();
+  return data;
+}
 
+// Membership ID + downloadable card, shown on every role's home (CR-0009 §3.5 for
+// members, extended to all members incl. staff by CR-0014). The card link is hidden
+// while frozen or removed, matching the route, which refuses those regardless.
+function MembershipSummary({ member }: { member: OwnMember }) {
   return (
-    <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
-      <Greeting firstName={firstName} sub="Your membership at a glance." />
-
-      {me ? (
-        <div className="mt-6 flex items-center justify-between gap-4 rounded-card border border-border bg-surface p-5">
-          <div className="min-w-0">
-            <p className="text-sm text-muted">Membership ID</p>
-            <p className="mt-0.5 font-mono text-lg font-semibold tracking-tight text-foreground">
-              {me.membership_number}
-            </p>
-          </div>
-          <StatusPill status={me.status} />
+    <div className="mt-6 flex flex-col gap-4">
+      <div className="flex items-center justify-between gap-4 rounded-card border border-border bg-surface p-5">
+        <div className="min-w-0">
+          <p className="text-sm text-muted">Membership ID</p>
+          <p className="mt-0.5 font-mono text-lg font-semibold tracking-tight text-foreground">
+            {member.membership_number}
+          </p>
         </div>
-      ) : null}
-
-      {/* CR-0009 §3.5: the card is downloadable at any time, not a one-off at
-          registration. Hidden while frozen or removed, matching the route, which
-          refuses those regardless of what the UI shows. */}
-      {me && me.status === "active" ? (
+        <StatusPill status={member.status} />
+      </div>
+      {member.status === "active" ? (
         <a
-          href={`/app/members/${me.id}/card`}
-          className="mt-4 flex items-center gap-4 rounded-card border border-border bg-surface p-5 transition-colors hover:bg-surface-muted"
+          href={`/app/members/${member.id}/card`}
+          className="flex items-center gap-4 rounded-card border border-border bg-surface p-5 transition-colors hover:bg-surface-muted"
         >
           <span className="grid size-11 shrink-0 place-items-center rounded-md bg-surface-muted text-foreground">
             <Icon name="profile" className="size-6" />
@@ -145,6 +152,20 @@ async function MemberHome({ userId, firstName }: { userId?: string; firstName: s
           <Icon name="chevron" className="size-5 -rotate-90 text-muted" />
         </a>
       ) : null}
+    </div>
+  );
+}
+
+// ---------- Member ----------
+
+async function MemberHome({ userId, firstName }: { userId?: string; firstName: string }) {
+  const me = await fetchOwnMember(userId);
+
+  return (
+    <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
+      <Greeting firstName={firstName} sub="Your membership at a glance." />
+
+      {me ? <MembershipSummary member={me} /> : null}
 
       <Link
         href="/app/vote"
@@ -183,6 +204,7 @@ async function MemberHome({ userId, firstName }: { userId?: string; firstName: s
 
 async function LeaderHome({ userId, firstName }: { userId?: string; firstName: string }) {
   const supabase = await createClient();
+  const me = await fetchOwnMember(userId);
 
   const { count: total } = userId
     ? await supabase
@@ -217,6 +239,8 @@ async function LeaderHome({ userId, firstName }: { userId?: string; firstName: s
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
       <Greeting firstName={firstName} sub="Register and manage the members in your care." />
+
+      {me ? <MembershipSummary member={me} /> : null}
 
       <div className="mt-6 rounded-card border border-border bg-surface p-5">
         <div className="flex items-end justify-between gap-4">
@@ -304,8 +328,17 @@ async function LeaderHome({ userId, firstName }: { userId?: string; firstName: s
 
 // ---------- Coordinator ----------
 
-async function CoordinatorHome({ role, firstName }: { role: string; firstName: string }) {
+async function CoordinatorHome({
+  role,
+  firstName,
+  userId,
+}: {
+  role: string;
+  firstName: string;
+  userId?: string;
+}) {
   const supabase = await createClient();
+  const me = await fetchOwnMember(userId);
 
   const { count: members } = await supabase
     .from("members")
@@ -352,8 +385,15 @@ async function CoordinatorHome({ role, firstName }: { role: string; firstName: s
     <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
       <Greeting firstName={firstName} sub={`${roleLabel(role)} dashboard.`} />
 
+      {me ? <MembershipSummary member={me} /> : null}
+
       <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        <Stat label="Members in your area" value={members ?? 0} href="/app/members" />
+        <Stat
+          label={isNational ? "Members" : "Members in your area"}
+          value={members ?? 0}
+          hint={isNational ? "Everyone in the movement" : undefined}
+          href="/app/members"
+        />
         <Stat
           label="Correction requests"
           value={pending ?? 0}
