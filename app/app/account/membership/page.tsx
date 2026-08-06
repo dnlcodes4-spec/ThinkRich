@@ -27,7 +27,7 @@ export default async function CompleteMembershipPage({
   } = await supabase.auth.getUser();
 
   const { data: profile } = user
-    ? await supabase.from("profiles").select("role, full_name").eq("id", user.id).maybeSingle()
+    ? await supabase.from("profiles").select("role, full_name, vin_id").eq("id", user.id).maybeSingle()
     : { data: null };
 
   if (!profile) {
@@ -162,7 +162,11 @@ export default async function CompleteMembershipPage({
       </p>
 
       <div className="mt-8">
-        <MembershipForm pollingUnitId={unit.id} defaultFullName={profile.full_name ?? ""} />
+        <MembershipForm
+          pollingUnitId={unit.id}
+          defaultFullName={profile.full_name ?? ""}
+          hasVin={Boolean(profile.vin_id)}
+        />
       </div>
     </main>
   );

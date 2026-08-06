@@ -30,7 +30,9 @@ const schema = z.object({
   full_name: z.string().trim().min(2, "Enter your full name."),
   date_of_birth: z.string().min(1, "Enter your date of birth."),
   nin: z.string().trim().min(1, "Enter your NIN."),
-  vin: z.string().trim().min(1, "Enter your voter's card number (VIN)."),
+  // Optional here: a staff account that already has a VIN on its profile reuses it,
+  // so the form omits the field. Required (enforced below) only when there is none.
+  vin: z.string().trim().optional(),
   gender: z.enum(["male", "female"], { message: "Choose a gender." }),
   phone: z.string().trim().optional(),
   polling_unit_id: z.string().uuid("Choose your home polling unit."),
@@ -103,27 +105,10 @@ export async function completeMyMembership(
     };
   }
 
-  const vin = normalizeVin(parsed.data.vin);
-  if (!vin) return { status: "error", message: VIN_INVALID, fieldErrors: { vin: VIN_INVALID } };
-
   let phone: string | null = null;
   if (parsed.data.phone) {
     phone = normalizePhone(parsed.data.phone);
     if (!phone) return { status: "error", message: PHONE_INVALID, fieldErrors: { phone: PHONE_INVALID } };
-  }
-
-  // The VIN must not already belong to someone else (a different member or a
-  // different person's profile). The caller's own profile holding this VIN is fine.
-  const [{ data: vinOnMember }, { data: vinOnProfile }] = await Promise.all([
-    admin.from("members").select("id").eq("vin_id", vin).maybeSingle(),
-    admin.from("profiles").select("id").eq("vin_id", vin).neq("id", user.id).maybeSingle(),
-  ]);
-  if (vinOnMember || vinOnProfile) {
-    return {
-      status: "error",
-      message: "That voter's card number is already registered.",
-      fieldErrors: { vin: "Already registered." },
-    };
   }
 
   // Resolve the home path from the chosen polling unit, so state/lga/ward are consistent.
@@ -142,9 +127,29 @@ export async function completeMyMembership(
     return { status: "error", message: "That polling unit could not be found." };
   }
 
-  // The VIN row must exist before a member/profile can reference it (voter_ids.vin PK).
-  const { error: vinErr } = await admin.from("voter_ids").upsert({ vin }, { onConflict: "vin" });
-  if (vinErr) return { status: "error", message: VIN_INVALID, fieldErrors: { vin: VIN_INVALID } };
+  // A person has one voter's card. If the profile already carries a VIN, REUSE it
+  // (never overwrite); otherwise take, validate, dedupe and store the entered one.
+  let vin = profile.vin_id;
+  if (!vin) {
+    const entered = normalizeVin(parsed.data.vin ?? null);
+    if (!entered) return { status: "error", message: VIN_INVALID, fieldErrors: { vin: VIN_INVALID } };
+    // The entered VIN must not already belong to someone else.
+    const [{ data: vinOnMember }, { data: vinOnProfile }] = await Promise.all([
+      admin.from("members").select("id").eq("vin_id", entered).maybeSingle(),
+      admin.from("profiles").select("id").eq("vin_id", entered).neq("id", user.id).maybeSingle(),
+    ]);
+    if (vinOnMember || vinOnProfile) {
+      return {
+        status: "error",
+        message: "That voter's card number is already registered.",
+        fieldErrors: { vin: "Already registered." },
+      };
+    }
+    // The VIN row must exist before a member/profile can reference it (voter_ids.vin PK).
+    const { error: vinErr } = await admin.from("voter_ids").upsert({ vin: entered }, { onConflict: "vin" });
+    if (vinErr) return { status: "error", message: VIN_INVALID, fieldErrors: { vin: VIN_INVALID } };
+    vin = entered;
+  }
 
   // Create the caller's own membership. registered_by = self: a staff person brings
   // themselves in. The membership number is assigned by the DB trigger.

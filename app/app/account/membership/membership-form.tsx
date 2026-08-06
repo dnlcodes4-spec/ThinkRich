@@ -16,9 +16,11 @@ export type MembershipFormProps = {
   pollingUnitId: string;
   /** Pre-fill their name from the profile; they can correct it. */
   defaultFullName: string;
+  /** When the profile already has a VIN, reuse it: hide the field. */
+  hasVin: boolean;
 };
 
-export function MembershipForm({ pollingUnitId, defaultFullName }: MembershipFormProps) {
+export function MembershipForm({ pollingUnitId, defaultFullName, hasVin }: MembershipFormProps) {
   const [state, action, pending] = useActionState(completeMyMembership, initial);
   const fe = state.fieldErrors ?? {};
   // Artifact form: the success view below is the confirmation, so no toast.
@@ -85,7 +87,7 @@ export function MembershipForm({ pollingUnitId, defaultFullName }: MembershipFor
             error={fe.date_of_birth}
           />
           <Input label="NIN" name="nin" required hint="National ID number" error={fe.nin} />
-          <VinInput error={fe.vin} />
+          {hasVin ? null : <VinInput error={fe.vin} />}
           <Select label="Gender" name="gender" required defaultValue="" error={fe.gender}>
             <option value="" disabled>
               Select&hellip;
