@@ -10,6 +10,8 @@ import { openStateFor } from "@/lib/states";
 import { allowedTargets, ROLE_LEVEL, type Role } from "./tiers";
 import { normalizeVin, VIN_INVALID } from "@/lib/vin";
 import { normalizePhone, PHONE_INVALID } from "@/lib/phone";
+import { logActivityAs } from "@/lib/activity";
+import { roleLabel } from "@/lib/terms";
 
 // Provisioning authorization, re-checked here because the service role bypasses
 // RLS. Two rules, the same ones profiles_insert enforces:
@@ -213,6 +215,14 @@ export async function createAccount(
     await admin.auth.admin.deleteUser(created.user.id); // don't leave an orphan auth user
     return { status: "error", message: "Could not save the account profile. Please try again." };
   }
+
+  await logActivityAs(user.id, {
+    action: "account.created",
+    summary: `Created ${d.full_name}'s account (${roleLabel(target.role)})`,
+    subjectType: "account",
+    subjectId: created.user.id,
+    stateId: scope.state_id ?? null,
+  });
 
   // Assigning a state admin activates that state (T-019: "active once a State Admin
   // is assigned"). Losing the last one closes it again, in the database: see

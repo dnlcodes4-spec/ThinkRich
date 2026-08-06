@@ -1,30 +1,16 @@
 import { tryCreateAdminClient } from "@/lib/supabase/admin";
+import type { ActivityAction } from "@/lib/activity-meta";
 
 // Append an entry to the activity log. Writes use the service role (the table has
 // no insert policy, so nothing holding a user JWT can forge an entry).
 //
 // Logging is deliberately BEST EFFORT: it never throws and never blocks the
-// action that triggered it. Failing to record that a member was registered must
-// not stop the member being registered.
-
-export type ActivityAction =
-  | "member.registered"
-  | "member.paused"
-  | "member.reactivated"
-  | "member.removed"
-  | "member.login_reset"
-  | "account.created"
-  | "account.deactivated"
-  | "account.reactivated"
-  | "account.deleted"
-  | "account.promoted"
-  | "account.role_changed"
-  | "correction.approved"
-  | "correction.declined"
-  | "state.activated"
-  | "state.deactivated"
-  | "candidate.saved"
-  | "announcement.sent";
+// action that triggered it. Failing to record that a voter was registered must
+// not stop the voter being registered.
+//
+// The action union + how each reads on the Activity page live in lib/activity-meta
+// (one source of truth), so an emitter and the page can never drift.
+export type { ActivityAction } from "@/lib/activity-meta";
 
 export type ActivityEntry = {
   actorId: string | null;
