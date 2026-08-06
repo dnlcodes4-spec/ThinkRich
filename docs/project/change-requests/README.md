@@ -42,6 +42,7 @@ reviewable, impact-assessed, trackable unit of work.
 | [0012](0012-thinkwinners-social-links.md) | Community chat links on Think-Winners footer + account, member login in TW nav | Client | 2026-08-04 | In Progress | T-058, T-059 | — |
 | [0017](0017-phone-numbers-and-coordinator-registration.md) | Phone numbers on every form + coordinators can register members | Client | 2026-08-05 | Assessed | T-060, T-061, T-062 | — |
 | [0014](0014-everyone-is-a-member.md) | Everyone is a member — staff hold real memberships + downloadable cards; counts reflect the movement total | Client (meeting) | 2026-08-06 | In Progress | T-072 … T-076 | ADR-0016 |
+| [0015](0015-super-admin-owner-role.md) | Super Admin (owner) role above National: create/delete any admin, oversee everything | Client (meeting) | 2026-08-06 | Assessed | T-084 … T-088 | ADR-0017 |
 | [0020](0020-voter-vs-member-terminology.md) | Voter vs member terminology across the dashboard (base tier = voter; member = whole movement) | Client | 2026-08-06 | In Progress | T-077 … T-080 | — (follows CR-0014) |
 | [0021](0021-activity-log-coverage.md) | Activity log: record every activity + one source of truth for action labels | Client | 2026-08-06 | In Progress | T-081 … T-083 | — |
 
