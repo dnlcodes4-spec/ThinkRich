@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { tryCreateAdminClient, ADMIN_NOT_CONFIGURED } from "@/lib/supabase/admin";
 import { normalizeVin, VIN_INVALID } from "@/lib/vin";
 import { normalizePhone, PHONE_INVALID } from "@/lib/phone";
+import { isAdult } from "@/lib/age";
 
 // Everyone is a member (CR-0014 / ADR-0016). A staff account (any non-member role)
 // is also a member of the movement: they hold a real `members` record keyed to their
@@ -21,17 +22,9 @@ export type MembershipState = {
   status: "idle" | "success" | "error";
   message?: string;
   membershipNumber?: string;
+  memberId?: string;
   fieldErrors?: Record<string, string>;
 };
-
-/** At least 18 today. Mirrors the register flow's check (kept local so it is unit-testable). */
-export function isAdult(dob: string): boolean {
-  const d = new Date(dob);
-  if (Number.isNaN(d.getTime())) return false;
-  const cutoff = new Date();
-  cutoff.setFullYear(cutoff.getFullYear() - 18);
-  return d <= cutoff;
-}
 
 const schema = z.object({
   full_name: z.string().trim().min(2, "Enter your full name."),
@@ -90,7 +83,7 @@ export async function completeMyMembership(
   // Already a member? Idempotent: return their existing number rather than duplicating.
   const { data: existing } = await admin
     .from("members")
-    .select("membership_number")
+    .select("id, membership_number")
     .eq("user_id", user.id)
     .maybeSingle();
   if (existing) {
@@ -98,6 +91,7 @@ export async function completeMyMembership(
       status: "success",
       message: "You are already a member.",
       membershipNumber: existing.membership_number,
+      memberId: existing.id,
     };
   }
 
@@ -209,5 +203,6 @@ export async function completeMyMembership(
     status: "success",
     message: "Your membership is complete.",
     membershipNumber: inserted.membership_number,
+    memberId: inserted.id,
   };
 }

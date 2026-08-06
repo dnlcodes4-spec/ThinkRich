@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { isAdult } from "./membership-actions";
+import { isAdult } from "./age";
 
 describe("isAdult", () => {
   it("accepts someone well over 18", () => {
