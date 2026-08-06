@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { roleLabel } from "@/lib/terms";
+import { StatusPill } from "@/components/ui/status-pill";
 import { ChangePasswordForm } from "./change-password";
 import { AddVinForm } from "./add-vin-form";
 
@@ -29,6 +30,15 @@ export default async function AccountPage() {
 
   // Staff (non-member) accounts need a voter's card to be active (CR-0009).
   const needsVin = Boolean(profile && profile.role !== "member" && !profile.vin_id);
+
+  // Everyone is a member (CR-0014): the caller's own membership row, if any.
+  const { data: myMember } = user
+    ? await supabase
+        .from("members")
+        .select("id, membership_number, status")
+        .eq("user_id", user.id)
+        .maybeSingle()
+    : { data: null };
 
   const [st, lg, wd, pu] = await Promise.all([
     profile?.state_id
@@ -90,6 +100,46 @@ export default async function AccountPage() {
           </Link>
         ) : null}
       </div>
+
+      {profile && profile.role !== "member" ? (
+        <section className="mt-10 border-t border-border pt-8">
+          <h2 className="font-display text-xl font-semibold tracking-tight text-foreground">
+            Membership
+          </h2>
+          {myMember ? (
+            <div className="mt-3 flex flex-col gap-3">
+              <div className="flex items-center justify-between gap-4 rounded-card border border-border bg-surface p-4">
+                <div className="min-w-0">
+                  <p className="text-sm text-muted">Membership ID</p>
+                  <p className="mt-0.5 font-mono font-semibold tracking-tight text-foreground">
+                    {myMember.membership_number}
+                  </p>
+                </div>
+                <StatusPill status={myMember.status} />
+              </div>
+              {myMember.status === "active" ? (
+                <a
+                  href={`/app/members/${myMember.id}/card`}
+                  className="inline-flex self-start text-sm font-semibold text-primary underline-offset-4 hover:underline"
+                >
+                  Download your membership card
+                </a>
+              ) : null}
+            </div>
+          ) : (
+            <p className="mt-1 text-sm text-muted">
+              You&apos;re a member of the movement too.{" "}
+              <Link
+                href="/app/account/membership"
+                className="font-semibold text-primary underline-offset-4 hover:underline"
+              >
+                Complete your membership
+              </Link>{" "}
+              to get your number and card.
+            </p>
+          )}
+        </section>
+      ) : null}
 
       {profile && profile.role !== "member" ? (
         <section className="mt-10 border-t border-border pt-8">

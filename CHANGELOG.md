@@ -9,6 +9,17 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- **Everyone is a member** (CR-0014, ADR-0016). Staff accounts (admins, coordinators, leaders) are
+  now members of the movement too: each holds a real membership record, number, and downloadable
+  card, keyed to their **personal home voter registration** (home state/LGA/ward/polling unit) rather
+  than their admin scope, which resolves the fact that higher-tier admins have no ward. A self-service
+  "Complete your membership" prompt in the app shell routes staff without a record to an onboarding
+  page (home polling unit via the geo picker + their details), backed by a `completeMyMembership`
+  action that is hard-scoped to the caller (`user_id = auth.uid()`) and reuses an existing profile VIN
+  rather than overwriting it. Membership ID + card now appear on every role's home and the account
+  page, and the movement counts include staff (fixing the "Members: 1" under-count). No database
+  migration: the `members` table already supported a person holding both a profile and a member record
+  (ADR-0015).
 - **Dashboard feedback & state system.** The `/app` dashboards had good primitives but no rules:
   loading skeletons on only 4 of 17 routes, three different ways of showing success/error, no
   empty-state component, and the action-result shape copy-pasted per form. Foundation added: a
