@@ -220,3 +220,20 @@ history, or an existing doc.
   Prefer one-directional automation: closing on its own is safe, opening on its own overrules a human
   decision. Check that a UI encoding of a status is not the only thing that would ever reveal a stale
   flag; here the map was correct and the data was wrong.
+
+### 2026-08-06 — A `"use server"` module may only export async functions (tsc won't tell you)
+- **Context:** the `completeMyMembership` action file (CR-0014) also exported a synchronous helper,
+  `isAdult`. `tsc --noEmit` passed and the unit test passed, but every route importing that module
+  rendered blank in the browser: Next fails the module at build/runtime with "Server Actions must be
+  async functions." It only surfaced when the running app was screenshotted for sign-off.
+- **Lesson:** in a file with the `"use server"` directive, *every* export must be an async function
+  (they are all treated as server actions). A sync helper alongside your action compiles fine and
+  type-checks fine, then breaks the whole route at render. Type-checking and unit tests do not cover
+  this class of error, because it is a framework contract, not a type error.
+- **Action:** keep pure/sync helpers out of `"use server"` files (put them in a plain `lib/*`
+  module and import them). Always exercise a new server-action surface in the *running* app, not just
+  tsc + unit tests, before claiming it works. Two related process notes from the same session: an
+  end-to-end Playwright check that used `button[type="submit"]` clicked the sidebar's Sign-out button
+  instead of the form button (target buttons by accessible name); and verifying the flow against the
+  real database is what caught a second bug where the action overwrote an existing profile VIN
+  instead of reusing it. Prefer real-app verification for auth/session/action changes.

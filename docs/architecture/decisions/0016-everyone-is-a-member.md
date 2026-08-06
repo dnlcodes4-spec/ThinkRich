@@ -1,6 +1,6 @@
 # ADR-0016: Everyone is a member — staff hold a membership keyed to home registration
 
-- **Status:** Proposed
+- **Status:** Accepted
 - **Date:** 2026-08-06
 - **Deciders:** Client, engineering
 - **Supersedes / Superseded by:** none (builds on ADR-0015)

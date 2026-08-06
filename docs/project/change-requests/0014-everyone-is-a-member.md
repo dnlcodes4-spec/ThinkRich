@@ -1,6 +1,6 @@
 # CR-0014: Everyone is a member (staff hold real memberships + cards)
 
-- **Status:** Assessed
+- **Status:** In Progress
 - **Requested by:** Client (meeting)
 - **Date requested:** 2026-08-06
 - **Channel:** meeting (relayed)
