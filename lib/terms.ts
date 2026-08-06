@@ -14,6 +14,7 @@ const ROLE_LABELS: Record<Role, string> = {
   lg_admin: "LGA Coordinator",
   state_admin: "State Coordinator",
   national_admin: "National Coordinator",
+  super_admin: "Super Admin",
 };
 
 export function roleLabel(role: Role | string | null | undefined): string {
@@ -28,7 +29,8 @@ export function isCoordinator(role: Role | string | null | undefined): boolean {
     role === "ward_admin" ||
     role === "lg_admin" ||
     role === "state_admin" ||
-    role === "national_admin"
+    role === "national_admin" ||
+    role === "super_admin"
   );
 }
 
