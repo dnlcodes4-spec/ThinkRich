@@ -237,3 +237,21 @@ history, or an existing doc.
   instead of the form button (target buttons by accessible name); and verifying the flow against the
   real database is what caught a second bug where the action overwrote an existing profile VIN
   instead of reusing it. Prefer real-app verification for auth/session/action changes.
+
+
+### 2026-08-07 - A new enum value cannot be added and used in the same transaction
+- **Context:** CR-0015 adds a `super_admin` value to the `user_role` enum, then references it in
+  `role_rank`, several RLS policies, and a CHECK. Doing all of that in one migration fails: Postgres
+  forbids using a newly-added enum value in the same transaction that added it (the value is not
+  committed yet), and `apply_migration` runs each migration in a transaction.
+- **Lesson:** split it. Migration A does only `ALTER TYPE ... ADD VALUE` (a separate transaction);
+  migration B, applied after A commits, references the value. An unused added enum value is harmless,
+  so A is safe to ship on its own. Adding the value with `BEFORE 'national_admin'` keeps the enum's
+  sort order aligned with `role_rank`, though `role_rank` (a CASE function) is the real ordering
+  source, not the enum sort.
+- **Action:** for additive role/enum work, use two migrations. Prefer `ALTER POLICY ... USING/WITH
+  CHECK` and `CREATE OR REPLACE FUNCTION` to extend existing objects in place (no drops, so RLS is
+  never briefly absent); a CHECK constraint is the exception (drop + re-add). Dry-run the second
+  migration with BEGIN/ROLLBACK on prod first, and prove the new grants with an allow/deny RLS test
+  that impersonates each role (a super_admin creating a national, and a national being denied a
+  super_admin, both run under the impersonated JWT so RLS is actually exercised).

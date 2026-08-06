@@ -1,6 +1,6 @@
 # ADR-0017: Super Admin (owner) role above National
 
-- **Status:** Proposed
+- **Status:** Accepted
 - **Date:** 2026-08-06
 - **Deciders:** Client, engineering
 - **Supersedes / Superseded by:** none; extends ADR-0012 (national-admin bootstrap), refines ADR-0005 (RLS as the authorization boundary)
