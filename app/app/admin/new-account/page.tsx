@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { GeoPicker } from "@/components/geo-picker";
+import { isNationalTier } from "@/lib/terms";
 import { NewAccountForm } from "./new-account-form";
 import { allowedTargets, ROLE_LEVEL, LEVEL_LABEL, roleLabel, type Role, type GeoLevel } from "./tiers";
 
@@ -47,7 +48,7 @@ export default async function NewAccountPage({
     );
   }
 
-  const unscoped = me.role === "national_admin";
+  const unscoped = isNationalTier(me.role);
   // With one option there is nothing to choose; go straight to it.
   const target = targets.find((t) => t.role === sp.role) ?? (targets.length === 1 ? targets[0] : null);
   const level = target ? ROLE_LEVEL[target.role] : null;

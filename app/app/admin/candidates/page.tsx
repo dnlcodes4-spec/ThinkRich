@@ -8,6 +8,7 @@ import {
   type Candidacy,
   type ConstituencyKind,
 } from "@/lib/offices";
+import { isNationalTier } from "@/lib/terms";
 import { CandidateForm } from "./candidate-form";
 import { ConstituencyChooser } from "./constituency-chooser";
 import { GeoPicker } from "@/components/geo-picker";
@@ -26,6 +27,7 @@ export const metadata: Metadata = {
 function manageableKinds(role: string): ConstituencyKind[] {
   switch (role) {
     case "national_admin":
+    case "super_admin":
       return ["nation", "state", "lga", "ward", "senatorial_district", "federal_constituency", "state_constituency"];
     case "state_admin":
       return ["state", "lga", "ward", "senatorial_district", "federal_constituency", "state_constituency"];
@@ -174,7 +176,7 @@ export default async function ManageCandidatesPage({
         Add the candidates your members should know about. You can only manage races inside your own area.
       </p>
 
-      <CandidateTabs showAreas={profile.role === "national_admin"} />
+      <CandidateTabs showAreas={isNationalTier(profile.role)} />
 
       {/* ── existing ── */}
       <section className="mt-10">
@@ -260,7 +262,7 @@ export default async function ManageCandidatesPage({
               <CoveragePreview
                 wards={coverageWards}
                 conId={chosenGeoId}
-                canEditAreas={profile.role === "national_admin"}
+                canEditAreas={isNationalTier(profile.role)}
               />
             ) : null}
             {formSection}

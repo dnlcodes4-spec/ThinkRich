@@ -5,6 +5,7 @@ import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { logActivityAs } from "@/lib/activity";
+import { isNationalTier } from "@/lib/terms";
 
 // National admin activates/deactivates a state. `states` is reference data with
 // no write RLS policy, so this uses the service role, gated to national admins in
@@ -17,7 +18,7 @@ export async function setStateActive(formData: FormData): Promise<void> {
   } = await supabase.auth.getUser();
   if (!user) return;
   const { data: me } = await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle();
-  if (me?.role !== "national_admin") return;
+  if (!isNationalTier(me?.role)) return;
 
   const id = z.string().uuid().safeParse(formData.get("state_id"));
   if (!id.success) return;

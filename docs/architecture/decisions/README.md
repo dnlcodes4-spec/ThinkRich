@@ -47,3 +47,4 @@ Small, local, easily-reversed choices do **not** need an ADR.
 | [0014](0014-two-origin-host-split.md) | One deployment, two origins, split by Host in the proxy | Proposed |
 | [0015](0015-voter-identity-and-role-upgrades.md) | Voter identity storage and the role-upgrade model | Proposed |
 | [0016](0016-everyone-is-a-member.md) | Everyone is a member — staff hold a membership keyed to home registration | Accepted |
+| [0017](0017-super-admin-owner-role.md) | Super Admin (owner) role above National | Accepted |

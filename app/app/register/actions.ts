@@ -18,6 +18,7 @@ const REGISTRAR_ROLES = [
   "lg_admin",
   "state_admin",
   "national_admin",
+  "super_admin",
 ] as const;
 // These have a fixed polling unit (their own); the rest choose one in their scope.
 const FIXED_PU_ROLES = ["leader", "unit_coordinator"] as const;

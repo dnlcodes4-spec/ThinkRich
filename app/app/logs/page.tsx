@@ -48,7 +48,7 @@ export default async function LogsPage({
   // The read policy also requires status='active' (CR-0009). A national admin who
   // has not supplied a voter's card is not active, so RLS returns nothing — which
   // would otherwise read as "no activity" instead of "your account isn't active".
-  if (me?.role === "national_admin" && me.status !== "active") {
+  if ((me?.role === "national_admin" || me?.role === "super_admin") && me.status !== "active") {
     return (
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
         <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">Activity</h1>
@@ -63,11 +63,11 @@ export default async function LogsPage({
     );
   }
 
-  if (me?.role !== "national_admin") {
+  if (me?.role !== "national_admin" && me?.role !== "super_admin") {
     return (
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
         <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">Activity</h1>
-        <p className="text-sm text-muted">This area is for the National Coordinator.</p>
+        <p className="text-sm text-muted">This area is for the National Coordinator or owner.</p>
         <Link href="/app" className="text-sm font-semibold text-primary underline-offset-4 hover:underline">
           Back to your area
         </Link>

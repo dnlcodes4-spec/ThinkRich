@@ -4,6 +4,7 @@ export type Role = Database["public"]["Enums"]["user_role"];
 export type GeoLevel = "state" | "lga" | "ward" | "polling_unit" | null;
 
 export const ROLE_RANK: Record<Role, number> = {
+  super_admin: 0,
   national_admin: 1,
   state_admin: 2,
   lg_admin: 3,
@@ -16,6 +17,7 @@ export const ROLE_RANK: Record<Role, number> = {
 // How deep a geographic path a role needs. A leader sits at a polling unit, the
 // same as their coordinator.
 export const ROLE_LEVEL: Record<Role, GeoLevel> = {
+  super_admin: null,
   national_admin: null,
   state_admin: "state",
   lg_admin: "lga",
@@ -44,11 +46,14 @@ export const ROLE_LEVEL: Record<Role, GeoLevel> = {
 //
 // `member` is absent on purpose: member records are created through registration
 // (`members`), not by provisioning a profile.
+// Peer special-case (CR-0015): a super_admin may also provision another super_admin
+// (rank 0, so not "strictly below" itself). No lower tier can target a super_admin.
 export function allowedTargets(role: Role): { role: Role; level: GeoLevel }[] {
-  return ROLE_ORDER.filter((r) => r !== "member" && ROLE_RANK[r] > ROLE_RANK[role]).map((r) => ({
-    role: r,
-    level: ROLE_LEVEL[r],
-  }));
+  return ROLE_ORDER.filter(
+    (r) =>
+      r !== "member" &&
+      (ROLE_RANK[r] > ROLE_RANK[role] || (role === "super_admin" && r === "super_admin")),
+  ).map((r) => ({ role: r, level: ROLE_LEVEL[r] }));
 }
 
 // Which roles a caller may see and manage on the Team page. Same rule as
@@ -60,6 +65,7 @@ export function manageableRoles(role: Role): Role[] {
 // Hierarchy order, most senior first. Drives the role picker's ordering so it
 // always reads top-down.
 export const ROLE_ORDER: Role[] = [
+  "super_admin",
   "national_admin",
   "state_admin",
   "lg_admin",

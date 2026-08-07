@@ -9,6 +9,17 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- **Super Admin (owner) role** (CR-0015, ADR-0017). A role above National Coordinator, at
+  `role_rank` 0, that oversees the whole platform and can create/deactivate/delete any admin,
+  including national admins and other super admins. Because every authorization barrier keys on
+  `role_rank(target) > role_rank(caller)`, ranking it 0 unlocks acting on national admins once the
+  role is added beside `national_admin` in every privileged RLS object (scope engine, `profiles`,
+  `members`, `polling_units`, candidacy + the elective-office catalogue, and the activity log) and
+  the app role maps. A deliberate peer special-case lets an owner appoint/manage other owners; no
+  lower tier can touch a super admin. No new screens: the existing Team page lists national admins
+  as manageable and Give app access offers National Coordinator + Super Admin. Additive migration
+  (enum value + policy/function/CHECK edits), no data change; the enum value is added in its own
+  migration because Postgres cannot add and use an enum value in one transaction.
 - **Everyone is a member** (CR-0014, ADR-0016). Staff accounts (admins, coordinators, leaders) are
   now members of the movement too: each holds a real membership record, number, and downloadable
   card, keyed to their **personal home voter registration** (home state/LGA/ward/polling unit) rather

@@ -1124,6 +1124,7 @@ export type Database = {
       member_status: "active" | "frozen" | "deleted"
       opt_out_status: "requested" | "frozen" | "deleted" | "reactivated"
       user_role:
+        | "super_admin"
         | "national_admin"
         | "state_admin"
         | "lg_admin"
@@ -1273,6 +1274,7 @@ export const Constants = {
       member_status: ["active", "frozen", "deleted"],
       opt_out_status: ["requested", "frozen", "deleted", "reactivated"],
       user_role: [
+        "super_admin",
         "national_admin",
         "state_admin",
         "lg_admin",

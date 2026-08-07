@@ -69,6 +69,7 @@ export function navForRole(role: Role | string | null | undefined): NavItem[] {
       return MEMBER;
     case "leader":
       return LEADER;
+    case "super_admin":
     case "national_admin":
       return [...COORDINATOR_BASE, REGISTER, CANDIDATES, STATES, GEOGRAPHY, LOGS];
     // Ward admins are included: they own their ward's councillor race (CR-0007).

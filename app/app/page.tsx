@@ -365,7 +365,7 @@ async function CoordinatorHome({
     .select("*", { count: "exact", head: true })
     .eq("status", "pending");
 
-  const isNational = role === "national_admin";
+  const isNational = role === "national_admin" || role === "super_admin";
 
   // National sees the whole country on a map. Counts are grouped in memory from
   // the RLS-visible rows, so no scope logic lives here; at national scale this
