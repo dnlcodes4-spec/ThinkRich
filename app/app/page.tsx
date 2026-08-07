@@ -372,9 +372,10 @@ async function CoordinatorHome({
   // would move to an aggregate RPC.
   let mapData: StateDatum[] = [];
   if (isNational) {
-    const [statesRes, memberRows, leaderRows] = await Promise.all([
+    const [statesRes, memberRows, staffRows, leaderRows] = await Promise.all([
       supabase.from("states").select("id, name, is_active"),
-      supabase.from("members").select("state_id").neq("status", "deleted"),
+      supabase.from("members").select("state_id, user_id").neq("status", "deleted"),
+      supabase.from("profiles").select("id, state_id").neq("role", "member"),
       supabase.from("profiles").select("state_id").eq("role", "leader"),
     ]);
     const tally = (rows: { state_id: string | null }[] | null) => {
@@ -382,11 +383,22 @@ async function CoordinatorHome({
       for (const r of rows ?? []) if (r.state_id) m.set(r.state_id, (m.get(r.state_id) ?? 0) + 1);
       return m;
     };
-    const memberBy = tally(memberRows.data);
+    // Everyone in the movement, by state: member records plus staff who have not
+    // recorded a membership yet, placed by their assigned state. Mirrors
+    // movementTotal()'s "members + staff-without-record" so the map matches the
+    // headline. National/super admins have no state, so they count in the total
+    // (the panel) but sit on no state.
+    const onboarded = new Set(
+      (memberRows.data ?? []).map((r) => r.user_id).filter((v): v is string => !!v),
+    );
+    const peopleBy = tally(memberRows.data);
+    for (const p of staffRows.data ?? []) {
+      if (p.state_id && !onboarded.has(p.id)) peopleBy.set(p.state_id, (peopleBy.get(p.state_id) ?? 0) + 1);
+    }
     const leaderBy = tally(leaderRows.data);
     mapData = (statesRes.data ?? []).map((s) => ({
       name: s.name,
-      members: memberBy.get(s.id) ?? 0,
+      members: peopleBy.get(s.id) ?? 0,
       leaders: leaderBy.get(s.id) ?? 0,
       active: !!s.is_active,
     }));
@@ -427,11 +439,13 @@ async function CoordinatorHome({
           <h2 className="font-display text-xl font-semibold tracking-tight text-foreground">
             Across the country
           </h2>
-          <p className="mt-1 text-sm text-muted">Registered voters by state; the movement total is in the panel.</p>
+          <p className="mt-1 text-sm text-muted">Everyone in the movement, by state; the total is in the panel.</p>
           <div className="mt-4">
-            {/* The map colours states by recorded memberships; the Nationwide
-                headline shows the true movement total (incl. staff who have not
-                recorded a home yet), matching the card above. */}
+            {/* The map colours states by everyone in the movement (member records
+                plus staff placed by their assigned state); the Nationwide headline
+                is the true movement total, matching the card above. National and
+                super admins have no state, so they count in the total but not on
+                any state. */}
             <NigeriaMap data={mapData} nationwideMembers={members} />
           </div>
         </section>
