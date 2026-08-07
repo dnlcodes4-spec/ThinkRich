@@ -52,7 +52,9 @@ export default async function TeamPage({
   }
 
   const shown = roles.find((r) => r === sp.level) ?? roles[0];
-  const geo = GEO[shown]!;
+  // super_admin and national_admin are unscoped (no geography), so a managed tier
+  // may have no GEO entry; those rows render without an area column.
+  const geo = GEO[shown];
   // RLS scopes this to the caller's own scope; filter to the level being viewed.
   const { data: team } = await supabase
     .from("profiles")
@@ -61,8 +63,8 @@ export default async function TeamPage({
     .order("full_name");
   const rows = team ?? [];
 
-  const ids = [...new Set(rows.map((r) => r[geo.col]).filter((v): v is string => !!v))];
-  const { data: names } = ids.length
+  const ids = geo ? [...new Set(rows.map((r) => r[geo.col]).filter((v): v is string => !!v))] : [];
+  const { data: names } = geo && ids.length
     ? await supabase.from(geo.table).select("id, name").in("id", ids)
     : { data: [] };
   const nameById = new Map((names ?? []).map((n) => [n.id, n.name]));
@@ -122,7 +124,7 @@ export default async function TeamPage({
                 <div className="min-w-0">
                   <p className="truncate text-sm font-medium text-foreground">{r.full_name}</p>
                   <p className="truncate text-xs text-muted">
-                    {nameById.get(r[geo.col] ?? "") ?? "No area set"}
+                    {geo ? (nameById.get(r[geo.col] ?? "") ?? "No area set") : "Whole country"}
                   </p>
                 </div>
                 <div className="flex items-center gap-3">
