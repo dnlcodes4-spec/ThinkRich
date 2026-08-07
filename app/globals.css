@@ -354,3 +354,26 @@ html {
 @media (prefers-reduced-motion: reduce) {
   .app-fade-in { animation: none; }
 }
+
+/* Statistics charts. The reveal reads as the movement "building": a left-to-right
+   wipe for the growth area/geographic bars, and a horizontal grow for the
+   makeup/health spines. All origin-left so the motion travels with the data. */
+.stats-reveal-x {
+  animation: stats-reveal-x 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: left center;
+}
+svg .stats-reveal-x { transform-box: fill-box; }
+@keyframes stats-reveal-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.stats-rise {
+  animation: stats-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes stats-rise {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stats-reveal-x, .stats-rise { animation: none; transform: none; opacity: 1; }
+}

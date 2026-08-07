@@ -31,7 +31,7 @@ const MUTED = "#9fb6cf";
 /** One phrasing for both counts, shared by the tooltip, the accessible name and
  *  the SVG <title>, so a hover and a screen reader never disagree. */
 function countsLabel(name: string, members: number, leaders: number): string {
-  return `${name}: ${members} voter${members === 1 ? "" : "s"}, ${leaders} leader${leaders === 1 ? "" : "s"}`;
+  return `${name}: ${members} member${members === 1 ? "" : "s"}, ${leaders} leader${leaders === 1 ? "" : "s"}`;
 }
 
 /** Quantile-ish buckets off the observed maximum, so the scale adapts to real data. */
@@ -78,7 +78,7 @@ export function NigeriaMap({
 }: {
   data: StateDatum[];
   /** True movement total for the Nationwide headline (CR-0014). Falls back to the
-   *  sum of per-state recorded memberships when not provided. */
+   *  sum of the per-state member counts when not provided. */
   nationwideMembers?: number;
 }) {
   const [selected, setSelected] = useState<string | null>(null);
@@ -207,7 +207,7 @@ function MapBoard({
             className="h-auto w-full"
             style={{ maxHeight: fullscreen ? "82vh" : undefined }}
             role="img"
-            aria-label={`Map of Nigeria showing registered voters and leaders by state. ${totalMembers} voters and ${totalLeaders} leaders across ${activeStates} active states. Tap a state for its numbers.`}
+            aria-label={`Map of Nigeria showing members and leaders by state. ${totalMembers} members and ${totalLeaders} leaders across ${activeStates} active states. Tap a state for its numbers.`}
           >
             {NIGERIA_STATES.map((s) => {
               const datum = byName.get(s.name);
@@ -326,7 +326,7 @@ function MapBoard({
                   rather than a second line: the tooltip follows the cursor and
                   a taller box starts colliding with the states around it. */}
               <span className="ml-1.5 font-normal" style={{ color: MUTED }}>
-                {tip.members} voter{tip.members === 1 ? "" : "s"}
+                {tip.members} member{tip.members === 1 ? "" : "s"}
                 <span className="mx-1" aria-hidden="true">&middot;</span>
                 {tip.leaders} leader{tip.leaders === 1 ? "" : "s"}
               </span>
@@ -334,7 +334,7 @@ function MapBoard({
           ) : null}
 
           <div className="mt-2 flex flex-wrap items-center gap-2 px-1">
-            <span className="mr-1 text-xs" style={{ color: MUTED }}>Voters</span>
+            <span className="mr-1 text-xs" style={{ color: MUTED }}>Members</span>
             <span className="flex items-center gap-1">
               <span className="size-3 rounded-xs" style={{ background: ZERO_FILL, boxShadow: `inset 0 0 0 1px ${CARD_BORDER}` }} />
               <span className="text-xs" style={{ color: MUTED }}>0</span>
@@ -354,7 +354,7 @@ function MapBoard({
             </span>
             <span className="flex items-center gap-1.5">
               <span className="inline-block size-2.5 rounded-full" style={{ background: GOLD, boxShadow: `0 0 0 1px ${MAP_BG}` }} />
-              <span className="text-xs" style={{ color: MUTED }}>has voters or leaders</span>
+              <span className="text-xs" style={{ color: MUTED }}>has members or leaders</span>
             </span>
           </div>
         </div>
@@ -369,7 +369,7 @@ function MapBoard({
                 {current.active ? "Active" : "Not activated"}
               </p>
               <dl className="mt-4 flex flex-col gap-3">
-                <Metric label="Voters" value={current.members} />
+                <Metric label="Members" value={current.members} />
                 <Metric label="Leaders" value={current.leaders} />
               </dl>
               <button
