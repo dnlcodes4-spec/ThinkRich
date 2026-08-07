@@ -3,6 +3,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { tryCreateAdminClient } from "@/lib/supabase/admin";
 import { NotConfigured } from "@/components/ui/not-configured";
+import { isNationalTier } from "@/lib/terms";
 import { setStateActive } from "./actions";
 
 export const metadata: Metadata = {
@@ -24,7 +25,7 @@ export default async function StatesPage() {
     ? await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle()
     : { data: null };
 
-  if (me?.role !== "national_admin") {
+  if (!isNationalTier(me?.role)) {
     return (
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
         <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">States</h1>

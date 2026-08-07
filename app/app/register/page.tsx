@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 // they stay inside the chain. RLS (members_insert, 0033) is what actually decides;
 // this page mirrors it.
 const FIXED_PU_ROLES = ["leader", "unit_coordinator"];
-const CHOOSE_PU_ROLES = ["ward_admin", "lg_admin", "state_admin", "national_admin"];
+const CHOOSE_PU_ROLES = ["ward_admin", "lg_admin", "state_admin", "national_admin", "super_admin"];
 
 export default async function RegisterMemberPage({
   searchParams,

@@ -4,6 +4,7 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { createClient } from "@/lib/supabase/server";
 import { fieldLabel } from "@/app/app/members/change-request-fields";
 import { reviewChangeRequest } from "@/app/app/members/detail-actions";
+import { isNationalTier } from "@/lib/terms";
 
 export const metadata: Metadata = {
   title: "Correction requests",
@@ -51,7 +52,7 @@ export default async function CorrectionsPage() {
     );
   }
 
-  const canReview = me.role === "national_admin" || me.role === "state_admin";
+  const canReview = isNationalTier(me.role) || me.role === "state_admin";
 
   const { data } = await supabase
     .from("change_requests")

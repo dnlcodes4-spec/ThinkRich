@@ -34,6 +34,12 @@ export function isCoordinator(role: Role | string | null | undefined): boolean {
   );
 }
 
+// Roles with country-wide authority: the National Coordinator and the owner (Super Admin).
+// Use this wherever a guard should admit both, so an above-national role never gets missed.
+export function isNationalTier(role: Role | string | null | undefined): boolean {
+  return role === "national_admin" || role === "super_admin";
+}
+
 const MEMBER_STATUS_LABELS: Record<MemberStatus, string> = {
   active: "Active",
   frozen: "Paused",

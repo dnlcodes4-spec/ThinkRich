@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import type { Database } from "@/lib/database.types";
+import { isNationalTier } from "@/lib/terms";
 
 export const metadata: Metadata = {
   title: "Statistics",
@@ -15,6 +16,7 @@ type GeoCol = "state_id" | "lga_id" | "ward_id" | "polling_unit_id";
 // coordinators just see their totals (no geography breakdown).
 const BREAKDOWN: Partial<Record<Role, { col: GeoCol; table: "states" | "lgas" | "wards" | "polling_units"; label: string }>> = {
   national_admin: { col: "state_id", table: "states", label: "Voters by state" },
+  super_admin: { col: "state_id", table: "states", label: "Voters by state" },
   state_admin: { col: "lga_id", table: "lgas", label: "Voters by LGA" },
   lg_admin: { col: "ward_id", table: "wards", label: "Voters by ward" },
   ward_admin: { col: "polling_unit_id", table: "polling_units", label: "Voters by polling unit" },
@@ -70,7 +72,7 @@ export default async function StatsPage() {
   }
 
   let activeStates: number | null = null;
-  if (profile.role === "national_admin") {
+  if (isNationalTier(profile.role)) {
     const { count } = await supabase.from("states").select("*", { count: "exact", head: true }).eq("is_active", true);
     activeStates = count ?? 0;
   }

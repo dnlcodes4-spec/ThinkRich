@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { tryCreateAdminClient } from "@/lib/supabase/admin";
 import { StatusPill, type MemberStatus } from "@/components/ui/status-pill";
+import { isNationalTier } from "@/lib/terms";
 import { fieldLabel } from "../change-request-fields";
 import { reviewChangeRequest } from "../detail-actions";
 import { LeaderPhotoUpload } from "./leader-photo";
@@ -54,7 +55,7 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
     photoUrl = data?.signedUrl ?? null;
   }
 
-  const canReview = me.role === "national_admin" || me.role === "state_admin";
+  const canReview = isNationalTier(me.role) || me.role === "state_admin";
   const requests = reqs.data ?? [];
   const fmtDate = (iso: string) => new Date(iso).toLocaleDateString("en-NG", { year: "numeric", month: "short", day: "numeric" });
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { type ConstituencyKind } from "@/lib/offices";
+import { isNationalTier } from "@/lib/terms";
 import { CandidateTabs } from "../tabs";
 import { SeatPicker } from "./seat-picker";
 import { AreaEditor } from "./area-editor";
@@ -42,7 +43,7 @@ export default async function ConstituencyAreasPage({
     ? await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle()
     : { data: null };
 
-  if (profile?.role !== "national_admin") {
+  if (!isNationalTier(profile?.role)) {
     return (
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
         <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">

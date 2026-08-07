@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { type ActionState, ok, fail } from "@/lib/action-state";
+import { isNationalTier } from "@/lib/terms";
 
 // Manual constituency-membership editing (T-031c, CR-0013 §4b). Only the national
 // admin may do this; the `catalogue_write` RLS policy is the real gate, and this
@@ -33,7 +34,7 @@ export async function saveMembership(
   if (!user) return fail("You must be signed in.");
 
   const { data: me } = await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle();
-  if (me?.role !== "national_admin") return fail("Only the national admin can edit constituency areas.");
+  if (!isNationalTier(me?.role)) return fail("Only the national admin can edit constituency areas.");
 
   const parsed = schema.safeParse({
     constituency_id: formData.get("constituency_id"),
