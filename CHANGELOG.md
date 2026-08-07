@@ -89,6 +89,18 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   cannot be moved out of the role until those members are reassigned. Enforced by a trigger.
 
 ### Changed
+- **National dashboard map counts everyone, by state** (CR-0015 follow-up). The Nigeria map's
+  per-state figures now count the whole movement (member records plus staff placed by their assigned
+  state), not only registered-voter records, so the map agrees with the "Members" headline and the
+  movement total. National and super admins have no state, so they count in the total but sit on no
+  state. Labels moved from "Voters" to "Members" throughout the map.
+- **Statistics page rebuilt as a movement dashboard** (CR-0015 follow-up). Role-aware KPI cards with
+  sparklines and proportion meters; a growth area chart with a labelled y-axis and a called-out total;
+  a tier-ladder "Movement makeup"; ranked geographic bars; and member-record health + gender cuts.
+  Totals and the geographic breakdown count everyone in the movement (matching the map); the
+  demographic and status cuts stay registered-voter-record based, since those fields exist only on
+  membership records. Charts are hand-built inline SVG on brand tokens (no new dependency), reveal
+  left-to-right on load, and honour reduced-motion.
 - **Leaders are no longer capped at ten members** (CR-0009 §3.4). The trigger and function are
   dropped; ten becomes a milestone celebrated permanently on the leader's dashboard rather than a
   ceiling. Eleven documentation sites that described it as a limit were corrected. Note this is not
