@@ -1,6 +1,7 @@
 "use server";
 
 import { z } from "zod";
+import { zodFail } from "@/lib/action-state";
 import { createClient } from "@/lib/supabase/server";
 import { tryCreateAdminClient, ADMIN_NOT_CONFIGURED } from "@/lib/supabase/admin";
 import { normalizeVin, VIN_INVALID } from "@/lib/vin";
@@ -35,7 +36,7 @@ const schema = z.object({
   // so the form omits the field. Required (enforced below) only when there is none.
   vin: z.string().trim().optional(),
   gender: z.enum(["male", "female"], { message: "Choose a gender." }),
-  phone: z.string().trim().optional(),
+  phone: z.string().trim().min(1, "Enter your phone number."),
   polling_unit_id: z.string().uuid("Choose your home polling unit."),
 });
 
@@ -58,15 +59,11 @@ export async function completeMyMembership(
     nin: formData.get("nin"),
     vin: formData.get("vin"),
     gender: formData.get("gender"),
-    phone: formData.get("phone") || undefined,
+    phone: formData.get("phone") ?? "",
     polling_unit_id: formData.get("polling_unit_id") || undefined,
   });
   if (!parsed.success) {
-    const fieldErrors: Record<string, string> = {};
-    for (const [k, m] of Object.entries(parsed.error.flatten().fieldErrors)) {
-      if (m && m[0]) fieldErrors[k] = m[0];
-    }
-    return { status: "error", message: "Please fix the highlighted fields.", fieldErrors };
+    return zodFail(parsed.error);
   }
 
   // The caller's profile. Base-tier members are registered by a leader, not here.
@@ -106,11 +103,8 @@ export async function completeMyMembership(
     };
   }
 
-  let phone: string | null = null;
-  if (parsed.data.phone) {
-    phone = normalizePhone(parsed.data.phone);
-    if (!phone) return { status: "error", message: PHONE_INVALID, fieldErrors: { phone: PHONE_INVALID } };
-  }
+  const phone = normalizePhone(parsed.data.phone);
+  if (!phone) return { status: "error", message: PHONE_INVALID, fieldErrors: { phone: PHONE_INVALID } };
 
   // Resolve the home path from the chosen polling unit, so state/lga/ward are consistent.
   const { data: unit } = await admin

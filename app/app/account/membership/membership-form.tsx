@@ -77,7 +77,8 @@ export function MembershipForm({ pollingUnitId, defaultFullName, hasVin, vin }: 
             name="phone"
             type="tel"
             autoComplete="tel"
-            hint="Optional. Nigerian mobile, e.g. 0803 123 4567."
+            required
+            hint="Nigerian mobile, e.g. 0803 123 4567."
             error={fe.phone}
           />
           <Input
