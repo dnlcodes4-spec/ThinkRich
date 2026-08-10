@@ -166,6 +166,7 @@ export default async function CompleteMembershipPage({
           pollingUnitId={unit.id}
           defaultFullName={profile.full_name ?? ""}
           hasVin={Boolean(profile.vin_id)}
+          vin={profile.vin_id ?? ""}
         />
       </div>
     </main>

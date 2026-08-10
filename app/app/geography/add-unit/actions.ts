@@ -1,6 +1,7 @@
 "use server";
 
 import { z } from "zod";
+import { zodFail } from "@/lib/action-state";
 import { createClient } from "@/lib/supabase/server";
 import {
   normalizePollingUnitName,
@@ -53,9 +54,7 @@ export async function addPollingUnit(_prev: AddUnitState, formData: FormData): P
     code: formData.get("code") || undefined,
   });
   if (!parsed.success) {
-    const fe: Record<string, string> = {};
-    for (const [k, m] of Object.entries(parsed.error.flatten().fieldErrors)) if (m?.[0]) fe[k] = m[0];
-    return { status: "error", message: "Please fix the highlighted fields.", fieldErrors: fe };
+    return zodFail(parsed.error);
   }
 
   const name = normalizePollingUnitName(parsed.data.name);

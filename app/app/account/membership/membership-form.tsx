@@ -16,11 +16,13 @@ export type MembershipFormProps = {
   pollingUnitId: string;
   /** Pre-fill their name from the profile; they can correct it. */
   defaultFullName: string;
-  /** When the profile already has a VIN, reuse it: hide the field. */
+  /** When the profile already has a VIN, reuse it: show it read-only. */
   hasVin: boolean;
+  /** The VIN already on the profile, shown read-only when hasVin. */
+  vin: string;
 };
 
-export function MembershipForm({ pollingUnitId, defaultFullName, hasVin }: MembershipFormProps) {
+export function MembershipForm({ pollingUnitId, defaultFullName, hasVin, vin }: MembershipFormProps) {
   const [state, action, pending] = useActionState(completeMyMembership, initial);
   const fe = state.fieldErrors ?? {};
   // Artifact form: the success view below is the confirmation, so no toast.
@@ -75,7 +77,8 @@ export function MembershipForm({ pollingUnitId, defaultFullName, hasVin }: Membe
             name="phone"
             type="tel"
             autoComplete="tel"
-            hint="Optional. Nigerian mobile, e.g. 0803 123 4567."
+            required
+            hint="Nigerian mobile, e.g. 0803 123 4567."
             error={fe.phone}
           />
           <Input
@@ -87,7 +90,18 @@ export function MembershipForm({ pollingUnitId, defaultFullName, hasVin }: Membe
             error={fe.date_of_birth}
           />
           <Input label="NIN" name="nin" required hint="National ID number" error={fe.nin} />
-          {hasVin ? null : <VinInput error={fe.vin} />}
+          {hasVin ? (
+            <Input
+              label="Voter's card number (VIN)"
+              name="vin_display"
+              defaultValue={vin}
+              readOnly
+              hint="On file from your account."
+              className="bg-surface-muted"
+            />
+          ) : (
+            <VinInput error={fe.vin} />
+          )}
           <Select label="Gender" name="gender" required defaultValue="" error={fe.gender}>
             <option value="" disabled>
               Select&hellip;
