@@ -1,6 +1,7 @@
 "use server";
 
 import { z } from "zod";
+import { zodFail } from "@/lib/action-state";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient, isAdminConfigured, ADMIN_NOT_CONFIGURED } from "@/lib/supabase/admin";
 import { generateTempPassword } from "@/lib/provisioning";
@@ -78,11 +79,7 @@ export async function createAccount(
     polling_unit_id: str(formData, "polling_unit_id"),
   });
   if (!parsed.success) {
-    const fieldErrors: Record<string, string> = {};
-    for (const [k, msgs] of Object.entries(parsed.error.flatten().fieldErrors)) {
-      if (msgs && msgs[0]) fieldErrors[k] = msgs[0];
-    }
-    return { status: "error", message: "Please fix the highlighted fields.", fieldErrors };
+    return zodFail(parsed.error);
   }
   const d = parsed.data;
 

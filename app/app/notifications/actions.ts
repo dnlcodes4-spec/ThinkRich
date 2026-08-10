@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
+import { zodFail } from "@/lib/action-state";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { notify } from "@/lib/notify";
@@ -14,8 +15,8 @@ export type AnnounceState = {
 };
 
 const schema = z.object({
-  title: z.string().trim().min(3, "Enter a short headline.").max(120),
-  body: z.string().trim().max(1000).optional(),
+  title: z.string().trim().min(3, "Enter a short headline.").max(120, "Keep the headline under 120 characters."),
+  body: z.string().trim().max(1000, "Keep the message under 1000 characters.").optional(),
 });
 
 // A leader/admin broadcasts to the members in their scope. Recipients are resolved
@@ -32,9 +33,7 @@ export async function sendAnnouncement(_prev: AnnounceState, formData: FormData)
 
   const parsed = schema.safeParse({ title: formData.get("title"), body: formData.get("body") || undefined });
   if (!parsed.success) {
-    const fieldErrors: Record<string, string> = {};
-    for (const [k, m] of Object.entries(parsed.error.flatten().fieldErrors)) if (m && m[0]) fieldErrors[k] = m[0];
-    return { status: "error", message: "Please fix the highlighted fields.", fieldErrors };
+    return zodFail(parsed.error);
   }
 
   const { data: members } = await supabase

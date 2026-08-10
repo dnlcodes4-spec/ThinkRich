@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
+import { zodFail } from "@/lib/action-state";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { CANDIDATE_PHOTOS_BUCKET, scopeValuesFor, type ConstituencyKind } from "@/lib/offices";
@@ -21,10 +22,10 @@ const schema = z.object({
   office_type_id: z.string().uuid("Choose an office."),
   geo_id: z.string().uuid().optional(),
   full_name: z.string().trim().min(2, "Enter the candidate's full name."),
-  running_mate_name: z.string().trim().max(160).optional(),
+  running_mate_name: z.string().trim().max(160, "Keep the running mate's name under 160 characters.").optional(),
   party_id: z.string().uuid().optional(),
-  slogan: z.string().trim().max(200).optional(),
-  bio: z.string().trim().max(2000).optional(),
+  slogan: z.string().trim().max(200, "Keep the slogan under 200 characters.").optional(),
+  bio: z.string().trim().max(2000, "Keep the bio under 2000 characters.").optional(),
   is_endorsed: z.boolean(),
   is_published: z.boolean(),
 });
@@ -61,9 +62,7 @@ export async function saveCandidacy(_prev: CandidacyState, formData: FormData): 
     is_published: formData.get("is_published") === "on",
   });
   if (!parsed.success) {
-    const fieldErrors: Record<string, string> = {};
-    for (const [k, m] of Object.entries(parsed.error.flatten().fieldErrors)) if (m && m[0]) fieldErrors[k] = m[0];
-    return { status: "error", message: "Please fix the highlighted fields.", fieldErrors };
+    return zodFail(parsed.error);
   }
   const d = parsed.data;
 

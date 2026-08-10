@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
+import { zodFail } from "@/lib/action-state";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { generateTempPassword } from "@/lib/provisioning";
 import { normalizeVin, VIN_INVALID } from "@/lib/vin";
@@ -45,11 +46,7 @@ export async function createNationalAdmin(
     vin: formData.get("vin"),
   });
   if (!parsed.success) {
-    const fieldErrors: Record<string, string> = {};
-    for (const [k, msgs] of Object.entries(parsed.error.flatten().fieldErrors)) {
-      if (msgs && msgs[0]) fieldErrors[k] = msgs[0];
-    }
-    return { status: "error", message: "Please fix the highlighted fields.", fieldErrors };
+    return zodFail(parsed.error);
   }
 
   // Normalise server-side: voter_ids.vin is a primary key, so an unsanitised value

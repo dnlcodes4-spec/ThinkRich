@@ -1,6 +1,7 @@
 "use server";
 
 import { z } from "zod";
+import { zodFail } from "@/lib/action-state";
 import { createClient } from "@/lib/supabase/server";
 import { provisionMemberLogin } from "@/app/app/members/provision-login";
 import { logActivityAs } from "@/lib/activity";
@@ -114,11 +115,7 @@ export async function registerMember(
     registered_by: formData.get("registered_by") || undefined,
   });
   if (!parsed.success) {
-    const fieldErrors: Record<string, string> = {};
-    for (const [key, msgs] of Object.entries(parsed.error.flatten().fieldErrors)) {
-      if (msgs && msgs[0]) fieldErrors[key] = msgs[0];
-    }
-    return { status: "error", message: "Please fix the highlighted fields.", fieldErrors };
+    return zodFail(parsed.error);
   }
 
   // Normalise BEFORE anything touches the database. This is the only gate; the

@@ -1,6 +1,7 @@
 "use server";
 
 import { z } from "zod";
+import { zodFail } from "@/lib/action-state";
 import { createClient } from "@/lib/supabase/server";
 import { tryCreateAdminClient, ADMIN_NOT_CONFIGURED } from "@/lib/supabase/admin";
 import { FLAG_CHOSEN } from "@/lib/must-change-password";
@@ -41,11 +42,7 @@ export async function changePassword(
     confirm: formData.get("confirm"),
   });
   if (!parsed.success) {
-    const fieldErrors: Record<string, string> = {};
-    for (const [k, m] of Object.entries(parsed.error.flatten().fieldErrors)) {
-      if (m && m[0]) fieldErrors[k] = m[0];
-    }
-    return { status: "error", message: "Please fix the highlighted fields.", fieldErrors };
+    return zodFail(parsed.error);
   }
 
   const { error } = await supabase.auth.updateUser({ password: parsed.data.password });

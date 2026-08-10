@@ -1,6 +1,7 @@
 "use server";
 
 import { z } from "zod";
+import { zodFail } from "@/lib/action-state";
 
 // Server-side validation for the partnership request (every Server Action validates input — Zod).
 const schema = z.object({
@@ -32,16 +33,7 @@ export async function requestPartnership(
   });
 
   if (!parsed.success) {
-    const flat = parsed.error.flatten().fieldErrors;
-    const fieldErrors: Record<string, string> = {};
-    for (const [key, msgs] of Object.entries(flat)) {
-      if (msgs && msgs[0]) fieldErrors[key] = msgs[0];
-    }
-    return {
-      status: "error",
-      message: "Please fix the highlighted fields.",
-      fieldErrors,
-    };
+    return zodFail(parsed.error);
   }
 
   // TODO(partnership-destination): persist the lead + notify the team (email / a
