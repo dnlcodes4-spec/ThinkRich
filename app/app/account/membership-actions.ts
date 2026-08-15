@@ -1,9 +1,9 @@
 "use server";
 
-import { z } from "zod";
 import { zodFail } from "@/lib/action-state";
 import { createClient } from "@/lib/supabase/server";
 import { tryCreateAdminClient, ADMIN_NOT_CONFIGURED } from "@/lib/supabase/admin";
+import { membershipSchema, readMembershipForm } from "@/lib/membership-form";
 import { normalizeVin, VIN_INVALID } from "@/lib/vin";
 import { normalizePhone, PHONE_INVALID } from "@/lib/phone";
 import { isAdult } from "@/lib/age";
@@ -28,18 +28,6 @@ export type MembershipState = {
   fieldErrors?: Record<string, string>;
 };
 
-const schema = z.object({
-  full_name: z.string().trim().min(2, "Enter your full name."),
-  date_of_birth: z.string().min(1, "Enter your date of birth."),
-  nin: z.string().trim().min(1, "Enter your NIN."),
-  // Optional here: a staff account that already has a VIN on its profile reuses it,
-  // so the form omits the field. Required (enforced below) only when there is none.
-  vin: z.string().trim().optional(),
-  gender: z.enum(["male", "female"], { message: "Choose a gender." }),
-  phone: z.string().trim().min(1, "Enter your phone number."),
-  polling_unit_id: z.string().uuid("Choose your home polling unit."),
-});
-
 export async function completeMyMembership(
   _prev: MembershipState,
   formData: FormData,
@@ -53,15 +41,7 @@ export async function completeMyMembership(
   const admin = tryCreateAdminClient();
   if (!admin) return { status: "error", message: ADMIN_NOT_CONFIGURED };
 
-  const parsed = schema.safeParse({
-    full_name: formData.get("full_name"),
-    date_of_birth: formData.get("date_of_birth"),
-    nin: formData.get("nin"),
-    vin: formData.get("vin"),
-    gender: formData.get("gender"),
-    phone: formData.get("phone") ?? "",
-    polling_unit_id: formData.get("polling_unit_id") || undefined,
-  });
+  const parsed = membershipSchema.safeParse(readMembershipForm(formData));
   if (!parsed.success) {
     return zodFail(parsed.error);
   }
