@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { GeoPickerAddUnit } from "./geo-picker-add-unit";
+import { GeoPickerAddWard } from "./geo-picker-add-ward";
 
 export type GeoDepth = "state" | "lga" | "ward" | "polling_unit";
 export type GeoSelection = { stateId?: string; lgaId?: string; wardId?: string; pollingUnitId?: string };
@@ -23,6 +24,7 @@ export async function GeoPicker({
   hiddenFields = {},
   submitLabel = "Show",
   addPollingUnit = false,
+  addWard = false,
 }: {
   action: string;
   selection: GeoSelection;
@@ -32,6 +34,8 @@ export async function GeoPicker({
   submitLabel?: string;
   /** Offer an inline "add a polling unit" once a ward is chosen (CR-0018). */
   addPollingUnit?: boolean;
+  /** Offer an inline "add a ward" once an LGA is chosen (mirrors CR-0018). */
+  addWard?: boolean;
 }) {
   const supabase = await createClient();
 
@@ -83,10 +87,17 @@ export async function GeoPicker({
   // Show the inline add once a ward is chosen and the polling-unit select is on
   // screen (units !== null means it is being rendered, not locked/fixed).
   const showAddUnit = addPollingUnit && reaches(depth, "polling_unit") && !!wardId && units !== null;
+  // Offer add-ward once an LGA is chosen and the ward select is on screen (wards
+  // !== null means it is being rendered, not locked/fixed).
+  const showAddWard = addWard && reaches(depth, "ward") && !!lgaId && wards !== null;
   const preserved: Record<string, string> = { ...hiddenFields };
   if (stateId) preserved.state = stateId;
   if (lgaId) preserved.lga = lgaId;
   if (wardId) preserved.ward = wardId;
+  // Add-ward preserves up to the LGA only; the new ward becomes the selection.
+  const preservedForWard: Record<string, string> = { ...hiddenFields };
+  if (stateId) preservedForWard.state = stateId;
+  if (lgaId) preservedForWard.lga = lgaId;
 
   return (
     <div className="flex flex-col gap-4">
@@ -107,6 +118,9 @@ export async function GeoPicker({
       </form>
       {showAddUnit ? (
         <GeoPickerAddUnit wardId={wardId!} action={action} params={preserved} />
+      ) : null}
+      {showAddWard ? (
+        <GeoPickerAddWard lgaId={lgaId!} action={action} params={preservedForWard} />
       ) : null}
     </div>
   );

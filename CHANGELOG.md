@@ -9,6 +9,16 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- **Admins can add a missing ward** (CR-0023). The same counter-measure shipped for polling
+  units (CR-0018), moved one level up: a ward is a child of an LGA, so LGA-level coordinators and
+  above may add one, scoped to their own area (national/super anywhere); ward and unit tiers are
+  deliberately excluded (they own a single ward, not the creation of siblings). A new
+  `/app/geography/add-ward` page searches an LGA's existing wards before adding, and the ward step
+  of the geo picker gains an inline "Can't find your ward? Add it" during account creation. RLS
+  (`wards_insert`, migration 0041) is the control; the action mirrors it and dedupes
+  case-insensitively (the DB `unique(lga_id, name)` is the backstop). Ward names keep their
+  mixed case (place names like "Auna South"), unlike the uppercased polling-unit names, and
+  `ward_number` is still assigned by the existing trigger.
 - **Super Admin (owner) role** (CR-0015, ADR-0017). A role above National Coordinator, at
   `role_rank` 0, that oversees the whole platform and can create/deactivate/delete any admin,
   including national admins and other super admins. Because every authorization barrier keys on

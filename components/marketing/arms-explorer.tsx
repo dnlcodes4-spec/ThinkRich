@@ -16,6 +16,10 @@ import {
 export type Arm = {
   key: string;
   abbr: string;
+  /** Path to the arm's supplied logo. */
+  logo?: string;
+  /** Tile ground for the mark: warm lifts the gold $M Club, navy suits the gold Think-Winners mark. */
+  tone?: "warm" | "navy";
   name: string;
   focus: string;
   motto: string;
@@ -158,7 +162,7 @@ export function ArmsExplorer({ arms }: { arms: Arm[] }) {
                     className="absolute left-0 top-1/2 h-8 w-1 -translate-y-1/2 rounded-r-full bg-green-500"
                   />
                 )}
-                <ArmMark abbr={a.abbr} className="w-11 shrink-0" />
+                <ArmMark logo={a.logo} abbr={a.abbr} name={a.name} tone={a.tone} className="w-11 shrink-0" />
                 <span className="min-w-0 flex-1">
                   <span className="block font-display text-lg font-semibold leading-tight text-ink-950">
                     {a.name}
@@ -202,7 +206,7 @@ export function ArmsExplorer({ arms }: { arms: Arm[] }) {
                 aria-expanded={on}
                 className="flex w-full items-center gap-3.5 p-4 text-left"
               >
-                <ArmMark abbr={a.abbr} className="w-12 shrink-0" />
+                <ArmMark logo={a.logo} abbr={a.abbr} name={a.name} tone={a.tone} className="w-12 shrink-0" />
                 <span className="min-w-0 flex-1">
                   <span className="block font-display text-lg font-semibold leading-tight text-ink-950">
                     {a.name}
@@ -256,7 +260,7 @@ function ArmDetail({ arm }: { arm: Arm }) {
           <Icon className="pointer-events-none absolute -right-6 -top-8 h-44 w-44 text-green-400/10" />
         )}
         <div className="relative flex items-center gap-4">
-          <ArmMark abbr={arm.abbr} className="w-14 shrink-0 ring-1 ring-green-400/30" />
+          <ArmMark logo={arm.logo} abbr={arm.abbr} name={arm.name} tone={arm.tone} className="w-14 shrink-0" />
           <div className="min-w-0 flex-1">
             <p className="font-display text-lg font-semibold text-ink-50">{arm.name}</p>
             <p className="text-sm text-ink-50/60">{arm.focus}</p>
