@@ -62,6 +62,9 @@ const REGISTER: NavItem = {
 const LOGS: NavItem = { href: "/app/logs", label: "Activity", icon: "inbox", short: "Activity" };
 // National only: browse the geography data (states / LGAs / wards / polling units).
 const GEOGRAPHY: NavItem = { href: "/app/geography", label: "Geography", icon: "layers", short: "Geography" };
+// LGA-level and up: add wards the seed missed, scoped to the caller's area
+// (mirrors the polling-unit add). Ward/unit tiers are below ward creation.
+const ADD_WARD: NavItem = { href: "/app/geography/add-ward", label: "Add ward", icon: "layers", short: "Add ward" };
 
 export function navForRole(role: Role | string | null | undefined): NavItem[] {
   switch (role) {
@@ -71,10 +74,13 @@ export function navForRole(role: Role | string | null | undefined): NavItem[] {
       return LEADER;
     case "super_admin":
     case "national_admin":
-      return [...COORDINATOR_BASE, REGISTER, CANDIDATES, STATES, GEOGRAPHY, LOGS];
-    // Ward admins are included: they own their ward's councillor race (CR-0007).
+      return [...COORDINATOR_BASE, ADD_WARD, REGISTER, CANDIDATES, STATES, GEOGRAPHY, LOGS];
+    // State and LGA coordinators can add wards within their scope; ward admins
+    // cannot (they own one ward, not the creation of siblings).
     case "state_admin":
     case "lg_admin":
+      return [...COORDINATOR_BASE, ADD_WARD, REGISTER, CANDIDATES];
+    // Ward admins are included in candidates: they own their ward's councillor race (CR-0007).
     case "ward_admin":
       return [...COORDINATOR_BASE, REGISTER, CANDIDATES];
     case "unit_coordinator":
