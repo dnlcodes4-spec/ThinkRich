@@ -38,6 +38,7 @@ const arms = [
   {
     key: "concept",
     abbr: "CI",
+    logo: "/arms-logo/concept.png",
     name: "ThinkRich Concept International",
     focus: "Leadership & value creation",
     motto: "Creating Value for Mankind",
@@ -57,6 +58,7 @@ const arms = [
   {
     key: "mcps",
     abbr: "MCPS",
+    logo: "/arms-logo/cooperative.png",
     name: "ThinkRich MCPS Cooperative",
     focus: "Cooperative finance",
     motto: "Let's Get Richer Together",
@@ -76,6 +78,7 @@ const arms = [
   {
     key: "thinkhelp",
     abbr: "TH",
+    logo: "/arms-logo/help.png",
     name: "ThinkHelp International Foundation",
     focus: "Humanitarian service",
     motto: "Get Help",
@@ -95,6 +98,7 @@ const arms = [
   {
     key: "academy",
     abbr: "TA",
+    logo: "/arms-logo/academy.png",
     name: "ThinkRich Academy",
     focus: "Education & mentorship",
     motto: "Be Rich",
@@ -114,6 +118,8 @@ const arms = [
   {
     key: "mclub",
     abbr: "$M",
+    logo: "/arms-logo/m-club.png",
+    tone: "warm" as const,
     name: "ThinkRich $M Club",
     focus: "Wealth-building",
     motto: "Put in Mind",
@@ -133,6 +139,8 @@ const arms = [
   {
     key: "twm",
     abbr: "TWM",
+    logo: "/think-winners/logo-mark-light.png",
+    tone: "navy" as const,
     name: "Think-Winners Movement",
     focus: "Civic mobilization",
     motto: "Thinking Together, Winning Together",
