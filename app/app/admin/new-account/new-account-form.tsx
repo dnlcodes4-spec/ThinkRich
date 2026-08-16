@@ -58,6 +58,11 @@ function Inner({ onReset, targetRole, targetRoleLabel, scope }: Props & { onRese
       {scope.ward_id ? <input type="hidden" name="ward_id" value={scope.ward_id} /> : null}
       {scope.polling_unit_id ? <input type="hidden" name="polling_unit_id" value={scope.polling_unit_id} /> : null}
 
+      <p className="text-sm text-muted">
+        The details below belong to the <span className="capitalize text-foreground">{targetRoleLabel}</span> you&apos;re
+        creating, not to you.
+      </p>
+
       <Input label="Full name" name="full_name" autoComplete="name" required error={fe.full_name} />
       <Input label="Email" name="email" type="email" autoComplete="off" required error={fe.email} />
       <Input
@@ -69,7 +74,7 @@ function Inner({ onReset, targetRole, targetRoleLabel, scope }: Props & { onRese
         hint="Nigerian mobile, e.g. 0803 123 4567."
         error={fe.phone}
       />
-      <VinInput error={fe.vin} />
+      <VinInput label="Their voter's card number (VIN)" error={fe.vin} />
 
       {fe.geo ? <p className="text-xs text-danger">{fe.geo}</p> : null}
 

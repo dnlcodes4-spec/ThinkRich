@@ -8,6 +8,9 @@ describe("phone", () => {
     expect(normalizePhone("234-803-123-4567")).toBe("+2348031234567");
     expect(normalizePhone("8031234567")).toBe("+2348031234567");
     expect(normalizePhone("(0803) 123-4567")).toBe("+2348031234567");
+    // Country code AND the trunk 0 kept together — a very common way to type it.
+    expect(normalizePhone("+234 0803 123 4567")).toBe("+2348031234567");
+    expect(normalizePhone("234 0803 123 4567")).toBe("+2348031234567");
   });
 
   it("rejects non-Nigerian / malformed numbers", () => {
