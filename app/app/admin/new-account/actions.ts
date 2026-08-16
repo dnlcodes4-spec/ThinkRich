@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import { zodFail } from "@/lib/action-state";
+import { emailField } from "@/lib/email";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient, isAdminConfigured, ADMIN_NOT_CONFIGURED } from "@/lib/supabase/admin";
 import { generateTempPassword } from "@/lib/provisioning";
@@ -23,7 +24,7 @@ import { roleLabel } from "@/lib/terms";
 
 const schema = z.object({
   full_name: z.string().trim().min(2, "Enter the person's full name."),
-  email: z.email("Enter a valid email address."),
+  email: emailField(),
   // CR-0009 item 1: "before registering any admin, include voter card number".
   vin: z.string().trim().min(1, "Enter the voter's card number (VIN)."),
   // CR-0017 item 1: phone required on every creation form.
