@@ -41,6 +41,20 @@ export function CandidateForm(props: CandidateFormProps) {
   const shown = preview ?? photoUrl;
   const formError = state.status === "error" ? state.message : undefined;
 
+  // A candidate is always assigned to an election. With none active, the select
+  // would render empty and any submit would fail; show a clear message instead.
+  if (elections.length === 0) {
+    return (
+      <div className="rounded-card border border-dashed border-border p-5">
+        <p className="text-sm font-semibold text-foreground">No active election yet</p>
+        <p className="mt-1 text-sm text-muted">
+          Candidates are added to an election. Once an election is created and active, this form
+          will let you add candidates for {officeTitle}.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <form action={action} className="flex flex-col gap-5">
       <input type="hidden" name="office_type_id" value={officeTypeId} />

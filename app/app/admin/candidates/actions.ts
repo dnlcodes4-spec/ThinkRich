@@ -50,7 +50,10 @@ export async function saveCandidacy(_prev: CandidacyState, formData: FormData): 
 
   const parsed = schema.safeParse({
     id: str(formData, "id"),
-    election_id: str(formData, "election_id"),
+    // Required: read as "" (not undefined) so the friendly ".uuid(Choose an
+    // election.)" message fires instead of the cryptic base-type error if the
+    // field ever arrives empty.
+    election_id: formData.get("election_id") ?? "",
     office_type_id: str(formData, "office_type_id"),
     geo_id: str(formData, "geo_id"),
     full_name: formData.get("full_name"),
