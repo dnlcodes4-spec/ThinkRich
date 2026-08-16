@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { zodFail } from "@/lib/action-state";
+import { emailField } from "@/lib/email";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { generateTempPassword } from "@/lib/provisioning";
 import { normalizeVin, VIN_INVALID } from "@/lib/vin";
@@ -28,7 +29,7 @@ export type BootstrapState = {
 
 const schema = z.object({
   full_name: z.string().trim().min(2, "Enter the person's full name."),
-  email: z.email("Enter a valid email address."),
+  email: emailField(),
   // CR-0009: every active non-member profile must carry a VIN (profiles_vin_required).
   // The bootstrap creates a national admin, so it needs one too.
   vin: z.string().trim().min(1, "Enter the voter's card number (VIN)."),

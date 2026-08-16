@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import { zodFail } from "@/lib/action-state";
+import { emailField } from "@/lib/email";
 import { createClient } from "@/lib/supabase/server";
 import { provisionMemberLogin } from "@/app/app/members/provision-login";
 import { logActivityAs } from "@/lib/activity";
@@ -48,7 +49,7 @@ const schema = z.object({
   // Required for everyone as of CR-0017. Validated after normalisation.
   phone: z.string().trim().min(1, "Enter the voter's phone number."),
   gender: z.enum(["male", "female"], { message: "Choose a gender." }),
-  email: z.union([z.literal(""), z.email("Enter a valid email address.")]).optional(),
+  email: z.union([z.literal(""), emailField()]).optional(),
   account_number: z.string().trim().optional(),
   account_name: z.string().trim().optional(),
   bank_name: z.string().trim().optional(),

@@ -3,12 +3,13 @@
 import { z } from "zod";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { emailField } from "@/lib/email";
 
 // Email + password sign-in (ADR-0011). Accounts are provisioned, so there is no
 // sign-up action here. RLS remains the authorization boundary (ADR-0005); this
 // only establishes the session.
 const schema = z.object({
-  email: z.email("Enter a valid email address."),
+  email: emailField(),
   password: z.string().min(1, "Enter your password."),
 });
 

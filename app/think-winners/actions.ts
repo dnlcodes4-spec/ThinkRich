@@ -2,13 +2,14 @@
 
 import { z } from "zod";
 import { zodFail } from "@/lib/action-state";
+import { emailField } from "@/lib/email";
 
 // Server-side validation for the partnership request (every Server Action validates input — Zod).
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name."),
   organization: z.string().trim().min(2, "Enter your campaign or organization."),
   role: z.string().trim().optional(),
-  email: z.email("Enter a valid email address."),
+  email: emailField(),
   phone: z.string().trim().optional(),
   message: z.string().trim().min(10, "Tell us a little about your campaign."),
 });
