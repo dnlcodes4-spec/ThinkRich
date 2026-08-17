@@ -41,7 +41,7 @@ const arms = [
     logo: "/arms-logo/concept.png",
     name: "ThinkRich Concept International",
     focus: "Leadership & value creation",
-    motto: "Creating Value for Mankind",
+    motto: "Where opportunity becomes prosperity",
     blurb:
       "A leadership, innovation, and value-creation organization. It turns ideas into opportunities, and opportunities into lasting value.",
     mission:

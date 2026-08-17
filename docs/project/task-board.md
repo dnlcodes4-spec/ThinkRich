@@ -175,6 +175,9 @@ _PR open, awaiting review + CI._
 ## ✅ Done
 _Merged to `main`, meets Definition of Done._
 
+- **T-060** — Migration: `phone` on `profiles` + `members` + shared `lib/phone.ts` (PR `c96db0e`) _(CR-0017)_
+- **T-061** — Phone field on every creation form (new-account, dev bootstrap, register) (PR `fdc75c4`) _(CR-0017)_
+- **T-062** — Widened member-registration authorization to all coordinator tiers, National→Leader (PR `fdc75c4`) _(CR-0017)_
 - **T-010** — Web Push (PR #24, resolves Q4) + KYM leader verification (PR #26) + wired opt-out/change-request notification events (PR #25)
 - **T-023** — In-app notifications: centre + unread badge + announcements (PR #23)
 - **T-021** — Admin management: deactivate/reactivate subordinate admins (PR #22)
