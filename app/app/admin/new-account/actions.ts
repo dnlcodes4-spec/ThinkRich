@@ -29,8 +29,6 @@ const schema = z.object({
   vin: z.string().trim().min(1, "Enter the voter's card number (VIN)."),
   // CR-0017 item 1: phone required on every creation form.
   phone: z.string().trim().min(1, "Enter the phone number."),
-  // CR-0024: gender captured for staff too, so movement-wide gender stats are real.
-  gender: z.enum(["male", "female"], { message: "Choose a gender." }),
   target_role: z.string().min(1, "Choose a role."),
   state_id: z.string().uuid().optional(),
   lga_id: z.string().uuid().optional(),
@@ -75,7 +73,6 @@ export async function createAccount(
     email: formData.get("email"),
     vin: formData.get("vin"),
     phone: formData.get("phone"),
-    gender: formData.get("gender"),
     target_role: str(formData, "target_role"),
     state_id: str(formData, "state_id"),
     lga_id: str(formData, "lga_id"),
@@ -210,7 +207,6 @@ export async function createAccount(
     full_name: d.full_name,
     vin_id: vin,
     phone,
-    gender: d.gender,
     ...scope,
   });
   if (profileErr) {

@@ -1,6 +1,6 @@
 # CR-0024: Capture gender on staff accounts (movement-wide gender stats)
 
-- **Status:** In Progress <!-- Captured | Assessed | Planned | In Progress | Shipped | Rejected | Deferred -->
+- **Status:** Rejected (built, then reverted at the client's request) <!-- Captured | Assessed | Planned | In Progress | Shipped | Rejected | Deferred -->
 - **Requested by:** Client (relayed by engineer)
 - **Date requested:** 2026-08-15
 - **Channel:** message
@@ -44,5 +44,8 @@ Gender lived only on `members`. Staff accounts (leaders, coordinators, admins) a
 
 ## 7. Outcome
 
-- **Shipped in:** _pending_ (code complete; migration awaiting apply).
-- **Client confirmed:** _pending_.
+- **Reverted.** Built and applied to prod (migration 0042), then the client decided gender should
+  stay a **registered-voter demographic** rather than be captured on staff accounts. Migration 0043
+  drops the column (no data loss — it was never populated), and the form/action/stats changes were
+  removed. The gender chart keeps showing both Men and Women (even at 0), scoped to voter records.
+- **Kept for history:** 0042 (add) + 0043 (revert) both stay in the ledger, per the CR-0019 precedent.
