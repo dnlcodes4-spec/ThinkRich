@@ -175,10 +175,16 @@ export default async function StatsPage() {
     { label: "Paused", value: members.filter((m) => m.status === "frozen").length, color: "var(--color-gold-500)" },
     { label: "Removed", value: members.filter((m) => m.status === "deleted").length, color: "var(--color-ink-300)" },
   ];
+  // Gender is a registered-voter demographic: it only exists on membership records,
+  // so it counts those, not staff. Men and Women always appear (even at 0), so the
+  // breakdown visibly counts both; "Not recorded" shows only when a record lacks one.
+  const genderUnknown = liveMembers.filter((m) => !m.gender).length;
   const gender = [
     { label: "Men", value: liveMembers.filter((m) => m.gender === "male").length, color: "var(--color-navy-500)" },
     { label: "Women", value: liveMembers.filter((m) => m.gender === "female").length, color: "var(--color-gold-600)" },
-    { label: "Not recorded", value: liveMembers.filter((m) => !m.gender).length, color: "var(--color-ink-200)" },
+    ...(genderUnknown > 0
+      ? [{ label: "Not recorded", value: genderUnknown, color: "var(--color-ink-200)" }]
+      : []),
   ];
 
   let activeStates: number | null = null;
@@ -251,7 +257,7 @@ export default async function StatsPage() {
           <SegmentedBar segments={health} emptyLabel="No voter records yet." />
         </Card>
         <Card title="Gender" hint="Registered voters">
-          <SegmentedBar segments={gender} emptyLabel="No voter records yet." />
+          <SegmentedBar segments={gender} keepZeros emptyLabel="No voter records yet." />
         </Card>
       </div>
     </main>

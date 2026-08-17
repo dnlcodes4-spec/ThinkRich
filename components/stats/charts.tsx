@@ -256,12 +256,17 @@ export function DistributionBars({ items }: { items: { name: string; count: numb
 export function SegmentedBar({
   segments,
   emptyLabel = "No data yet.",
+  keepZeros = false,
 }: {
   segments: { label: string; value: number; color: string }[];
   emptyLabel?: string;
+  /** Keep zero-value categories in the legend (e.g. Gender always lists Men AND
+   *  Women, even when one is 0). The bar itself still only draws non-zero slices. */
+  keepZeros?: boolean;
 }) {
-  const shown = segments.filter((s) => s.value > 0);
-  const total = shown.reduce((s, x) => s + x.value, 0);
+  const positive = segments.filter((s) => s.value > 0);
+  const total = positive.reduce((s, x) => s + x.value, 0);
+  const legend = keepZeros ? segments : positive;
 
   if (total === 0) {
     return (
@@ -278,14 +283,14 @@ export function SegmentedBar({
         className="stats-reveal-x flex h-4 w-full gap-px overflow-hidden rounded-full"
         style={{ background: "var(--color-border)" }}
         role="img"
-        aria-label={shown.map((s) => `${s.label}: ${s.value}`).join(", ")}
+        aria-label={legend.map((s) => `${s.label}: ${s.value}`).join(", ")}
       >
-        {shown.map((s) => (
+        {positive.map((s) => (
           <span key={s.label} style={{ width: `${(s.value / total) * 100}%`, background: s.color }} title={`${s.label}: ${s.value} (${fmtPct(s.value, total)}%)`} />
         ))}
       </div>
       <ul className="mt-3.5 flex flex-col gap-2">
-        {shown.map((s, i) => (
+        {legend.map((s, i) => (
           <li key={s.label} className="stats-rise flex items-center gap-2 text-xs" style={{ animationDelay: `${Math.min(i * 45, 400)}ms` }}>
             <span className="size-2.5 shrink-0 rounded-full" style={{ background: s.color }} />
             <span className="text-muted">{s.label}</span>
