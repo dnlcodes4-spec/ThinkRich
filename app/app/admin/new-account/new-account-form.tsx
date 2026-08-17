@@ -2,6 +2,7 @@
 
 import { useActionState, useState } from "react";
 import { Input } from "@/components/ui/input";
+import { Select } from "@/components/ui/select";
 import { VinInput } from "@/components/ui/vin-input";
 import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/ui/form-error";
@@ -74,6 +75,13 @@ function Inner({ onReset, targetRole, targetRoleLabel, scope }: Props & { onRese
         hint="Nigerian mobile, e.g. 0803 123 4567."
         error={fe.phone}
       />
+      <Select label="Gender" name="gender" required defaultValue="" error={fe.gender}>
+        <option value="" disabled>
+          Select&hellip;
+        </option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </Select>
       <VinInput label="Their voter's card number (VIN)" error={fe.vin} />
 
       {fe.geo ? <p className="text-xs text-danger">{fe.geo}</p> : null}

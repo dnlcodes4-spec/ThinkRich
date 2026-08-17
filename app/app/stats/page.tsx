@@ -107,7 +107,7 @@ export default async function StatsPage() {
 
   const [{ data: memberRows }, { data: staffRows }] = await Promise.all([
     supabase.from("members").select("state_id, lga_id, ward_id, polling_unit_id, status, created_at, gender, user_id"),
-    supabase.from("profiles").select("id, state_id, lga_id, ward_id, polling_unit_id, role, status, created_at").neq("role", "member"),
+    supabase.from("profiles").select("id, state_id, lga_id, ward_id, polling_unit_id, role, status, created_at, gender").neq("role", "member"),
   ]);
   const members = memberRows ?? [];
   const staff = staffRows ?? [];
@@ -175,10 +175,21 @@ export default async function StatsPage() {
     { label: "Paused", value: members.filter((m) => m.status === "frozen").length, color: "var(--color-gold-500)" },
     { label: "Removed", value: members.filter((m) => m.status === "deleted").length, color: "var(--color-ink-300)" },
   ];
+  // Gender across the WHOLE movement (CR-0024): each member record by its gender,
+  // plus each staff-without-a-record by their profile gender, so it counts the same
+  // ~89 people the rest of the dashboard does. Men and Women always appear (even at
+  // 0); "Not recorded" shows only when someone has no gender yet (legacy staff).
+  const genders = [
+    ...liveMembers.map((m) => m.gender),
+    ...staffPending.map((s) => s.gender),
+  ];
+  const genderUnknown = genders.filter((g) => !g).length;
   const gender = [
-    { label: "Men", value: liveMembers.filter((m) => m.gender === "male").length, color: "var(--color-navy-500)" },
-    { label: "Women", value: liveMembers.filter((m) => m.gender === "female").length, color: "var(--color-gold-600)" },
-    { label: "Not recorded", value: liveMembers.filter((m) => !m.gender).length, color: "var(--color-ink-200)" },
+    { label: "Men", value: genders.filter((g) => g === "male").length, color: "var(--color-navy-500)" },
+    { label: "Women", value: genders.filter((g) => g === "female").length, color: "var(--color-gold-600)" },
+    ...(genderUnknown > 0
+      ? [{ label: "Not recorded", value: genderUnknown, color: "var(--color-ink-200)" }]
+      : []),
   ];
 
   let activeStates: number | null = null;
@@ -250,8 +261,8 @@ export default async function StatsPage() {
         <Card title="Voter records" hint="Registered-voter health">
           <SegmentedBar segments={health} emptyLabel="No voter records yet." />
         </Card>
-        <Card title="Gender" hint="Registered voters">
-          <SegmentedBar segments={gender} emptyLabel="No voter records yet." />
+        <Card title="Gender" hint="Everyone in the movement">
+          <SegmentedBar segments={gender} keepZeros emptyLabel="No one registered yet." />
         </Card>
       </div>
     </main>

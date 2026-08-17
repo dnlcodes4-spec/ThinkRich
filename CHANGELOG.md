@@ -9,6 +9,13 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- **Gender is captured for staff accounts, so gender stats reflect the whole movement** (CR-0024).
+  Gender lived only on `members`, so the Statistics gender chart counted only the handful of people
+  with a full voter record (all male), while the movement is far larger. "Give app access" now
+  collects gender (required), stored on a new nullable `profiles.gender` column (reusing the existing
+  `gender` enum), and the gender breakdown counts everyone: each member record by its gender, plus
+  each staff-without-a-record by their profile gender, once per person. Legacy staff read as "Not
+  recorded" until re-captured. Additive, nullable migration; no authorization impact.
 - **Admins can add a missing ward** (CR-0023). The same counter-measure shipped for polling
   units (CR-0018), moved one level up: a ward is a child of an LGA, so LGA-level coordinators and
   above may add one, scoped to their own area (national/super anywhere); ward and unit tiers are

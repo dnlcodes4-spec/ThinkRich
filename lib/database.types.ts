@@ -853,6 +853,7 @@ export type Database = {
         Row: {
           created_at: string
           full_name: string
+          gender: Database["public"]["Enums"]["gender"] | null
           id: string
           lga_id: string | null
           polling_unit_id: string | null
@@ -865,6 +866,7 @@ export type Database = {
         Insert: {
           created_at?: string
           full_name: string
+          gender?: Database["public"]["Enums"]["gender"] | null
           id: string
           lga_id?: string | null
           polling_unit_id?: string | null
@@ -877,6 +879,7 @@ export type Database = {
         Update: {
           created_at?: string
           full_name?: string
+          gender?: Database["public"]["Enums"]["gender"] | null
           id?: string
           lga_id?: string | null
           polling_unit_id?: string | null
