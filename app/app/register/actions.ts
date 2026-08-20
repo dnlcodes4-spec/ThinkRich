@@ -220,15 +220,24 @@ export async function registerMember(
   // could differ only by capitalisation and the second could never sign in.
   const email = parsed.data.email ? parsed.data.email.trim().toLowerCase() : null;
 
-  // The VIN must exist in `voter_ids` before a member can reference it. Upsert
-  // rather than insert because the row may legitimately exist already: the same
-  // person can hold both a membership record and a leadership profile (ADR-0015),
-  // and both point at this one row. A retry after a partial failure lands here too.
-  // It does NOT mean two people may share a VIN; the unique indexes on
-  // members.vin_id and profiles.vin_id still refuse that.
-  const { error: vinErr } = await supabase.from("voter_ids").upsert({ vin }, { onConflict: "vin" });
-  if (vinErr) {
-    return { status: "error", message: VIN_INVALID, fieldErrors: { vin: VIN_INVALID } };
+  // The VIN must exist in `voter_ids` before a member can reference it. The row
+  // may legitimately exist already: the same person can hold both a membership
+  // record and a leadership profile (ADR-0015), and both point at this one row.
+  // A retry after a partial failure lands here too. It does NOT mean two people
+  // may share a VIN; the unique indexes on members.vin_id and profiles.vin_id
+  // still refuse that.
+  //
+  // A plain INSERT, not an upsert: `voter_ids` has never had a SELECT or UPDATE
+  // RLS policy, only INSERT (0029 dropped SELECT outright), and every flavour of
+  // ON CONFLICT needs to see the conflicting row to resolve it, so RLS refused
+  // both DO UPDATE and DO NOTHING with insufficient_privilege on exactly the
+  // case this write exists to allow. A plain insert never touches the existing
+  // row under RLS at all; a duplicate vin raises an ordinary 23505
+  // unique_violation instead, which is caught below the same way the `members`
+  // insert catches a duplicate vin_id further down this function.
+  const { error: vinErr } = await supabase.from("voter_ids").insert({ vin });
+  if (vinErr && vinErr.code !== "23505") {
+    return { status: "error", message: "Could not register that voter's card. Please try again." };
   }
 
   const { data: inserted, error } = await supabase

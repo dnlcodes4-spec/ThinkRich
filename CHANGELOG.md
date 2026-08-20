@@ -121,12 +121,16 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   has always permitted it, and the old `NEXT_TIER` table contradicted the database.
 
 ### Fixed
-- **Promoting an admin to a role with a shallower area (e.g. Ward Admin → LG Admin) no longer
-  fails with "That role needs a fuller area than this person has on record."** The message was
-  accurate for the opposite case (not enough area on record) but backwards here: a Ward Admin's
-  profile already carries a `ward_id`, and the promotion only ever set `role`, so the leftover
-  `ward_id` tripped `profiles_scope_matches_role` (0040), which requires it null for `lg_admin`.
-  `changeRole()` now nulls every scope column deeper than the target role's level before writing.
+- **Registering a voter could permanently fail on a perfectly valid VIN** with "enter the
+  19-character number from the voter's card." `voter_ids` has only ever had an INSERT RLS policy —
+  0029 dropped SELECT outright and neither it nor UPDATE was ever recreated. Registration wrote the
+  VIN via upsert (deliberately, since the same card may already have a row via ADR-0015), but every
+  flavour of `ON CONFLICT` needs to resolve the conflicting row against a SELECT policy that doesn't
+  exist, so RLS refused both `DO UPDATE` and `DO NOTHING` whenever the VIN already existed (a
+  legitimate re-registration, or a retry after an earlier failed attempt) — and every failure was
+  reported as the generic VIN-format message regardless of cause. Registration now does a plain
+  `INSERT`, which never consults RLS about the existing row, and treats the resulting `23505`
+  (duplicate VIN) as success rather than an error.
 - **A state closes for registration when it loses its last State Coordinator.** Noticed on the
   national map: Ogun and Oyo were shown as active with no coordinator and nobody registered. Their
   coordinators had been created, which opens the state, and then permanently deleted. Deleting an
