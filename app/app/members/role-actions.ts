@@ -5,7 +5,7 @@ import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { logActivityAs } from "@/lib/activity";
 import { openStateFor } from "@/lib/states";
-import { ROLE_RANK, roleLabel, type Role } from "@/app/app/admin/new-account/tiers";
+import { ROLE_RANK, ROLE_LEVEL, scopeColumnsToClear, roleLabel, type Role } from "@/app/app/admin/new-account/tiers";
 
 // Promotion and demotion (T-046 / T-049, CR-0009 §3.3, ADR-0015).
 //
@@ -98,7 +98,9 @@ export async function changeRole(
   // (ADR-0015), so both rows legitimately point at one entry. Without this the
   // promotion fails on `profiles_vin_required`, which is exactly how the RLS test
   // caught it.
-  const patch: { role: typeof new_role; vin_id?: string } = { role: new_role };
+  const patch: { role: typeof new_role; vin_id?: string; state_id?: null; lga_id?: null; ward_id?: null; polling_unit_id?: null } = {
+    role: new_role,
+  };
   if (target.role === "member" && new_role !== "member") {
     const { data: memberRow } = await supabase
       .from("members")
@@ -112,6 +114,13 @@ export async function changeRole(
       };
     }
     patch.vin_id = memberRow.vin_id;
+  }
+
+  // The new role may sit at a shallower geo level than the one it's replacing
+  // (e.g. ward_admin -> lg_admin): null every column deeper than it allows, or
+  // the leftover value trips `profiles_scope_matches_role` below.
+  for (const column of scopeColumnsToClear(ROLE_LEVEL[new_role as Role])) {
+    patch[column] = null;
   }
 
   const { error } = await supabase.from("profiles").update(patch).eq("id", profile_id);

@@ -85,3 +85,17 @@ export const LEVEL_LABEL: Record<Exclude<GeoLevel, null>, string> = {
 export function roleLabel(role: Role): string {
   return role.replace(/_/g, " ");
 }
+
+const GEO_ORDER: GeoLevel[] = ["state", "lga", "ward", "polling_unit"];
+const SCOPE_COLUMNS = ["state_id", "lga_id", "ward_id", "polling_unit_id"] as const;
+export type ScopeColumn = (typeof SCOPE_COLUMNS)[number];
+
+// Which scope columns must be null for a role at this level. Mirrors
+// `profiles_scope_matches_role` (0040) exactly: a role only keeps the columns
+// up to its own depth, everything deeper must be null. Used before writing a
+// role change, so a profile carrying deeper scope than its new role allows
+// (e.g. a ward_admin's `ward_id`, promoted to lg_admin) doesn't trip the check.
+export function scopeColumnsToClear(level: GeoLevel): ScopeColumn[] {
+  const depth = level === null ? -1 : GEO_ORDER.indexOf(level);
+  return SCOPE_COLUMNS.filter((_, i) => i > depth);
+}
