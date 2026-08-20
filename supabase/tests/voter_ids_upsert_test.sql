@@ -42,7 +42,7 @@ insert into public.voter_ids (vin) values
 insert into public.profiles (id, role, full_name, vin_id) values
   ('f1000000-0000-0000-0000-000000000001','national_admin','VI Admin','VI00000000000000001');
 
-perform pg_temp.as_user('f1000000-0000-0000-0000-000000000001');
+select pg_temp.as_user('f1000000-0000-0000-0000-000000000001');
 
 -- ── the trap: DO UPDATE on a row that already exists is refused ──
 do $$
