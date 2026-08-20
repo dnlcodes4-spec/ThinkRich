@@ -121,6 +121,14 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   has always permitted it, and the old `NEXT_TIER` table contradicted the database.
 
 ### Fixed
+- **Registering a voter could permanently fail on a perfectly valid VIN** with "enter the
+  19-character number from the voter's card." `voter_ids` has only ever had an INSERT RLS policy,
+  never UPDATE, and registration upserts the VIN (deliberately, since the same card may already
+  have a row via ADR-0015). Postgres's default upsert does `ON CONFLICT DO UPDATE`, which needs
+  UPDATE privilege on the conflicting row — refused by RLS whenever the VIN already existed (a
+  legitimate re-registration, or a retry after an earlier failed attempt), and every upsert error
+  was reported as the generic VIN-format message regardless of cause. Registration now upserts with
+  `ignoreDuplicates: true` (`ON CONFLICT DO NOTHING`), which only needs INSERT privilege.
 - **A state closes for registration when it loses its last State Coordinator.** Noticed on the
   national map: Ogun and Oyo were shown as active with no coordinator and nobody registered. Their
   coordinators had been created, which opens the state, and then permanently deleted. Deleting an

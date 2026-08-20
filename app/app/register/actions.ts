@@ -226,9 +226,17 @@ export async function registerMember(
   // and both point at this one row. A retry after a partial failure lands here too.
   // It does NOT mean two people may share a VIN; the unique indexes on
   // members.vin_id and profiles.vin_id still refuse that.
-  const { error: vinErr } = await supabase.from("voter_ids").upsert({ vin }, { onConflict: "vin" });
+  //
+  // `ignoreDuplicates` (ON CONFLICT DO NOTHING), not the default merge-duplicates
+  // (ON CONFLICT DO UPDATE): `voter_ids` has never had an UPDATE RLS policy, only
+  // INSERT, so a plain upsert against a VIN that already has a row was refused by
+  // RLS on exactly the case this upsert exists to allow. DO NOTHING only needs
+  // INSERT privilege, which every registrar role already holds.
+  const { error: vinErr } = await supabase
+    .from("voter_ids")
+    .upsert({ vin }, { onConflict: "vin", ignoreDuplicates: true });
   if (vinErr) {
-    return { status: "error", message: VIN_INVALID, fieldErrors: { vin: VIN_INVALID } };
+    return { status: "error", message: "Could not register that voter's card. Please try again." };
   }
 
   const { data: inserted, error } = await supabase
