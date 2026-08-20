@@ -121,6 +121,12 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   has always permitted it, and the old `NEXT_TIER` table contradicted the database.
 
 ### Fixed
+- **Promoting an admin to a role with a shallower area (e.g. Ward Admin → LG Admin) no longer
+  fails with "That role needs a fuller area than this person has on record."** The message was
+  accurate for the opposite case (not enough area on record) but backwards here: a Ward Admin's
+  profile already carries a `ward_id`, and the promotion only ever set `role`, so the leftover
+  `ward_id` tripped `profiles_scope_matches_role` (0040), which requires it null for `lg_admin`.
+  `changeRole()` now nulls every scope column deeper than the target role's level before writing.
 - **A state closes for registration when it loses its last State Coordinator.** Noticed on the
   national map: Ogun and Oyo were shown as active with no coordinator and nobody registered. Their
   coordinators had been created, which opens the state, and then permanently deleted. Deleting an

@@ -1,6 +1,6 @@
 # CR-0017: Phone numbers on every form + coordinators can register members
 
-- **Status:** Assessed <!-- Captured | Assessed | Planned | In Progress | Shipped | Rejected | Deferred -->
+- **Status:** Shipped <!-- Captured | Assessed | Planned | In Progress | Shipped | Rejected | Deferred -->
 - **Requested by:** Client (relayed by engineer)
 - **Date requested:** 2026-08-05
 - **Channel:** message
@@ -59,13 +59,13 @@ containment) already exists, this widens which roles it admits. Documented here 
 
 Tasks created on the [task board](../task-board.md):
 
-- [ ] T-060 — Migration: `phone` on `profiles` + `members`; a shared `lib/phone.ts`
-      (normalise/validate) with unit tests.
-- [ ] T-061 — Add the phone field to all creation forms (new-account, dev bootstrap, register)
-      + server validation.
-- [ ] T-062 — Widen member-registration authorization to the four coordinator roles: RLS
+- [x] T-060 — Migration: `phone` on `profiles` + `members`; a shared `lib/phone.ts`
+      (normalise/validate) with unit tests. (`c96db0e`)
+- [x] T-061 — Add the phone field to all creation forms (new-account, dev bootstrap, register)
+      + server validation. (`fdc75c4`)
+- [x] T-062 — Widen member-registration authorization to the four coordinator roles: RLS
       policy on `members` INSERT + the `/app/register` role gate and geography handling, with
-      allow/deny RLS tests.
+      allow/deny RLS tests. (`fdc75c4`)
 
 ## 6. Rollback plan
 
@@ -75,5 +75,6 @@ Tasks created on the [task board](../task-board.md):
 
 ## 7. Outcome
 
-- **Shipped in:** _pending_
-- **Client confirmed:** _pending_
+- **Shipped in:** `c96db0e` (T-060), `fdc75c4` (T-061, T-062)
+- **Client confirmed:** _pending_ — code is live; verify end-to-end with each coordinator role
+  before closing this out with the client.
