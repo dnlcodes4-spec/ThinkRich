@@ -19,6 +19,24 @@ const schema = z.object({ vin: z.string().trim().min(1, "Enter a VIN.") });
 
 export type VinCheckState = ActionState<{ vin: string; alreadyExisted: boolean }>;
 
+// Both actions are gated identically: a Server Action is its own callable
+// endpoint, independent of whether the page that renders its form checks
+// anything, so the page's role check alone would NOT stop a direct call here —
+// least of all deleteTestVin, which runs on the service-role client.
+async function requireNonMember() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { ok: false as const, message: "You must be signed in." };
+
+  const { data: me } = await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle();
+  if (!me || me.role === "member") {
+    return { ok: false as const, message: "Your role cannot register voters, so this test isn't representative for you." };
+  }
+  return { ok: true as const, supabase };
+}
+
 export async function saveTestVin(_prev: VinCheckState, formData: FormData): Promise<VinCheckState> {
   const parsed = schema.safeParse({ vin: formData.get("vin") });
   if (!parsed.success) return fail(parsed.error.issues[0]?.message ?? "Enter a VIN.");
@@ -26,18 +44,12 @@ export async function saveTestVin(_prev: VinCheckState, formData: FormData): Pro
   const vin = normalizeVin(parsed.data.vin);
   if (!vin) return fail(VIN_INVALID, { vin: VIN_INVALID });
 
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (!user) return fail("You must be signed in.");
-
-  const { data: me } = await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle();
-  if (!me || me.role === "member") return fail("Your role cannot register voters, so this test isn't representative for you.");
+  const gate = await requireNonMember();
+  if (!gate.ok) return fail(gate.message);
 
   // The exact call register/actions.ts makes post-fix: a plain insert, no
   // ON CONFLICT clause, under the caller's own session.
-  const { error } = await supabase.from("voter_ids").insert({ vin });
+  const { error } = await gate.supabase.from("voter_ids").insert({ vin });
   if (error && error.code !== "23505") {
     return fail(`Insert failed: ${error.message} (code ${error.code ?? "unknown"})`);
   }
@@ -46,6 +58,9 @@ export async function saveTestVin(_prev: VinCheckState, formData: FormData): Pro
 }
 
 export async function deleteTestVin(_prev: VinCheckState, formData: FormData): Promise<VinCheckState> {
+  const gate = await requireNonMember();
+  if (!gate.ok) return fail(gate.message);
+
   const parsed = schema.safeParse({ vin: formData.get("vin") });
   if (!parsed.success) return fail("Missing VIN.");
   const vin = parsed.data.vin;
