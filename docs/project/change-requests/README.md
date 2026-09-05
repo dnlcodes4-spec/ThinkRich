@@ -46,7 +46,7 @@ reviewable, impact-assessed, trackable unit of work.
 | [0020](0020-voter-vs-member-terminology.md) | Voter vs member terminology across the dashboard (base tier = voter; member = whole movement) | Client | 2026-08-06 | In Progress | T-077 … T-080 | — (follows CR-0014) |
 | [0021](0021-activity-log-coverage.md) | Activity log: record every activity + one source of truth for action labels | Client | 2026-08-06 | In Progress | T-081 … T-083 | — |
 | [0022](0022-leader-ten-registrations-milestone.md) | Leader "10 registrations" progress bar + congratulations | Client | 2026-08-07 | Rejected (duplicate of CR-0009) | — | — |
-| [0025](0025-email-required-everywhere.md) | Email required everywhere + admin tooling to find & fill members missing an email | Client | 2026-09-05 | In Progress | T-089 … T-093 | — |
+| [0025](0025-email-required-everywhere.md) | Email required everywhere + admin tooling to find & fill members missing an email | Client | 2026-09-05 | Shipped | T-089 … T-093 | — |
 
 <!--
 Example row once CRs exist:
