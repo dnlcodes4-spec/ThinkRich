@@ -1,6 +1,6 @@
 # CR-0025: Email is a required field everywhere it is collected
 
-- **Status:** In Progress <!-- Captured | Assessed | Planned | In Progress | Shipped | Rejected | Deferred -->
+- **Status:** Shipped <!-- Captured | Assessed | Planned | In Progress | Shipped | Rejected | Deferred -->
 - **Requested by:** Client (relayed by engineer)
 - **Date requested:** 2026-09-05
 - **Channel:** message
@@ -107,23 +107,21 @@ forward to be reachable and login-capable from day one.
 
 Tasks created on the [task board](../task-board.md):
 
-- [ ] T-089 — Make email required in member registration (`/app/register`): Zod schema, form
-  field required + relabel the fieldset (drop "optional" / "add later" copy), unconditional
-  `provisionMemberLogin`; regression test for the required-field + always-provision behaviour.
-- [ ] T-090 — Guard the profile/member email change-request path so an edit cannot blank an
-  existing email; keep format validation.
-- [ ] T-091 — "No email on file" filter + count on the members roster (`/app/members`):
-  query narrows to `email is null` and excludes deleted; header shows "N of M members have no
-  email". RLS scopes it per role.
-- [ ] T-092 — Inline "Add email" for a member without one: new `addMemberEmail` server action
-  (write gate = non-`member` role + target returned by RLS-scoped read, `emailField()`
-  validation, null→value only, admin-client write, then `provisionMemberLogin`,
-  `member.email_added` activity log, 23505 handling). Wire it into the roster row
-  (`member-login-cell`) and the member detail page Email fact. Tests: authorized add + provision,
-  out-of-scope denial, duplicate-email rejection.
-- [ ] T-093 — Audit + document: confirm all other collection points already require email
-  (admin new-account, national-admins, think-winners); update the registration-fields doc and
-  `CHANGELOG.md`.
+- [x] T-089 — Make email required in member registration (`/app/register`): schema moved to
+  `lib/register-form.ts` + made required, fieldset relabelled, unconditional `provisionMemberLogin`;
+  `lib/register-form.test.ts`.
+- [x] T-090 — Profile email change-request path switched to the shared `emailField()` helper and
+  lower-cases the stored value; a non-empty new value was already mandatory, so a correction
+  cannot blank a field.
+- [x] T-091 — "No email on file" filter + live count on the members roster (`/app/members`),
+  excludes deleted, RLS-scoped per role.
+- [x] T-092 — `addMemberEmail` / `addMemberEmailAction` in `provision-login.ts` (write gate =
+  non-`member` role + RLS-scoped target, `emailField()` validation, null→value only, admin-client
+  write, `provisionMemberLogin`, `member.email_added` activity log, 23505 handling). Wired into
+  the roster row (`member-login-cell.tsx`) and the member detail page (`[id]/add-email.tsx`).
+- [x] T-093 — Audited the other collection points (admin new-account, national-admins,
+  think-winners already require email); `CHANGELOG.md` updated. ADR-0011 left untouched (accepted
+  ADR; it already anticipated "required field").
 
 ## 6. Rollback plan
 
@@ -133,5 +131,6 @@ created while the rule was active stay valid afterwards.
 
 ## 7. Outcome
 
-- **Shipped in:** <PR / release / commit>
-- **Client confirmed:** <yes/no + date>
+- **Shipped in:** PR #87 (squash `3d061a6`), 2026-09-05.
+- **Client confirmed:** pending — awaiting the client's check that the roster filter and inline
+  add-email flow match what they pictured.
