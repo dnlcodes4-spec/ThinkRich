@@ -1,6 +1,6 @@
 # CR-0026: Partner organisations (affiliated tenancy above the geographic hierarchy)
 
-- **Status:** Captured <!-- Captured | Assessed | Planned | In Progress | Shipped | Rejected | Deferred -->
+- **Status:** Assessed <!-- Captured | Assessed | Planned | In Progress | Shipped | Rejected | Deferred -->
 - **Requested by:** Client (relayed by engineer)
 - **Date requested:** 2026-09-05
 - **Channel:** message (relayed), refined in a design Q&A with the engineer on 2026-09-05
@@ -192,10 +192,10 @@ the test matrix before it goes near `main`.
 - **Proceed**, on Approach A (single `partner_id` dimension, one new `partner_admin` role,
   reuse the ladder). Sequenced so the additive schema lands first and the RLS sweep gets the
   ADR and the per-role test matrix before merge.
-- **Needs an ADR? Yes → ADR-0018**, covering: the `partner_id` partition model, the single new
-  apex role, the geographic-ceiling design (state-level v1, constituency-level as a documented
-  follow-up), membership-number namespacing, and the count semantics (partner members counted
-  in totals, hidden from geographic drill-downs). Offer to run `/adr`.
+- **Needs an ADR? Yes → [ADR-0018](../../architecture/decisions/0018-partner-organisations-and-tenancy.md)
+  (Accepted 2026-09-05).** Covers the `partner_id` partition model, the single new apex role,
+  the geographic-ceiling design (state-level v1, constituency-level as a documented follow-up),
+  membership-number namespacing, and the count semantics.
 
 ## 5. Plan
 
