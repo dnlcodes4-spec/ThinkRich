@@ -172,7 +172,7 @@ export default async function MembersPage({
         <div className="mt-3">
           <Link
             href={noEmailOnly ? { pathname: "/app/members", query: q ? { q } : {} } : { pathname: "/app/members", query: { filter: "no-email" } }}
-            aria-pressed={noEmailOnly}
+            aria-current={noEmailOnly ? "true" : undefined}
             className={`inline-flex min-h-9 items-center gap-2 rounded-full border px-3 text-xs font-semibold transition-colors ${
               noEmailOnly
                 ? "border-primary bg-primary text-primary-foreground"
