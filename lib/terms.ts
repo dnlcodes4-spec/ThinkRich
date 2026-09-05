@@ -15,6 +15,7 @@ const ROLE_LABELS: Record<Role, string> = {
   state_admin: "State Coordinator",
   national_admin: "National Coordinator",
   super_admin: "Super Admin",
+  partner_admin: "Partner Admin",
 };
 
 export function roleLabel(role: Role | string | null | undefined): string {
