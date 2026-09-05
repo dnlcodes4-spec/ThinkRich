@@ -8,6 +8,7 @@ import { isNationalTier } from "@/lib/terms";
 import { fieldLabel } from "../change-request-fields";
 import { reviewChangeRequest } from "../detail-actions";
 import { LeaderPhotoUpload } from "./leader-photo";
+import { AddMemberEmail } from "./add-email";
 
 export const metadata: Metadata = {
   title: "Voter",
@@ -92,7 +93,20 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
           <h2 className="mb-3 text-sm font-semibold text-foreground">Details</h2>
           <dl className="grid grid-cols-1 gap-x-6 gap-y-4 text-sm sm:grid-cols-2">
             <Fact label="Date of birth" value={member.date_of_birth ? fmtDate(member.date_of_birth) : "Not provided"} />
-            <Fact label="Email" value={member.email ?? "Not provided"} />
+            {member.email ? (
+              <Fact label="Email" value={member.email} />
+            ) : (
+              <div>
+                <dt className="text-muted">Email</dt>
+                {member.status === "deleted" ? (
+                  <dd className="mt-0.5 font-medium text-foreground">Not provided</dd>
+                ) : (
+                  <dd className="mt-0.5">
+                    <AddMemberEmail memberId={member.id} />
+                  </dd>
+                )}
+              </div>
+            )}
             <Fact label="Voter's ID (VIN)" value={member.vin_id ?? "Not provided"} />
             <Fact label="Gender" value={member.gender ?? "Not provided"} />
             <div className="sm:col-span-2">
