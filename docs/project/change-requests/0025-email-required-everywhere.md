@@ -1,6 +1,6 @@
 # CR-0025: Email is a required field everywhere it is collected
 
-- **Status:** Captured <!-- Captured | Assessed | Planned | In Progress | Shipped | Rejected | Deferred -->
+- **Status:** In Progress <!-- Captured | Assessed | Planned | In Progress | Shipped | Rejected | Deferred -->
 - **Requested by:** Client (relayed by engineer)
 - **Date requested:** 2026-09-05
 - **Channel:** message
@@ -31,7 +31,8 @@ forward to be reachable and login-capable from day one.
 - **Surfaces/flows affected:**
   - **Member registration** — `/app/register` ([register-form.tsx](../../../app/app/register/register-form.tsx),
     [actions.ts](../../../app/app/register/actions.ts)). **This is the only collection point where
-    email is currently optional.** The "Login (optional)" fieldset becomes a required "Contact & login" field.
+    email is currently optional.** The "Login (optional)" fieldset loses the "optional" marker and
+    its "add later" copy; the email input becomes required.
   - Already required (no change, audit only): admin creation `/app/admin/new-account`
     ([actions.ts:27](../../../app/app/admin/new-account/actions.ts)), dev bootstrap
     `/dev/national-admins` ([actions.ts:32](../../../app/dev/national-admins/actions.ts)),
@@ -55,9 +56,9 @@ forward to be reachable and login-capable from day one.
 - **Breaking change?** Behavioural, not data-breaking:
   1. **Every new member now gets an auth login provisioned at registration** (today
      `provisionMemberLogin` runs only `if (email)` —
-     [actions.ts:308](../../../app/app/register/actions.ts)). With email mandatory this becomes
+     [actions.ts](../../../app/app/register/actions.ts)). With email mandatory this becomes
      unconditional, so the registrar is **always** shown a temporary password to hand over.
-     Need client confirmation this is intended (see §"Open questions").
+     Confirmed intended by the client (2026-09-05).
   2. **`members.email` is uniquely indexed.** A household or assistant sharing one address can
      currently skip email; once mandatory, the **second such registration fails** with "already
      in use". Phone was deliberately made non-unique in CR-0017 for exactly this reason; email

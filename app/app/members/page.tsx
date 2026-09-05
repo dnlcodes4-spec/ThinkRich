@@ -26,7 +26,11 @@ type Row = {
 // The list is scoped by RLS: a leader sees the members they registered; admins
 // see the members within their geography. No scope logic in the app. An optional
 // `q` searches name + membership number within that scope.
-export default async function MembersPage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
+export default async function MembersPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string; filter?: string }>;
+}) {
   const supabase = await createClient();
   const {
     data: { user },
@@ -37,17 +41,32 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
     : { data: null };
   const isLeader = profile?.role === "leader";
 
-  const rawQ = ((await searchParams).q ?? "").trim();
+  const sp = await searchParams;
+  const rawQ = (sp.q ?? "").trim();
   // Strip characters that would break the PostgREST `or()` filter syntax.
   const q = rawQ.replace(/[,()*%\\]/g, "").slice(0, 60);
+  // "No email on file" — members registered before CR-0025 made email mandatory.
+  // A leader/admin uses this to find and fill the gap from the roster.
+  const noEmailOnly = sp.filter === "no-email";
 
   let query = supabase
     .from("members")
     .select("id, membership_number, full_name, status, created_at, email, user_id");
   if (q) query = query.or(`full_name.ilike.%${q}%,membership_number.ilike.%${q}%`);
+  // A deleted member's email is nulled by anonymisation, not a real gap — leave
+  // them out of the missing-email view.
+  if (noEmailOnly) query = query.is("email", null).neq("status", "deleted");
   const { data } = await query.order("membership_number", { ascending: true }).limit(200);
   const rows = (data ?? []) as Row[];
   const activeCount = rows.filter((r) => r.status === "active").length;
+
+  // Standing count of in-scope members with no email, for the filter toggle. RLS
+  // scopes it the same way as the list.
+  const { count: noEmailCount } = await supabase
+    .from("members")
+    .select("id", { count: "exact", head: true })
+    .is("email", null)
+    .neq("status", "deleted");
 
   // Retention dates for frozen members (drives the delete gate on their actions).
   const frozenIds = rows.filter((r) => r.status === "frozen").map((r) => r.id);
@@ -104,11 +123,13 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
             {isLeader ? "Your voters" : "Registered voters"}
           </h1>
           <p className="mt-1 text-sm text-muted">
-            {q
-              ? `${rows.length} ${rows.length === 1 ? "match" : "matches"} for “${q}”.`
-              : isLeader
-                ? `${activeCount} of 10 active${rows.length > activeCount ? ` · ${rows.length - activeCount} paused` : ""}.`
-                : `${rows.length}${rows.length === 200 ? "+" : ""} ${rows.length === 1 ? "member" : "members"} in your scope.`}
+            {noEmailOnly
+              ? `${rows.length}${rows.length === 200 ? "+" : ""} ${rows.length === 1 ? "voter" : "voters"} with no email on file${q ? ` matching “${q}”` : ""}.`
+              : q
+                ? `${rows.length} ${rows.length === 1 ? "match" : "matches"} for “${q}”.`
+                : isLeader
+                  ? `${activeCount} of 10 active${rows.length > activeCount ? ` · ${rows.length - activeCount} paused` : ""}.`
+                  : `${rows.length}${rows.length === 200 ? "+" : ""} ${rows.length === 1 ? "member" : "members"} in your scope.`}
           </p>
         </div>
         {isLeader ? (
@@ -122,6 +143,7 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
       </div>
 
       <form method="get" className="mt-6 flex flex-wrap gap-2">
+        {noEmailOnly ? <input type="hidden" name="filter" value="no-email" /> : null}
         <input
           type="search"
           name="q"
@@ -136,7 +158,7 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
         >
           Search
         </button>
-        {q ? (
+        {q || noEmailOnly ? (
           <Link
             href="/app/members"
             className="inline-flex min-h-11 items-center justify-center rounded-md border border-ring px-4 text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted"
@@ -146,9 +168,33 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
         ) : null}
       </form>
 
+      {noEmailOnly || (noEmailCount ?? 0) > 0 ? (
+        <div className="mt-3">
+          <Link
+            href={noEmailOnly ? { pathname: "/app/members", query: q ? { q } : {} } : { pathname: "/app/members", query: { filter: "no-email" } }}
+            aria-pressed={noEmailOnly}
+            className={`inline-flex min-h-9 items-center gap-2 rounded-full border px-3 text-xs font-semibold transition-colors ${
+              noEmailOnly
+                ? "border-primary bg-primary text-primary-foreground"
+                : "border-border text-foreground hover:bg-surface-muted"
+            }`}
+          >
+            {noEmailOnly ? "Showing voters with no email" : "Filter: no email on file"}
+            {!noEmailOnly && noEmailCount ? (
+              <span className="rounded-full bg-surface-muted px-1.5 text-muted">{noEmailCount}</span>
+            ) : null}
+          </Link>
+        </div>
+      ) : null}
+
       {rows.length === 0 ? (
         <div className="mt-10">
-          {q ? (
+          {noEmailOnly ? (
+            <EmptyState
+              title="Every voter has an email"
+              description={q ? `No voters without an email match “${q}”.` : "Nobody in your scope is missing an email on file."}
+            />
+          ) : q ? (
             <EmptyState title={`No voters match “${q}”`} />
           ) : isLeader ? (
             <EmptyState

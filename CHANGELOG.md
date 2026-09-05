@@ -9,6 +9,19 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- **Email is required for every voter, plus tooling to fix the members who have none**
+  (CR-0025). Member registration (`/app/register`) now requires an email; it was optional, which
+  left many members with no way to sign in. Because an address is always present, every member's
+  app login is provisioned at registration and the registrar is always handed the one-time
+  temporary password. Members registered before the rule keep their empty email, so the members
+  roster (`/app/members`) gains a "No email on file" filter with a live count, and a member with
+  no email now shows an inline "Add & provision login" field on both the roster row and the
+  member detail page. Any non-`member` role may fill in a missing email for members inside their
+  own RLS scope (a leader for members they registered, an admin for their geography); the action
+  writes only when `email` is null (changing an existing address still goes through the
+  correction-review flow), validates and lower-cases it, provisions the login, and records a
+  `member.email_added` activity entry. No schema change: `members.email` stays nullable in the
+  DB and the requirement is enforced in the app, matching the CR-0017 precedent for phone.
 - **Admins can add a missing ward** (CR-0023). The same counter-measure shipped for polling
   units (CR-0018), moved one level up: a ward is a child of an LGA, so LGA-level coordinators and
   above may add one, scoped to their own area (national/super anywhere); ward and unit tiers are

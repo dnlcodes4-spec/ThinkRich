@@ -142,17 +142,17 @@ function Inner({ onReset, pollingUnitId, leaders }: RegisterFormProps & { onRese
       </fieldset>
 
       <fieldset className="min-w-0 border-0 p-0">
-        <legend className="mb-1 text-sm font-semibold text-foreground">
-          Login <span className="font-normal text-muted">(optional)</span>
-        </legend>
+        <legend className="mb-1 text-sm font-semibold text-foreground">Login</legend>
         <p className="mb-4 text-sm text-muted">
-          Add an email to create their app login now. We show a temporary password once.
+          Their email creates their app login now. We show a temporary password once, for you to
+          give them.
         </p>
         <Input
           label="Email"
           name="email"
           type="email"
           autoComplete="off"
+          required
           error={fe.email}
         />
       </fieldset>

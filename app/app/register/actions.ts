@@ -1,8 +1,7 @@
 "use server";
 
-import { z } from "zod";
 import { zodFail } from "@/lib/action-state";
-import { emailField } from "@/lib/email";
+import { registerSchema, readRegisterForm } from "@/lib/register-form";
 import { createClient } from "@/lib/supabase/server";
 import { provisionMemberLogin } from "@/app/app/members/provision-login";
 import { logActivityAs } from "@/lib/activity";
@@ -38,24 +37,6 @@ const FIXED_PU_ROLES = ["leader", "unit_coordinator"] as const;
 // The membership number is assigned by a DB trigger; RLS + triggers enforce
 // scope, NIN uniqueness and age >= 18. This action validates input and maps DB
 // errors to friendly messages; it never bypasses RLS (no service role).
-
-const schema = z.object({
-  full_name: z.string().trim().min(2, "Enter the voter's full name."),
-  date_of_birth: z.string().min(1, "Enter the date of birth."),
-  nin: z.string().trim().min(1, "Enter the NIN."),
-  // Required for everyone as of CR-0009 §3.1. Validated after normalisation, not
-  // on the raw string, so a member may type it with spaces or dashes.
-  vin: z.string().trim().min(1, "Enter the voter's card number (VIN)."),
-  // Required for everyone as of CR-0017. Validated after normalisation.
-  phone: z.string().trim().min(1, "Enter the voter's phone number."),
-  gender: z.enum(["male", "female"], { message: "Choose a gender." }),
-  email: z.union([z.literal(""), emailField()]).optional(),
-  account_number: z.string().trim().optional(),
-  account_name: z.string().trim().optional(),
-  bank_name: z.string().trim().optional(),
-  polling_unit_id: z.string().uuid().optional(),
-  registered_by: z.string().uuid().optional(),
-});
 
 export type RegisterState = {
   status: "idle" | "success" | "error";
@@ -101,20 +82,7 @@ export async function registerMember(
     return { status: "error", message: "Your account has no polling unit set, so you cannot register here." };
   }
 
-  const parsed = schema.safeParse({
-    full_name: formData.get("full_name"),
-    date_of_birth: formData.get("date_of_birth"),
-    nin: formData.get("nin"),
-    vin: formData.get("vin"),
-    phone: formData.get("phone"),
-    gender: formData.get("gender"),
-    email: formData.get("email"),
-    account_number: formData.get("account_number"),
-    account_name: formData.get("account_name"),
-    bank_name: formData.get("bank_name"),
-    polling_unit_id: formData.get("polling_unit_id") || undefined,
-    registered_by: formData.get("registered_by") || undefined,
-  });
+  const parsed = registerSchema.safeParse(readRegisterForm(formData));
   if (!parsed.success) {
     return zodFail(parsed.error);
   }
@@ -216,9 +184,10 @@ export async function registerMember(
 
   // Lowercased so what we store matches what `members_email_unique` compares
   // (migration 0030 indexes lower(email)), and so it matches what Supabase Auth
-  // will use if this member is later given a login. Without this, two members
-  // could differ only by capitalisation and the second could never sign in.
-  const email = parsed.data.email ? parsed.data.email.trim().toLowerCase() : null;
+  // uses when the login is provisioned below. Without this, two members could
+  // differ only by capitalisation and the second could never sign in.
+  // `emailField()` has already trimmed it.
+  const email = parsed.data.email.toLowerCase();
 
   // The VIN must exist in `voter_ids` before a member can reference it. The row
   // may legitimately exist already: the same person can hold both a membership
@@ -298,14 +267,14 @@ export async function registerMember(
     return { status: "error", message: "Could not register the voter. Please try again." };
   }
 
-  // If an email was captured, provision the member's own login now and hand the
-  // temporary password back to the leader. A provisioning failure does NOT fail
-  // the registration (the member exists); it is surfaced as a note instead, and
-  // the login can be provisioned later from the roster.
+  // Email is required (CR-0025), so every member gets their own login provisioned
+  // now and the temporary password is handed back to the registrar. A provisioning
+  // failure does NOT fail the registration (the member exists); it is surfaced as a
+  // note instead, and the login can be provisioned later from the roster.
   let loginEmail: string | undefined;
   let loginTempPassword: string | undefined;
   let loginNote: string | undefined;
-  if (email) {
+  {
     const res = await provisionMemberLogin(inserted.id);
     if (res.ok) {
       loginEmail = res.email;

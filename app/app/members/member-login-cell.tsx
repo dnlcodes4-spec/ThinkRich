@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import {
+  addMemberEmailAction,
   provisionMemberLoginAction,
   resetMemberLoginPasswordAction,
   type ProvisionState,
@@ -27,6 +28,7 @@ export function MemberLoginCell({
     resetMemberLoginPasswordAction,
     initial,
   );
+  const [emailState, emailAction, emailPending] = useActionState(addMemberEmailAction, initial);
 
   if (hasLogin) {
     if (resetState.status === "success") {
@@ -54,8 +56,43 @@ export function MemberLoginCell({
     return <TempPassword value={provState.tempPassword} label="Temp password" />;
   }
 
+  // A member registered before CR-0025 may have no email. Let a leader/admin add
+  // one inline; the server action also provisions the login and returns the
+  // one-time temp password.
   if (!hasEmail) {
-    return <span className="text-xs text-muted">No email</span>;
+    if (emailState.status === "success") {
+      return emailState.tempPassword ? (
+        <TempPassword value={emailState.tempPassword} label="Temp password" />
+      ) : (
+        <span className="text-xs text-muted">{emailState.message ?? "Email saved."}</span>
+      );
+    }
+    return (
+      <form action={emailAction} className="flex flex-col items-start gap-1">
+        <input type="hidden" name="member_id" value={id} />
+        <span className="text-xs font-medium text-muted">No email</span>
+        <span className="flex flex-wrap items-center gap-1">
+          <input
+            type="email"
+            name="email"
+            required
+            aria-label="Voter email"
+            placeholder="name@example.com"
+            className="min-h-8 w-44 rounded-md border border-border bg-surface px-2 text-xs text-foreground placeholder:text-muted focus:outline-2 focus:outline-offset-1 focus:outline-ring"
+          />
+          <button
+            type="submit"
+            disabled={emailPending}
+            className="min-h-8 rounded-md border border-ring px-2.5 text-xs font-semibold text-foreground transition-colors hover:bg-surface-muted disabled:opacity-60"
+          >
+            {emailPending ? "Saving…" : "Add & provision"}
+          </button>
+        </span>
+        {emailState.status === "error" && emailState.message ? (
+          <span className="text-xs text-danger">{emailState.message}</span>
+        ) : null}
+      </form>
+    );
   }
 
   return (

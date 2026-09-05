@@ -12,6 +12,7 @@ export type ActivityAction =
   | "member.reactivated"
   | "member.removed"
   | "member.login_reset"
+  | "member.email_added"
   | "account.created"
   | "account.deactivated"
   | "account.reactivated"
@@ -37,6 +38,7 @@ export const ACTION_META: Record<ActivityAction, { label: string; tone: ActionTo
   "member.reactivated": { label: "Voter reactivated", tone: "good" },
   "member.removed": { label: "Voter removed", tone: "bad" },
   "member.login_reset": { label: "Login password reset", tone: "warn" },
+  "member.email_added": { label: "Voter email added", tone: "good" },
   "account.created": { label: "Account created", tone: "good" },
   "account.deactivated": { label: "Account deactivated", tone: "warn" },
   "account.reactivated": { label: "Account reactivated", tone: "good" },

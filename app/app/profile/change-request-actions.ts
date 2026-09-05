@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { notify } from "@/lib/notify";
 import { isChangeField, fieldLabel } from "@/app/app/members/change-request-fields";
+import { emailField } from "@/lib/email";
 
 // A member requests a correction to one of their details. It is stored pending;
 // a state-level admin reviews it (see detail-actions.ts). Members can't update
@@ -32,13 +33,21 @@ export async function submitChangeRequest(_prev: ChangeReqState, formData: FormD
   if (member.status !== "active") return { status: "error", message: "Your membership is not active." };
 
   const field = String(formData.get("field") ?? "");
-  const newValue = String(formData.get("new_value") ?? "").trim();
+  let newValue = String(formData.get("new_value") ?? "").trim();
   const reason = String(formData.get("reason") ?? "").trim() || null;
 
   if (!isChangeField(field)) return { status: "error", message: "Pick a field.", fieldErrors: { field: "Required." } };
+  // A non-empty new value is mandatory for every field, so a correction can never
+  // blank out a detail — in particular email, which is required for all members
+  // as of CR-0025 and backs their app login.
   if (!newValue) return { status: "error", message: "Enter the new value.", fieldErrors: { new_value: "Required." } };
-  if (field === "email" && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(newValue)) {
-    return { status: "error", message: "Enter a valid email.", fieldErrors: { new_value: "Invalid email." } };
+  if (field === "email") {
+    const parsed = emailField().safeParse(newValue);
+    if (!parsed.success) {
+      return { status: "error", message: "Enter a valid email.", fieldErrors: { new_value: "Invalid email." } };
+    }
+    // Store lower-cased to match the case-insensitive unique index (migration 0030).
+    newValue = parsed.data.toLowerCase();
   }
   if (field === "date_of_birth" && Number.isNaN(Date.parse(newValue))) {
     return { status: "error", message: "Enter a valid date.", fieldErrors: { new_value: "Invalid date." } };
