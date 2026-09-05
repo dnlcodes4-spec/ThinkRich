@@ -73,6 +73,18 @@ _Refined, unblocked, ready to pull._
 ## 🟠 In Progress
 _One person, one task at a time. Keep this column small._
 
+- **T-089 … T-093** — Email required everywhere + admin/leader tooling to find and fill members
+  missing an email, on `feat/email-required-everywhere`. _(CR-0025)_
+  - **T-089** — Email required in member registration (`/app/register`): Zod schema, required
+    field, relabel the "optional" login fieldset, unconditional `provisionMemberLogin`; regression test.
+  - **T-090** — Block clearing an existing email via the profile/member change-request path.
+  - **T-091** — "No email on file" filter + count on the members roster (`/app/members`),
+    RLS-scoped per role.
+  - **T-092** — `addMemberEmail` server action (non-`member` role + RLS-scoped target, null→value
+    only, validate, write, provision login, activity log, dup handling) wired into the roster row
+    and member detail page. Tests: authorized add + provision, out-of-scope denial, dup rejection.
+  - **T-093** — Audit other collection points + update registration-fields doc + `CHANGELOG.md`.
+
 - **T-050 … T-053** — Leadership section on both landings + the President's profile page
   (CR-0010), on `feat/leadership-section-and-president-profile`.
   _Done: `lib/leadership.ts` content module with 13 tests; the `Leadership` section component,
