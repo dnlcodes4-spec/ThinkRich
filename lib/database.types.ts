@@ -1,7 +1,3 @@
-// Generated from the Supabase schema — do not edit by hand.
-// Regenerate after migrations with the Supabase MCP `generate_typescript_types`
-// (or `supabase gen types typescript`). See supabase/README.md.
-
 export type Json =
   | string
   | number
@@ -540,7 +536,9 @@ export type Database = {
           lga_id: string
           membership_number: string
           nin: string | null
+          partner_id: string | null
           passport_photo_url: string | null
+          phone: string | null
           polling_unit_id: string
           registered_by: string
           state_id: string
@@ -565,7 +563,9 @@ export type Database = {
           lga_id: string
           membership_number?: string
           nin?: string | null
+          partner_id?: string | null
           passport_photo_url?: string | null
+          phone?: string | null
           polling_unit_id: string
           registered_by: string
           state_id: string
@@ -590,7 +590,9 @@ export type Database = {
           lga_id?: string
           membership_number?: string
           nin?: string | null
+          partner_id?: string | null
           passport_photo_url?: string | null
+          phone?: string | null
           polling_unit_id?: string
           registered_by?: string
           state_id?: string
@@ -606,6 +608,13 @@ export type Database = {
             columns: ["lga_id"]
             isOneToOne: false
             referencedRelation: "lgas"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "members_partner_id_fkey"
+            columns: ["partner_id"]
+            isOneToOne: false
+            referencedRelation: "partners"
             referencedColumns: ["id"]
           },
           {
@@ -628,6 +637,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "states"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "members_vin_id_fkey"
+            columns: ["vin_id"]
+            isOneToOne: false
+            referencedRelation: "voter_ids"
+            referencedColumns: ["vin"]
           },
           {
             foreignKeyName: "members_ward_id_fkey"
@@ -817,6 +833,50 @@ export type Database = {
         }
         Relationships: []
       }
+      partners: {
+        Row: {
+          code: string
+          created_at: string
+          created_by: string
+          id: string
+          kind: Database["public"]["Enums"]["partner_kind"]
+          logo_url: string | null
+          name: string
+          scope_state_id: string | null
+          status: Database["public"]["Enums"]["partner_status"]
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          created_by: string
+          id?: string
+          kind: Database["public"]["Enums"]["partner_kind"]
+          logo_url?: string | null
+          name: string
+          scope_state_id?: string | null
+          status?: Database["public"]["Enums"]["partner_status"]
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          created_by?: string
+          id?: string
+          kind?: Database["public"]["Enums"]["partner_kind"]
+          logo_url?: string | null
+          name?: string
+          scope_state_id?: string | null
+          status?: Database["public"]["Enums"]["partner_status"]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "partners_scope_state_id_fkey"
+            columns: ["scope_state_id"]
+            isOneToOne: false
+            referencedRelation: "states"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       polling_units: {
         Row: {
           code: string | null
@@ -855,6 +915,8 @@ export type Database = {
           full_name: string
           id: string
           lga_id: string | null
+          partner_id: string | null
+          phone: string | null
           polling_unit_id: string | null
           role: Database["public"]["Enums"]["user_role"]
           state_id: string | null
@@ -867,6 +929,8 @@ export type Database = {
           full_name: string
           id: string
           lga_id?: string | null
+          partner_id?: string | null
+          phone?: string | null
           polling_unit_id?: string | null
           role: Database["public"]["Enums"]["user_role"]
           state_id?: string | null
@@ -879,6 +943,8 @@ export type Database = {
           full_name?: string
           id?: string
           lga_id?: string | null
+          partner_id?: string | null
+          phone?: string | null
           polling_unit_id?: string | null
           role?: Database["public"]["Enums"]["user_role"]
           state_id?: string | null
@@ -895,6 +961,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "profiles_partner_id_fkey"
+            columns: ["partner_id"]
+            isOneToOne: false
+            referencedRelation: "partners"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "profiles_polling_unit_id_fkey"
             columns: ["polling_unit_id"]
             isOneToOne: false
@@ -907,6 +980,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "states"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "profiles_vin_id_fkey"
+            columns: ["vin_id"]
+            isOneToOne: false
+            referencedRelation: "voter_ids"
+            referencedColumns: ["vin"]
           },
           {
             foreignKeyName: "profiles_ward_id_fkey"
@@ -996,7 +1076,7 @@ export type Database = {
           id?: string
           lga_id: string
           name: string
-          ward_number?: number
+          ward_number: number
         }
         Update: {
           created_at?: string
@@ -1027,6 +1107,16 @@ export type Database = {
       }
     }
     Functions: {
+      can_manage_candidacy: {
+        Args: {
+          p_constituency_id?: string
+          p_lga_id?: string
+          p_office_type_id: string
+          p_state_id?: string
+          p_ward_id?: string
+        }
+        Returns: boolean
+      }
       candidacies_for_geography: {
         Args: { p_lga_id?: string; p_state_id?: string; p_ward_id?: string }
         Returns: {
@@ -1059,7 +1149,7 @@ export type Database = {
         }
       }
       candidacies_i_manage: {
-        Args: Record<PropertyKey, never>
+        Args: never
         Returns: {
           bio: string | null
           constituency_id: string | null
@@ -1089,16 +1179,6 @@ export type Database = {
           isSetofReturn: true
         }
       }
-      can_manage_candidacy: {
-        Args: {
-          p_constituency_id?: string
-          p_lga_id?: string
-          p_office_type_id: string
-          p_state_id?: string
-          p_ward_id?: string
-        }
-        Returns: boolean
-      }
       verify_kym_code: {
         Args: { p_code: string }
         Returns: {
@@ -1123,6 +1203,8 @@ export type Database = {
       gender: "male" | "female"
       member_status: "active" | "frozen" | "deleted"
       opt_out_status: "requested" | "frozen" | "deleted" | "reactivated"
+      partner_kind: "political" | "community"
+      partner_status: "active" | "inactive"
       user_role:
         | "super_admin"
         | "partner_admin"
@@ -1148,12 +1230,12 @@ export type Tables<
   DefaultSchemaTableNameOrOptions extends
     | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
         DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -1177,11 +1259,11 @@ export type TablesInsert<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -1202,11 +1284,11 @@ export type TablesUpdate<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -1227,11 +1309,11 @@ export type Enums<
   DefaultSchemaEnumNameOrOptions extends
     | keyof DefaultSchema["Enums"]
     | { schema: keyof DatabaseWithoutInternals },
-  EnumName extends DefaultSchemaEnumNameOrOptions extends {
+  EnumName extends (DefaultSchemaEnumNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaEnumNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -1244,11 +1326,11 @@ export type CompositeTypes<
   PublicCompositeTypeNameOrOptions extends
     | keyof DefaultSchema["CompositeTypes"]
     | { schema: keyof DatabaseWithoutInternals },
-  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+  CompositeTypeName extends (PublicCompositeTypeNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
-    : never = never,
+    : never) = never,
 > = PublicCompositeTypeNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -1274,6 +1356,8 @@ export const Constants = {
       gender: ["male", "female"],
       member_status: ["active", "frozen", "deleted"],
       opt_out_status: ["requested", "frozen", "deleted", "reactivated"],
+      partner_kind: ["political", "community"],
+      partner_status: ["active", "inactive"],
       user_role: [
         "super_admin",
         "partner_admin",
