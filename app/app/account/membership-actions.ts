@@ -49,7 +49,7 @@ export async function completeMyMembership(
   // The caller's profile. Base-tier members are registered by a leader, not here.
   const { data: profile } = await admin
     .from("profiles")
-    .select("role, status, vin_id")
+    .select("role, status, vin_id, partner_id")
     .eq("id", user.id)
     .maybeSingle();
   if (!profile) return { status: "error", message: "Your profile was not found." };
@@ -133,6 +133,11 @@ export async function completeMyMembership(
     .insert({
       user_id: user.id,
       registered_by: user.id,
+      // Land partner staff in their own partition (CR-0026 / ADR-0018). Read
+      // only from the caller's own profile, never the form. Their state_id is
+      // already inside the partner ceiling (enforced at their provisioning), so
+      // the members ceiling trigger passes. A core staff member: partner_id null.
+      partner_id: profile.partner_id ?? null,
       state_id: lga.state_id,
       lga_id: ward.lga_id,
       ward_id: unit.ward_id,
