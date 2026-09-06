@@ -478,22 +478,32 @@ export type Database = {
       lga_member_counters: {
         Row: {
           lga_id: string
+          partner_id: string | null
           seq: number
         }
         Insert: {
           lga_id: string
+          partner_id?: string | null
           seq?: number
         }
         Update: {
           lga_id?: string
+          partner_id?: string | null
           seq?: number
         }
         Relationships: [
           {
             foreignKeyName: "lga_member_counters_lga_id_fkey"
             columns: ["lga_id"]
-            isOneToOne: true
+            isOneToOne: false
             referencedRelation: "lgas"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "lga_member_counters_partner_id_fkey"
+            columns: ["partner_id"]
+            isOneToOne: false
+            referencedRelation: "partners"
             referencedColumns: ["id"]
           },
         ]
