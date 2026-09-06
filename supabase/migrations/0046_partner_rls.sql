@@ -27,7 +27,8 @@
 -- Ordering: role_rank (replace in place) -> drop 7 policies -> drop 2 functions
 -- by their old signatures -> create 2 functions with the new signature ->
 -- recreate 7 policies -> alter the two insert policies -> swap the profiles
--- scope CHECK -> activity_log column + policy.
+-- scope CHECK -> relax 0045's ceiling trigger for the partner's apex admin ->
+-- activity_log column + policy.
 --
 -- Data note: at write time every profiles/members row is core (partner_id null),
 -- so this migration is behaviour-preserving for existing users.
@@ -61,10 +62,15 @@ drop function private.profile_in_scope(uuid, uuid, uuid, uuid, uuid);
 -- ─────────── recreate the scope functions, partitioned ───────────
 -- Same volatility, same search_path lockdown, still NOT security definer (they
 -- read no tables; they only call the private.current_* helpers, which are).
+-- The coalesce(..., false) wrapper keeps the pre-migration contract: a caller
+-- with no role (anon, or a signed-in user with no profile row) gets false, not
+-- null. RLS treats null as false anyway, so this is readability and safety
+-- against a future non-policy caller, not a behaviour change.
 create function private.member_in_scope(
   m_state uuid, m_lga uuid, m_ward uuid, m_pu uuid, m_registered_by uuid, m_user_id uuid, m_partner uuid
 ) returns boolean language sql stable set search_path = '' as $$
-  select private.current_user_role() = 'super_admin'
+  select coalesce((
+    private.current_user_role() = 'super_admin'
   or (
     m_partner is not distinct from private.current_partner_id()
     and case private.current_user_role()
@@ -78,13 +84,14 @@ create function private.member_in_scope(
       when 'member'           then m_user_id = (select auth.uid())
       else false
     end
-  );
+  )), false);
 $$;
 
 create function private.profile_in_scope(
   p_id uuid, p_state uuid, p_lga uuid, p_ward uuid, p_pu uuid, p_partner uuid
 ) returns boolean language sql stable set search_path = '' as $$
-  select p_id = (select auth.uid())
+  select coalesce((
+    p_id = (select auth.uid())
   or private.current_user_role() = 'super_admin'
   or (
     p_partner is not distinct from private.current_partner_id()
@@ -97,7 +104,7 @@ create function private.profile_in_scope(
       when 'unit_coordinator' then p_pu = private.current_polling_unit_id()
       else false
     end
-  );
+  )), false);
 $$;
 
 grant execute on function private.member_in_scope(uuid, uuid, uuid, uuid, uuid, uuid, uuid) to anon, authenticated;
@@ -122,26 +129,33 @@ create policy profiles_select on public.profiles for select using (
 -- and an explicit "you may not mint a partner_admin unless you are super_admin"
 -- guard. The role_rank test already blocks it (rank 1 is not > rank 1), but the
 -- explicit clause makes the intent readable and survives future rank changes.
--- Consequence, by design: the partition clause is NOT exempted for super_admin,
--- so a super_admin cannot create or edit a partner-scoped profile through RLS.
--- Partner onboarding writes that profile with the admin (service role) client,
--- which bypasses RLS. See CR-0026 task T-101.
+--
+-- super_admin is EXEMPT from the partition clause, matching its short-circuit in
+-- both scope functions and the ADR-0005 principle that RLS is the real boundary:
+-- role changes run under the caller's own credentials (app/app/members/
+-- role-actions.ts), never the service role, so without this exemption a
+-- super_admin promoting a partner's state_admin would get a silent 0-row update.
+-- Without it super_admin could also cross partitions on members_update but not
+-- profiles_update, which contradicts "super_admin is unchanged".
+-- Nobody else gains anything: a partner_admin's current_partner_id() is non-null
+-- so the clause reduces to the partition match, and a core national/state admin
+-- still fails it against a partner row (null vs uuid).
 create policy profiles_insert on public.profiles for insert with check (
   private.current_user_role() = any (array['super_admin','partner_admin','national_admin','state_admin','lg_admin','ward_admin','unit_coordinator']::public.user_role[])
   and (private.current_user_role() = 'super_admin' or private.role_rank(role) > private.role_rank(private.current_user_role()))
   and (private.current_user_role() = 'super_admin' or role <> 'super_admin')
   and (private.current_user_role() = 'super_admin' or role <> 'partner_admin')
-  and partner_id is not distinct from private.current_partner_id()
+  and (private.current_user_role() = 'super_admin' or partner_id is not distinct from private.current_partner_id())
   and private.profile_in_scope(id, state_id, lga_id, ward_id, polling_unit_id, partner_id)
 );
 create policy profiles_update on public.profiles for update using (
   (private.current_user_role() = 'super_admin' or private.role_rank(role) > private.role_rank(private.current_user_role()))
-  and partner_id is not distinct from private.current_partner_id()
+  and (private.current_user_role() = 'super_admin' or partner_id is not distinct from private.current_partner_id())
   and private.profile_in_scope(id, state_id, lga_id, ward_id, polling_unit_id, partner_id)
 ) with check (
   (private.current_user_role() = 'super_admin' or private.role_rank(role) > private.role_rank(private.current_user_role()))
   and (private.current_user_role() = 'super_admin' or role <> 'partner_admin')
-  and partner_id is not distinct from private.current_partner_id()
+  and (private.current_user_role() = 'super_admin' or partner_id is not distinct from private.current_partner_id())
   and private.profile_in_scope(id, state_id, lga_id, ward_id, polling_unit_id, partner_id)
 );
 
@@ -227,6 +241,42 @@ alter table public.profiles add constraint profiles_scope_matches_role check (
     else null::boolean
   end
 );
+
+-- ─────────── the ceiling trigger must not fight that CHECK ───────────
+-- The CHECK above requires a partner_admin to carry NO geography, but 0045's
+-- private.enforce_partner_ceiling() raises for any partner-scoped row whose
+-- state_id `is distinct from` the partner's scope_state_id, and
+-- `null is distinct from <uuid>` is TRUE. So for a state-scoped partner the two
+-- rules are mutually unsatisfiable: the partner's own apex admin profile could
+-- never be inserted. Triggers fire for every role, service_role included, so the
+-- onboarding action cannot route around it. Nationwide partners (scope_state_id
+-- null) were unaffected, which is why a naive smoke test would miss this.
+--
+-- Fix: a partner_admin carries no geography at all (it mirrors national_admin),
+-- so the state ceiling is meaningless for its own profile row. Exempt exactly
+-- that case. Everything else, including every partner-scoped member row and
+-- every partner-scoped sub-admin profile, is unchanged.
+--
+-- The exemption is a nested IF, not `tg_table_name = 'profiles' and new.role = …`:
+-- this one function backs triggers on BOTH profiles and members, members has no
+-- `role` column, and PL/pgSQL plans a condition as a whole expression, so the
+-- flat form would fail with "record new has no field role" on members. Nested
+-- IFs keep the inner expression unplanned on the members path.
+create or replace function private.enforce_partner_ceiling()
+returns trigger language plpgsql security definer set search_path = '' as $$
+declare ceiling uuid;
+begin
+  if new.partner_id is null then return new; end if;
+  if tg_table_name = 'profiles' then
+    if new.role = 'partner_admin'::public.user_role then return new; end if;
+  end if;
+  select scope_state_id into ceiling from public.partners where id = new.partner_id;
+  if ceiling is not null and new.state_id is distinct from ceiling then
+    raise exception 'row state % is outside partner ceiling %', new.state_id, ceiling;
+  end if;
+  return new;
+end;
+$$;
 
 -- ─────────── activity_log: partition the read ───────────
 -- national_admin and super_admin keep the platform-wide read they got in 0040.
