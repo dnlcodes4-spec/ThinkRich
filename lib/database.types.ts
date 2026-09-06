@@ -23,6 +23,7 @@ export type Database = {
           created_at: string
           id: string
           metadata: Json | null
+          partner_id: string | null
           state_id: string | null
           subject_id: string | null
           subject_type: string | null
@@ -36,6 +37,7 @@ export type Database = {
           created_at?: string
           id?: string
           metadata?: Json | null
+          partner_id?: string | null
           state_id?: string | null
           subject_id?: string | null
           subject_type?: string | null
@@ -49,6 +51,7 @@ export type Database = {
           created_at?: string
           id?: string
           metadata?: Json | null
+          partner_id?: string | null
           state_id?: string | null
           subject_id?: string | null
           subject_type?: string | null
@@ -60,6 +63,13 @@ export type Database = {
             columns: ["actor_id"]
             isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "activity_log_partner_id_fkey"
+            columns: ["partner_id"]
+            isOneToOne: false
+            referencedRelation: "partners"
             referencedColumns: ["id"]
           },
           {
