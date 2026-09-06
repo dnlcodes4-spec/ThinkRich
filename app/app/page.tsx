@@ -18,15 +18,33 @@ export default async function AppHome() {
   } = await supabase.auth.getUser();
 
   const { data: profile } = user
-    ? await supabase.from("profiles").select("role, full_name").eq("id", user.id).maybeSingle()
+    ? await supabase
+        .from("profiles")
+        .select("role, full_name, partner_id")
+        .eq("id", user.id)
+        .maybeSingle()
     : { data: null };
 
   const role = profile?.role ?? "member";
   const firstName = (profile?.full_name ?? "").trim().split(/\s+/)[0];
 
+  // A community partner's home is framed around "People brought", not an area
+  // count, and drops tiles a community partner has no use for.
+  let partnerKind: "political" | "community" | undefined;
+  if (profile?.role === "partner_admin" && profile.partner_id) {
+    const { data: partner } = await supabase
+      .from("partners")
+      .select("kind")
+      .eq("id", profile.partner_id)
+      .maybeSingle();
+    partnerKind = partner?.kind ?? undefined;
+  }
+
   if (role === "leader") return <LeaderHome userId={user?.id} firstName={firstName} />;
   if (isCoordinator(role))
-    return <CoordinatorHome role={role} firstName={firstName} userId={user?.id} />;
+    return (
+      <CoordinatorHome role={role} firstName={firstName} userId={user?.id} partnerKind={partnerKind} />
+    );
   return <MemberHome userId={user?.id} firstName={firstName} />;
 }
 
@@ -350,11 +368,14 @@ async function CoordinatorHome({
   role,
   firstName,
   userId,
+  partnerKind,
 }: {
   role: string;
   firstName: string;
   userId?: string;
+  partnerKind?: "political" | "community";
 }) {
+  const isCommunityPartner = partnerKind === "community";
   const supabase = await createClient();
   const me = await fetchOwnMember(userId);
 
@@ -416,17 +437,27 @@ async function CoordinatorHome({
 
       <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <Stat
-          label={isNational ? "Members" : "Members in your area"}
+          label={
+            isCommunityPartner ? "People brought"
+            : isNational ? "Members"
+            : "Members in your area"
+          }
           value={members}
-          hint={isNational ? "Everyone in the movement" : "Everyone in your area"}
+          hint={
+            isCommunityPartner ? "Everyone you've brought to ThinkWinners"
+            : isNational ? "Everyone in the movement"
+            : "Everyone in your area"
+          }
           href="/app/members"
         />
-        <Stat
-          label="Correction requests"
-          value={pending ?? 0}
-          hint={pending && pending > 0 ? "Waiting for review" : "Nothing waiting"}
-          href="/app/corrections"
-        />
+        {isCommunityPartner ? null : (
+          <Stat
+            label="Correction requests"
+            value={pending ?? 0}
+            hint={pending && pending > 0 ? "Waiting for review" : "Nothing waiting"}
+            href="/app/corrections"
+          />
+        )}
         {isNational ? (
           <Stat label="Active states" value={activeStates ?? 0} href="/app/admin/states" />
         ) : (
@@ -455,12 +486,14 @@ async function CoordinatorHome({
         Quick actions
       </h2>
       <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        <Tile
-          href="/app/admin/new-account"
-          icon="access"
-          label="Give app access"
-          desc="Set up a new account"
-        />
+        {isCommunityPartner ? null : (
+          <Tile
+            href="/app/admin/new-account"
+            icon="access"
+            label="Give app access"
+            desc="Set up a new account"
+          />
+        )}
         <Tile
           href="/app/notifications"
           icon="bell"

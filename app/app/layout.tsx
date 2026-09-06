@@ -24,8 +24,24 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   } = await supabase.auth.getUser();
 
   const { data: profile } = user
-    ? await supabase.from("profiles").select("role, full_name, vin_id").eq("id", user.id).maybeSingle()
+    ? await supabase
+        .from("profiles")
+        .select("role, full_name, vin_id, partner_id")
+        .eq("id", user.id)
+        .maybeSingle()
     : { data: null };
+
+  // A partner admin's nav depends on the partner's kind: a community partner is
+  // trimmed (no Team, no "Give app access"). One extra query, only for them.
+  let partnerKind: "political" | "community" | undefined;
+  if (profile?.role === "partner_admin" && profile.partner_id) {
+    const { data: partner } = await supabase
+      .from("partners")
+      .select("kind")
+      .eq("id", profile.partner_id)
+      .maybeSingle();
+    partnerKind = partner?.kind ?? undefined;
+  }
 
   // A staff account (any non-member role) with no voter's card can't be `active`
   // (CR-0009), which silently blocks every RLS check gated on active status.
@@ -48,7 +64,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         .is("read_at", null)
     : { count: 0 };
 
-  const items = navForRole(profile?.role);
+  const items = navForRole(profile?.role, partnerKind);
 
   return (
     // Think-Winners brand tokens (navy + gold, ADR-0008). Without this the whole

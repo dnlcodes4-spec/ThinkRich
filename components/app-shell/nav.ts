@@ -69,7 +69,20 @@ const ADD_WARD: NavItem = { href: "/app/geography/add-ward", label: "Add ward", 
 // (partners_super_all) is the actual boundary; this only hides the destination.
 const PARTNERS: NavItem = { href: "/app/admin/partners", label: "Partners", icon: "team", short: "Partners" };
 
-export function navForRole(role: Role | string | null | undefined): NavItem[] {
+export type PartnerKind = "political" | "community";
+
+// A community partner has one admin, a member list and a count: no sub-accounts,
+// no leaders, no "Give app access". Its nav is trimmed to Home, Members, Stats.
+const COMMUNITY_PARTNER: NavItem[] = [
+  { href: "/app", label: "Home", icon: "home" },
+  { href: "/app/members", label: "Members", icon: "members", short: "Members" },
+  { href: "/app/stats", label: "Statistics", icon: "overview", short: "Stats" },
+];
+
+export function navForRole(
+  role: Role | string | null | undefined,
+  partnerKind?: PartnerKind,
+): NavItem[] {
   switch (role) {
     case "member":
       return MEMBER;
@@ -93,7 +106,9 @@ export function navForRole(role: Role | string | null | undefined): NavItem[] {
     // states, geography browser or ward creation. LOGS is included because the
     // activity page admits them and RLS (0046) scopes the log to their partition.
     case "partner_admin":
-      return [...COORDINATOR_BASE, REGISTER, LOGS];
+      return partnerKind === "community"
+        ? COMMUNITY_PARTNER
+        : [...COORDINATOR_BASE, REGISTER, LOGS];
     case "unit_coordinator":
       return [...COORDINATOR_BASE, REGISTER];
     default:
