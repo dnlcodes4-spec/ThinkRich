@@ -15,9 +15,13 @@
 --   * ceiling triggers: a partner-scoped row's state must sit inside the
 --     partner's scope_state_id when that is set
 --
--- Ordering note: private.current_partner_id() is defined before the policy that
--- calls it, and the partner_id columns are added before the triggers that read
--- new.partner_id.
+-- Ordering note: a `language sql` function body is validated at CREATE time, so
+-- private.current_partner_id() (which reads public.profiles.partner_id) and the
+-- partner_id-reading triggers must all be created AFTER the partner_id columns
+-- are added. Hence: enums -> partners table -> partners_super_all policy (needs
+-- only private.current_user_role()) -> add partner_id columns + indexes ->
+-- current_partner_id() -> partners_own_select policy -> freeze fn + triggers ->
+-- ceiling fn + triggers.
 
 -- ─────────── enums ───────────
 create type public.partner_kind as enum ('political', 'community');
@@ -37,30 +41,31 @@ create table public.partners (
 );
 alter table public.partners enable row level security;
 
--- ─────────── helper: the caller's partner ───────────
--- Mirrors private.current_state_id() et al. from 0006.
-create function private.current_partner_id()
-returns uuid language sql stable security definer set search_path = '' as $$
-  select partner_id from public.profiles where id = (select auth.uid());
-$$;
-grant execute on function private.current_partner_id() to anon, authenticated;
-
--- ─────────── partners policies ───────────
--- super_admin manages partners; nobody else reads or writes the table.
+-- super_admin manages partners; nobody else writes the table.
 create policy partners_super_all on public.partners
   for all
   using (private.current_user_role() = 'super_admin')
   with check (private.current_user_role() = 'super_admin');
--- a partner_admin may read only their own partner row (for branding / name).
-create policy partners_own_select on public.partners
-  for select
-  using (id = private.current_partner_id());
 
 -- ─────────── partner_id columns ───────────
 alter table public.profiles add column partner_id uuid references public.partners (id);
 alter table public.members  add column partner_id uuid references public.partners (id);
 create index profiles_partner_id_idx on public.profiles (partner_id) where partner_id is not null;
 create index members_partner_id_idx  on public.members  (partner_id) where partner_id is not null;
+
+-- ─────────── helper: the caller's partner ───────────
+-- Mirrors private.current_state_id() et al. from 0006. Created after the column
+-- above, since the body is parsed and validated now.
+create function private.current_partner_id()
+returns uuid language sql stable security definer set search_path = '' as $$
+  select partner_id from public.profiles where id = (select auth.uid());
+$$;
+grant execute on function private.current_partner_id() to anon, authenticated;
+
+-- a partner_admin may read only their own partner row (for branding / name).
+create policy partners_own_select on public.partners
+  for select
+  using (id = private.current_partner_id());
 
 -- ─────────── freeze: partner_id is write-once ───────────
 -- partner_id is set once at insert (like membership_number). This trigger blocks
@@ -83,7 +88,9 @@ create trigger members_freeze_partner_id before update on public.members
 
 -- ─────────── ceiling: a partner row sits inside the partner's scope ───────────
 -- v1 ceiling is state-level: if the partner declares a scope_state_id, every
--- profile/member carrying that partner_id must be in that state.
+-- profile/member carrying that partner_id must be in that state. The check runs
+-- only on write to profiles/members; it is NOT re-validated for existing rows if
+-- partners.scope_state_id is later narrowed (acceptable for v1).
 create function private.enforce_partner_ceiling()
 returns trigger language plpgsql security definer set search_path = '' as $$
 declare ceiling uuid;
