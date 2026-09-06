@@ -83,7 +83,14 @@ insert into public.profiles (id, role, full_name, state_id, lga_id, ward_id, pol
 insert into public.voter_ids (vin) values
   ('PRTNRVINCORE0000001'),
   ('PRTNRVINP1000000001'),
-  ('PRTNRVINP2000000001');
+  ('PRTNRVINP2000000001'),
+  -- extra VINs for the member-insert write assertions (10, 11, 12): members
+  -- carries members_vin_required (status <> 'deleted' => vin_id not null) and a
+  -- UNIQUE on vin_id, so every attempted insert needs its own real vin or it is
+  -- rejected by the CHECK before RLS / the ceiling trigger is ever reached.
+  ('PRTNRVINNEW00000010'),
+  ('PRTNRVINNEW00000011'),
+  ('PRTNRVINNEW00000012');
 
 -- ── members: M_core (core), M_p1 (P1, with a login), M_p2 (P2) ──
 -- M_core and M_p2 get explicit membership numbers; M_p1 lets the 0047 trigger
@@ -254,12 +261,14 @@ $$;
 do $$
 declare ok boolean; n int; v_num text; v_partner uuid;
 begin
-  -- 10. PA1 may NOT insert a core member (partner_id null).
+  -- 10. PA1 may NOT insert a core member (partner_id null). vin_id is a valid
+  -- unused vin, so the only thing that can deny this is the members_insert RLS
+  -- predicate (partner_id is not distinct from private.current_partner_id()).
   perform set_config('role','authenticated',true);
   perform set_config('request.jwt.claims', json_build_object('sub','a0000000-0000-0000-0000-0000000000d5')::text, true);
   begin
     insert into public.members (registered_by, state_id, lga_id, ward_id, polling_unit_id, partner_id, full_name, date_of_birth, nin, vin_id)
-      values ('a0000000-0000-0000-0000-0000000000d5','b0000000-0000-0000-0000-00000000d001','c0000000-0000-0000-0000-00000000d001','d0000000-0000-0000-0000-00000000d001','e0000000-0000-0000-0000-00000000d001', null, 'BadCoreByPA1','1990-01-01','PRTNNINBAD10', null);
+      values ('a0000000-0000-0000-0000-0000000000d5','b0000000-0000-0000-0000-00000000d001','c0000000-0000-0000-0000-00000000d001','d0000000-0000-0000-0000-00000000d001','e0000000-0000-0000-0000-00000000d001', null, 'BadCoreByPA1','1990-01-01','PRTNNINBAD10', 'PRTNRVINNEW00000010');
     ok := true;
   exception when others then ok := false; end;
   perform set_config('role','none',true);
@@ -269,7 +278,7 @@ begin
   perform set_config('role','authenticated',true);
   perform set_config('request.jwt.claims', json_build_object('sub','a0000000-0000-0000-0000-0000000000d5')::text, true);
   insert into public.members (id, registered_by, state_id, lga_id, ward_id, polling_unit_id, partner_id, full_name, date_of_birth, nin, vin_id)
-    values ('f0000000-0000-0000-0000-00000000d011','a0000000-0000-0000-0000-0000000000d5','b0000000-0000-0000-0000-00000000d001','c0000000-0000-0000-0000-00000000d001','d0000000-0000-0000-0000-00000000d001','e0000000-0000-0000-0000-00000000d001','a1000000-0000-0000-0000-000000000001','NewMemberByPA1','1990-01-01','PRTNNINNEW11', null);
+    values ('f0000000-0000-0000-0000-00000000d011','a0000000-0000-0000-0000-0000000000d5','b0000000-0000-0000-0000-00000000d001','c0000000-0000-0000-0000-00000000d001','d0000000-0000-0000-0000-00000000d001','e0000000-0000-0000-0000-00000000d001','a1000000-0000-0000-0000-000000000001','NewMemberByPA1','1990-01-01','PRTNNINNEW11', 'PRTNRVINNEW00000011');
   perform set_config('role','none',true);
   select membership_number into v_num from public.members where id = 'f0000000-0000-0000-0000-00000000d011';
   if v_num is null or v_num !~ '^TWM-P1-' then
@@ -277,11 +286,17 @@ begin
   end if;
 
   -- 12. PA1 may NOT insert a P1 member outside the partner ceiling (state S2).
+  -- vin_id is a valid unused vin, so the vin CHECK is satisfied and the denial
+  -- comes from a trigger: state S2 with S1 lga/ward/pu trips BOTH
+  -- private.enforce_partner_ceiling (row state <> partner ceiling S1) and the
+  -- member-geography trigger (state/lga mismatch). Either is a correct "denied";
+  -- the point of the assertion is that a partner_admin cannot place a member
+  -- outside its ceiling state.
   perform set_config('role','authenticated',true);
   perform set_config('request.jwt.claims', json_build_object('sub','a0000000-0000-0000-0000-0000000000d5')::text, true);
   begin
     insert into public.members (registered_by, state_id, lga_id, ward_id, polling_unit_id, partner_id, full_name, date_of_birth, nin, vin_id)
-      values ('a0000000-0000-0000-0000-0000000000d5','b0000000-0000-0000-0000-00000000d002','c0000000-0000-0000-0000-00000000d001','d0000000-0000-0000-0000-00000000d001','e0000000-0000-0000-0000-00000000d001','a1000000-0000-0000-0000-000000000001','OutsideCeiling','1990-01-01','PRTNNINBAD12', null);
+      values ('a0000000-0000-0000-0000-0000000000d5','b0000000-0000-0000-0000-00000000d002','c0000000-0000-0000-0000-00000000d001','d0000000-0000-0000-0000-00000000d001','e0000000-0000-0000-0000-00000000d001','a1000000-0000-0000-0000-000000000001','OutsideCeiling','1990-01-01','PRTNNINBAD12', 'PRTNRVINNEW00000012');
     ok := true;
   exception when others then ok := false; end;
   perform set_config('role','none',true);
