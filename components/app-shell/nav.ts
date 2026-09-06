@@ -65,6 +65,9 @@ const GEOGRAPHY: NavItem = { href: "/app/geography", label: "Geography", icon: "
 // LGA-level and up: add wards the seed missed, scoped to the caller's area
 // (mirrors the polling-unit add). Ward/unit tiers are below ward creation.
 const ADD_WARD: NavItem = { href: "/app/geography/add-ward", label: "Add ward", icon: "layers", short: "Add ward" };
+// Super admin only (CR-0026): onboard and oversee partner organisations. RLS
+// (partners_super_all) is the actual boundary; this only hides the destination.
+const PARTNERS: NavItem = { href: "/app/admin/partners", label: "Partners", icon: "team", short: "Partners" };
 
 export function navForRole(role: Role | string | null | undefined): NavItem[] {
   switch (role) {
@@ -72,7 +75,10 @@ export function navForRole(role: Role | string | null | undefined): NavItem[] {
       return MEMBER;
     case "leader":
       return LEADER;
+    // Only the super admin onboards partner organisations, so PARTNERS splits
+    // the two national tiers that otherwise share a list.
     case "super_admin":
+      return [...COORDINATOR_BASE, ADD_WARD, REGISTER, CANDIDATES, STATES, GEOGRAPHY, PARTNERS, LOGS];
     case "national_admin":
       return [...COORDINATOR_BASE, ADD_WARD, REGISTER, CANDIDATES, STATES, GEOGRAPHY, LOGS];
     // State and LGA coordinators can add wards within their scope; ward admins

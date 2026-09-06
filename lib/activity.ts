@@ -21,6 +21,8 @@ export type ActivityEntry = {
   subjectType?: string | null;
   subjectId?: string | null;
   stateId?: string | null;
+  /** Partitions the log for partner organisations (migration 0046). */
+  partnerId?: string | null;
   metadata?: Record<string, unknown> | null;
 };
 
@@ -65,6 +67,7 @@ export async function logActivity(entry: ActivityEntry): Promise<void> {
       subject_type: entry.subjectType ?? null,
       subject_id: entry.subjectId ?? null,
       state_id: entry.stateId ?? null,
+      partner_id: entry.partnerId ?? null,
       metadata: entry.metadata ?? null,
     });
   } catch {
