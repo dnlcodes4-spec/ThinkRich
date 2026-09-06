@@ -83,6 +83,11 @@ export function navForRole(role: Role | string | null | undefined): NavItem[] {
     // Ward admins are included in candidates: they own their ward's councillor race (CR-0007).
     case "ward_admin":
       return [...COORDINATOR_BASE, REGISTER, CANDIDATES];
+    // Partner admins act across their partner organisation, not a geography: no
+    // states, geography browser or ward creation. LOGS is included because the
+    // activity page admits them and RLS (0046) scopes the log to their partition.
+    case "partner_admin":
+      return [...COORDINATOR_BASE, REGISTER, LOGS];
     case "unit_coordinator":
       return [...COORDINATOR_BASE, REGISTER];
     default:
