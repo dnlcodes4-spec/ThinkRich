@@ -388,9 +388,22 @@ async function CoordinatorHome({
 
   const isNational = role === "national_admin" || role === "super_admin";
 
+  // CR-0026 §1: after 0046 a national_admin sits inside the partner partition
+  // guard, so movementTotal(supabase) (RLS-scoped) drops every partner member.
+  // The National headline total must still count them, so it uses the
+  // security-definer movement_member_count() RPC, which crosses the partition.
+  // The non-national ("Members in your area") Stat keeps the scoped number,
+  // which is correct as RLS gives it. super_admin is unaffected either way.
+  const movementTotalAll = isNational
+    ? Number((await supabase.rpc("movement_member_count")).data ?? members)
+    : members;
+
   // National sees the whole country on a map. Counts are grouped in memory from
   // the RLS-visible rows, so no scope logic lives here; at national scale this
   // would move to an aggregate RPC.
+  // The per-state tally below stays RLS-scoped: partner members are excluded
+  // from the per-state map by design (the partition wall). Only the nationwide
+  // headline (movementTotalAll, via movement_member_count()) crosses it.
   let mapData: StateDatum[] = [];
   if (isNational) {
     const [statesRes, memberRows, staffRows, leaderRows] = await Promise.all([
@@ -442,7 +455,7 @@ async function CoordinatorHome({
             : isNational ? "Members"
             : "Members in your area"
           }
-          value={members}
+          value={movementTotalAll}
           hint={
             isCommunityPartner ? "Everyone you've brought to ThinkWinners"
             : isNational ? "Everyone in the movement"
@@ -477,7 +490,7 @@ async function CoordinatorHome({
                 is the true movement total, matching the card above. National and
                 super admins have no state, so they count in the total but not on
                 any state. */}
-            <NigeriaMap data={mapData} nationwideMembers={members} />
+            <NigeriaMap data={mapData} nationwideMembers={movementTotalAll} />
           </div>
         </section>
       ) : null}
