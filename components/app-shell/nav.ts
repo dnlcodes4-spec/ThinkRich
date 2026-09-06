@@ -72,10 +72,12 @@ const PARTNERS: NavItem = { href: "/app/admin/partners", label: "Partners", icon
 export type PartnerKind = "political" | "community";
 
 // A community partner has one admin, a member list and a count: no sub-accounts,
-// no leaders, no "Give app access". Its nav is trimmed to Home, Members, Stats.
+// no leaders, no "Give app access". Bringing members is its whole purpose, so it
+// keeps Register; the rest is trimmed to Home, Members, Stats.
 const COMMUNITY_PARTNER: NavItem[] = [
   { href: "/app", label: "Home", icon: "home" },
   { href: "/app/members", label: "Members", icon: "members", short: "Members" },
+  REGISTER,
   { href: "/app/stats", label: "Statistics", icon: "overview", short: "Stats" },
 ];
 

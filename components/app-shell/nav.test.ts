@@ -9,12 +9,12 @@ const hrefs = (role: string, kind?: "political" | "community") =>
   navForRole(role, kind).map((i) => i.href);
 
 describe("navForRole for a partner admin", () => {
-  it("omits the team and new-account destinations for a community partner", () => {
+  it("omits team and new-account but keeps register for a community partner", () => {
     const items = hrefs("partner_admin", "community");
     expect(items).not.toContain("/app/admin/team");
     expect(items).not.toContain("/app/admin/new-account");
-    expect(items).not.toContain("/app/register");
-    expect(items).toEqual(["/app", "/app/members", "/app/stats"]);
+    expect(items).toContain("/app/register");
+    expect(items).toEqual(["/app", "/app/members", "/app/register", "/app/stats"]);
   });
 
   it("keeps register for a political partner", () => {

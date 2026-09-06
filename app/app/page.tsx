@@ -486,7 +486,14 @@ async function CoordinatorHome({
         Quick actions
       </h2>
       <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {isCommunityPartner ? null : (
+        {isCommunityPartner ? (
+          <Tile
+            href="/app/register"
+            icon="register"
+            label="Register a member"
+            desc="Bring someone to ThinkWinners"
+          />
+        ) : (
           <Tile
             href="/app/admin/new-account"
             icon="access"
@@ -498,9 +505,11 @@ async function CoordinatorHome({
           href="/app/notifications"
           icon="bell"
           label="Send announcement"
-          desc="Message members in your area"
+          desc={isCommunityPartner ? "Message your members" : "Message members in your area"}
         />
-        <Tile href="/app/kym" icon="verify" label="Verify a leader" desc="Confirm a leader is genuine" />
+        {isCommunityPartner ? null : (
+          <Tile href="/app/kym" icon="verify" label="Verify a leader" desc="Confirm a leader is genuine" />
+        )}
       </div>
     </main>
   );
