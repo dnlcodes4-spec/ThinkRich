@@ -67,7 +67,7 @@ describe("register-form", () => {
     expect(input.registered_by).toBeUndefined();
   });
 
-  it("ignores a client-submitted partner_id — the partition comes from the caller's profile, not the form (CR-0026)", () => {
+  it("ignores a client-submitted partner_id: the partition comes from the caller's profile, not the form (CR-0026)", () => {
     const input = readRegisterForm(fd({ ...validBase, partner_id: "22222222-2222-4222-8222-222222222222" }));
     expect(input).not.toHaveProperty("partner_id");
     const parsed = registerSchema.safeParse(input);
