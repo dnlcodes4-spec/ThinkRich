@@ -87,8 +87,9 @@ Every scope predicate (`member_in_scope`, `profile_in_scope`) now also compares
   size. Geographic drill-downs stay RLS-scoped and do not.
 - `activity_log` rows written by partner staff carry that staff member's `partner_id` (resolved
   from their profile in `logActivityAs`), so partner activity stays in the partner's partition and
-  never lands in the core log. `activity_log_select_scoped` lets national and super admins read the
-  whole log and a partner admin read only its own partition.
+  never lands in the core log. `activity_log_select_scoped` lets a super admin read the whole log, a
+  national admin read only core (`partner_id null`) rows, and a partner admin read only its own
+  partition.
 
 `partner_admin` cannot create `super_admin`, `national_admin`, or any core admin: the `role_rank`
 rule in `profiles_insert` / `profiles_update` still requires the target to rank strictly lower,
