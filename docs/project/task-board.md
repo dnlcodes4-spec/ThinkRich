@@ -16,6 +16,15 @@ only when it meets the [Definition of Done](../engineering/definition-of-done.md
 ## 🔵 Backlog
 _Not yet refined / not yet Ready._
 
+- **T-106** — Enforce `partners.status`. The super-admin deactivate toggle (T-101) currently
+  only sets `partners.status` and the UI copy says so; a deactivated partner's `partner_admin`
+  can still sign in, read its partition, and register members. Decide and implement the
+  enforcement: block sign-in and/or the `members_insert` / `profiles_insert` policies when the
+  caller's partner is `inactive`, and settle the open questions (existing sessions, members
+  already in flight, reactivation). _(CR-0026, final-review follow-up)_
+- **T-107** — Cross-partition duplicate-registration warning. The friendly pre-registration
+  check (CR-0009 §3.4) must recognise "this NIN/VIN is already registered under another
+  organisation or the core movement" and word it without leaking which one. _(CR-0026 §3.6)_
 - **T-055** — Regression test pinning plural position holders: two `state_admin`s in one state, two
   `lg_admin`s in one LGA, two `unit_coordinator`s over one polling unit, plus the refusals that must
   survive (peer cannot update peer, no cross-scope or upward insert). Stops a later "tidy-up" adding
