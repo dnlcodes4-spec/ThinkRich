@@ -175,6 +175,19 @@ _PR open, awaiting review + CI._
 ## ✅ Done
 _Merged to `main`, meets Definition of Done._
 
+- **T-094 to T-105**: Partner organisations (affiliated tenancy above the geographic hierarchy).
+  A single nullable `partner_id` partition across the whole RLS scope engine, one new
+  `partner_admin` role (a scoped peer of `national_admin`), the super-admin **Partners**
+  onboarding surface, partner-namespaced membership numbers, community-kind nav trim, `partner_id`
+  set on every registration path, and a cross-partition `movement_member_count()` for the National
+  headline. Migrations 0044-0050 applied to the live project; `supabase/tests/partner_rls_test.sql`
+  (20 assertions) and `supabase/tests/partner_count_integrity_test.sql` green on prod.
+  ADR-0018. (branch `feat/partner-organisations`, PR pending) _(CR-0026)_
+  - T-094 ADR-0018 · T-095 migration 0044 (enum) · T-096 0045 (`partners` table, `partner_id`,
+    helpers, triggers) · T-097 0046 (RLS partition sweep) · T-098 0047 (membership numbers) ·
+    T-099 the SQL RLS test matrix · T-100 app role maps / nav / guards · T-101 Partners surface ·
+    T-102 community trim + geo-picker ceiling · T-103 `partner_id` on registration paths + 0048/0049 ·
+    T-104 `movement_member_count()` + 0050 + the count-integrity test · T-105 this docs sweep
 - **T-089 … T-093** — Email required at member registration + "no email on file" roster filter
   and inline add-email/provision-login for members registered before the rule; register schema
   extracted to `lib/register-form.ts` (PR #87, squash `3d061a6`) _(CR-0025)_

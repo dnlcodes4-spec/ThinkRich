@@ -255,3 +255,35 @@ history, or an existing doc.
   migration with BEGIN/ROLLBACK on prod first, and prove the new grants with an allow/deny RLS test
   that impersonates each role (a super_admin creating a national, and a national being denied a
   super_admin, both run under the impersonated JWT so RLS is actually exercised).
+
+
+### 2026-09-07 - A trigger function shared by two tables must guard table-specific columns with a nested IF
+- **Context:** `private.enforce_partner_ceiling()` (CR-0026) backs `BEFORE` triggers on both
+  `profiles` and `members`. `profiles` has a `role` column; `members` does not. The obvious
+  `IF tg_table_name = 'profiles' AND NEW.role = 'partner_admin' THEN` raises
+  `record "new" has no field "role"` on every `members` write, because PL/pgSQL resolves field
+  references against the record's type when it *plans* the whole boolean expression, before SQL's
+  runtime `AND` short-circuit ever runs.
+- **Lesson:** short-circuit evaluation does not save you here. The condition that touches a
+  table-specific column has to be in its own nested `IF`, reached only after the
+  `tg_table_name` check has already passed as a separate statement:
+  `IF tg_table_name = 'profiles' THEN IF NEW.role IN (...) THEN RETURN NEW; END IF; END IF;`.
+- **Action:** when one trigger function serves triggers on more than one table, every reference to
+  a column that is not on all of those tables goes inside a `tg_table_name`-gated nested `IF`, never
+  a flat `AND`. A `BEGIN/ROLLBACK` dry-run that only re-creates the function will not catch this;
+  the dry-run must actually fire the trigger on each table (insert a row of each shape).
+
+### 2026-09-07 - SECURITY DEFINER is the clean way to expose one cross-partition aggregate
+- **Context:** CR-0026 walls partner members off from the core geographic admins by adding
+  `partner_id is not distinct from private.current_partner_id()` to every scope predicate. But the
+  National dashboard's headline movement total must still count partner members (CR-0026 §1).
+- **Lesson:** don't weaken the row predicate for the total's sake, and don't build a definer RPC
+  that returns rows (that just relocates the leak). A `SECURITY DEFINER` function returning a single
+  scalar (`public.movement_member_count()`) gives the one number that must cross the wall while every
+  row-returning path stays fully partitioned. Keep its body a faithful mirror of whatever the app
+  already computed for that number, and prove equality on the all-core database before shipping
+  (here: 286 == 286).
+- **Action:** for "this one aggregate is public/global but the rows behind it are not", reach for a
+  scalar `SECURITY DEFINER` function with `set search_path = ''` and schema-qualified refs, granted
+  to the roles that need it. Test both halves: the aggregate crosses the partition (assert under an
+  impersonated in-partition-excluded session) and the row drill-down does not.

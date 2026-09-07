@@ -38,6 +38,13 @@ The member + leader experience, plus the minimal foundation it depends on.
 State Admin then National Admin: member management/search, admin management, activation of
 states, messaging with templates, statistics/reports, reward oversight.
 
+- **Partner organisations** (CR-0026, ADR-0018): ✅ shipped 2026-09-07. Affiliated
+  organisations (political or community) run a walled-off copy of the hierarchy under a
+  `partner_admin`, invisible to the core geographic admins and to each other, visible to the
+  super admin; partner members still count in the movement total. Single `partner_id` partition
+  across the RLS scope engine, super-admin **Partners** onboarding surface, partner-namespaced
+  membership numbers. Migrations 0044-0050.
+
 ## Phase 3 — Public website ⏳
 
 ThinkRich Community product showcase (6–7 products) + Think-Winners landing page (vision,

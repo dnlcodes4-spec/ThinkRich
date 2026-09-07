@@ -11,6 +11,7 @@ model. The reporting process lives in [SECURITY.md](../../SECURITY.md).
 | Role | Scope | Core powers |
 |------|-------|-------------|
 | **National Admin** | All 37 (36 states + FCT) | Activate states, create/manage State Admins, own the elective-office catalogue, manage any candidacy, full visibility |
+| **Partner Admin** | One partner organisation (and, for a state-scoped partner, one state) | The apex of an affiliated partner's own world: everything a National Admin does, confined to `partner_id = own`. Cannot create `super_admin`, `national_admin`, or any core admin. See "The partner partition" below |
 | **State Admin** | One assigned state | Oversee members & activities, approve/reject change requests, manage any candidacy inside their state |
 | **L.G Admin** | One Local Government | Oversee the wards (and everything below) in the L.G; manage chairman + councillor candidacies in it |
 | **Ward Admin** | One ward | Oversee the polling units (and the leaders/members below) in the ward; manage its councillor candidacy |
@@ -60,6 +61,37 @@ One limit remains, and it is a capability limit rather than a scope limit:
 Two workflow gates also still apply to everyone, including them, because they are product rules
 rather than scope: a state must be **activated** before members can be registered in it (T-019),
 and a member must be **18 or older**.
+
+### The partner partition (CR-0026, ADR-0018)
+
+A **partner organisation** is an affiliated group that recruits its own people into ThinkWinners
+under its own banner. `profiles` and `members` carry a nullable `partner_id` (`NULL` = the core
+movement); `partner_admin` is a scoped peer of `national_admin` (same `role_rank` 1), its scope
+fields all NULL and its `partner_id` not null, confined to its own partition and, for a
+state-scoped partner, to that state.
+
+Every scope predicate (`member_in_scope`, `profile_in_scope`) now also compares
+`partner_id is not distinct from private.current_partner_id()`. Consequences:
+
+- A **core geographic admin** (national, state, LG, ward, unit) has `partner_id IS NULL`, so
+  `is not distinct from` matches only `NULL` rows: they never see a partner's members or staff.
+- A **partner admin** has a non-null `partner_id`, so they see only their own partition. No
+  partner ever sees another.
+- The **super admin** already returns `true` in every scope function, so it sees every partition
+  unchanged, which is the one cross-cutting view.
+- `partner_id` is **INSERT-only**: `private.freeze_partner_id()` rejects any UPDATE that changes
+  it, in either direction, for every role including `service_role`. A deliberate "move a row
+  between partitions" must disable the trigger for its transaction.
+- The National headline total uses `public.movement_member_count()` (SECURITY DEFINER), which
+  deliberately crosses the partition so partner members and staff still count in the movement's
+  size. Geographic drill-downs stay RLS-scoped and do not.
+- `activity_log` rows carry `partner_id`; `activity_log_select_scoped` lets national and super
+  admins read the whole log and a partner admin read only its own partition.
+
+`partner_admin` cannot create `super_admin`, `national_admin`, or any core admin: the `role_rank`
+rule in `profiles_insert` / `profiles_update` still requires the target to rank strictly lower,
+and the partner predicate plus the ceiling trigger keep every account it creates inside its
+partition and its state ceiling.
 
 ---
 
@@ -159,3 +191,8 @@ Enforced in `next.config.ts` per the Next 16 PWA guide:
 3. Every mutation is validated server-side before the DB call.
 4. Membership numbers cannot be changed after issue.
 5. Duplicate registrations are rejected at the database level.
+6. **Partition isolation** (CR-0026): no query path crosses the `partner_id` partition. A core
+   admin sees only `partner_id IS NULL`; a partner admin sees only its own partition; no partner
+   sees another. The only deliberate exception is `movement_member_count()` (SECURITY DEFINER),
+   which returns a single cross-partition aggregate and no rows.
+7. **`partner_id` is immutable** after insert: a row's partition is fixed at registration.

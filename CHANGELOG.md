@@ -9,6 +9,29 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- **Partner organisations: an affiliated world above the geographic hierarchy** (CR-0026,
+  ADR-0018). A partner is an outside organisation that recruits its own people into ThinkWinners
+  under its own banner. Two kinds: **political** (a coordinator or candidate for a seat) gets the
+  full hierarchical structure the core movement has, its own state/LG/ward/unit admins and
+  leaders; **community** (a non-political group) gets a flat member list and a "people brought"
+  count. The wall is the point: a partner's members and staff are invisible to the core
+  geographic admins (national, state, LG, ward, unit) and to every other partner, while the super
+  admin sees every partition clearly. Isolation is one predicate added across the whole RLS scope
+  engine (`partner_id is not distinct from private.current_partner_id()`), so a core admin only
+  ever sees `partner_id IS NULL` rows; `partner_id` is INSERT-only, fixed at registration. Partner
+  members are still full ThinkWinners members: a real polling unit, a login, the standard card,
+  their area's candidates, and they still count in the movement total (the National headline now
+  reads `public.movement_member_count()`, a SECURITY DEFINER function that deliberately crosses
+  every partition), though geographic drill-downs do not show them. Onboarding is a new
+  super-admin **Partners** surface (`/app/admin/partners`): create the partner row and its first
+  `partner_admin` account, set the kind, the code, and the geographic ceiling (state-level or
+  nationwide in v1). Membership numbers are partner-namespaced, `TWM-<CODE>-<STATE>-<LGA>-<seq>`,
+  with a per-`(partner_id, lga)` sequence; the core `TWM-<STATE>-<LGA>-<seq>` format is unchanged.
+  Global NIN/VIN uniqueness (ADR-0015) now also means **one person belongs to exactly one world**:
+  the core movement, or partner X, or partner Y, never two. Additive migrations 0044-0050, no
+  backfill. `movement_member_count()` is `grant`ed to `anon` on purpose, ahead of a future public
+  live-count consumer; there is no unauthenticated caller today and it returns only the single
+  aggregate number.
 - **Email is required for every voter, plus tooling to fix the members who have none**
   (CR-0025). Member registration (`/app/register`) now requires an email; it was optional, which
   left many members with no way to sign in. Because an address is always present, every member's

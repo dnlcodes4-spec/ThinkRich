@@ -29,8 +29,9 @@ const TONE_CLASS: Record<string, string> = {
   bad: "border-danger/30 bg-danger-soft text-danger",
 };
 
-// National Coordinator only. RLS enforces this too (activity_log is readable only
-// by an active national_admin), so this guard is the courtesy, not the control.
+// National and super admins see the whole log; a partner admin sees only their own
+// partition. RLS enforces this too (activity_log_select_scoped, CR-0026), so this
+// guard is the courtesy, not the control.
 export default async function LogsPage({
   searchParams,
 }: {

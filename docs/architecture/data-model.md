@@ -19,6 +19,9 @@ erDiagram
     polling_units ||--o{ members : "assigned to"
 
     auth_users ||--|| profiles : "1:1"
+    partners ||--o{ profiles : "partition (partner_id, nullable)"
+    partners ||--o{ members : "partition (partner_id, nullable)"
+    states ||--o{ partners : "scope ceiling (nullable)"
     profiles ||--o{ members : "leader registers (<=10)"
     states ||--o{ members : "scoped to"
     lgas ||--o{ members : "scoped to"
@@ -62,9 +65,18 @@ erDiagram
 | Table | Key columns | Notes |
 |-------|-------------|-------|
 | `profiles` | `id` (=`auth.users.id`), `role`, `state_id?`, `lga_id?`, `ward_id?`, `polling_unit_id?`, `full_name`, `status` | 1:1 with Supabase `auth.users`. Scope FKs non-null only at the relevant level (`ward_admin` scopes to a ward; `unit_coordinator` to a polling unit). |
-| `members` | `id`, `membership_number` (unique, immutable), `registered_by` (leader), `state_id`, `lga_id`, `ward_id`, `polling_unit_id`, `full_name`, `date_of_birth`, `passport_photo_url`, `nin` (unique), `vin`, `account_number`, `account_name`, `bank_name`, `status` | The membership record (fields per CR-0002). **NIN/VIN/bank are sensitive PII** — strict RLS, never exposed beyond the caller's scope. `L.G / Ward / Polling Unit` auto-loaded from geography. |
+| `members` | `id`, `membership_number` (unique, immutable), `registered_by` (leader), `state_id`, `lga_id`, `ward_id`, `polling_unit_id`, `partner_id?`, `full_name`, `date_of_birth`, `passport_photo_url`, `nin` (unique), `vin`, `account_number`, `account_name`, `bank_name`, `status` | The membership record (fields per CR-0002). **NIN/VIN/bank are sensitive PII**, strict RLS, never exposed beyond the caller's scope. `L.G / Ward / Polling Unit` auto-loaded from geography. `partner_id` nullable (`NULL` = core movement), see Partner organisations below. |
+| `partners` | `id`, `name`, `kind` (`political` / `community`), `scope_state_id?` (FK `states`, `NULL` = nationwide ceiling), `code` (`[A-Z0-9]{2,6}`, unique, used in membership numbers), `logo_url?`, `status` (`active` / `inactive`), `created_by`, `created_at` | CR-0026 / ADR-0018. An affiliated organisation that recruits its own people. Read only by the super admin (`partners_super_all`) and by a partner's own `partner_admin` (`partners_own_select`). |
 
-**`role` enum:** `national_admin` · `state_admin` · `lg_admin` · `ward_admin` · `unit_coordinator` · `leader` · `member`.
+**`role` enum:** `super_admin` · `partner_admin` · `national_admin` · `state_admin` · `lg_admin` · `ward_admin` · `unit_coordinator` · `leader` · `member`.
+
+> **Partner organisations (CR-0026, ADR-0018).** `profiles` and `members` carry a nullable
+> `partner_id`. `partner_admin` is the apex of an affiliated partner's own world, a scoped peer of
+> `national_admin` (same `role_rank` 1) confined to `partner_id = own` and, for a state-scoped
+> partner, to that state. Every scope predicate compares
+> `partner_id is not distinct from private.current_partner_id()`, so a core geographic admin only
+> ever sees `partner_id IS NULL` rows and no partner sees another; the super admin sees every
+> partition. `partner_id` is INSERT-only.
 
 > **Leadership model (CR-0003).** Every role **except `member` is a leader**, at a different level.
 > The chain is **National → State → LG → Ward → Polling Unit → Leader → Member**: `national_admin`
@@ -77,7 +89,9 @@ erDiagram
 ### Invariants (enforced by DB constraints + Server Actions)
 
 1. `membership_number` is **unique** and **never updated** after insert. **Format (confirmed):**
-   `TWM-<STATE>-<LGA>-<seq>` (e.g. `TWM-LA-IKJ-000123`) — sequence is per-LGA, zero-padded.
+   `TWM-<STATE>-<LGA>-<seq>` (e.g. `TWM-LA-IKJ-000123`), sequence is per-LGA, zero-padded. A
+   partner member's number is namespaced `TWM-<PARTNER_CODE>-<STATE>-<LGA>-<seq>` with a
+   per-`(partner_id, lga)` sequence (CR-0026); the core format is unchanged.
 2. **There is no limit on how many members a `leader` may hold.** Ten was a hard cap until
    CR-0009 §3.4; migration `0023` dropped `enforce_leader_capacity()` and its trigger, turning ten
    into a **milestone** celebrated on the leader's dashboard. `registered_by` still attributes every
@@ -93,6 +107,11 @@ erDiagram
 4. **Age ≥ 18** at registration — DB check on `date_of_birth` (anyone under 18 cannot be registered).
 4. A member's `state_id`/`lga_id`/`ward_id` are consistent (ward ∈ lga ∈ state).
 5. Members cannot self-register: inserts into `members` come only from a leader's Server Action.
+6. **Partition isolation** (CR-0026): no query path crosses the `partner_id` partition. `partner_id`
+   is **immutable** after insert (`private.freeze_partner_id()` rejects any UPDATE that changes it).
+   A partner-scoped row's state must sit inside `partners.scope_state_id` when that is set
+   (`private.enforce_partner_ceiling()`; `partner_admin` and `member` login profiles, which carry
+   no geography, are exempt).
 
 ## Workflows
 
@@ -145,6 +164,8 @@ therefore cannot be derived from `ward.lga_id`. See
 | `public.candidacies_i_manage()` | The races the caller may edit, so the admin UI and the write policies cannot drift. |
 | `public.can_manage_candidacy(office, …)` | Pre-flight for the admin form. |
 | `public.ward_constituencies` (view) | Ward to constituency resolution, ward rows overriding LGA rows. |
+| `private.current_partner_id()` | The caller's `profiles.partner_id`. The partner analogue of `private.current_state_id()`; feeds every scope predicate (CR-0026). |
+| `public.movement_member_count()` | The movement's headline size. `SECURITY DEFINER`, so it deliberately counts across every partition (partner members and staff) even though a national admin cannot see the individual rows. Mirrors the app's `movementTotal()`. |
 
 ---
 
@@ -161,6 +182,13 @@ Every table has RLS enabled. Representative policies (full SQL in migrations):
 | Unit coordinator | members in their `polling_unit_id` | scoped oversight of the leaders beneath |
 | Leader | their own registered members | register/edit their members; download their cards |
 | Member | their own record only | profile photo; submit change/opt-out requests |
+| Super admin | every row, every partition | onboard/deactivate partners; everything below |
+| Partner admin | their own partition only (a scoped `national_admin`) | register and manage their partner's members and staff; never a core or national account |
+
+Every predicate above also carries `partner_id is not distinct from private.current_partner_id()`
+(CR-0026): a core actor (`partner_id IS NULL`) sees only core rows, a partner actor sees only its
+own partition, the super admin sees all. `partners` is readable only by the super admin and a
+partner's own `partner_admin`.
 
 See [security-model.md](security-model.md) and
 [ADR-0005](decisions/0005-rls-as-authorization-boundary.md) for the reasoning.
