@@ -1,5 +1,21 @@
 import { describe, it, expect } from "vitest";
-import { scopeColumnsToClear } from "./tiers";
+import { allowedTargets, scopeColumnsToClear } from "./tiers";
+
+// A partner admin shares rank 1 with the national admin, so `allowedTargets`
+// already offers every role strictly below rank 1 and never super_admin,
+// partner_admin or national_admin. This locks that in (CR-0026 / T-100).
+describe("allowedTargets", () => {
+  it("lets a partner_admin target state_admin..leader, never national/super/partner", () => {
+    const targets = allowedTargets("partner_admin").map((t) => t.role);
+    expect(targets).toEqual([
+      "state_admin",
+      "lg_admin",
+      "ward_admin",
+      "unit_coordinator",
+      "leader",
+    ]);
+  });
+});
 
 // A role change must null every scope column deeper than the target role's own
 // level, mirroring the DB's `profiles_scope_matches_role` check (0040). Without

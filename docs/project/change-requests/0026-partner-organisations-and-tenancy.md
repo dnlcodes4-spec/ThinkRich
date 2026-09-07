@@ -1,6 +1,6 @@
 # CR-0026: Partner organisations (affiliated tenancy above the geographic hierarchy)
 
-- **Status:** Captured <!-- Captured | Assessed | Planned | In Progress | Shipped | Rejected | Deferred -->
+- **Status:** Shipped <!-- Captured | Assessed | Planned | In Progress | Shipped | Rejected | Deferred -->
 - **Requested by:** Client (relayed by engineer)
 - **Date requested:** 2026-09-05
 - **Channel:** message (relayed), refined in a design Q&A with the engineer on 2026-09-05
@@ -192,10 +192,10 @@ the test matrix before it goes near `main`.
 - **Proceed**, on Approach A (single `partner_id` dimension, one new `partner_admin` role,
   reuse the ladder). Sequenced so the additive schema lands first and the RLS sweep gets the
   ADR and the per-role test matrix before merge.
-- **Needs an ADR? Yes → ADR-0018**, covering: the `partner_id` partition model, the single new
-  apex role, the geographic-ceiling design (state-level v1, constituency-level as a documented
-  follow-up), membership-number namespacing, and the count semantics (partner members counted
-  in totals, hidden from geographic drill-downs). Offer to run `/adr`.
+- **Needs an ADR? Yes → [ADR-0018](../../architecture/decisions/0018-partner-organisations-and-tenancy.md)
+  (Accepted 2026-09-05).** Covers the `partner_id` partition model, the single new apex role,
+  the geographic-ceiling design (state-level v1, constituency-level as a documented follow-up),
+  membership-number namespacing, and the count semantics.
 
 ## 5. Plan
 
@@ -252,5 +252,24 @@ Tasks proposed for the [task board](../task-board.md), in pull order:
 
 ## 7. Outcome
 
-- **Shipped in:** _pending_
+- **Shipped in:** branch `feat/partner-organisations` (PR pending), migrations 0044-0052 applied
+  to the live project 2026-09-06/07. Delivered on Approach A (single `partner_id` dimension, one
+  new `partner_admin` role, reusing the ladder). Tasks T-094 to T-105.
+  - Schema: `partner_admin` enum (0044); `partners` table + `partner_id` on `profiles`/`members`
+    + `private.current_partner_id()` + freeze/ceiling triggers (0045); RLS partition sweep across
+    `member_in_scope`/`profile_in_scope`, all dependent policies, `members_insert`,
+    `polling_units_insert`, `activity_log`, and the `profiles_scope_matches_role` CHECK (0046);
+    partner-namespaced membership numbers (0047); `partner_id` made INSERT-only (0048); `member`
+    login profiles exempt from the ceiling (0049); `public.movement_member_count()` for the
+    cross-partition headline total (0050).
+  - App: role maps / nav / guards; super-admin **Partners** surface (list, onboard, per-partner
+    counts, activate/deactivate); community-kind nav trim and "people brought" home; geo picker
+    pinned to a partner's ceiling; `partner_id` set on every member/staff registration path
+    (never from client input); the National headline uses `movement_member_count()`.
+  - Verification: `supabase/tests/partner_rls_test.sql` (20 assertions) and
+    `supabase/tests/partner_count_integrity_test.sql` both run green against the live project.
+  - Deferred by design: exact constituency-level ceilings for political partners (v1 is
+    state-level or nationwide); the cross-partition "already registered under another
+    organisation" pre-registration warning copy; a 5-part split in `lib/membership-card.ts`
+    (the card auto-fits the longer number as-is).
 - **Client confirmed:** _pending_

@@ -29,8 +29,9 @@ const TONE_CLASS: Record<string, string> = {
   bad: "border-danger/30 bg-danger-soft text-danger",
 };
 
-// National Coordinator only. RLS enforces this too (activity_log is readable only
-// by an active national_admin), so this guard is the courtesy, not the control.
+// National and super admins see the whole log; a partner admin sees only their own
+// partition. RLS enforces this too (activity_log_select_scoped, CR-0026), so this
+// guard is the courtesy, not the control.
 export default async function LogsPage({
   searchParams,
 }: {
@@ -45,10 +46,15 @@ export default async function LogsPage({
     ? await supabase.from("profiles").select("role, status, vin_id").eq("id", user.id).maybeSingle()
     : { data: null };
 
+  // Who may see the activity page. A partner admin is admitted too: RLS (0046)
+  // scopes their reads to their own partition, so they only ever see their rows.
+  const canViewLogs =
+    me?.role === "national_admin" || me?.role === "super_admin" || me?.role === "partner_admin";
+
   // The read policy also requires status='active' (CR-0009). A national admin who
   // has not supplied a voter's card is not active, so RLS returns nothing — which
   // would otherwise read as "no activity" instead of "your account isn't active".
-  if ((me?.role === "national_admin" || me?.role === "super_admin") && me.status !== "active") {
+  if (canViewLogs && me?.status !== "active") {
     return (
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
         <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">Activity</h1>
@@ -63,7 +69,7 @@ export default async function LogsPage({
     );
   }
 
-  if (me?.role !== "national_admin" && me?.role !== "super_admin") {
+  if (!canViewLogs) {
     return (
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
         <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">Activity</h1>

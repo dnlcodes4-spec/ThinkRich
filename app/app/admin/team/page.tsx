@@ -35,9 +35,32 @@ export default async function TeamPage({
     data: { user },
   } = await supabase.auth.getUser();
   const { data: me } = user
-    ? await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle()
+    ? await supabase.from("profiles").select("role, partner_id").eq("id", user.id).maybeSingle()
     : { data: null };
   const roles = me ? manageableRoles(me.role as Role) : [];
+
+  // A community partner has one admin and a member list, with no sub-accounts to
+  // manage. Political partners keep the full team view.
+  if (me?.role === "partner_admin" && me.partner_id) {
+    const { data: partner } = await supabase
+      .from("partners")
+      .select("kind")
+      .eq("id", me.partner_id)
+      .maybeSingle();
+    if (partner?.kind === "community") {
+      return (
+        <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
+          <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">Team</h1>
+          <p className="text-sm text-muted">
+            A community partner has one admin and a member list; there are no sub-accounts to manage.
+          </p>
+          <Link href="/app" className="text-sm font-semibold text-primary underline-offset-4 hover:underline">
+            Back to your area
+          </Link>
+        </main>
+      );
+    }
+  }
 
   if (!me || roles.length === 0) {
     return (

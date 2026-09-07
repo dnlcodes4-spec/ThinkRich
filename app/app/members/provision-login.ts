@@ -35,7 +35,7 @@ export async function provisionMemberLogin(memberId: string): Promise<ProvisionR
   // caller's management scope. No separate scope query needed.
   const { data: member } = await supabase
     .from("members")
-    .select("id, full_name, email, user_id, status")
+    .select("id, full_name, email, user_id, status, partner_id")
     .eq("id", memberId)
     .maybeSingle();
   if (!member) return { ok: false, error: "Voter not found." };
@@ -64,6 +64,12 @@ export async function provisionMemberLogin(memberId: string): Promise<ProvisionR
     id: created.user.id,
     role: "member",
     full_name: member.full_name,
+    // Mirror the member's partition onto their login profile (CR-0026 /
+    // ADR-0018). private.current_partner_id() reads this row, so without it a
+    // partner member fails the partition guard in member_in_scope for their own
+    // member row. Migration 0049 lets this profile carry partner_id with no
+    // state_id. A core member's partner_id is null, unchanged.
+    partner_id: member.partner_id ?? null,
   });
   if (profileErr) {
     await admin.auth.admin.deleteUser(created.user.id); // no orphan auth user

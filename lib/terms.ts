@@ -15,6 +15,7 @@ const ROLE_LABELS: Record<Role, string> = {
   state_admin: "State Coordinator",
   national_admin: "National Coordinator",
   super_admin: "Super Admin",
+  partner_admin: "Partner Admin",
 };
 
 export function roleLabel(role: Role | string | null | undefined): string {
@@ -30,8 +31,15 @@ export function isCoordinator(role: Role | string | null | undefined): boolean {
     role === "lg_admin" ||
     role === "state_admin" ||
     role === "national_admin" ||
-    role === "super_admin"
+    role === "super_admin" ||
+    role === "partner_admin"
   );
+}
+
+// A partner admin: authority is partition-wide (their partner organisation), not
+// nation-wide. Guards that must treat the partner scope specially use this.
+export function isPartnerScoped(role: Role | string | null | undefined): boolean {
+  return role === "partner_admin";
 }
 
 // Roles with country-wide authority: the National Coordinator and the owner (Super Admin).

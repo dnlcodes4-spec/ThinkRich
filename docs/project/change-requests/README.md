@@ -47,6 +47,7 @@ reviewable, impact-assessed, trackable unit of work.
 | [0021](0021-activity-log-coverage.md) | Activity log: record every activity + one source of truth for action labels | Client | 2026-08-06 | In Progress | T-081 … T-083 | — |
 | [0022](0022-leader-ten-registrations-milestone.md) | Leader "10 registrations" progress bar + congratulations | Client | 2026-08-07 | Rejected (duplicate of CR-0009) | — | — |
 | [0025](0025-email-required-everywhere.md) | Email required everywhere + admin tooling to find & fill members missing an email | Client | 2026-09-05 | Shipped | T-089 … T-093 | — |
+| [0026](0026-partner-organisations-and-tenancy.md) | Partner organisations — affiliated tenancy above the geographic hierarchy (political + community partners) | Client | 2026-09-05 | Assessed | T-094 … T-105 | ADR-0018 |
 
 <!--
 Example row once CRs exist:

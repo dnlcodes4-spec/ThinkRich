@@ -21,6 +21,8 @@ export type ActivityEntry = {
   subjectType?: string | null;
   subjectId?: string | null;
   stateId?: string | null;
+  /** Partitions the log for partner organisations (migration 0046). */
+  partnerId?: string | null;
   metadata?: Record<string, unknown> | null;
 };
 
@@ -37,16 +39,28 @@ export async function logActivityAs(
     if (!admin) return;
     let actorName = "Unknown";
     let actorRole: string | null = null;
+    let actorPartnerId: string | null = null;
     if (actorId) {
       const { data } = await admin
         .from("profiles")
-        .select("full_name, role")
+        .select("full_name, role, partner_id")
         .eq("id", actorId)
         .maybeSingle();
       actorName = data?.full_name ?? "Unknown";
       actorRole = data?.role ?? null;
+      actorPartnerId = data?.partner_id ?? null;
     }
-    await logActivity({ ...entry, actorId, actorName, actorRole });
+    // Explicit partnerId on the entry wins (the partner.onboarded|deactivated|
+    // reactivated events pass the acted-on partner). Otherwise the row carries
+    // the acting staff member's own partner_id, so partner activity stays in
+    // that partner's partition and never leaks into the core log.
+    await logActivity({
+      ...entry,
+      actorId,
+      actorName,
+      actorRole,
+      partnerId: entry.partnerId ?? actorPartnerId,
+    });
   } catch {
     // Never let logging break the operation it is recording.
   }
@@ -65,6 +79,7 @@ export async function logActivity(entry: ActivityEntry): Promise<void> {
       subject_type: entry.subjectType ?? null,
       subject_id: entry.subjectId ?? null,
       state_id: entry.stateId ?? null,
+      partner_id: entry.partnerId ?? null,
       metadata: entry.metadata ?? null,
     });
   } catch {

@@ -18,15 +18,33 @@ export default async function AppHome() {
   } = await supabase.auth.getUser();
 
   const { data: profile } = user
-    ? await supabase.from("profiles").select("role, full_name").eq("id", user.id).maybeSingle()
+    ? await supabase
+        .from("profiles")
+        .select("role, full_name, partner_id")
+        .eq("id", user.id)
+        .maybeSingle()
     : { data: null };
 
   const role = profile?.role ?? "member";
   const firstName = (profile?.full_name ?? "").trim().split(/\s+/)[0];
 
+  // A community partner's home is framed around "People brought", not an area
+  // count, and drops tiles a community partner has no use for.
+  let partnerKind: "political" | "community" | undefined;
+  if (profile?.role === "partner_admin" && profile.partner_id) {
+    const { data: partner } = await supabase
+      .from("partners")
+      .select("kind")
+      .eq("id", profile.partner_id)
+      .maybeSingle();
+    partnerKind = partner?.kind ?? undefined;
+  }
+
   if (role === "leader") return <LeaderHome userId={user?.id} firstName={firstName} />;
   if (isCoordinator(role))
-    return <CoordinatorHome role={role} firstName={firstName} userId={user?.id} />;
+    return (
+      <CoordinatorHome role={role} firstName={firstName} userId={user?.id} partnerKind={partnerKind} />
+    );
   return <MemberHome userId={user?.id} firstName={firstName} />;
 }
 
@@ -350,15 +368,16 @@ async function CoordinatorHome({
   role,
   firstName,
   userId,
+  partnerKind,
 }: {
   role: string;
   firstName: string;
   userId?: string;
+  partnerKind?: "political" | "community";
 }) {
+  const isCommunityPartner = partnerKind === "community";
   const supabase = await createClient();
   const me = await fetchOwnMember(userId);
-
-  const members = await movementTotal(supabase);
 
   const { count: pending } = await supabase
     .from("change_requests")
@@ -367,9 +386,24 @@ async function CoordinatorHome({
 
   const isNational = role === "national_admin" || role === "super_admin";
 
+  // CR-0026 §1: after 0046 a national_admin sits inside the partner partition
+  // guard, so movementTotal(supabase) (RLS-scoped) drops every partner member.
+  // The National headline total must still count them, so it uses the
+  // security-definer movement_member_count() RPC, which crosses the partition.
+  // The non-national ("Members in your area") Stat keeps the scoped number,
+  // which is correct as RLS gives it. super_admin is unaffected either way.
+  // Only one path's queries run: the RPC for national, the 3 scoped queries
+  // (inside movementTotal) otherwise.
+  const movementTotalAll = isNational
+    ? Number((await supabase.rpc("movement_member_count")).data ?? (await movementTotal(supabase)))
+    : await movementTotal(supabase);
+
   // National sees the whole country on a map. Counts are grouped in memory from
   // the RLS-visible rows, so no scope logic lives here; at national scale this
   // would move to an aggregate RPC.
+  // The per-state tally below stays RLS-scoped: partner members are excluded
+  // from the per-state map by design (the partition wall). Only the nationwide
+  // headline (movementTotalAll, via movement_member_count()) crosses it.
   let mapData: StateDatum[] = [];
   if (isNational) {
     const [statesRes, memberRows, staffRows, leaderRows] = await Promise.all([
@@ -416,17 +450,27 @@ async function CoordinatorHome({
 
       <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <Stat
-          label={isNational ? "Members" : "Members in your area"}
-          value={members}
-          hint={isNational ? "Everyone in the movement" : "Everyone in your area"}
+          label={
+            isCommunityPartner ? "People brought"
+            : isNational ? "Members"
+            : "Members in your area"
+          }
+          value={movementTotalAll}
+          hint={
+            isCommunityPartner ? "Everyone you've brought to ThinkWinners"
+            : isNational ? "Everyone in the movement, including partner organisations"
+            : "Everyone in your area"
+          }
           href="/app/members"
         />
-        <Stat
-          label="Correction requests"
-          value={pending ?? 0}
-          hint={pending && pending > 0 ? "Waiting for review" : "Nothing waiting"}
-          href="/app/corrections"
-        />
+        {isCommunityPartner ? null : (
+          <Stat
+            label="Correction requests"
+            value={pending ?? 0}
+            hint={pending && pending > 0 ? "Waiting for review" : "Nothing waiting"}
+            href="/app/corrections"
+          />
+        )}
         {isNational ? (
           <Stat label="Active states" value={activeStates ?? 0} href="/app/admin/states" />
         ) : (
@@ -446,7 +490,7 @@ async function CoordinatorHome({
                 is the true movement total, matching the card above. National and
                 super admins have no state, so they count in the total but not on
                 any state. */}
-            <NigeriaMap data={mapData} nationwideMembers={members} />
+            <NigeriaMap data={mapData} nationwideMembers={movementTotalAll} />
           </div>
         </section>
       ) : null}
@@ -455,19 +499,30 @@ async function CoordinatorHome({
         Quick actions
       </h2>
       <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        <Tile
-          href="/app/admin/new-account"
-          icon="access"
-          label="Give app access"
-          desc="Set up a new account"
-        />
+        {isCommunityPartner ? (
+          <Tile
+            href="/app/register"
+            icon="register"
+            label="Register a member"
+            desc="Bring someone to ThinkWinners"
+          />
+        ) : (
+          <Tile
+            href="/app/admin/new-account"
+            icon="access"
+            label="Give app access"
+            desc="Set up a new account"
+          />
+        )}
         <Tile
           href="/app/notifications"
           icon="bell"
           label="Send announcement"
-          desc="Message members in your area"
+          desc={isCommunityPartner ? "Message your members" : "Message members in your area"}
         />
-        <Tile href="/app/kym" icon="verify" label="Verify a leader" desc="Confirm a leader is genuine" />
+        {isCommunityPartner ? null : (
+          <Tile href="/app/kym" icon="verify" label="Verify a leader" desc="Confirm a leader is genuine" />
+        )}
       </div>
     </main>
   );

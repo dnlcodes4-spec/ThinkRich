@@ -105,6 +105,11 @@ export default async function StatsPage() {
   const role = profile.role as Role;
   const isLeader = role === "leader";
 
+  // CR-0026 / ADR-0018: these breakdowns are RLS-scoped by design. For a
+  // national_admin they are core-only once partners exist (0046's partition
+  // wall); a national admin's analytics are of the core movement, the
+  // super_admin sees the whole picture. Partner members show only in the /app
+  // movement headline (movement_member_count()) and to the super_admin.
   const [{ data: memberRows }, { data: staffRows }] = await Promise.all([
     supabase.from("members").select("state_id, lga_id, ward_id, polling_unit_id, status, created_at, gender, user_id"),
     supabase.from("profiles").select("id, state_id, lga_id, ward_id, polling_unit_id, role, status, created_at").neq("role", "member"),

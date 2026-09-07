@@ -21,8 +21,15 @@ movement (a client's product). It has three parts, called **surfaces**:
 
 The defining feature is **hierarchy**: who can see and do what depends on their level. A
 Leader manages their own members, celebrating their first 10; a State Admin manages one state; the National Admin runs
-everything. Getting that access control right — so nobody sees data they shouldn't — is the
+everything. Getting that access control right, so nobody sees data they shouldn't, is the
 most important job of the system.
+
+Above that chain sit two roles added later. A **Super Admin** (the platform owner) sees
+everything. And a **Partner** is an affiliated organisation, a politician or a community group,
+that brings its own people into the movement and runs its own walled-off copy of the hierarchy:
+its members and staff are invisible to the ordinary National/State/Local admins and to every
+other partner, while the Super Admin sees across all of them. Partner members still count in the
+movement's headline total (CR-0026).
 
 The full requirements are in the client's spec (`docs/Think-winner movement.docx`) and our
 [build plan](BUILD-PLAN.md). We're building the **members' app first**.

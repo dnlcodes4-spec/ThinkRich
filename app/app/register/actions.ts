@@ -68,7 +68,7 @@ export async function registerMember(
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("role, state_id, lga_id, ward_id, polling_unit_id")
+    .select("role, state_id, lga_id, ward_id, polling_unit_id, partner_id")
     .eq("id", user.id)
     .maybeSingle();
 
@@ -213,6 +213,12 @@ export async function registerMember(
     .from("members")
     .insert({
       registered_by: registeredBy,
+      // Partition the member into the registrar's own partner (CR-0026 /
+      // ADR-0018). Taken ONLY from the caller's profile row, never from the
+      // form: a core registrar has partner_id null and inserts null exactly as
+      // before; a partner leader / partner_admin must stamp their partner_id or
+      // members_insert RLS (0046) denies the write.
+      partner_id: profile.partner_id ?? null,
       state_id: stateId,
       lga_id: lgaId,
       ward_id: unit.ward_id,
