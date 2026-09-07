@@ -85,8 +85,10 @@ Every scope predicate (`member_in_scope`, `profile_in_scope`) now also compares
 - The National headline total uses `public.movement_member_count()` (SECURITY DEFINER), which
   deliberately crosses the partition so partner members and staff still count in the movement's
   size. Geographic drill-downs stay RLS-scoped and do not.
-- `activity_log` rows carry `partner_id`; `activity_log_select_scoped` lets national and super
-  admins read the whole log and a partner admin read only its own partition.
+- `activity_log` rows written by partner staff carry that staff member's `partner_id` (resolved
+  from their profile in `logActivityAs`), so partner activity stays in the partner's partition and
+  never lands in the core log. `activity_log_select_scoped` lets national and super admins read the
+  whole log and a partner admin read only its own partition.
 
 `partner_admin` cannot create `super_admin`, `national_admin`, or any core admin: the `role_rank`
 rule in `profiles_insert` / `profiles_update` still requires the target to rank strictly lower,
@@ -191,8 +193,11 @@ Enforced in `next.config.ts` per the Next 16 PWA guide:
 3. Every mutation is validated server-side before the DB call.
 4. Membership numbers cannot be changed after issue.
 5. Duplicate registrations are rejected at the database level.
-6. **Partition isolation** (CR-0026): no query path crosses the `partner_id` partition. A core
-   admin sees only `partner_id IS NULL`; a partner admin sees only its own partition; no partner
-   sees another. The only deliberate exception is `movement_member_count()` (SECURITY DEFINER),
-   which returns a single cross-partition aggregate and no rows.
+6. **Partition isolation** (CR-0026): no RLS-mediated query path crosses the `partner_id`
+   partition. A core admin sees only `partner_id IS NULL`; a partner admin sees only its own
+   partition; no partner sees another. The named exceptions are `SECURITY DEFINER` helpers
+   (`movement_member_count()`, which returns a single cross-partition aggregate and no rows;
+   `verify_kym_code()`, scoped to the caller's own partition) and deliberate
+   super-admin / service-role paths (the onboarding VIN dedupe, the global NIN/VIN uniqueness
+   existence-check, and the admin-client per-partner tally).
 7. **`partner_id` is immutable** after insert: a row's partition is fixed at registration.

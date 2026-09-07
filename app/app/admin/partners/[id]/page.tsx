@@ -155,8 +155,8 @@ export default async function PartnerDetailPage({ params }: { params: Promise<{ 
         </h2>
         <p className="mt-1 text-sm text-muted">
           {isActive
-            ? "Closes the partner. Nothing already registered is deleted."
-            : "Opens the partner again so its admins can keep registering people."}
+            ? "Marks the partner inactive. It does not yet block sign-in or registration, and nothing already registered is deleted."
+            : "Marks the partner active again."}
         </p>
         <form action={setPartnerActive} className="mt-4">
           <input type="hidden" name="partner_id" value={partner.id} />

@@ -90,7 +90,11 @@ insert into public.voter_ids (vin) values
   -- rejected by the CHECK before RLS / the ceiling trigger is ever reached.
   ('PRTNRVINNEW00000010'),
   ('PRTNRVINNEW00000011'),
-  ('PRTNRVINNEW00000012');
+  ('PRTNRVINNEW00000012'),
+  -- VINs for assertion 21: activity_log_select_scoped requires an ACTIVE profile,
+  -- and profiles_vin_required then forces a vin_id on an active non-member.
+  ('PRTNRVINNA000000001'),
+  ('PRTNRVINPA100000001');
 
 -- ── members: M_core (core), M_p1 (P1, with a login), M_p2 (P2) ──
 -- M_core and M_p2 get explicit membership numbers; M_p1 lets the 0047 trigger
@@ -332,6 +336,46 @@ begin
   end if;
 
   raise notice 'member-write assertions (10,11,12,18,19) passed';
+end;
+$$;
+
+-- ═══════════════════ activity_log partition (FIX 1, final review) ═══════════════════
+-- Every activity row written by partner staff carries that staff member's
+-- partner_id (lib/activity.ts logActivityAs). A core national_admin then reads
+-- only partner_id-null rows; a partner_admin reads only its own partition.
+-- activity_log_select_scoped requires an ACTIVE profile, so NA and PA1 are
+-- promoted here (with the vin_id profiles_vin_required then demands).
+do $$
+declare n_core int; n_p1 int;
+begin
+  update public.profiles set status = 'active', vin_id = 'PRTNRVINNA000000001'
+    where id = 'a0000000-0000-0000-0000-0000000000d2';
+  update public.profiles set status = 'active', vin_id = 'PRTNRVINPA100000001'
+    where id = 'a0000000-0000-0000-0000-0000000000d5';
+
+  insert into public.activity_log (actor_id, actor_name, actor_role, action, summary, partner_id) values
+    ('a0000000-0000-0000-0000-0000000000d2','NA','national_admin','member.registered','core activity row', null),
+    ('a0000000-0000-0000-0000-0000000000d5','PA1','partner_admin','member.registered','P1 activity row','a1000000-0000-0000-0000-000000000001');
+
+  -- 21a. core national_admin sees the core row, not the P1 row.
+  perform set_config('role','authenticated',true);
+  perform set_config('request.jwt.claims', json_build_object('sub','a0000000-0000-0000-0000-0000000000d2')::text, true);
+  select count(*) into n_core from public.activity_log where summary = 'core activity row';
+  select count(*) into n_p1   from public.activity_log where summary = 'P1 activity row';
+  perform set_config('role','none',true);
+  if n_core <> 1 then raise exception 'RLS FAIL [21a]: core national_admin saw % core activity rows, expected 1', n_core; end if;
+  if n_p1  <> 0 then raise exception 'RLS FAIL [21a]: core national_admin saw a partner activity row (% rows)', n_p1; end if;
+
+  -- 21b. PA1 sees the P1 row, not the core row.
+  perform set_config('role','authenticated',true);
+  perform set_config('request.jwt.claims', json_build_object('sub','a0000000-0000-0000-0000-0000000000d5')::text, true);
+  select count(*) into n_core from public.activity_log where summary = 'core activity row';
+  select count(*) into n_p1   from public.activity_log where summary = 'P1 activity row';
+  perform set_config('role','none',true);
+  if n_p1  <> 1 then raise exception 'RLS FAIL [21b]: partner_admin saw % P1 activity rows, expected 1', n_p1; end if;
+  if n_core <> 0 then raise exception 'RLS FAIL [21b]: partner_admin saw a core activity row (% rows)', n_core; end if;
+
+  raise notice 'activity_log partition assertions (21a,21b) passed';
 end;
 $$;
 

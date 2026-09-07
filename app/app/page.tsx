@@ -379,8 +379,6 @@ async function CoordinatorHome({
   const supabase = await createClient();
   const me = await fetchOwnMember(userId);
 
-  const members = await movementTotal(supabase);
-
   const { count: pending } = await supabase
     .from("change_requests")
     .select("*", { count: "exact", head: true })
@@ -394,9 +392,11 @@ async function CoordinatorHome({
   // security-definer movement_member_count() RPC, which crosses the partition.
   // The non-national ("Members in your area") Stat keeps the scoped number,
   // which is correct as RLS gives it. super_admin is unaffected either way.
+  // Only one path's queries run: the RPC for national, the 3 scoped queries
+  // (inside movementTotal) otherwise.
   const movementTotalAll = isNational
-    ? Number((await supabase.rpc("movement_member_count")).data ?? members)
-    : members;
+    ? Number((await supabase.rpc("movement_member_count")).data ?? (await movementTotal(supabase)))
+    : await movementTotal(supabase);
 
   // National sees the whole country on a map. Counts are grouped in memory from
   // the RLS-visible rows, so no scope logic lives here; at national scale this
@@ -458,7 +458,7 @@ async function CoordinatorHome({
           value={movementTotalAll}
           hint={
             isCommunityPartner ? "Everyone you've brought to ThinkWinners"
-            : isNational ? "Everyone in the movement"
+            : isNational ? "Everyone in the movement, including partner organisations"
             : "Everyone in your area"
           }
           href="/app/members"
