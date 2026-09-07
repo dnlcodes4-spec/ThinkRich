@@ -180,7 +180,7 @@ _Merged to `main`, meets Definition of Done._
   `partner_admin` role (a scoped peer of `national_admin`), the super-admin **Partners**
   onboarding surface, partner-namespaced membership numbers, community-kind nav trim, `partner_id`
   set on every registration path, and a cross-partition `movement_member_count()` for the National
-  headline. Migrations 0044-0050 applied to the live project; `supabase/tests/partner_rls_test.sql`
+  headline. Migrations 0044-0052 applied to the live project; `supabase/tests/partner_rls_test.sql`
   (20 assertions) and `supabase/tests/partner_count_integrity_test.sql` green on prod.
   ADR-0018. (branch `feat/partner-organisations`, PR pending) _(CR-0026)_
   - T-094 ADR-0018 · T-095 migration 0044 (enum) · T-096 0045 (`partners` table, `partner_id`,

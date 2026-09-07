@@ -28,7 +28,7 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   nationwide in v1). Membership numbers are partner-namespaced, `TWM-<CODE>-<STATE>-<LGA>-<seq>`,
   with a per-`(partner_id, lga)` sequence; the core `TWM-<STATE>-<LGA>-<seq>` format is unchanged.
   Global NIN/VIN uniqueness (ADR-0015) now also means **one person belongs to exactly one world**:
-  the core movement, or partner X, or partner Y, never two. Additive migrations 0044-0050, no
+  the core movement, or partner X, or partner Y, never two. Additive migrations 0044-0052, no
   backfill. `movement_member_count()` is `grant`ed to `anon` on purpose, ahead of a future public
   live-count consumer; there is no unauthenticated caller today and it returns only the single
   aggregate number.

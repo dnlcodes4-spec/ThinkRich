@@ -252,7 +252,7 @@ Tasks proposed for the [task board](../task-board.md), in pull order:
 
 ## 7. Outcome
 
-- **Shipped in:** branch `feat/partner-organisations` (PR pending), migrations 0044-0050 applied
+- **Shipped in:** branch `feat/partner-organisations` (PR pending), migrations 0044-0052 applied
   to the live project 2026-09-06/07. Delivered on Approach A (single `partner_id` dimension, one
   new `partner_admin` role, reusing the ladder). Tasks T-094 to T-105.
   - Schema: `partner_admin` enum (0044); `partners` table + `partner_id` on `profiles`/`members`

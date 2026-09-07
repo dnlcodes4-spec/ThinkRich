@@ -43,7 +43,7 @@ states, messaging with templates, statistics/reports, reward oversight.
   `partner_admin`, invisible to the core geographic admins and to each other, visible to the
   super admin; partner members still count in the movement total. Single `partner_id` partition
   across the RLS scope engine, super-admin **Partners** onboarding surface, partner-namespaced
-  membership numbers. Migrations 0044-0050.
+  membership numbers. Migrations 0044-0052.
 
 ## Phase 3 — Public website ⏳
 
