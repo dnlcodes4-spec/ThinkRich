@@ -184,6 +184,15 @@ _PR open, awaiting review + CI._
 ## ✅ Done
 _Merged to `main`, meets Definition of Done._
 
+- **T-110**: Move a voter between partitions (CR-0026 Chunk B). `public.move_member_to_partition`
+  (super-admin only, `SECURITY DEFINER`) moves one rank-and-file member core↔partner or
+  partner↔partner: destination-ceiling check, staff/deleted/same-partition rejection, number
+  reissued in the destination partition, login re-partitioned, one `member.moved` activity row in
+  the destination. `partner_id` / `membership_number` immutability yields only to a
+  transaction-local `app.partition_move` flag the RPC sets and clears. Migration 0056;
+  `supabase/tests/move_member_test.sql` (9 assertions) green on prod; +6 unit tests. Super-admin
+  control on the voter detail page. (branch `feat/move-member-between-partitions`) _(CR-0026)_
+
 - **T-109**: Partner administration tooling (CR-0026). The public partnership form feeds a
   `partnership_requests` table (super-admin RLS; anonymous form writes via the service role after
   validation + honeypot + per-email dedupe) and notifies the super admins; a **Requests** view

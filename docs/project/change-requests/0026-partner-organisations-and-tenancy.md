@@ -269,7 +269,19 @@ Tasks proposed for the [task board](../task-board.md), in pull order:
   - Verification: `supabase/tests/partner_rls_test.sql` (20 assertions) and
     `supabase/tests/partner_count_integrity_test.sql` both run green against the live project.
   - Deferred by design: exact constituency-level ceilings for political partners (v1 is
-    state-level or nationwide); the cross-partition "already registered under another
-    organisation" pre-registration warning copy; a 5-part split in `lib/membership-card.ts`
-    (the card auto-fits the longer number as-is).
+    state-level or nationwide); a 5-part split in `lib/membership-card.ts` (the card auto-fits the
+    longer number as-is).
+- **Follow-ups shipped:**
+  - **T-106 / T-107** (0053-0054): `partners.status` enforced (BEFORE INSERT trigger + app
+    suspension screen; members unaffected; instant reactivation); `identity_registration_status()`
+    for a cross-partition duplicate-registration warning that never names the world.
+  - **T-109** (0055): partner administration tooling: the public partnership form feeds a
+    `partnership_requests` pipeline (super-admin only) with an admin **Requests** view and
+    onboarding prefill; a partner's page gains edit (name + ceiling, widen-only), add-another-admin,
+    and reset-admin-password.
+  - **T-110** (0056): move a rank-and-file member between partitions
+    (`public.move_member_to_partition`, super-admin only): number reissued in the destination,
+    login re-partitioned, move logged; `partner_id` / `membership_number` immutability yields only
+    to the transaction-local `app.partition_move` flag. This is the "cannot be added by another
+    without being moved" path from §1.
 - **Client confirmed:** _pending_
