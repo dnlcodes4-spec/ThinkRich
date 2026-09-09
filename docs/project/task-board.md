@@ -16,6 +16,15 @@ only when it meets the [Definition of Done](../engineering/definition-of-done.md
 ## 🔵 Backlog
 _Not yet refined / not yet Ready._
 
+- **T-108** — End a suspended partner's live staff sessions. Today, deactivating a partner
+  (T-106) blocks new writes and shows a suspension screen, but a partner staffer already signed in
+  keeps a valid session until it expires; they only hit the wall on their next navigation and their
+  next write already fails at the DB. Decide whether that is enough or whether deactivation should
+  force sign-out. If forcing: options are a `proxy.ts` / layout check that revokes the session when
+  the caller's partner is `inactive` (one extra profile+partner read per request, or cache it), or
+  Supabase Auth admin `signOut` per staff user at deactivate time (bounded work, needs the staff
+  list). Settle: existing sessions, and whether reactivation should notify the admins. _(CR-0026,
+  T-106 follow-up)_
 - **T-055** — Regression test pinning plural position holders: two `state_admin`s in one state, two
   `lg_admin`s in one LGA, two `unit_coordinator`s over one polling unit, plus the refusals that must
   survive (peer cannot update peer, no cross-scope or upward insert). Stops a later "tidy-up" adding
