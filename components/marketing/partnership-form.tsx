@@ -93,6 +93,13 @@ export function PartnershipForm() {
       noValidate
       className="rounded-2xl border border-navy-200 bg-white p-6 sm:p-8"
     >
+      {/* Honeypot: hidden from people, catnip for bots. A filled value is
+          silently dropped server-side. */}
+      <div aria-hidden="true" className="absolute left-[-9999px] top-[-9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor="company">Company</label>
+        <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Your name" name="name" required autoComplete="name" placeholder="Full name" error={fe.name} />
         <Field label="Campaign / organization" name="organization" required placeholder="e.g. the campaign name" error={fe.organization} />

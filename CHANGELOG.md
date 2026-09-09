@@ -9,6 +9,16 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- **Partner administration tooling** (CR-0026 follow-up). The public "become a partner" form on
+  the Think-Winners landing now feeds a real pipeline: submissions land in a new
+  `partnership_requests` table (super-admin only; the anonymous form writes with the service role
+  after validation, guarded by a honeypot and a per-email dedupe) and notify the super admins.
+  A **Requests** view under `/app/admin/partners` tracks each one through new / contacted /
+  onboarded / declined, and "Onboard" prefills the onboarding form from the request and marks it
+  onboarded on success. On a partner's page the super admin can now **edit** its name and ceiling
+  (widening is free; narrowing to a state is refused, in the app and by a DB trigger, if members
+  or staff already sit outside it; the code stays fixed, it is in every membership number),
+  **add another partner admin**, and **reset a partner admin's password**. Migration 0055.
 - **Partner organisations: an affiliated world above the geographic hierarchy** (CR-0026,
   ADR-0018). A partner is an outside organisation that recruits its own people into ThinkWinners
   under its own banner. Two kinds: **political** (a coordinator or candidate for a seat) gets the

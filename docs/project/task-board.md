@@ -184,6 +184,15 @@ _PR open, awaiting review + CI._
 ## ✅ Done
 _Merged to `main`, meets Definition of Done._
 
+- **T-109**: Partner administration tooling (CR-0026). The public partnership form feeds a
+  `partnership_requests` table (super-admin RLS; anonymous form writes via the service role after
+  validation + honeypot + per-email dedupe) and notifies the super admins; a **Requests** view
+  under `/app/admin/partners` tracks the lifecycle and prefills onboarding. A partner's page gains
+  **edit** (name + ceiling; widen-only, enforced in-app and by `enforce_partner_ceiling_widen_only`;
+  code fixed), **add another admin**, and **reset admin password**, all reusing the shared
+  `provisionPartnerAdmin` helper. Migration 0055; `supabase/tests/partner_ceiling_edit_test.sql`
+  green on prod; +13 unit tests. (branch `feat/partner-admin-tooling`) _(CR-0026)_
+
 - **T-106, T-107**: Partner-organisation final-review follow-ups. **T-106** enforces
   `partners.status`: a `BEFORE INSERT` trigger (`private.block_inactive_partner_write`) blocks any
   new member/staff row in a deactivated partition, the app shell shows the partner's staff a

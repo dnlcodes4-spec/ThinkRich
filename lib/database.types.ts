@@ -897,6 +897,59 @@ export type Database = {
           },
         ]
       }
+      partnership_requests: {
+        Row: {
+          created_at: string
+          email: string
+          handled_at: string | null
+          handled_by: string | null
+          id: string
+          message: string
+          name: string
+          organization: string
+          partner_id: string | null
+          phone: string | null
+          role_title: string | null
+          status: Database["public"]["Enums"]["partnership_request_status"]
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          handled_at?: string | null
+          handled_by?: string | null
+          id?: string
+          message: string
+          name: string
+          organization: string
+          partner_id?: string | null
+          phone?: string | null
+          role_title?: string | null
+          status?: Database["public"]["Enums"]["partnership_request_status"]
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          handled_at?: string | null
+          handled_by?: string | null
+          id?: string
+          message?: string
+          name?: string
+          organization?: string
+          partner_id?: string | null
+          phone?: string | null
+          role_title?: string | null
+          status?: Database["public"]["Enums"]["partnership_request_status"]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "partnership_requests_partner_id_fkey"
+            columns: ["partner_id"]
+            isOneToOne: false
+            referencedRelation: "partners"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       polling_units: {
         Row: {
           code: string | null
@@ -1230,6 +1283,7 @@ export type Database = {
       opt_out_status: "requested" | "frozen" | "deleted" | "reactivated"
       partner_kind: "political" | "community"
       partner_status: "active" | "inactive"
+      partnership_request_status: "new" | "contacted" | "onboarded" | "declined"
       user_role:
         | "super_admin"
         | "partner_admin"
@@ -1383,6 +1437,7 @@ export const Constants = {
       opt_out_status: ["requested", "frozen", "deleted", "reactivated"],
       partner_kind: ["political", "community"],
       partner_status: ["active", "inactive"],
+      partnership_request_status: ["new", "contacted", "onboarded", "declined"],
       user_role: [
         "super_admin",
         "partner_admin",
