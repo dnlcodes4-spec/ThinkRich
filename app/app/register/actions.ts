@@ -7,6 +7,8 @@ import { provisionMemberLogin } from "@/app/app/members/provision-login";
 import { logActivityAs } from "@/lib/activity";
 import { normalizeVin, VIN_INVALID } from "@/lib/vin";
 import { normalizePhone, PHONE_INVALID } from "@/lib/phone";
+import { identityRegistrationStatus, IDENTITY_TAKEN_ELSEWHERE } from "@/lib/identity-check";
+import { isInactivePartnerError, PARTNER_SUSPENDED_MESSAGE } from "@/lib/partner-suspended";
 
 // Who may register a member (CR-0017 item 7). A leader and unit coordinator write
 // into their own polling unit; the higher coordinator tiers and the national
@@ -239,6 +241,26 @@ export async function registerMember(
 
   if (error) {
     const m = error.message.toLowerCase();
+    if (isInactivePartnerError(error)) {
+      return { status: "error", message: PARTNER_SUSPENDED_MESSAGE };
+    }
+    if (error.code === "23505" && (m.includes("nin") || m.includes("vin"))) {
+      // The unique key is global (ADR-0015), so a collision can be with someone
+      // in another partition the registrar cannot see (CR-0026). Ask across the
+      // wall so the message is accurate without revealing which world.
+      const where = await identityRegistrationStatus(supabase, {
+        nin: parsed.data.nin,
+        vin,
+      });
+      if (where === "taken_elsewhere") {
+        const field = m.includes("nin") ? "nin" : "vin";
+        return {
+          status: "error",
+          message: IDENTITY_TAKEN_ELSEWHERE,
+          fieldErrors: { [field]: "Registered elsewhere." },
+        };
+      }
+    }
     if (error.code === "23505" && m.includes("nin")) {
       return {
         status: "error",

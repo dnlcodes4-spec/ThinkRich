@@ -96,6 +96,19 @@ rule in `profiles_insert` / `profiles_update` still requires the target to rank 
 and the partner predicate plus the ceiling trigger keep every account it creates inside its
 partition and its state ceiling.
 
+**Deactivation.** The super admin can set `partners.status = 'inactive'`. A `BEFORE INSERT`
+trigger on `members` and `profiles` (`private.block_inactive_partner_write()`) then rejects any
+new member or staff account carrying that partner's id, so a suspended partner cannot grow. Its
+existing rows stay readable, its members keep their login and card, and the app shell shows the
+partner's staff a "your organisation is suspended" screen. Reactivation is instant and lossless
+(the trigger reads the current status on every insert; nothing is mutated on deactivate).
+
+**Cross-partition duplicate registration.** NIN and VIN are globally unique (ADR-0015), so a
+registrar can collide with an identity that lives in a partition they cannot see.
+`public.identity_registration_status(nin, vin)` is `SECURITY DEFINER` and reports `available` /
+`taken_here` / `taken_elsewhere` without revealing which world holds the identity; the
+registration actions use it to word the "already registered under another organisation" message.
+
 ---
 
 ## Authorization: defense in depth
@@ -198,7 +211,11 @@ Enforced in `next.config.ts` per the Next 16 PWA guide:
    partition. A core admin sees only `partner_id IS NULL`; a partner admin sees only its own
    partition; no partner sees another. The named exceptions are `SECURITY DEFINER` helpers
    (`movement_member_count()`, which returns a single cross-partition aggregate and no rows;
-   `verify_kym_code()`, scoped to the caller's own partition) and deliberate
+   `verify_kym_code()`, scoped to the caller's own partition; `identity_registration_status()`,
+   which returns only a coarse taken/available bucket) and deliberate
    super-admin / service-role paths (the onboarding VIN dedupe, the global NIN/VIN uniqueness
    existence-check, and the admin-client per-partner tally).
 7. **`partner_id` is immutable** after insert: a row's partition is fixed at registration.
+8. **A deactivated partner cannot grow**: `partners.status = 'inactive'` blocks every new
+   `members` / `profiles` row in that partition (DB trigger), while leaving its existing data
+   and its members' logins untouched.

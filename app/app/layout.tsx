@@ -32,15 +32,22 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     : { data: null };
 
   // A partner admin's nav depends on the partner's kind: a community partner is
-  // trimmed (no Team, no "Give app access"). One extra query, only for them.
+  // trimmed (no Team, no "Give app access"). And any partner staff account is
+  // walled off entirely while the partner is inactive (T-106). One extra query,
+  // only for someone who carries a partner_id.
   let partnerKind: "political" | "community" | undefined;
-  if (profile?.role === "partner_admin" && profile.partner_id) {
+  let partnerSuspended = false;
+  // Only partner STAFF need this: `partnerKind` drives nav for a partner_admin,
+  // and the suspension wall is for staff (members keep their login and card when
+  // their partner is deactivated, CR-0026). A partner member pays no query.
+  if (profile?.partner_id && profile.role !== "member") {
     const { data: partner } = await supabase
       .from("partners")
-      .select("kind")
+      .select("kind, status")
       .eq("id", profile.partner_id)
       .maybeSingle();
     partnerKind = partner?.kind ?? undefined;
+    partnerSuspended = partner?.status === "inactive";
   }
 
   // A staff account (any non-member role) with no voter's card can't be `active`
@@ -84,7 +91,9 @@ export default async function AppLayout({ children }: { children: React.ReactNod
       >
         Skip to content
       </a>
-      <Sidebar items={items} name={profile?.full_name ?? ""} roleLabel={roleLabel(profile?.role)} />
+      {partnerSuspended ? null : (
+        <Sidebar items={items} name={profile?.full_name ?? ""} roleLabel={roleLabel(profile?.role)} />
+      )}
       <div className="flex min-w-0 flex-1 flex-col">
         <AppHeader
           name={profile?.full_name ?? ""}
@@ -93,20 +102,35 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           unread={unread ?? 0}
         />
         <div id="main-content" tabIndex={-1} className="flex flex-1 flex-col outline-none">
-          {children}
+          {partnerSuspended ? (
+            <main className="mx-auto flex w-full max-w-md flex-1 flex-col items-center justify-center px-4 py-16 text-center">
+              <h1 className="font-display text-xl font-semibold tracking-tight text-foreground">
+                Your organisation is suspended
+              </h1>
+              <p className="mt-3 text-sm text-muted">
+                This partner organisation has been deactivated by the platform owner. You can still
+                sign in, but registering members and creating accounts is paused until it is
+                reactivated. Please contact the platform owner.
+              </p>
+            </main>
+          ) : (
+            children
+          )}
         </div>
         {/* Promote the movement's social pages on every dashboard and the members
             app (CR-0012). Desktop shows these in the sidebar; this slim footer is
             the mobile equivalent, where the sidebar is hidden. */}
-        <footer className="border-t border-border px-4 py-3 sm:px-6 lg:hidden">
-          <CommunityLinks />
-        </footer>
-        <BottomNav items={items} />
+        {partnerSuspended ? null : (
+          <footer className="border-t border-border px-4 py-3 sm:px-6 lg:hidden">
+            <CommunityLinks />
+          </footer>
+        )}
+        {partnerSuspended ? null : <BottomNav items={items} />}
         {/* One prompt at a time, in priority order, so modals never stack:
             password first (still on the temp one), then completing membership
             (CR-0014, which also sets the VIN), then the VIN-only fallback for a
             staff account that has a membership but somehow no profile VIN. */}
-        {needsPasswordChange(user?.app_metadata) ? (
+        {partnerSuspended ? null : needsPasswordChange(user?.app_metadata) ? (
           <ChangePasswordPrompt />
         ) : needsMembership ? (
           <CompleteMembershipPrompt />

@@ -16,15 +16,6 @@ only when it meets the [Definition of Done](../engineering/definition-of-done.md
 ## 🔵 Backlog
 _Not yet refined / not yet Ready._
 
-- **T-106** — Enforce `partners.status`. The super-admin deactivate toggle (T-101) currently
-  only sets `partners.status` and the UI copy says so; a deactivated partner's `partner_admin`
-  can still sign in, read its partition, and register members. Decide and implement the
-  enforcement: block sign-in and/or the `members_insert` / `profiles_insert` policies when the
-  caller's partner is `inactive`, and settle the open questions (existing sessions, members
-  already in flight, reactivation). _(CR-0026, final-review follow-up)_
-- **T-107** — Cross-partition duplicate-registration warning. The friendly pre-registration
-  check (CR-0009 §3.4) must recognise "this NIN/VIN is already registered under another
-  organisation or the core movement" and word it without leaking which one. _(CR-0026 §3.6)_
 - **T-055** — Regression test pinning plural position holders: two `state_admin`s in one state, two
   `lg_admin`s in one LGA, two `unit_coordinator`s over one polling unit, plus the refusals that must
   survive (peer cannot update peer, no cross-scope or upward insert). Stops a later "tidy-up" adding
@@ -183,6 +174,15 @@ _PR open, awaiting review + CI._
 
 ## ✅ Done
 _Merged to `main`, meets Definition of Done._
+
+- **T-106, T-107**: Partner-organisation final-review follow-ups. **T-106** enforces
+  `partners.status`: a `BEFORE INSERT` trigger (`private.block_inactive_partner_write`) blocks any
+  new member/staff row in a deactivated partition, the app shell shows the partner's staff a
+  suspension screen, members keep their login, and reactivation is instant. **T-107** adds
+  `public.identity_registration_status()` (SECURITY DEFINER, coarse bucket) so the registration
+  actions can say "already registered under another organisation" without naming the world.
+  Migrations 0053-0054; `supabase/tests/partner_status_test.sql` (11 assertions) green on prod.
+  (branch `feat/partner-status-and-dup-warning`) _(CR-0026)_
 
 - **T-094 to T-105**: Partner organisations (affiliated tenancy above the geographic hierarchy).
   A single nullable `partner_id` partition across the whole RLS scope engine, one new
