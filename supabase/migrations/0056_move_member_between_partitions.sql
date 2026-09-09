@@ -49,7 +49,7 @@ end;
 $$;
 
 -- ─────────── the move ───────────
-create or replace function public.move_member_to_partition(p_member uuid, p_target_partner uuid)
+create or replace function public.move_member_to_partition(p_member uuid, p_target_partner uuid default null)
 returns text
 language plpgsql
 security definer

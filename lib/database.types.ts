@@ -1256,6 +1256,10 @@ export type Database = {
         Args: { p_nin?: string; p_vin?: string }
         Returns: string
       }
+      move_member_to_partition: {
+        Args: { p_member: string; p_target_partner?: string }
+        Returns: string
+      }
       movement_member_count: { Args: never; Returns: number }
       verify_kym_code: {
         Args: { p_code: string }
