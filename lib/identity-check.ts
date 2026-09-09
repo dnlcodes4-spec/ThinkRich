@@ -11,7 +11,10 @@ type Client = SupabaseClient<Database>;
 
 // Ask the database, across every partition, whether this NIN or VIN is free.
 // `identity_registration_status` is SECURITY DEFINER so it sees past the partner
-// wall, but only ever returns the coarse bucket, never which world.
+// wall, but only ever returns the coarse bucket, never which world. It returns
+// "unknown" for a plain member caller (it is not an existence oracle for
+// rank-and-file logins) and on any error; callers fall back to their generic
+// "already registered" copy in that case.
 export async function identityRegistrationStatus(
   supabase: Client,
   { nin, vin }: { nin?: string | null; vin?: string | null },

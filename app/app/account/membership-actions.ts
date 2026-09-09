@@ -9,6 +9,7 @@ import { normalizePhone, PHONE_INVALID } from "@/lib/phone";
 import { isAdult } from "@/lib/age";
 import { logActivityAs } from "@/lib/activity";
 import { identityRegistrationStatus, IDENTITY_TAKEN_ELSEWHERE } from "@/lib/identity-check";
+import { isInactivePartnerError } from "@/lib/partner-suspended";
 
 // Everyone is a member (CR-0014 / ADR-0016). A staff account (any non-member role)
 // is also a member of the movement: they hold a real `members` record keyed to their
@@ -115,10 +116,17 @@ export async function completeMyMembership(
       admin.from("profiles").select("id").eq("vin_id", entered).neq("id", user.id).maybeSingle(),
     ]);
     if (vinOnMember || vinOnProfile) {
+      // Ask across the partition wall with the caller's client so
+      // current_partner_id() resolves (CR-0026): a partner staffer whose card
+      // sits in the core movement or another partner gets the accurate message.
+      const where = await identityRegistrationStatus(supabase, { vin: entered });
       return {
         status: "error",
-        message: "That voter's card number is already registered.",
-        fieldErrors: { vin: "Already registered." },
+        message:
+          where === "taken_elsewhere"
+            ? IDENTITY_TAKEN_ELSEWHERE
+            : "That voter's card number is already registered.",
+        fieldErrors: { vin: where === "taken_elsewhere" ? "Registered elsewhere." : "Already registered." },
       };
     }
     // The VIN row must exist before a member/profile can reference it (voter_ids.vin PK).
@@ -155,6 +163,13 @@ export async function completeMyMembership(
 
   if (error) {
     const m = error.message.toLowerCase();
+    if (isInactivePartnerError(error)) {
+      return {
+        status: "error",
+        message:
+          "Your organisation is suspended, so membership cannot be completed right now. Contact the platform owner.",
+      };
+    }
     if (error.code === "23505" && (m.includes("nin") || m.includes("vin"))) {
       // Ask across the partition wall with the caller's client so
       // current_partner_id() resolves (CR-0026); the admin client has no JWT.

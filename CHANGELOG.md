@@ -33,8 +33,9 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   lets the message say "already registered under another organisation" without naming which.
   Deactivating a partner (`partners.status = 'inactive'`) is enforced: a DB trigger blocks every
   new member or staff account in that partition and the app shows the partner's staff a
-  suspension screen, while existing data and members' logins are untouched and reactivation is
-  instant. Additive migrations 0044-0053, no backfill. `movement_member_count()` is `grant`ed to
+  suspension screen (with its nav emptied), while existing data and members' logins are untouched
+  and reactivation is instant. `identity_registration_status()` returns nothing to a plain member
+  caller, so it is not a NIN/VIN existence oracle. Additive migrations 0044-0054, no backfill. `movement_member_count()` is `grant`ed to
   `anon` on purpose, ahead of a future public live-count consumer; there is no unauthenticated
   caller today and it returns only the single aggregate number.
 - **Email is required for every voter, plus tooling to fix the members who have none**

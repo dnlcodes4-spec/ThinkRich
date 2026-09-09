@@ -7,6 +7,7 @@ import { generateTempPassword } from "@/lib/provisioning";
 import { logActivityAs } from "@/lib/activity";
 import { emailField } from "@/lib/email";
 import { FLAG_TEMPORARY } from "@/lib/must-change-password";
+import { isInactivePartnerError, PARTNER_SUSPENDED_MESSAGE } from "@/lib/partner-suspended";
 
 // Provision a member's own login. A member needs THREE things to sign in and be
 // recognised by RLS: an `auth.users` row, a `profiles` row with role = 'member'
@@ -73,7 +74,12 @@ export async function provisionMemberLogin(memberId: string): Promise<ProvisionR
   });
   if (profileErr) {
     await admin.auth.admin.deleteUser(created.user.id); // no orphan auth user
-    return { ok: false, error: "Could not create the login profile. Please try again." };
+    return {
+      ok: false,
+      error: isInactivePartnerError(profileErr)
+        ? PARTNER_SUSPENDED_MESSAGE
+        : "Could not create the login profile. Please try again.",
+    };
   }
 
   const { error: linkErr } = await admin.from("members").update({ user_id: created.user.id }).eq("id", member.id);

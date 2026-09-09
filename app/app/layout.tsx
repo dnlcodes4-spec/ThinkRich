@@ -37,16 +37,17 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   // only for someone who carries a partner_id.
   let partnerKind: "political" | "community" | undefined;
   let partnerSuspended = false;
-  if (profile?.partner_id) {
+  // Only partner STAFF need this: `partnerKind` drives nav for a partner_admin,
+  // and the suspension wall is for staff (members keep their login and card when
+  // their partner is deactivated, CR-0026). A partner member pays no query.
+  if (profile?.partner_id && profile.role !== "member") {
     const { data: partner } = await supabase
       .from("partners")
       .select("kind, status")
       .eq("id", profile.partner_id)
       .maybeSingle();
     partnerKind = partner?.kind ?? undefined;
-    // Members keep their login and card when their partner is deactivated
-    // (CR-0026); only staff lose the working surface.
-    partnerSuspended = partner?.status === "inactive" && profile.role !== "member";
+    partnerSuspended = partner?.status === "inactive";
   }
 
   // A staff account (any non-member role) with no voter's card can't be `active`
@@ -70,7 +71,9 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         .is("read_at", null)
     : { count: 0 };
 
-  const items = navForRole(profile?.role, partnerKind);
+  // Behind the suspension wall every screen is the same notice, so don't offer
+  // links that pretend to work.
+  const items = partnerSuspended ? [] : navForRole(profile?.role, partnerKind);
 
   return (
     // Think-Winners brand tokens (navy + gold, ADR-0008). Without this the whole
@@ -125,7 +128,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
             password first (still on the temp one), then completing membership
             (CR-0014, which also sets the VIN), then the VIN-only fallback for a
             staff account that has a membership but somehow no profile VIN. */}
-        {needsPasswordChange(user?.app_metadata) ? (
+        {partnerSuspended ? null : needsPasswordChange(user?.app_metadata) ? (
           <ChangePasswordPrompt />
         ) : needsMembership ? (
           <CompleteMembershipPrompt />

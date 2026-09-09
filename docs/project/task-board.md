@@ -181,8 +181,8 @@ _Merged to `main`, meets Definition of Done._
   suspension screen, members keep their login, and reactivation is instant. **T-107** adds
   `public.identity_registration_status()` (SECURITY DEFINER, coarse bucket) so the registration
   actions can say "already registered under another organisation" without naming the world.
-  Migration 0053; `supabase/tests/partner_status_test.sql` green on prod. (branch
-  `feat/partner-status-and-dup-warning`) _(CR-0026)_
+  Migrations 0053-0054; `supabase/tests/partner_status_test.sql` (11 assertions) green on prod.
+  (branch `feat/partner-status-and-dup-warning`) _(CR-0026)_
 
 - **T-094 to T-105**: Partner organisations (affiliated tenancy above the geographic hierarchy).
   A single nullable `partner_id` partition across the whole RLS scope engine, one new

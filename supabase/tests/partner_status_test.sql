@@ -1,4 +1,4 @@
--- CR-0026 / ADR-0018 follow-ups [migration 0053].
+-- CR-0026 / ADR-0018 follow-ups [migrations 0053, 0054].
 --
 -- T-106: partners.status is enforced. A partner with status <> 'active' takes no
 --   new members or staff; reads and existing rows are untouched; reactivating
@@ -18,7 +18,8 @@ insert into auth.users (id, instance_id, aud, role, email) values
   ('c0000000-0000-0000-0000-0000000000f2','00000000-0000-0000-0000-000000000000','authenticated','authenticated','ps-paA@test.dev'),
   ('c0000000-0000-0000-0000-0000000000f3','00000000-0000-0000-0000-000000000000','authenticated','authenticated','ps-paB@test.dev'),
   ('c0000000-0000-0000-0000-0000000000f4','00000000-0000-0000-0000-000000000000','authenticated','authenticated','ps-leadA@test.dev'),
-  ('c0000000-0000-0000-0000-0000000000f5','00000000-0000-0000-0000-000000000000','authenticated','authenticated','ps-new-by-paA@test.dev');
+  ('c0000000-0000-0000-0000-0000000000f5','00000000-0000-0000-0000-000000000000','authenticated','authenticated','ps-new-by-paA@test.dev'),
+  ('c0000000-0000-0000-0000-0000000000f6','00000000-0000-0000-0000-000000000000','authenticated','authenticated','ps-member-b@test.dev');
 
 insert into public.states (id, name, code, is_active) values
   ('c1000000-0000-0000-0000-0000000000f1','PStatetest1','PS1', true);
@@ -40,7 +41,9 @@ insert into public.profiles (id, role, full_name, state_id, lga_id, ward_id, pol
   ('c0000000-0000-0000-0000-0000000000f1','super_admin',  'PS_SU',  null, null, null, null, null, 'frozen'),
   ('c0000000-0000-0000-0000-0000000000f2','partner_admin','PS_PA_A', null, null, null, null, 'ca000000-0000-0000-0000-00000000000a', 'frozen'),
   ('c0000000-0000-0000-0000-0000000000f3','partner_admin','PS_PA_B', null, null, null, null, 'ca000000-0000-0000-0000-00000000000b', 'frozen'),
-  ('c0000000-0000-0000-0000-0000000000f4','leader',       'PS_L_A',  'c1000000-0000-0000-0000-0000000000f1','c2000000-0000-0000-0000-0000000000f1','c3000000-0000-0000-0000-0000000000f1','c4000000-0000-0000-0000-0000000000f1','ca000000-0000-0000-0000-00000000000b','frozen');
+  ('c0000000-0000-0000-0000-0000000000f4','leader',       'PS_L_A',  'c1000000-0000-0000-0000-0000000000f1','c2000000-0000-0000-0000-0000000000f1','c3000000-0000-0000-0000-0000000000f1','c4000000-0000-0000-0000-0000000000f1','ca000000-0000-0000-0000-00000000000b','frozen'),
+  -- a plain member login inside Partner B, for the identity-oracle deny check.
+  ('c0000000-0000-0000-0000-0000000000f6','member',       'PS_M_B',  'c1000000-0000-0000-0000-0000000000f1','c2000000-0000-0000-0000-0000000000f1','c3000000-0000-0000-0000-0000000000f1','c4000000-0000-0000-0000-0000000000f1','ca000000-0000-0000-0000-00000000000b','active');
 
 insert into public.voter_ids (vin) values
   ('PSTATUSVINCORE00001'),
@@ -164,7 +167,15 @@ begin
   perform set_config('role','none',true);
   if r <> 'available' then raise exception 'T-107 FAIL [10]: unknown identity = %', r; end if;
 
-  raise notice 'T-107 assertions (7-10) passed';
+  -- 11. A plain member gets nothing: the function is not an existence oracle for
+  -- rank-and-file logins (migration 0054). Even a VIN that really exists -> unknown.
+  perform set_config('role','authenticated',true);
+  perform set_config('request.jwt.claims', json_build_object('sub','c0000000-0000-0000-0000-0000000000f6')::text, true);
+  select public.identity_registration_status(p_vin => 'PSTATUSVINCORE00001') into r;
+  perform set_config('role','none',true);
+  if r <> 'unknown' then raise exception 'T-107 FAIL [11]: member caller got % (should be unknown)', r; end if;
+
+  raise notice 'T-107 assertions (7-11) passed';
 end $$;
 
 do $$ begin raise notice 'ALL PARTNER STATUS + IDENTITY CHECKS PASSED'; end $$;
