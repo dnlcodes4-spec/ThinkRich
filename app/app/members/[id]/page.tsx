@@ -9,6 +9,7 @@ import { fieldLabel } from "../change-request-fields";
 import { reviewChangeRequest } from "../detail-actions";
 import { LeaderPhotoUpload } from "./leader-photo";
 import { AddMemberEmail } from "./add-email";
+import { MoveMember } from "./move-member";
 
 export const metadata: Metadata = {
   title: "Voter",
@@ -31,10 +32,17 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
   // RLS scopes this: only an in-scope member is returned.
   const { data: member } = await supabase
     .from("members")
-    .select("id, membership_number, full_name, date_of_birth, email, vin_id, gender, status, passport_photo_url, state_id, lga_id, ward_id, polling_unit_id")
+    .select("id, membership_number, full_name, date_of_birth, email, vin_id, gender, status, passport_photo_url, state_id, lga_id, ward_id, polling_unit_id, partner_id")
     .eq("id", id)
     .maybeSingle();
   if (!member) notFound();
+
+  // Only the super admin can move a voter between partitions (they are the only
+  // role that sees across them). Load the destinations for the picker.
+  const canMove = me.role === "super_admin";
+  const { data: activePartners } = canMove
+    ? await supabase.from("partners").select("id, name, kind").eq("status", "active").order("name")
+    : { data: null };
 
   const [st, lg, wd, pu, reqs] = await Promise.all([
     supabase.from("states").select("name").eq("id", member.state_id).maybeSingle(),
@@ -160,6 +168,14 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
           </ul>
         )}
       </section>
+
+      {canMove ? (
+        <MoveMember
+          memberId={member.id}
+          currentPartnerId={member.partner_id}
+          partners={activePartners ?? []}
+        />
+      ) : null}
     </main>
   );
 }
