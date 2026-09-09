@@ -27,8 +27,11 @@ export type ActivityAction =
   | "candidate.removed"
   | "announcement.sent"
   | "partner.onboarded"
+  | "partner.updated"
   | "partner.deactivated"
-  | "partner.reactivated";
+  | "partner.reactivated"
+  | "partner.admin_added"
+  | "partner.admin_login_reset";
 
 export type ActionTone = "neutral" | "good" | "warn" | "bad";
 
@@ -56,8 +59,11 @@ export const ACTION_META: Record<ActivityAction, { label: string; tone: ActionTo
   "candidate.removed": { label: "Candidate removed", tone: "warn" },
   "announcement.sent": { label: "Announcement sent", tone: "neutral" },
   "partner.onboarded": { label: "Partner onboarded", tone: "good" },
+  "partner.updated": { label: "Partner updated", tone: "neutral" },
   "partner.deactivated": { label: "Partner deactivated", tone: "warn" },
   "partner.reactivated": { label: "Partner reactivated", tone: "good" },
+  "partner.admin_added": { label: "Partner admin added", tone: "good" },
+  "partner.admin_login_reset": { label: "Partner admin login reset", tone: "neutral" },
 };
 
 /** Ordered keys for the page's filter chips (grouped by domain). */

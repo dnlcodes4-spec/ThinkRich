@@ -1,15 +1,14 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { z } from "zod";
 import { zodFail } from "@/lib/action-state";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient, isAdminConfigured, ADMIN_NOT_CONFIGURED } from "@/lib/supabase/admin";
-import { generateTempPassword } from "@/lib/provisioning";
-import { FLAG_TEMPORARY } from "@/lib/must-change-password";
-import { normalizeVin, VIN_INVALID } from "@/lib/vin";
-import { normalizePhone, PHONE_INVALID } from "@/lib/phone";
 import { logActivityAs } from "@/lib/activity";
 import { PARTNER_KIND_LABELS, partnerOnboardSchema } from "@/lib/partners";
+import { provisionPartnerAdmin, vinAlreadyRegistered } from "@/lib/partner-provisioning";
+import { normalizeVin, VIN_INVALID } from "@/lib/vin";
 
 // Onboarding a partner organisation (CR-0026) is two writes that must agree:
 // the `partners` row, and the first `partner_admin` who runs it.
@@ -19,10 +18,6 @@ import { PARTNER_KIND_LABELS, partnerOnboardSchema } from "@/lib/partners";
 // keeps RLS as the real boundary rather than a code check. The auth user and the
 // profile need the service role (nothing holding a user JWT can create an auth
 // user), so the super_admin check below is re-done in code for that half.
-//
-// A partner_admin carries NO geography: `profiles_scope_matches_role` requires
-// every geo column null with `partner_id` set, and `enforce_partner_ceiling`
-// exempts the role. Sending a state_id here would be rejected by the database.
 
 export type OnboardPartnerResult = {
   status: "success" | "error";
@@ -34,6 +29,11 @@ export type OnboardPartnerResult = {
 };
 
 const NOT_SUPER = "Only a super admin can onboard a partner.";
+
+const onboardInputSchema = partnerOnboardSchema.extend({
+  /** When set, this partner came from a public partnership request; mark it onboarded. */
+  requestId: z.string().uuid().nullish(),
+});
 
 export async function onboardPartner(input: unknown): Promise<OnboardPartnerResult> {
   const supabase = await createClient();
@@ -50,20 +50,12 @@ export async function onboardPartner(input: unknown): Promise<OnboardPartnerResu
     .maybeSingle();
   if (me?.role !== "super_admin") return { status: "error", message: NOT_SUPER };
 
-  const parsed = partnerOnboardSchema.safeParse(input);
+  const parsed = onboardInputSchema.safeParse(input);
   if (!parsed.success) {
     const failed = zodFail(parsed.error);
     return { status: "error", message: failed.message, fieldErrors: failed.fieldErrors };
   }
   const d = parsed.data;
-
-  // Normalise server-side: `voter_ids.vin` is a primary key, so an unsanitised
-  // value would quietly create a second row for the same card.
-  const vin = normalizeVin(d.adminVin);
-  if (!vin) return { status: "error", message: VIN_INVALID, fieldErrors: { adminVin: VIN_INVALID } };
-
-  const phone = normalizePhone(d.adminPhone);
-  if (!phone) return { status: "error", message: PHONE_INVALID, fieldErrors: { adminPhone: PHONE_INVALID } };
 
   const admin = createAdminClient();
 
@@ -74,13 +66,11 @@ export async function onboardPartner(input: unknown): Promise<OnboardPartnerResu
     }
   }
 
-  // Refuse a card that already belongs to someone BEFORE creating anything, so a
-  // known-bad submit does not leave an orphan partner row behind.
-  const [{ data: vinOnMember }, { data: vinOnProfile }] = await Promise.all([
-    admin.from("members").select("id").eq("vin_id", vin).maybeSingle(),
-    admin.from("profiles").select("id").eq("vin_id", vin).maybeSingle(),
-  ]);
-  if (vinOnMember || vinOnProfile) {
+  // The VIN is checked here too (provisionPartnerAdmin re-checks), so a known-bad
+  // submit never creates a partner row that has to be unwound.
+  const vin = normalizeVin(d.adminVin);
+  if (!vin) return { status: "error", message: VIN_INVALID, fieldErrors: { adminVin: VIN_INVALID } };
+  if (await vinAlreadyRegistered(admin, vin)) {
     return {
       status: "error",
       message: "That voter's card number is already registered.",
@@ -111,49 +101,16 @@ export async function onboardPartner(input: unknown): Promise<OnboardPartnerResu
   }
 
   // Everything past here owns the partner row: unwind it on any failure.
-  const dropPartner = async () => {
-    await supabase.from("partners").delete().eq("id", partner.id);
-  };
-
-  const { error: vinErr } = await admin.from("voter_ids").upsert({ vin }, { onConflict: "vin" });
-  if (vinErr) {
-    await dropPartner();
-    return { status: "error", message: VIN_INVALID, fieldErrors: { adminVin: VIN_INVALID } };
-  }
-
-  const password = generateTempPassword();
-  const { data: created, error: createErr } = await admin.auth.admin.createUser({
+  const provisioned = await provisionPartnerAdmin(admin, {
+    partnerId: partner.id,
+    fullName: d.adminFullName,
     email: d.adminEmail,
-    password,
-    email_confirm: true,
-    app_metadata: FLAG_TEMPORARY,
+    vin: d.adminVin,
+    phone: d.adminPhone,
   });
-  if (createErr || !created?.user) {
-    await dropPartner();
-    const m = (createErr?.message ?? "").toLowerCase();
-    if (m.includes("already") || m.includes("registered") || m.includes("exists")) {
-      return {
-        status: "error",
-        message: "An account with that email already exists.",
-        fieldErrors: { adminEmail: "Already in use." },
-      };
-    }
-    return { status: "error", message: "Could not create the admin account. Please try again." };
-  }
-
-  const { error: profileErr } = await admin.from("profiles").insert({
-    id: created.user.id,
-    role: "partner_admin",
-    full_name: d.adminFullName,
-    partner_id: partner.id,
-    vin_id: vin,
-    phone,
-    status: "active",
-  });
-  if (profileErr) {
-    await admin.auth.admin.deleteUser(created.user.id); // don't leave an orphan auth user
-    await dropPartner();
-    return { status: "error", message: "Could not save the admin's profile. Please try again." };
+  if (!provisioned.ok) {
+    await supabase.from("partners").delete().eq("id", partner.id);
+    return { status: "error", message: provisioned.message, fieldErrors: provisioned.fieldErrors };
   }
 
   await logActivityAs(user.id, {
@@ -165,13 +122,21 @@ export async function onboardPartner(input: unknown): Promise<OnboardPartnerResu
     partnerId: partner.id,
   });
 
+  if (d.requestId) {
+    await admin
+      .from("partnership_requests")
+      .update({ status: "onboarded", partner_id: partner.id, handled_by: user.id, handled_at: new Date().toISOString() })
+      .eq("id", d.requestId);
+  }
+
   revalidatePath("/app/admin/partners");
+  revalidatePath("/app/admin/partners/requests");
 
   return {
     status: "success",
     message: "Partner onboarded.",
     partnerId: partner.id,
-    tempPassword: password,
-    email: d.adminEmail,
+    tempPassword: provisioned.tempPassword,
+    email: provisioned.email,
   };
 }

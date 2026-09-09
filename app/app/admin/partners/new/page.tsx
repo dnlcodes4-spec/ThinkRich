@@ -13,7 +13,12 @@ export const metadata: Metadata = {
 // Two things happen on submit: the `partners` row, and the first partner_admin
 // who runs it. The Server Action re-checks the super_admin rule, because half of
 // the work uses the service role and so bypasses RLS.
-export default async function NewPartnerPage() {
+export default async function NewPartnerPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ request?: string }>;
+}) {
+  const { request: requestId } = await searchParams;
   const supabase = await createClient();
   const {
     data: { user },
@@ -45,6 +50,17 @@ export default async function NewPartnerPage() {
     .eq("is_active", true)
     .order("name");
 
+  // Prefill from a partnership request, if the super admin came from that queue.
+  const uuid = /^[0-9a-f-]{36}$/i;
+  const { data: fromRequest } =
+    requestId && uuid.test(requestId)
+      ? await supabase
+          .from("partnership_requests")
+          .select("id, name, organization, email, phone")
+          .eq("id", requestId)
+          .maybeSingle()
+      : { data: null };
+
   return (
     <main className="mx-auto w-full max-w-2xl flex-1 px-6 py-12">
       <Link
@@ -62,8 +78,28 @@ export default async function NewPartnerPage() {
         will run it.
       </p>
 
+      {fromRequest ? (
+        <p className="mt-4 rounded-card border border-border bg-surface-muted px-4 py-3 text-sm text-muted">
+          Prefilled from {fromRequest.name}&apos;s request for {fromRequest.organization}. The request
+          is marked onboarded once this succeeds.
+        </p>
+      ) : null}
+
       <section className="mt-8">
-        <PartnerForm states={states ?? []} />
+        <PartnerForm
+          states={states ?? []}
+          prefill={
+            fromRequest
+              ? {
+                  requestId: fromRequest.id,
+                  name: fromRequest.organization,
+                  adminFullName: fromRequest.name,
+                  adminEmail: fromRequest.email,
+                  adminPhone: fromRequest.phone ?? "",
+                }
+              : undefined
+          }
+        />
       </section>
     </main>
   );
