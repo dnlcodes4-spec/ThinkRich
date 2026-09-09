@@ -79,9 +79,14 @@ Every scope predicate (`member_in_scope`, `profile_in_scope`) now also compares
   partner ever sees another.
 - The **super admin** already returns `true` in every scope function, so it sees every partition
   unchanged, which is the one cross-cutting view.
-- `partner_id` is **INSERT-only**: `private.freeze_partner_id()` rejects any UPDATE that changes
-  it, in either direction, for every role including `service_role`. A deliberate "move a row
-  between partitions" must disable the trigger for its transaction.
+- `partner_id` and `membership_number` are **INSERT-only**: `private.freeze_partner_id()` and
+  `private.prevent_membership_number_change()` reject any UPDATE that changes them, for every role
+  including `service_role`. The one sanctioned exception is
+  `public.move_member_to_partition(member, target?)` (CR-0026 Chunk B), a `SECURITY DEFINER` RPC
+  that authorizes on `super_admin`, enforces the destination ceiling, moves exactly one
+  rank-and-file member (never staff), reissues the number in the destination, and runs its two
+  UPDATEs behind a transaction-local `app.partition_move` flag that is off for every other write.
+  Each move writes one `activity_log` row in the destination partition.
 - The National headline total uses `public.movement_member_count()` (SECURITY DEFINER), which
   deliberately crosses the partition so partner members and staff still count in the movement's
   size. Geographic drill-downs stay RLS-scoped and do not.

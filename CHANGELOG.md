@@ -9,6 +9,13 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
 ## [Unreleased]
 
 ### Added
+- **Move a voter between organisations** (CR-0026 Chunk B). The super admin can move one
+  rank-and-file member between the core movement and a partner, or between partners, from the
+  voter's detail page. A new membership number is issued in the destination, the voter's login is
+  re-partitioned, and the move is written to the destination partition's activity log. Staff
+  accounts cannot be moved. `partner_id` and `membership_number` stay immutable for every other
+  path: the move is a `SECURITY DEFINER` RPC (`public.move_member_to_partition`) behind a
+  transaction-local `app.partition_move` flag. Migration 0056.
 - **Partner administration tooling** (CR-0026 follow-up). The public "become a partner" form on
   the Think-Winners landing now feeds a real pipeline: submissions land in a new
   `partnership_requests` table (super-admin only; the anonymous form writes with the service role

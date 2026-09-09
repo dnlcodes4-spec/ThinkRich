@@ -89,7 +89,9 @@ erDiagram
 
 ### Invariants (enforced by DB constraints + Server Actions)
 
-1. `membership_number` is **unique** and **never updated** after insert. **Format (confirmed):**
+1. `membership_number` is **unique** and **never updated** after insert, except by a logged
+   super-admin partition move (`public.move_member_to_partition`, CR-0026 Chunk B), which reissues
+   it in the destination partition. **Format (confirmed):**
    `TWM-<STATE>-<LGA>-<seq>` (e.g. `TWM-LA-IKJ-000123`), sequence is per-LGA, zero-padded. A
    partner member's number is namespaced `TWM-<PARTNER_CODE>-<STATE>-<LGA>-<seq>` with a
    per-`(partner_id, lga)` sequence (CR-0026); the core format is unchanged.
@@ -167,6 +169,7 @@ therefore cannot be derived from `ward.lga_id`. See
 | `public.ward_constituencies` (view) | Ward to constituency resolution, ward rows overriding LGA rows. |
 | `private.current_partner_id()` | The caller's `profiles.partner_id`. The partner analogue of `private.current_state_id()`; feeds every scope predicate (CR-0026). |
 | `public.movement_member_count()` | The movement's headline size. `SECURITY DEFINER`, so it deliberately counts across every partition (partner members and staff) even though a national admin cannot see the individual rows. Mirrors the app's `movementTotal()`. |
+| `public.move_member_to_partition(member, target?)` | Super-admin only (CR-0026 Chunk B). Moves one rank-and-file member between partitions: reissues the membership number in the destination, re-partitions the login, logs the move. The one sanctioned `partner_id` / `membership_number` mutation, gated behind a transaction-local `app.partition_move` flag. |
 
 ---
 
