@@ -71,9 +71,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         .is("read_at", null)
     : { count: 0 };
 
-  // Behind the suspension wall every screen is the same notice, so don't offer
-  // links that pretend to work.
-  const items = partnerSuspended ? [] : navForRole(profile?.role, partnerKind);
+  const items = navForRole(profile?.role, partnerKind);
 
   return (
     // Think-Winners brand tokens (navy + gold, ADR-0008). Without this the whole
@@ -93,7 +91,9 @@ export default async function AppLayout({ children }: { children: React.ReactNod
       >
         Skip to content
       </a>
-      <Sidebar items={items} name={profile?.full_name ?? ""} roleLabel={roleLabel(profile?.role)} />
+      {partnerSuspended ? null : (
+        <Sidebar items={items} name={profile?.full_name ?? ""} roleLabel={roleLabel(profile?.role)} />
+      )}
       <div className="flex min-w-0 flex-1 flex-col">
         <AppHeader
           name={profile?.full_name ?? ""}
@@ -120,10 +120,12 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         {/* Promote the movement's social pages on every dashboard and the members
             app (CR-0012). Desktop shows these in the sidebar; this slim footer is
             the mobile equivalent, where the sidebar is hidden. */}
-        <footer className="border-t border-border px-4 py-3 sm:px-6 lg:hidden">
-          <CommunityLinks />
-        </footer>
-        <BottomNav items={items} />
+        {partnerSuspended ? null : (
+          <footer className="border-t border-border px-4 py-3 sm:px-6 lg:hidden">
+            <CommunityLinks />
+          </footer>
+        )}
+        {partnerSuspended ? null : <BottomNav items={items} />}
         {/* One prompt at a time, in priority order, so modals never stack:
             password first (still on the temp one), then completing membership
             (CR-0014, which also sets the VIN), then the VIN-only fallback for a
