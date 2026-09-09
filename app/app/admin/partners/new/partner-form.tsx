@@ -15,14 +15,37 @@ const initial: OnboardPartnerResult = { status: "error" };
 
 type State = { id: string; name: string };
 
+type Prefill = {
+  requestId: string;
+  name: string;
+  adminFullName: string;
+  adminEmail: string;
+  adminPhone: string;
+};
+
 // The action takes a plain object rather than FormData (it is called directly
 // from tests too), so this form maps the fields across before calling it.
-export function PartnerForm({ states }: { states: State[] }) {
+export function PartnerForm({ states, prefill }: { states: State[]; prefill?: Prefill }) {
   const [instance, setInstance] = useState(0);
-  return <Inner key={instance} states={states} onReset={() => setInstance((i) => i + 1)} />;
+  return (
+    <Inner
+      key={instance}
+      states={states}
+      prefill={prefill}
+      onReset={() => setInstance((i) => i + 1)}
+    />
+  );
 }
 
-function Inner({ states, onReset }: { states: State[]; onReset: () => void }) {
+function Inner({
+  states,
+  prefill,
+  onReset,
+}: {
+  states: State[];
+  prefill?: Prefill;
+  onReset: () => void;
+}) {
   const [state, action, pending] = useActionState(
     async (_prev: OnboardPartnerResult, formData: FormData) => {
       const value = (key: string) => String(formData.get(key) ?? "");
@@ -36,6 +59,7 @@ function Inner({ states, onReset }: { states: State[]; onReset: () => void }) {
         adminEmail: value("adminEmail"),
         adminVin: value("vin"),
         adminPhone: value("adminPhone"),
+        requestId: prefill?.requestId ?? null,
       });
     },
     initial,
@@ -76,7 +100,13 @@ function Inner({ states, onReset }: { states: State[]; onReset: () => void }) {
       <section className="flex flex-col gap-5">
         <h2 className="font-display text-lg font-semibold text-foreground">The organisation</h2>
 
-        <Input label="Organisation name" name="name" required error={fe.name} />
+        <Input
+          label="Organisation name"
+          name="name"
+          required
+          error={fe.name}
+          defaultValue={prefill?.name}
+        />
 
         <fieldset className="flex flex-col gap-2">
           <legend className="text-sm font-semibold text-foreground">Kind</legend>
@@ -131,7 +161,14 @@ function Inner({ states, onReset }: { states: State[]; onReset: () => void }) {
           sign in with.
         </p>
 
-        <Input label="Full name" name="adminFullName" autoComplete="name" required error={fe.adminFullName} />
+        <Input
+          label="Full name"
+          name="adminFullName"
+          autoComplete="name"
+          required
+          error={fe.adminFullName}
+          defaultValue={prefill?.adminFullName}
+        />
         <Input
           label="Email"
           name="adminEmail"
@@ -139,6 +176,7 @@ function Inner({ states, onReset }: { states: State[]; onReset: () => void }) {
           autoComplete="off"
           required
           error={fe.adminEmail}
+          defaultValue={prefill?.adminEmail}
         />
         <Input
           label="Phone number"
@@ -148,6 +186,7 @@ function Inner({ states, onReset }: { states: State[]; onReset: () => void }) {
           required
           hint="Nigerian mobile, e.g. 0803 123 4567."
           error={fe.adminPhone}
+          defaultValue={prefill?.adminPhone}
         />
         <VinInput label="Their voter's card number (VIN)" error={fe.adminVin} />
       </section>

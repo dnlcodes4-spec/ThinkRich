@@ -39,14 +39,19 @@ export default async function PartnersPage() {
   const admin = tryCreateAdminClient();
   if (!admin) return <NotConfigured title="Partners" />;
 
-  const [partnersRes, statesRes, membersRes] = await Promise.all([
+  const [partnersRes, statesRes, membersRes, requestsRes] = await Promise.all([
     supabase
       .from("partners")
       .select("id, name, kind, code, status, scope_state_id")
       .order("name"),
     admin.from("states").select("id, name"),
     admin.from("members").select("partner_id").neq("status", "deleted"),
+    supabase
+      .from("partnership_requests")
+      .select("id", { count: "exact", head: true })
+      .eq("status", "new"),
   ]);
+  const newRequests = requestsRes.count ?? 0;
 
   const stateName = new Map((statesRes.data ?? []).map((s) => [s.id, s.name]));
   const memberBy = new Map<string, number>();
@@ -72,12 +77,20 @@ export default async function PartnersPage() {
               : `${activeCount} of ${partners.length} active, ${broughtTotal.toLocaleString()} people brought in so far.`}
           </p>
         </div>
-        <Link
-          href="/app/admin/partners/new"
-          className="min-h-11 rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
-        >
-          Onboard a partner
-        </Link>
+        <div className="flex flex-wrap items-center gap-3">
+          <Link
+            href="/app/admin/partners/requests"
+            className="min-h-11 rounded-md border border-border px-4 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted"
+          >
+            Requests{newRequests > 0 ? ` (${newRequests} new)` : ""}
+          </Link>
+          <Link
+            href="/app/admin/partners/new"
+            className="min-h-11 rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
+          >
+            Onboard a partner
+          </Link>
+        </div>
       </div>
 
       {partners.length === 0 ? (

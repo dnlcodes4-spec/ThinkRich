@@ -109,6 +109,20 @@ registrar can collide with an identity that lives in a partition they cannot see
 `taken_here` / `taken_elsewhere` without revealing which world holds the identity; the
 registration actions use it to word the "already registered under another organisation" message.
 
+**Partnership requests.** The public "become a partner" form is anonymous, so it never touches
+the database directly: after Zod validation the Server Action writes to `partnership_requests`
+with the service role. `partnership_requests_super_all` is the only policy on that table, so a
+lead is readable and editable only by the super admin. A honeypot field and a per-email dedupe
+are the spam controls until rate limiting arrives (Phase 4).
+
+**Editing a partner.** Name and ceiling are editable by the super admin (caller's client, so
+`partners_super_all` authorises it). `partners.code` is never editable, it is baked into every
+membership number the partner has issued. The ceiling may widen freely; narrowing to a state is
+refused, both in the action and by `private.enforce_partner_ceiling_widen_only()` on
+`partners`, when members or staff already sit outside that state. Adding a further
+`partner_admin` and resetting a `partner_admin`'s password go through the same super-admin gate
+and the shared `provisionPartnerAdmin` helper.
+
 ---
 
 ## Authorization: defense in depth

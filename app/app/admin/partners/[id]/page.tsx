@@ -4,9 +4,9 @@ import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { tryCreateAdminClient } from "@/lib/supabase/admin";
 import { NotConfigured } from "@/components/ui/not-configured";
-import { formatPhone } from "@/lib/phone";
 import { NATIONWIDE_LABEL, PARTNER_KIND_LABELS, type PartnerKind } from "@/lib/partners";
 import { setPartnerActive } from "./actions";
+import { EditPartnerDetails, PartnerAdmins } from "./manage";
 
 export const metadata: Metadata = {
   title: "Partner",
@@ -49,20 +49,21 @@ export default async function PartnerDetailPage({ params }: { params: Promise<{ 
     .maybeSingle();
   if (!partner) notFound();
 
-  const [stateRes, membersRes, adminsRes] = await Promise.all([
-    partner.scope_state_id
-      ? admin.from("states").select("name").eq("id", partner.scope_state_id).maybeSingle()
-      : Promise.resolve({ data: null }),
+  const [statesRes, membersRes, adminsRes] = await Promise.all([
+    admin.from("states").select("id, name").order("name"),
     admin.from("members").select("id", { count: "exact", head: true }).eq("partner_id", partner.id).neq("status", "deleted"),
     admin
       .from("profiles")
-      .select("id, full_name, phone, status")
+      .select("id, full_name, status")
       .eq("partner_id", partner.id)
       .eq("role", "partner_admin")
       .order("full_name"),
   ]);
 
-  const ceiling = partner.scope_state_id ? (stateRes.data?.name ?? "Unknown state") : NATIONWIDE_LABEL;
+  const states = statesRes.data ?? [];
+  const ceiling = partner.scope_state_id
+    ? (states.find((s) => s.id === partner.scope_state_id)?.name ?? "Unknown state")
+    : NATIONWIDE_LABEL;
   const brought = membersRes.count ?? 0;
   const admins = adminsRes.data ?? [];
   const isActive = partner.status === "active";
@@ -110,6 +111,7 @@ export default async function PartnerDetailPage({ params }: { params: Promise<{ 
         <div className="rounded-card border border-border bg-surface px-4 py-3">
           <dt className="text-xs text-muted">Code</dt>
           <dd className="mt-1 font-mono text-sm font-semibold text-foreground">{partner.code}</dd>
+          <p className="mt-1 text-xs text-muted">Fixed: it is in every membership number.</p>
         </div>
         <div className="rounded-card border border-border bg-surface px-4 py-3">
           <dt className="text-xs text-muted">Kind</dt>
@@ -121,34 +123,14 @@ export default async function PartnerDetailPage({ params }: { params: Promise<{ 
         </div>
       </dl>
 
-      <section className="mt-10">
-        <h2 className="font-display text-lg font-semibold text-foreground">Who runs it</h2>
-        {admins.length === 0 ? (
-          <p className="mt-2 text-sm text-muted">
-            This partner has no admin account. Onboarding creates one, so this is unusual.
-          </p>
-        ) : (
-          <ul className="mt-4 divide-y divide-border rounded-card border border-border">
-            {admins.map((a) => (
-              <li key={a.id} className="flex flex-wrap items-center justify-between gap-3 px-4 py-3">
-                <div className="min-w-0">
-                  <p className="truncate text-sm font-medium text-foreground">{a.full_name}</p>
-                  <p className="truncate text-xs text-muted">{formatPhone(a.phone)}</p>
-                </div>
-                <span
-                  className={
-                    a.status === "active"
-                      ? "rounded-full border border-success/30 bg-success-soft px-2.5 py-1 text-xs font-bold text-success"
-                      : "rounded-full border border-border bg-surface-muted px-2.5 py-1 text-xs font-bold text-muted"
-                  }
-                >
-                  {a.status === "active" ? "Active" : "Inactive"}
-                </span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
+      <EditPartnerDetails
+        partnerId={partner.id}
+        name={partner.name}
+        scopeStateId={partner.scope_state_id}
+        states={states}
+      />
+
+      <PartnerAdmins partnerId={partner.id} admins={admins} />
 
       <section className="mt-10 rounded-card border border-border bg-surface-muted p-5">
         <h2 className="text-sm font-semibold text-foreground">
