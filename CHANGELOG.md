@@ -28,10 +28,15 @@ Entries are derived from [Conventional Commits](https://www.conventionalcommits.
   nationwide in v1). Membership numbers are partner-namespaced, `TWM-<CODE>-<STATE>-<LGA>-<seq>`,
   with a per-`(partner_id, lga)` sequence; the core `TWM-<STATE>-<LGA>-<seq>` format is unchanged.
   Global NIN/VIN uniqueness (ADR-0015) now also means **one person belongs to exactly one world**:
-  the core movement, or partner X, or partner Y, never two. Additive migrations 0044-0052, no
-  backfill. `movement_member_count()` is `grant`ed to `anon` on purpose, ahead of a future public
-  live-count consumer; there is no unauthenticated caller today and it returns only the single
-  aggregate number.
+  the core movement, or partner X, or partner Y, never two; when a registrar hits that collision
+  across the wall, `public.identity_registration_status()` (a `SECURITY DEFINER` coarse check)
+  lets the message say "already registered under another organisation" without naming which.
+  Deactivating a partner (`partners.status = 'inactive'`) is enforced: a DB trigger blocks every
+  new member or staff account in that partition and the app shows the partner's staff a
+  suspension screen, while existing data and members' logins are untouched and reactivation is
+  instant. Additive migrations 0044-0053, no backfill. `movement_member_count()` is `grant`ed to
+  `anon` on purpose, ahead of a future public live-count consumer; there is no unauthenticated
+  caller today and it returns only the single aggregate number.
 - **Email is required for every voter, plus tooling to fix the members who have none**
   (CR-0025). Member registration (`/app/register`) now requires an email; it was optional, which
   left many members with no way to sign in. Because an address is always present, every member's

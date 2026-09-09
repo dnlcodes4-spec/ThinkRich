@@ -14,8 +14,9 @@ export const metadata: Metadata = {
 };
 
 // One partner organisation: how many people it has brought in, who runs it, and
-// the switch that stops it. Deactivating does not delete anything; it closes the
-// partner and its admins keep their records.
+// the switch that stops it. Deactivating deletes nothing and locks nobody out of
+// their own account; it just stops the partner's staff from registering anyone
+// new until it is reactivated.
 export default async function PartnerDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const supabase = await createClient();
@@ -155,8 +156,8 @@ export default async function PartnerDetailPage({ params }: { params: Promise<{ 
         </h2>
         <p className="mt-1 text-sm text-muted">
           {isActive
-            ? "Marks the partner inactive. It does not yet block sign-in or registration, and nothing already registered is deleted."
-            : "Marks the partner active again."}
+            ? "Suspends the partner: its staff keep sign-in and can view their existing members, but cannot register new members or create accounts. Members are unaffected and nothing is deleted."
+            : "Restores the partner. Its staff can register members again."}
         </p>
         <form action={setPartnerActive} className="mt-4">
           <input type="hidden" name="partner_id" value={partner.id} />

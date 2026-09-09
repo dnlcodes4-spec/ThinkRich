@@ -1199,6 +1199,11 @@ export type Database = {
           isSetofReturn: true
         }
       }
+      identity_registration_status: {
+        Args: { p_nin?: string; p_vin?: string }
+        Returns: string
+      }
+      movement_member_count: { Args: never; Returns: number }
       verify_kym_code: {
         Args: { p_code: string }
         Returns: {
