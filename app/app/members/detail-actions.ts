@@ -6,7 +6,7 @@ import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { notify } from "@/lib/notify";
 import { logActivityAs } from "@/lib/activity";
-import { isNationalTier } from "@/lib/terms";
+import { isNationalTier, isPartnerScoped } from "@/lib/terms";
 import { isChangeField, fieldLabel } from "./change-request-fields";
 
 // Leader/admin actions on a single member: upload their passport photo, and
@@ -77,7 +77,7 @@ export async function reviewChangeRequest(formData: FormData): Promise<void> {
   } = await supabase.auth.getUser();
   if (!user) return;
   const { data: me } = await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle();
-  if (!me || (!isNationalTier(me.role) && me.role !== "state_admin")) return;
+  if (!me || (!isNationalTier(me.role) && !isPartnerScoped(me.role) && me.role !== "state_admin")) return;
 
   const id = z.string().uuid().safeParse(formData.get("request_id"));
   const decision = String(formData.get("decision") ?? "");

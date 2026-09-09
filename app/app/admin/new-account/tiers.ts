@@ -5,6 +5,7 @@ export type GeoLevel = "state" | "lga" | "ward" | "polling_unit" | null;
 
 export const ROLE_RANK: Record<Role, number> = {
   super_admin: 0,
+  partner_admin: 1,
   national_admin: 1,
   state_admin: 2,
   lg_admin: 3,
@@ -18,6 +19,7 @@ export const ROLE_RANK: Record<Role, number> = {
 // same as their coordinator.
 export const ROLE_LEVEL: Record<Role, GeoLevel> = {
   super_admin: null,
+  partner_admin: null,
   national_admin: null,
   state_admin: "state",
   lg_admin: "lga",
@@ -66,6 +68,7 @@ export function manageableRoles(role: Role): Role[] {
 // always reads top-down.
 export const ROLE_ORDER: Role[] = [
   "super_admin",
+  "partner_admin",
   "national_admin",
   "state_admin",
   "lg_admin",

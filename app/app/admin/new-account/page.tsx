@@ -29,10 +29,39 @@ export default async function NewAccountPage({
   const { data: me } = user
     ? await supabase
         .from("profiles")
-        .select("role, state_id, lga_id, ward_id, polling_unit_id")
+        .select("role, state_id, lga_id, ward_id, polling_unit_id, partner_id")
         .eq("id", user.id)
         .maybeSingle()
     : { data: null };
+
+  // A partner admin carries no geography, so the state picker would offer all 37
+  // states, but enforce_partner_ceiling (0046) rejects any sub-admin outside the
+  // partner's own state. Pin the picker to that ceiling. A nationwide partner
+  // (no scope_state_id) keeps the free picker. A community partner has no
+  // sub-accounts at all, so it gets a short card instead of the form.
+  let partnerCeilingStateId: string | undefined;
+  const isPartnerAdmin = me?.role === "partner_admin";
+  if (isPartnerAdmin && me?.partner_id) {
+    const { data: p } = await supabase
+      .from("partners")
+      .select("scope_state_id, kind")
+      .eq("id", me.partner_id)
+      .maybeSingle();
+    partnerCeilingStateId = p?.scope_state_id ?? undefined;
+    if (p?.kind === "community") {
+      return (
+        <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-4 px-6 py-16">
+          <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">Create an account</h1>
+          <p className="text-sm text-muted">
+            A community partner has one admin and a member list; there are no sub-accounts to manage.
+          </p>
+          <Link href="/app" className="text-sm font-semibold text-primary underline-offset-4 hover:underline">
+            Back to your area
+          </Link>
+        </main>
+      );
+    }
+  }
 
   const targets = me ? allowedTargets(me.role as Role) : [];
 
@@ -54,7 +83,7 @@ export default async function NewAccountPage({
   const level = target ? ROLE_LEVEL[target.role] : null;
 
   const locked = {
-    stateId: me.state_id ?? undefined,
+    stateId: me.state_id ?? partnerCeilingStateId ?? undefined,
     lgaId: me.lga_id ?? undefined,
     wardId: me.ward_id ?? undefined,
     pollingUnitId: me.polling_unit_id ?? undefined,
@@ -95,7 +124,9 @@ export default async function NewAccountPage({
       <p className="mt-2 text-sm text-muted">
         {unscoped
           ? "You can create any role, anywhere in the country. They receive a temporary password to sign in with."
-          : "You can create any role below yours, within your own area. They receive a temporary password to sign in with."}
+          : isPartnerAdmin
+            ? "You can create any role in your organisation. They receive a temporary password to sign in with."
+            : "You can create any role below yours, within your own area. They receive a temporary password to sign in with."}
       </p>
 
       {targets.length > 1 ? (
@@ -146,7 +177,8 @@ export default async function NewAccountPage({
       ) : target && level && fixedArea ? (
         <p className="mt-6 rounded-card border border-border bg-surface-muted px-4 py-3 text-sm text-muted">
           This <span className="font-semibold capitalize text-foreground">{roleLabel(target.role)}</span> will serve
-          in <span className="font-medium text-foreground">{fixedArea}</span>, your own area.
+          in <span className="font-medium text-foreground">{fixedArea}</span>,{" "}
+          {isPartnerAdmin ? "your organisation's state" : "your own area"}.
         </p>
       ) : null}
 

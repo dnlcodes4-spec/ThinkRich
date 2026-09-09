@@ -48,3 +48,4 @@ Small, local, easily-reversed choices do **not** need an ADR.
 | [0015](0015-voter-identity-and-role-upgrades.md) | Voter identity storage and the role-upgrade model | Proposed |
 | [0016](0016-everyone-is-a-member.md) | Everyone is a member — staff hold a membership keyed to home registration | Accepted |
 | [0017](0017-super-admin-owner-role.md) | Super Admin (owner) role above National | Accepted |
+| [0018](0018-partner-organisations-and-tenancy.md) | Partner organisations and the `partner_id` tenancy model | Accepted |

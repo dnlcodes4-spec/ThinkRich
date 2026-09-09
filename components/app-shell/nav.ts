@@ -65,14 +65,35 @@ const GEOGRAPHY: NavItem = { href: "/app/geography", label: "Geography", icon: "
 // LGA-level and up: add wards the seed missed, scoped to the caller's area
 // (mirrors the polling-unit add). Ward/unit tiers are below ward creation.
 const ADD_WARD: NavItem = { href: "/app/geography/add-ward", label: "Add ward", icon: "layers", short: "Add ward" };
+// Super admin only (CR-0026): onboard and oversee partner organisations. RLS
+// (partners_super_all) is the actual boundary; this only hides the destination.
+const PARTNERS: NavItem = { href: "/app/admin/partners", label: "Partners", icon: "team", short: "Partners" };
 
-export function navForRole(role: Role | string | null | undefined): NavItem[] {
+export type PartnerKind = "political" | "community";
+
+// A community partner has one admin, a member list and a count: no sub-accounts,
+// no leaders, no "Give app access". Bringing members is its whole purpose, so it
+// keeps Register; the rest is trimmed to Home, Members, Stats.
+const COMMUNITY_PARTNER: NavItem[] = [
+  { href: "/app", label: "Home", icon: "home" },
+  { href: "/app/members", label: "Members", icon: "members", short: "Members" },
+  REGISTER,
+  { href: "/app/stats", label: "Statistics", icon: "overview", short: "Stats" },
+];
+
+export function navForRole(
+  role: Role | string | null | undefined,
+  partnerKind?: PartnerKind,
+): NavItem[] {
   switch (role) {
     case "member":
       return MEMBER;
     case "leader":
       return LEADER;
+    // Only the super admin onboards partner organisations, so PARTNERS splits
+    // the two national tiers that otherwise share a list.
     case "super_admin":
+      return [...COORDINATOR_BASE, ADD_WARD, REGISTER, CANDIDATES, STATES, GEOGRAPHY, PARTNERS, LOGS];
     case "national_admin":
       return [...COORDINATOR_BASE, ADD_WARD, REGISTER, CANDIDATES, STATES, GEOGRAPHY, LOGS];
     // State and LGA coordinators can add wards within their scope; ward admins
@@ -83,6 +104,13 @@ export function navForRole(role: Role | string | null | undefined): NavItem[] {
     // Ward admins are included in candidates: they own their ward's councillor race (CR-0007).
     case "ward_admin":
       return [...COORDINATOR_BASE, REGISTER, CANDIDATES];
+    // Partner admins act across their partner organisation, not a geography: no
+    // states, geography browser or ward creation. LOGS is included because the
+    // activity page admits them and RLS (0046) scopes the log to their partition.
+    case "partner_admin":
+      return partnerKind === "community"
+        ? COMMUNITY_PARTNER
+        : [...COORDINATOR_BASE, REGISTER, LOGS];
     case "unit_coordinator":
       return [...COORDINATOR_BASE, REGISTER];
     default:

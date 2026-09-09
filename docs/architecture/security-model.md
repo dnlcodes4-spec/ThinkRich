@@ -11,6 +11,7 @@ model. The reporting process lives in [SECURITY.md](../../SECURITY.md).
 | Role | Scope | Core powers |
 |------|-------|-------------|
 | **National Admin** | All 37 (36 states + FCT) | Activate states, create/manage State Admins, own the elective-office catalogue, manage any candidacy, full visibility |
+| **Partner Admin** | One partner organisation (and, for a state-scoped partner, one state) | The apex of an affiliated partner's own world: everything a National Admin does, confined to `partner_id = own`. Cannot create `super_admin`, `national_admin`, or any core admin. See "The partner partition" below |
 | **State Admin** | One assigned state | Oversee members & activities, approve/reject change requests, manage any candidacy inside their state |
 | **L.G Admin** | One Local Government | Oversee the wards (and everything below) in the L.G; manage chairman + councillor candidacies in it |
 | **Ward Admin** | One ward | Oversee the polling units (and the leaders/members below) in the ward; manage its councillor candidacy |
@@ -60,6 +61,53 @@ One limit remains, and it is a capability limit rather than a scope limit:
 Two workflow gates also still apply to everyone, including them, because they are product rules
 rather than scope: a state must be **activated** before members can be registered in it (T-019),
 and a member must be **18 or older**.
+
+### The partner partition (CR-0026, ADR-0018)
+
+A **partner organisation** is an affiliated group that recruits its own people into ThinkWinners
+under its own banner. `profiles` and `members` carry a nullable `partner_id` (`NULL` = the core
+movement); `partner_admin` is a scoped peer of `national_admin` (same `role_rank` 1), its scope
+fields all NULL and its `partner_id` not null, confined to its own partition and, for a
+state-scoped partner, to that state.
+
+Every scope predicate (`member_in_scope`, `profile_in_scope`) now also compares
+`partner_id is not distinct from private.current_partner_id()`. Consequences:
+
+- A **core geographic admin** (national, state, LG, ward, unit) has `partner_id IS NULL`, so
+  `is not distinct from` matches only `NULL` rows: they never see a partner's members or staff.
+- A **partner admin** has a non-null `partner_id`, so they see only their own partition. No
+  partner ever sees another.
+- The **super admin** already returns `true` in every scope function, so it sees every partition
+  unchanged, which is the one cross-cutting view.
+- `partner_id` is **INSERT-only**: `private.freeze_partner_id()` rejects any UPDATE that changes
+  it, in either direction, for every role including `service_role`. A deliberate "move a row
+  between partitions" must disable the trigger for its transaction.
+- The National headline total uses `public.movement_member_count()` (SECURITY DEFINER), which
+  deliberately crosses the partition so partner members and staff still count in the movement's
+  size. Geographic drill-downs stay RLS-scoped and do not.
+- `activity_log` rows written by partner staff carry that staff member's `partner_id` (resolved
+  from their profile in `logActivityAs`), so partner activity stays in the partner's partition and
+  never lands in the core log. `activity_log_select_scoped` lets a super admin read the whole log, a
+  national admin read only core (`partner_id null`) rows, and a partner admin read only its own
+  partition.
+
+`partner_admin` cannot create `super_admin`, `national_admin`, or any core admin: the `role_rank`
+rule in `profiles_insert` / `profiles_update` still requires the target to rank strictly lower,
+and the partner predicate plus the ceiling trigger keep every account it creates inside its
+partition and its state ceiling.
+
+**Deactivation.** The super admin can set `partners.status = 'inactive'`. A `BEFORE INSERT`
+trigger on `members` and `profiles` (`private.block_inactive_partner_write()`) then rejects any
+new member or staff account carrying that partner's id, so a suspended partner cannot grow. Its
+existing rows stay readable, its members keep their login and card, and the app shell shows the
+partner's staff a "your organisation is suspended" screen. Reactivation is instant and lossless
+(the trigger reads the current status on every insert; nothing is mutated on deactivate).
+
+**Cross-partition duplicate registration.** NIN and VIN are globally unique (ADR-0015), so a
+registrar can collide with an identity that lives in a partition they cannot see.
+`public.identity_registration_status(nin, vin)` is `SECURITY DEFINER` and reports `available` /
+`taken_here` / `taken_elsewhere` without revealing which world holds the identity; the
+registration actions use it to word the "already registered under another organisation" message.
 
 ---
 
@@ -159,3 +207,15 @@ Enforced in `next.config.ts` per the Next 16 PWA guide:
 3. Every mutation is validated server-side before the DB call.
 4. Membership numbers cannot be changed after issue.
 5. Duplicate registrations are rejected at the database level.
+6. **Partition isolation** (CR-0026): no RLS-mediated query path crosses the `partner_id`
+   partition. A core admin sees only `partner_id IS NULL`; a partner admin sees only its own
+   partition; no partner sees another. The named exceptions are `SECURITY DEFINER` helpers
+   (`movement_member_count()`, which returns a single cross-partition aggregate and no rows;
+   `verify_kym_code()`, scoped to the caller's own partition; `identity_registration_status()`,
+   which returns only a coarse taken/available bucket) and deliberate
+   super-admin / service-role paths (the onboarding VIN dedupe, the global NIN/VIN uniqueness
+   existence-check, and the admin-client per-partner tally).
+7. **`partner_id` is immutable** after insert: a row's partition is fixed at registration.
+8. **A deactivated partner cannot grow**: `partners.status = 'inactive'` blocks every new
+   `members` / `profiles` row in that partition (DB trigger), while leaving its existing data
+   and its members' logins untouched.

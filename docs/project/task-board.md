@@ -16,6 +16,15 @@ only when it meets the [Definition of Done](../engineering/definition-of-done.md
 ## 🔵 Backlog
 _Not yet refined / not yet Ready._
 
+- **T-108** — End a suspended partner's live staff sessions. Today, deactivating a partner
+  (T-106) blocks new writes and shows a suspension screen, but a partner staffer already signed in
+  keeps a valid session until it expires; they only hit the wall on their next navigation and their
+  next write already fails at the DB. Decide whether that is enough or whether deactivation should
+  force sign-out. If forcing: options are a `proxy.ts` / layout check that revokes the session when
+  the caller's partner is `inactive` (one extra profile+partner read per request, or cache it), or
+  Supabase Auth admin `signOut` per staff user at deactivate time (bounded work, needs the staff
+  list). Settle: existing sessions, and whether reactivation should notify the admins. _(CR-0026,
+  T-106 follow-up)_
 - **T-055** — Regression test pinning plural position holders: two `state_admin`s in one state, two
   `lg_admin`s in one LGA, two `unit_coordinator`s over one polling unit, plus the refusals that must
   survive (peer cannot update peer, no cross-scope or upward insert). Stops a later "tidy-up" adding
@@ -175,6 +184,28 @@ _PR open, awaiting review + CI._
 ## ✅ Done
 _Merged to `main`, meets Definition of Done._
 
+- **T-106, T-107**: Partner-organisation final-review follow-ups. **T-106** enforces
+  `partners.status`: a `BEFORE INSERT` trigger (`private.block_inactive_partner_write`) blocks any
+  new member/staff row in a deactivated partition, the app shell shows the partner's staff a
+  suspension screen, members keep their login, and reactivation is instant. **T-107** adds
+  `public.identity_registration_status()` (SECURITY DEFINER, coarse bucket) so the registration
+  actions can say "already registered under another organisation" without naming the world.
+  Migrations 0053-0054; `supabase/tests/partner_status_test.sql` (11 assertions) green on prod.
+  (branch `feat/partner-status-and-dup-warning`) _(CR-0026)_
+
+- **T-094 to T-105**: Partner organisations (affiliated tenancy above the geographic hierarchy).
+  A single nullable `partner_id` partition across the whole RLS scope engine, one new
+  `partner_admin` role (a scoped peer of `national_admin`), the super-admin **Partners**
+  onboarding surface, partner-namespaced membership numbers, community-kind nav trim, `partner_id`
+  set on every registration path, and a cross-partition `movement_member_count()` for the National
+  headline. Migrations 0044-0052 applied to the live project; `supabase/tests/partner_rls_test.sql`
+  (20 assertions) and `supabase/tests/partner_count_integrity_test.sql` green on prod.
+  ADR-0018. (branch `feat/partner-organisations`, PR pending) _(CR-0026)_
+  - T-094 ADR-0018 · T-095 migration 0044 (enum) · T-096 0045 (`partners` table, `partner_id`,
+    helpers, triggers) · T-097 0046 (RLS partition sweep) · T-098 0047 (membership numbers) ·
+    T-099 the SQL RLS test matrix · T-100 app role maps / nav / guards · T-101 Partners surface ·
+    T-102 community trim + geo-picker ceiling · T-103 `partner_id` on registration paths + 0048/0049 ·
+    T-104 `movement_member_count()` + 0050 + the count-integrity test · T-105 this docs sweep
 - **T-089 … T-093** — Email required at member registration + "no email on file" roster filter
   and inline add-email/provision-login for members registered before the rule; register schema
   extracted to `lib/register-form.ts` (PR #87, squash `3d061a6`) _(CR-0025)_
